@@ -146,7 +146,7 @@
 
                                                                     <input type="file" autocomplete="off"
                                                                         name="brand_image"
-                                                                        class="form-control form-control-sm mb-2 @error('brand_image') is-invalid @enderror">
+                                                                        class="image form-control form-control-sm mb-2 @error('brand_image') is-invalid @enderror">
 
                                                                     @error('brand_image')
                                                                         <div class="text-danger mb-2"> {{ $message }}
@@ -154,7 +154,7 @@
                                                                     @enderror
 
                                                                     <img src="{{ asset('storage/brand/' . $brand->brand_image) }}"
-                                                                        style="width:73px" alt="">
+                                                                        style="width:73px" class="showImage" alt="">
                                                                 </div>
 
 
@@ -227,14 +227,14 @@
 
                                 <label for="" class="mb-2">Image</label>
 
-                                <input type="file" autocomplete="off" id="image" name="brand_image"
-                                    class="form-control form-control-sm mb-2 @error('brand_image') is-invalid @enderror">
+                                <input type="file" autocomplete="off" id="" name="brand_image"
+                                    class="image form-control form-control-sm mb-2 @error('brand_image') is-invalid @enderror">
 
                                 @error('brand_image')
                                     <div class="text-danger mb-2"> {{ $message }} </div>
                                 @enderror
 
-                                <img src="{{ url('upload/no_image.jpg') }}" style="width:73px" id="showImage"
+                                <img src="{{ url('upload/no_image.jpg') }}" style="width:73px" class="showImage"
                                     alt="">
                             </div>
 
@@ -255,10 +255,10 @@
     {{-- Image Show  --}}
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#image').change(function(e) {
+            $('.image').change(function(e) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
-                    $('#showImage').attr('src', e.target.result);
+                    $('.showImage').attr('src', e.target.result);
                 }
                 reader.readAsDataURL(e.target.files['0']);
             });
@@ -284,4 +284,5 @@
                 ">"
         });
     </script>
+
 @endsection

@@ -22,6 +22,13 @@ return new class extends Migration
             $table->string('section_one_title')->nullable();
             $table->string('section_one_sub_title')->nullable();
             $table->longText('section_one_description')->nullable();
+
+            $table->string('section_two_badge')->nullable();
+            $table->string('section_two_title')->nullable();
+            $table->string('section_two_sub_title')->nullable();
+            $table->longText('section_two_description')->nullable();
+
+
             $table->string('section_one_image')->nullable()->comment('original');
 
             $table->string('ceo_section_badge')->nullable();
@@ -84,6 +91,7 @@ return new class extends Migration
             
             $table->string('counter_four_value')->nullable();
             $table->string('counter_four_title')->nullable();
+            $table->string('status')->nullable();
 
             $table->timestamps();
         });

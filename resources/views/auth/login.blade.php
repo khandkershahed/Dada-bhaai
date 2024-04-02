@@ -1,4 +1,71 @@
-<x-guest-layout>
+@extends('frontend.frontend_dashboard')
+@section('frontend')
+    <!-- CONTENT + SIDEBAR -->
+    <div class="main-wrapper clearfix">
+        <div class="login-wrap text-center">
+            <h2 class="fsz-35 spcbtm-15">
+                <span class="bold-font-3 blk-clr">DADA</span>
+                <span class="thm-clr funky-font">VAAI</span>
+            </h2>
+            <p class="fsz-20 title-3">WELCOME TO OUR SHOPPING ZONE</p>
+            </p>
+
+            <div class="login-form">
+                <p class="bold-font-2 fsz-12 signup">SIGN IN</p>
+
+                <!-- Session Status -->
+                <x-auth-session-status class="mb-4" :status="session('status')" />
+
+                <form class="login" method="POST" action="{{ route('login') }}">
+                    @csrf
+
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="user@gmail.com" value="{{ old('email') }}"
+                            class="form-control" required />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" name="password" placeholder="********" class="form-control" required />
+                    </div>
+
+                    <!-- Remember Me -->
+                    {{-- <div class="float-start">
+                        <input id="remember_me" type="checkbox" name="remember">
+                        <label for="remember_me" class="">Remember me</label>
+                    </div> --}}
+
+                    <div class="form-group">
+                        <button class="alt fancy-button" type="submit">Login</button>
+                    </div>
+
+                    <div class="flex items-center justify-end">
+                        @if (Route::has('password.request'))
+                            <a class="" href="{{ route('password.request') }}">
+                                Forgot your password?
+                            </a>
+                        @endif
+                    </div>
+
+                </form>
+
+                <div>
+                    <p>Do not have any account <a href="{{ route('register') }}">Register Here</a></p>
+                </div>
+
+                {{-- <a class="fb-btn btn spcbtm-15" href="#">
+                    <i class="fa fa-facebook btn-icon" style="margin-right: 10px"></i>Register with Facebook
+                </a>
+                <a class="gogl-btn btn spcbtm-15" href="#">
+                    <i class="fa fa-google btn-icon" style="margin-right: 10px"></i>Register with Google
+                </a> --}}
+            </div>
+        </div>
+    </div>
+    <!-- CONTENT + SIDEBAR -->
+@endsection
+
+
+{{-- <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -44,4 +111,4 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+</x-guest-layout> --}}

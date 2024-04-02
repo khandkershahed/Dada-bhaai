@@ -33,8 +33,7 @@
             <div class="d-flex align-items-center gap-2 gap-lg-3">
 
                 <!--begin::Primary button-->
-                <a href="{{ route('add.banner') }}" data-bs-toggle="modal" data-bs-target="#addModal"
-                    class="btn btn-light-primary btn-sm">Add
+                <a href="" data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-light-primary btn-sm">Add
                     Banner</a>
                 <!--end::Primary button-->
 
@@ -73,7 +72,8 @@
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>
-                                        <img src="{{ asset($banner->banner_image) }}" style="width: 40px;" alt="">
+                                        <img src="{{ asset($banner->banner_image) }}" style="width: 50px;height:30px;"
+                                            alt="">
                                     </td>
                                     <td>{{ $banner->banner_name }}</td>
                                     <td>
@@ -147,8 +147,8 @@
                                                                     <div class="form-group">
                                                                         <label for="" class="mb-2">Image</label>
                                                                         <input type="file" autocomplete="off"
-                                                                            id="image" name="banner_image"
-                                                                            class="form-control form-control-sm @error('banner_image') is-invalid @enderror">
+                                                                            name="banner_image"
+                                                                            class="image mb-2 form-control form-control-sm @error('banner_image') is-invalid @enderror">
 
                                                                         @error('banner_image')
                                                                             <span class="text-danger"> {{ $message }}
@@ -156,8 +156,8 @@
                                                                         @enderror
 
                                                                         <img src="{{ asset($banner->banner_image) }}"
-                                                                            style="width:73px;" id="showImage"
-                                                                            alt="" class="mt-2">
+                                                                            style="width:73px;" class="showImage"
+                                                                            alt="" class="mt-3">
                                                                     </div>
 
                                                                 </div>
@@ -232,14 +232,14 @@
 
                                 <div class="form-group mb-3">
                                     <label for="" class="mb-2">Image</label>
-                                    <input type="file" autocomplete="off" id="image" name="banner_image"
-                                        class="form-control form-control-sm mb-2 @error('banner_image') is-invalid @enderror">
+                                    <input type="file" autocomplete="off" name="banner_image"
+                                        class="image form-control form-control-sm mb-2 @error('banner_image') is-invalid @enderror">
 
                                     @error('banner_image')
                                         <span class="text-danger mb-2"> {{ $message }} </span>
                                     @enderror
 
-                                    <img src="{{ url('upload/no_image.jpg') }}" style="width:73px" id="showImage"
+                                    <img src="{{ url('upload/no_image.jpg') }}" style="width:73px" class="showImage"
                                         alt="">
                                 </div>
 
@@ -261,10 +261,10 @@
     {{-- Image Show  --}}
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#image').change(function(e) {
+            $('.image').change(function(e) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
-                    $('#showImage').attr('src', e.target.result);
+                    $('.showImage').attr('src', e.target.result);
                 }
                 reader.readAsDataURL(e.target.files['0']);
             });

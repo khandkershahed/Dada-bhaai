@@ -33,7 +33,8 @@
             <div class="d-flex align-items-center gap-2 gap-lg-3">
 
                 <!--begin::Primary button-->
-                <a href="{{ route('all.product') }}" class="btn btn-sm btn-light-primary"><i class="bi bi-backspace-fill"></i>Back</a>
+                <a href="{{ route('all.product') }}" class="btn btn-sm btn-light-primary"><i
+                        class="bi bi-backspace-fill"></i>Back</a>
                 <!--end::Primary button-->
 
             </div>
@@ -126,7 +127,8 @@
                                                         Code</label>
                                                     <input name="sku_code"
                                                         class="form-control form-control-sm form-control-solid"
-                                                        placeholder="Eg: NG-2647374" value="{{ old('sku_code') }}" type="text" required />
+                                                        placeholder="Eg: NG-2647374" value="{{ old('sku_code') }}"
+                                                        type="text" required />
                                                     <div class="invalid-feedback">
                                                         Please Enter SKU
                                                         Code.</div>
@@ -214,28 +216,9 @@
                                                 </div>
                                             </div>
 
-                                            {{-- price_status --}}
-                                            <div class="col-6 mb-3">
-                                                <div class="fv-row mb-3">
-                                                    <label class="form-label required">Price
-                                                        Status</label>
-                                                    <select class="form-select form-select-solid form-select-sm"
-                                                        data-control="select2" data-placeholder="Select Price Status"
-                                                        name="price_status" data-hide-search="true"
-                                                        data-allow-clear="true" required>
-                                                        <option></option>
-                                                        <option value="rfq">RFQ</option>
-                                                        <option value="price">Price</option>
-
-                                                    </select>
-                                                    <div class="invalid-feedback">
-                                                        Please Enter Price
-                                                        Status.</div>
-                                                </div>
-                                            </div>
 
                                             {{-- brand_id --}}
-                                            <div class="col-6 mb-3">
+                                            <div class="col-4 mb-3">
                                                 <div class="fv-row mb-3">
 
                                                     <label class="form-label required">Brand Name</label>
@@ -257,6 +240,55 @@
 
                                                 </div>
 
+                                            </div>
+
+                                            {{-- price_status --}}
+                                            <div class="col-4 mb-3">
+                                                <div class="fv-row mb-3">
+                                                    <label class="form-label required">Price
+                                                        Status</label>
+                                                    <select
+                                                        class="form-select form-select-solid form-select-sm price_select"
+                                                        data-control="select2" data-placeholder="Select Price Status"
+                                                        name="price_status" data-hide-search="true"
+                                                        data-allow-clear="true" required>
+                                                        <option></option>
+                                                        <option value="rfq">RFQ</option>
+                                                        <option value="price">Price</option>
+                                                        <option value="offer_price">Offer Price</option>
+
+                                                    </select>
+                                                    <div class="invalid-feedback">
+                                                        Please Enter Price
+                                                        Status.</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-4 mb-3">
+                                                <div class="fv-row mb-3">
+
+                                                    <div class="rfq_price d-none">
+                                                        <label class="ms-1" for="price_status">SAS Price <span
+                                                                class="text-danger">*</span></label>
+                                                        <input class="form-control form-control-sm" type="text"
+                                                            name="sas_price" placeholder="RFQ Price for Sas">
+                                                    </div>
+
+                                                    <div class="price d-none">
+                                                        <label class="ms-1" for="price_status">Price <span
+                                                                class="text-danger">*</span></label>
+                                                        <input class="form-control form-control-sm" type="text"
+                                                            name="price" placeholder="Price">
+                                                    </div>
+
+                                                    <div class="offer_price d-none">
+                                                        <label class="ms-1" for="price_status">Discount Price <span
+                                                                class="text-danger">*</span></label>
+                                                        <input class="form-control form-control-sm" type="text"
+                                                            name="discount_price" placeholder="Discounted Price">
+                                                    </div>
+
+                                                </div>
                                             </div>
 
                                             {{-- category_id --}}
@@ -1114,6 +1146,27 @@
             $('#rfqId').click(function() {
                 $("#rfqExpand").toggle('slow');
             });
+
+
+            $('.price_select').on('change', function() {
+                var price_value = $(this).find(":selected").val();
+                if (price_value == 'rfq') {
+                    // alert(price_value);
+                    $(".rfq_price").removeClass("d-none");
+                    $(".offer_price").addClass("d-none");
+                    $(".price").addClass("d-none");
+                } else if (price_value == 'offer_price') {
+                    $(".offer_price").removeClass("d-none");
+                    $(".rfq_price").addClass("d-none");
+                    $(".price").addClass("d-none");
+                } else if (price_value == 'price') {
+                    $(".price").removeClass("d-none");
+                    $(".offer_price").addClass("d-none");
+                    $(".rfq_price").addClass("d-none");
+                }
+
+            });
+
         });
     </script>
 
@@ -1130,26 +1183,6 @@
                 $(".qty_display").addClass("d-none");
                 $(".qty_required").prop('required', false);
             }
-        });
-
-
-        $('.price_select').on('change', function() {
-            var price_value = $(this).find(":selected").val();
-            if (price_value == 'rfq') {
-                // alert(price_value);
-                $(".rfq_price").removeClass("d-none");
-                $(".offer_price").addClass("d-none");
-                $(".price").addClass("d-none");
-            } else if (price_value == 'offer_price') {
-                $(".offer_price").removeClass("d-none");
-                $(".rfq_price").addClass("d-none");
-                $(".price").addClass("d-none");
-            } else {
-                $(".price").removeClass("d-none");
-                $(".offer_price").addClass("d-none");
-                $(".rfq_price").addClass("d-none");
-            }
-
         });
     </script>
 
@@ -1335,7 +1368,7 @@
         });
     </script>
 
-    
+
 
 
 @endsection

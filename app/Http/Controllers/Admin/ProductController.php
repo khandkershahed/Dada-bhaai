@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Category;
-use App\Models\Admin\Color;
 use App\Models\Admin\ChildCategory;
+use App\Models\Admin\Color;
 use App\Models\Admin\MultiImg;
 use App\Models\Admin\Product;
 use App\Models\Admin\SubCategory;
@@ -75,6 +75,10 @@ class ProductController extends Controller
             'brand_id' => $request->brand_id,
             'category_id' => $request->category_id,
 
+            'price' => $request->price,
+            'discount_price' => $request->discount_price,
+            'sas_price' => $request->sas_price,
+
             'subcategory_id' => $request->subcategory_id,
             'childcategory_id' => $request->childcategory_id,
             'tags' => $request->tags,
@@ -128,8 +132,6 @@ class ProductController extends Controller
             'created_at' => now(),
         ]);
 
-
-
         // Multi Image
 
         $images = $request->file('multi_img');
@@ -165,12 +167,11 @@ class ProductController extends Controller
         $cats = $editProduct->category_id;
         $subcategorys = SubCategory::where('category_id', $cats)->latest()->get();
 
-        $childcats = $editProduct->category_id;
+        //$childcats = $editProduct->category_id;
         $subcats = $editProduct->subategory_id;
-        $childcategorys = ChildCategory::where('subcategory_id', $childcats)->where('subcategory_id', $subcats)->latest()->get();
+        $childcategorys = ChildCategory::where('subcategory_id', $subcats)->latest()->get();
 
         $multiImages = MultiImg::where('product_id', $id)->latest()->get();
-
 
         return view('admin.pages.product.edit_product', compact('brands', 'categorys', 'colors', 'products', 'editProduct', 'subcategorys', 'childcategorys', 'multiImages'));
     }
@@ -207,6 +208,10 @@ class ProductController extends Controller
                 'price_status' => $request->price_status,
                 'brand_id' => $request->brand_id,
                 'category_id' => $request->category_id,
+
+                'price' => $request->price,
+                'discount_price' => $request->discount_price,
+                'sas_price' => $request->sas_price,
 
                 'subcategory_id' => $request->subcategory_id,
                 'childcategory_id' => $request->childcategory_id,

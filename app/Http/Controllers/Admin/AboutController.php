@@ -109,6 +109,11 @@ class AboutController extends Controller
             'section_one_sub_title' => $request->section_one_sub_title,
             'section_one_description' => $request->section_one_description,
 
+            'section_two_title' => $request->section_two_title,
+            'section_two_badge' => $request->section_two_badge,
+            'section_two_sub_title' => $request->section_two_sub_title,
+            'section_two_description' => $request->section_two_description,
+
             'ceo_section_badge' => $request->ceo_section_badge,
             'ceo_section_title' => $request->ceo_section_title,
             'ceo_section_sub_title' => $request->ceo_section_sub_title,
@@ -128,6 +133,7 @@ class AboutController extends Controller
             'choose_us_three_description' => $request->choose_us_three_description,
 
             'contact_section_title' => $request->contact_section_title,
+            
             'head_office_title' => $request->head_office_title,
             'head_office_address' => $request->head_office_address,
             'head_office_email' => $request->head_office_email,
@@ -164,6 +170,8 @@ class AboutController extends Controller
 
             'counter_four_value' => $request->counter_four_value,
             'counter_four_title' => $request->counter_four_title,
+
+            'status' => $request->status,
 
             'section_one_image' => (!empty($section_one_image) ? $section_one_image : $abouts->section_one_image),
 

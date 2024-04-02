@@ -9,4 +9,6 @@ class EmployeeCategory extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    
 }

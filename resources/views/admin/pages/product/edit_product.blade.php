@@ -241,32 +241,6 @@
                                                 </div>
                                             </div>
 
-                                            {{-- price_status --}}
-                                            <div class="col-6 mb-3">
-                                                <div class="fv-row mb-3">
-                                                    <label class="form-label required">Price
-                                                        Status</label>
-                                                    <select class="form-select form-select-solid form-select-sm"
-                                                        data-control="select2" data-placeholder="Select Price Status"
-                                                        name="price_status" data-hide-search="true"
-                                                        data-allow-clear="true" required>
-                                                        <option></option>
-
-                                                        <option value="rfq"
-                                                            {{ $editProduct->price_status == 'rfq' ? 'selected' : '' }}>RFQ
-                                                        </option>
-
-                                                        <option value="price"
-                                                            {{ $editProduct->price_status == 'price' ? 'selected' : '' }}>
-                                                            Price</option>
-
-                                                    </select>
-                                                    <div class="invalid-feedback">
-                                                        Please Enter Price
-                                                        Status.</div>
-                                                </div>
-                                            </div>
-
                                             {{-- brand_id --}}
                                             <div class="col-6 mb-3">
                                                 <div class="fv-row mb-3">
@@ -293,6 +267,60 @@
                                                 </div>
 
                                             </div>
+
+                                            {{-- price_status --}}
+                                            <div class="col-3 mb-3">
+                                                <div class="fv-row mb-3">
+                                                    <label class="form-label required">Price
+                                                        Status</label>
+                                                    <select
+                                                        class="form-select form-select-solid form-select-sm price_select"
+                                                        data-control="select2" data-placeholder="Select Price Status"
+                                                        name="price_status" data-hide-search="true"
+                                                        data-allow-clear="true" required>
+                                                        <option></option>
+
+                                                        <option value="rfq" {{ $editProduct->price_status == 'rfq' ? 'selected' : '' }}>RFQ</option>
+
+                                                        <option value="price" {{ $editProduct->price_status == 'price' ? 'selected' : '' }}>Price</option>
+
+                                                        <option value="offer_price" {{ $editProduct->price_status == 'offer_price' ? 'selected' : '' }}>Offer Price</option>
+
+                                                    </select>
+                                                    <div class="invalid-feedback">
+                                                        Please Enter Price
+                                                        Status.</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-3 mb-3">
+                                                <div class="fv-row mb-3">
+
+                                                    <div class="rfq_price d-none">
+                                                        <label class="ms-1 mb-2" for="price_status">SAS Price <span
+                                                                class="text-danger">*</span></label>
+                                                        <input class="form-control form-control-sm form-control-solid" type="text"
+                                                            name="sas_price" value="{{ $editProduct->sas_price }}" placeholder="RFQ Price for Sas">
+                                                    </div>
+
+                                                    <div class="price d-none">
+                                                        <label class="ms-1 mb-2" for="price_status">Price <span
+                                                                class="text-danger">*</span></label>
+                                                        <input class="form-control form-control-sm form-control-solid" type="text"
+                                                            name="price" value="{{ $editProduct->price }}" placeholder="Price">
+                                                    </div>
+
+                                                    <div class="offer_price d-none">
+                                                        <label class="ms-1 mb-2" for="price_status">Discount Price <span
+                                                                class="text-danger">*</span></label>
+                                                        <input class="form-control form-control-sm form-control-solid" type="text"
+                                                            name="discount_price" value="{{ $editProduct->discount_price }}" placeholder="Discounted Price">
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
 
                                             {{-- category_id --}}
                                             <div class="col-4 mb-3">
@@ -397,7 +425,7 @@
                                                             <br>
 
                                                             <img src="{{ asset($editProduct->product_image) }}"
-                                                                style="width: 80px;" alt="" class="mt-3">
+                                                                style="width: 65px;" alt="" class="mt-3">
                                                             <!--end::Inputs-->
                                                         </label>
                                                         <!--end::Edit-->
@@ -1239,7 +1267,8 @@
                                             <button type="submit" class="btn btn-light-primary btn-sm p-2"><i
                                                     class="bi bi-pencil-square fs-5"></i></button>
 
-                                            <a href="{{ route("delete.multiimg",$img->id) }}" id="delete" class="btn btn-light-danger btn-sm p-2"><i
+                                            <a href="{{ route('delete.multiimg', $img->id) }}" id="delete"
+                                                class="btn btn-light-danger btn-sm p-2"><i
                                                     class="bi bi-trash3-fill fs-5"></i></a>
                                         </td>
                                     </tr>
@@ -1273,6 +1302,25 @@
             });
             $('#rfqId').click(function() {
                 $("#rfqExpand").toggle('slow');
+            });
+
+            $('.price_select').on('change', function() {
+                var price_value = $(this).find(":selected").val();
+                if (price_value == 'rfq') {
+                    // alert(price_value);
+                    $(".rfq_price").removeClass("d-none");
+                    $(".offer_price").addClass("d-none");
+                    $(".price").addClass("d-none");
+                } else if (price_value == 'offer_price') {
+                    $(".offer_price").removeClass("d-none");
+                    $(".rfq_price").addClass("d-none");
+                    $(".price").addClass("d-none");
+                } else if (price_value == 'price') {
+                    $(".price").removeClass("d-none");
+                    $(".offer_price").addClass("d-none");
+                    $(".rfq_price").addClass("d-none");
+                }
+
             });
         });
     </script>

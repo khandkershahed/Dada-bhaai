@@ -27,41 +27,43 @@ return new class extends Migration
             $table->foreign('childcategory_id')->references('id')->on('child_categories')->onDelete('cascade');
 
             $table->string('product_name');
-            $table->string('product_slug')->unique();
-            $table->string('sku_code', 50)->unique()->nullable();
-            $table->string('mf_code', 50)->unique()->nullable();
-            $table->string('product_code', 50)->nullable();
-            $table->json('tags')->nullable();
+            $table->string('product_slug');
+            $table->string('sku_code')->unique()->nullable();
+            $table->string('mf_code')->unique()->nullable();
+            $table->string('product_code')->nullable();
+            $table->string('tags')->nullable();
             
-            $table->json('color_id')->nullable();
-            $table->json('parent_id')->nullable();
-            $table->json('child_id')->nullable();
+            $table->string('color_id')->nullable();
+            $table->string('parent_id')->nullable();
+            $table->string('child_id')->nullable();
             $table->longText('short_desc')->nullable();
             $table->longText('overview')->nullable();
 
-            $table->longText('specification')->nullable();
+            $table->string('specification')->nullable();
             $table->longText('accessories')->nullable();
             $table->longText('warranty')->nullable();
             $table->string('product_image')->nullable();
             $table->integer('qty')->default(1);
-            $table->string('stock', 50)->nullable();
+            $table->string('stock')->nullable();
 
-            $table->double('selling_price')->nullable();
-            $table->double('sas_price')->nullable();
-            $table->double('discount_price')->nullable();
-            $table->string('deal', 50)->nullable();
+            $table->string('selling_price')->nullable();
+            $table->string('sas_price')->nullable();
+            $table->string('discount_price')->nullable();
+            $table->string('deal')->nullable();
 
             $table->json('industry')->nullable();
             $table->json('solution')->nullable();
-            $table->enum('refurbished', ['0', '1'])->default('0');
-            $table->enum('price_status', ['rfq', 'price', 'offer_price', 'starting_price'])->default('price');
-            $table->string('product_type', 50);
+            $table->string('refurbished')->default('1');
+
+            $table->string('price_status')->nullable();
+            
+            $table->string('product_type');
             $table->enum('product_status', ['sourcing', 'product'])->default('sourcing');
 
             $table->double('source_one_price')->nullable();
             $table->double('source_two_price')->nullable();
-            $table->string('source_one_name', 255)->nullable();
-            $table->string('source_two_name', 255)->nullable();
+            $table->string('source_one_name')->nullable();
+            $table->string('source_two_name')->nullable();
             $table->text('source_one_link')->nullable();
             $table->text('source_two_link')->nullable();
 
@@ -81,6 +83,7 @@ return new class extends Migration
             $table->enum('agreement', ['yes', 'no'])->default('no');
 
             $table->string('source_type', 50)->nullable();
+            $table->string('price')->nullable();
             $table->text('source_contact')->nullable();
             $table->string('action_status', 50)->nullable();
             $table->string('added_by', 100)->nullable();

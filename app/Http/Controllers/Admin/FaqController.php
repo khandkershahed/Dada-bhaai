@@ -20,14 +20,14 @@ class FaqController extends Controller
     {
         $validator = $request->validate(
             [
-                'category' => 'required|max:255',
+                // 'category' => 'required|max:255',
                 'order' => 'required|unique:faqs',
                 'question' => 'required',
                 'answer' => 'required',
             ],
 
             [
-                'category.required' => 'The Category Name is required',
+                // 'category.required' => 'The Category Name is required',
                 'order.required' => 'Order is required',
                 'order.unique' => 'This value already inserted',
                 'question.required' => 'The Question is required',
@@ -54,19 +54,19 @@ class FaqController extends Controller
     //Update Faq
     public function UpdateFaq(Request $request)
     {
-        $uid = $request->id;
+        $faq = Faq::findOrFail($request->id);
 
         $validator = $request->validate(
 
             [
-                'category' => 'required|max:255',
-                'order' => 'required|unique:faqs',
+                'order' => ($faq->order != $request->order) ? 'required|unique:faqs' : 'nullable',
+
                 'question' => 'required',
                 'answer' => 'required',
             ],
 
             [
-                'category.required' => 'The Category Name is required',
+                // 'category.required' => 'The Category Name is required',
                 'order.required' => 'Order is required',
                 'order.unique' => 'This value already inserted',
                 'question.required' => 'The Question is required',
@@ -76,10 +76,12 @@ class FaqController extends Controller
 
         if ($validator) {
 
-            Faq::find($uid)->update([
+            $faq->update([
 
                 'category' => $request->category,
-                'order' => $request->order,
+                
+                'order' => ($faq->order != $request->order) ? $request->order : $faq->order,
+
                 'question' => $request->question,
                 'answer' => $request->answer,
 
@@ -95,7 +97,7 @@ class FaqController extends Controller
     public function DeleteFaq($id)
     {
 
-        $brand = Faq::find($id)->delete();
+        Faq::find($id)->delete();
 
         toastr()->success('Faq Delete Successfully');
 

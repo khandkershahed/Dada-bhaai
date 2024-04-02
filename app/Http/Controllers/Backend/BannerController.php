@@ -16,8 +16,6 @@ class BannerController extends Controller
         return view('admin.pages.banner.all_banner', compact('banners'));
     }
 
-    
-
     //Store Banner
     public function StoreBanner(Request $request)
     {
@@ -36,7 +34,7 @@ class BannerController extends Controller
         $image = $request->file('banner_image');
         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
 
-        Image::make($image)->resize(900, 900)->save('upload/banner/' . $name_gen);
+        Image::make($image)->resize(1850, 730)->save('upload/banner/' . $name_gen);
         $save_url = 'upload/banner/' . $name_gen;
 
         $banner = new Banner();
@@ -75,7 +73,7 @@ class BannerController extends Controller
             $image = $request->file('banner_image');
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
 
-            Image::make($image)->resize(900, 900)->save('upload/banner/' . $name_gen);
+            Image::make($image)->resize(1850, 730)->save('upload/banner/' . $name_gen);
             $save_url = 'upload/banner/' . $name_gen;
 
             if (file_exists($old_img)) {

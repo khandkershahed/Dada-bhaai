@@ -20,12 +20,12 @@ use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\HomePageController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SiteController;
+use App\Http\Controllers\Admin\SmtpController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\TermController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\RoleController;
-use App\Models\Admin\EmployeeCategory;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest:admin')->group(function () {
@@ -83,8 +83,12 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     Route::post('/admin/account/update', [AdminController::class, 'AdminAccountUpdate'])->name('admin.account.update');
 
     //Employee Details
-    Route::get('/employee-details', [AdminController::class, 'EmployeeDetails'])->name('employee.details');
+    Route::get('/all/employee-details', [AdminController::class, 'AllEmployeeDetails'])->name('all.employee.details');
+    Route::get('/add/employee-details', [AdminController::class, 'AddEmployeeDetails'])->name('add.employee.details');
     Route::post('/store/employee-details', [AdminController::class, 'StoreEmployeeDetails'])->name('store.employee.details');
+    Route::get('/edit/employee-details/{id}', [AdminController::class, 'EditEmployeeDetails'])->name('edit.employee.details');
+    Route::post('/update/employee-details', [AdminController::class, 'UpdateEmployeeDetails'])->name('update.employee.details');
+    Route::get('/delete/employee-details/{id}', [AdminController::class, 'DeleteEmployeeDetails'])->name('delete.employee.details');
 
     //Admin Password
     Route::get('/admin-password', [AdminController::class, 'AdmiPasswordPage'])->name('admin.password.page');
@@ -188,6 +192,16 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
         //Active Or Inactive
         Route::get('/faq-inactive/{id}', 'InactiveFaq')->name('faq.inactive');
         Route::get('/faq-active/{id}', 'ActiveFaq')->name('faq.active');
+    });
+
+    //Smtp Section
+    Route::controller(SmtpController::class)->prefix('smtp')->group(function () {
+
+        Route::get('/all', 'AllSmtp')->name('all.smtp');
+        // Route::post('/store', 'StoreFaq')->name('store.faq');
+        // Route::post('/update', 'UpdateFaq')->name('update.faq');
+        // Route::get('/delete/{id}', 'DeleteFaq')->name('delete.faq');
+
     });
 
     //Terms Section

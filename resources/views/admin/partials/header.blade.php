@@ -741,7 +741,7 @@
                     $id = Auth::guard('admin')->user()->id;
                     $profileData = App\Models\Admin::find($id);
 
-                    $roles = Spatie\Permission\Models\Role::latest()->get();
+                    // $roles = Spatie\Permission\Models\Role::latest()->get();
 
                 @endphp
 
@@ -771,11 +771,11 @@
 
                                     <div class="fw-bolder d-flex align-items-center fs-5">{{ $profileData->name }}
 
-                                        <span class="badge badge-light-danger fw-bolder fs-8 px-2 py-1 ms-2">
+                                        {{-- <span class="badge badge-light-danger fw-bolder fs-8 px-2 py-1 ms-2">
                                             @foreach ($profileData->roles as $role)
                                                 <span class="">{{ $role->name }}</span>
                                             @endforeach
-                                        </span>
+                                        </span> --}}
 
                                     </div>
 
@@ -807,8 +807,8 @@
 
                         <!--begin::Account Setting-->
                         <div class="menu-item px-3">
-                            <a href="{{ route('all.sites') }}" class="menu-link px-5">
-                                <span class="menu-text">Account Setting</span>
+                            <a href="{{ route('all.employee.details') }}" class="menu-link px-5">
+                                <span class="menu-text">Employee Information</span>
                             </a>
                         </div>
                         <!--end::Account Setting-->

@@ -61,6 +61,27 @@
 
                         <input type="hidden" name="id" value="{{ $about->id }}">
 
+                        <div class="row mb-4">
+                            <div class="col-4 shadow-sm bg-white p-3">
+
+                                <label for="" class="mb-3">Status</label>
+                                <select name="status" id="" class="form-select form-select-sm">
+                                    <option selected disabled>Choose Tamplate</option>
+
+                                    <option value="tamplate_one"
+                                        {{ $about->status == 'tamplate_one' ? 'selected' : '' }}>Look One</option>
+
+                                    <option value="tamplate_two"
+                                        {{ $about->status == 'tamplate_two' ? 'selected' : '' }}>Look Two</option>
+
+                                    <option value="tamplate_three"
+                                        {{ $about->status == 'tamplate_three' ? 'selected' : '' }}>Look Three
+                                    </option>
+
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="row">
 
                             {{-- Breadcrumb & Section --}}
@@ -98,6 +119,14 @@
 
                                             <div class="col-6 mb-2">
                                                 <div class="form-group">
+                                                    <label for="">Section Two Badge</label>
+                                                    <input type="text" class="form-control form-control-sm mt-2"
+                                                        name="section_two_badge" value="{{ $about->section_two_badge }}">
+                                                </div>
+                                            </div>
+
+                                            {{-- <div class="col-6 mb-2">
+                                                <div class="form-group">
                                                     <label for="">Section One Title</label>
                                                     <input type="text" class="form-control form-control-sm mt-2"
                                                         name="section_one_title" value="{{ $about->section_one_title }}">
@@ -111,7 +140,24 @@
                                                         name="section_one_sub_title"
                                                         value="{{ $about->section_one_sub_title }}">
                                                 </div>
+                                            </div> --}}
+
+                                            {{-- <div class="col-6 mb-2">
+                                                <div class="form-group">
+                                                    <label for="">Section Two Title</label>
+                                                    <input type="text" class="form-control form-control-sm mt-2"
+                                                        name="section_two_title" value="{{ $about->section_two_title }}">
+                                                </div>
                                             </div>
+
+                                            <div class="col-6 mb-2">
+                                                <div class="form-group">
+                                                    <label for="">Section Two Sub Title</label>
+                                                    <input type="text" class="form-control form-control-sm mt-2"
+                                                        name="section_two_sub_title"
+                                                        value="{{ $about->section_two_sub_title }}">
+                                                </div>
+                                            </div> --}}
 
                                             <div class="col-6 mb-2">
                                                 <div class="form-group">
@@ -129,7 +175,7 @@
                                 </div>
                             </div>
 
-                            {{-- CEo Section --}}
+                            {{-- CEO Section --}}
                             <div class="col-6 shadow-sm bg-white border-3">
                                 <div class="card">
                                     <div class="card-body">
@@ -220,14 +266,21 @@
                                             <div class="col-12 mb-2">
                                                 <div class="form-group">
                                                     <label for="" class="mb-3">Section One Description</label>
-                                                    <textarea name="section_one_description" class="tinymce_metronic" id=""></textarea>
+                                                    <textarea name="section_one_description" class="tinymce_metronic" id="">{!! $about->section_one_description !!}</textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 mb-2">
+                                                <div class="form-group">
+                                                    <label for="" class="mb-3">Section Two Description</label>
+                                                    <textarea name="section_two_description" class="tinymce_metronic" id="">{!! $about->section_two_description !!}</textarea>
                                                 </div>
                                             </div>
 
                                             <div class="col-12 mb-2">
                                                 <div class="form-group">
                                                     <label for="" class="mb-3">CEO Description</label>
-                                                    <textarea name="ceo_section_description" class="tinymce_metronic"></textarea>
+                                                    <textarea name="ceo_section_description" class="tinymce_metronic"> {!! $about->ceo_section_description !!} </textarea>
                                                 </div>
                                             </div>
 
@@ -291,7 +344,7 @@
                                             <div class="col-12 mb-2">
                                                 <div class="form-group">
                                                     <label for="">Choose Us One Description</label>
-                                                    <textarea name="choose_us_one_description" class="form-control" id="" cols="3" rows="3"></textarea>
+                                                    <textarea name="choose_us_one_description" class="form-control" id="" cols="3" rows="3">{!! $about->choose_us_one_description !!}</textarea>
                                                 </div>
                                             </div>
 
@@ -331,7 +384,7 @@
                                             <div class="col-12 mb-2">
                                                 <div class="form-group">
                                                     <label for="">Choose Us Two Description</label>
-                                                    <textarea name="choose_us_two_description" class="form-control" id="" cols="3" rows="3"></textarea>
+                                                    <textarea name="choose_us_two_description" class="form-control" id="" cols="3" rows="3">{!! $about->choose_us_two_description !!}</textarea>
                                                 </div>
                                             </div>
 
@@ -371,7 +424,7 @@
                                             <div class="col-12 mb-2">
                                                 <div class="form-group">
                                                     <label for="">Choose Us Three Description</label>
-                                                    <textarea name="choose_us_three_description" class="form-control" id="" cols="3" rows="3"></textarea>
+                                                    <textarea name="choose_us_three_description" class="form-control" id="" cols="3" rows="3">{!! $about->choose_us_three_description !!}</textarea>
                                                 </div>
                                             </div>
 
@@ -462,7 +515,7 @@
                                         <div class="col-3 mb-2">
                                             <div class="form-group">
                                                 <label for="">Sub Office One Phone</label>
-                                                <input type="email" class="form-control form-control-sm mt-2"
+                                                <input type="tel" class="form-control form-control-sm mt-2"
                                                     name="sub_office_one_phone"
                                                     value="{{ $about->sub_office_one_phone }}">
                                             </div>
@@ -498,7 +551,7 @@
                                         <div class="col-3 mb-2">
                                             <div class="form-group">
                                                 <label for="">Sub Office Two Phone</label>
-                                                <input type="email" class="form-control form-control-sm mt-2"
+                                                <input type="tel" class="form-control form-control-sm mt-2"
                                                     name="sub_office_two_phone"
                                                     value="{{ $about->sub_office_two_phone }}">
                                             </div>
@@ -535,7 +588,7 @@
                                         <div class="col-3 mb-2">
                                             <div class="form-group">
                                                 <label for="">Sub Office Three Phone</label>
-                                                <input type="email" class="form-control form-control-sm mt-2"
+                                                <input type="tel" class="form-control form-control-sm mt-2"
                                                     name="sub_office_three_phone"
                                                     value="{{ $about->sub_office_three_phone }}">
                                             </div>
@@ -571,7 +624,7 @@
                                         <div class="col-3 mb-2">
                                             <div class="form-group">
                                                 <label for="">Sub Office Four Phone</label>
-                                                <input type="email" class="form-control form-control-sm mt-2"
+                                                <input type="tel" class="form-control form-control-sm mt-2"
                                                     name="sub_office_four_phone"
                                                     value="{{ $about->sub_office_four_phone }}">
                                             </div>

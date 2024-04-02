@@ -60,7 +60,7 @@
                                 <th>Answer</th>
                                 <th>Order</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                <th style="width: 70px;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
