@@ -9,9 +9,9 @@ use App\Models\Admin\Contact;
 use App\Models\Admin\Faq;
 use App\Models\Admin\MultiImg;
 use App\Models\Admin\Product;
+use App\Models\Admin\Template;
 use App\Models\Banner;
 use App\Models\Brand;
-use App\Models\Sites;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -19,10 +19,23 @@ class IndexController extends Controller
     //Index
     public function Index()
     {
-        $banners = Banner::where('status', '1')->orderBy('id', 'ASC')->latest()->get();
-        $categorys = Category::where('status', '1')->orderBy('category_name', 'ASC')->latest()->get();
+        $template = Template::latest('id')->where('status', '1')->first();
 
-        return view('frontend.index', compact('banners', 'categorys'));
+        if ($template->name == 'template_one') {
+
+            return view();
+
+        } else if ($template->name == 'template_two') {
+
+            return view('frontend.astell.index_astell');
+
+        } else if ($template->name == 'template_three') {
+            $banners = Banner::where('status', '1')->orderBy('id', 'ASC')->latest()->get();
+            $categorys = Category::where('status', '1')->orderBy('category_name', 'ASC')->latest()->get();
+
+            return view('frontend.index', compact('banners', 'categorys'));
+        }
+
     }
 
     //Single Product
@@ -107,24 +120,24 @@ class IndexController extends Controller
     //Brand Page
     public function BrandPage()
     {
-        $brands = Brand::where('status','1')->orderBy('brand_name','ASC')->latest()->get();
-        return view('frontend.pages.product.brand_page',compact('brands'));
+        $brands = Brand::where('status', '1')->orderBy('brand_name', 'ASC')->latest()->get();
+        return view('frontend.pages.product.brand_page', compact('brands'));
     }
 
     //Brand Page
     public function BrandWiseProduct($id)
     {
-        $products = Product::where('brand_id',$id)->paginate(3);
-        $brandname = Brand::where('id',$id)->first();
+        $products = Product::where('brand_id', $id)->paginate(3);
+        $brandname = Brand::where('id', $id)->first();
 
-        return view('frontend.pages.product.brand_wise_product',compact('products','brandname'));
+        return view('frontend.pages.product.brand_wise_product', compact('products', 'brandname'));
     }
 
     //About Page
     public function AboutPage()
     {
-        $about = About::where('status','tamplate_one')->find(1);
+        $about = About::where('status', 'tamplate_one')->find(1);
 
-        return view('frontend.pages.about_page',compact('about'));
+        return view('frontend.pages.about_page', compact('about'));
     }
 }

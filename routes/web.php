@@ -42,8 +42,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 require __DIR__ . '/auth.php';
-
 require __DIR__ . '/adminauth.php';
+
+
 
 Route::controller(IndexController::class)->group(function () {
 
@@ -75,11 +76,10 @@ Route::controller(CartController::class)->group(function () {
     Route::get('/get-cart-product', 'GetCartProduct');
     // Route::get('/get-cart-product1', 'GetCartProduct1');
     Route::get('/cart-remove/{rowId}', 'CartRemove');
-
     Route::get('/cart-decrement/{rowId}', 'CartDecrement');
     Route::get('/cart-increment/{rowId}', 'CartIncrement');
-
     //checkout
     Route::get('/checkout', 'CheckoutCreate')->name('checkout');
+    Route::post('/checkout/store', 'CheckoutStore')->name('checkout.store');
 
 });

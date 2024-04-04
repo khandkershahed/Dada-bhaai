@@ -11,9 +11,11 @@ use App\Http\Controllers\AdminAuth\VerifyEmailController;
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ChargeController;
 use App\Http\Controllers\Admin\ChildCategoryController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\CouponCrontroller;
 use App\Http\Controllers\Admin\EmployeeCategoryController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\FaqController;
@@ -22,6 +24,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SiteController;
 use App\Http\Controllers\Admin\SmtpController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Admin\TemplateController;
 use App\Http\Controllers\Admin\TermController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\BrandController;
@@ -119,6 +122,32 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
         Route::get('/state-get/ajax/{subcategory_id}', 'StateGetAjax');
     });
 
+    //Shipping Charge
+    Route::controller(ChargeController::class)->prefix('shipping')->group(function () {
+
+        Route::get('/all/charge', 'AllShippingCharge')->name('all.shipping.charge');
+        Route::post('/store/charge', 'StoreShippingCharge')->name('store.shipping.charge');
+        Route::post('/update/charge', 'UpdateShippingCharge')->name('update.shipping.charge');
+        Route::get('/delete/charge/{id}', 'DeleteShippingCharge')->name('delete.shipping.charge');
+
+        //Active Or Inactive
+        Route::get('/shipping-charge-inactive/{id}', 'InactiveShippingCharge')->name('shipping.charge.inactive');
+        Route::get('/shipping-charge-active/{id}', 'ActiveShippingCharge')->name('shipping.charge.active');
+    });
+
+    //Shipping Charge
+    Route::controller(CouponCrontroller::class)->prefix('coupon')->group(function () {
+
+        Route::get('/all', 'AllCoupon')->name('all.coupon');
+        Route::post('/store', 'StoreCoupon')->name('store.coupon');
+        Route::post('/update', 'UpdateCoupon')->name('update.coupon');
+        Route::get('/delete/{id}', 'DeleteCoupon')->name('delete.coupon');
+
+        //Active Or Inactive
+        Route::get('/coupon-inactive/{id}', 'InactiveCoupon')->name('coupon.inactive');
+        Route::get('/coupon-active/{id}', 'ActiveCoupon')->name('coupon.active');
+    });
+
     //Employee Dept Section
     Route::controller(EmployeeController::class)->prefix('employee')->group(function () {
 
@@ -170,6 +199,13 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
         Route::get('/edit/{id}', 'EditHome')->name('edit.home');
         Route::post('/update', 'UpdateHome')->name('update.home');
         Route::get('/delete/{id}', 'DeleteHome')->name('delete.home');
+    });
+
+    //Template Section
+    Route::controller(TemplateController::class)->prefix('template')->group(function () {
+
+        Route::get('/all', 'AllTemplate')->name('all.template');
+        Route::post('/update', 'UpdateTemplate')->name('update.template');
     });
 
     //About Section

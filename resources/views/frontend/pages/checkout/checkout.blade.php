@@ -3,6 +3,8 @@
     <!-- CONTENT + SIDEBAR -->
     <div class="main-wrapper clearfix">
 
+
+
         {{-- <div class="site-pagetitle jumbotron">
             <div class="container text-center">
                 <h3>Dada <span class="thm-clr">Vaai</span>
@@ -29,18 +31,77 @@
                     <div class="entry-content" itemprop="articleBody">
 
                         <div class="woocommerce checkout">
-                            <form class="col-md-12" id="myForm" novalidate>
+
+
+
+                            <div class="row">
+                                <div class="fancy-heading text-center">
+                                    <h3>Address</h3>
+                                    <h5 class="funky-font-2"> Add Billing Address <span class="thm-clr">Or</span>
+                                        Shipping Address </h5>
+                                </div>
+                            </div>
+
+
+
+                            {{-- Shipping Charge  --}}
+
+                            @php
+                                $shippings = App\Models\User\Shipping::where('status', '1')->latest()->get();
+                            @endphp
+
+                            <form class="col-md-12" method="POST" action="{{ route('checkout.store') }}">
+
+                                @csrf
 
                                 <div class="row">
-                                    <div class="fancy-heading text-center">
-                                        <h3>Address</h3>
-                                        <h5 class="funky-font-2"> Add Billing Address <span class="thm-clr">Or</span>
-                                            Shipping Address </h5>
+
+                                    <div class="col-lg-4 col-sm-4">
+                                        <h4 class="cart-title-highlight title-3">Shipping Charge</h4>
+
+                                        <ul class="payment_methods methods list-unstyled">
+
+                                            @foreach ($shippings as $shipping)
+                                                <li class="payment_method_bacs">
+                                                    <div class="form-group">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" value="{{ $shipping->value }}"
+                                                                name="shipping_charge" autocomplete="off"/>
+                                                            <span>{{ $shipping->title }}</span>
+                                                        </label>
+                                                    </div>
+                                                </li>
+                                            @endforeach
+
+                                        </ul>
+
                                     </div>
+
+                                    <div class="col-lg-4 col-sm-4 cart-coupons">
+
+                                        <h4 class="cart-title-highlight title-3">Apply Coupon Code </h4>
+
+                                        
+
+                                            <div class="form-group">
+                                                <input type="text" placeholder="ENTER CODE" class="form-control">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <button class="alt fancy-button" type="" >Apply
+                                                    Coupon</button>
+                                            </div>
+
+                                        
+
+                                    </div>
+
                                 </div>
+                                {{-- Shipping Charge  --}}
+
 
                                 <div class="col-2-set clearfix" id="customer_details">
-                                    <div class="col-1 col-lg-6 col-sm-6 border">
+                                    <div class="col-1 col-lg-8 col-sm-6 border">
                                         <!-- Billing Info  Start -->
                                         <h4 class="cart-title-highlight title-3">
                                             <div class="checkbox">
@@ -54,61 +115,82 @@
                                             <!-- Billing Info Area Start -->
                                             <div id="billingInfoArea">
                                                 <div class="contact-form">
+
                                                     <div class="row">
+
                                                         <div class="form-group col-sm-4">
                                                             <label for="user_id">User Name
                                                             </label>
-                                                            <input type="text" class="form-control" value="Mr. Hove"
-                                                                name="user_id" readonly />
+                                                            <input type="text" class="form-control"
+                                                                placeholder="Billing Name" value="{{ old('billing_name') }}"
+                                                                name="billing_name" />
                                                         </div>
+
                                                         <div class="form-group col-sm-4">
                                                             <label for="phone">Phone
                                                             </label>
-                                                            <input type="text" class="form-control" value=""
-                                                                name="phone" readonly />
+                                                            <input type="text" class="form-control"
+                                                                placeholder="Billing Phone"
+                                                                value="{{ old('billing_phone') }}" name="billing_phone" />
                                                         </div>
+
                                                         <div class="form-group col-sm-4">
                                                             <label for="email">Email
                                                             </label>
-                                                            <input type="text" class="form-control"
-                                                                value="Hove@gmail.com" name="email" readonly />
+                                                            <input type="email" class="form-control"
+                                                                value="{{ old('billing_email') }}"
+                                                                placeholder="example@gmail.com" name="billing_email" />
                                                         </div>
+
                                                         <div class="form-group col-sm-4">
                                                             <label for="city">City
                                                             </label>
-                                                            <input type="text" class="form-control" value="Dhaka"
-                                                                name="city" readonly />
+                                                            <input type="text" class="form-control"
+                                                                value="{{ old('billing_city') }}" name="billing_city"
+                                                                placeholder="City Name" />
                                                         </div>
+
                                                         <div class="form-group col-sm-4">
                                                             <label for="state">State
                                                             </label>
-                                                            <input type="text" class="form-control" value="Dhaka"
-                                                                name="state" readonly />
+                                                            <input type="text" class="form-control"
+                                                                value="{{ old('billing_state') }}" name="billing_state"
+                                                                placeholder="State Name" />
                                                         </div>
+
                                                         <div class="form-group col-sm-4">
                                                             <label for="postal_code">Postal Code
                                                             </label>
-                                                            <input type="text" class="form-control" value="1260"
-                                                                name="postal_code" readonly />
+                                                            <input type="text" class="form-control"
+                                                                value="{{ old('billing_postal_code') }}"
+                                                                name="billing_postal_code" placeholder="Postal Code" />
                                                         </div>
+
                                                         <div class="form-group col-sm-4">
                                                             <label for="country">Country
                                                             </label>
-                                                            <input type="text" class="form-control" value="Bangladesh"
-                                                                name="country" readonly />
+                                                            <input type="text" class="form-control"
+                                                                value="{{ old('billing_country') }}" name="billing_country"
+                                                                placeholder="Country Name" />
                                                         </div>
+
+
                                                         <div class="form-group col-sm-4">
                                                             <label for="address_line1">Address 1
                                                             </label>
                                                             <input type="text" class="form-control"
-                                                                value="Mirpur Shewrapara" name="address_line1" readonly />
+                                                                value="{{ old('billing_address_line1') }}"
+                                                                name="billing_address_line1" placeholder="Address One" />
                                                         </div>
+
                                                         <div class="form-group col-sm-4">
                                                             <label for="address_line2">Address 2
                                                             </label>
-                                                            <input type="text" class="form-control" value="Agargaon"
-                                                                name="address_line2" readonly />
+                                                            <input type="text" class="form-control"
+                                                                value="{{ old('billing_address_line2') }}"
+                                                                name="billing_address_line2" placeholder="Address Two" />
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -216,55 +298,35 @@
 
                                 </div>
 
-                                <div id="order_review" class="woocommerce-checkout-review-order">
+
+                                <div class="woocommerce-checkout-review-order">
 
 
-                                    <div id="payment" class="col-lg-6 col-sm-6 border woocommerce-checkout-payment">
-                                        <h4 class="cart-title-highlight title-3">Your Payment</h4>
+                                    <div class="col-lg-6 col-sm-6 border woocommerce-checkout-payment">
+                                        <h4 class="cart-title-highlight title-3">Payment Method</h4>
                                         <div class="woocommerce-checkout-payment-inner">
                                             <ul class="payment_methods methods list-unstyled">
+
                                                 <li class="payment_method_bacs">
+
                                                     <div class="form-group">
                                                         <label class="radio-inline">
-                                                            <input type="radio" value="" name="payment_method" />
-                                                            <span> Direct Bank Transfer </span>
+                                                            <input type="radio" value="cod" name="payment_method" />
+                                                            <span>Cash On Delivery</span>
                                                         </label>
                                                     </div>
-                                                    <div class="payment_box payment_method_bacs">
-                                                        <p>
-                                                            <strong> Make your payment directly into our bank account.
-                                                                Please use your Order ID as the payment reference. Your
-                                                                order won&#8217;t be shipped until the funds have cleared in
-                                                                our account. </strong>
-                                                        </p>
-                                                    </div>
+
                                                 </li>
+
                                                 <li class="payment_method_cod">
+
                                                     <div class="form-group">
                                                         <label class="radio-inline">
-                                                            <input type="radio" value="" name="payment_method" />
-                                                            <span> Cash on Delivery </span>
+                                                            <input type="radio" value="ssl" name="payment_method" />
+                                                            <span>SSl Commerez</span>
                                                         </label>
                                                     </div>
-                                                    <div class="payment_box payment_method_cod">
-                                                        <p>
-                                                            <strong> Pay with cash upon delivery. </strong>
-                                                        </p>
-                                                    </div>
-                                                </li>
-                                                <li class="payment_method_paypal">
-                                                    <div class="form-group">
-                                                        <label class="radio-inline">
-                                                            <input type="radio" value="" name="payment_method" />
-                                                            <span> PayPal </span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="payment_box payment_method_paypal">
-                                                        <p>
-                                                            <strong> Pay via PayPal; you can pay with your credit card if
-                                                                you don&#8217;t have a PayPal account. </strong>
-                                                        </p>
-                                                    </div>
+
                                                 </li>
                                             </ul>
                                         </div>
@@ -311,24 +373,26 @@
                                                         </td>
                                                     </tr>
 
-
                                                     <tr class="cart-discount">
                                                         <th>Shipping Charge :</th>
                                                         <td>
-                                                            <b class="drk-gry">Free Shipping</b>
+                                                            Tk <b class="drk-gry shippingCharge">0.00</b>
                                                         </td>
                                                     </tr>
-                                                    <tr class="shipping">
+
+                                                    {{-- <tr class="shipping">
                                                         <th>Promo Discount :</th>
                                                         <td>
                                                             <b class="drk-gry">50%</b>
                                                         </td>
-                                                    </tr>
+                                                    </tr> --}}
 
                                                     <tr class="order-total">
                                                         <th>Grand Total:</th>
                                                         <td>
-                                                            <b class="amount">Tk {{ $cartTotal }}</b>
+                                                            <input class="" type="hidden" name="total_amount" value="0">
+                                                            Tk <b class="amount grandTotal">
+                                                                {{ $cartTotal }}</b>
                                                         </td>
                                                     </tr>
 
@@ -338,17 +402,20 @@
                                     </div>
 
                                     <div class="clearfix"></div>
+
                                 </div>
                                 <!-- Title Here -->
 
 
 
-                                <div class="col-md-12 col-sm-12 text-center" style="padding: 40px;">
-                                    <button class="alt fancy-button" type="submit" id="submit-btn">
+                                <div class="col-md-12 col-sm-12 text-center"
+                                    style="padding-top: 90px;padding-bottom:40px;">
+                                    <button class="alt fancy-button" type="submit">
                                         <i class="fa fa-check-circle"></i> Proceed to Checkout </button>
                                 </div>
 
                             </form>
+
                         </div>
                     </div>
 
@@ -440,4 +507,26 @@
 
         <div class="clear"></div>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var subTotal = {{ $cartTotal }};
+
+            var shippingCharge = $('.shippingCharge');
+            var grandTotal = $('.grandTotal');
+
+            var hiddenTotalInput = $('input[name="total_amount"]');
+
+            $('input:radio[name="shipping_charge"]').change(function() {
+
+                var shippingMethod = parseFloat($(this).val());
+                var total = shippingMethod + subTotal;
+                shippingCharge.text(shippingMethod.toFixed(2));
+                grandTotal.text(total.toFixed(2));
+                hiddenTotalInput.val(total.toFixed(2));
+            });
+        });
+    </script>
 @endsection

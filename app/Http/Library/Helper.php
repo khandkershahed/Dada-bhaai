@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\User\Order;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Str;
 
 class Helper
 {
@@ -48,5 +50,26 @@ class Helper
 
         // Return the output array
         return array_map('htmlspecialchars', $output);
+    }
+
+    public static function generateOrderNumber()
+    {
+        $orderNumber = 'ORD-' . strtoupper(Str::random(10));
+
+        try {
+            // Check if the generated order number already exists
+            $existingOrder = Order::where('order_number', $orderNumber)->first();
+        } catch (\Exception $e) {
+            // Handle any exceptions (e.g., database connection issues)
+            return $orderNumber;
+        }
+
+        // Generate a new order number if a duplicate is found
+        while ($existingOrder) {
+            $orderNumber = 'ORD-' . strtoupper(Str::random(10));
+            $existingOrder = Order::where('order_number', $orderNumber)->first();
+        }
+
+        return $orderNumber;
     }
 }
