@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('abouts', function (Blueprint $table) {
+
             $table->id();
 
-            
             $table->string('breadcrumb_title')->nullable();
             $table->string('breadcrumb_sub_title')->nullable();
 
@@ -27,7 +27,6 @@ return new class extends Migration
             $table->string('section_two_title')->nullable();
             $table->string('section_two_sub_title')->nullable();
             $table->longText('section_two_description')->nullable();
-
 
             $table->string('section_one_image')->nullable()->comment('original');
 
@@ -91,6 +90,7 @@ return new class extends Migration
             
             $table->string('counter_four_value')->nullable();
             $table->string('counter_four_title')->nullable();
+            
             $table->string('status')->nullable();
 
             $table->timestamps();

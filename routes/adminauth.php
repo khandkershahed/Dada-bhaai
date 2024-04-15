@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\HomePageController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SinglePageController;
 use App\Http\Controllers\Admin\SiteController;
 use App\Http\Controllers\Admin\SmtpController;
 use App\Http\Controllers\Admin\SubCategoryController;
@@ -199,6 +200,17 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
         Route::get('/edit/{id}', 'EditHome')->name('edit.home');
         Route::post('/update', 'UpdateHome')->name('update.home');
         Route::get('/delete/{id}', 'DeleteHome')->name('delete.home');
+    });
+
+    //Single Page Section
+    Route::controller(SinglePageController::class)->prefix('single-page')->group(function () {
+
+        Route::get('/all', 'AllSinglePage')->name('all.single.page');
+        Route::get('/add', 'AddSinglePage')->name('add.single.page');
+        Route::post('/store', 'StoreSinglePage')->name('store.single.page');
+        // Route::get('/edit/{id}', 'EditHome')->name('edit.home');
+        // Route::post('/update', 'UpdateHome')->name('update.home');
+        // Route::get('/delete/{id}', 'DeleteHome')->name('delete.home');
     });
 
     //Template Section

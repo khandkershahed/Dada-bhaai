@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('employee_information', function (Blueprint $table) {
+            
             $table->id();
 
             $table->unsignedBigInteger('admin_id')->unique()->nullable();

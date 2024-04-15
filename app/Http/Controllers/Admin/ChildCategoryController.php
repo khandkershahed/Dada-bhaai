@@ -49,11 +49,12 @@ class ChildCategoryController extends Controller
             $imgPath = storage_path('app/public/childcategory');
 
             if (empty($mainFile)) {
-                SubCategory::insert([
+
+                ChildCategory::insert([
 
                     'category_id' => $request->category_id,
                     'subcategory_id' => $request->subcategory_id,
-                    'childcategory_name' => $request->subcategory_name,
+                    'childcategory_name' => $request->childcategory_name,
                     'childcategory_slug' => strtolower(str_replace('', '-', $request->childcategory_name)),
                     'description' => $request->description,
 

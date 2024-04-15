@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('banner_slug');
             $table->string('banner_image');
             $table->string('description')->nullable();
+            $table->string('status')->default(1);
 
             $table->timestamps();
         });

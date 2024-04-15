@@ -44,8 +44,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 require __DIR__ . '/auth.php';
 require __DIR__ . '/adminauth.php';
 
-
-
 Route::controller(IndexController::class)->group(function () {
 
     //Single Product

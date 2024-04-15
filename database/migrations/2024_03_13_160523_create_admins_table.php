@@ -18,6 +18,7 @@ return new class extends Migration
 
             $table->string('username')->nullable();
             $table->string('company_name')->nullable();
+            $table->string('designation')->nullable();
 
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

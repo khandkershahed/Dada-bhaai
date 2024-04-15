@@ -283,6 +283,16 @@
                             </a>
                         </div>
 
+                        {{-- Single Page Product  --}}
+                        <div class="menu-item">
+                            <a class="menu-link" href="{{ route('all.single.page') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Single Page Product</span>
+                            </a>
+                        </div>
+
                         {{-- Contact --}}
                         <div class="menu-item">
                             <a class="menu-link" href="{{ route('all.contact') }}">
