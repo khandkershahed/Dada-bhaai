@@ -1264,8 +1264,7 @@
                                                 autocomplete="off">
                                         </td>
                                         <td>
-                                            <button type="submit" class="btn btn-light-primary btn-sm p-2"><i
-                                                    class="bi bi-pencil-square fs-5"></i></button>
+                                            <button type="submit" class="btn btn-light-primary btn-sm p-2">Update</button>
 
                                             <a href="{{ route('delete.multiimg', $img->id) }}" id="delete"
                                                 class="btn btn-light-danger btn-sm p-2"><i
