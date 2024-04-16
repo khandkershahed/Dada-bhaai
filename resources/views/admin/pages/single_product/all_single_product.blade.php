@@ -78,6 +78,7 @@
                                 <th>Name</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -87,33 +88,44 @@
 
                                     <td>{{ $key + 1 }}</td>
                                     <td>
-                                        aaaaaaaa
+                                        <img src="{{ asset($sproduct['products']['product_image']) }}"
+                                            style="width: 40px; height:40px;" alt="">
                                     </td>
-                                    <td>{{ $sproduct->product_id }}</td>
+                                    <td>{{ $sproduct['products']['product_name'] }}</td>
+                                    <td>
+                                        @if ($sproduct['products']['price'])
+                                            <span>{{ $sproduct['products']['price'] }} Tk</span>
+                                        @elseif ($sproduct['products']['sas_price'])
+                                            <span>{{ $sproduct['products']['sas_price'] }} Tk</span>
+                                        @else
+                                            <span>{{ $sproduct['products']['discount_price'] }} Tk</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $sproduct['products']['qty'] }}</td>
                                     <td>
                                         @if ($sproduct->status == 'active')
-                                            <span class="badge badge-light-success">Active</span>
+                                            <span class="badge badge-light-success">Is_active</span>
                                         @else
-                                            <span class="badge badge-light-danger">inactive</span>
+                                            <span class="badge badge-light-danger">Is_inactive</span>
                                         @endif
                                     </td>
                                     <td>
 
                                         @if ($sproduct->status == 'active')
-                                            <a href="" title="Inactive"><i
+                                            <a href="{{ route('inactive.single.page', $sproduct->id) }}" title="Inactive"><i
                                                     class="bi bi-hand-thumbs-down text-danger fs-3"></i></a>
                                         @else
-                                            <a href="" title="Active"><i
+                                            <a href="{{ route('active.single.page', $sproduct->id) }}" title="Active"><i
                                                     class="bi bi-hand-thumbs-up text-success fs-3"></i></a>
                                         @endif
 
                                         {{-- Edit Category Modal --}}
-                                        <a href="" class="ms-1" title="Edit" class="btn btn-primary btn-sm"><i
+                                        <a href="{{ route('edit.single.page', $sproduct->id) }}" class="ms-1" title="Edit" class="btn btn-primary btn-sm"><i
                                                 class="bi bi-pencil-square fs-3 text-primary"></i>
                                         </a>
 
 
-                                        <a href="" class="ms-1" id="delete" title="Delete"><i
+                                        <a href="{{ route('delete.single.page', $sproduct->id) }}" class="ms-1" id="delete" title="Delete"><i
                                                 class="bi bi-trash3-fill fs-3 text-danger"></i></a>
                                     </td>
                                 </tr>

@@ -208,9 +208,12 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
         Route::get('/all', 'AllSinglePage')->name('all.single.page');
         Route::get('/add', 'AddSinglePage')->name('add.single.page');
         Route::post('/store', 'StoreSinglePage')->name('store.single.page');
-        // Route::get('/edit/{id}', 'EditHome')->name('edit.home');
-        // Route::post('/update', 'UpdateHome')->name('update.home');
-        // Route::get('/delete/{id}', 'DeleteHome')->name('delete.home');
+        Route::get('/edit/{id}', 'EditSinglePage')->name('edit.single.page');
+        Route::post('/update', 'UpdateSinglePage')->name('update.single.page');
+        Route::get('/delete/{id}', 'DeleteSinglePage')->name('delete.single.page');
+
+        Route::get('/inactive/{id}', 'InactiveSinglePage')->name('inactive.single.page');
+        Route::get('/active/{id}', 'ActiveSinglePage')->name('active.single.page');
     });
 
     //Template Section
