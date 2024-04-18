@@ -59,6 +59,9 @@ Route::controller(IndexController::class)->group(function () {
     //About Page
     Route::get('/about', 'AboutPage')->name('about.page');
 
+    //Category Page
+    Route::get('/home-category', 'HomeAllCategory')->name('home.all.category.page');
+
 });
 
 //Cart Controller

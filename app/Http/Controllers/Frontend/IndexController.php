@@ -140,4 +140,12 @@ class IndexController extends Controller
 
         return view('frontend.pages.about_page', compact('about'));
     }
+
+    //Home All Category
+    public function HomeAllCategory()
+    {
+        $categorys = Category::where('status', '1')->latest()->get();
+
+        return view('frontend.template_one.category.home_all_category', compact('categorys'));
+    }
 }

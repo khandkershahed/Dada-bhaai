@@ -6,7 +6,7 @@
                     <div class="content--header__middle d-flex align-items-center justify-content-between">
                         <div class="logo--header__middle">
                             <div class="logo">
-                                <a class="logo__link" href="home.html"><img class="" width="250px"
+                                <a class="logo__link" href="{{ route('index') }}"><img class="" width="250px"
                                         src="https://www.dadabhaai.com/storage/main/jaragroups404413.png"
                                         alt="" /></a>
                             </div>
@@ -31,7 +31,9 @@
                                 </div>
                             </form>
                         </div>
+
                         <div class="cart--header__middle d-none d-md-block">
+
                             <div class="cart--header__list">
                                 <ul class="list-inline">
                                     <li>
@@ -41,7 +43,7 @@
                                                 aria-expanded="false">
                                                 <i class="fal fa-user-plus text-black font-weight-bold"></i>
                                             </a>
-                                            <div class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
+                                            {{-- <div class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
                                                 <a href="registration.html" class="btn btn-primary w-100">Login</a>
                                                 <hr class="mb-2 mt-3">
                                                 <p>First time here? <a href="" class="text-danger">Sign Up</a>
@@ -52,7 +54,7 @@
                                                         aria-hidden="true"></i> My Favorites</a>
                                                 <a class="dropdown-item" href="#"><i class="fal fa-list pr-2"
                                                         aria-hidden="true"></i> My Booked</a>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </li>
                                     <li class="d-none">
@@ -70,6 +72,7 @@
                                     </li>
                                 </ul>
                             </div>
+
                             <div class="mini__cart--box">
                                 <ul>
                                     <li class="mb-20">
@@ -114,12 +117,15 @@
                                     </li>
                                 </ul>
                             </div>
+
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
     <div class="bottom header__bottom header__bottom--border custom-header-bottom">
         <div class="container">
             <div class="row">
