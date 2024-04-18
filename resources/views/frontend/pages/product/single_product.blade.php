@@ -153,8 +153,10 @@
                                                     data-width="100%" id="dcolor" data-toggle="tooltip"
                                                     title="Choose Color">
 
-                                                    <option value="{{ $product->color_id }}">
-                                                        {{ $product->color->color_name }}</option>
+                                                    @foreach ($product_colors as $product_color)
+                                                        <option value="{{ $product_color }}">
+                                                            {{ ucwords($product_color) }}</option>
+                                                    @endforeach
 
                                                 </select>
 

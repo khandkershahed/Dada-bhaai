@@ -23,7 +23,7 @@ class IndexController extends Controller
 
         if ($template->name == 'template_one') {
 
-            return view();
+            return view('frontend.template_one.index_template_one');
 
         } else if ($template->name == 'template_two') {
 
@@ -43,8 +43,8 @@ class IndexController extends Controller
     {
         $product = Product::find($id);
 
-        // $color = $product->color_id;
-        // $product_color = explode(',', $color);
+        $color = $product->color_id;
+        $product_colors = explode(',', $color);
 
         $multiImages = MultiImg::where('product_id', $product->id)->get();
 
@@ -52,7 +52,7 @@ class IndexController extends Controller
         $cat_id = $product->category_id;
         $relativeProduct = Product::where('category_id', $cat_id)->where('id', '!=', $id)->orderBy('id', 'ASC')->limit(5)->get();
 
-        return view('frontend.pages.product.single_product', compact('product', 'multiImages', 'relativeProduct'));
+        return view('frontend.pages.product.single_product', compact('product', 'multiImages', 'relativeProduct','product_colors'));
     }
 
     //Faq
