@@ -6,7 +6,7 @@
                     <div class="content--header__middle d-flex align-items-center justify-content-between">
                         <div class="logo--header__middle">
                             <div class="logo">
-                                <a class="logo__link" href="index.html"><img class="" width="250px"
+                                <a class="logo__link" href="home.html"><img class="" width="250px"
                                         src="https://www.dadabhaai.com/storage/main/jaragroups404413.png"
                                         alt="" /></a>
                             </div>
@@ -35,17 +35,37 @@
                             <div class="cart--header__list">
                                 <ul class="list-inline">
                                     <li>
-                                        <a href="registration.html"><i class="fal fa-user-plus"></i></a>
+                                        <div class="dropdown">
+                                            <a href="" class="border-0 bg-none text-muted" type="button"
+                                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                                <i class="fal fa-user-plus text-black font-weight-bold"></i>
+                                            </a>
+                                            <div class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
+                                                <a href="registration.html" class="btn btn-primary w-100">Login</a>
+                                                <hr class="mb-2 mt-3">
+                                                <p>First time here? <a href="" class="text-danger">Sign Up</a>
+                                                </p>
+                                                <a class="dropdown-item" href="#"><i class="fal fa-user pr-2"></i>
+                                                    My Profile</a>
+                                                <a class="dropdown-item" href="#"><i class="fal fa-star pr-2"
+                                                        aria-hidden="true"></i> My Favorites</a>
+                                                <a class="dropdown-item" href="#"><i class="fal fa-list pr-2"
+                                                        aria-hidden="true"></i> My Booked</a>
+                                            </div>
+                                        </div>
                                     </li>
-                                    <li>
+                                    <li class="d-none">
                                         <a href="#"><i class="fal fa-heart"></i></a>
                                     </li>
-                                    <li>
-                                        <a class="mini__cart--link" href="#"><i class="fal fa-bags-shopping"><span
-                                                    class="cart__count">3</span></i>
+                                    <li class="">
+                                        <a class="mini__cart--link" href="#"><i
+                                                class="fal fa-bags-shopping font-weight-bold text-muted">
+                                                <span class="cart__count">0</span>
+                                            </i>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="d-none">
                                         <a href="#"><i class="fal fa-sync"></i></a>
                                     </li>
                                 </ul>
@@ -173,12 +193,12 @@
                                 <li>
                                     <a class="dept__menu-mlink f-900 cod__gray-color" href="#"
                                         id="categoryLink">
-                                        Shop By Category
+                                        <i class="fa fa-th pr-2" aria-hidden="true"></i> Shop By Category
                                     </a>
                                     <ul class="dept__menu--dropdown custom_main_menu_dropdown py-0"
                                         id="categoryDropdown">
-                                        <div class="row bg-white" style="border-top: 1px solid #eee;">
-                                            <div class="col-lg-3 px-0" style="background-color: #eee">
+                                        <div class="row bg-white" style="border-top: 1px solid #eee">
+                                            <div class="col-lg-2 px-0" style="background-color: #eee">
                                                 <ul class="nav nav-tabs flex-column px-0" id="myTab"
                                                     role="tablist">
                                                     <li class="nav-item">
@@ -211,109 +231,193 @@
                                                             aria-controls="Lifestyle"
                                                             aria-selected="false">Lifestyle</a>
                                                     </li>
+
+
+                                                    <li class="nav-item">
+                                                        <a class="nav-link main_cat_triger" id="Lifestyle-tab"
+                                                            data-toggle="tab" href="#Lifestyle" role="tab"
+                                                            aria-controls="Lifestyle" aria-selected="false">Automotive
+                                                            & Motorbike</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link main_cat_triger" id="Lifestyle-tab"
+                                                            data-toggle="tab" href="#Lifestyle" role="tab"
+                                                            aria-controls="Lifestyle" aria-selected="false">Sports &
+                                                            Outdoors</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link main_cat_triger" id="Lifestyle-tab"
+                                                            data-toggle="tab" href="#Lifestyle" role="tab"
+                                                            aria-controls="Lifestyle"
+                                                            aria-selected="false">Electronics Devices</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link main_cat_triger" id="Lifestyle-tab"
+                                                            data-toggle="tab" href="#Lifestyle" role="tab"
+                                                            aria-controls="Lifestyle"
+                                                            aria-selected="false">Gadgets</a>
+                                                    </li>
+
+
                                                     <div>
-                                                        <a href="category.html"
-                                                            class="btn btn-warning bg-warning rounded-pill mx-auto w-100">All
-                                                            Category</a>
+                                                        <a href="category.html" class="category_btn">All Category</a>
                                                     </div>
                                                 </ul>
                                             </div>
-                                            <div class="col-lg-9">
+                                            <div class="col-lg-10">
                                                 <div class="tab-content" id="myTabContent">
                                                     <div class="tab-pane fade show active" id="Cosmetics"
                                                         role="tabpanel" aria-labelledby="Cosmetics-tab">
-                                                        <div class="row">
+                                                        <div class="row main-cat-height">
                                                             <div class="col-lg-3">
-                                                                <p class="font-weight-bold pt-3">Network
-                                                                    Accessories</p>
+                                                                <p class="font-weight-bold pt-3 header-menu-border">
+                                                                    Network Accessories
+                                                                </p>
                                                                 <ul>
-                                                                    <li><a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants
-                                                                            & Solvents</a></li>
-                                                                    <li><a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants
-                                                                            & Solvents</a></li>
-                                                                    <li><a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants
-                                                                            & Solvents</a></li>
-                                                                    <li><a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants
-                                                                            & Solvents</a></li>
-                                                                    <li><a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants
-                                                                            & Solvents</a></li>
+                                                                    <li>
+                                                                        <a href=""
+                                                                            class="text-muted px-0 py-1">Lubricants &
+                                                                            Solvents</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href=""
+                                                                            class="text-muted px-0 py-1">Lubricants &
+                                                                            Solvents</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href=""
+                                                                            class="text-muted px-0 py-1">Lubricants &
+                                                                            Solvents</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href=""
+                                                                            class="text-muted px-0 py-1">Lubricants &
+                                                                            Solvents</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href=""
+                                                                            class="text-muted px-0 py-1">Lubricants &
+                                                                            Solvents</a>
+                                                                    </li>
                                                                 </ul>
-                                                                <hr class="p-0 m-0 mt-3 mb-2">
-                                                                <a href="">View All</a>
                                                             </div>
                                                             <div class="col-lg-3">
-                                                                <p class="font-weight-bold pt-3">Network
-                                                                    Accessories</p>
+                                                                <p class="font-weight-bold pt-3 header-menu-border">
+                                                                    Network Accessories
+                                                                </p>
                                                                 <ul>
-                                                                    <li><a href="#"
-                                                                            class="text-muted px-0 py-1">Lubricants
-                                                                            & Solvents</a></li>
-                                                                    <li><a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants
-                                                                            & Solvents</a></li>
-                                                                    <li><a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants
-                                                                            & Solvents</a></li>
-                                                                    <li><a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants
-                                                                            & Solvents</a></li>
-                                                                    <li><a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants
-                                                                            & Solvents</a></li>
+                                                                    <li>
+                                                                        <a href="#"
+                                                                            class="text-muted px-0 py-1">Lubricants &
+                                                                            Solvents</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href=""
+                                                                            class="text-muted px-0 py-1">Lubricants &
+                                                                            Solvents</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href=""
+                                                                            class="text-muted px-0 py-1">Lubricants &
+                                                                            Solvents</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href=""
+                                                                            class="text-muted px-0 py-1">Lubricants &
+                                                                            Solvents</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href=""
+                                                                            class="text-muted px-0 py-1">Lubricants &
+                                                                            Solvents</a>
+                                                                    </li>
                                                                 </ul>
-                                                                <hr class="p-0 m-0 mt-3 mb-2">
-                                                                <a href="">View All</a>
                                                             </div>
                                                             <div class="col-lg-3">
-                                                                <p class="font-weight-bold pt-3">Network
-                                                                    Accessories</p>
+                                                                <p class="font-weight-bold pt-3 header-menu-border">
+                                                                    Network Accessories
+                                                                </p>
                                                                 <ul>
-                                                                    <li><a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants
-                                                                            & Solvents</a></li>
-                                                                    <li><a href="#"
-                                                                            class="text-muted px-0 py-1">Lubricants
-                                                                            & Solvents</a></li>
-                                                                    <li><a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants
-                                                                            & Solvents</a></li>
-                                                                    <li><a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants
-                                                                            & Solvents</a></li>
-                                                                    <li><a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants
-                                                                            & Solvents</a></li>
+                                                                    <li>
+                                                                        <a href=""
+                                                                            class="text-muted px-0 py-1">Lubricants &
+                                                                            Solvents</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#"
+                                                                            class="text-muted px-0 py-1">Lubricants &
+                                                                            Solvents</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href=""
+                                                                            class="text-muted px-0 py-1">Lubricants &
+                                                                            Solvents</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href=""
+                                                                            class="text-muted px-0 py-1">Lubricants &
+                                                                            Solvents</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href=""
+                                                                            class="text-muted px-0 py-1">Lubricants &
+                                                                            Solvents</a>
+                                                                    </li>
                                                                 </ul>
-                                                                <hr class="p-0 m-0 mt-3 mb-2">
-                                                                <a href="">View All</a>
                                                             </div>
                                                             <div class="col-lg-3">
-                                                                <p class="font-weight-bold pt-3">Network
-                                                                    Accessories</p>
+                                                                <p class="font-weight-bold pt-3 header-menu-border">
+                                                                    Network Accessories
+                                                                </p>
                                                                 <ul>
-                                                                    <li><a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants
-                                                                            & Solvents</a></li>
-                                                                    <li><a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants
-                                                                            & Solvents</a></li>
-                                                                    <li><a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants
-                                                                            & Solvents</a></li>
-                                                                    <li><a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants
-                                                                            & Solvents</a></li>
-                                                                    <li><a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants
-                                                                            & Solvents</a></li>
+                                                                    <li>
+                                                                        <a href=""
+                                                                            class="text-muted px-0 py-1">Lubricants &
+                                                                            Solvents</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href=""
+                                                                            class="text-muted px-0 py-1">Lubricants &
+                                                                            Solvents</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href=""
+                                                                            class="text-muted px-0 py-1">Lubricants &
+                                                                            Solvents</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href=""
+                                                                            class="text-muted px-0 py-1">Lubricants &
+                                                                            Solvents</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href=""
+                                                                            class="text-muted px-0 py-1">Lubricants &
+                                                                            Solvents</a>
+                                                                    </li>
                                                                 </ul>
-                                                                <hr class="p-0 m-0 mt-3 mb-2">
-                                                                <a href="">View All</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row py-2 mt-5" style="background-color: #cd3301">
+                                                            <div class="col-lg-3">
+                                                                <a href=""
+                                                                    class="grenadier-color font-weight-bold text-white">View
+                                                                    All</a>
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <a href=""
+                                                                    class="grenadier-color font-weight-bold text-white">View
+                                                                    All</a>
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <a href=""
+                                                                    class="grenadier-color font-weight-bold text-white">View
+                                                                    All</a>
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <a href=""
+                                                                    class="grenadier-color font-weight-bold text-white">View
+                                                                    All</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -347,7 +451,7 @@
                         <nav id="mobile-menu">
                             <ul>
                                 <li>
-                                    <a href="index.html">Home</a>
+                                    <a href="home.html">Home</a>
                                 </li>
 
                                 <li class="mega-menu static dropdown-icon">
