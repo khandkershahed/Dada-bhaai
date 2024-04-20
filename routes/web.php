@@ -46,6 +46,8 @@ require __DIR__ . '/adminauth.php';
 
 Route::controller(IndexController::class)->group(function () {
 
+    //Template
+    Route::get('/product/{id}/{product_slug}', 'TemplateOneProduct');
     //Single Product
     Route::get('/single-product/{id}', 'SingleProduct')->name('single.product');
     //Fqa Frontend
@@ -63,6 +65,8 @@ Route::controller(IndexController::class)->group(function () {
     Route::get('/home-category', 'HomeAllCategory')->name('home.all.category.page');
 
 });
+
+
 
 //Cart Controller
 Route::controller(CartController::class)->group(function () {
@@ -82,5 +86,11 @@ Route::controller(CartController::class)->group(function () {
     //checkout
     Route::get('/checkout', 'CheckoutCreate')->name('checkout');
     Route::post('/checkout/store', 'CheckoutStore')->name('checkout.store');
+
+
+    /////////////////////////////////////// Template One ////////////////////////
+
+    //Add To Cart
+    Route::post('/product/store/{id}', 'AddToCartOne');
 
 });

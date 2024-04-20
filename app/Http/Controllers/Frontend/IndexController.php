@@ -38,6 +38,27 @@ class IndexController extends Controller
 
     }
 
+    //Template OneProduct
+    public function TemplateOneProduct($id,$product_slug)
+    {
+        $product = Product::find($id);
+
+        // $color = $product->color_id;
+        // $product_colors = explode(',', $color);
+
+        $multiImages = MultiImg::where('product_id', $product->id)->get();
+
+        //Related product
+        // $cat_id = $product->category_id;
+        // $relativeProduct = Product::where('category_id', $cat_id)->where('id', '!=', $id)->orderBy('id', 'ASC')->limit(5)->get();
+
+        //Releted Category
+        $cat_id = $product->category_id;
+        $relativeProduct = Product::where('category_id',$cat_id)->where('id','!=','$id')->orderBy('id', 'ASC')->limit(5)->get();
+
+        return view('frontend.template_one.product.single_product', compact('product','relativeProduct','multiImages'));
+    }
+
     //Single Product
     public function SingleProduct($id)
     {

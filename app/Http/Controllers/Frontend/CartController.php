@@ -8,9 +8,9 @@ use App\Models\User\Order;
 use App\Models\User\OrderItem;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Helper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Helper;
 
 class CartController extends Controller
 {
@@ -203,7 +203,7 @@ class CartController extends Controller
 
             'invoice_number' => 'DV' . mt_rand(10000000, 99999999),
             'order_number' => Helper::generateOrderNumber(),
-            
+
             'order_date' => Carbon::now()->format('dmy'),
             'order_month' => Carbon::now()->format('F'),
             'order_year' => Carbon::now()->format('Y'),
@@ -231,6 +231,64 @@ class CartController extends Controller
         toastr()->success('Payment Successfully');
         return redirect()->route('index');
 
+    }
+
+    /////////////////////////// Template One /////////////////////////
+
+    //Add To Cart
+    public function AddToCartOne(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+
+        if ($product->price_status == 'rfq') {
+
+            Cart::add([
+
+                'id' => $id,
+                'name' => $request->product_name,
+                'qty' => $request->quantity,
+                'price' => $product->sas_price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $product->product_image,
+                    // 'color' => $request->color,
+                ],
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        } elseif ($product->price_status == 'discount_price') {
+
+            Cart::add([
+
+                'id' => $id,
+                'name' => $request->product_name,
+                'qty' => $request->quantity,
+                'price' => $product->discount_price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $product->product_image,
+                    // 'color' => $request->color,
+                ],
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        } else {
+
+            Cart::add([
+
+                'id' => $id,
+                'name' => $request->product_name,
+                'qty' => $request->quantity,
+                'price' => $product->price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $product->product_image,
+                    // 'color' => $request->color,
+                ],
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        }
     }
 
 }

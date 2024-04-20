@@ -70,7 +70,8 @@
                                     <div class="product__single">
                                         <div class="product__box">
                                             <div class="product__thumb">
-                                                <a href="product-details.html" class="img-wrapper">
+                                                <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
+                                                    class="img-wrapper">
                                                     <img class="img" src="{{ asset($product->product_image) }}"
                                                         alt="" style="height: 230px;" />
                                                     {{-- <img class="img secondary-img"
@@ -80,7 +81,8 @@
                                             <div class="product__content--top">
                                                 <span class="cate-name">{{ $product->category->category_name }}</span>
                                                 <h6 class="product__title mine__shaft-color f-700 mb-0">
-                                                    <a href="product-details.html">{{ $product->product_name }}</a>
+                                                    <a
+                                                        href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ $product->product_name }}</a>
                                                 </h6>
                                             </div>
 
@@ -151,18 +153,24 @@
                                         <div class="product__single">
                                             <div class="product__box">
                                                 <div class="product__thumb">
-                                                    <a href="product-details.html" class="img-wrapper">
+
+                                                    <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
+                                                        class="img-wrapper">
+
                                                         <img class="img" src="{{ asset($product->product_image) }}"
                                                             alt="" style="height: 230px;" />
+
                                                         {{-- <img class="img secondary-img"
                                                         src="img/allproducts/products__thumb__02.jpg" alt="" /> --}}
                                                     </a>
+
                                                 </div>
                                                 <div class="product__content--top">
                                                     <span
                                                         class="cate-name">{{ $product->category->category_name }}</span>
                                                     <h6 class="product__title mine__shaft-color f-700 mb-0">
-                                                        <a href="product-details.html">{{ $product->product_name }}</a>
+                                                        <a
+                                                            href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ $product->product_name }}</a>
                                                     </h6>
                                                 </div>
 

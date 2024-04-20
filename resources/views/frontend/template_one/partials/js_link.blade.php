@@ -1,4 +1,3 @@
-
 <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 
 <script src="{{ asset('frontend/template_one/assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>
@@ -71,3 +70,65 @@
         });
     });
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    })
+</script>
+
+{{-- AddToCartOne --}}
+<script>
+    function addToCartOne() {
+
+        var product_name = $('#dpname').text();
+        var id = $('#oneproduct_id').val();
+        var quantity = $('#dqty').val();
+
+        $.ajax({
+
+            type: "POST",
+            dataType: 'json',
+            url: '/product/store/' + id,
+
+            data: {
+                quantity: quantity,
+                product_name: product_name,
+            },
+
+            success: function(data) {
+
+                // Start Message 
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        title: data.success,
+                    })
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        title: data.error,
+                    })
+                }
+                // End Message 
+            }
+
+        })
+
+    }
+</script>
+{{-- AddToCartOne --}}
