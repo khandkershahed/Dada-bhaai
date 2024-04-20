@@ -125,7 +125,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="bottom header__bottom header__bottom--border custom-header-bottom">
         <div class="container">
             <div class="row">
@@ -192,257 +192,152 @@
                             </ul>
                         </div>
                     </div>
+
+                    @php
+                        $categorys = App\Models\Admin\Category::where('status', '1')
+                            ->orderBy('category_name', 'ASC')
+                            ->limit(9)
+                            ->latest()
+                            ->get();
+                    @endphp
+
                     <!-- Extra shopping cart for mobile device end -->
                     <div class="dept__menu position-relative d-none d-md-block extra_main_cat">
                         <nav>
                             <ul class="dept__menu--list">
                                 <li>
+
                                     <a class="dept__menu-mlink f-900 cod__gray-color" href="#"
                                         id="categoryLink">
                                         <i class="fa fa-th pr-2" aria-hidden="true"></i> Shop By Category
                                     </a>
+
                                     <ul class="dept__menu--dropdown custom_main_menu_dropdown py-0"
                                         id="categoryDropdown">
                                         <div class="row bg-white" style="border-top: 1px solid #eee">
                                             <div class="col-lg-2 px-0" style="background-color: #eee">
                                                 <ul class="nav nav-tabs flex-column px-0" id="myTab"
                                                     role="tablist">
-                                                    <li class="nav-item">
+
+                                                    @foreach ($categorys as $key => $category)
+                                                        <li class="nav-item">
+                                                            <a class="nav-link main_cat_triger {{ $key == 0 ? 'active' : '' }}"
+                                                                id="Cosmetics-tab" data-toggle="tab"
+                                                                href="#category{{ $category->id }}" role="tab"
+                                                                aria-controls="Cosmetics"
+                                                                aria-selected="true">{{ $category->category_name }}</a>
+                                                        </li>
+                                                    @endforeach
+
+                                                    {{-- <li class="nav-item">
                                                         <a class="nav-link main_cat_triger active" id="Cosmetics-tab"
                                                             data-toggle="tab" href="#Cosmetics" role="tab"
                                                             aria-controls="Cosmetics"
                                                             aria-selected="true">Cosmetics</a>
                                                     </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link main_cat_triger" id="Motorbike-tab"
-                                                            data-toggle="tab" href="#Motorbike" role="tab"
-                                                            aria-controls="Motorbike"
-                                                            aria-selected="false">Motorbike</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link main_cat_triger" id="Accessories-tab"
-                                                            data-toggle="tab" href="#Accessories" role="tab"
-                                                            aria-controls="Accessories"
-                                                            aria-selected="false">Accessories</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link main_cat_triger" id="Household-tab"
-                                                            data-toggle="tab" href="#Household" role="tab"
-                                                            aria-controls="Household"
-                                                            aria-selected="false">Household</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link main_cat_triger" id="Lifestyle-tab"
-                                                            data-toggle="tab" href="#Lifestyle" role="tab"
-                                                            aria-controls="Lifestyle"
-                                                            aria-selected="false">Lifestyle</a>
-                                                    </li>
 
 
-                                                    <li class="nav-item">
-                                                        <a class="nav-link main_cat_triger" id="Lifestyle-tab"
-                                                            data-toggle="tab" href="#Lifestyle" role="tab"
-                                                            aria-controls="Lifestyle" aria-selected="false">Automotive
-                                                            & Motorbike</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link main_cat_triger" id="Lifestyle-tab"
-                                                            data-toggle="tab" href="#Lifestyle" role="tab"
-                                                            aria-controls="Lifestyle" aria-selected="false">Sports &
-                                                            Outdoors</a>
-                                                    </li>
                                                     <li class="nav-item">
                                                         <a class="nav-link main_cat_triger" id="Lifestyle-tab"
                                                             data-toggle="tab" href="#Lifestyle" role="tab"
                                                             aria-controls="Lifestyle"
                                                             aria-selected="false">Electronics Devices</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link main_cat_triger" id="Lifestyle-tab"
-                                                            data-toggle="tab" href="#Lifestyle" role="tab"
-                                                            aria-controls="Lifestyle"
-                                                            aria-selected="false">Gadgets</a>
-                                                    </li>
+                                                    </li> --}}
 
+                                                    {{-- <div>
+                                                        <a href="{{ route('home.all.category.page') }}" class="category_btn">All Category</a>
+                                                    </div> --}}
 
-                                                    <div>
-                                                        <a href="category.html" class="category_btn">All Category</a>
-                                                    </div>
                                                 </ul>
                                             </div>
                                             <div class="col-lg-10">
                                                 <div class="tab-content" id="myTabContent">
-                                                    <div class="tab-pane fade show active" id="Cosmetics"
-                                                        role="tabpanel" aria-labelledby="Cosmetics-tab">
-                                                        <div class="row main-cat-height">
+
+
+                                                    @foreach ($categorys as $key => $category)
+                                                        <div class="tab-pane fade show {{ $key == 0 ? 'active' : '' }}"
+                                                            id="category{{ $category->id }}" role="tabpanel"
+                                                            aria-labelledby="Cosmetics-tab">
+
+                                                            @php
+                                                                $catwissubcat = App\Models\Admin\SubCategory::where(
+                                                                    'status',
+                                                                    '1',
+                                                                )
+                                                                    ->where('category_id', $category->id)
+                                                                    ->orderBy('subcategory_name', 'ASC')
+                                                                    ->latest()
+                                                                    ->get();
+                                                            @endphp
+
+                                                            <div class="row main-cat-height">
+
+                                                                @forelse ($catwissubcat as $subcat)
+                                                                    <div class="col-lg-3">
+                                                                        <p
+                                                                            class="font-weight-bold pt-3 header-menu-border">
+                                                                            {{ $subcat->subcategory_name }}
+                                                                        </p>
+
+                                                                        @php
+                                                                            $childcats = App\Models\Admin\ChildCategory::where(
+                                                                                'status',
+                                                                                '1',
+                                                                            )
+                                                                                ->where('subcategory_id', $subcat->id)
+                                                                                ->orderBy('childcategory_name', 'ASC')
+                                                                                ->limit(7)
+                                                                                ->latest()
+                                                                                ->get();
+                                                                        @endphp
+
+                                                                        <ul>
+
+                                                                            @forelse ($childcats as $childcat)
+                                                                                <li>
+                                                                                    <a href="javascript:;"
+                                                                                        class="text-muted px-0 py-1">{{ $childcat->childcategory_name }}</a>
+                                                                                </li>
+                                                                            @empty
+                                                                                <p>No ChildCategory Avaiable</p>
+                                                                            @endforelse
+
+                                                                        </ul>
+                                                                    </div>
+                                                                @empty
+                                                                    <p>No Subcategory Avaiable</p>
+                                                                @endforelse
+
+
+                                                            </div>
+
+                                                            {{-- <div class="row py-2 mt-5" style="background-color: #cd3301">
                                                             <div class="col-lg-3">
-                                                                <p class="font-weight-bold pt-3 header-menu-border">
-                                                                    Network Accessories
-                                                                </p>
-                                                                <ul>
-                                                                    <li>
-                                                                        <a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants &
-                                                                            Solvents</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants &
-                                                                            Solvents</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants &
-                                                                            Solvents</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants &
-                                                                            Solvents</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants &
-                                                                            Solvents</a>
-                                                                    </li>
-                                                                </ul>
+                                                                <a href=""
+                                                                    class="grenadier-color font-weight-bold text-white">View
+                                                                    All</a>
                                                             </div>
                                                             <div class="col-lg-3">
-                                                                <p class="font-weight-bold pt-3 header-menu-border">
-                                                                    Network Accessories
-                                                                </p>
-                                                                <ul>
-                                                                    <li>
-                                                                        <a href="#"
-                                                                            class="text-muted px-0 py-1">Lubricants &
-                                                                            Solvents</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants &
-                                                                            Solvents</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants &
-                                                                            Solvents</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants &
-                                                                            Solvents</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants &
-                                                                            Solvents</a>
-                                                                    </li>
-                                                                </ul>
+                                                                <a href=""
+                                                                    class="grenadier-color font-weight-bold text-white">View
+                                                                    All</a>
                                                             </div>
                                                             <div class="col-lg-3">
-                                                                <p class="font-weight-bold pt-3 header-menu-border">
-                                                                    Network Accessories
-                                                                </p>
-                                                                <ul>
-                                                                    <li>
-                                                                        <a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants &
-                                                                            Solvents</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#"
-                                                                            class="text-muted px-0 py-1">Lubricants &
-                                                                            Solvents</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants &
-                                                                            Solvents</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants &
-                                                                            Solvents</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants &
-                                                                            Solvents</a>
-                                                                    </li>
-                                                                </ul>
+                                                                <a href=""
+                                                                    class="grenadier-color font-weight-bold text-white">View
+                                                                    All</a>
                                                             </div>
                                                             <div class="col-lg-3">
-                                                                <p class="font-weight-bold pt-3 header-menu-border">
-                                                                    Network Accessories
-                                                                </p>
-                                                                <ul>
-                                                                    <li>
-                                                                        <a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants &
-                                                                            Solvents</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants &
-                                                                            Solvents</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants &
-                                                                            Solvents</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants &
-                                                                            Solvents</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href=""
-                                                                            class="text-muted px-0 py-1">Lubricants &
-                                                                            Solvents</a>
-                                                                    </li>
-                                                                </ul>
+                                                                <a href=""
+                                                                    class="grenadier-color font-weight-bold text-white">View
+                                                                    All</a>
                                                             </div>
+                                                        </div> --}}
+
                                                         </div>
-                                                        <div class="row py-2 mt-5" style="background-color: #cd3301">
-                                                            <div class="col-lg-3">
-                                                                <a href=""
-                                                                    class="grenadier-color font-weight-bold text-white">View
-                                                                    All</a>
-                                                            </div>
-                                                            <div class="col-lg-3">
-                                                                <a href=""
-                                                                    class="grenadier-color font-weight-bold text-white">View
-                                                                    All</a>
-                                                            </div>
-                                                            <div class="col-lg-3">
-                                                                <a href=""
-                                                                    class="grenadier-color font-weight-bold text-white">View
-                                                                    All</a>
-                                                            </div>
-                                                            <div class="col-lg-3">
-                                                                <a href=""
-                                                                    class="grenadier-color font-weight-bold text-white">View
-                                                                    All</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="tab-pane fade" id="Motorbike" role="tabpanel"
-                                                        aria-labelledby="Motorbike-tab">
-                                                        Motorbike
-                                                    </div>
-                                                    <div class="tab-pane fade" id="Accessories" role="tabpanel"
-                                                        aria-labelledby="Accessories-tab">
-                                                        Accessories
-                                                    </div>
-                                                    <div class="tab-pane fade" id="Household" role="tabpanel"
-                                                        aria-labelledby="Household-tab">
-                                                        Household
-                                                    </div>
-                                                    <div class="tab-pane fade" id="Lifestyle" role="tabpanel"
-                                                        aria-labelledby="Lifestyle-tab">
-                                                        Lifestyle
-                                                    </div>
+                                                    @endforeach
+
+                                                    
                                                 </div>
                                             </div>
                                         </div>
