@@ -23,11 +23,13 @@
                             <div class="single-categories col-sm-12">
                                 <div class="categories-box position-relative">
                                     <div class="categories-thumb">
-                                        <a href=""><img class="img"
+                                        <a
+                                            href="{{ url($category->category_name . '/' . $category->id . '/' . $category->category_slug) }}"><img
+                                                class="img"
                                                 src="{{ asset('storage/category/' . $category->category_image) }}"
                                                 style="width: 255px; height: 255px;" alt="" /></a>
                                         <h6 class="f-800 pure__black-color cate-title">
-                                            <a href="#" >{{ $category->category_name }}</a>
+                                            <a href="#">{{ $category->category_name }}</a>
                                         </h6>
                                     </div>
                                 </div>
@@ -37,7 +39,7 @@
                         <p class="text-center text-danger">No Category Avaiable</p>
                     @endif
 
-                    
+
 
                 </div>
             </div>

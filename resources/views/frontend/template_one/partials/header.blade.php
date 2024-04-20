@@ -295,7 +295,8 @@
 
                                                                             @forelse ($childcats as $childcat)
                                                                                 <li>
-                                                                                    <a href="javascript:;"
+
+                                        <a href="{{ url('child' . '/' . $childcat->id . '/' . $childcat->childcategory_slug) }}"
                                                                                         class="text-muted px-0 py-1">{{ $childcat->childcategory_name }}</a>
                                                                                 </li>
                                                                             @empty

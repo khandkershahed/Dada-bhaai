@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\About;
 use App\Models\Admin\Category;
+use App\Models\Admin\ChildCategory;
 use App\Models\Admin\Contact;
 use App\Models\Admin\Faq;
 use App\Models\Admin\MultiImg;
@@ -39,7 +40,7 @@ class IndexController extends Controller
     }
 
     //Template OneProduct
-    public function TemplateOneProduct($id,$product_slug)
+    public function TemplateOneProduct($id, $product_slug)
     {
         $product = Product::find($id);
 
@@ -54,9 +55,9 @@ class IndexController extends Controller
 
         //Releted Category
         $cat_id = $product->category_id;
-        $relativeProduct = Product::where('category_id',$cat_id)->where('id','!=','$id')->orderBy('id', 'ASC')->limit(5)->get();
+        $relativeProduct = Product::where('category_id', $cat_id)->where('id', '!=', '$id')->orderBy('id', 'ASC')->limit(5)->get();
 
-        return view('frontend.template_one.product.single_product', compact('product','relativeProduct','multiImages'));
+        return view('frontend.template_one.product.single_product', compact('product', 'relativeProduct', 'multiImages'));
     }
 
     //Single Product
@@ -73,7 +74,7 @@ class IndexController extends Controller
         $cat_id = $product->category_id;
         $relativeProduct = Product::where('category_id', $cat_id)->where('id', '!=', $id)->orderBy('id', 'ASC')->limit(5)->get();
 
-        return view('frontend.pages.product.single_product', compact('product', 'multiImages', 'relativeProduct','product_colors'));
+        return view('frontend.pages.product.single_product', compact('product', 'multiImages', 'relativeProduct', 'product_colors'));
     }
 
     //Faq
@@ -168,5 +169,34 @@ class IndexController extends Controller
         $categorys = Category::where('status', '1')->latest()->get();
 
         return view('frontend.template_one.category.home_all_category', compact('categorys'));
+    }
+
+    // Template One
+
+    //Brand Wise Product One
+    public function BrandWiseProductOne($brand_name, $id, $brand_slug)
+    {
+        $brandwiseproduct = Brand::find($id);
+        $products = Product::where('brand_id', $brandwiseproduct->id)->get();
+
+        return view('frontend.template_one.brand.brand_wise_product', compact('brandwiseproduct', 'products'));
+    }
+
+    //Category Related Product One
+    public function CategoryRelatedProductOne($category_name, $id, $category_slug)
+    {
+        $catwiseproduct = Category::find($id);
+        $products = Product::where('category_id', $catwiseproduct->id)->get();
+
+        return view('frontend.template_one.category.category_wise_product', compact('catwiseproduct', 'products'));
+    }
+
+    //Childcategory Related Product One
+    public function ChildcategoryRelatedProductOne($id)
+    {
+        $childcatwiseproduct = ChildCategory::find($id);
+        $products = Product::where('childcategory_id', $childcatwiseproduct->id)->get();
+
+        return view('frontend.template_one.childcategory.childcategory_wise_product', compact('childcatwiseproduct', 'products'));
     }
 }

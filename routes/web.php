@@ -61,8 +61,17 @@ Route::controller(IndexController::class)->group(function () {
     //About Page
     Route::get('/about', 'AboutPage')->name('about.page');
 
+    ///////////////////////////// Template One //////////////////////////////
+
+
+    //Brand Wis
+    Route::get('/{brand_name}/{id}/{brand_slug}', 'BrandWiseProductOne');
+
     //Category Page
     Route::get('/home-category', 'HomeAllCategory')->name('home.all.category.page');
+    Route::get('/{category_name}/{id}/{category_slug}', 'CategoryRelatedProductOne');
+
+    Route::get('/{childcategory_name}/{id}/{childcategory_slug}', 'ChildcategoryRelatedProductOne');
 
 });
 
