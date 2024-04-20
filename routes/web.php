@@ -63,7 +63,6 @@ Route::controller(IndexController::class)->group(function () {
 
     ///////////////////////////// Template One //////////////////////////////
 
-
     //Brand Wise
     // Route::get('/{brand_name}/{id}/{brand_slug}', 'BrandWiseProductOne');
 
@@ -74,8 +73,6 @@ Route::controller(IndexController::class)->group(function () {
     Route::get('/{childcategory_name}/{id}/{childcategory_slug}', 'ChildcategoryRelatedProductOne');
 
 });
-
-
 
 //Cart Controller
 Route::controller(CartController::class)->group(function () {
@@ -95,7 +92,6 @@ Route::controller(CartController::class)->group(function () {
     //checkout
     Route::get('/checkout', 'CheckoutCreate')->name('checkout');
     Route::post('/checkout/store', 'CheckoutStore')->name('checkout.store');
-
 
     /////////////////////////////////////// Template One ////////////////////////
 

@@ -296,7 +296,7 @@
                                                                             @forelse ($childcats as $childcat)
                                                                                 <li>
 
-                                        <a href="{{ url('child' . '/' . $childcat->id . '/' . $childcat->childcategory_slug) }}"
+                                                                                    <a href="{{ url('child' . '/' . $childcat->id . '/' . $childcat->childcategory_slug) }}"
                                                                                         class="text-muted px-0 py-1">{{ $childcat->childcategory_name }}</a>
                                                                                 </li>
                                                                             @empty
@@ -338,7 +338,7 @@
                                                         </div>
                                                     @endforeach
 
-                                                    
+
                                                 </div>
                                             </div>
                                         </div>
@@ -353,81 +353,44 @@
                         <nav id="mobile-menu">
                             <ul>
                                 <li>
-                                    <a href="home.html">Home</a>
+                                    <a href="{{ route('index') }}">Home</a>
                                 </li>
 
                                 <li class="mega-menu static dropdown-icon">
-                                    <a href="javascript:void(0)"
-                                        onclick="window.location.href='brands.html'">Brands</a>
+                                    <a href="javascript:void(0)">Brands</a>
+
+                                    @php
+                                        $brands = App\Models\Brand::where('status', '1')
+                                            ->orderBy('brand_name', 'ASC')
+                                            ->limit(8)
+                                            ->latest()
+                                            ->get();
+                                    @endphp
+
                                     <ul class="submenu mega-full">
-                                        <li>
-                                            <a href="">Brands 01</a>
-                                            <ul class="submenu level-1">
-                                                <li>
-                                                    <a href="">Furniture</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Fasion</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Bags</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Lather</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="">Brands 02</a>
-                                            <ul class="submenu level-1">
-                                                <li>
-                                                    <a href="">Electronics</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Chair</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Table</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Book</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="">Brands 03</a>
-                                            <ul class="submenu">
-                                                <li>
-                                                    <a href="">Clock</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Watch</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Mobile</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">sunglass</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="">Brands 04</a>
-                                            <ul class="submenu">
-                                                <li>
-                                                    <a href="">Chair</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Lather</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Table</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Clock</a>
-                                                </li>
-                                            </ul>
-                                        </li>
+
+                                        @foreach ($brands as $brand)
+                                            <li>
+                                                <a href="javascript:;">{{ $brand->brand_name }}</a>
+
+                                                @php
+                                                    $categorys = App\Models\Admin\Product::where('category_id',$brand->id)
+                                                        ->latest()
+                                                        ->get();
+                                                @endphp
+
+                                                <ul class="submenu level-1">
+
+
+                                                    @foreach ($categorys as $category)
+                                                        <li>
+                                                            <a href="javascript:;">{{ $category['category']['category_name'] }}</a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </li>
+                                        @endforeach
+
                                     </ul>
                                 </li>
                                 <li class="mega-menu static dropdown-icon">
