@@ -174,13 +174,13 @@ class IndexController extends Controller
     // Template One
 
     //Brand Wise Product One
-    public function BrandWiseProductOne($brand_name, $id, $brand_slug)
-    {
-        $brandwiseproduct = Brand::find($id);
-        $products = Product::where('brand_id', $brandwiseproduct->id)->get();
+    // public function BrandWiseProductOne($brand_name, $id, $brand_slug)
+    // {
+    //     $brandwiseproduct = Brand::find($id);
+    //     $products = Product::where('brand_id', $brandwiseproduct->id)->get();
 
-        return view('frontend.template_one.brand.brand_wise_product', compact('brandwiseproduct', 'products'));
-    }
+    //     return view('frontend.template_one.brand.brand_wise_product', compact('brandwiseproduct', 'products'));
+    // }
 
     //Category Related Product One
     public function CategoryRelatedProductOne($category_name, $id, $category_slug)

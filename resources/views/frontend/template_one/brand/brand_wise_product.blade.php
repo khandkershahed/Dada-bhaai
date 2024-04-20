@@ -31,7 +31,7 @@
                             </div>
                             <ul>
                                 @forelse ($brands as $brand)
-                                    <li><a href="{{ url($brand->brand_name . '/' . $brand->id . '/' . $brand->brand_slug) }}">{{ $brand->brand_name }}</a></li>
+                                    <li><a href="">{{ $brand->brand_name }}</a></li>
                                 @empty
                                     <p>No Brand Avaiable</p>
                                 @endforelse

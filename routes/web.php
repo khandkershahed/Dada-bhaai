@@ -65,7 +65,7 @@ Route::controller(IndexController::class)->group(function () {
 
 
     //Brand Wise
-    Route::get('/{brand_name}/{id}/{brand_slug}', 'BrandWiseProductOne');
+    // Route::get('/{brand_name}/{id}/{brand_slug}', 'BrandWiseProductOne');
 
     //Category Page
     Route::get('/home-category', 'HomeAllCategory')->name('home.all.category.page');
