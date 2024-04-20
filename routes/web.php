@@ -64,7 +64,7 @@ Route::controller(IndexController::class)->group(function () {
     ///////////////////////////// Template One //////////////////////////////
 
 
-    //Brand Wis
+    //Brand Wise
     Route::get('/{brand_name}/{id}/{brand_slug}', 'BrandWiseProductOne');
 
     //Category Page
