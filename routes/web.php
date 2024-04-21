@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\TemplateOneController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
@@ -61,6 +62,13 @@ Route::controller(IndexController::class)->group(function () {
     //About Page
     Route::get('/about', 'AboutPage')->name('about.page');
 
+    
+
+});
+
+// Template One Controller
+Route::controller(TemplateOneController::class)->group(function () {
+
     ///////////////////////////// Template One //////////////////////////////
 
     //Brand Wise
@@ -68,12 +76,12 @@ Route::controller(IndexController::class)->group(function () {
 
     //Category Page
     Route::get('/home-category', 'HomeAllCategory')->name('home.all.category.page');
-    Route::get('/{category_name}/{id}/{category_slug}', 'CategoryRelatedProductOne');
+    Route::get('/product/category/{id}/{category_slug}', 'CategoryRelatedProductOne');
 
-    Route::get('/{childcategory_name}/{id}/{childcategory_slug}', 'ChildcategoryRelatedProductOne');
+    //Child Category
+    Route::get('/product/childcategory/{id}/{childcategory_slug}', 'ChilldCategoryRelatedProductOne');
 
 });
-
 //Cart Controller
 Route::controller(CartController::class)->group(function () {
 

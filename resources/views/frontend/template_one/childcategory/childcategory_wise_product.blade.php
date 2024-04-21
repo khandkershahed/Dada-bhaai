@@ -1,6 +1,5 @@
 @extends('frontend.template_one.frontend_dashboard_template_one')
 @section('index_template_one')
-
     <!-- shop area start -->
     <div class="product shop-page pt-30 pb-80">
         <div class="container">
@@ -32,7 +31,7 @@
                             </div>
                             <ul>
                                 @forelse ($brands as $brand)
-                                    <li><a href="#">{{ $brand->brand_name }}</a></li>
+                                    <li><a href="">{{ $brand->brand_name }}</a></li>
                                 @empty
                                     <p>No Brand Avaiable</p>
                                 @endforelse
@@ -44,7 +43,9 @@
                             </div>
                             <ul>
                                 @forelse ($categorys as $category)
-                                    <li><a href="#">{{ $category->category_name }}</a></li>
+                                    <li><a
+                                            href="{{ url('product/category/' . $category->id . '/' . $category->category_slug) }}">{{ $category->category_name }}</a>
+                                    </li>
                                 @empty
                                     <p>No Category Avaiable</p>
                                 @endforelse
@@ -93,18 +94,27 @@
                             <div class="side-title">
                                 <h6>Popular Tag</h6>
                             </div>
+
+                            @php
+
+                                $tags = App\Models\Admin\Product::where('status', '1')
+                                    ->orderBy('product_name', 'ASC')
+                                    ->latest()
+                                    ->limit(7)
+                                    ->get();
+
+                            @endphp
+
                             <ul class="mt-25 mb-15">
-                                <li><a href="#">Small</a></li>
-                                <li><a href="#">Fashion</a></li>
-                                <li><a href="#">Grey</a></li>
-                                <li><a href="#">Yellows</a></li>
-                                <li><a href="#">Magenta</a></li>
-                                <li><a href="#">Clothing</a></li>
-                                <li><a href="#">Small</a></li>
-                                <li><a href="#">Fashion</a></li>
-                                <li><a href="#">Grey</a></li>
+                                @forelse ($tags as $tag)
+                                    <li><a href="javascript:;">{{ $tag->tags }}</a></li>
+                                @empty
+                                    <p>No Tags Avaiable</p>
+                                @endforelse
                             </ul>
+
                         </div>
+
                     </div>
                 </div>
 

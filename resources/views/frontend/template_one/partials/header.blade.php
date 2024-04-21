@@ -296,7 +296,7 @@
                                                                             @forelse ($childcats as $childcat)
                                                                                 <li>
 
-                                                                                    <a href="{{ url('child' . '/' . $childcat->id . '/' . $childcat->childcategory_slug) }}"
+                                                                                    <a href="{{ url('product/childcategory/' . $childcat->id . '/' . $childcat->childcategory_slug) }}"
                                                                                         class="text-muted px-0 py-1">{{ $childcat->childcategory_name }}</a>
                                                                                 </li>
                                                                             @empty
@@ -374,7 +374,10 @@
                                                 <a href="javascript:;">{{ $brand->brand_name }}</a>
 
                                                 @php
-                                                    $categorys = App\Models\Admin\Product::where('category_id',$brand->id)
+                                                    $categorys = App\Models\Admin\Product::where(
+                                                        'category_id',
+                                                        $brand->id,
+                                                    )
                                                         ->latest()
                                                         ->get();
                                                 @endphp
@@ -382,11 +385,14 @@
                                                 <ul class="submenu level-1">
 
 
-                                                    @foreach ($categorys as $category)
+                                                    @forelse ($categorys as $category)
                                                         <li>
-                                                            <a href="javascript:;">{{ $category['category']['category_name'] }}</a>
+                                                            <a href="">{{ $category['category']['category_name'] }}</a>
                                                         </li>
-                                                    @endforeach
+                                                    @empty
+                                                        <p>No Category Avaiable</p>
+                                                    @endforelse
+
                                                 </ul>
                                             </li>
                                         @endforeach

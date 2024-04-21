@@ -39,7 +39,9 @@
                         <div class="single-categories cat-box mb-30">
                             <div class="categories-box brands-box-cate position-relative">
                                 <div class="categories-thumb">
-                                    <a href="{{ url($category->category_name . '/' . $category->id . '/' . $category->category_slug) }}"><img class="img"
+                                    <a
+                                        href="{{ url('product/category/' . $category->id . '/' . $category->category_slug) }}"><img
+                                            class="img"
                                             src="{{ asset('storage/category/' . $category->category_image) }}"
                                             alt="" /></a>
                                     <h6 class="mt-3">{{ $category->category_name }}</h6>
