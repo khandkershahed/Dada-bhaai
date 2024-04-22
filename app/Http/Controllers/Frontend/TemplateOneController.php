@@ -13,14 +13,14 @@ class TemplateOneController extends Controller
     //Template One All Product
     public function TemplateOneAllProduct()
     {
-        $products = Product::where('status', '1')->orderBy('product_name', 'ASC')->latest()->get();
+        $products = Product::where('status', '1')->orderBy('product_name', 'ASC')->paginate(12);
         return view('frontend.template_one.product.template_one_all_product', compact('products'));
     }
 
     //Brand Wise Product One
     public function BrandRelatedProductOne($id, $brand_slug)
     {
-        $products = Product::where('status', '1')->where('brand_id', $id)->get();
+        $products = Product::where('status', '1')->where('brand_id', $id)->paginate(12);
         $brandwiseproduct = Brand::find($id);
 
         return view('frontend.template_one.brand.brand_wise_product', compact('products', 'brandwiseproduct'));
@@ -37,7 +37,7 @@ class TemplateOneController extends Controller
     //Category Related Product One
     public function CategoryRelatedProductOne($id, $category_slug)
     {
-        $products = Product::where('status', '1')->where('category_id', $id)->get();
+        $products = Product::where('status', '1')->where('category_id', $id)->paginate(12);
         $catwiseproduct = Category::find($id);
 
         return view('frontend.template_one.category.category_wise_product', compact('products', 'catwiseproduct'));
@@ -46,7 +46,7 @@ class TemplateOneController extends Controller
     //Child Category Related Product One
     public function ChilldCategoryRelatedProductOne($id, $childcategory_slug)
     {
-        $products = Product::where('status', '1')->where('childcategory_id', $id)->get();
+        $products = Product::where('status', '1')->where('childcategory_id', $id)->paginate(12);
         $childcatwiseproduct = ChildCategory::find($id);
 
         return view('frontend.template_one.childcategory.childcategory_wise_product', compact('products', 'childcatwiseproduct'));

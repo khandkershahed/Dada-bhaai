@@ -1,5 +1,6 @@
 @extends('frontend.template_one.frontend_dashboard_template_one')
 @section('index_template_one')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- shop area start -->
     <div class="product shop-page pt-30 pb-80">
         <div class="container">
@@ -153,15 +154,22 @@
                             </div>
                             <div class="col-lg-7 col-md-8">
                                 <div class="bar-wrapper">
+
                                     <div class="select-text">
                                         <span>Showing 1–11 of 23 Results</span>
                                     </div>
+
                                     <div class="shop-select">
-                                        <select name="select" id="shop-select-one">
-                                            <option value="1">Deafult Sorting</option>
-                                            <option value="2">Deafult Sorting</option>
-                                            <option value="3">Deafult Sorting</option>
-                                            <option value="4">Deafult Sorting</option>
+                                        <select name="select" id="sortBy">
+                                            <option selected disabled>Sort By Products</option>
+
+                                            <option value="nameAtoZ">Product Name:A to
+                                                Z
+                                            </option>
+                                            <option value="nameZtoA">Product Name:Z to
+                                                A
+                                            </option>
+
                                         </select>
                                     </div>
 
@@ -169,7 +177,6 @@
                             </div>
                         </div>
                     </div>
-
 
 
                     <div class="row mt-30">
@@ -257,18 +264,9 @@
                     <div class="row mt-10">
                         <div class="col-sm-12">
                             <div class="common-pagination">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination">
-                                        <li class="page-item"><a class="page-link" href="#"><i
-                                                    class="fas fa-angle-left"></i> Prev</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">Next <i
-                                                    class="fas fa-angle-right"></i></a></li>
-                                    </ul>
-                                </nav>
+
+                                {{ $products->links('vendor.pagination.template_one') }}
+
                             </div>
                         </div>
                     </div>
@@ -311,5 +309,4 @@
     </div> --}}
 
     <!-- Subscribe End -->
-
 @endsection

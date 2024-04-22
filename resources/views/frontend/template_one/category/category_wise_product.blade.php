@@ -31,7 +31,9 @@
                             </div>
                             <ul>
                                 @forelse ($brands as $brand)
-                                    <li><a href="">{{ $brand->brand_name }}</a></li>
+                                    <li><a
+                                            href="{{ url('product/brand/' . $brand->id . '/' . $brand->brand_slug) }}">{{ $brand->brand_name }}</a>
+                                    </li>
                                 @empty
                                     <p>No Brand Avaiable</p>
                                 @endforelse
@@ -107,14 +109,14 @@
 
                             <ul class="mt-25 mb-15">
                                 @forelse ($tags as $tag)
-                                <li><a href="javascript:;">{{ $tag->tags }}</a></li>
+                                    <li><a href="javascript:;">{{ $tag->tags }}</a></li>
                                 @empty
                                     <p>No Tags Avaiable</p>
                                 @endforelse
                             </ul>
 
                         </div>
-                        
+
                     </div>
                 </div>
 
@@ -253,18 +255,7 @@
                     <div class="row mt-10">
                         <div class="col-sm-12">
                             <div class="common-pagination">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination">
-                                        <li class="page-item"><a class="page-link" href="#"><i
-                                                    class="fas fa-angle-left"></i> Prev</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">Next <i
-                                                    class="fas fa-angle-right"></i></a></li>
-                                    </ul>
-                                </nav>
+                                {{ $products->links('vendor.pagination.template_one') }}
                             </div>
                         </div>
                     </div>

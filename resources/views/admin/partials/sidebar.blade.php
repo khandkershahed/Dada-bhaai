@@ -175,6 +175,16 @@
                             </a>
                         </div>
 
+                        {{-- Offer Category --}}
+                        <div class="menu-item">
+                            <a class="menu-link" href="{{ route('all.offer') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Offer</span>
+                            </a>
+                        </div>
+
                         {{-- Color --}}
                         <div class="menu-item">
                             <a class="menu-link" href="{{ route('all.color') }}">

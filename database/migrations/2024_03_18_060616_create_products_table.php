@@ -28,8 +28,9 @@ return new class extends Migration
 
             $table->string('product_name');
             $table->string('product_slug');
-            $table->string('sku_code')->unique()->nullable();
-            $table->string('mf_code')->unique()->nullable();
+
+            $table->string('sku_code')->nullable();
+            $table->string('mf_code')->nullable();
             $table->string('product_code')->nullable();
             $table->string('tags')->nullable();
             

@@ -22,7 +22,7 @@ class AboutController extends Controller
         return view('admin.pages.about.edit_about', compact('about'));
     }
 
-    //Store About
+    //Update About
     public function UpdateAbout(Request $request)
     {
         $uid = $request->id;

@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\EmployeeCategoryController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\HomePageController;
+use App\Http\Controllers\Admin\OfferCategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SinglePageController;
 use App\Http\Controllers\Admin\SiteController;
@@ -191,6 +192,19 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
         Route::post('/store', 'StoreContact')->name('store.contact');
         Route::post('/update', 'UpdateContact')->name('update.contact');
         Route::get('/delete/{id}', 'DeleteContact')->name('delete.contact');
+    });
+
+    //Offer Category Section
+    Route::controller(OfferCategoryController::class)->prefix('offer-category')->group(function () {
+
+        Route::get('/all', 'AllOffer')->name('all.offer');
+        Route::post('/store', 'StoreOffer')->name('store.offer');
+        Route::post('/update', 'UpdateOffer')->name('update.offer');
+        Route::get('/delete/{id}', 'DeleteOffer')->name('delete.offer');
+
+        //Active Or Inactive
+        Route::get('/offer-inactive/{id}', 'InactiveOffer')->name('offer.inactive');
+        Route::get('/offer-active/{id}', 'ActiveOffer')->name('offer.active');
     });
 
     //HomePage Section
@@ -379,4 +393,6 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
         Route::get('/admin-inactive/{id}', 'InactiveAdmin')->name('admin.inactive');
         Route::get('/admin-active/{id}', 'ActiveAdmin')->name('admin.active');
     });
+
+
 });
