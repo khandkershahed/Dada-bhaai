@@ -6,9 +6,25 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\Category;
 use App\Models\Admin\ChildCategory;
 use App\Models\Admin\Product;
+use App\Models\Brand;
 
 class TemplateOneController extends Controller
 {
+    //Template One All Product
+    public function TemplateOneAllProduct()
+    {
+        $products = Product::where('status', '1')->orderBy('product_name', 'ASC')->latest()->get();
+        return view('frontend.template_one.product.template_one_all_product', compact('products'));
+    }
+
+    //Brand Wise Product One
+    public function BrandRelatedProductOne($id, $brand_slug)
+    {
+        $products = Product::where('status', '1')->where('brand_id', $id)->get();
+        $brandwiseproduct = Brand::find($id);
+
+        return view('frontend.template_one.brand.brand_wise_product', compact('products', 'brandwiseproduct'));
+    }
 
     //Home All Category
     public function HomeAllCategory()

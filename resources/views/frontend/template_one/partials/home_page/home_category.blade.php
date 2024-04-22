@@ -12,7 +12,7 @@
                         <span class="f-300">Discover Top</span>
                         <span class="f-800">Categories</span>
                     </h3>
-                    <a class="grenadier-color" href="{{ route('home.all.category.page') }}">View All Category</a>
+                    {{-- <a class="grenadier-color" href="{{ route('home.all.category.page') }}">View All Category</a> --}}
                 </div>
             </div>
             <div class="col-xl-10">
@@ -24,7 +24,7 @@
                                 <div class="categories-box position-relative">
                                     <div class="categories-thumb">
                                         <a
-                                            href="{{ url('product/category/'  . $category->id . '/' . $category->category_slug) }}"><img
+                                            href="{{ url('product/category/' . $category->id . '/' . $category->category_slug) }}"><img
                                                 class="img"
                                                 src="{{ asset('storage/category/' . $category->category_image) }}"
                                                 style="width: 255px; height: 255px;" alt="" /></a>

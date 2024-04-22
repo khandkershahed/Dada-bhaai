@@ -39,7 +39,7 @@
 
                 <div class="col-xl-12">
                     <div class="all__product--link text-center mb-30">
-                        <a class="all-link" href="shop-page.html">Discover All Products<span
+                        <a class="all-link" href="{{ route('template.one.all_product') }}">Discover All Products<span
                                 class="lnr lnr-arrow-right"></span></a>
                     </div>
                 </div>
@@ -64,6 +64,7 @@
 
                                     $catwiseProduct = App\Models\Admin\Product::where('status', '1')
                                         ->where('category_id', $category->id)
+                                        ->orderBy('product_name', 'ASC')
                                         ->limit(8)
                                         ->latest()
                                         ->get();

@@ -411,15 +411,15 @@
 
                                             <div class="col-8">
 
-                                                {{-- <label class="form-label required">Multi Image</label>
+                                                <label class="form-label required">Multi Image</label>
 
-                                                <input type="file" autocomplete="off" class="form-control"
+                                                <input type="file" autocomplete="off" class="form-control form-control-sm border-0 form-control-solid"
                                                     id="multiImg" name="multi_img[]" multiple="">
 
-                                                <div class="row mt-3" id="preview_img"></div> --}}
+                                                <div class="row mt-3" id="preview_img"></div>
 
 
-                                                <label class="form-label required">Multi Image</label>
+                                                {{-- <label class="form-label required">Multi Image</label>
                                                 <div class="dropzone-field">
                                                     <label for="files" class="custom-file-upload">
                                                         <div class="d-flex align-items-center">
@@ -436,10 +436,12 @@
                                                     <input type="file" id="files" name="multi_img[]" multiple
                                                         class="form-control" style="display: none;" />
                                                     <div class="row mt-3" id="preview_img"></div>
-                                                </div>
+                                                </div> --}}
+
                                             </div>
 
                                         </div>
+
 
                                         <div class="row mt-2 justify-content-end">
                                             <div class="d-flex align-items-center justify-content-end">
@@ -710,7 +712,8 @@
                                                             <tr>
                                                                 <td>
                                                                     <div>
-                                                                        <input name="source_one_name" value="{{ old('source_one_name') }}"
+                                                                        <input name="source_one_name"
+                                                                            value="{{ old('source_one_name') }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter source one Name"
                                                                             type="text" />
@@ -718,7 +721,8 @@
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        <input name="source_one_link" value="{{ old('source_one_link') }}"
+                                                                        <input name="source_one_link"
+                                                                            value="{{ old('source_one_link') }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter source one link"
                                                                             type="text" />
@@ -726,7 +730,8 @@
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        <input name="source_one_price" value="{{ old('source_one_price') }}"
+                                                                        <input name="source_one_price"
+                                                                            value="{{ old('source_one_price') }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter source one price"
                                                                             type="text" />
@@ -761,7 +766,8 @@
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        <input name="source_one_location" value="{{ old('source_one_location') }}"
+                                                                        <input name="source_one_location"
+                                                                            value="{{ old('source_one_location') }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter source one location"
                                                                             type="text" />
@@ -769,7 +775,8 @@
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        <input name="source_one_country" value="{{ old('source_one_country') }}"
+                                                                        <input name="source_one_country"
+                                                                            value="{{ old('source_one_country') }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter source one country"
                                                                             type="text" />
@@ -779,7 +786,8 @@
                                                             <tr>
                                                                 <td>
                                                                     <div>
-                                                                        <input name="source_two_name" value="{{ old('source_two_name') }}"
+                                                                        <input name="source_two_name"
+                                                                            value="{{ old('source_two_name') }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter source two name"
                                                                             type="text" />
@@ -787,7 +795,8 @@
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        <input name="source_two_link" value="{{ old('source_two_link') }}"
+                                                                        <input name="source_two_link"
+                                                                            value="{{ old('source_two_link') }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter source two link"
                                                                             type="text" />
@@ -795,7 +804,8 @@
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        <input name="source_two_price" value="{{ old('source_two_price') }}"
+                                                                        <input name="source_two_price"
+                                                                            value="{{ old('source_two_price') }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter source two price"
                                                                             type="text" />
@@ -830,7 +840,8 @@
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        <input name="source_two_location" value="{{ old('source_two_location') }}"
+                                                                        <input name="source_two_location"
+                                                                            value="{{ old('source_two_location') }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter source two location"
                                                                             type="text" />
@@ -838,7 +849,8 @@
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        <input name="source_two_country" value="{{ old('source_two_country') }}"
+                                                                        <input name="source_two_country"
+                                                                            value="{{ old('source_two_country') }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter source two country"
                                                                             type="text" />
@@ -876,7 +888,8 @@
                                                             <tr>
                                                                 <td>
                                                                     <div>
-                                                                        <input name="competitor_one_name" value="{{ old('competitor_one_name') }}"
+                                                                        <input name="competitor_one_name"
+                                                                            value="{{ old('competitor_one_name') }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter Product Name"
                                                                             type="text" />
@@ -884,7 +897,8 @@
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        <input name="competitor_one_link" value="{{ old('competitor_one_link') }}"
+                                                                        <input name="competitor_one_link"
+                                                                            value="{{ old('competitor_one_link') }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter Product Name"
                                                                             type="text" />
@@ -892,7 +906,8 @@
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        <input name="competitor_one_price" value="{{ old('competitor_one_price') }}"
+                                                                        <input name="competitor_one_price"
+                                                                            value="{{ old('competitor_one_price') }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter Product Name"
                                                                             type="text" />
@@ -902,7 +917,8 @@
                                                             <tr>
                                                                 <td>
                                                                     <div>
-                                                                        <input name="competitor_two_name" value="{{ old('competitor_two_name') }}"
+                                                                        <input name="competitor_two_name"
+                                                                            value="{{ old('competitor_two_name') }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter Product Name"
                                                                             type="text" />
@@ -910,7 +926,8 @@
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        <input name="competitor_two_link" value="{{ old('competitor_two_link') }}"
+                                                                        <input name="competitor_two_link"
+                                                                            value="{{ old('competitor_two_link') }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter Product Name"
                                                                             type="text" />
@@ -918,7 +935,8 @@
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        <input name="competitor_two_price" value="{{ old('competitor_two_price') }}"
+                                                                        <input name="competitor_two_price"
+                                                                            value="{{ old('competitor_two_price') }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter Product Name"
                                                                             type="text" />
@@ -1363,6 +1381,39 @@
                     //}
                 } else {
                     alert('danger');
+                }
+            });
+        });
+    </script>
+
+    {{-- multi image  --}}
+    <script>
+        $(document).ready(function() {
+            $('#multiImg').on('change', function() { //on file input change
+                if (window.File && window.FileReader && window.FileList && window
+                    .Blob) //check File API supported browser
+                {
+                    var data = $(this)[0].files; //this file data
+
+                    $.each(data, function(index, file) { //loop though each file
+                        if (/(\.|\/)(gif|jpe?g|png|webp)$/i.test(file
+                                .type)) { //check supported file type
+                            var fRead = new FileReader(); //new filereader
+                            fRead.onload = (function(file) { //trigger function on successful read
+                                return function(e) {
+                                    var img = $('<img/>').addClass('thumb').attr('src',
+                                            e.target.result).width(80)
+                                        .height(60); //create image element
+                                    $('#preview_img').append(
+                                        img); //append image to output element
+                                };
+                            })(file);
+                            fRead.readAsDataURL(file); //URL representing the file's data.
+                        }
+                    });
+
+                } else {
+                    alert("Your browser doesn't support File API!"); //if File API is absent
                 }
             });
         });

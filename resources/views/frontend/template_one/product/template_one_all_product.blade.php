@@ -31,7 +31,9 @@
                             </div>
                             <ul>
                                 @forelse ($brands as $brand)
-                                    <li><a href="{{ url('product/brand/' . $brand->id . '/' . $brand->brand_slug) }}">{{ $brand->brand_name }}</a></li>
+                                    <li><a
+                                            href="{{ url('product/brand/' . $brand->id . '/' . $brand->brand_slug) }}">{{ $brand->brand_name }}</a>
+                                    </li>
                                 @empty
                                     <p>No Brand Avaiable</p>
                                 @endforelse
@@ -124,8 +126,8 @@
                             <div class="shop-banner-bg pt-60 pb-60 mb-50"
                                 data-background="{{ asset('frontend/template_one/assets/img/bg/shop-banner-bg.jpg') }}">
                                 <div class="collection-text">
-                                    <h5 class="f-800"><a href="javascript:;">Brand</a></h5>
-                                    <span class="f-200 mb-40">{{ $brandwiseproduct->brand_name }}</span>
+                                    <h5 class="f-800"><a href="javascript:;">Product</a></h5>
+                                    {{-- <span class="f-200 mb-40">{{ $brandwiseproduct->brand_name }}</span> --}}
                                     {{-- <div class="product-countdown-three">
                                         <div class="time-count-deal">
                                             <div class="countdown-list" data-countdown="2020/12/01"></div>
@@ -139,12 +141,12 @@
                         <div class="row">
                             <div class="col-lg-5 col-md-4">
                                 <div class="shop-bar d-flex align-items-center">
-                                    <h4 class="f-800 cod__black-color">Brand</h4>
+                                    <h4 class="f-800 cod__black-color">Product</h4>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">
-                                                {{ $brandwiseproduct->brand_name }}</li>
+                                                Product</li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -250,6 +252,8 @@
 
                     </div>
 
+                    {{-- Pagination Section  --}}
+
                     <div class="row mt-10">
                         <div class="col-sm-12">
                             <div class="common-pagination">
@@ -268,6 +272,8 @@
                             </div>
                         </div>
                     </div>
+
+                    {{-- Pagination Section  --}}
 
                 </div>
             </div>
@@ -295,7 +301,7 @@
                         </div>
                         <form class="right newsletter--form pos-rel">
                             <input class="newsletter--input" type="text" placeholder="Enter Your Email Address ...">
-                            <button class="btn newsletter--button" type="button"><img src="img/icon/plan-icon.png"
+                            <button class="btn newsletter--button" type="button"><img src="{{ asset('template') }}img/icon/plan-icon.png"
                                     alt=""></button>
                         </form>
                     </div>
@@ -305,4 +311,5 @@
     </div> --}}
 
     <!-- Subscribe End -->
+
 @endsection

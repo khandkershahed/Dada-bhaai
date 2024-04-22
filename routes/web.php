@@ -71,8 +71,11 @@ Route::controller(TemplateOneController::class)->group(function () {
 
     ///////////////////////////// Template One //////////////////////////////
 
+    //All Product
+    Route::get('/all-product', 'TemplateOneAllProduct')->name('template.one.all_product');
+
     //Brand Wise
-    // Route::get('/{brand_name}/{id}/{brand_slug}', 'BrandWiseProductOne');
+    Route::get('/product/brand/{id}/{brand_slug}', 'BrandRelatedProductOne');
 
     //Category Page
     Route::get('/home-category', 'HomeAllCategory')->name('home.all.category.page');
