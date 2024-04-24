@@ -41,6 +41,7 @@
 <script src="{{ asset('frontend/template_one/assets/js/plugins.js') }}"></script>
 
 <script src="{{ asset('frontend/template_one/assets/js/main.js') }}"></script>
+<script src="{{ asset('frontend/template_one/assets/js/search_advance.js') }}"></script>
 
 <script>
     // JavaScript to toggle dropdown visibility

@@ -154,7 +154,7 @@
                             <div class="col-lg-7 col-md-8">
                                 <div class="bar-wrapper">
                                     <div class="select-text">
-                                        <span>Showing 1–11 of 23 Results</span>
+                                        <span>Showing {{ count($products) }} of {{ $products->total() }} Results</span>
                                     </div>
                                     <div class="shop-select">
                                         <select name="select" id="shop-select-one">

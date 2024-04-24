@@ -16,7 +16,7 @@ class TemplateOneController extends Controller
     //Template One All Product
     public function TemplateOneAllProduct()
     {
-        $products = Product::where('status', '1')->orderBy('product_name', 'ASC')->paginate(12);
+        $products = Product::where('status', '1')->orderBy('product_name', 'ASC')->paginate(5);
         return view('frontend.template_one.product.template_one_all_product', compact('products'));
     }
 
@@ -59,7 +59,7 @@ class TemplateOneController extends Controller
     public function TemplateOneContact()
     {
         $sites = Sites::find(1);
-        return view('frontend.template_one.contact.contact_store',compact('sites'));
+        return view('frontend.template_one.contact.contact_store', compact('sites'));
     }
 
     //Template One Contact Store
@@ -116,4 +116,36 @@ class TemplateOneController extends Controller
         return back()->with("status", "Message Send Successfully");
 
     }
+
+    //ProductSearch
+    public function ProductSearch(Request $request)
+    {
+
+        $request->validate(['search' => "required"]);
+
+        $item = $request->search;
+
+        // $categories = Category::orderBy('category_name', 'ASC')->get();
+
+        $products = Product::where('product_name', 'LIKE', "%$item%")
+            ->orWhere('short_desc', "LIKE", "%$item%")
+            ->paginate(12);
+
+        return view('frontend.template_one.search.product_search', compact('products', 'item'));
+
+    }
+
+    // //Advance Search
+    // public function SearchProduct(Request $request)
+    // {
+
+    //     $request->validate(['search' => "required"]);
+
+    //     $item = $request->search;
+
+    //     $products = Product::where('product_name', 'LIKE', "%$item%")->select('product_name', 'product_slug', 'product_image', 'id')->limit(8)->get();
+
+    //     return view('frontend.template_one.search.advanced_search', compact('products'));
+
+    // }
 }

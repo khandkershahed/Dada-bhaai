@@ -12,24 +12,34 @@
                             </div>
                         </div>
                         <div class="search--header__middle h1search--header__middle">
-                            <form class="search--header__form position-relative" action="#">
+
+                            <form  class="search--header__form position-relative" action="{{ route('product.search') }}" method="POST">
+
+                                @csrf
+
                                 <div class="header--search__box">
+
                                     <input class="header--search__query" type="text"
-                                        placeholder="Search For Products..." />
+                                        placeholder="Search For Products..." required
+                                         autocomplete="off" id="search" name="search"  />
                                     <button class="header--search__btn">
                                         <i class="icofont-search-2"></i>
                                     </button>
+
+                                    {{-- <div id="searchProducts"></div> --}}
                                 </div>
-                                <div class="header--search__cate">
+
+                                
+
+                                {{-- <div class="header--search__cate">
                                     <select name="header-search" id="header--search__main">
-                                        <option value="1">All Categories</option>
-                                        <option value="1">Lamps & Lighting</option>
-                                        <option value="1">Mattress & Bedding</option>
-                                        <option value="1">Housekeeping</option>
-                                        <option value="1">Showpiece & Wall Art</option>
+                                        <option selected >All Categories</option>
                                     </select>
-                                </div>
+                                </div> --}}
+                                
                             </form>
+
+                            <div id="searchProducts"></div>
                         </div>
 
                         <div class="cart--header__middle d-none d-md-block">
@@ -387,7 +397,8 @@
 
                                                     @forelse ($categorys as $category)
                                                         <li>
-                                                            <a href="">{{ $category['category']['category_name'] }}</a>
+                                                            <a
+                                                                href="">{{ $category['category']['category_name'] }}</a>
                                                         </li>
                                                     @empty
                                                         <p>No Category Avaiable</p>

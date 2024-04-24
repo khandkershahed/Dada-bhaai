@@ -88,6 +88,10 @@ Route::controller(TemplateOneController::class)->group(function () {
     Route::get('/user-contact', 'TemplateOneContact')->name('template_one.contact');
     Route::post('/user-contact/send', 'TemplateOneContactStore')->name('template_one.contact.store');
 
+    //Product Search
+    Route::post('/search', 'ProductSearch')->name('product.search');
+    // Route::post('/search-product', 'SearchProduct');
+
 });
 //Cart Controller
 Route::controller(CartController::class)->group(function () {
