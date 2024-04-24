@@ -59,7 +59,7 @@
                                 <th>Name</th>
                                 <th>Category</th>
                                 <th>Price</th>
-                                <th>Discount Price</th>
+                                <th>Dis Price</th>
                                 <th>Start Date</th>
                                 <th>End Date</th>
                                 <th>Status</th>
@@ -77,7 +77,7 @@
                                     </td>
 
                                     <td>{{ $offer->name }}</td>
-                                    <td>{{ $offer->offer_category }}</td>
+                                    <td>{{ $offer['category']['offer_category_name'] }}</td>
                                     <td>{{ $offer->price }}</td>
                                     <td>{{ $offer->discount_price }}</td>
                                     <td>{{ $offer->start_date }}</td>
@@ -90,7 +90,7 @@
                                         @endif
                                     </td>
 
-                                    <td>
+                                    <td style="width: 70px;">
 
                                         @if ($offer->status == 1)
                                             <a href="{{ route('offer.inactive', $offer->id) }}" title="Inactive"><i
@@ -112,8 +112,7 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header" style="background: #6196A6;height: 50px;">
                                                         <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">Edit
-                                                            Offer
-                                                            Category</h1>
+                                                            Offer</h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
@@ -144,13 +143,23 @@
                                                                 <div class="col-6 mb-3">
 
                                                                     <div class="form-group mb-3">
-                                                                        <label for="" class="mb-2">Offer
-                                                                            Category</label>
-                                                                        <input type="text" name="offer_category"
+                                                                        <label for="" class="mb-2">Offer Category
+                                                                            Name</label>
+                                                                        <select name="offer_category_id"
                                                                             class="form-control form-control-sm form-control-solid"
-                                                                            placeholder="Offer Category"
-                                                                            value="{{ $offer->offer_category }}"
-                                                                            autocomplete="off">
+                                                                            id="">
+
+                                                                            <option selected disabled>Choose Category Name
+                                                                            </option>
+
+                                                                            @foreach ($offercats as $offercat)
+                                                                                <option value="{{ $offercat->id }}"
+                                                                                    {{ $offer->offer_category_id == $offercat->id ? 'selected' : '' }}>
+                                                                                    {{ $offercat->offer_category_name }}
+                                                                                </option>
+                                                                            @endforeach
+
+                                                                        </select>
                                                                     </div>
 
                                                                 </div>
@@ -159,7 +168,7 @@
 
                                                                     <div class="form-group mb-3">
                                                                         <label for="" class="mb-2">Price</label>
-                                                                        <input type="text" name="price"
+                                                                        <input type="number" name="price"
                                                                             class="form-control form-control-sm form-control-solid"
                                                                             placeholder="Price" value="{{ $offer->price }}"
                                                                             autocomplete="off">
@@ -172,7 +181,7 @@
                                                                     <div class="form-group mb-3">
                                                                         <label for="" class="mb-2">Discount
                                                                             Price</label>
-                                                                        <input type="text" name="discount_price"
+                                                                        <input type="number" name="discount_price"
                                                                             class="form-control form-control-sm form-control-solid"
                                                                             placeholder="Discount Price"
                                                                             value="{{ $offer->discount_price }}"
@@ -223,11 +232,11 @@
                                                                         <label for="" class="mb-2">Image</label>
 
                                                                         <input type="file" autocomplete="off"
-                                                                            id="image" name="offer_image"
-                                                                            class="form-control form-control-sm border-1 mb-2">
+                                                                            id="" name="offer_image"
+                                                                            class="form-control form-control-sm border-1 mb-2 image">
 
                                                                         <img src="{{ asset('storage/offer_image/' . $offer->offer_image) }}"
-                                                                            style="width:73px" id="showImage"
+                                                                            style="width:73px" class="showImage"
                                                                             alt="">
                                                                     </div>
                                                                 </div>
@@ -297,11 +306,18 @@
                             <div class="col-6 mb-3">
 
                                 <div class="form-group mb-3">
-                                    <label for="" class="mb-2">Offer Category</label>
-                                    <input type="text" name="offer_category"
-                                        class="form-control form-control-sm form-control-solid"
-                                        placeholder="Offer Category" value="{{ old('offer_category') }}"
-                                        autocomplete="off">
+                                    <label for="" class="mb-2">Offer Category Name</label>
+                                    <select name="offer_category_id"
+                                        class="form-control form-control-sm form-control-solid" id="">
+
+                                        <option selected disabled>Choose Category Name</option>
+
+                                        @foreach ($offercats as $offercat)
+                                            <option value="{{ $offercat->id }}">{{ $offercat->offer_category_name }}
+                                            </option>
+                                        @endforeach
+
+                                    </select>
                                 </div>
 
                             </div>
@@ -310,7 +326,7 @@
 
                                 <div class="form-group mb-3">
                                     <label for="" class="mb-2">Price</label>
-                                    <input type="text" name="price"
+                                    <input type="number" name="price"
                                         class="form-control form-control-sm form-control-solid" placeholder="Price"
                                         value="{{ old('price') }}" autocomplete="off">
                                 </div>
@@ -321,7 +337,7 @@
 
                                 <div class="form-group mb-3">
                                     <label for="" class="mb-2">Discount Price</label>
-                                    <input type="text" name="discount_price"
+                                    <input type="number" name="discount_price"
                                         class="form-control form-control-sm form-control-solid"
                                         placeholder="Discount Price" value="{{ old('discount_price') }}"
                                         autocomplete="off">
@@ -365,10 +381,10 @@
 
                                     <label for="" class="mb-2">Image</label>
 
-                                    <input type="file" autocomplete="off" id="image" name="offer_image"
-                                        class="form-control form-control-sm border-1 form-control-solid mb-2">
+                                    <input type="file" autocomplete="off" id="" name="offer_image"
+                                        class="form-control form-control-sm border-1 form-control-solid mb-2 image">
 
-                                    <img src="{{ url('upload/no_image.jpg') }}" style="width:73px" id="showImage"
+                                    <img src="{{ url('upload/no_image.jpg') }}" style="width:73px" class="showImage"
                                         alt="">
                                 </div>
                             </div>
@@ -390,10 +406,10 @@
     {{-- Image Show  --}}
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#image').change(function(e) {
+            $('.image').change(function(e) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
-                    $('#showImage').attr('src', e.target.result);
+                    $('.showImage').attr('src', e.target.result);
                 }
                 reader.readAsDataURL(e.target.files['0']);
             });
@@ -429,7 +445,7 @@
                         required: true,
                     },
 
-                    offer_category: {
+                    offer_category_id: {
                         required: true,
                     },
 
@@ -454,7 +470,7 @@
                         required: 'Please Enter Offer Name',
                     },
 
-                    offer_category: {
+                    offer_category_id: {
                         required: 'Please Enter Category Name',
                     },
 

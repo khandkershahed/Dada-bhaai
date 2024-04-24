@@ -14,15 +14,9 @@ return new class extends Migration
         Schema::create('offer_categories', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name')->nullable();
-            $table->string('offer_category')->nullable();
-            $table->string('price')->nullable();
-            $table->string('discount_price')->nullable();
-            $table->date('start_date')->nullable();
-            $table->date('end_date')->nullable();
-            $table->string('offer_image')->nullable();
-            $table->text('description')->nullable();
-            $table->string('status')->default(0);
+            $table->string('offer_category_name');
+            $table->string('offer_category_image')->nullable();
+            $table->string('status')->default(1);
 
             $table->timestamps();
         });

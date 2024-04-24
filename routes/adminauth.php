@@ -195,14 +195,22 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     });
 
     //Offer Category Section
-    Route::controller(OfferCategoryController::class)->prefix('offer-category')->group(function () {
+    Route::controller(OfferCategoryController::class)->prefix('offer')->group(function () {
 
         Route::get('/all', 'AllOffer')->name('all.offer');
         Route::post('/store', 'StoreOffer')->name('store.offer');
         Route::post('/update', 'UpdateOffer')->name('update.offer');
         Route::get('/delete/{id}', 'DeleteOffer')->name('delete.offer');
 
+        Route::get('/category-all', 'AllOfferCategory')->name('all.offer.category');
+        Route::post('/category-store', 'StoreOfferCategory')->name('store.offer.category');
+        Route::post('/category-update', 'UpdateOfferCategory')->name('update.offer.category');
+        Route::get('/category-delete/{id}', 'DeleteOfferCategory')->name('delete.offer.category');
+
         //Active Or Inactive
+        Route::get('/category-inactive/{id}', 'InactiveOfferCategory')->name('offer.inactive.category');
+        Route::get('/category-active/{id}', 'ActiveOfferCategory')->name('offer.active.category');
+
         Route::get('/offer-inactive/{id}', 'InactiveOffer')->name('offer.inactive');
         Route::get('/offer-active/{id}', 'ActiveOffer')->name('offer.active');
     });

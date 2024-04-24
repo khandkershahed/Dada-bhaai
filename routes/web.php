@@ -84,6 +84,10 @@ Route::controller(TemplateOneController::class)->group(function () {
     //Child Category
     Route::get('/product/childcategory/{id}/{childcategory_slug}', 'ChilldCategoryRelatedProductOne');
 
+    //Contact
+    Route::get('/user-contact', 'TemplateOneContact')->name('template_one.contact');
+    Route::post('/user-contact/send', 'TemplateOneContactStore')->name('template_one.contact.store');
+
 });
 //Cart Controller
 Route::controller(CartController::class)->group(function () {

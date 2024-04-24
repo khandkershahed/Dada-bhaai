@@ -175,13 +175,23 @@
                             </a>
                         </div>
 
-                        {{-- Offer Category --}}
+                        {{-- Offer --}}
                         <div class="menu-item">
                             <a class="menu-link" href="{{ route('all.offer') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">Offer</span>
+                            </a>
+                        </div>
+
+                        {{-- Offer Category --}}
+                        <div class="menu-item">
+                            <a class="menu-link" href="{{ route('all.offer.category') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Offer Category</span>
                             </a>
                         </div>
 

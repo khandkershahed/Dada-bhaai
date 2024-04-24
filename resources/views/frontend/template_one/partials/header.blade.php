@@ -477,7 +477,7 @@
                                     <a href="about.html">About Us</a>
                                 </li>
                                 <li>
-                                    <a href="contact.html">Contact Us</a>
+                                    <a href="{{ route('template_one.contact') }}">Contact Us</a>
                                 </li>
                             </ul>
                         </nav>
