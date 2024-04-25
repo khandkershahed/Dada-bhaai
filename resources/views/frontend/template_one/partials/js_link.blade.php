@@ -82,6 +82,9 @@
     })
 </script>
 
+@yield('catscripts')
+@yield('childcatscripts')
+
 {{-- AddToCartOne --}}
 <script>
     function addToCartOne() {

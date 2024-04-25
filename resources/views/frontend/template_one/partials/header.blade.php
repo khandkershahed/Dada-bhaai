@@ -13,15 +13,16 @@
                         </div>
                         <div class="search--header__middle h1search--header__middle">
 
-                            <form  class="search--header__form position-relative" action="{{ route('product.search') }}" method="POST">
+                            <form class="search--header__form position-relative" action="{{ route('product.search') }}"
+                                method="POST">
 
                                 @csrf
 
                                 <div class="header--search__box">
 
                                     <input class="header--search__query" type="text"
-                                        placeholder="Search For Products..." required
-                                         autocomplete="off" id="search" name="search"  />
+                                        placeholder="Search For Products..." required autocomplete="off" id="search"
+                                        name="search" />
                                     <button class="header--search__btn">
                                         <i class="icofont-search-2"></i>
                                     </button>
@@ -29,14 +30,14 @@
                                     {{-- <div id="searchProducts"></div> --}}
                                 </div>
 
-                                
+
 
                                 {{-- <div class="header--search__cate">
                                     <select name="header-search" id="header--search__main">
                                         <option selected >All Categories</option>
                                     </select>
                                 </div> --}}
-                                
+
                             </form>
 
                             <div id="searchProducts"></div>

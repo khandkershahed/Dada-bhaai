@@ -16,7 +16,24 @@ class TemplateOneController extends Controller
     //Template One All Product
     public function TemplateOneAllProduct()
     {
-        $products = Product::where('status', '1')->orderBy('product_name', 'ASC')->paginate(5);
+        $products = Product::query();
+
+        if (!empty($_GET['sortBy'])) {
+
+            if ($_GET['sortBy'] == 'nameAtoZ') {
+                $products = $products->where(['status' => 1])->orderBy('product_name', 'ASC')->paginate(12);
+
+            } elseif ($_GET['sortBy'] == 'nameZtoA') {
+
+                $products = $products->where(['status' => 1])->orderBy('product_name', 'DESC')->paginate(12);
+
+            } else {
+                $products = $products->where('status', 1)->orderBy('id', 'DESC')->paginate(12);
+            }
+        } else {
+            $products = Product::where('status', '1')->orderBy('product_name', 'ASC')->paginate(12);
+        }
+
         return view('frontend.template_one.product.template_one_all_product', compact('products'));
     }
 
@@ -37,22 +54,67 @@ class TemplateOneController extends Controller
         return view('frontend.template_one.category.home_all_category', compact('categorys'));
     }
 
-    //Category Related Product One
-    public function CategoryRelatedProductOne($id, $category_slug)
+    //Category Wise Product One
+    public function CategoryRelatedProductOne(Request $request, $id, $category_slug)
     {
-        $products = Product::where('status', '1')->where('category_id', $id)->paginate(12);
+
+        $sort = '';
+
+        if ($request->sort != null) {
+            $sort = $request->sort;
+        }
+
+        if ($id == null) {
+            return redirect()->route('index');
+        } else {
+            if ($sort == 'nameAtoZ') {
+                $products = Product::where(['status' => 1, 'category_id' => $id])->orderBy('product_name', 'ASC')->paginate(12);
+            } elseif ($sort == 'nameZtoA') {
+                $products = Product::where(['status' => 1, 'category_id' => $id])->orderBy('product_name', 'DESC')->paginate(12);
+            } else {
+                $products = Product::where('status', '1')->where('category_id', $id)->paginate(12);
+
+            }
+        }
+
         $catwiseproduct = Category::find($id);
 
-        return view('frontend.template_one.category.category_wise_product', compact('products', 'catwiseproduct'));
+        $route = 'product/category';
+        $catId = $id;
+        $catSlug = $category_slug;
+
+        return view('frontend.template_one.category.category_wise_product', compact('products', 'catwiseproduct', 'route', 'catId', 'catSlug', 'sort'));
     }
 
-    //Child Category Related Product One
-    public function ChilldCategoryRelatedProductOne($id, $childcategory_slug)
+    //Child Category Wise Product One
+    public function ChilldCategoryRelatedProductOne(Request $request, $id, $childcategory_slug)
     {
-        $products = Product::where('status', '1')->where('childcategory_id', $id)->paginate(12);
+
+        $sort = '';
+
+        if ($request->sort != null) {
+            $sort = $request->sort;
+        }
+
+        if ($id == null) {
+            return redirect()->route('index');
+        } else {
+            if ($sort == 'nameAtoZ') {
+                $products = Product::where(['status' => 1, 'childcategory_id' => $id])->orderBy('product_name', 'ASC')->paginate(12);
+            } elseif ($sort == 'nameZtoA') {
+                $products = Product::where(['status' => 1, 'childcategory_id' => $id])->orderBy('product_name', 'DESC')->paginate(12);
+            } else {
+                $products = Product::where('status', '1')->where('childcategory_id', $id)->paginate(12);
+            }
+        }
+
+        $route = 'product/childcategory';
+        $childcatId = $id;
+        $childcatSlug = $childcategory_slug;
+
         $childcatwiseproduct = ChildCategory::find($id);
 
-        return view('frontend.template_one.childcategory.childcategory_wise_product', compact('products', 'childcatwiseproduct'));
+        return view('frontend.template_one.childcategory.childcategory_wise_product', compact('products', 'childcatwiseproduct', 'childcatId', 'childcatSlug', 'sort', 'route'));
     }
 
     //Contact
@@ -148,4 +210,19 @@ class TemplateOneController extends Controller
     //     return view('frontend.template_one.search.advanced_search', compact('products'));
 
     // }
+
+    //shopFilter
+    public function shopFilter(Request $request)
+    {
+        // dd($request->all());
+        $data = $request->all();
+
+        //filter sortBy
+        $sortByUrl = "";
+        if (!empty($data['sortBy'])) {
+            $sortByUrl .= '&sortBy=' . $data['sortBy'];
+        }
+
+        return redirect()->route('template.one.all_product', $sortByUrl);
+    }
 }

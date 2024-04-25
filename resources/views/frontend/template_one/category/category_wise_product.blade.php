@@ -139,6 +139,7 @@
                     </div>
                     <div class="border-b">
                         <div class="row">
+                            
                             <div class="col-lg-5 col-md-4">
                                 <div class="shop-bar d-flex align-items-center">
                                     <h4 class="f-800 cod__black-color">Category</h4>
@@ -151,22 +152,37 @@
                                     </nav>
                                 </div>
                             </div>
-                            <div class="col-lg-7 col-md-8">
-                                <div class="bar-wrapper">
-                                    <div class="select-text">
-                                        <span>Showing {{ count($products) }} of {{ $products->total() }} Results</span>
-                                    </div>
-                                    <div class="shop-select">
-                                        <select name="select" id="shop-select-one">
-                                            <option value="1">Deafult Sorting</option>
-                                            <option value="2">Deafult Sorting</option>
-                                            <option value="3">Deafult Sorting</option>
-                                            <option value="4">Deafult Sorting</option>
+
+                            {{-- New Section  --}}
+                            <div class="col-lg-4 col-md-2">
+                                <div class="text-center" style="margin-top: 10px;">
+                                    <span>Showing {{ count($products) }} of {{ $products->total() }} Results</span>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="">
+
+                                    <div class="">
+                                        <select name="" id="sortBy">
+                                            <option selected disabled>SortBy Product</option>
+
+                                            <option value="nameAtoZ" {{ $sort == 'nameAtoZ' ? 'selected' : '' }}>Product
+                                                Name: A to Z
+                                            </option>
+
+                                            <option value="nameZtoA" {{ $sort == 'nameZtoA' ? 'selected' : '' }}>Product
+                                                Name: Z to A
+                                            </option>
+
                                         </select>
                                     </div>
 
                                 </div>
                             </div>
+
+                            {{-- New Setion  --}}
+
                         </div>
                     </div>
 
@@ -296,4 +312,16 @@
     </div> --}}
 
     <!-- Subscribe End -->
+@endsection
+
+@section('catscripts')
+    <script>
+        $('#sortBy').change(function(e) {
+            e.preventDefault();
+            let sortBy = $('#sortBy').val();
+            window.location = "{{ url('' . $route . '') }}/{{ $catId }}/{{ $catSlug }}?sort=" +
+                sortBy;
+
+        });
+    </script>
 @endsection
