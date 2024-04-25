@@ -33,11 +33,25 @@
                             <div class="col-lg-12 col-md-6 order-1 order-lg-1">
                                 <div class="pro-img">
 
+
+
                                     <div class="tab-content" id="myTabContent">
 
 
+                                        @forelse ($multiImages as $key => $multiImage)
+                                            <div class="tab-pane fade show {{ $key == 0 ? 'active' : '' }}"
+                                                id="multiImg{{ $multiImage->id }}" role="tabpanel"
+                                                aria-labelledby="home-tab5">
+                                                <img src="{{ asset($multiImage->multi_image) }}" class="img-fluid mb-2"
+                                                    alt="" style="width:100%; height: 400px;" />
+                                            </div>
+                                        @empty
 
-                                        <div class="tab-pane fade show active" id="home5" role="tabpanel"
+                                            <img src="{{ asset('upload/no_image.jpg') }}" class="img-fluid mb-2"
+                                                alt="" style="width:100%; height: 400px;" />
+                                        @endforelse
+
+                                        {{-- <div class="tab-pane fade show active" id="home5" role="tabpanel"
                                             aria-labelledby="home-tab5">
                                             <img src="{{ asset('frontend/template_one/assets/img/allproducts/pro-details-small-1.jpg') }}"
                                                 class="img-fluid mb-2" alt="" style="width:100%; height: 400px;" />
@@ -53,23 +67,28 @@
                                             aria-labelledby="contact-tab5">
                                             <img src="{{ asset('frontend/template_one/assets/img/allproducts/pro-details-small-3.jpg') }}"
                                                 class="img-fluid mb-2" alt="" style="width:100%; height: 400px;" />
-                                        </div>
+                                        </div> --}}
 
                                     </div>
 
                                     <ul class="nav" id="myTab1" role="tablist">
 
-                                        {{-- @foreach ($multiImages as $key => $multiImage)
+                                        @forelse ($multiImages as $key => $multiImage)
                                             <li class="nav-item">
-                                                <a class="nav-link {{ $key == 0 ? 'active' : '' }}" id="home-tab5" data-toggle="tab" href="#multiImage{{ $multiImage->multi_image }}"
-                                                    role="tab" aria-controls="home5" aria-selected="true">
-                                                    <img src="{{ asset($multiImage->multi_image) }}"
-                                                        class="img-fluid" alt="" />
+                                                <a class="nav-link {{ $key == 0 ? 'active' : '' }}" id="home-tab5"
+                                                    data-toggle="tab" href="#multiImg{{ $multiImage->id }}" role="tab"
+                                                    aria-controls="home5" aria-selected="true">
+                                                    <img src="{{ asset($multiImage->multi_image) }}" class="img-fluid"
+                                                        alt=""
+                                                        style="width: 75px;height: 75px; margin-bottom: 10px;" />
                                                 </a>
                                             </li>
-                                        @endforeach --}}
+                                        @empty
+                                            <img src="{{ asset('upload/no_image.jpg') }}" class="img-fluid" alt=""
+                                                style="width: 75px;height: 75px; margin-bottom: 10px;" />
+                                        @endforelse
 
-                                        <li class="nav-item">
+                                        {{-- <li class="nav-item">
                                             <a class="nav-link active" id="home-tab5" data-toggle="tab" href="#home5"
                                                 role="tab" aria-controls="home5" aria-selected="true">
                                                 <img src="{{ asset('frontend/template_one/assets/img/allproducts/pro-details-small-1.jpg') }}"
@@ -91,7 +110,7 @@
                                                 <img src="{{ asset('frontend/template_one/assets/img/allproducts/pro-details-small-3.jpg') }}"
                                                     class="img-fluid" alt="" />
                                             </a>
-                                        </li>
+                                        </li> --}}
 
                                     </ul>
 
@@ -151,8 +170,8 @@
                                             <label class="mb-0">Quantity:</label>
                                             <div class="number d-flex align-items-center">
 
-                                                <input type="number" class="mb-0  border-1" name=""
-                                                    value="1" min="1" id="dqty" style="width: 50px" />
+                                                <input type="number" class="mb-0  border-1" name="" value="1"
+                                                    min="1" id="dqty" style="width: 50px" />
 
                                             </div>
                                         </div>
@@ -185,9 +204,10 @@
                                     <div class="d-flex align-items-center">
 
                                         <input type="hidden" id="oneproduct_id" value="{{ $product->id }}">
-                                        
 
-                                        <button type="submit" onclick="addToCartOne()" class="cart-button w-100 mt-0">Add Cart</button>
+
+                                        <button type="submit" onclick="addToCartOne()" class="cart-button w-100 mt-0">Add
+                                            Cart</button>
 
                                         <a href="#" class="cart-button w-100 ml-3 mt-0">Booking</a>
 

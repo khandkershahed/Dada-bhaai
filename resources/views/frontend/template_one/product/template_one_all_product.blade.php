@@ -56,16 +56,22 @@
                                     @endforelse
                                 </ul>
                             </div>
+
                             <div class="slider-range mt-50">
+
                                 <div class="side-title mb-30">
                                     <h6>Filter By Price</h6>
                                 </div>
+
                                 <div id="slider-range"></div>
+
                                 <p>
                                     <label for="amount">Price :</label>
                                     <input type="text" id="amount" readonly>
                                 </p>
+
                             </div>
+
                             <div class="side-color mt-45">
                                 <div class="side-title">
                                     <h6>Color</h6>

@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\Frontend\CartController;
-use App\Http\Controllers\Frontend\TemplateOneController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\TemplateOneController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -62,8 +62,6 @@ Route::controller(IndexController::class)->group(function () {
     //About Page
     Route::get('/about', 'AboutPage')->name('about.page');
 
-    
-
 });
 
 // Template One Controller
@@ -73,7 +71,7 @@ Route::controller(TemplateOneController::class)->group(function () {
 
     //All Product
     Route::get('/all-product', 'TemplateOneAllProduct')->name('template.one.all_product');
-    Route::post('/shop-filter','shopFilter')->name('shop.filter');
+    Route::post('/shop-filter', 'shopFilter')->name('shop.filter');
 
     //Brand Wise
     Route::get('/product/brand/{id}/{brand_slug}', 'BrandRelatedProductOne');
