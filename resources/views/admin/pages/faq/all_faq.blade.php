@@ -49,12 +49,16 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
+
+                    <a href="" class="btn btn-light-danger btn-sm" id="deleteAllSelectedRecord">Delete Select</a>
                     <!--begin::Table-->
 
                     <table id="kt_datatable_example_5" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
-                                <th style="width: 30px;">#</th>
+                                <th style="width: 40px;"><input type="checkbox" autocomplete="off" name=""
+                                        id="select_all_ids"></th>
+                                <th style="width: 30px;">No</th>
                                 <th>Category</th>
                                 <th>Question</th>
                                 <th>Answer</th>
@@ -65,7 +69,10 @@
                         </thead>
                         <tbody>
                             @foreach ($faqs as $key => $faq)
-                                <tr>
+                                <tr id="faq_ids{{ $faq->id }}">
+
+                                    <td><input type="checkbox" name="ids" class="checkbox_ids" id=""
+                                            value="{{ $faq->id }}"></td>
 
                                     <td>{{ $key + 1 }}</td>
 
@@ -169,8 +176,10 @@
 
                                                                 <div class="col-12">
                                                                     <div class="form-group mb-3">
-                                                                        <label for="" class="mb-2">Answer</label>
-                                                                        <textarea class="form-control form-control-sm @error('answer') is-invalid @enderror" placeholder="Answer" name="answer">{{ $faq->answer }}</textarea>
+                                                                        <label for=""
+                                                                            class="mb-2">Answer</label>
+                                                                        <textarea class="form-control form-control-sm @error('answer') is-invalid @enderror" placeholder="Answer"
+                                                                            name="answer">{{ $faq->answer }}</textarea>
                                                                         @error('answer')
                                                                             <span class="text-danger"> {{ $message }}
                                                                             </span>
@@ -249,8 +258,8 @@
                                 <div class="form-group mb-3">
                                     <label for="" class="mb-2">Order</label>
                                     <input type="number" name="order"
-                                        class="form-control form-control-sm @error('order') is-invalid @enderror" placeholder="E.g:100"
-                                        autocomplete="off">
+                                        class="form-control form-control-sm @error('order') is-invalid @enderror"
+                                        placeholder="E.g:100" autocomplete="off">
                                     @error('order')
                                         <span class="text-danger"> {{ $message }} </span>
                                     @enderror
@@ -274,7 +283,8 @@
                             <div class="col-12">
                                 <div class="form-group mb-3">
                                     <label for="" class="mb-2">Answer</label>
-                                    <textarea class="form-control form-control-sm @error('answer') is-invalid @enderror" placeholder="Answer" name="answer"></textarea>
+                                    <textarea class="form-control form-control-sm @error('answer') is-invalid @enderror" placeholder="Answer"
+                                        name="answer"></textarea>
                                     @error('answer')
                                         <span class="text-danger"> {{ $message }} </span>
                                     @enderror
@@ -295,7 +305,48 @@
 
     <!-- Button trigger modal -->
 
+    <script>
+        $(function(e) {
 
+            $("#select_all_ids").click(function() {
+                $('.checkbox_ids').prop('checked', $(this).prop('checked'));
+            });
+
+            $('#deleteAllSelectedRecord').click(function(e) {
+
+                e.preventDefault();
+                var all_ids = [];
+
+                $('input:checkbox[name=ids]:checked').each(function() {
+
+                    all_ids.push($(this).val());
+
+                });
+
+                $.ajax({
+
+                    url: "{{ route('faq.select.delete') }}",
+                    type: "GET",
+                    data: {
+                        ids: all_ids,
+                        _token: '{{ csrf_token() }}'
+                    },
+
+                    success: function(response) {
+                        $.each(all_ids, function(key, val) {
+
+                            $('#faq_ids' + val).remove();
+                            window.location.reload();
+
+                        })
+
+                    }
+                });
+
+            });
+
+        });
+    </script>
 
     {{-- Data Table  --}}
     <script>

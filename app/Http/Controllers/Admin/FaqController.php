@@ -79,7 +79,7 @@ class FaqController extends Controller
             $faq->update([
 
                 'category' => $request->category,
-                
+
                 'order' => ($faq->order != $request->order) ? $request->order : $faq->order,
 
                 'question' => $request->question,
@@ -128,4 +128,17 @@ class FaqController extends Controller
 
         return redirect()->back();
     }
+
+    //FaqSelectDelete
+    public function FaqSelectDelete(Request $request)
+    {
+
+        $ids = $request->ids;
+        Faq::whereIn('id',$ids)->delete();
+
+        toastr()->success('Faq Delete Successfully!!!');
+        
+        return redirect()->back();
+    }
+
 }

@@ -9,4 +9,9 @@ class OfferCategory extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function offer()
+    {
+        return $this->hasOne(Offer::class);
+    }
 }

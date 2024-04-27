@@ -55,6 +55,7 @@ return new class extends Migration
             $table->json('industry')->nullable();
             $table->json('solution')->nullable();
             $table->string('refurbished')->default('1');
+            $table->string('feature');
 
             $table->string('price_status')->nullable();
             

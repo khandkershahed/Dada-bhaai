@@ -87,6 +87,7 @@ class ProductController extends Controller
             'parent_id' => $request->parent_id,
             'child_id' => $request->child_id,
             'refurbished' => $request->refurbished,
+            'feature' => $request->feature,
             'deal' => $request->deal,
 
             'short_desc' => $request->short_desc,
@@ -221,6 +222,7 @@ class ProductController extends Controller
                 'parent_id' => $request->parent_id,
                 'child_id' => $request->child_id,
                 'refurbished' => $request->refurbished,
+                'feature' => $request->feature,
                 'deal' => $request->deal,
 
                 'short_desc' => $request->short_desc,

@@ -556,6 +556,21 @@
                                                 </div>
                                             </div>
 
+                                            {{-- Feature --}}
+                                            <div class="col-lg-2 mb-3">
+                                                <label class="form-label"></label>
+                                                <div class="form-check form-check-custom form-check-solid mb-5">
+                                                    <input class="form-check-input me-3" name="feature"
+                                                        type="checkbox" value="1"
+                                                        id="kt_docs_formvalidation_checkbox_option_1" />
+                                                    <label class="form-check-label"
+                                                        for="kt_docs_formvalidation_checkbox_option_1">
+                                                        <div class="fw-bolder text-gray-800">Is
+                                                            Feature</div>
+                                                    </label>
+                                                </div>
+                                            </div>
+
                                             {{-- refurbished --}}
                                             <div class="col-lg-2 mb-3">
                                                 <label class="form-label"></label>

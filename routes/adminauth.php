@@ -265,6 +265,8 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
         //Active Or Inactive
         Route::get('/faq-inactive/{id}', 'InactiveFaq')->name('faq.inactive');
         Route::get('/faq-active/{id}', 'ActiveFaq')->name('faq.active');
+
+        Route::get('/select', 'FaqSelectDelete')->name('faq.select.delete');
     });
 
     //Smtp Section

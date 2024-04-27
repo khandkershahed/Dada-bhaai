@@ -586,8 +586,26 @@
                                                 </div>
                                             </div>
 
+                                            {{-- Feature --}}
+                                            <div class="col-lg-3 col-12 mb-3">
+                                                <label class="form-label"></label>
+                                                <div class="form-check form-check-custom form-check-solid mb-5">
+
+                                                    <input class="form-check-input me-3" name="feature"
+                                                        type="checkbox" value="1"
+                                                        {{ $editProduct->feature == '1' ? 'checked' : '' }}
+                                                        id="kt_docs_formvalidation_checkbox_option_1" />
+
+                                                    <label class="form-check-label"
+                                                        for="kt_docs_formvalidation_checkbox_option_1">
+                                                        <div class="fw-bolder text-gray-800">Is
+                                                            Feature</div>
+                                                    </label>
+                                                </div>
+                                            </div>
+
                                             {{-- refurbished --}}
-                                            <div class="col-12 mb-3">
+                                            <div class="col-lg-3 col-12 mb-3">
                                                 <label class="form-label"></label>
                                                 <div class="form-check form-check-custom form-check-solid mb-5">
 
@@ -617,7 +635,7 @@
                                                 </div>
                                             </div> --}}
 
-                                            <div class="col-4 mb-3" id="">
+                                            <div class="col-lg-3 col-4 mb-3" id="">
                                                 <label class="form-label">Deal
                                                     Price</label>
                                                 <input type="text"

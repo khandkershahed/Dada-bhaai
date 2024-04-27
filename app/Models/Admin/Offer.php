@@ -14,4 +14,6 @@ class Offer extends Model
     {
         return $this->belongsTo(OfferCategory::class,'offer_category_id','id');
     }
+
+    
 }
