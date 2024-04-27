@@ -4,12 +4,9 @@
     <div class="product shop-page pt-30 pb-80">
         <div class="container">
             <div class="row">
-
                 {{-- Brand  --}}
                 <div class="col-lg-3 order-2 order-lg-1">
-
                     @php
-
                         $brands = App\Models\Brand::where('status', '1')
                             ->orderBy('brand_name', 'ASC')
                             ->latest()
@@ -23,42 +20,131 @@
                             ->get();
 
                     @endphp
-
                     <div class="common-sidebar shop-banner-sidebar">
-                        <div class="common-cat">
+                        <div class="common-cat mt-4">
                             <div class="side-title">
                                 <h6>Brands</h6>
                             </div>
-                            <ul>
-                                @forelse ($brands as $brand)
-                                    <li><a
-                                            href="{{ url('product/brand/' . $brand->id . '/' . $brand->brand_slug) }}">{{ $brand->brand_name }}</a>
-                                    </li>
-                                @empty
-                                    <p>No Brand Avaiable</p>
-                                @endforelse
-                            </ul>
-                        </div>
-                        <div class="common-cat mt-4">
-                            <div class="side-title">
-                                <h6>Categories</h6>
+                            {{-- Brands Accordion --}}
+                            <div id="accordionBrands" class="accordion">
+                                <div class="card border-0 shadow-none mb-0">
+                                    {{-- Single Accordion Start --}}
+                                    <div class="card-header collapsed pl-0" data-toggle="collapse" data-parent="#accordion"
+                                        href="#collapseOneBrands">
+                                        <a class="card-title">
+                                            Ambrela
+                                        </a>
+                                    </div>
+                                    <div id="collapseOneBrands" class="collapse" data-parent="#accordion"
+                                        style="background-color: #f5f5f5;">
+                                        <div class="card-body p-2">
+                                            <a href="#" class="pl-3 text-muted">Ambrela Sub Brands</a>
+                                        </div>
+                                    </div>
+                                    {{-- Single Accordion End --}}
+                                    {{-- Multi Accordion Start --}}
+                                    <div class="card-header collapsed pl-0" data-toggle="collapse" data-parent="#accordion"
+                                        href="#collapseTwoBrands">
+                                        <a class="card-title">
+                                            Nike
+                                        </a>
+                                    </div>
+                                    <div id="collapseTwoBrands" class="collapse" data-parent="#accordion"
+                                        style="background-color: #f5f5f5;">
+                                        <div id="accordion2" class="accordion pl-3">
+                                            <div class="card border-0 shadow-none mb-0">
+                                                <div class="card-header collapsed pl-0" data-toggle="collapse"
+                                                    data-target="#collapseSubSubBrandOne">
+                                                    <a class="card-title">
+                                                        Nike Sub Brands
+                                                    </a>
+                                                </div>
+                                                <div id="collapseSubSubBrandOne" class="collapse" data-parent="#accordion2"
+                                                    style="background-color: #f5f5f5;">
+                                                    <div class="card-body p-2">
+                                                        <a href="#" class="pl-3 text-muted">Nike Sub Sub Brands 1</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     {{-- Multi Accordion End --}}
+                                </div>
                             </div>
-                            <ul>
+                            {{-- Brands Accordion End--}}
+                            {{-- <ul>
                                 @forelse ($categorys as $category)
                                     <li><a
                                             href="{{ url('product/category/' . $category->id . '/' . $category->category_slug) }}">{{ $category->category_name }}</a>
                                     </li>
                                 @empty
-                                    <p>No Category Avaiable</p>
+                                    <p class="mb-0">No Category Avaiable</p>
                                 @endforelse
-                            </ul>
+                            </ul> --}}
+                        </div>
+                        <div class="common-cat mt-4">
+                            <div class="side-title">
+                                <h6>Categories</h6>
+                            </div>
+                            <div id="accordion" class="accordion">
+                                <div class="card border-0 shadow-none mb-0">
+
+                                    <div class="card-header collapsed pl-0" data-toggle="collapse" data-parent="#accordion"
+                                        href="#collapseThree">
+                                        <a class="card-title">
+                                            Cosmetics
+                                        </a>
+                                    </div>
+                                    <div id="collapseThree" class="collapse" data-parent="#accordion"
+                                        style="background-color: #f5f5f5;">
+                                        <div class="card-body p-2">
+                                            <a href="#" class="pl-3 text-muted">Sub Category 1</a>
+                                        </div>
+                                    </div>
+                                    <div class="card-header collapsed pl-0" data-toggle="collapse" data-parent="#accordion"
+                                        href="#collapseFour">
+                                        <a class="card-title">
+                                            Electronics
+                                        </a>
+                                    </div>
+                                    <div id="collapseFour" class="collapse" data-parent="#accordion"
+                                        style="background-color: #f5f5f5;">
+                                        <div id="accordion2" class="accordion pl-3">
+                                            <div class="card border-0 shadow-none mb-0">
+                                                <div class="card-header collapsed pl-0" data-toggle="collapse"
+                                                    data-target="#collapseSubSubOne">
+                                                    <a class="card-title">
+                                                        Automotive & Motorbike
+                                                    </a>
+                                                </div>
+                                                <div id="collapseSubSubOne" class="collapse" data-parent="#accordion2"
+                                                    style="background-color: #f5f5f5;">
+                                                    <div class="card-body p-2">
+                                                        <a href="#" class="pl-3 text-muted">Sub Sub Category 1</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- <ul>
+                                @forelse ($categorys as $category)
+                                    <li><a
+                                            href="{{ url('product/category/' . $category->id . '/' . $category->category_slug) }}">{{ $category->category_name }}</a>
+                                    </li>
+                                @empty
+                                    <p class="mb-0">No Category Avaiable</p>
+                                @endforelse
+                            </ul> --}}
                         </div>
                         <div class="slider-range mt-50">
                             <div class="side-title mb-30">
                                 <h6>Filter By Price</h6>
                             </div>
                             <div id="slider-range"></div>
-                            <p>
+                            <p class="mb-0">
                                 <label for="amount">Price :</label>
                                 <input type="text" id="amount" readonly>
                             </p>
@@ -73,50 +159,25 @@
                                 </li>
                             </ul>
                         </div>
-
-                        {{-- <div class="side-size mt-50">
-                            <div class="side-title">
-                                <h6>Size</h6>
-                            </div>
-                            <ul class="mt-15">
-                                <li>
-                                    <a href="#">Small (2)</a>
-                                    <a href="#">Large (53)</a>
-                                </li>
-                                <li>
-                                    <a href="#">Extra Large (16)</a>
-                                    <a href="#">Medium (20)</a>
-                                </li>
-                                <li><a href="#">Extra Small (2)</a></li>
-                                <li><a href="#">Huge (53)</a></li>
-                            </ul>
-                        </div> --}}
-
                         <div class="common-tag mt-50">
                             <div class="side-title">
                                 <h6>Popular Tag</h6>
                             </div>
-
                             @php
-
                                 $tags = App\Models\Admin\Product::where('status', '1')
                                     ->orderBy('product_name', 'ASC')
                                     ->latest()
                                     ->limit(7)
                                     ->get();
-
                             @endphp
-
                             <ul class="mt-25 mb-15">
                                 @forelse ($tags as $tag)
                                     <li><a href="javascript:;">{{ $tag->tags }}</a></li>
                                 @empty
-                                    <p>No Tags Avaiable</p>
+                                    <p class="mb-0">No Tags Avaiable</p>
                                 @endforelse
                             </ul>
-
                         </div>
-
                     </div>
                 </div>
 
@@ -139,7 +200,7 @@
                     </div>
                     <div class="border-b">
                         <div class="row">
-                            
+
                             <div class="col-lg-5 col-md-4">
                                 <div class="shop-bar d-flex align-items-center">
                                     <h4 class="f-800 cod__black-color">Category</h4>
@@ -255,7 +316,8 @@
                                     <div class="product-action">
                                         <a href="#"><span class="lnr lnr-heart"></span></a>
                                         {{-- <a href="#"><span class="lnr lnr-eye"></span></a> --}}
-                                        <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"><span
+                                        <a
+                                            href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"><span
                                                 class="lnr lnr-cart"></span></a>
                                         <a href="#"><span class="lnr lnr-sync"></span></a>
                                     </div>
