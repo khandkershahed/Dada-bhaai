@@ -69,7 +69,10 @@
 
                                     @foreach ($brands as $brand)
                                         @php
-                                            $countBrand = App\Models\Admin\Product::where('brand_id', $brand->id)->get();
+                                            $countBrand = App\Models\Admin\Product::where(
+                                                'brand_id',
+                                                $brand->id,
+                                            )->get();
                                         @endphp
 
                                         <li style="margin-left: 15px;">
@@ -203,9 +206,9 @@
 
                                 {{-- New Section  --}}
                                 <div class="col-lg-4 col-md-2">
-                                    <div class="text-center" style="margin-top: 10px;">
+                                    {{-- <div class="text-center" style="margin-top: 10px;">
                                         <span>Showing {{ count($products) }} of {{ $products->total() }} Results</span>
-                                    </div>
+                                    </div> --}}
                                 </div>
 
                                 <div class="col-lg-3 col-md-6">

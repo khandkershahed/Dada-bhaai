@@ -106,6 +106,8 @@
 
             success: function(data) {
 
+                miniCart();
+
                 // Start Message 
                 const Toast = Swal.mixin({
                     toast: true,
@@ -136,3 +138,268 @@
     }
 </script>
 {{-- AddToCartOne --}}
+
+{{-- MiniCart --}}
+<script>
+    function miniCart() {
+        $.ajax({
+            type: 'GET',
+            url: '/product/mini-cart',
+            dataType: 'json',
+            success: function(response) {
+                // console.log(response)
+
+                $('span[id="cartSubTotal"]').text(response.cartTotal);
+                $('#cartQty').text(response.cartQty);
+
+                var miniCart = ""
+
+                $.each(response.carts, function(key, value) {
+                    miniCart +=
+
+                        `
+                    <ul>
+                                    <li class="mb-20">
+
+                                        <div class="cart-image">
+                                            <a href="javascript:;"><img src="/${value.options.image}"
+                                                    alt="" style="width:70px;height:30px;" /></a>
+                                        </div>
+
+                                        <div class="cart-text">
+                                            <a href="javascript:;" class="title f-400 cod__black-color">${value.name}</a>
+                                            <span class="cart-price f-400 dusty__gray-color">${value.qty} x
+                                                <span class="price f-800 cod__black-color">Tk ${value.price}</span></span>
+                                        </div>
+
+                                        <div class="del-button">
+                                            <a type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"  ><i class="fi-rs-cross-small"></i>x</a>
+                                        </div>
+
+                                    </li>
+                                </ul>
+
+                    `
+
+                });
+
+                $('#miniCart').html(miniCart);
+
+            }
+
+        })
+    }
+    miniCart();
+</script>
+{{-- MiniCart --}}
+
+{{-- MiNi Cart Remove --}}
+<script>
+    function miniCartRemove(rowId) {
+        $.ajax({
+            type: 'GET',
+            url: '/minicart/product/remove/' + rowId,
+            dataType: 'json',
+            success: function(data) {
+                miniCart();
+                // Start Message 
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        title: data.success,
+                    })
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        title: data.error,
+                    })
+                }
+
+                // End Message  
+
+            }
+
+
+        })
+    }
+</script>
+
+<!--  Start Load MY Cart // -->
+<script type="text/javascript">
+    function cart() {
+        $.ajax({
+            type: 'GET',
+            url: '/get-cart-product',
+            dataType: 'json',
+            success: function(response) {
+                // console.log(response)
+
+                $('span[id="cartSubTotal"]').text(response.cartTotal);
+                $('#cartTotal').text(response.cartTotal);
+
+                var rows = ""
+
+                $.each(response.carts, function(key, value) {
+                    rows +=
+
+                        `<tr class="border-bottom">
+                                                    <td>1</td>
+
+                                                    <td>
+                                                        <div>
+                                                            <img class="img-fluid"
+                                                                src="/${value.options.image}"
+                                                                alt="" style="width:100%;height:60px;" />
+                                                        </div>
+                                                    </td>
+
+                                                    <td>${value.name}</td>
+
+                                                    <td>${value.price} TK</td>
+
+                                                    <td>
+                                                        <div>
+                                                            <div class="input-group mb-3">
+
+                                                                <a type="submit" id="${value.rowId}" onclick="cartDecrement(this.id)"
+                                                                    class="input-group-append decrementBtn p-0 border-0 shadow-none"
+                                                                    style="cursor: pointer">
+                                                                    <span class="input-group-text">-</span>
+                                                                </a>
+
+                                                                <input  type="text"
+                                                                    class="form-control text-center amountInput"
+                                                                    aria-label="Amount (to the nearest dollar)"
+                                                                    value="${value.qty}" min="1" />
+
+                                                                <a type="submit" id="${value.rowId}" onclick="cartIncrement(this.id)" 
+                                                                    class="input-group-prepend p-0 border-0 shadow-none incrementBtn"
+                                                                    style="cursor: pointer">
+                                                                    <span class="input-group-text">+</span>
+                                                                </a>
+
+                                                            </div>
+                                                        </div>
+                                                    </td>
+
+                                                    <td>${value.subtotal} Tk</td>
+
+                                                    <td class="text-center">
+                                                        <div>
+                                                            <a type="submit" style="cursor: pointer" id="${value.rowId}" onclick="cartRemove(this.id)">
+                                                                <i class="fa fa-trash text-danger delet-icons"></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+
+                                                </tr>`
+
+
+                });
+
+                $('#cartPage').html(rows);
+
+            }
+
+        })
+    }
+    cart();
+</script>
+
+{{-- Remove Load Cart --}}
+<script>
+    function cartRemove(id) {
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            url: "/cart-remove/" + id,
+
+            success: function(data) {
+
+                cart();
+                miniCart();
+                // couponCalculation();
+                // Start Message 
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success,
+                    })
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error,
+                    })
+                }
+
+                // End Message  
+
+
+            }
+        })
+    }
+</script>
+
+<script>
+    // Cart INCREMENT 
+
+    function cartIncrement(rowId) {
+        $.ajax({
+            type: 'GET',
+            url: "/cart-increment/" + rowId,
+            dataType: 'json',
+            success: function(data) {
+                // couponCalculation();
+                cart();
+                miniCart();
+
+            }
+        });
+    }
+
+
+    // Cart INCREMENT End 
+
+    // Cart Decrement Start
+
+    function cartDecrement(rowId) {
+        $.ajax({
+            type: 'GET',
+            url: "/cart-decrement/" + rowId,
+            dataType: 'json',
+            success: function(data) {
+                // couponCalculation();
+                cart();
+                miniCart();
+
+            }
+        });
+    }
+
+
+    // Cart Decrement End 
+</script>

@@ -25,7 +25,103 @@
                     @endphp
 
                     <div class="common-sidebar shop-banner-sidebar">
+
+                        {{-- Category  --}}
                         <div class="common-cat">
+                            <div class="side-title">
+                                <h6>Category</h6>
+                            </div>
+                            {{-- Brands Accordion --}}
+                            <div id="accordionBrands" class="accordion">
+                                <div class="card border-0 shadow-none mb-0">
+
+                                    {{-- Single Accordion Start --}}
+                                    {{-- <div class="card-header collapsed pl-0" data-toggle="collapse" data-parent="#accordion"
+                                        href="#collapseOneBrands">
+                                        <a class="card-title">
+                                            Ambrela
+                                        </a>
+                                    </div>
+                                    <div id="collapseOneBrands" class="collapse" data-parent="#accordion"
+                                        style="background-color: #f5f5f5;">
+                                        <div class="card-body p-2">
+                                            <a href="#" class="pl-3 text-muted">Ambrela Sub Brands</a>
+                                        </div>
+                                    </div> --}}
+                                    {{-- Single Accordion End --}}
+
+                                    {{-- Multi Accordion Start --}}
+
+
+                                    @foreach ($categorys as $category)
+                                        <div class="card-header collapsed pl-0" data-toggle="collapse"
+                                            data-parent="#accordion" href="#cat{{ $category->id }}">
+                                            <a class="card-title">
+                                                {{ $category->category_name }}
+                                            </a>
+                                        </div>
+
+                                        <div id="cat{{ $category->id }}" class="collapse" data-parent="#accordion"
+                                            style="background-color: #f5f5f5;">
+
+                                            @php
+                                                $subcategorys = App\Models\Admin\SubCategory::where('status', '1')
+                                                    ->where('category_id', $category->id)
+                                                    ->latest()
+                                                    ->get();
+                                            @endphp
+
+                                            <div id="accordion2" class="accordion pl-3">
+
+                                                @forelse ($subcategorys as $subcategory)
+                                                    <div class="card border-0 shadow-none mb-0">
+                                                        <div class="card-header collapsed pl-0" data-toggle="collapse"
+                                                            data-target="#sub{{ $subcategory->id }}">
+                                                            <a class="card-title">
+                                                                {{ $subcategory->subcategory_name }}
+                                                            </a>
+                                                        </div>
+                                                        <div id="sub{{ $subcategory->id }}" class="collapse"
+                                                            data-parent="#accordion2" style="background-color: #f5f5f5;">
+
+                                                            @php
+                                                                $childcategorys = App\Models\Admin\ChildCategory::where(
+                                                                    'status',
+                                                                    '1',
+                                                                )
+                                                                    ->where('subcategory_id', $subcategory->id)
+                                                                    ->latest()
+                                                                    ->get();
+                                                            @endphp
+                                                            @forelse ($childcategorys as $childcategory)
+                                                                <div class="card-body p-2">
+                                                                    <a href="{{ url('product/childcategory/' . $childcategory->id . '/' . $childcategory->childcategory_slug) }}"
+                                                                        class="pl-3 text-muted">{{ $childcategory->childcategory_name }}</a>
+                                                                </div>
+                                                            @empty
+                                                                <p>No ChildCategory Avaiable</p>
+                                                            @endforelse
+
+                                                        </div>
+                                                    </div>
+                                                @empty
+                                                    <p>No SubCategory Avaiable</p>
+                                                @endforelse
+
+
+                                            </div>
+                                        </div>
+                                    @endforeach
+
+                                    {{-- Multi Accordion End --}}
+                                </div>
+                            </div>
+
+                        </div>
+                        {{-- Category  --}}
+
+                        {{-- Brand  --}}
+                        <div class="common-cat mt-4">
                             <div class="side-title">
                                 <h6>Brands</h6>
                             </div>
@@ -39,21 +135,9 @@
                                 @endforelse
                             </ul>
                         </div>
-                        <div class="common-cat mt-4">
-                            <div class="side-title">
-                                <h6>Categories</h6>
-                            </div>
-                            <ul>
-                                @forelse ($categorys as $category)
-                                    <li><a
-                                            href="{{ url('product/category/' . $category->id . '/' . $category->category_slug) }}">{{ $category->category_name }}</a>
-                                    </li>
-                                @empty
-                                    <p>No Category Avaiable</p>
-                                @endforelse
-                            </ul>
-                        </div>
-                        <div class="slider-range mt-50">
+                        {{-- Brand  --}}
+
+                        {{-- <div class="slider-range mt-50">
                             <div class="side-title mb-30">
                                 <h6>Filter By Price</h6>
                             </div>
@@ -62,8 +146,9 @@
                                 <label for="amount">Price :</label>
                                 <input type="text" id="amount" readonly>
                             </p>
-                        </div>
-                        <div class="side-color mt-45">
+                        </div> --}}
+
+                        {{-- <div class="side-color mt-45">
                             <div class="side-title">
                                 <h6>Color</h6>
                             </div>
@@ -72,7 +157,7 @@
                                     <a href="#">Blue (2)</a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> --}}
 
                         {{-- <div class="side-size mt-50">
                             <div class="side-title">
@@ -92,7 +177,7 @@
                             </ul>
                         </div> --}}
 
-                        <div class="common-tag mt-50">
+                        {{-- <div class="common-tag mt-50">
                             <div class="side-title">
                                 <h6>Popular Tag</h6>
                             </div>
@@ -115,7 +200,7 @@
                                 @endforelse
                             </ul>
 
-                        </div>
+                        </div> --}}
 
                     </div>
                 </div>

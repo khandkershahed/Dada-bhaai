@@ -66,7 +66,7 @@
                                                     <div class="form-group">
                                                         <label class="radio-inline">
                                                             <input type="radio" value="{{ $shipping->value }}"
-                                                                name="shipping_charge" autocomplete="off"/>
+                                                                name="shipping_charge" autocomplete="off" />
                                                             <span>{{ $shipping->title }}</span>
                                                         </label>
                                                     </div>
@@ -81,18 +81,18 @@
 
                                         <h4 class="cart-title-highlight title-3">Apply Coupon Code </h4>
 
-                                        
 
-                                            <div class="form-group">
-                                                <input type="text" placeholder="ENTER CODE" class="form-control">
-                                            </div>
 
-                                            <div class="form-group">
-                                                <button class="alt fancy-button" type="" >Apply
-                                                    Coupon</button>
-                                            </div>
+                                        <div class="form-group">
+                                            <input type="text" placeholder="ENTER CODE" class="form-control">
+                                        </div>
 
-                                        
+                                        <div class="form-group">
+                                            <button class="alt fancy-button" type="">Apply
+                                                Coupon</button>
+                                        </div>
+
+
 
                                     </div>
 
@@ -390,7 +390,8 @@
                                                     <tr class="order-total">
                                                         <th>Grand Total:</th>
                                                         <td>
-                                                            <input class="" type="hidden" name="total_amount" value="0">
+                                                            <input class="" type="hidden" name="total_amount"
+                                                                value="0">
                                                             Tk <b class="amount grandTotal">
                                                                 {{ $cartTotal }}</b>
                                                         </td>

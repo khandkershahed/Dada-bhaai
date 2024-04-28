@@ -3629,43 +3629,11 @@ html .ui-button.ui-state-disabled:active {
 }
 /*contact area css end*/
 
-/* New Style For Cart Page Start */
-.table td, .table th {
-  padding: .75rem;
-  vertical-align: baseline;
-  border-top: 1px solid #dee2e6;
-}
-.delet-icons{
-  background-color: #c4c4c4;
-  padding: 8px;
-  border-radius: 50%;
-}
-.cart-button {
-  line-height: 40px;
-  color: #fff;
-  font-size: 13px;
-  font-weight: 800;
-  cursor: pointer;
-  text-align: center;
-  padding: 0px 30px;
-  border: 0;
-  display: block;
-  background: #cd3301;
-}
-/* .checkout-page-form.collapsed {
-  background-color: #cd3301 !important;
-  color: white !important;
-} */
-.checkout-page-form:not(.collapsed) {
-  background-color: #cd3301 !important;
-  color: white !important;
-}
-/* New Style For Cart Page End */
 @media only screen and (max-width: 1400px) {
   .dept__menu ul li .dept__menu--dropdown.open {
-    width: 1319px;
+    width: 1318px;
   }
   .main-menu ul li.mega-menu ul.submenu.mega-full {
-    width: 1319px;
+    width: 1318px;
   }
 }
