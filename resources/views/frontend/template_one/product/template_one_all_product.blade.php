@@ -8,55 +8,80 @@
             <div class="container">
                 <div class="row">
 
-                    {{-- Brand  --}}
                     <div class="col-lg-3 order-2 order-lg-1">
 
-                        @php
-
-                            $brands = App\Models\Brand::where('status', '1')
-                                ->orderBy('brand_name', 'ASC')
-                                ->latest()
-                                ->limit(7)
-                                ->get();
-
-                            $categorys = App\Models\Admin\Category::where('status', '1')
-                                ->orderBy('category_name', 'ASC')
-                                ->latest()
-                                ->limit(9)
-                                ->get();
-
-                        @endphp
-
                         <div class="common-sidebar shop-banner-sidebar">
+
+
+                            {{-- Category --}}
                             <div class="common-cat">
+
+                                <div class="side-title">
+                                    <h6>Categories</h6>
+                                </div>
+
+                                <ul>
+                                    @if (!empty($_GET['category']))
+                                        @php
+                                            $filterCat = explode(',', $_GET['category']);
+                                        @endphp
+                                    @endif
+
+                                    @forelse ($categorys as $cat)
+                                        <li style="margin-left: 15px;">
+
+                                            <label class="">
+                                                <input type="checkbox" class="form-check-input" name="category[]"
+                                                    id="" value="{{ $cat->category_slug }}"
+                                                    @if (!empty($filterCat) && in_array($cat->category_slug, $filterCat)) checked @endif
+                                                    onchange="this.form.submit();">
+
+                                                {{ $cat->category_name }}
+
+                                            </label>
+
+                                        </li>
+                                    @empty
+                                        <p>No Category Avaiable</p>
+                                    @endforelse
+                                </ul>
+
+                            </div>
+                            {{-- Category --}}
+
+                            {{-- Brand  --}}
+                            <div class="common-cat mt-4">
                                 <div class="side-title">
                                     <h6>Brands</h6>
                                 </div>
                                 <ul>
+
+                                    @if (!empty($_GET['brand']))
+                                        @php
+                                            $filterBrand = explode(',', $_GET['brand']);
+                                        @endphp
+                                    @endif
+
                                     @forelse ($brands as $brand)
-                                        <li><a
-                                                href="{{ url('product/brand/' . $brand->id . '/' . $brand->brand_slug) }}">{{ $brand->brand_name }}</a>
+                                        <li style="margin-left: 15px;">
+                                            <label class="">
+                                                <input type="checkbox" class="form-check-input" name="brand[]"
+                                                    id="" value="{{ $brand->brand_slug }}"
+                                                    @if (!empty($filterBrand) && in_array($brand->brand_slug, $filterBrand)) checked @endif
+                                                    onchange="this.form.submit();">
+
+                                                {{ $brand->brand_name }}
+
+                                            </label>
                                         </li>
                                     @empty
                                         <p>No Brand Avaiable</p>
                                     @endforelse
                                 </ul>
                             </div>
-                            <div class="common-cat mt-4">
-                                <div class="side-title">
-                                    <h6>Categories</h6>
-                                </div>
-                                <ul>
-                                    @forelse ($categorys as $category)
-                                        <li><a
-                                                href="{{ url('product/category/' . $category->id . '/' . $category->category_slug) }}">{{ $category->category_name }}</a>
-                                        </li>
-                                    @empty
-                                        <p>No Category Avaiable</p>
-                                    @endforelse
-                                </ul>
-                            </div>
+                            {{-- Brand  --}}
 
+                            {{-- Price --}}
                             <div class="slider-range mt-50">
 
                                 <div class="side-title mb-30">
@@ -71,7 +96,9 @@
                                 </p>
 
                             </div>
+                            {{-- Price --}}
 
+                            {{-- Color --}}
                             <div class="side-color mt-45">
                                 <div class="side-title">
                                     <h6>Color</h6>
@@ -82,6 +109,7 @@
                                     </li>
                                 </ul>
                             </div>
+                            {{-- Color --}}
 
                             {{-- <div class="side-size mt-50">
                             <div class="side-title">
@@ -101,7 +129,9 @@
                             </ul>
                         </div> --}}
 
-                            <div class="common-tag mt-50">
+                            {{-- Popular Tag --}}
+
+                            {{-- <div class="common-tag mt-50">
                                 <div class="side-title">
                                     <h6>Popular Tag</h6>
                                 </div>
@@ -124,7 +154,9 @@
                                     @endforelse
                                 </ul>
 
-                            </div>
+                            </div> --}}
+
+                            {{-- Popular Tag --}}
 
                         </div>
                     </div>
@@ -173,15 +205,13 @@
 
                                     <select name="sortBy" onchange="this.form.submit();">
 
-                                        <option selected disabled>Sort By Products</option>
+                                        <option selected disabled>Sort By Product</option>
 
-                                        <option value="nameAtoZ" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == 'nameAtoZ') selected @endif>
-                                            Product
+                                        <option value="nameAtoZ" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == 'nameAtoZ') selected @endif>Product
                                             Name: A to Z
                                         </option>
 
-                                        <option value="nameZtoA" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == 'nameZtoA') selected @endif>
-                                            Product
+                                        <option value="nameZtoA" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == 'nameZtoA') selected @endif>Product
                                             Name: Z to A
                                         </option>
 
@@ -310,7 +340,7 @@
                             <div class="col-sm-12">
                                 <div class="common-pagination">
 
-                                    {{ $products->links('vendor.pagination.template_one') }}
+                                    {{ $products->appends($_GET)->links('vendor.pagination.template_one') }}
 
                                 </div>
                             </div>

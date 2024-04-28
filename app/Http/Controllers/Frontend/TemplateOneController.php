@@ -16,25 +16,85 @@ class TemplateOneController extends Controller
     //Template One All Product
     public function TemplateOneAllProduct()
     {
+
         $products = Product::query();
 
+        //category filter
+        if (!empty($_GET['category'])) {
+            $slugs = explode(',', $_GET['category']);
+            $catIds = Category::select('id')->whereIn('category_slug', $slugs)->pluck('id')->toArray();
+
+            $products = $products->whereIn('category_id', $catIds);
+        }
+
+        //brand filter
+        if (!empty($_GET['brand'])) {
+            $slugs = explode(',', $_GET['brand']);
+            $brandIds = Brand::select('id')->whereIn('brand_slug', $slugs)->pluck('id')->toArray();
+            $products = $products->whereIn('brand_id', $brandIds);
+        }
+
+        //sortByProduct
         if (!empty($_GET['sortBy'])) {
 
             if ($_GET['sortBy'] == 'nameAtoZ') {
-                $products = $products->where(['status' => 1])->orderBy('product_name', 'ASC')->paginate(12);
+                $products = $products->where(['status' => 1])->orderBy('product_name', 'ASC')->paginate(9);
 
             } elseif ($_GET['sortBy'] == 'nameZtoA') {
 
-                $products = $products->where(['status' => 1])->orderBy('product_name', 'DESC')->paginate(12);
+                $products = $products->where(['status' => 1])->orderBy('product_name', 'DESC')->paginate(9);
 
             } else {
-                $products = $products->where('status', 1)->orderBy('id', 'DESC')->paginate(12);
+                $products = $products->where('status', 1)->orderBy('product_name', 'ASC')->paginate(9);
             }
         } else {
             $products = Product::where('status', '1')->orderBy('product_name', 'ASC')->paginate(12);
         }
 
-        return view('frontend.template_one.product.template_one_all_product', compact('products'));
+        $brands = Brand::where('status', '1')->orderBy('brand_name', 'ASC')->latest()->get();
+        $categorys = Category::where('status', '1')->orderBy('category_name', 'ASC')->latest()->get();
+
+        return view('frontend.template_one.product.template_one_all_product', compact('products', 'brands', 'categorys'));
+    }
+
+    //shopFilter
+    public function shopFilter(Request $request)
+    {
+        //dd($request->all());
+
+        $data = $request->all();
+
+        //filter category
+        $catUrl = "";
+        if (!empty($data['category'])) {
+            foreach ($data['category'] as $category) {
+                if (empty($catUrl)) {
+                    $catUrl .= '&category=' . $category;
+                } else {
+                    $catUrl .= ',' . $category;
+                }
+            }
+        }
+
+        //filter brand
+        $brandUrl = "";
+        if (!empty($data['brand'])) {
+            foreach ($data['brand'] as $brand) {
+                if (empty($brandUrl)) {
+                    $brandUrl .= '&brand=' . $brand;
+                } else {
+                    $brandUrl .= ',' . $brand;
+                }
+            }
+        }
+
+        //filter sortBy
+        $sortByUrl = "";
+        if (!empty($data['sortBy'])) {
+            $sortByUrl .= '&sortBy=' . $data['sortBy'];
+        }
+
+        return redirect()->route('template.one.all_product', $catUrl . $brandUrl . $sortByUrl);
     }
 
     //Brand Wise Product One
@@ -211,18 +271,4 @@ class TemplateOneController extends Controller
 
     // }
 
-    //shopFilter
-    public function shopFilter(Request $request)
-    {
-        // dd($request->all());
-        $data = $request->all();
-
-        //filter sortBy
-        $sortByUrl = "";
-        if (!empty($data['sortBy'])) {
-            $sortByUrl .= '&sortBy=' . $data['sortBy'];
-        }
-
-        return redirect()->route('template.one.all_product', $sortByUrl);
-    }
 }
