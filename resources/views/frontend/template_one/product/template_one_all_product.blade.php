@@ -69,7 +69,7 @@
 
                                     @foreach ($brands as $brand)
                                         @php
-                                            $countBrand = App\Models\Admin\Product::where('brand_id', $cat->id)->get();
+                                            $countBrand = App\Models\Admin\Product::where('brand_id', $brand->id)->get();
                                         @endphp
 
                                         <li style="margin-left: 15px;">
