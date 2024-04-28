@@ -27,7 +27,14 @@
                                         @endphp
                                     @endif
 
-                                    @forelse ($categorys as $cat)
+                                    @foreach ($categorys as $cat)
+                                        @php
+                                            $countProduct = App\Models\Admin\Product::where(
+                                                'category_id',
+                                                $cat->id,
+                                            )->get();
+                                        @endphp
+
                                         <li style="margin-left: 15px;">
 
                                             <label class="">
@@ -36,14 +43,12 @@
                                                     @if (!empty($filterCat) && in_array($cat->category_slug, $filterCat)) checked @endif
                                                     onchange="this.form.submit();">
 
-                                                {{ $cat->category_name }}
+                                                {{ $cat->category_name }} ({{ count($countProduct) }})
 
                                             </label>
 
                                         </li>
-                                    @empty
-                                        <p>No Category Avaiable</p>
-                                    @endforelse
+                                    @endforeach
                                 </ul>
 
                             </div>
@@ -62,7 +67,11 @@
                                         @endphp
                                     @endif
 
-                                    @forelse ($brands as $brand)
+                                    @foreach ($brands as $brand)
+                                        @php
+                                            $countBrand = App\Models\Admin\Product::where('brand_id', $cat->id)->get();
+                                        @endphp
+
                                         <li style="margin-left: 15px;">
                                             <label class="">
                                                 <input type="checkbox" class="form-check-input" name="brand[]"
@@ -70,13 +79,11 @@
                                                     @if (!empty($filterBrand) && in_array($brand->brand_slug, $filterBrand)) checked @endif
                                                     onchange="this.form.submit();">
 
-                                                {{ $brand->brand_name }}
+                                                {{ $brand->brand_name }} ({{ count($countBrand) }})
 
                                             </label>
                                         </li>
-                                    @empty
-                                        <p>No Brand Avaiable</p>
-                                    @endforelse
+                                    @endforeach
                                 </ul>
                             </div>
                             {{-- Brand  --}}

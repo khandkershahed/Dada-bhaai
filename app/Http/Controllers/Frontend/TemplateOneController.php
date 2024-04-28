@@ -24,7 +24,7 @@ class TemplateOneController extends Controller
             $slugs = explode(',', $_GET['category']);
             $catIds = Category::select('id')->whereIn('category_slug', $slugs)->pluck('id')->toArray();
 
-            $products = $products->whereIn('category_id', $catIds);
+            $products = $products->whereIn('category_id', $catIds)->paginate(4);
         }
 
         //brand filter
@@ -48,7 +48,7 @@ class TemplateOneController extends Controller
                 $products = $products->where('status', 1)->orderBy('product_name', 'ASC')->paginate(9);
             }
         } else {
-            $products = Product::where('status', '1')->orderBy('product_name', 'ASC')->paginate(12);
+            $products = Product::where('status', '1')->orderBy('id', 'DESC')->paginate(12);
         }
 
         $brands = Brand::where('status', '1')->orderBy('brand_name', 'ASC')->latest()->get();
