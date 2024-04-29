@@ -79,13 +79,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
     //Add To WishList
-    Route::post('/add-to-wishlist/{product_id}', [TemplateOneCartController::class, 'AddToWishList']);
     Route::get('/all-wishlist', [TemplateOneCartController::class, 'TemplateOneWishlist'])->name('wishlist');
     Route::get('/get-wishlist-product', [TemplateOneCartController::class, 'GetWishlistProduct']);
     Route::get('/wishlist-remove/{id}', [TemplateOneCartController::class, 'WishlistRemove']);
 
-
 });
+
+//Add To WishList
+Route::post('/add-to-wishlist/{product_id}', [TemplateOneCartController::class, 'AddToWishList']);
 
 
 
@@ -118,6 +119,9 @@ Route::controller(TemplateOneController::class)->group(function () {
 
     //Login
     Route::get('/dadabhai-login', 'TemplateOneLogin')->name('template.one.login');
+
+    //Faq
+    Route::get('/faq', 'TemplateOneFaq')->name('template.one.faq');
 
 });
 

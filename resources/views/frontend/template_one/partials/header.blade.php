@@ -70,7 +70,8 @@
                                     </li>
 
                                     <li class="">
-                                        <a href="{{ route('wishlist') }}"><i class="fal fa-heart"><span class="cart__count" id="wishQty">0</span></i></a>
+                                        <a href="{{ route('wishlist') }}"><i class="fal fa-heart"><span
+                                                    class="cart__count" id="wishQty">0</span></i></a>
                                     </li>
 
 
@@ -472,12 +473,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li>
-                                    <a href="about.html">About Us</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('template_one.contact') }}">Contact Us</a>
-                                </li>
+
                             </ul>
                         </nav>
                     </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\Category;
 use App\Models\Admin\ChildCategory;
 use App\Models\Admin\Contact;
+use App\Models\Admin\Faq;
 use App\Models\Admin\Product;
 use App\Models\Brand;
 use App\Models\Sites;
@@ -282,6 +283,13 @@ class TemplateOneController extends Controller
     public function TemplateOneDashboard()
     {
         return view('frontend.template_one.user.dashboard');
+    }
+
+    //Template One Faq
+    public function TemplateOneFaq()
+    {
+        $faqs = Faq::where('status','1')->orderBy('order','ASC')->latest()->get();
+        return view('frontend.template_one.faq.faq',compact('faqs'));
     }
 
 }

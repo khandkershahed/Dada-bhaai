@@ -24,7 +24,7 @@
                                     <li><a href="about.html">About Us</a></li>
                                     <li><a href="{{ route('template.one.login') }}">Sign In</a></li>
                                     <li><a href="{{ route('template_one.contact') }}">Contact Us</a></li>
-                                    <li><a href="faq.html">Faq</a></li>
+                                    <li><a href="{{ route('template.one.faq') }}">Faq</a></li>
                                     <li><a href="terms.html">Terms</a></li>
                                     <li><a href="policy.html">Policy</a></li>
                                 </ul>
