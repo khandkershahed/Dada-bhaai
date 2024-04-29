@@ -68,10 +68,11 @@
                                             </div> --}}
                                         </div>
                                     </li>
-                                    <li class="d-none">
-                                        <a href="#"><i class="fal fa-heart"></i></a>
+
+                                    <li class="">
+                                        <a href="{{ route('wishlist') }}"><i class="fal fa-heart"><span class="cart__count" id="wishQty">0</span></i></a>
                                     </li>
-                                    
+
 
                                     <li class="">
                                         <a class="mini__cart--link" href="jaxascript:;"><i
@@ -97,14 +98,16 @@
                                     <li>
                                         <div class="total-text d-flex justify-content-between">
                                             <span class="f-800 cod__black-color">Total Bag</span>
-                                            <span class="f-800 cod__black-color">Tk <span id="cartSubTotal"></span></span>
-                                            
+                                            <span class="f-800 cod__black-color">Tk <span
+                                                    id="cartSubTotal"></span></span>
+
                                         </div>
                                     </li>
                                     <li>
                                         <div class="d-flex justify-content-between">
                                             <a href="#" class="checkout">Checkout</a>
-                                            <a href="{{ route('template.one.view.cart') }}" class="viewcart">View Cart</a>
+                                            <a href="{{ route('template.one.view.cart') }}" class="viewcart">View
+                                                Cart</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -132,7 +135,7 @@
                                 <li>
                                     <a href="#"><i class="fal fa-heart"></i></a>
                                 </li>
-                                
+
 
                                 <li>
                                     <a class="mini__cart--link" href="#"><i class="fal fa-bags-shopping"><span

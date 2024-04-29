@@ -4,7 +4,6 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\TemplateOneCartController;
 use App\Http\Controllers\Frontend\TemplateOneController;
-use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,16 +29,16 @@ Route::get('/', [IndexController::class, 'Index'])->name('index');
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    //Admin Dashboard
-    Route::get('/dashboard', [UserController::class, 'UserDashboard'])->name('dashboard');
-    Route::post('/user/profile/update', [UserController::class, 'UserProfileUpdate'])->name('user.profile.update');
+    // //User Dashboard
+    // Route::get('/dashboard', [UserController::class, 'UserDashboard'])->name('dashboard');
+    // Route::post('/user/profile/update', [UserController::class, 'UserProfileUpdate'])->name('user.profile.update');
 
-    //User Password
-    Route::get('/user/password', [UserController::class, 'UserPassword'])->name('user.password');
-    Route::post('/user/password/update', [UserController::class, 'UserPasswordPassword'])->name('user.password.update');
+    // //User Password
+    // Route::get('/user/password', [UserController::class, 'UserPassword'])->name('user.password');
+    // Route::post('/user/password/update', [UserController::class, 'UserPasswordPassword'])->name('user.password.update');
 
-    //User Logout
-    Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');
+    // //User Logout
+    // Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');
 
 });
 
@@ -64,6 +63,31 @@ Route::controller(IndexController::class)->group(function () {
     Route::get('/about', 'AboutPage')->name('about.page');
 
 });
+
+Route::middleware(['auth', 'verified'])->group(function () {
+
+    // //User Dashboard
+    Route::get('/dashboard', [TemplateOneController::class, 'TemplateOneDashboard'])->name('template.one.dashboard');
+    // Route::post('/user/profile/update', [UserController::class, 'UserProfileUpdate'])->name('user.profile.update');
+
+    // //User Password
+    // Route::get('/user/password', [UserController::class, 'UserPassword'])->name('user.password');
+    // Route::post('/user/password/update', [UserController::class, 'UserPasswordPassword'])->name('user.password.update');
+
+    // //User Logout
+    // Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');
+
+
+    //Add To WishList
+    Route::post('/add-to-wishlist/{product_id}', [TemplateOneCartController::class, 'AddToWishList']);
+    Route::get('/all-wishlist', [TemplateOneCartController::class, 'TemplateOneWishlist'])->name('wishlist');
+    Route::get('/get-wishlist-product', [TemplateOneCartController::class, 'GetWishlistProduct']);
+    Route::get('/wishlist-remove/{id}', [TemplateOneCartController::class, 'WishlistRemove']);
+
+
+});
+
+
 
 // Template One Controller
 Route::controller(TemplateOneController::class)->group(function () {
@@ -91,6 +115,9 @@ Route::controller(TemplateOneController::class)->group(function () {
     //Product Search
     Route::post('/search', 'ProductSearch')->name('product.search');
     // Route::post('/search-product', 'SearchProduct');
+
+    //Login
+    Route::get('/dadabhai-login', 'TemplateOneLogin')->name('template.one.login');
 
 });
 
@@ -141,5 +168,7 @@ Route::controller(TemplateOneCartController::class)->group(function () {
     //CheckOut
     Route::get('/cart-checkout', 'CheckoutTemplateOne')->name('template.one.checkout');
     Route::post('/cart-checkout-store', 'CheckoutStoreTemplateOne')->name('template.checkout.store');
+
+    
 
 });

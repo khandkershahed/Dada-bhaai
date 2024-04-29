@@ -271,4 +271,17 @@ class TemplateOneController extends Controller
 
     // }
 
+    //Template One Login
+    public function TemplateOneLogin()
+    {
+        return view('frontend.template_one.user.login');
+
+    }
+
+    //TemplateOneDashboard
+    public function TemplateOneDashboard()
+    {
+        return view('frontend.template_one.user.dashboard');
+    }
+
 }

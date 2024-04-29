@@ -47,19 +47,20 @@
 
 {{-- Releted Accesories --}}
 <script>
-    $(document).ready(function () {
-      $(".releted_accessories").slick({
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 6000,
-        arrows: false, // Hide next and previous buttons
-        spacing: 50, // Add a gap of 20px between slides
-        // Add more settings/options as needed
-      });
+    $(document).ready(function() {
+        $(".releted_accessories").slick({
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 6000,
+            arrows: false, // Hide next and previous buttons
+            spacing: 50, // Add a gap of 20px between slides
+            // Add more settings/options as needed
+        });
     });
-  </script>
+</script>
 {{-- Releted Accesories End --}}
+
 <script>
     // JavaScript to toggle dropdown visibility
     $(document).ready(function() {
@@ -80,6 +81,7 @@
         });
     });
 </script>
+
 <script>
     $(document).ready(function() {
         $("#myTab a").click(function(e) {
@@ -420,3 +422,166 @@
 
     // Cart Decrement End 
 </script>
+
+<!--  /// Start Wishlist Add -->
+<script type="text/javascript">
+    function addToWishList(product_id) {
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            url: "/add-to-wishlist/" + product_id,
+
+            success: function(data) {
+                wishlist();
+                // Start Message 
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success,
+                    })
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error,
+                    })
+                }
+
+                // End Message  
+
+
+            }
+        })
+    }
+</script>
+<!--  /// End Wishlist Add -->
+
+{{-- Get Wishlist --}}
+<script type="text/javascript">
+    function wishlist() {
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            url: "/get-wishlist-product/",
+
+            success: function(response) {
+
+                $('#wishQty').text(response.wishQty);
+
+                var rows = ""
+                $.each(response.wishlist, function(key, value) {
+
+                    rows +=
+
+                        `<tr class="border-bottom">
+
+                                    
+
+                                    <td>
+                                        <img class="img-fluid"
+                                            src="/${value.product.product_image}" style="width:60px;height:60px;" alt="" />
+
+                                    </td>
+
+                                    <td>
+                                        <p>${value.product.product_name}</p>
+                                    </td>
+
+                                    <td>
+                                                ${value.product.price_status == 'rfq'
+
+                                                ? `<p class="text-brand">Tk ${value.product.sas_price}</p>`
+
+                                                : ``
+
+                                                }
+
+                                                ${value.product.price_status == 'offer_price'
+
+                                                ? `<p class="text-brand">Tk ${value.product.discount_price}</p>`
+
+                                                : `<p class="text-brand">Tk ${value.product.price}</p>`
+                                                
+                                                }
+
+
+                                                
+                                    </td>
+
+                                    <td class="">
+
+
+                                        <a type="submit" class="text-body" id="${value.id}" onclick="wishlistRemove(this.id)" ><i class="fa fa-trash text-danger"></i></a>
+
+                                    </td>
+                                    </tr>`
+
+
+                });
+
+                $('#wishlist').html(rows);
+
+            }
+        })
+    }
+
+    wishlist();
+</script>
+
+{{-- // Wishlist Remove Start  --}}
+<script>
+    function wishlistRemove(id) {
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            url: "/wishlist-remove/" + id,
+
+            success: function(data) {
+                wishlist();
+                // Start Message 
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success,
+                    })
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error,
+                    })
+                }
+
+                // End Message  
+
+
+            }
+        })
+    }
+</script>
+
+{{-- // Wishlist Remove End --}}

@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Product;
+use App\Models\Admin\Wishlist;
 use App\Models\User\Order;
 use App\Models\User\OrderItem;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Helper;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TemplateOneCartController extends Controller
 {
@@ -212,6 +214,53 @@ class TemplateOneCartController extends Controller
 
         return redirect()->route('index');
 
+    }
+
+    //Add To WishList
+    public function AddToWishList(Request $request, $product_id)
+    {
+
+        if (Auth::check()) {
+            $exists = Wishlist::where('user_id', Auth::id())->where('product_id', $product_id)->first();
+
+            if (!$exists) {
+                Wishlist::insert([
+                    'user_id' => Auth::id(),
+                    'product_id' => $product_id,
+                    'created_at' => now(),
+
+                ]);
+                return response()->json(['success' => 'Successfully Added On Your Wishlist']);
+            } else {
+                return response()->json(['error' => 'This Product Has Already on Your Wishlist']);
+            }
+        } else {
+            return response()->json(['error' => 'At First Login Your Account']);
+        }
+    }
+
+    //AllWishlist
+    public function TemplateOneWishlist()
+    {
+        return view('frontend.template_one.cart.wishlist');
+    }
+
+    //Get Wishlist Product
+    public function GetWishlistProduct()
+    {
+
+        $wishlist = Wishlist::with('product')->where('user_id', Auth::id())->latest()->get();
+        $wishQty = wishlist::count();
+
+        return response()->json(['wishlist' => $wishlist, 'wishQty' => $wishQty]);
+
+    }
+
+    //WishlistRemove
+    public function WishlistRemove($id)
+    {
+        Wishlist::where('user_id', Auth::id())->where('id', $id)->delete();
+        return response()->json(['success' => 'Successfully Product Remove']);
     }
 
 }
