@@ -123,7 +123,8 @@
                                                 <div class="modal-content">
 
                                                     <div class="modal-header" style="background: #6196A6;height: 50px;">
-                                                        <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Edit Category
+                                                        <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Edit
+                                                            Category
                                                         </h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
@@ -155,15 +156,31 @@
 
                                                                 <div class="col-12 mb-3">
                                                                     <label for="" class="mb-2">Description</label>
-                                                                    <textarea name="description" placeholder="Category Name" autocomplete="off" class="form-control form-control-sm" cols="3"
-                                                                        rows="3">{{ $category->description }}</textarea>
+                                                                    <textarea name="description" placeholder="Category Name" autocomplete="off" class="form-control form-control-sm"
+                                                                        cols="3" rows="3">{{ $category->description }}</textarea>
                                                                 </div>
 
-                                                                <div class="col-12">
+                                                                <div class="col-6">
                                                                     <label for="" class="mb-2">Image</label>
 
-                                                                    <input  type="file"
-                                                                        name="category_image"
+                                                                    <input type="file" name="icon"
+                                                                        class="form-control form-control-sm @error('icon') is-invalid @enderror">
+
+                                                                    @error('icon')
+                                                                        <div class="text-danger">{{ $message }}
+                                                                        </div>
+                                                                    @enderror
+
+                                                                    <img src="{{ asset('storage/category/' . $category->icon) }}"
+                                                                        class="mt-3" style="width: 73px;"
+                                                                        alt="">
+                                                                </div>
+
+                                                                <div class="col-6">
+                                                                    <label for="" class="mb-2">Banner
+                                                                        Image</label>
+
+                                                                    <input type="file" name="category_image"
                                                                         class="imageSrc form-control form-control-sm @error('category_image') is-invalid @enderror">
 
                                                                     @error('category_image')
@@ -172,8 +189,8 @@
                                                                     @enderror
 
                                                                     <img src="{{ asset('storage/category/' . $category->category_image) }}"
-                                                                         class="mt-3 showImageSrc"
-                                                                        style="width: 73px;" alt="">
+                                                                        class="mt-3 showImageSrc" style="width: 73px;"
+                                                                        alt="">
                                                                 </div>
 
                                                             </div>
@@ -247,17 +264,30 @@
                                     cols="3" rows="3"></textarea>
                             </div>
 
-                            <div class="col-12">
-                                <label for="" class="mb-2">Image</label>
-                                <input type="file" name="category_image"
-                                    class="form-control form-control-sm imageSrc @error('category_image') is-invalid @enderror">
+                            <div class="col-6">
+                                <label for="" class="mb-2">Icon Iamge</label>
+                                <input type="file" autocomplete="off" name="icon"
+                                    class="form-control form-control-sm imageIcon @error('icon') is-invalid @enderror">
+
+                                @error('icon')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+
+                                <img src="{{ url('upload/no_image.jpg') }}" class="showImageIcon mt-2"
+                                    style="width:73px" alt="" class="mt-3">
+                            </div>
+
+                            <div class="col-6">
+                                <label for="" class="mb-2">Banner Image</label>
+                                <input type="file" autocomplete="off" name="category_image"
+                                    class="form-control form-control-sm image @error('category_image') is-invalid @enderror">
 
                                 @error('category_image')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
 
                                 <img src="{{ url('upload/no_image.jpg') }}" style="width:73px" alt=""
-                                    class="mt-3 showImageSrc">
+                                    class="mt-2 showImage">
                             </div>
 
                         </div>
@@ -277,15 +307,28 @@
     {{-- Image Show --}}
     <script type="text/javascript">
         $(document).ready(function() {
-            $('.imageSrc').change(function(e) {
+            $('.image').change(function(e) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
-                    $('.showImageSrc').attr('src', e.target.result);
+                    $('.showImage').attr('src', e.target.result);
                 }
                 reader.readAsDataURL(e.target.files['0']);
             });
         });
     </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.imageIcon').change(function(e) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('.showImageIcon').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(e.target.files['0']);
+            });
+        });
+    </script>
+
 
     {{-- DataTable  --}}
     <script>
@@ -306,5 +349,4 @@
                 ">"
         });
     </script>
-
 @endsection

@@ -213,7 +213,8 @@
 
                                                         <div class="col-lg-6 p-0">
 
-                                                            <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}" class="btn btn-primary btn-sm">+Add</a>
+                                                            <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
+                                                                class="btn btn-primary btn-sm">+Add</a>
 
                                                         </div>
 

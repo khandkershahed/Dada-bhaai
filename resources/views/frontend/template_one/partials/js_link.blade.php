@@ -43,6 +43,8 @@
 <script src="{{ asset('frontend/template_one/assets/js/main.js') }}"></script>
 <script src="{{ asset('frontend/template_one/assets/js/search_advance.js') }}"></script>
 
+<script src="{{ asset('frontend/template_one/assets/js/validate.min.js') }}"></script>
+
 {{-- Releted Accesories --}}
 <script>
     $(document).ready(function () {

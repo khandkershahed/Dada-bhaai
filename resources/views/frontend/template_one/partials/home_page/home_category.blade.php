@@ -25,8 +25,7 @@
                                     <div class="categories-thumb">
                                         <a
                                             href="{{ url('product/category/' . $category->id . '/' . $category->category_slug) }}"><img
-                                                class="img"
-                                                src="{{ asset('storage/category/' . $category->category_image) }}"
+                                                class="img" src="{{ asset('storage/category/' . $category->icon) }}"
                                                 style="width: 255px; height: 255px;" alt="" /></a>
                                         <h6 class="f-800 pure__black-color cate-title">
                                             <a href="#">{{ $category->category_name }}</a>

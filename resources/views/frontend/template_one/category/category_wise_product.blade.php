@@ -168,7 +168,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="shop-banner-bg pt-60 pb-60 mb-50"
-                                data-background="{{ asset('frontend/template_one/assets/img/bg/shop-banner-bg.jpg') }}">
+                                data-background="{{ asset('storage/category/' . $catwiseproduct->category_image) }}">
                                 <div class="collection-text">
                                     <h5 class="f-800"><a href="javascript:;">Category</a></h5>
                                     <span class="f-200 mb-40">{{ $catwiseproduct->category_name }}</span>

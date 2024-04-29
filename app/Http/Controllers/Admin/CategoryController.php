@@ -26,6 +26,7 @@ class CategoryController extends Controller
             [
                 'category_name' => 'required|max:255',
                 'category_image' => 'mimes:jpeg,png,jpg,gif,svg,webp',
+                'icon' => 'mimes:jpeg,png,jpg,gif,svg,webp',
             ],
 
             [
@@ -37,6 +38,20 @@ class CategoryController extends Controller
 
             $mainFile = $request->file('category_image');
             $imgPath = storage_path('app/public/category');
+
+            $iconmainFile = $request->file('icon'); ///////
+            $iconimgPath = storage_path('app/public/category'); //////
+
+            ////////
+            if (empty($iconmainFile)) {
+
+                $globalFunIconImg['file_name'] = '';
+
+            } else {
+                $globalFunIconImg = Helper::customUpload($iconmainFile, $iconimgPath);
+                $globalFunIconImg['file_name'] = $globalFunIconImg['file_name'];
+            }
+            /////////////////////
 
             if (empty($mainFile)) {
 
@@ -59,6 +74,8 @@ class CategoryController extends Controller
                         'description' => $request->description,
 
                         'category_image' => $globalFunImg['file_name'],
+
+                        'icon' => $globalFunIconImg['file_name'], ////////
 
                     ]);
                 } else {
@@ -93,14 +110,24 @@ class CategoryController extends Controller
         if ($validator) {
 
             $mainFile = $request->file('category_image');
-
             $uploadPath = storage_path('app/public/category');
+
+            $iconmainFile = $request->file('icon'); ///////
+            $iconimgPath = storage_path('app/public/category'); //////
 
             if (isset($mainFile)) {
                 $globalFunImg = Helper::customUpload($mainFile, $uploadPath);
             } else {
                 $globalFunImg['status'] = 0;
             }
+
+            ////////////
+            if (isset($iconmainFile)) {
+                $globalFunIconImg = Helper::customUpload($iconmainFile, $iconimgPath);
+            } else {
+                $globalFunIconImg['status'] = 0;
+            }
+            /////////////
 
             if (!empty($category)) {
 
@@ -113,12 +140,27 @@ class CategoryController extends Controller
                     }
                 }
 
+                ///////////
+
+                if ($globalFunIconImg['status'] == 1) {
+                    if (File::exists(public_path('storage/category/requestImg/') . $category->icon)) {
+                        File::delete(public_path('storage/category/requestImg/') . $category->icon);
+                    }
+                    if (File::exists(public_path('storage/category/') . $category->icon)) {
+                        File::delete(public_path('storage/category/') . $category->icon);
+                    }
+                }
+
+                ////////
+
                 $category->update([
 
                     'category_name' => $request->category_name,
                     'category_slug' => strtolower(str_replace('', '-', $request->category_name)),
                     'description' => $request->description,
                     'category_image' => $globalFunImg['status'] == 1 ? $globalFunImg['file_name'] : $category->category_image,
+
+                    'icon' => $globalFunIconImg['status'] == 1 ? $globalFunIconImg['file_name'] : $category->icon, ////
 
                 ]);
             }

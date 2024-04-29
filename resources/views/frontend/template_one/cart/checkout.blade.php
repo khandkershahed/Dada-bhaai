@@ -33,7 +33,7 @@
 
     <!-- shop area start -->
 
-    <form action="{{ route('template.checkout.store') }}" method="POST">
+    <form action="{{ route('template.checkout.store') }}" id="myForm" method="POST">
 
         @csrf
 
@@ -157,7 +157,8 @@
                                                             <div class="form-group col-sm-12">
                                                                 <label for="address_line2">Note
                                                                 </label>
-                                                                <textarea class="form-control" placeholder="Write Something" name="notes" id="" cols="1" rows="1"></textarea>
+                                                                <textarea class="form-control" placeholder="Write Something" name="notes" id="" cols="1"
+                                                                    rows="1"></textarea>
                                                             </div>
 
                                                         </div>
@@ -189,14 +190,16 @@
                                                                 @foreach ($shippings as $shipping)
                                                                     <div class="form-check">
 
-                                                                        <input class="form-check-input" type="radio"
-                                                                            name="shipping_charge" autocomplete="off"
-                                                                            value="{{ $shipping->value }}" />
+                                                                        <div class="form-group">
+                                                                            <input class="form-check-input" type="radio"
+                                                                                name="shipping_charge" autocomplete="off"
+                                                                                value="{{ $shipping->value }}" />
 
-                                                                        <label class="form-check-label"
-                                                                            for="cashOnDelivery">
-                                                                            {{ $shipping->title }}
-                                                                        </label>
+                                                                            <label class="form-check-label"
+                                                                                for="cashOnDelivery">
+                                                                                {{ $shipping->title }}
+                                                                            </label>
+                                                                        </div>
 
                                                                     </div>
                                                                 @endforeach
@@ -283,7 +286,7 @@
                                                         {{-- Delivery System  --}}
                                                         <div class="mt-5">
                                                             <h5 class="cart-title-highlight title-3">Payment Method</h5>
-                                                            <ul class="payment_methods methods list-unstyled mt-3">
+                                                            <ul class="payment_methods methods list-unstyled mt-3 form-group">
 
                                                                 <li class="payment_method_bacs">
 
@@ -357,6 +360,92 @@
                 shippingCharge.text(shippingMethod.toFixed(2));
                 grandTotal.text(total.toFixed(2));
                 hiddenTotalInput.val(total.toFixed(2));
+            });
+        });
+    </script>
+
+
+    {{-- validate code  --}}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#myForm').validate({
+                rules: {
+                    billing_name: {
+                        required: true,
+                    },
+
+                    billing_phone: {
+                        required: true,
+                    },
+
+                    billing_city: {
+                        required: true,
+                    },
+
+                    billing_country: {
+                        required: true,
+                    },
+
+                    billing_state: {
+                        required: true,
+                    },
+
+                    billing_address_line1: {
+                        required: true,
+                    },
+
+                    shipping_charge: {
+                        required: true,
+                    },
+
+                    payment_method: {
+                        required: true,
+                    },
+                },
+                messages: {
+                    billing_name: {
+                        required: 'Please Enter Name',
+                    },
+
+                    billing_phone: {
+                        required: 'Please Enter Phone Number',
+                    },
+
+                    billing_city: {
+                        required: 'Please Enter City Name',
+                    },
+
+                    billing_country: {
+                        required: 'Please Enter Country Name',
+                    },
+
+                    billing_state: {
+                        required: 'Please Enter State Name',
+                    },
+
+                    billing_address_line1: {
+                        required: 'Please Enter Address Name',
+                    },
+                    
+                    shipping_charge: {
+                        required: 'Please Select Shipping Charge',
+                    },
+
+                    payment_method: {
+                        required: 'Please Select Payment Method',
+                    },
+                },
+                errorElement: 'span',
+                errorPlacement: function(error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function(element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function(element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                },
             });
         });
     </script>
