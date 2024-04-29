@@ -477,7 +477,7 @@ label {
 
 .header--search__query {
   width: 100%;
-  border: 2px solid #cd3301;
+  border: 1px solid #a89792;
   padding: 0 25px;
   height: 42px;
   font-size: 12px;
@@ -1404,7 +1404,7 @@ ul.sub__menu.sub__dept--menu li:hover ul.sub__menu.level2 {
   padding-bottom: 15px;
   border-bottom: 1px solid #dddddd;
   margin-bottom: 12px;
-  padding-top: 30px;
+  padding-top: 10px;
 }
 .product-h-two .product__content--top {
   border-bottom: 0px;
@@ -2707,7 +2707,7 @@ ul.sub__menu.sub__dept--menu li:hover ul.sub__menu.level2 {
 /* Categories Slider */
 .single-categories {
   text-align: center;
-  height: 210px;
+  height: auto;
   background-color: #eee;
 }
 .brands-box {

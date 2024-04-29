@@ -33,290 +33,300 @@
 
     <!-- shop area start -->
 
-    <form action="">
+    <form action="{{ route('template.checkout.store') }}" method="POST">
+
         @csrf
 
-
-    </form>
-
-    <div class="product shop-page pt-80 pb-80 fix">
-        <div class="container">
-            <div class="border-b">
-                <div class="row">
-                    <div class="col-lg-12 col-md-4">
-                        <div class="shop-bar d-flex align-items-center justify-content-between">
-                            <h5 class="f-800 cod__black-color">
-                                <span class="grenadier-color">Information</span>
-                            </h5>
-                            <a href="#" class="f-800 cod__black-color">
-                                <span class="grenadier-color">CONTINUE SHOPPING <i
-                                        class="fa fa-long-arrow-right"></i></span>
-                            </a>
+        <div class="product shop-page pt-80 pb-80 fix">
+            <div class="container">
+                <div class="border-b">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-4">
+                            <div class="shop-bar d-flex align-items-center justify-content-between">
+                                <h5 class="f-800 cod__black-color">
+                                    <span class="grenadier-color">Information</span>
+                                </h5>
+                                <a href="{{ route('index') }}" class="f-800 cod__black-color">
+                                    <span class="grenadier-color">CONTINUE SHOPPING <i
+                                            class="fa fa-long-arrow-right"></i></span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-lg-12">
-                    <div class="card border-0 shadow-lg">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <div id="accordion2" class="accordion">
+                <div class="row mt-3">
+                    <div class="col-lg-12">
+                        <div class="card border-0 shadow-lg">
+                            <div class="card-body">
+                                <div class="row">
+
+                                    <div class="col-lg-8">
+
+                                        {{-- Billing Info --}}
                                         <div class="card border-0 shadow-none mb-0">
-                                            <div class="card-header checkout-page-form collapsed" data-toggle="collapse"
-                                                data-target="#collapseOne">
+
+                                            <div class="card-header checkout-page-form">
                                                 <a class="card-title"> Billing Info </a>
                                             </div>
-                                            <div id="collapseOne" class="collapse show" data-parent="#accordion2"
+
+                                            <div id="" class="show" data-parent=""
                                                 style="background-color: #f5f5f5">
                                                 <div class="card-body p-0">
                                                     <div class="mb-3 bg-light p-3">
-                                                        <span class="font-weight-bold">Billing Info</span>
 
-                                                        <div class="row mt-2">
 
-                                                            <div class="col-lg-4">
-                                                                <label for="">Name</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter Your Name" />
-                                                            </div>
-
-                                                            <div class="col-lg-4">
-                                                                <label for="">Phone</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter Your Phone" />
-                                                            </div>
-
-                                                            <div class="col-lg-4">
-                                                                <label for="">Email</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter Your Email" />
-                                                            </div>
-
-                                                            <div class="col-lg-4 mt-3">
-                                                                <label for="">Addres One</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter Your Address One" />
-                                                            </div>
-
-                                                            <div class="col-lg-4 mt-3">
-                                                                <label for="">Addres Two</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter Your Address Two" />
-                                                            </div>
-
-                                                            <div class="col-lg-4 mt-3">
-                                                                <label for="">Country</label> <br />
-                                                                <select class="form-select w-100">
-                                                                    <option selected>
-                                                                        Open this select menu
-                                                                    </option>
-                                                                    <option value="1">One</option>
-                                                                    <option value="2">Two</option>
-                                                                    <option value="3">Three</option>
-                                                                </select>
-                                                            </div>
-
-                                                            <div class="col-lg-4 mt-3">
-                                                                <label for="">Zip Code</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter Your Address Two" />
-                                                            </div>
-
-                                                            <div class="col-lg-4 mt-3">
-                                                                <label for="">State</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter Your Address Two" />
-                                                            </div>
-
-                                                            <div class="col-lg-4 mt-3">
-                                                                <label for="">City</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter Your Address Two" />
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="card-header collapsed checkout-page-form" data-toggle="collapse"
-                                                data-target="#collapseTwo">
-                                                <a class="card-title"> Shipping Info </a>
-                                            </div>
-
-                                            <div id="collapseTwo" class="collapse" data-parent="#accordion2"
-                                                style="background-color: #f5f5f5">
-                                                <div class="card-body p-0">
-                                                    <div class="mb-3 bg-light p-3">
-                                                        <span class="font-weight-bold">Shipping Info</span>
-                                                        <div class="row mt-2">
-                                                            <div class="col-lg-4">
-                                                                <label for="">Name</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter Your Name" />
-                                                            </div>
-                                                            <div class="col-lg-4">
-                                                                <label for="">Phone</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter Your Phone" />
-                                                            </div>
-                                                            <div class="col-lg-4">
-                                                                <label for="">Email</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter Your Email" />
-                                                            </div>
-                                                            <div class="col-lg-4 mt-3">
-                                                                <label for="">Addres One</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter Your Address One" />
-                                                            </div>
-                                                            <div class="col-lg-4 mt-3">
-                                                                <label for="">Addres Two</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter Your Address Two" />
-                                                            </div>
-                                                            <div class="col-lg-4 mt-3">
-                                                                <label for="">Country</label> <br />
-                                                                <select class="form-select w-100">
-                                                                    <option selected>
-                                                                        Open this select menu
-                                                                    </option>
-                                                                    <option value="1">One</option>
-                                                                    <option value="2">Two</option>
-                                                                    <option value="3">Three</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-lg-4 mt-3">
-                                                                <label for="">Zip Code</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter Your Address Two" />
-                                                            </div>
-                                                            <div class="col-lg-4 mt-3">
-                                                                <label for="">State</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter Your Address Two" />
-                                                            </div>
-                                                            <div class="col-lg-4 mt-3">
-                                                                <label for="">City</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter Your Address Two" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card-header collapsed checkout-page-form" data-toggle="collapse"
-                                                data-target="#collapseThree">
-                                                <a class="card-title"> Payment Info </a>
-                                            </div>
-                                            <div id="collapseThree" class="collapse" data-parent="#accordion2"
-                                                style="background-color: #f5f5f5">
-                                                <div class="card-body p-0">
-                                                    <div class="mb-3 bg-light p-3">
-                                                        <span class="font-weight-bold">Payment Info</span>
-                                                        @php
-                                                            $shippings = App\Models\User\Shipping::where('status', '1')
-                                                                ->latest()
-                                                                ->get();
-                                                        @endphp
                                                         <div class="row">
-                                                            <div class="col-lg-6">
-                                                                <div class="py-3">
 
-                                                                    @foreach ($shippings as $shipping)
-                                                                        <div class="form-check">
-
-                                                                            <input class="form-check-input" type="radio"
-                                                                                name="shipping_charge" autocomplete="off"
-                                                                                value="{{ $shipping->value }}" checked />
-
-                                                                            <label class="form-check-label"
-                                                                                for="cashOnDelivery">
-                                                                                {{ $shipping->title }}
-                                                                            </label>
-                                                                            
-                                                                        </div>
-                                                                    @endforeach
-
-
-                                                                </div>
+                                                            <div class="form-group col-sm-4">
+                                                                <label for="user_id">User Name
+                                                                </label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Billing Name"
+                                                                    value="{{ old('billing_name') }}" name="billing_name" />
                                                             </div>
-                                                            <div class="col-lg-6">
-                                                                <div id="cashOnDeliveryDetails">
-                                                                    Delivery Man Will Delivery Your Percel As
-                                                                    Soon As Possible. Then Pay The Amount.
-                                                                </div>
-                                                                <div id="onlinePaymentDetails" style="display: none">
-                                                                    Online Payment Open
-                                                                </div>
+
+                                                            <div class="form-group col-sm-4">
+                                                                <label for="phone">Phone
+                                                                </label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Billing Phone"
+                                                                    value="{{ old('billing_phone') }}"
+                                                                    name="billing_phone" />
+                                                            </div>
+
+                                                            <div class="form-group col-sm-4">
+                                                                <label for="email">Email
+                                                                </label>
+                                                                <input type="email" class="form-control"
+                                                                    value="{{ old('billing_email') }}"
+                                                                    placeholder="example@gmail.com" name="billing_email" />
+                                                            </div>
+
+                                                            <div class="form-group col-sm-4">
+                                                                <label for="city">City
+                                                                </label>
+                                                                <input type="text" class="form-control"
+                                                                    value="{{ old('billing_city') }}" name="billing_city"
+                                                                    placeholder="City Name" />
+                                                            </div>
+
+                                                            <div class="form-group col-sm-4">
+                                                                <label for="state">State
+                                                                </label>
+                                                                <input type="text" class="form-control"
+                                                                    value="{{ old('billing_state') }}" name="billing_state"
+                                                                    placeholder="State Name" />
+                                                            </div>
+
+                                                            <div class="form-group col-sm-4">
+                                                                <label for="postal_code">Postal Code
+                                                                </label>
+                                                                <input type="text" class="form-control"
+                                                                    value="{{ old('billing_postal_code') }}"
+                                                                    name="billing_postal_code" placeholder="Postal Code" />
+                                                            </div>
+
+                                                            <div class="form-group col-sm-4">
+                                                                <label for="country">Country
+                                                                </label>
+
+                                                                <input type="text" class="form-control"
+                                                                    value="{{ old('billing_country') }}"
+                                                                    name="billing_country" placeholder="Country Name" />
+                                                            </div>
+
+
+                                                            <div class="form-group col-sm-4">
+                                                                <label for="address_line1">Address 1
+                                                                </label>
+                                                                <input type="text" class="form-control"
+                                                                    value="{{ old('billing_address_line1') }}"
+                                                                    name="billing_address_line1"
+                                                                    placeholder="Address One" />
+                                                            </div>
+
+                                                            <div class="form-group col-sm-4">
+                                                                <label for="address_line2">Address 2
+                                                                </label>
+                                                                <input type="text" class="form-control"
+                                                                    value="{{ old('billing_address_line2') }}"
+                                                                    name="billing_address_line2"
+                                                                    placeholder="Address Two" />
+                                                            </div>
+
+                                                            <div class="form-group col-sm-12">
+                                                                <label for="address_line2">Note
+                                                                </label>
+                                                                <textarea class="form-control" placeholder="Write Something" name="notes" id="" cols="1" rows="1"></textarea>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        {{-- Billing Info --}}
+
+                                        {{-- Payment Info  --}}
+                                        <div class="card-header checkout-page-form">
+                                            <a class="card-title"> Payment Info </a>
+                                        </div>
+                                        <div class="" style="background-color: #f5f5f5">
+                                            <div class="card-body p-0">
+                                                <div class="mb-3 bg-light p-3">
+
+                                                    @php
+                                                        $shippings = App\Models\User\Shipping::where('status', '1')
+                                                            ->latest()
+                                                            ->get();
+                                                    @endphp
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="py-3">
+
+                                                                @foreach ($shippings as $shipping)
+                                                                    <div class="form-check">
+
+                                                                        <input class="form-check-input" type="radio"
+                                                                            name="shipping_charge" autocomplete="off"
+                                                                            value="{{ $shipping->value }}" />
+
+                                                                        <label class="form-check-label"
+                                                                            for="cashOnDelivery">
+                                                                            {{ $shipping->title }}
+                                                                        </label>
+
+                                                                    </div>
+                                                                @endforeach
+
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div id="cashOnDeliveryDetails">
+                                                                Delivery Man Will Delivery Your Percel As
+                                                                Soon As Possible. Then Pay The Amount.
+                                                            </div>
+                                                            <div id="onlinePaymentDetails" style="display: none">
+                                                                Online Payment Open
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        {{-- Payment Info  --}}
+
                                     </div>
-                                </div>
-                                <!-- Check Out Content -->
-                                <div class="col-lg-4">
-                                    <form action="">
-                                        <div class="card rounded-0">
-                                            <div class="card-header font-weight-bold">
-                                                ORDER SUMMERY
-                                            </div>
-                                            <div class="card-body border-0">
-                                                <div class="table-responsive border-0">
-                                                    <table class="table border-0">
 
-                                                        <thead style="background: #dfdddd">
-                                                            <tr>
-                                                                <th scope="col">Details</th>
-                                                                <th class="text-right">Price Info</th>
-                                                            </tr>
-                                                        </thead>
 
-                                                        <tbody>
+                                    <!-- Check Out Content -->
 
-                                                            @foreach ($carts as $item)
-                                                                <tr class="">
-                                                                    <td>Sub Total:</td>
-                                                                    <td class="text-right">Tk {{ $item->price }}</td>
+                                    <div class="col-lg-4">
+                                        <form action="">
+                                            <div class="card rounded-0">
+                                                <div class="card-header font-weight-bold">
+                                                    ORDER SUMMERY
+                                                </div>
+                                                <div class="card-body border-0">
+                                                    <div class="table-responsive border-0">
+                                                        <table class="table border-0">
+
+                                                            <thead style="background: #dfdddd">
+                                                                <tr>
+                                                                    <th scope="col">Details</th>
+                                                                    <th class="text-right">Price Info</th>
                                                                 </tr>
-                                                            @endforeach
+                                                            </thead>
+
+                                                            <tbody>
+
+                                                                @foreach ($carts as $item)
+                                                                    <tr class="">
+                                                                        <td>Sub Total:</td>
+                                                                        <td class="text-right">Tk {{ $item->price }}</td>
+                                                                    </tr>
+                                                                @endforeach
 
 
-                                                            <tr class="">
-                                                                <td>Shipping Charge :</td>
-                                                                <td class="text-right">Free Shipping</td>
-                                                            </tr>
+                                                                <tr class="">
+                                                                    <td>Delivery Charge :</td>
+                                                                    <td class="text-right">Tk <b
+                                                                            class="drk-gry shippingCharge">0.00</b></td>
 
-                                                            <tr class="">
-                                                                <td>Delivery Charge :</td>
-                                                                <td class="text-right">50 TK</td>
-                                                            </tr>
+                                                                </tr>
 
-                                                            <tr>
-                                                                <th scope="col">ORDER TOTAL</th>
-                                                                <th class="text-right">TK 19000</th>
-                                                            </tr>
+                                                                {{-- <tr class="">
+                                                                    <td>Delivery Charge :</td>
+                                                                    <td class="text-right">50 TK</td>
+                                                                </tr> --}}
 
-                                                        </tbody>
+                                                                <tr>
+                                                                    <th scope="col">ORDER TOTAL</th>
 
-                                                    </table>
-                                                    <div>
-                                                        <div class="d-flex justify-content-end">
+                                                                    <th class="text-right">
+                                                                        <input class="" type="hidden"
+                                                                            name="total_amount" value="0">
+                                                                        Tk <b class="amount grandTotal">
+                                                                            {{ $cartTotal }}</b>
+                                                                    </th>
+
+                                                                </tr>
+
+                                                            </tbody>
+
+                                                        </table>
+
+
+                                                        {{-- Delivery System  --}}
+                                                        <div class="mt-5">
+                                                            <h5 class="cart-title-highlight title-3">Payment Method</h5>
+                                                            <ul class="payment_methods methods list-unstyled mt-3">
+
+                                                                <li class="payment_method_bacs">
+
+                                                                    <div class="">
+                                                                        <label class="radio-inline">
+                                                                            <input type="radio" value="cod"
+                                                                                name="payment_method" />
+                                                                            <span>Cash On Delivery</span>
+                                                                        </label>
+                                                                    </div>
+
+                                                                </li>
+
+                                                                <li class="payment_method_cod">
+
+                                                                    <div class="">
+                                                                        <label class="radio-inline">
+                                                                            <input type="radio" value="ssl"
+                                                                                name="payment_method" />
+                                                                            <span>SSl Commerez</span>
+                                                                        </label>
+                                                                    </div>
+
+                                                                </li>
+                                                            </ul>
+
+                                                        </div>
+                                                        {{-- Delivery System  --}}
+
+
+                                                        <div class="d-flex justify-content-end mt-3">
 
                                                             <button type="submit" class="cart-button w-100">
-                                                                Check Out
+                                                                Proceed to Checkout
                                                             </button>
+
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </form>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -324,5 +334,30 @@
                 </div>
             </div>
         </div>
-    </div>
+
+    </form>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var subTotal = {{ $cartTotal }};
+
+            var shippingCharge = $('.shippingCharge');
+            var grandTotal = $('.grandTotal');
+
+            var hiddenTotalInput = $('input[name="total_amount"]');
+
+            $('input:radio[name="shipping_charge"]').change(function() {
+
+                var shippingMethod = parseFloat($(this).val());
+                var total = shippingMethod + subTotal;
+                shippingCharge.text(shippingMethod.toFixed(2));
+                grandTotal.text(total.toFixed(2));
+                hiddenTotalInput.val(total.toFixed(2));
+            });
+        });
+    </script>
 @endsection

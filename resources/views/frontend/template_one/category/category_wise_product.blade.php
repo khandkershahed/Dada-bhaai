@@ -241,60 +241,46 @@
                                     <div class="product__box">
                                         <div class="product__thumb">
 
-                                            <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
-                                                class="img-wrapper">
-
+                                            <a href="product-details.html" class="img-wrapper">
                                                 <img class="img" src="{{ asset($product->product_image) }}"
                                                     alt="" style="height: 230px;" />
 
-                                                {{-- <img class="img secondary-img"
-                                        src="img/allproducts/products__thumb__02.jpg" alt="" /> --}}
                                             </a>
-
                                         </div>
+
                                         <div class="product__content--top">
-                                            <span class="cate-name">{{ $product->category->category_name }}</span>
+                                            <span
+                                                class="cate-name">{{ $product['category']['category_name'] }}</span>
                                             <h6 class="product__title mine__shaft-color f-700 mb-0">
                                                 <a
                                                     href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ $product->product_name }}</a>
                                             </h6>
                                         </div>
 
-                                        <div class="product__content--rating d-flex justify-content-between">
+                                        <div
+                                            class="product__content--rating d-flex justify-content-between align-items-center">
 
-                                            <div class="rating">
-                                                {{-- <ul class="list-inline">
-                                        <li class="rating-active">
-                                            <i class="fas fa-star"></i>
-                                        </li>
-                                        <li class="rating-active">
-                                            <i class="fas fa-star"></i>
-                                        </li>
-                                        <li class="rating-active">
-                                            <i class="fas fa-star"></i>
-                                        </li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                    </ul> --}}
-                                            </div>
+                                            <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
+                                                class="btn btn-primary btn-sm">
+                                                Add To Cart
+                                            </a>
 
                                             <div class="price">
-
                                                 @if ($product->price_status == 'rfq')
                                                     <h5 class="grenadier-color f-600">
-                                                        ${{ $product->sas_price }}
+                                                        Tk {{ $product->sas_price }}
                                                     </h5>
                                                 @elseif ($product->price_status == 'offer_price')
                                                     <h5 class="grenadier-color f-600">
-                                                        ${{ $product->discount_price }}</h5>
+                                                        Tk {{ $product->discount_price }}</h5>
                                                 @else
-                                                    <h5 class="grenadier-color f-600">${{ $product->price }}
+                                                    <h5 class="grenadier-color f-600">Tk {{ $product->price }}
                                                     </h5>
                                                 @endif
-
                                             </div>
 
                                         </div>
+
                                     </div>
                                     <div class="product-action">
                                         <a href="#"><span class="lnr lnr-heart"></span></a>

@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Product;
+use App\Models\User\Order;
+use App\Models\User\OrderItem;
+use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Helper;
 use Illuminate\Http\Request;
 
 class TemplateOneCartController extends Controller
@@ -145,7 +149,7 @@ class TemplateOneCartController extends Controller
             $cartQty = Cart::count();
 
             return view('frontend.template_one.cart.checkout', compact('carts', 'cartTotal', 'cartQty'));
-            
+
         } else {
 
             toastr()->error('Shopping At list One Product');
@@ -153,4 +157,61 @@ class TemplateOneCartController extends Controller
         }
 
     }
+
+    public function CheckoutStoreTemplateOne(Request $request)
+    {
+        //dd($request->all());
+        $order_id = Order::insertGetId([
+
+            //'user_id' => Auth::id(),
+
+            'billing_name' => $request->billing_name,
+            'billing_address_line1' => $request->billing_address_line1,
+            'billing_address_line2' => $request->billing_address_line2,
+            'billing_city' => $request->billing_city,
+            'billing_state' => $request->billing_state,
+            'billing_postal_code' => $request->billing_postal_code,
+            'billing_country' => $request->billing_country,
+            'billing_phone' => $request->billing_phone,
+            'billing_email' => $request->billing_email,
+            'notes' => $request->notes,
+
+            'shipping_charge' => $request->shipping_charge,
+            'payment_method' => 'Cash On Delivery',
+            'transaction_number' => 'Cash On Delivery',
+            'total_amount' => $request->total_amount,
+
+            'invoice_number' => 'DV' . mt_rand(10000000, 99999999),
+            'order_number' => Helper::generateOrderNumber(),
+
+            'order_date' => Carbon::now()->format('dmy'),
+            'order_month' => Carbon::now()->format('F'),
+            'order_year' => Carbon::now()->format('Y'),
+
+            'created_at' => Carbon::now(),
+
+        ]);
+
+        $carts = Cart::content();
+        foreach ($carts as $cart) {
+
+            OrderItem::insert([
+                'order_id' => $order_id,
+                'product_id' => $cart->id,
+                'color' => $cart->options->color,
+                'qty' => $cart->qty,
+                'price' => $cart->price,
+                'created_at' => now(),
+
+            ]);
+        } // End Foreach
+
+        Cart::destroy();
+
+        toastr()->success('Payment Successfully');
+
+        return redirect()->route('index');
+
+    }
+
 }

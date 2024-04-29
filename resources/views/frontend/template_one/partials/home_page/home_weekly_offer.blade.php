@@ -46,9 +46,9 @@
                                                             <h6 class="f-700 mb-20">
                                                                 <a href="javascript:;">{{ $product->offer->name }}</a>
                                                             </h6>
-                                                            <span class="price-old">${{ $product->offer->price }}</span>
+                                                            <span class="price-old">Tk {{ $product->offer->price }}</span>
                                                             <span
-                                                                class="price-new f-600 grenadier-color">${{ $product->offer->discount_price }}</span>
+                                                                class="price-new f-600 grenadier-color">Tk {{ $product->offer->discount_price }}</span>
                                                         </div>
                                                         <div class="product-countdown mb-15">
                                                             <div class="time-count-deal">

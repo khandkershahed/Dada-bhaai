@@ -43,6 +43,21 @@
 <script src="{{ asset('frontend/template_one/assets/js/main.js') }}"></script>
 <script src="{{ asset('frontend/template_one/assets/js/search_advance.js') }}"></script>
 
+{{-- Releted Accesories --}}
+<script>
+    $(document).ready(function () {
+      $(".releted_accessories").slick({
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 6000,
+        arrows: false, // Hide next and previous buttons
+        spacing: 50, // Add a gap of 20px between slides
+        // Add more settings/options as needed
+      });
+    });
+  </script>
+{{-- Releted Accesories End --}}
 <script>
     // JavaScript to toggle dropdown visibility
     $(document).ready(function() {

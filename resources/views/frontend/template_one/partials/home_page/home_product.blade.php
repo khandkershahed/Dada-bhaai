@@ -1,5 +1,5 @@
 @php
-    $categorys = App\Models\Admin\Category::where('status', '1')->latest()->limit(4)->get();
+    $categorys = App\Models\Admin\Category::where('status', '1')->orderBy('id','DESC')->limit(4)->get();
 @endphp
 
 
@@ -105,13 +105,13 @@
                                                     <div class="price">
                                                         @if ($product->price_status == 'rfq')
                                                             <h5 class="grenadier-color f-600">
-                                                                ${{ $product->sas_price }}
+                                                                Tk {{ $product->sas_price }}
                                                             </h5>
                                                         @elseif ($product->price_status == 'offer_price')
                                                             <h5 class="grenadier-color f-600">
-                                                                ${{ $product->discount_price }}</h5>
+                                                                Tk {{ $product->discount_price }}</h5>
                                                         @else
-                                                            <h5 class="grenadier-color f-600">${{ $product->price }}
+                                                            <h5 class="grenadier-color f-600">Tk {{ $product->price }}
                                                             </h5>
                                                         @endif
                                                     </div>
