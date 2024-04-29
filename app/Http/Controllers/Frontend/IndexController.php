@@ -53,7 +53,10 @@ class IndexController extends Controller
         $cat_id = $product->category_id;
         $relativeProduct = Product::where('category_id', $cat_id)->where('id', '!=', '$id')->orderBy('id', 'ASC')->limit(5)->get();
 
-        return view('frontend.template_one.product.single_product', compact('product', 'relativeProduct', 'multiImages'));
+        $child_id = $product->child_id;
+        $relativeChild = Product::where('child_id', $child_id)->where('id', '!=', '$id')->orderBy('id', 'DESC')->limit(8)->get();
+
+        return view('frontend.template_one.product.single_product', compact('product', 'relativeProduct', 'multiImages','relativeChild'));
     }
 
     //Single Product

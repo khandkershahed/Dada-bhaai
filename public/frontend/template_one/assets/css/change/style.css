@@ -2708,7 +2708,7 @@ ul.sub__menu.sub__dept--menu li:hover ul.sub__menu.level2 {
 .single-categories {
   text-align: center;
   height: 210px;
-  background-color: #eee;
+  /* background-color: #eee; */
 }
 .brands-box {
   display: flex;

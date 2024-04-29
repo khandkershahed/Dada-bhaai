@@ -51,23 +51,7 @@
                                                 alt="" style="width:100%; height: 400px;" />
                                         @endforelse
 
-                                        {{-- <div class="tab-pane fade show active" id="home5" role="tabpanel"
-                                            aria-labelledby="home-tab5">
-                                            <img src="{{ asset('frontend/template_one/assets/img/allproducts/pro-details-small-1.jpg') }}"
-                                                class="img-fluid mb-2" alt="" style="width:100%; height: 400px;" />
-                                        </div>
 
-                                        <div class="tab-pane fade" id="profile5" role="tabpanel"
-                                            aria-labelledby="profile-tab5">
-                                            <img src="{{ asset('frontend/template_one/assets/img/allproducts/pro-details-small-2.jpg') }}"
-                                                class="img-fluid mb-2" alt="" style="width:100%; height: 400px;" />
-                                        </div>
-
-                                        <div class="tab-pane fade" id="contact5" role="tabpanel"
-                                            aria-labelledby="contact-tab5">
-                                            <img src="{{ asset('frontend/template_one/assets/img/allproducts/pro-details-small-3.jpg') }}"
-                                                class="img-fluid mb-2" alt="" style="width:100%; height: 400px;" />
-                                        </div> --}}
 
                                     </div>
 
@@ -197,316 +181,69 @@
                             </div>
                         </div>
                         <div class="row">
+
                             <div class="row align-items-center">
-                              <div class="col-xl-12 col-sm-12">
-                                <div class="product-section2 mt-40">
-                                  <h6
-                                    class="product--section__title2 pb-30"
-                                    id="releted-tab"
-                                    data-toggle="tab"
-                                    href="#releted"
-                                    role="tab"
-                                    aria-controls="releted"
-                                    aria-selected="true"
-                                  >
-                                    <span>Releted </span> Accessories Of This Product
-                                  </h6>
+                                <div class="col-xl-12 col-sm-12">
+                                    <div class="product-section2 mt-40">
+                                        <h6 class="product--section__title2 pb-30" id="releted-tab" data-toggle="tab"
+                                            href="#releted" role="tab" aria-controls="releted" aria-selected="true">
+                                            <span>Releted </span> Accessories Of This Product
+                                        </h6>
+                                    </div>
                                 </div>
-                              </div>
                             </div>
+
                             <div class="col-lg-12 px-0">
-                              <div class="releted_accessories">
-                                <div class="card border-0 shadow-sm">
-                                  <div class="card-header p-0 border-0">
-                                    <img
-                                      src="https://dvf83rt16ac4w.cloudfront.net/upload/product/20231026_1698299879_827607.jpeg"
-                                      class="border img-fluid"
-                                      alt=""
-                                    />
-                                  </div>
-                                  <div class="card-body p-0">
-                                    <div class="container">
-                                      <div class="row gx-2 align-items-center">
-                                        <div
-                                          class="col-lg-12 p-1"
-                                          style="background-color: #eee"
-                                        >
-                                          <small class="text-black"
-                                            >Blue Color Headset</small
-                                          >
+                                <div class="releted_accessories">
+
+                                    @forelse ($relativeChild as $product)
+                                        <div class="card border-0 shadow-sm">
+
+                                            <div class="card-header p-0 border-0">
+                                                <img src="{{ asset($product->product_image) }}" class="border img-fluid"
+                                                    style="width: 100%; height: 140px;" alt="" />
+                                            </div>
+
+                                            <div class="card-body p-0">
+                                                <div class="container">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-lg-12 p-1" style="background-color: #eee">
+                                                            <small class="text-black">{{ $product->product_name }}</small>
+                                                        </div>
+
+                                                        <div class="col-lg-6 p-0">
+
+                                                            <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}" class="btn btn-primary btn-sm">+Add</a>
+
+                                                        </div>
+
+                                                        <div class="col-lg-6 ms-2 mt-3">
+                                                            <div class="">
+                                                                @if ($product->price_status == 'rfq')
+                                                                    <p class="grenadier-color">
+                                                                        Tk {{ $product->sas_price }}
+                                                                    </p>
+                                                                @elseif ($product->price_status == 'offer_price')
+                                                                    <p class="grenadier-color">
+                                                                        Tk {{ $product->discount_price }}</p>
+                                                                @else
+                                                                    <p class="grenadier-color">Tk
+                                                                        {{ $product->price }}
+                                                                    </p>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-lg-6 p-0">
-                                          <div>
-                                            <a
-                                              href="#"
-                                              class="pl-2 btn w-100 btn-success py-2 mt-0 mr-3"
-                                              >+Add</a
-                                            >
-                                          </div>
-                                        </div>
-                                        <div class="col-lg-6 p-0">
-                                          <div>
-                                            <input
-                                              class="mb-0 w-100 bg-light form-control form-control-sm p-1 border-0 text-center rounded-0 shadow-sm"
-                                              type="number"
-                                              value="1"
-                                            />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
+                                    @empty
+                                        <P>No Product Avaiable</P>
+                                    @endforelse
+
                                 </div>
-                                <div class="card border-0 shadow-sm">
-                                  <div class="card-header p-0 border-0">
-                                    <img
-                                      src="https://dvf83rt16ac4w.cloudfront.net/upload/product/20231026_1698299879_827607.jpeg"
-                                      class="border img-fluid"
-                                      alt=""
-                                    />
-                                  </div>
-                                  <div class="card-body p-0">
-                                    <div class="container">
-                                      <div class="row gx-2 align-items-center">
-                                        <div
-                                          class="col-lg-12 p-1"
-                                          style="background-color: #eee"
-                                        >
-                                          <small class="text-black"
-                                            >Blue Color Headsetss</small
-                                          >
-                                        </div>
-                                        <div class="col-lg-6 p-0">
-                                          <div>
-                                            <a
-                                            href="#"
-                                            class="pl-2 w-100 btn-success btn-sm btn rounded-0 py-2 mt-0 mr-3"
-                                             style="background-color: green !important;" disabled
-                                            >+Added</a
-                                          >
-                                          </div>
-                                        </div>
-                                        <div class="col-lg-6 p-0">
-                                          <div>
-                                            <input
-                                              class="mb-0 w-100 bg-light form-control form-control-sm p-1 border-0 text-center rounded-0 shadow-sm"
-                                              type="number"
-                                              value="1"
-                                            />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="card border-0 shadow-sm">
-                                  <div class="card-header p-0 border-0">
-                                    <img
-                                      src="https://dvf83rt16ac4w.cloudfront.net/upload/product/20231026_1698299879_827607.jpeg"
-                                      class="border img-fluid"
-                                      alt=""
-                                    />
-                                  </div>
-                                  <div class="card-body p-0">
-                                    <div class="container">
-                                      <div class="row gx-2 align-items-center">
-                                        <div
-                                          class="col-lg-12 p-1"
-                                          style="background-color: #eee"
-                                        >
-                                          <small class="text-black"
-                                            >Blue Color Headset</small
-                                          >
-                                        </div>
-                                        <div class="col-lg-6 p-0">
-                                          <div>
-                                            <a
-                                              href="#"
-                                              class="pl-2 btn w-100 btn-primary py-2 mt-0 mr-3"
-                                              >+Add</a
-                                            >
-                                          </div>
-                                        </div>
-                                        <div class="col-lg-6 p-0">
-                                          <div>
-                                            <input
-                                              class="mb-0 w-100 bg-light form-control form-control-sm p-1 border-0 text-center rounded-0 shadow-sm"
-                                              type="number"
-                                              value="1"
-                                            />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="card border-0 shadow-sm">
-                                  <div class="card-header p-0 border-0">
-                                    <img
-                                      src="https://dvf83rt16ac4w.cloudfront.net/upload/product/20231026_1698299879_827607.jpeg"
-                                      class="border img-fluid"
-                                      alt=""
-                                    />
-                                  </div>
-                                  <div class="card-body p-0">
-                                    <div class="container">
-                                      <div class="row gx-2 align-items-center">
-                                        <div
-                                          class="col-lg-12 p-1"
-                                          style="background-color: #eee"
-                                        >
-                                          <small class="text-black"
-                                            >Blue Color Headset</small
-                                          >
-                                        </div>
-                                        <div class="col-lg-6 p-0">
-                                          <div>
-                                            <a
-                                              href="#"
-                                              class="pl-2 btn w-100 btn-primary py-2 mt-0 mr-3"
-                                              >+Add</a
-                                            >
-                                          </div>
-                                        </div>
-                                        <div class="col-lg-6 p-0">
-                                          <div>
-                                            <input
-                                              class="mb-0 w-100 bg-light form-control form-control-sm p-1 border-0 text-center rounded-0 shadow-sm"
-                                              type="number"
-                                              value="1"
-                                            />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="card border-0 shadow-sm">
-                                  <div class="card-header p-0 border-0">
-                                    <img
-                                      src="https://dvf83rt16ac4w.cloudfront.net/upload/product/20231026_1698299879_827607.jpeg"
-                                      class="border img-fluid"
-                                      alt=""
-                                    />
-                                  </div>
-                                  <div class="card-body p-0">
-                                    <div class="container">
-                                      <div class="row gx-2 align-items-center">
-                                        <div
-                                          class="col-lg-12 p-1"
-                                          style="background-color: #eee"
-                                        >
-                                          <small class="text-black"
-                                            >Blue Color Headset</small
-                                          >
-                                        </div>
-                                        <div class="col-lg-6 p-0">
-                                          <div>
-                                            <a
-                                              href="#"
-                                              class="pl-2 btn w-100 btn-primary py-2 mt-0 mr-3"
-                                              >+Add</a
-                                            >
-                                          </div>
-                                        </div>
-                                        <div class="col-lg-6 p-0">
-                                          <div>
-                                            <input
-                                              class="mb-0 w-100 bg-light form-control form-control-sm p-1 border-0 text-center rounded-0 shadow-sm"
-                                              type="number"
-                                              value="1"
-                                            />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="card border-0 shadow-sm">
-                                  <div class="card-header p-0 border-0">
-                                    <img
-                                      src="https://dvf83rt16ac4w.cloudfront.net/upload/product/20231026_1698299879_827607.jpeg"
-                                      class="border img-fluid"
-                                      alt=""
-                                    />
-                                  </div>
-                                  <div class="card-body p-0">
-                                    <div class="container">
-                                      <div class="row gx-2 align-items-center">
-                                        <div
-                                          class="col-lg-12 p-1"
-                                          style="background-color: #eee"
-                                        >
-                                          <small class="text-black"
-                                            >Blue Color Headset</small
-                                          >
-                                        </div>
-                                        <div class="col-lg-6 p-0">
-                                          <div>
-                                            <a
-                                              href="#"
-                                              class="pl-2 btn w-100 btn-primary py-2 mt-0 mr-3"
-                                              >+Add</a
-                                            >
-                                          </div>
-                                        </div>
-                                        <div class="col-lg-6 p-0">
-                                          <div>
-                                            <input
-                                              class="mb-0 w-100 bg-light form-control form-control-sm p-1 border-0 text-center rounded-0 shadow-sm"
-                                              type="number"
-                                              value="1"
-                                            />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="card border-0 shadow-sm">
-                                  <div class="card-header p-0 border-0">
-                                    <img
-                                      src="https://dvf83rt16ac4w.cloudfront.net/upload/product/20231026_1698299879_827607.jpeg"
-                                      class="border img-fluid"
-                                      alt=""
-                                    />
-                                  </div>
-                                  <div class="card-body p-0">
-                                    <div class="container">
-                                      <div class="row gx-2 align-items-center">
-                                        <div
-                                          class="col-lg-12 p-1"
-                                          style="background-color: #eee"
-                                        >
-                                          <small class="text-black"
-                                            >Blue Color Headset</small
-                                          >
-                                        </div>
-                                        <div class="col-lg-6 p-0">
-                                          <div>
-                                            <a
-                                              href="#"
-                                              class="pl-2 btn w-100 btn-primary py-2 mt-0 mr-3"
-                                              >+Add</a
-                                            >
-                                          </div>
-                                        </div>
-                                        <div class="col-lg-6 p-0">
-                                          <div>
-                                            <input
-                                              class="mb-0 w-100 bg-light form-control form-control-sm p-1 border-0 text-center rounded-0 shadow-sm"
-                                              type="number"
-                                              value="1"
-                                            />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
                             </div>
-                          </div>
+                        </div>
 
                     </div>
                 </div>
