@@ -7,6 +7,7 @@ use App\Models\Admin;
 use App\Models\Admin\EmployeeCategory;
 use App\Models\Admin\EmployeeDept;
 use App\Models\Admin\EmployeeInformation;
+use App\Models\User\Order;
 use Helper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,9 @@ class AdminController extends Controller
     //Admin Dashboard
     public function AdminDashboard()
     {
-        return view('admin.index');
+        $orders = Order::where('status','pending')->latest()->get();
+        
+        return view('admin.index',compact('orders'));
     }
 
     //AdminProfile

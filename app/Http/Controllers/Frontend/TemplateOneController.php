@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\About;
 use App\Models\Admin\Category;
 use App\Models\Admin\ChildCategory;
 use App\Models\Admin\Contact;
@@ -313,6 +314,13 @@ class TemplateOneController extends Controller
     {
         $faqs = Faq::where('status', '1')->orderBy('order', 'ASC')->latest()->get();
         return view('frontend.template_one.faq.faq', compact('faqs'));
+    }
+
+    //Template One About
+    public function TemplateOneAboutUs()
+    {
+        $about = About::where('status','tamplate_one')->find(1);
+        return view('frontend.template_one.about.about_us',compact('about'));
     }
 
 }

@@ -21,7 +21,7 @@
                             </div>
                             <div class="footer-menu">
                                 <ul>
-                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="{{ route('template.one.about') }}">About Us</a></li>
                                     <li><a href="{{ route('template.one.login') }}">Sign In</a></li>
                                     <li><a href="{{ route('template_one.contact') }}">Contact Us</a></li>
                                     <li><a href="{{ route('template.one.faq') }}">Faq</a></li>

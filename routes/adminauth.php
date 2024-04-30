@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminAuth\PasswordResetLinkController;
 use App\Http\Controllers\AdminAuth\VerifyEmailController;
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ChargeController;
 use App\Http\Controllers\Admin\ChildCategoryController;
@@ -101,6 +102,12 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth:admin', 'verified'])->group(function () {
+
+    //Order Section
+    Route::controller(AdminOrderController::class)->prefix('admin-order')->group(function () {
+
+        Route::get('/order-details/{id}', 'AdminOrderDetails')->name('admin.order.details');
+    });
 
     //Product Section
     Route::controller(ProductController::class)->group(function () {

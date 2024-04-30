@@ -69,13 +69,13 @@
                                     <option selected disabled>Choose Tamplate</option>
 
                                     <option value="tamplate_one"
-                                        {{ $about->status == 'tamplate_one' ? 'selected' : '' }}>Look One</option>
+                                        {{ $about->status == 'tamplate_one' ? 'selected' : '' }}>Template One</option>
 
                                     <option value="tamplate_two"
-                                        {{ $about->status == 'tamplate_two' ? 'selected' : '' }}>Look Two</option>
+                                        {{ $about->status == 'tamplate_two' ? 'selected' : '' }}>Template Two</option>
 
                                     <option value="tamplate_three"
-                                        {{ $about->status == 'tamplate_three' ? 'selected' : '' }}>Look Three
+                                        {{ $about->status == 'tamplate_three' ? 'selected' : '' }}>Template Three
                                     </option>
 
                                 </select>
@@ -96,14 +96,14 @@
                                                 <div class="form-group">
                                                     <label for="">Breadcrumb Title</label>
                                                     <input type="text" class="form-control form-control-sm mt-2"
-                                                        name="breadcrumb_title" value="{{ $about->breadcrumb_title }}">
+                                                        name="breadcrumb_title" required value="{{ $about->breadcrumb_title }}">
                                                 </div>
                                             </div>
 
                                             <div class="col-6 mb-2">
                                                 <div class="form-group">
                                                     <label for="">Breadcrumb Sub Title</label>
-                                                    <input type="text" class="form-control form-control-sm mt-2"
+                                                    <input type="text" required class="form-control form-control-sm mt-2"
                                                         name="breadcrumb_sub_title"
                                                         value="{{ $about->breadcrumb_sub_title }}">
                                                 </div>
@@ -112,23 +112,23 @@
                                             <div class="col-6 mb-2">
                                                 <div class="form-group">
                                                     <label for="">Section One Badge</label>
-                                                    <input type="text" class="form-control form-control-sm mt-2"
+                                                    <input type="text" required class="form-control form-control-sm mt-2"
                                                         name="section_one_badge" value="{{ $about->section_one_badge }}">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-6 mb-2">
-                                                <div class="form-group">
-                                                    <label for="">Section Two Badge</label>
-                                                    <input type="text" class="form-control form-control-sm mt-2"
-                                                        name="section_two_badge" value="{{ $about->section_two_badge }}">
                                                 </div>
                                             </div>
 
                                             {{-- <div class="col-6 mb-2">
                                                 <div class="form-group">
-                                                    <label for="">Section One Title</label>
+                                                    <label for="">Section Two Badge</label>
                                                     <input type="text" class="form-control form-control-sm mt-2"
+                                                        name="section_two_badge" value="{{ $about->section_two_badge }}">
+                                                </div>
+                                            </div> --}}
+
+                                            <div class="col-6 mb-2">
+                                                <div class="form-group">
+                                                    <label for="">Section One Title</label>
+                                                    <input type="text" required class="form-control form-control-sm mt-2"
                                                         name="section_one_title" value="{{ $about->section_one_title }}">
                                                 </div>
                                             </div>
@@ -136,11 +136,11 @@
                                             <div class="col-6 mb-2">
                                                 <div class="form-group">
                                                     <label for="">Section One Sub Title</label>
-                                                    <input type="text" class="form-control form-control-sm mt-2"
+                                                    <input type="text" required class="form-control form-control-sm mt-2"
                                                         name="section_one_sub_title"
                                                         value="{{ $about->section_one_sub_title }}">
                                                 </div>
-                                            </div> --}}
+                                            </div>
 
                                             {{-- <div class="col-6 mb-2">
                                                 <div class="form-group">

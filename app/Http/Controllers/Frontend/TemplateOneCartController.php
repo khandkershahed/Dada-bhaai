@@ -20,13 +20,13 @@ class TemplateOneCartController extends Controller
     public function OfferToCartTemplateOne(Request $request, $id)
     {
         $product = Offer::findOrFail($id);
-
+        // dd($request->all());
         Cart::add([
 
             'id' => $id,
-            'name' => $request->name,
+            'name' => $request->product_name,
             'qty' => $request->quantity,
-            'price' => $product->price,
+            'price' => $request->price,
             'weight' => 1,
             'options' => [
                 'image' => $product->offer_image,
@@ -34,7 +34,7 @@ class TemplateOneCartController extends Controller
             ],
         ]);
 
-        return response()->json(['success' => 'Successfully Buy on Your Cart']);
+        return response()->json(['success' => 'Successfully Add on Your Cart']);
 
     }
 

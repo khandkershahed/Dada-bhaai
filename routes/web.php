@@ -77,7 +77,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // //User Logout
     // Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');
 
-
     //Add To WishList
     Route::get('/all-wishlist', [TemplateOneCartController::class, 'TemplateOneWishlist'])->name('wishlist');
     Route::get('/get-wishlist-product', [TemplateOneCartController::class, 'GetWishlistProduct']);
@@ -87,8 +86,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 //Add To WishList
 Route::post('/add-to-wishlist/{product_id}', [TemplateOneCartController::class, 'AddToWishList']);
-
-
 
 // Template One Controller
 Route::controller(TemplateOneController::class)->group(function () {
@@ -122,6 +119,9 @@ Route::controller(TemplateOneController::class)->group(function () {
 
     //Faq
     Route::get('/faq', 'TemplateOneFaq')->name('template.one.faq');
+
+    //About Us
+    Route::get('/about-us', 'TemplateOneAboutUs')->name('template.one.about');
 
 });
 
@@ -178,7 +178,5 @@ Route::controller(TemplateOneCartController::class)->group(function () {
     //CheckOut
     Route::get('/cart-checkout', 'CheckoutTemplateOne')->name('template.one.checkout');
     Route::post('/cart-checkout-store', 'CheckoutStoreTemplateOne')->name('template.checkout.store');
-
-    
 
 });

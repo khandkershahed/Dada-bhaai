@@ -355,50 +355,50 @@
                                     <a href="{{ route('index') }}">Home</a>
                                 </li>
 
+                                {{-- Brand List  --}}
+
                                 <li class="mega-menu static dropdown-icon">
-                                    <a href="javascript:void(0)">Brands</a>
+                                    <a href="javascript:void(0)">Brand</a>
 
                                     @php
-                                        $brands = App\Models\Brand::where('status', '1')
-                                            ->orderBy('brand_name', 'ASC')
-                                            ->limit(8)
+                                        $categorys = App\Models\Admin\Category::where('status', '1')
+                                            ->orderBy('id', 'ASC')
+                                            ->limit(4)
                                             ->latest()
                                             ->get();
                                     @endphp
 
                                     <ul class="submenu mega-full">
 
-                                        @foreach ($brands as $brand)
+                                        @foreach ($categorys as $category)
                                             <li>
-                                                <a href="javascript:;">{{ $brand->brand_name }}</a>
+                                                <a href="javascript:;">{{ $category->category_name }}</a>
 
-                                                @php
-                                                    $categorys = App\Models\Admin\Product::where(
-                                                        'category_id',
-                                                        $brand->id,
-                                                    )
+                                                {{-- @php
+                                                    $brands = App\Models\Brand::with('brandProducts')
+                                                        ->whereHas('brandProducts')
+                                                        ->where('status', '1')
+                                                        ->limit(4)
                                                         ->latest()
                                                         ->get();
-                                                @endphp
+                                                @endphp --}}
 
                                                 <ul class="submenu level-1">
 
-
-                                                    @forelse ($categorys as $category)
-                                                        <li>
-                                                            <a
-                                                                href="">{{ $category['category']['category_name'] }}</a>
-                                                        </li>
-                                                    @empty
-                                                        <p>No Category Avaiable</p>
-                                                    @endforelse
+                                                    {{-- @foreach ($brands as $brand)
+                                                        <li> <a href="">{{ $brand->brand_name }}</a></li>
+                                                    @endforeach --}}
 
                                                 </ul>
+
                                             </li>
                                         @endforeach
 
                                     </ul>
                                 </li>
+
+                                {{-- Brand List  --}}
+
                                 <li class="mega-menu static dropdown-icon">
                                     <a href="javascript:void(0)"
                                         onclick="window.location.href='shop-page.html'">Offers</a>
