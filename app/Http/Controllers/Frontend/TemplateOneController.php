@@ -11,7 +11,11 @@ use App\Models\Admin\Faq;
 use App\Models\Admin\Product;
 use App\Models\Brand;
 use App\Models\Sites;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 
 class TemplateOneController extends Controller
 {
@@ -296,19 +300,6 @@ class TemplateOneController extends Controller
 
     // }
 
-    //Template One Login
-    public function TemplateOneLogin()
-    {
-        return view('frontend.template_one.user.login');
-
-    }
-
-    //TemplateOneDashboard
-    public function TemplateOneDashboard()
-    {
-        return view('frontend.template_one.user.dashboard');
-    }
-
     //Template One Faq
     public function TemplateOneFaq()
     {
@@ -321,6 +312,91 @@ class TemplateOneController extends Controller
     {
         $about = About::where('status','tamplate_one')->find(1);
         return view('frontend.template_one.about.about_us',compact('about'));
+    }
+
+    //Template One Login
+    public function TemplateOneLogin()
+    {
+        return view('frontend.template_one.user.login');
+
+    }
+
+    //TemplateOneDashboard
+    public function TemplateOneDashboard()
+    {
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+
+        return view('frontend.template_one.user.dashboard',compact('profileData'));
+    }
+
+    //Template One ProfileUpdate
+    public function TemplateOneProfileUpdate(Request $request)
+    {
+
+        $id = Auth::user()->id;
+        $update = User::findOrFail($id);
+
+        $update->name = $request->name;
+        $update->email = $request->email;
+        $update->phone = $request->phone;
+        $update->address = $request->address;
+        $update->address_two = $request->address_two;
+
+        $update->country = $request->country;
+        $update->city = $request->city;
+        $update->postal_code = $request->postal_code;
+
+        $update->save();
+
+        toastr()->success('Profile Update Successfully');
+
+        return redirect()->back();
+    }
+
+    public function TemplateOnePasswordUpdate(Request $request)
+    {
+        //validate
+        $request->validate([
+
+            'old_password' => 'required',
+            'new_password' => [
+
+                'required', 'confirmed',Rules\Password::min(8)->mixedCase()->symbols()->letters()->numbers()
+
+            ],
+        ]);
+
+        //Match Old Password
+        if (!Hash::check($request->old_password, auth::user()->password)) {
+
+            toastr()->error('Old Password Not Match');
+
+            return redirect()->back();
+        }
+
+        //Update New Password
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password),
+        ]);
+
+        toastr()->success('Password Change Successfully');
+
+        return redirect()->back();
+    }
+
+    //Template One UserLogout
+    public function TemplateOneUserLogout(Request $request)
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        toastr()->success('Logout Successfully!!');
+
+        return redirect()->route('index');
     }
 
 }

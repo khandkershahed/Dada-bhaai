@@ -68,14 +68,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // //User Dashboard
     Route::get('/dashboard', [TemplateOneController::class, 'TemplateOneDashboard'])->name('template.one.dashboard');
-    // Route::post('/user/profile/update', [UserController::class, 'UserProfileUpdate'])->name('user.profile.update');
+    Route::post('/user/profile-update', [TemplateOneController::class, 'TemplateOneProfileUpdate'])->name('template.one.user.profile.update');
 
-    // //User Password
-    // Route::get('/user/password', [UserController::class, 'UserPassword'])->name('user.password');
-    // Route::post('/user/password/update', [UserController::class, 'UserPasswordPassword'])->name('user.password.update');
+    //User Password
+    Route::post('/user/password-update', [TemplateOneController::class, 'TemplateOnePasswordUpdate'])->name('template.one.user.password.update');
 
-    // //User Logout
-    // Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');
+    //User Logout
+    Route::get('/user-logout', [TemplateOneController::class, 'TemplateOneUserLogout'])->name('template.one.user.logout');
 
     //Add To WishList
     Route::get('/all-wishlist', [TemplateOneCartController::class, 'TemplateOneWishlist'])->name('wishlist');

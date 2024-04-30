@@ -6,11 +6,11 @@
             <span class="f-800">FAQ</span>
         </h3>
         <div class="row py-5">
-            <div class="col-lg-6">
+            <div class="col-lg-4">
                 <p>About Your Questions ?</p>
                 <h3>We Have Solution!</h3>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-8">
                 <div id="accordion" class="accordion">
 
                     <div class="card mb-0">
