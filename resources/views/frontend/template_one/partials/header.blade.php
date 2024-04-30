@@ -54,7 +54,7 @@
                                                 aria-expanded="false">
                                                 <i class="fal fa-user-plus text-black font-weight-bold"></i>
                                             </a>
-                                            {{-- <div class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
+                                            <div class="dropdown-menu p-3 user-panel-login" aria-labelledby="dropdownMenuButton" style="">
                                                 <a href="registration.html" class="btn btn-primary w-100">Login</a>
                                                 <hr class="mb-2 mt-3">
                                                 <p>First time here? <a href="" class="text-danger">Sign Up</a>
@@ -65,7 +65,7 @@
                                                         aria-hidden="true"></i> My Favorites</a>
                                                 <a class="dropdown-item" href="#"><i class="fal fa-list pr-2"
                                                         aria-hidden="true"></i> My Booked</a>
-                                            </div> --}}
+                                            </div>
                                         </div>
                                     </li>
 

@@ -923,6 +923,42 @@ cart--header__middle.cart--header__two {
 .dept__menu-box {
   width: 250px;
 }
+
+/* User */
+.user-panel-login{
+    transform: translate3d(-100px, 28px, 0px) !important;
+ }
+ .user-dashboard-menu{
+    color: #797575 !important;
+    margin-bottom: 10px;
+ }
+ .heading-2 {
+    border-bottom: 1px solid #eeeeee;
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    position: relative;
+}
+.heading-2::before {
+    background-color: #ef4416;
+    border-radius: 2px;
+    bottom: 0;
+    content: " ";
+    display: inline-block;
+    height: 3px;
+    left: 0;
+    margin-bottom: -2px;
+    position: absolute;
+    width: 50px;
+}
+.title-3 {
+    font-weight: 700;
+    font-size: 15px;
+}
+/* User end*/
+ .nav-pills .user-dashboard-menu.active, .nav-pills .show>.user-dashboard-menu{
+    background-color: #cd3301;
+    color: white !important;
+ }
 .dept__menu-mlink {
   padding-right: 20px;
   padding-left: 20px;
