@@ -81,6 +81,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/get-wishlist-product', [TemplateOneCartController::class, 'GetWishlistProduct']);
     Route::get('/wishlist-remove/{id}', [TemplateOneCartController::class, 'WishlistRemove']);
 
+
 });
 
 //Add To WishList

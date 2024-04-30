@@ -47,32 +47,65 @@
 
                             <div class="cart--header__list">
                                 <ul class="list-inline">
-                                    <li>
-                                        <div class="dropdown">
-                                            <a href="" class="border-0 bg-none text-muted" type="button"
-                                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false">
-                                                <i class="fal fa-user-plus text-black font-weight-bold"></i>
-                                            </a>
-                                            <div class="dropdown-menu p-3 user-panel-login" aria-labelledby="dropdownMenuButton" style="">
-                                                <a href="registration.html" class="btn btn-primary w-100">Login</a>
-                                                <hr class="mb-2 mt-3">
-                                                <p>First time here? <a href="" class="text-danger">Sign Up</a>
-                                                </p>
-                                                <a class="dropdown-item" href="#"><i class="fal fa-user pr-2"></i>
-                                                    My Profile</a>
-                                                <a class="dropdown-item" href="#"><i class="fal fa-star pr-2"
-                                                        aria-hidden="true"></i> My Favorites</a>
-                                                <a class="dropdown-item" href="#"><i class="fal fa-list pr-2"
-                                                        aria-hidden="true"></i> My Booked</a>
-                                            </div>
-                                        </div>
-                                    </li>
 
-                                    <li class="">
-                                        <a href="{{ route('wishlist') }}"><i class="fal fa-heart"><span
-                                                    class="cart__count" id="wishQty">0</span></i></a>
-                                    </li>
+                                    @auth
+                                        <li>
+                                            <div class="dropdown">
+                                                <a href="" class="border-0 bg-none text-muted" type="button"
+                                                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                    <i class="fal fa-user-plus text-black font-weight-bold"></i>
+                                                </a>
+                                                <div class="dropdown-menu p-3 user-panel-login"
+                                                    aria-labelledby="dropdownMenuButton" style="">
+
+                                                    <a href="{{ route('template.one.user.logout') }}"
+                                                        class="btn btn-primary w-100">Logout</a>
+
+                                                    <hr class="mb-2 mt-3">
+
+                                                    <a class="dropdown-item" href="#"><i class="fal fa-user pr-2"></i>
+                                                        My Profile</a>
+                                                    <a class="dropdown-item" href="#"><i class="fal fa-star pr-2"
+                                                            aria-hidden="true"></i> My Favorites</a>
+                                                    <a class="dropdown-item" href="#"><i class="fal fa-list pr-2"
+                                                            aria-hidden="true"></i> My Booked</a>
+
+                                                </div>
+                                            </div>
+                                        </li>
+                                    @else
+                                        <li>
+                                            <div class="dropdown">
+                                                <a href="" class="border-0 bg-none text-muted" type="button"
+                                                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                    <i class="fal fa-user-plus text-black font-weight-bold"></i>
+                                                </a>
+                                                <div class="dropdown-menu p-2 user-panel-login"
+                                                    aria-labelledby="dropdownMenuButton" style="">
+
+                                                    <a href="{{ route('template.one.login') }}"
+                                                        class="btn btn-primary w-100">Login</a>
+
+                                                    <hr class="mb-2 mt-1">
+                                                    <p>First time here? <a href="{{ route('template.one.login') }}"
+                                                            class="text-danger">Sign Up</a>
+                                                    </p>
+
+
+
+                                                </div>
+                                            </div>
+                                        </li>
+                                    @endauth
+
+                                    @auth
+                                        <li class="">
+                                            <a href="{{ route('wishlist') }}"><i class="fal fa-heart"><span
+                                                        class="cart__count" id="wishQty">0</span></i></a>
+                                        </li>
+                                    @endauth
 
 
                                     <li class="">

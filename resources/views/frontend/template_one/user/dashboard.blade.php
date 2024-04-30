@@ -138,60 +138,8 @@
                             {{-- User Dashboard Content End --}}
 
                             {{-- Order Content --}}
-                            <div class="tab-pane fade" id="order" role="tabpanel" aria-labelledby="order-tab">
-                                <div>
-                                    <div class="heading-2">
-                                        <h3 class="title-3 fsz-15 grenadier-color">Current Orders</h3>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <table class="table table-striped  table-bordered">
-                                                <thead class="grenadier-bg text-white">
-                                                    <tr>
-                                                        <th scope="col" class="text-center">Order No</th>
-                                                        <th scope="col">Product Name</th>
-                                                        <th scope="col" class="text-center">Date</th>
-                                                        <th scope="col" class="text-center">Status</th>
-                                                        <th scope="col" class="text-center">Paid amount</th>
-                                                        <th scope="col">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <th scope="row" class="text-center">1</th>
-                                                        <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae,
-                                                            inventore.</td>
-                                                        <td class="text-center">30 May 2024</td>
-                                                        <td class="text-center"><span
-                                                                class="badge badge-primary">Active</span></td>
-                                                        <td class="text-center">$1150</td>
-                                                        <td>
-                                                            <a href=""><i
-                                                                    class="fa fa fa-pencil text-muted pr-2"></i></a>
-                                                            <a href=""><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row" class="text-center">2</th>
-                                                        <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae,
-                                                            inventore.</td>
-                                                        <td class="text-center">30 May 2024</td>
-                                                        <td class="text-center"><span
-                                                                class="badge badge-danger">Pending</span></td>
-                                                        <td class="text-center">$1150</td>
-                                                        <td>
-                                                            <a href=""><i
-                                                                    class="fa fa fa-pencil text-muted pr-2"></i></a>
-                                                            <a href=""><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    {{-- Dashboard Links End --}}
-                                </div>
-                            </div>
+                            @include('frontend.template_one.user.user_order')
+                            
                             {{-- Order Content End --}}
 
                             {{-- delivery Content --}}

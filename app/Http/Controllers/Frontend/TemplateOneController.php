@@ -12,6 +12,7 @@ use App\Models\Admin\Product;
 use App\Models\Brand;
 use App\Models\Sites;
 use App\Models\User;
+use App\Models\User\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -398,5 +399,6 @@ class TemplateOneController extends Controller
 
         return redirect()->route('index');
     }
+
 
 }

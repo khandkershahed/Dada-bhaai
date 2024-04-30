@@ -223,18 +223,26 @@ class TemplateOneCartController extends Controller
     //Checkout Templat eOne
     public function CheckoutTemplateOne()
     {
-        if (Cart::total() > 0) {
+        if (Auth::check()) {
 
-            $carts = Cart::content();
-            $cartTotal = Cart::total();
-            $cartQty = Cart::count();
+            if (Cart::total() > 0) {
 
-            return view('frontend.template_one.cart.checkout', compact('carts', 'cartTotal', 'cartQty'));
+                $carts = Cart::content();
+                $cartQty = Cart::count();
+                $cartTotal = Cart::total();
 
+                return view('frontend.template_one.cart.checkout', compact('carts', 'cartQty', 'cartTotal'));
+            } else {
+
+                toastr()->error('You Need to Login First');
+
+                return redirect()->to('/');
+            }
         } else {
 
-            toastr()->error('Shopping At list One Product');
-            return redirect()->to('/');
+            toastr()->error('You Need to Login First');
+
+            return redirect()->route('template.one.login');
         }
 
     }
@@ -244,7 +252,7 @@ class TemplateOneCartController extends Controller
         //dd($request->all());
         $order_id = Order::insertGetId([
 
-            //'user_id' => Auth::id(),
+            'user_id' => Auth::id(),
 
             'billing_name' => $request->billing_name,
             'billing_address_line1' => $request->billing_address_line1,
