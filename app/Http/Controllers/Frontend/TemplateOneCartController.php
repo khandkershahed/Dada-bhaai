@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Offer;
 use App\Models\Admin\Product;
 use App\Models\Admin\Wishlist;
 use App\Models\User\Order;
@@ -15,6 +16,84 @@ use Illuminate\Support\Facades\Auth;
 
 class TemplateOneCartController extends Controller
 {
+    //Offer To Cart
+    public function OfferToCartTemplateOne(Request $request, $id)
+    {
+        $product = Offer::findOrFail($id);
+
+        Cart::add([
+
+            'id' => $id,
+            'name' => $request->name,
+            'qty' => $request->quantity,
+            'price' => $product->price,
+            'weight' => 1,
+            'options' => [
+                'image' => $product->offer_image,
+                // 'color' => $request->color,
+            ],
+        ]);
+
+        return response()->json(['success' => 'Successfully Buy on Your Cart']);
+
+    }
+
+    //Buy To Cart
+    public function BuyToCartTemplateOne(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+
+        if ($product->price_status == 'rfq') {
+
+            Cart::add([
+
+                'id' => $id,
+                'name' => $request->product_name,
+                'qty' => $request->quantity,
+                'price' => $product->sas_price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $product->product_image,
+                    // 'color' => $request->color,
+                ],
+            ]);
+
+            return response()->json(['success' => 'Successfully Buy on Your Cart']);
+        } elseif ($product->price_status == 'discount_price') {
+
+            Cart::add([
+
+                'id' => $id,
+                'name' => $request->product_name,
+                'qty' => $request->quantity,
+                'price' => $product->discount_price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $product->product_image,
+                    // 'color' => $request->color,
+                ],
+            ]);
+
+            return response()->json(['success' => 'Successfully Buy on Your Cart']);
+        } else {
+
+            Cart::add([
+
+                'id' => $id,
+                'name' => $request->product_name,
+                'qty' => $request->quantity,
+                'price' => $product->price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $product->product_image,
+                    // 'color' => $request->color,
+                ],
+            ]);
+
+            return response()->json(['success' => 'Successfully Buy on Your Cart']);
+        }
+    }
+
     //Add To Cart
     public function AddToCartTemplateOne(Request $request, $id)
     {

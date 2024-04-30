@@ -156,6 +156,12 @@ Route::controller(CartController::class)->group(function () {
 //Template One Cart Controller
 Route::controller(TemplateOneCartController::class)->group(function () {
 
+    //Offer To Cart
+    Route::post('/product/offer/store/{id}', 'OfferToCartTemplateOne');
+
+    //Buy To Cart
+    Route::post('/product/buy/store/{id}', 'BuyToCartTemplateOne');
+
     //Add To Cart
     Route::post('/product/store/{id}', 'AddToCartTemplateOne');
     Route::get('/product/mini-cart', 'AddMiniCartTemplateOne');

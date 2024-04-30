@@ -166,10 +166,10 @@
                                         <input type="hidden" id="oneproduct_id" value="{{ $product->id }}">
 
 
-                                        <button type="submit" onclick="addToCartOne()" class="cart-button w-100 mt-0">Add
-                                            Cart</button>
+                                        <a type="submit" onclick="addToCartOne()" class="cart-button w-100 mt-0">Add
+                                            Cart</a>
 
-                                        <a href="#" class="cart-button w-100 ml-3 mt-0">Booking</a>
+                                        <a type="submit" onclick="buyToCartOne()" class="cart-button w-100 ml-3 mt-0">Buy Now</a>
 
                                     </div>
 

@@ -44,11 +44,16 @@
 
                                                         <div class="products--deals__content mb-35">
                                                             <h6 class="f-700 mb-20">
-                                                                <a href="javascript:;">{{ $product->offer->name }}</a>
+                                                                <a href="javascript:;" id="opname">{{ $product->offer->name }}</a>
                                                             </h6>
+
                                                             <span class="price-old">Tk {{ $product->offer->price }}</span>
-                                                            <span
-                                                                class="price-new f-600 grenadier-color">Tk {{ $product->offer->discount_price }}</span>
+
+                                                            <span class="f-600 grenadier-color">Tk<span class="price-new f-600 grenadier-color" id="opprice">{{ $product->offer->discount_price }}</span></span>
+
+                                                            <input type="hidden" class="mb-0  border-1" name="" value="1"
+                                                            min="1" id="oqty" style="width: 50px" />
+
                                                         </div>
                                                         <div class="product-countdown mb-15">
                                                             <div class="time-count-deal">
@@ -57,8 +62,11 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+
+                                                        <input type="hidden" id="offerproduct_id" value="{{ $product->id }}">
+
                                                         <div class="product--footer__deals">
-                                                            <a class="add-link f-700">+ Add To Cart</a>
+                                                            <button type="submit" style="couser:pointer;" onclick="offerToCartOne()" class="add-link f-700">+ Add To Cart</button>
                                                         </div>
                                                     </div>
                                                 </div>

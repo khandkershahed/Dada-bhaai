@@ -103,6 +103,123 @@
 
 @yield('catscripts')
 @yield('childcatscripts')
+@yield('brandscripts')
+
+{{-- OfferToCartOne --}}
+<script>
+    function offerToCartOne() {
+
+        var product_name = $('#opname').text();
+        var id = $('#offerproduct_id').val();
+        var quantity = $('#oqty').val();
+
+        var price = $('#opprice').val();
+
+        $.ajax({
+
+            type: "POST",
+            dataType: 'json',
+            url: '/product/offer/store/' + id,
+
+            data: {
+                quantity: quantity,
+                product_name: product_name,
+
+                price: price,
+            },
+
+            success: function(data) {
+
+                miniCart();
+
+                // Start Message 
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        title: data.success,
+                    })
+
+                    window.location.href = '/cart-checkout';
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        title: data.error,
+                    })
+                }
+                // End Message 
+            }
+
+        })
+
+    }
+</script>
+{{-- OfferToCartOne --}}
+
+{{-- BuyToCartOne --}}
+<script>
+    function buyToCartOne() {
+
+        var product_name = $('#dpname').text();
+        var id = $('#oneproduct_id').val();
+        var quantity = $('#dqty').val();
+
+        $.ajax({
+
+            type: "POST",
+            dataType: 'json',
+            url: '/product/buy/store/' + id,
+
+            data: {
+                quantity: quantity,
+                product_name: product_name,
+            },
+
+            success: function(data) {
+
+                miniCart();
+
+                // Start Message 
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        title: data.success,
+                    })
+
+                    window.location.href = '/cart-checkout';
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        title: data.error,
+                    })
+                }
+                // End Message 
+            }
+
+        })
+
+    }
+</script>
+{{-- BuyToCartOne --}}
 
 {{-- AddToCartOne --}}
 <script>

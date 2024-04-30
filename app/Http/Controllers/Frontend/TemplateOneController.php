@@ -99,12 +99,35 @@ class TemplateOneController extends Controller
     }
 
     //Brand Wise Product One
-    public function BrandRelatedProductOne($id, $brand_slug)
+    public function BrandRelatedProductOne(Request $request, $id, $brand_slug)
     {
-        $products = Product::where('status', '1')->where('brand_id', $id)->paginate(12);
+
+        $sort = '';
+
+        if ($request->sort != null) {
+            $sort = $request->sort;
+        }
+
+        if ($id == null) {
+            return redirect()->route('index');
+        } else {
+            if ($sort == 'nameAtoZ') {
+                $products = Product::where(['status' => 1, 'brand_id' => $id])->orderBy('product_name', 'ASC')->paginate(12);
+            } elseif ($sort == 'nameZtoA') {
+                $products = Product::where(['status' => 1, 'brand_id' => $id])->orderBy('product_name', 'DESC')->paginate(12);
+            } else {
+                $products = Product::where('status', '1')->where('brand_id', $id)->paginate(12);
+
+            }
+        }
+
         $brandwiseproduct = Brand::find($id);
 
-        return view('frontend.template_one.brand.brand_wise_product', compact('products', 'brandwiseproduct'));
+        $route = 'product/brand';
+        $brandId = $id;
+        $brandSlug = $brand_slug;
+
+        return view('frontend.template_one.brand.brand_wise_product', compact('products', 'brandwiseproduct', 'route', 'brandId', 'brandSlug', 'sort'));
     }
 
     //Home All Category
@@ -288,8 +311,8 @@ class TemplateOneController extends Controller
     //Template One Faq
     public function TemplateOneFaq()
     {
-        $faqs = Faq::where('status','1')->orderBy('order','ASC')->latest()->get();
-        return view('frontend.template_one.faq.faq',compact('faqs'));
+        $faqs = Faq::where('status', '1')->orderBy('order', 'ASC')->latest()->get();
+        return view('frontend.template_one.faq.faq', compact('faqs'));
     }
 
 }
