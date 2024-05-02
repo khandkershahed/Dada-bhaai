@@ -11,12 +11,12 @@
         </li>
         <li class="nav-item">
             <a class="nav-link user-dashboard-menu" id="delivery-tab" data-toggle="tab" href="#delivery" role="tab"
-                aria-controls="delivery" aria-selected="false"><i class="fa fa-truck pr-2"></i>Delivery Status</a>
+                aria-controls="delivery" aria-selected="false"><i class="fa fa-truck pr-2"></i>Track Order</a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link user-dashboard-menu" id="payment-tab" data-toggle="tab" href="#payment" role="tab"
                 aria-controls="payment" aria-selected="false"><i class="fa fa-credit-card pr-2"></i>Payment Method</a>
-        </li>
+        </li> --}}
         <li class="nav-item">
             <a class="nav-link user-dashboard-menu" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
                 aria-controls="contact" aria-selected="false"><i class="fa fa-user pr-2"></i>Contact Details</a>

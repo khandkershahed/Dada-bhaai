@@ -106,7 +106,28 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     //Order Section
     Route::controller(AdminOrderController::class)->prefix('admin-order')->group(function () {
 
+        Route::get('/order', 'AdminAllOrder')->name('admin.all.order');
         Route::get('/order-details/{id}', 'AdminOrderDetails')->name('admin.order.details');
+
+        //Processing
+        Route::get('/order-processing', 'AdminProcessingOrder')->name('all.processing.order');
+        //Shipped
+        Route::get('/order-shipped', 'AdminShippedOrder')->name('all.shipped.order');
+        //Deliver
+        Route::get('/order-deliver', 'AdminDeliverOrder')->name('all.delivered.order');
+        //Cancel
+        Route::get('/order-cancel', 'AdminCancelOrder')->name('all.cancel.order');
+
+        //Order Status Change
+        Route::get('/order-status/{id}', 'AdminOrderStatusChange')->name('admin.order.status');
+
+        Route::get('/multi-order-status-update-store','multuOrderStatusUpdate')->name('multuOrderStatusUpdate');
+
+        //Invoice
+        Route::get('/order-invoice/{id}', 'AdminOrderInvoice')->name('admin.order.invoice');
+
+        //Delete
+        Route::get('/order-delete/{id}', 'AdminOrderDelete')->name('admin.order.delete');
     });
 
     //Product Section

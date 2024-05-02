@@ -121,7 +121,7 @@
                         </div>
                         {{-- Brand  --}}
 
-                        <div class="slider-range mt-50">
+                        {{-- <div class="slider-range mt-50">
                             <div class="side-title mb-30">
                                 <h6>Filter By Price</h6>
                             </div>
@@ -130,8 +130,8 @@
                                 <label for="amount">Price :</label>
                                 <input type="text" id="amount" readonly>
                             </p>
-                        </div>
-                        <div class="side-color mt-45">
+                        </div> --}}
+                        {{-- <div class="side-color mt-45">
                             <div class="side-title">
                                 <h6>Color</h6>
                             </div>
@@ -140,7 +140,7 @@
                                     <a href="#">Blue (2)</a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> --}}
 
                         {{-- <div class="side-size mt-50">
                             <div class="side-title">
@@ -192,7 +192,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="shop-banner-bg pt-60 pb-60 mb-50"
-                                data-background="{{ asset('frontend/template_one/assets/img/bg/shop-banner-bg.jpg') }}">
+                                data-background="{{ asset('storage/brand/' . $brandwiseproduct->brand_image) }}">
                                 <div class="collection-text">
                                     <h5 class="f-800"><a href="javascript:;">Brand</a></h5>
                                     <span class="f-200 mb-40">{{ $brandwiseproduct->brand_name }}</span>
@@ -307,8 +307,7 @@
                                     <div class="product-action">
                                         <a href="#"><span class="lnr lnr-heart"></span></a>
                                         {{-- <a href="#"><span class="lnr lnr-eye"></span></a> --}}
-                                        <a
-                                            href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"><span
+                                        <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"><span
                                                 class="lnr lnr-cart"></span></a>
                                         <a href="#"><span class="lnr lnr-sync"></span></a>
                                     </div>

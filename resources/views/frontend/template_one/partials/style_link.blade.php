@@ -19,4 +19,6 @@
     <link rel="stylesheet" href="{{ asset('frontend/template_one/assets/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/template_one/assets/css/responsive.css') }}" />
 
+    
+
 </head>

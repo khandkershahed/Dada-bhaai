@@ -1,5 +1,6 @@
 @extends('frontend.template_one.frontend_dashboard_template_one')
 @section('index_template_one')
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
     <div class="container mt-5 mb-5">
         <div class="row">

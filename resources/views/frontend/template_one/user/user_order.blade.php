@@ -45,7 +45,7 @@
                                     @elseif($order->status == 'shipped')
                                         <span class="badge badge-info">{{ $order->status }}</span>
                                     @elseif($order->status == 'delivered')
-                                        <span class="badge badge-danger">{{ $order->status }}</span>
+                                        <span class="badge badge-success">{{ $order->status }}</span>
                                     @elseif($order->status == 'cancelled')
                                         <span class="badge badge-danger">{{ $order->status }}</span>
                                     @else

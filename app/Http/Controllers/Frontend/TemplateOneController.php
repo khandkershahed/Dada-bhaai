@@ -14,7 +14,6 @@ use App\Models\Sites;
 use App\Models\User;
 use App\Models\User\Order;
 use App\Models\User\OrderItem;
-use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -425,6 +424,32 @@ class TemplateOneController extends Controller
         // ]);
 
         // return $pdf->download('user_invoice.pdf');
+    }
+    
+    //Template One Tack Order
+    public function TemplateOneTackOrder()
+    {
+        return view('frontend.template_one.user.track_order');
+    }
+
+    //Template One TackOrder Search
+    public function TemplateOneTackOrderSearch(Request $request)
+    {
+        $invoice = $request->code;
+
+        $track = Order::where('billing_phone',$invoice)->first();
+
+        if($track)
+        {
+            $orderItems = OrderItem::where('order_id',$track->id)->get();
+            return view('frontend.template_one.user.track_order_search',compact('track','orderItems'));
+        }
+        else
+        {
+            toastr()->error('Invalid Invoice Number');
+            return redirect()->back();
+        }
+
     }
 
 }

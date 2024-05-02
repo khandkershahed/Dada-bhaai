@@ -73,12 +73,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //User Password
     Route::post('/user/password-update', [TemplateOneController::class, 'TemplateOnePasswordUpdate'])->name('template.one.user.password.update');
 
-     //Template One Order Details
-     Route::get('/user/order-details/{id}', [TemplateOneController::class, 'TemplateOneOrderDetails'])->name('template.one.user.order.details');
+    //Template One Order Details
+    Route::get('/user/order-details/{id}', [TemplateOneController::class, 'TemplateOneOrderDetails'])->name('template.one.user.order.details');
 
-     //Invoice
-     Route::get('/user/order-invoice/{id}', [TemplateOneController::class, 'TemplateOneOrderInvoice'])->name('template.one.user.invoice');
-
+    //Invoice
+    Route::get('/user/order-invoice/{id}', [TemplateOneController::class, 'TemplateOneOrderInvoice'])->name('template.one.user.invoice');
 
     //User Logout
     Route::get('/user-logout', [TemplateOneController::class, 'TemplateOneUserLogout'])->name('template.one.user.logout');
@@ -87,7 +86,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/all-wishlist', [TemplateOneCartController::class, 'TemplateOneWishlist'])->name('wishlist');
     Route::get('/get-wishlist-product', [TemplateOneCartController::class, 'GetWishlistProduct']);
     Route::get('/wishlist-remove/{id}', [TemplateOneCartController::class, 'WishlistRemove']);
-
 
 });
 
@@ -129,6 +127,10 @@ Route::controller(TemplateOneController::class)->group(function () {
 
     //About Us
     Route::get('/about-us', 'TemplateOneAboutUs')->name('template.one.about');
+
+    //Track Order
+    Route::get('/user/tracking/order', 'TemplateOneTackOrder')->name('template.one.track.order');
+    Route::post('/tracking-order', 'TemplateOneTackOrderSearch')->name('track.order.search');
 
 });
 

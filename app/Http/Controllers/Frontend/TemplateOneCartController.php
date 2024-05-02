@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\OrderMail;
 use App\Models\Admin\Offer;
 use App\Models\Admin\Product;
 use App\Models\Admin\Wishlist;
@@ -13,6 +14,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Helper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class TemplateOneCartController extends Controller
 {
@@ -280,6 +282,23 @@ class TemplateOneCartController extends Controller
             'created_at' => Carbon::now(),
 
         ]);
+
+        //Send Mail 
+        // $invoice = Order::findOrFail($order_id);
+
+        // $data = [
+
+        //     'invoice_number' => $invoice->invoice_number,
+        //     'total_amount' => $invoice->total_amount,
+        //     'billing_name' => $invoice->billing_name,
+        //     'billing_email' => $invoice->billing_email,
+        //     'billing_phone' => $invoice->billing_phone,
+        //     'billing_address_line1' => $invoice->billing_address_line1,
+
+        // ];
+
+        // Mail::to($request->email)->send(new OrderMail($data));
+        //End Send Mail
 
         $carts = Cart::content();
         foreach ($carts as $cart) {

@@ -45,6 +45,19 @@
 
 <script src="{{ asset('frontend/template_one/assets/js/validate.min.js') }}"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    })
+</script>
+
 {{-- Releted Accesories --}}
 <script>
     $(document).ready(function() {
@@ -91,15 +104,6 @@
     });
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<script type="text/javascript">
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    })
-</script>
 
 @yield('catscripts')
 @yield('childcatscripts')

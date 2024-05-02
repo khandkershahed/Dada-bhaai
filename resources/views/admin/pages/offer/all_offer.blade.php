@@ -4,7 +4,6 @@
 
     <!--begin::Content-->
 
-
     <!--begin::Toolbar-->
     <div class="toolbar" id="kt_toolbar">
         <!--begin::Container-->
