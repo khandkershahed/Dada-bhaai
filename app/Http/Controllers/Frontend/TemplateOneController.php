@@ -13,6 +13,8 @@ use App\Models\Brand;
 use App\Models\Sites;
 use App\Models\User;
 use App\Models\User\Order;
+use App\Models\User\OrderItem;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -311,8 +313,8 @@ class TemplateOneController extends Controller
     //Template One About
     public function TemplateOneAboutUs()
     {
-        $about = About::where('status','tamplate_one')->find(1);
-        return view('frontend.template_one.about.about_us',compact('about'));
+        $about = About::where('status', 'tamplate_one')->find(1);
+        return view('frontend.template_one.about.about_us', compact('about'));
     }
 
     //Template One Login
@@ -328,7 +330,7 @@ class TemplateOneController extends Controller
         $id = Auth::user()->id;
         $profileData = User::find($id);
 
-        return view('frontend.template_one.user.dashboard',compact('profileData'));
+        return view('frontend.template_one.user.dashboard', compact('profileData'));
     }
 
     //Template One ProfileUpdate
@@ -363,7 +365,7 @@ class TemplateOneController extends Controller
             'old_password' => 'required',
             'new_password' => [
 
-                'required', 'confirmed',Rules\Password::min(8)->mixedCase()->symbols()->letters()->numbers()
+                'required', 'confirmed', Rules\Password::min(8)->mixedCase()->symbols()->letters()->numbers(),
 
             ],
         ]);
@@ -400,5 +402,29 @@ class TemplateOneController extends Controller
         return redirect()->route('index');
     }
 
+    //Template One OrderDetails
+    public function TemplateOneOrderDetails($id)
+    {
+        $order = Order::where('id', $id)->where('user_id', Auth::id())->first();
+        $orderitem = OrderItem::with('product')->where('order_id', $id)->orderBy('id', 'DESC')->get();
+
+        return view('frontend.template_one.user.order_details', compact('order', 'orderitem'));
+    }
+
+    //Template One OrderDetails
+    public function TemplateOneOrderInvoice($id)
+    {
+        $order = Order::where('id', $id)->where('user_id', Auth::id())->first();
+        $orderitem = OrderItem::with('product')->where('order_id', $id)->orderBy('id', 'DESC')->get();
+
+        return view('frontend.template_one.user.invoice', compact('order', 'orderitem'));
+
+        // $pdf = Pdf::loadView('frontend.template_one.user.invoice', compact('order', 'orderitem'))->setPaper('a4')->setOption([
+        //     'tempDir' => public_path(),
+        //     'chroot' => public_path(),
+        // ]);
+
+        // return $pdf->download('user_invoice.pdf');
+    }
 
 }

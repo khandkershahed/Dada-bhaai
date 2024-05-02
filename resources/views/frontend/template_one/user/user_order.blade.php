@@ -36,12 +36,28 @@
                                 <td>Tk {{ $order->total_amount }}</td>
                                 <td>{{ $order->order_date }}</td>
                                 <td>{{ $order->payment_method }}</td>
-                                <td class="text-center"><span class="badge badge-danger">{{ $order->status }}</span>
+
+                                <td class="text-center">
+                                    @if ($order->status == 'pending')
+                                        <span class="badge badge-danger">{{ $order->status }}</span>
+                                    @elseif($order->status == 'processing')
+                                        <span class="badge badge-primary">{{ $order->status }}</span>
+                                    @elseif($order->status == 'shipped')
+                                        <span class="badge badge-info">{{ $order->status }}</span>
+                                    @elseif($order->status == 'delivered')
+                                        <span class="badge badge-danger">{{ $order->status }}</span>
+                                    @elseif($order->status == 'cancelled')
+                                        <span class="badge badge-danger">{{ $order->status }}</span>
+                                    @else
+                                        <span class="badge badge-danger">{{ $order->status }}</span>
+                                    @endif
                                 </td>
 
                                 <td>
-                                    <a href=""><i class="fa fa fa-pencil text-muted pr-2"></i></a>
-                                    <a href=""><i class="fa fa-trash text-danger"></i></a>
+                                    <a href="{{ route('template.one.user.order.details', $order->id) }}"><i
+                                            class="fa fa fa-eye text-muted pr-2"></i></a>
+                                    <a href="{{ route('template.one.user.invoice', $order->id) }}" target="_blank"><i
+                                            class="fa fa-download text-danger"></i></a>
                                 </td>
                             </tr>
                         @endforeach

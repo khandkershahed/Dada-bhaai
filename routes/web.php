@@ -73,6 +73,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //User Password
     Route::post('/user/password-update', [TemplateOneController::class, 'TemplateOnePasswordUpdate'])->name('template.one.user.password.update');
 
+     //Template One Order Details
+     Route::get('/user/order-details/{id}', [TemplateOneController::class, 'TemplateOneOrderDetails'])->name('template.one.user.order.details');
+
+     //Invoice
+     Route::get('/user/order-invoice/{id}', [TemplateOneController::class, 'TemplateOneOrderInvoice'])->name('template.one.user.invoice');
+
+
     //User Logout
     Route::get('/user-logout', [TemplateOneController::class, 'TemplateOneUserLogout'])->name('template.one.user.logout');
 
