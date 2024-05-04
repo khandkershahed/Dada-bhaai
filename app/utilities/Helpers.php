@@ -4,10 +4,10 @@ use App\Models\Admin\Product;
 
 class HelperShop{
     public static function minPrice(){
-      return  round(Product::where('status',1)->min('price'));
+      return  (Product::where('status',1)->min('price'));
     }
 
     public static function maxPrice(){
-        return  round(Product::where('status',1)->max('price'));
+        return  (Product::where('status',1)->max('price'));
       }
 }
