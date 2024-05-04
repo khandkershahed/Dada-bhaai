@@ -98,7 +98,8 @@
                                     <h6>Filter By Price</h6>
                                 </div>
 
-                                <div id="slider-range" data-min="{{ HelperShop::minPrice() }}" data-max="{{ HelperShop::maxPrice() }}"></div>
+                                <div id="slider-range" data-min="{{ HelperShop::minPrice() }}"
+                                    data-max="{{ HelperShop::maxPrice() }}"></div>
 
                                 <p>
                                     <input type="hidden" id="price_range" name="price_range"
@@ -116,7 +117,7 @@
                                         value="@if (!empty($_GET['price'])) ${{ $price[0] }} @else {{ HelperShop::minPrice() }} @endif-@if (!empty($_GET['price'])) ${{ $price[1] }} @else {{ HelperShop::maxPrice() }} @endif"
                                         readonly>
 
-                                    
+
                                 </p>
 
                                 <button type="submit" class="lnk btn btn-primary">Filter</button>
@@ -365,6 +366,8 @@
         </div>
     </form>
     <!-- shop area end -->
+@endsection
+@section('pricescripts')
     <script>
         $(document).ready(function() {
             if ($('#slider-range').length > 0) {

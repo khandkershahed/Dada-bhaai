@@ -108,6 +108,7 @@
 @yield('catscripts')
 @yield('childcatscripts')
 @yield('brandscripts')
+@yield('pricescripts')
 
 {{-- OfferToCartOne --}}
 <script>
