@@ -21,8 +21,7 @@ class AdminController extends Controller
     //Admin Dashboard
     public function AdminDashboard()
     {
-        $orders = Order::where('status','pending')->latest()->get();
-        
+        $orders = Order::where('status','pending')->latest()->get();       
         return view('admin.index',compact('orders'));
     }
 

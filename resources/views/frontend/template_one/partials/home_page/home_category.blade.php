@@ -1,5 +1,5 @@
 @php
-    $categorys = App\Models\Admin\Category::where('status', '1')->latest()->limit(5)->get();
+    $categorys = App\Models\Admin\Category::where('status', '1')->latest()->get();
 @endphp
 
 <div class="top__featured--area pt-80 pb-80">

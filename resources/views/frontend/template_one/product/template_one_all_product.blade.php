@@ -126,14 +126,28 @@
                             {{-- Price --}}
 
                             {{-- Color --}}
+
+                            @php
+                                $colors = App\Models\Admin\Color::latest()->get();
+                            @endphp
+
                             <div class="side-color mt-45">
                                 <div class="side-title">
                                     <h6>Color</h6>
                                 </div>
                                 <ul class="mt-15">
-                                    <li>
-                                        <a href="#">Blue (2)</a>
-                                    </li>
+                                    @foreach ($colors as $color)
+                                        @php
+                                            $colorProduct = App\Models\Admin\Product::where(
+                                                'color_id',
+                                                $color->id,
+                                            )->get();
+                                        @endphp
+
+                                        <li>
+                                            <a href="#">{{ $color->color_name }} ({{ count($colorProduct) }})</a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                             {{-- Color --}}
@@ -223,9 +237,9 @@
 
                                 {{-- New Section  --}}
                                 <div class="col-lg-4 col-md-2">
-                                    {{-- <div class="text-center" style="margin-top: 10px;">
+                                    <div class="text-center" style="margin-top: 10px;">
                                         <span>Showing {{ count($products) }} of {{ $products->total() }} Results</span>
-                                    </div> --}}
+                                    </div>
                                 </div>
 
                                 <div class="col-lg-3 col-md-6">
@@ -330,7 +344,7 @@
 
                                         </div>
                                         <div class="product-action">
-                                            <a href="#"><span class="lnr lnr-heart"></span></a>
+                                            <a style="cursor: pointer;" id="{{$product->id}}" onclick="addToWishList(this.id)"><span class="lnr lnr-heart"></span></a>
                                             {{-- <a href="#"><span class="lnr lnr-eye"></span></a> --}}
                                             <a
                                                 href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"><span

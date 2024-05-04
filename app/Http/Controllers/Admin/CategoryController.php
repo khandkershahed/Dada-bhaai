@@ -7,6 +7,7 @@ use App\Models\Admin\Category;
 use Helper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -58,7 +59,7 @@ class CategoryController extends Controller
                 Category::insert([
 
                     'category_name' => $request->category_name,
-                    'category_slug' => strtolower(str_replace('', '-', $request->category_name)),
+                    'category_slug' => Str::slug($request->category_name , "-"),
                     'description' => $request->description,
 
                 ]);
@@ -70,7 +71,7 @@ class CategoryController extends Controller
                     Category::insert([
 
                         'category_name' => $request->category_name,
-                        'category_slug' => strtolower(str_replace('', '-', $request->category_name)),
+                        'category_slug' => Str::slug($request->category_name , "-"),
                         'description' => $request->description,
 
                         'category_image' => $globalFunImg['file_name'],
@@ -156,7 +157,7 @@ class CategoryController extends Controller
                 $category->update([
 
                     'category_name' => $request->category_name,
-                    'category_slug' => strtolower(str_replace('', '-', $request->category_name)),
+                    'category_slug' => Str::slug($request->category_name , "-"),
                     'description' => $request->description,
                     'category_image' => $globalFunImg['status'] == 1 ? $globalFunImg['file_name'] : $category->category_image,
 

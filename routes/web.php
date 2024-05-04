@@ -4,6 +4,7 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\TemplateOneCartController;
 use App\Http\Controllers\Frontend\TemplateOneController;
+use App\Http\Controllers\Frontend\TemplateTwoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -188,4 +189,13 @@ Route::controller(TemplateOneCartController::class)->group(function () {
     Route::get('/cart-checkout', 'CheckoutTemplateOne')->name('template.one.checkout');
     Route::post('/cart-checkout-store', 'CheckoutStoreTemplateOne')->name('template.checkout.store');
 
+});
+
+
+/////////////////// Template Two //////////////////////
+Route::controller(TemplateTwoController::class)->group(function () {
+
+    //All Product
+    Route::get('/all-product', 'TemplateOneAllProduct')->name('template.one.all_product');
+   
 });

@@ -6,7 +6,7 @@
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         <!--begin::Logo-->
         <a href="{{ route('admin.dashboard') }}">
-            <img alt="Logo" src="{{ asset('backend/assets/media/logos/logo-1-dark.svg') }}" class="h-25px logo" />
+            <img alt="Logo" src="https://www.dadabhaai.com/storage/main/jaragroups404413.png" class="h-25px logo text-white" />
         </a>
         <!--end::Logo-->
         <!--begin::Aside toggler-->
@@ -74,7 +74,7 @@
 
                 {{-- Website Template --}}
                 <div class="menu-item">
-                    <a class="menu-link" href="{{ route('all.template') }}" title="Setting Page"
+                    <a class="menu-link" href="{{ route('all.template') }}" title="Template Page"
                         data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click"
                         data-bs-placement="right">
                         <span class="menu-icon">

@@ -1,5 +1,5 @@
 @php
-    $categorys = App\Models\Admin\Category::where('status', '1')->orderBy('id','DESC')->limit(4)->get();
+    $categorys = App\Models\Admin\Category::where('status', '1')->orderBy('id','DESC')->limit(5)->get();
 @endphp
 
 

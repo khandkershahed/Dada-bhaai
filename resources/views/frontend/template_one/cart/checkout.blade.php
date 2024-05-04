@@ -82,7 +82,7 @@
                                                                 </label>
                                                                 <input type="text" class="form-control"
                                                                     placeholder="Billing Name"
-                                                                    value="{{ old('billing_name') }}" name="billing_name" />
+                                                                    value="{{ Auth::user()->name }}" name="billing_name" />
                                                             </div>
 
                                                             <div class="form-group col-sm-4">
@@ -90,7 +90,7 @@
                                                                 </label>
                                                                 <input type="text" class="form-control"
                                                                     placeholder="Billing Phone"
-                                                                    value="{{ old('billing_phone') }}"
+                                                                    value="{{ Auth::user()->phone }}"
                                                                     name="billing_phone" />
                                                             </div>
 
@@ -98,7 +98,7 @@
                                                                 <label for="email">Email
                                                                 </label>
                                                                 <input type="email" class="form-control"
-                                                                    value="{{ old('billing_email') }}"
+                                                                    value="{{ Auth::user()->email }}"
                                                                     placeholder="example@gmail.com" name="billing_email" />
                                                             </div>
 
@@ -106,7 +106,7 @@
                                                                 <label for="city">City
                                                                 </label>
                                                                 <input type="text" class="form-control"
-                                                                    value="{{ old('billing_city') }}" name="billing_city"
+                                                                    value="{{ Auth::user()->city }}" name="billing_city"
                                                                     placeholder="City Name" />
                                                             </div>
 
@@ -122,7 +122,7 @@
                                                                 <label for="postal_code">Postal Code
                                                                 </label>
                                                                 <input type="text" class="form-control"
-                                                                    value="{{ old('billing_postal_code') }}"
+                                                                    value="{{ Auth::user()->postal_code }}"
                                                                     name="billing_postal_code" placeholder="Postal Code" />
                                                             </div>
 
@@ -131,7 +131,7 @@
                                                                 </label>
 
                                                                 <input type="text" class="form-control"
-                                                                    value="{{ old('billing_country') }}"
+                                                                    value="{{ Auth::user()->country }}"
                                                                     name="billing_country" placeholder="Country Name" />
                                                             </div>
 
@@ -140,7 +140,7 @@
                                                                 <label for="address_line1">Address 1
                                                                 </label>
                                                                 <input type="text" class="form-control"
-                                                                    value="{{ old('billing_address_line1') }}"
+                                                                    value="{{ Auth::user()->address }}"
                                                                     name="billing_address_line1"
                                                                     placeholder="Address One" />
                                                             </div>
@@ -149,7 +149,7 @@
                                                                 <label for="address_line2">Address 2
                                                                 </label>
                                                                 <input type="text" class="form-control"
-                                                                    value="{{ old('billing_address_line2') }}"
+                                                                    value="{{ Auth::user()->address_two }}"
                                                                     name="billing_address_line2"
                                                                     placeholder="Address Two" />
                                                             </div>

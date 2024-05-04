@@ -8,6 +8,7 @@ use App\Models\Admin\Category;
 use App\Models\Admin\ChildCategory;
 use App\Models\Admin\Contact;
 use App\Models\Admin\Faq;
+use App\Models\Admin\HomePage;
 use App\Models\Admin\MultiImg;
 use App\Models\Admin\Product;
 use App\Models\Admin\Template;
@@ -28,7 +29,10 @@ class IndexController extends Controller
 
         } else if ($template->name == 'template_two') {
 
-            return view('frontend.astell.index_astell');
+            $homepage = HomePage::where('status','tamplate_two')->latest('id')->first();
+            // dd($homepage);
+
+            return view('frontend.astell.index_astell',compact('homepage'));
 
         } else if ($template->name == 'template_three') {
             $banners = Banner::where('status', '1')->orderBy('id', 'ASC')->latest()->get();

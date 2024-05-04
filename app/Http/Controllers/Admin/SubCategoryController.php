@@ -8,6 +8,7 @@ use App\Models\Admin\SubCategory;
 use Helper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class SubCategoryController extends Controller
 {
@@ -47,7 +48,7 @@ class SubCategoryController extends Controller
 
                     'category_id' => $request->category_id,
                     'subcategory_name' => $request->subcategory_name,
-                    'subcategory_slug' => strtolower(str_replace('', '-', $request->subcategory_name)),
+                    'subcategory_slug' => Str::slug($request->subcategory_name , "-"),
                     'description' => $request->description,
 
                 ]);
@@ -61,7 +62,7 @@ class SubCategoryController extends Controller
 
                         'category_id' => $request->category_id,
                         'subcategory_name' => $request->subcategory_name,
-                        'subcategory_slug' => strtolower(str_replace('', '-', $request->subcategory_name)),
+                        'subcategory_slug' => Str::slug($request->subcategory_name , "-"),
                         'description' => $request->description,
 
                         'subcategory_image' => $globalFunImg['file_name'],
@@ -126,7 +127,7 @@ class SubCategoryController extends Controller
 
                     'category_id' => $request->category_id,
                     'subcategory_name' => $request->subcategory_name,
-                    'subcategory_slug' => strtolower(str_replace('', '-', $request->subcategory_name)),
+                    'subcategory_slug' => Str::slug($request->subcategory_name , "-"),
                     'description' => $request->description,
 
                     'subcategory_image' => $globalFunImg['status'] == 1 ? $globalFunImg['file_name'] : $subcat->subcategory_image,
