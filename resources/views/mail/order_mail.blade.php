@@ -86,12 +86,12 @@
 
                                                                         </td>
 
-                                                                        {{-- <td> Invoice No : {{ $order['invoice_number'] }}
+                                                                        <td> Invoice No : {{ $order['invoice_number'] }}
                                                                         </td>
                                                                         <td> Amount : {{ $order['total_amount'] }}</td>
                                                                         <td> Name : {{ $order['billing_name'] }}</td>
                                                                         <td> Phone : {{ $order['billing_phone'] }}</td>
-                                                                        <td> Address : {{ $order['billing_address_line1'] }}</td> --}}
+                                                                        <td> Address : {{ $order['billing_address_line1'] }}</td>
 
                                                                     </tr>
 

@@ -98,12 +98,28 @@
                                     <h6>Filter By Price</h6>
                                 </div>
 
-                                <div id="slider-range"></div>
+                                <div id="slider-range" data-min="{{ HelperShop::minPrice() }}" data-max="{{ HelperShop::maxPrice() }}"></div>
 
                                 <p>
+                                    <input type="hidden" id="price_range" name="price_range"
+                                        value="@if (!empty($_GET['price'])) {{ $_GET['price'] }} @endif">
+
+                                    @if (!empty($_GET['price']))
+                                        @php
+                                            $price = explode('-', $_GET['price']);
+                                        @endphp
+                                    @endif
+
                                     <label for="amount">Price :</label>
-                                    <input type="text" id="amount" readonly>
+
+                                    <input type="text" id="amount" class=""
+                                        value="@if (!empty($_GET['price'])) ${{ $price[0] }} @else {{ HelperShop::minPrice() }} @endif-@if (!empty($_GET['price'])) ${{ $price[1] }} @else {{ HelperShop::maxPrice() }} @endif"
+                                        readonly>
+
+                                    
                                 </p>
+
+                                <button type="submit" class="lnk btn btn-primary">Filter</button>
 
                             </div>
                             {{-- Price --}}
@@ -349,4 +365,27 @@
         </div>
     </form>
     <!-- shop area end -->
+    <script>
+        $(document).ready(function() {
+            if ($('#slider-range').length > 0) {
+                const max_price = parseInt($('#slider-range').data('max'));
+                const min_price = parseInt($('#slider-range').data('min'));
+                let price_range = min_price + "-" + max_price;
+                if ($('#price_range').length > 0 && $('#price_range').val()) {
+                    price_range = $('#price_range').val().trim();
+                }
+                let price = price_range.split('-');
+                $("#slider-range").slider({
+                    range: true,
+                    min: min_price,
+                    max: max_price,
+                    values: price,
+                    slide: function(event, ui) {
+                        $("#amount").val('$' + ui.values[0] + "-" + '$' + ui.values[1]);
+                        $("#price_range").val(ui.values[0] + "-" + ui.values[1]);
+                    }
+                });
+            }
+        });
+    </script>
 @endsection

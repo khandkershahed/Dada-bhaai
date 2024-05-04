@@ -4,17 +4,20 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Mail\OrderMail;
+use App\Models\Admin;
 use App\Models\Admin\Offer;
 use App\Models\Admin\Product;
 use App\Models\Admin\Wishlist;
 use App\Models\User\Order;
 use App\Models\User\OrderItem;
+use App\Notifications\OrderComplete;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Helper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
 
 class TemplateOneCartController extends Controller
 {
@@ -252,6 +255,9 @@ class TemplateOneCartController extends Controller
     public function CheckoutStoreTemplateOne(Request $request)
     {
         //dd($request->all());
+
+        $admin = Admin::where('status',1)->get();
+
         $order_id = Order::insertGetId([
 
             'user_id' => Auth::id(),
@@ -284,21 +290,25 @@ class TemplateOneCartController extends Controller
         ]);
 
         //Send Mail 
-        // $invoice = Order::findOrFail($order_id);
+        $invoice = Order::findOrFail($order_id);
 
-        // $data = [
+        $data = [
 
-        //     'invoice_number' => $invoice->invoice_number,
-        //     'total_amount' => $invoice->total_amount,
-        //     'billing_name' => $invoice->billing_name,
-        //     'billing_email' => $invoice->billing_email,
-        //     'billing_phone' => $invoice->billing_phone,
-        //     'billing_address_line1' => $invoice->billing_address_line1,
+            'invoice_number' => $invoice->invoice_number,
+            'total_amount' => $invoice->total_amount,
+            'billing_name' => $invoice->billing_name,
+            'billing_email' => $invoice->billing_email,
+            'billing_phone' => $invoice->billing_phone,
+            'billing_address_line1' => $invoice->billing_address_line1,
 
-        // ];
+        ];
 
-        // Mail::to($request->email)->send(new OrderMail($data));
+        Mail::to($request->billing_email)->send(new OrderMail($data));
         //End Send Mail
+
+        //Notification
+        Notification::send($admin, new OrderComplete($request->billing_name));
+        //Notification
 
         $carts = Cart::content();
         foreach ($carts as $cart) {

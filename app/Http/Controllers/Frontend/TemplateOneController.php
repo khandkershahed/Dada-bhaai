@@ -42,6 +42,12 @@ class TemplateOneController extends Controller
             $products = $products->whereIn('brand_id', $brandIds);
         }
 
+        //price range product
+        if (!empty($_GET['price'])) {
+            $price = explode('-', $_GET['price']);
+            $products = $products->whereBetween('price', $price);
+        }
+
         //sortByProduct
         if (!empty($_GET['sortBy'])) {
 
@@ -102,7 +108,13 @@ class TemplateOneController extends Controller
             $sortByUrl .= '&sortBy=' . $data['sortBy'];
         }
 
-        return redirect()->route('template.one.all_product', $catUrl . $brandUrl . $sortByUrl);
+        //filter sortBy
+        $priceRangeUrl = "";
+        if (!empty($data['price_range'])) {
+            $priceRangeUrl .= '&price=' . $data['price_range'];
+        }
+
+        return redirect()->route('template.one.all_product', $catUrl . $brandUrl . $sortByUrl.$priceRangeUrl);
     }
 
     //Brand Wise Product One
