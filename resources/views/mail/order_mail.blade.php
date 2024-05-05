@@ -1,144 +1,69 @@
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<style>
+    html,
+    body {
+        padding: 0;
+        margin: 0;
+    }
+</style>
 
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="color-scheme" content="light">
-    <meta name="supported-color-schemes" content="light">
-</head>
+<div
+    style="font-family:Arial,Helvetica,sans-serif; line-height: 1.5; font-weight: normal; font-size: 15px; color: #2F3044; min-height: 100%; margin:0; padding:0; width:100%; background-color:#edf2f7">
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
+        style="border-collapse:collapse;margin:0 auto; padding:0; max-width:600px">
+        <tbody>
+            <tr>
+                <td align="center" valign="center" style="text-align:center; padding: 40px">
+                    <a href="https://dadabhai.ashikit.com" rel="noopener" target="_blank">
+                        <img alt="Logo" src="https://www.dadabhaai.com/storage/main/jaragroups404413.png"
+                            style="width: 350px;" />
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td align="left" valign="center">
+                    <div
+                        style="text-align:left; margin: 0 20px; padding: 40px; background-color:#ffffff; border-radius: 6px">
+                        <!--begin:Email content-->
+                        <div style="padding-bottom: 30px; font-size: 17px;">
+                            <strong>Hi,{{ $order['billing_name'] }}</strong>
+                        </div>
 
-<body
-    style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; -webkit-text-size-adjust: none; background-color: #ffffff; color: #718096; height: 100%; line-height: 1.4; margin: 0; padding: 0; width: 100% !important;">
-    <style>
-        @media only screen and (max-width: 600px) {
-            .inner-body {
-                width: 100% !important;
-            }
+                        <div style="padding-bottom: 30px">
 
-            .footer {
-                width: 100% !important;
-            }
-        }
+                            Invoice No : {{ $order['invoice_number'] }}
 
-        @media only screen and (max-width: 500px) {
-            .button {
-                width: 100% !important;
-            }
-        }
-    </style>
+                        </div>
 
-    <table class="wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation"
-        style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%; background-color: #edf2f7; margin: 0; padding: 0; width: 100%;">
-        <tr>
-            <td align="center"
-                style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
-                <table class="content" width="100%" cellpadding="0" cellspacing="0" role="presentation"
-                    style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%; margin: 0; padding: 0; width: 100%;">
-                    <tr>
-                        <td class="header"
-                            style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; padding: 25px 0; text-align: center;">
-                            <a href="http://127.0.0.1:8000"
-                                style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 19px; font-weight: bold; text-decoration: none; display: inline-block;">
-                                <img src="https://laravel.com/img/notification-logo.png" class="logo"
-                                    alt="Laravel Logo"
-                                    style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100%; border: none; height: 75px; width: 75px;">
-                            </a>
-                        </td>
-                    </tr>
 
-                    <!-- Email Body -->
-                    <tr>
-                        <td class="body" width="100%" cellpadding="0" cellspacing="0"
-                            style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%; background-color: #edf2f7; border-bottom: 1px solid #edf2f7; border-top: 1px solid #edf2f7; margin: 0; padding: 0; width: 100%;">
-                            <table class="inner-body" align="center" width="570" cellpadding="0" cellspacing="0"
-                                role="presentation"
-                                style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 570px; background-color: #ffffff; border-color: #e8e5ef; border-radius: 2px; border-width: 1px; box-shadow: 0 2px 0 rgba(0, 0, 150, 0.025), 2px 4px 0 rgba(0, 0, 150, 0.015); margin: 0 auto; padding: 0; width: 570px;">
-                                <!-- Body content -->
-                                <tr>
-                                    <td class="content-cell"
-                                        style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; padding: 32px;">
-                                        <h1
-                                            style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 18px; font-weight: bold; margin-top: 0; text-align: left;">
-                                            Hello!</h1>
-                                        <p
-                                            style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">
-                                            You are receiving this email from your Store Product .</p>
-                                        <table class="action" align="center" width="100%" cellpadding="0"
-                                            cellspacing="0" role="presentation"
-                                            style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%; margin: 30px auto; padding: 0; text-align: center; width: 100%;">
-                                            <tr>
-                                                <td align="center"
-                                                    style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
-                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0"
-                                                        role="presentation"
-                                                        style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
-                                                        <tr>
-                                                            <td align="center"
-                                                                style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
-                                                                <table border="0" cellpadding="0" cellspacing="0"
-                                                                    role="presentation"
-                                                                    style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
-                                                                    <tr>
-                                                                        <td
-                                                                            style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
+                        <!--end:Email content-->
+                        <div style="padding-bottom: 10px">Kind regards</div>
+                        The DadaBhaai Team.
+            </tr>
+            <tr>
+                <td align="center" valign="center"
+                    style="font-size: 13px; text-align:center;padding: 20px; color: #6d6e7c;">
+                    {{-- <p>Floor 5, 450 Avenue of the Red Field, SF, 10050, USA.</p> --}}
+                    <p>Copyright ©
+                        <a href="https://dadabhaai.com" rel="noopener" target="_blank">DadaBhaai</a>.
+                    </p>
+                </td>
+            </tr></br>
+</div>
 
-                                                                        </td>
-
-                                                                        <td> Invoice No : {{ $order['invoice_number'] }}
-                                                                        </td>
-                                                                        <td> Amount : {{ $order['total_amount'] }}</td>
-                                                                        <td> Name : {{ $order['billing_name'] }}</td>
-                                                                        <td> Phone : {{ $order['billing_phone'] }}</td>
-                                                                        <td> Address : {{ $order['billing_address_line1'] }}</td>
-
-                                                                    </tr>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 
 
 
 
 
-                                                                </table>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                        </table>
-
-
-
-
-
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td
-                            style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
-                            <table class="footer" align="center" width="570" cellpadding="0" cellspacing="0"
-                                role="presentation"
-                                style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 570px; margin: 0 auto; padding: 0; text-align: center; width: 570px;">
-                                <tr>
-                                    <td class="content-cell" align="center"
-                                        style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; padding: 32px;">
-                                        <p
-                                            style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; line-height: 1.5em; margin-top: 0; color: #b0adc5; font-size: 12px; text-align: center;">
-                                            © 2021 Laravel. All rights reserved.</p>
-
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-</body>
-
-</html>
+<td> Invoice No : {{ $order['invoice_number'] }}
+</td>
+<td> Amount : {{ $order['total_amount'] }}</td>
+<td> Name : {{ $order['billing_name'] }}</td>
+<td> Phone : {{ $order['billing_phone'] }}</td>
+<td> Address : {{ $order['billing_address_line1'] }}</td>

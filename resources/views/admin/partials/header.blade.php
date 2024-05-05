@@ -37,19 +37,26 @@
             <!--begin::Navbar-->
             <div class="d-flex align-items-stretch" id="kt_header_nav">
                 <!--begin::Menu wrapper-->
-                <div class="header-menu align-items-stretch" data-kt-drawer="true" data-kt-drawer-name="header-menu" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'200px', '300px': '250px'}" data-kt-drawer-direction="end" data-kt-drawer-toggle="#kt_header_menu_mobile_toggle" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_body', lg: '#kt_header_nav'}">
+                <div class="header-menu align-items-stretch" data-kt-drawer="true" data-kt-drawer-name="header-menu"
+                    data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true"
+                    data-kt-drawer-width="{default:'200px', '300px': '250px'}" data-kt-drawer-direction="end"
+                    data-kt-drawer-toggle="#kt_header_menu_mobile_toggle" data-kt-swapper="true"
+                    data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_body', lg: '#kt_header_nav'}">
 
                     <!--begin::Menu-->
-                    <div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold my-5 my-lg-0 align-items-stretch" id="#kt_header_menu" data-kt-menu="true">
+                    <div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold my-5 my-lg-0 align-items-stretch"
+                        id="#kt_header_menu" data-kt-menu="true">
 
-                        <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" class="menu-item here show menu-lg-down-accordion me-lg-1">
+                        <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
+                            class="menu-item here show menu-lg-down-accordion me-lg-1">
 
                             <span class="menu-link py-3">
                                 <span class="menu-title">Dashboard</span>
                                 <span class="menu-arrow d-lg-none"></span>
                             </span>
 
-                            <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
+                            <div
+                                class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
                                 <div class="menu-item">
                                     <a class="menu-link active py-3" href="{{ route('all.template') }}">
                                         <span class="menu-bullet">
@@ -200,10 +207,10 @@
 
                         </div>
 
-                        <div  class="menu-item menu-lg-down-accordion me-lg-1">
+                        <div class="menu-item menu-lg-down-accordion me-lg-1">
                             <span class="menu-link py-3">
-                                <a href="{{route('index')}}"> <span class="menu-title">Frontend</span></a>
-                                
+                                <a href="{{ route('index') }}"> <span class="menu-title">Frontend</span></a>
+
                                 <span class="menu-arrow d-lg-none"></span>
                             </span>
                             {{-- <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
@@ -2221,10 +2228,14 @@
             <!--begin::Toolbar wrapper-->
             <div class="d-flex align-items-stretch flex-shrink-0">
 
-                
+
 
                 <!--begin::Notifications-->
                 <div class="d-flex align-items-center ms-1 ms-lg-3">
+                    @php
+                        $ncount = Auth::guard('admin')->user()->unreadNotifications()->count();
+                    @endphp
+
                     <!--begin::Menu- wrapper-->
                     <div class="btn btn-icon btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px"
                         data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
@@ -2250,11 +2261,6 @@
                     </div>
                     <!--begin::Menu-->
                     <div class="menu menu-sub menu-sub-dropdown menu-column w-350px w-lg-375px" data-kt-menu="true">
-                        @php
-                        $ncount = Auth::guard('admin')->user()
-                            ->unreadNotifications()
-                            ->count();
-                    @endphp
 
                         <!--begin::Heading-->
                         <div class="d-flex flex-column bgi-no-repeat rounded-top"
@@ -2325,9 +2331,13 @@
                                                 <!--end::Symbol-->
                                                 <!--begin::Title-->
                                                 <div class="mb-0 me-2">
-                                                    <a href="#"
-                                                        class="fs-6 text-gray-800 text-hover-primary fw-bolder">Order Alices</a>
-                                                    <div class="text-gray-400 fs-7">{{ $notification->data['message'] }}
+                                                    @if (!empty($notification->data['name']))
+                                                        <a href="javascript:;"
+                                                            class="fs-6 text-gray-800 text-hover-primary fw-bolder">{{ $notification->data['name'] }}</a>
+                                                    @endif
+                                                    <div class="text-gray-400 fs-7">
+                                                        <a
+                                                            href="{{ route('admin.all.order') }}">{{ $notification->data['message'] }}</a>
                                                     </div>
                                                 </div>
                                                 <!--end::Title-->
@@ -2335,7 +2345,7 @@
                                             <!--end::Section-->
                                             <!--begin::Label-->
                                             <span
-                                                class="badge badge-light fs-8">{{ Carbon\Carbon::parse($notification->created_at)->diffForHumans() }}</span>
+                                                class="badge badge-light fs-9">{{ Carbon\Carbon::parse($notification->created_at)->diffForHumans() }}</span>
                                             <!--end::Label-->
                                         </div>
                                     @endforeach
@@ -2346,7 +2356,8 @@
 
                                 <!--begin::View more-->
                                 <div class="py-3 text-center border-top">
-                                    <a href="javascript:;" class="btn btn-color-gray-600 btn-active-color-primary">View
+                                    <a href="javascript:;"
+                                        class="btn btn-color-gray-600 btn-active-color-primary">View
                                         All
                                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
                                         <span class="svg-icon svg-icon-5">

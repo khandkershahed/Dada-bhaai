@@ -256,7 +256,7 @@ class TemplateOneCartController extends Controller
     {
         //dd($request->all());
 
-        $admin = Admin::where('status',1)->get();
+        $admin = Admin::where('status', 1)->get();
 
         $order_id = Order::insertGetId([
 
@@ -281,7 +281,7 @@ class TemplateOneCartController extends Controller
             'invoice_number' => 'DV' . mt_rand(10000000, 99999999),
             'order_number' => Helper::generateOrderNumber(),
 
-            'order_date' => Carbon::now()->format('dmy'),
+            'order_date' => Carbon::now()->format('d F Y'),
             'order_month' => Carbon::now()->format('F'),
             'order_year' => Carbon::now()->format('Y'),
 
@@ -289,7 +289,7 @@ class TemplateOneCartController extends Controller
 
         ]);
 
-        //Send Mail 
+        //Send Mail
         $invoice = Order::findOrFail($order_id);
 
         $data = [

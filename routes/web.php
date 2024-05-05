@@ -191,11 +191,10 @@ Route::controller(TemplateOneCartController::class)->group(function () {
 
 });
 
-
 /////////////////// Template Two //////////////////////
 Route::controller(TemplateTwoController::class)->group(function () {
 
     //All Product
     Route::get('/all-product', 'TemplateOneAllProduct')->name('template.one.all_product');
-   
+
 });

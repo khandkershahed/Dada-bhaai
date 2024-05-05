@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\StatusMail;
 use App\Models\User\Order;
 use App\Models\User\OrderItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class AdminOrderController extends Controller
 {
@@ -45,11 +47,12 @@ class AdminOrderController extends Controller
     //Admin Order Status Change
     public function AdminOrderStatusChange(Request $request, $id)
     {
-        Order::find($id)->update([
+        $status = Order::find($id)->update([
 
             'status' => $request->status,
+
             'processing_date' => now(),
-            'delivered_date' => now(),
+            'shipped_date' => now(),
             'delivered_date' => now(),
 
         ]);

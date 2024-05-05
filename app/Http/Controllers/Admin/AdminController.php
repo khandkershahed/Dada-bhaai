@@ -15,14 +15,20 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Spatie\Permission\Models\Role;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
     //Admin Dashboard
     public function AdminDashboard()
     {
-        $orders = Order::where('status','pending')->latest()->get();       
-        return view('admin.index',compact('orders'));
+        $profileDatas = Admin::latest()->get();
+
+        $orders = Order::where('order_date',Carbon::now()->format('d F Y'))->latest()->get(); 
+        $monthOrders = Order::where('order_month',Carbon::now()->format('F'))->limit(10)->latest()->get(); 
+        $yearOrders = Order::where('order_year',Carbon::now()->format('Y'))->limit(9)->latest()->get(); 
+
+        return view('admin.index',compact('orders','monthOrders','yearOrders','profileDatas'));
     }
 
     //AdminProfile

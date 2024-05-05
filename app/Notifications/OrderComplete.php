@@ -50,6 +50,7 @@ class OrderComplete extends Notification
     {
         return [
             'message' => 'New Order In Added For A Shop',
+            'name' => $this->billing_name,
         ];
     }
 }

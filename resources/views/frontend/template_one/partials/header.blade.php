@@ -64,12 +64,13 @@
 
                                                     <hr class="mb-2 mt-3">
 
-                                                    <a class="dropdown-item" href="#"><i class="fal fa-user pr-2"></i>
-                                                        My Profile</a>
-                                                    <a class="dropdown-item" href="#"><i class="fal fa-star pr-2"
-                                                            aria-hidden="true"></i> My Favorites</a>
-                                                    <a class="dropdown-item" href="#"><i class="fal fa-list pr-2"
-                                                            aria-hidden="true"></i> My Booked</a>
+                                                    <a href="{{ route('template.one.dashboard') }}" class="dropdown-item"
+                                                        href="#"><i class="fal fa-user pr-2"></i>
+                                                        My Dashboard</a>
+                                                        
+                                                    <a href="{{ route('template.one.dashboard') }}" class="dropdown-item"
+                                                        href="#"><i class="fal fa-star pr-2" aria-hidden="true"></i>
+                                                        My Order</a>
 
                                                 </div>
                                             </div>
