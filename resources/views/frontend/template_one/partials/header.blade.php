@@ -67,7 +67,7 @@
                                                     <a href="{{ route('template.one.dashboard') }}" class="dropdown-item"
                                                         href="#"><i class="fal fa-user pr-2"></i>
                                                         My Dashboard</a>
-                                                        
+
                                                     <a href="{{ route('template.one.dashboard') }}" class="dropdown-item"
                                                         href="#"><i class="fal fa-star pr-2" aria-hidden="true"></i>
                                                         My Order</a>
@@ -408,20 +408,26 @@
                                             <li>
                                                 <a href="javascript:;">{{ $category->category_name }}</a>
 
-                                                {{-- @php
-                                                    $brands = App\Models\Brand::with('brandProducts')
-                                                        ->whereHas('brandProducts')
-                                                        ->where('status', '1')
+                                                @php
+                                                    $products = App\Models\Admin\Product::where('status', '1')
+                                                        ->where('brand_id', $category->id)
                                                         ->limit(4)
                                                         ->latest()
                                                         ->get();
-                                                @endphp --}}
+                                                @endphp
+
+                                                
 
                                                 <ul class="submenu level-1">
 
-                                                    {{-- @foreach ($brands as $brand)
-                                                        <li> <a href="">{{ $brand->brand_name }}</a></li>
-                                                    @endforeach --}}
+                                                    @forelse ($products as $product)
+                                                        <li> <a href="">{{ $product->brand->brand_name }}</a>
+                                                        </li>
+                                                    @empty
+                                                        <p>No Brand</p>
+                                                    @endforelse
+
+
 
                                                 </ul>
 

@@ -2,22 +2,22 @@
 @section('index_astell')
     <main class="sub">
 
-        {{-- <section class="lnb">
-      <a href="#" class="btn-back">A&amp;ultima</a>
-      <div class="swiper-container v1">
-        <ul class="swiper-wrapper">
-          <li class="swiper-slide">
-            <a id="moveFeature" class="m1 on">Features</a>
-          </li>
-          <li id="designGroupInfo" class="swiper-slide" style="display: none">
-            <a id="moveDesign" href="#" class="m2">Design</a>
-          </li>
-          <li class="swiper-slide">
-            <a id="moveSpecification" href="#" class="m3">Specification</a>
-          </li>
-        </ul>
-      </div>
-    </section> --}}
+        <section class="lnb">
+            <a href="#" class="btn-back">A&amp;ultima</a>
+            <div class="swiper-container v1">
+                <ul class="swiper-wrapper">
+                    <li class="swiper-slide">
+                        <a id="moveFeature" class="m1 on">Features</a>
+                    </li>
+                    <li id="designGroupInfo" class="swiper-slide" style="display: none">
+                        <a id="moveDesign" href="#" class="m2">Design</a>
+                    </li>
+                    <li class="swiper-slide">
+                        <a id="moveSpecification" href="#" class="m3">Specification</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
 
         {{-- Product Name Complate --}}
         <section class="sub-visual3 scrollAniTop">
@@ -848,7 +848,7 @@
 
         {{-- End 17 --}}
 
-        
+
 
 
         <!-- 디자인 -->

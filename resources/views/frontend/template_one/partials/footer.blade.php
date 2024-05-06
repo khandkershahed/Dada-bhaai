@@ -25,8 +25,7 @@
                                     <li><a href="{{ route('template.one.login') }}">Sign In</a></li>
                                     <li><a href="{{ route('template_one.contact') }}">Contact Us</a></li>
                                     <li><a href="{{ route('template.one.faq') }}">Faq</a></li>
-                                    <li><a href="terms.html">Terms</a></li>
-                                    <li><a href="policy.html">Policy</a></li>
+                                    <li><a href="{{ route('template.one.term') }}">Terms</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -58,7 +57,7 @@
                                     <input class="newsletter--input w-100" type="text"
                                         placeholder="Email Address ..." />
                                     <button class="btn newsletter--button" type="button">
-                                        <img src="{{ asset('frontend_one/assets/img/icon/plan-icon.png') }}"
+                                        <img src="{{ asset('frontend/template_one/assets/img/icon/plan-icon.png') }}"
                                             alt="" />
                                     </button>
                                 </form>

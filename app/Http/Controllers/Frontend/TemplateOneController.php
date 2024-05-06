@@ -9,6 +9,7 @@ use App\Models\Admin\ChildCategory;
 use App\Models\Admin\Contact;
 use App\Models\Admin\Faq;
 use App\Models\Admin\Product;
+use App\Models\Admin\Terms;
 use App\Models\Brand;
 use App\Models\Sites;
 use App\Models\User;
@@ -114,7 +115,7 @@ class TemplateOneController extends Controller
             $priceRangeUrl .= '&price=' . $data['price_range'];
         }
 
-        return redirect()->route('template.one.all_product', $catUrl . $brandUrl . $sortByUrl.$priceRangeUrl);
+        return redirect()->route('template.one.all_product', $catUrl . $brandUrl . $sortByUrl . $priceRangeUrl);
     }
 
     //Brand Wise Product One
@@ -437,7 +438,7 @@ class TemplateOneController extends Controller
 
         // return $pdf->download('user_invoice.pdf');
     }
-    
+
     //Template One Tack Order
     public function TemplateOneTackOrder()
     {
@@ -449,19 +450,23 @@ class TemplateOneController extends Controller
     {
         $invoice = $request->code;
 
-        $track = Order::where('billing_phone',$invoice)->first();
+        $track = Order::where('billing_phone', $invoice)->first();
 
-        if($track)
-        {
-            $orderItems = OrderItem::where('order_id',$track->id)->get();
-            return view('frontend.template_one.user.track_order_search',compact('track','orderItems'));
-        }
-        else
-        {
+        if ($track) {
+            $orderItems = OrderItem::where('order_id', $track->id)->get();
+            return view('frontend.template_one.user.track_order_search', compact('track', 'orderItems'));
+        } else {
             toastr()->error('Invalid Invoice Number');
             return redirect()->back();
         }
 
+    }
+
+    //Template One Term
+    public function TemplateOneTerm()
+    {
+        $term = Terms::first();
+        return view('frontend.template_one.term.term', compact('term'));
     }
 
 }

@@ -52,6 +52,7 @@ Route::controller(IndexController::class)->group(function () {
     Route::get('/product/{id}/{product_slug}', 'TemplateOneProduct');
     //Single Product
     Route::get('/single-product/{id}', 'SingleProduct')->name('single.product');
+
     //Fqa Frontend
     Route::get('/faq', 'Faq')->name('faq');
     //Contact Frontend
@@ -123,6 +124,9 @@ Route::controller(TemplateOneController::class)->group(function () {
 
     //Faq
     Route::get('/faq', 'TemplateOneFaq')->name('template.one.faq');
+
+    //Trems
+    Route::get('/terms', 'TemplateOneTerm')->name('template.one.term');
 
     //About Us
     Route::get('/about-us', 'TemplateOneAboutUs')->name('template.one.about');
@@ -196,7 +200,6 @@ Route::controller(TemplateOneCartController::class)->group(function () {
 //     Route::get('/all-product', 'TemplateOneAllProduct')->name('template.one.all_product');
 
 // });
-
 
 // Template Two Controller
 Route::controller(TemplateTwoController::class)->group(function () {

@@ -38,10 +38,10 @@
         </div>
 
         <!--Header//-->
-        @if (Route::is('index'))
+        {{-- @if (Route::is('index')) --}}
         @include('frontend.astell.partials.header')
-        @endif
-        
+        {{-- @endif --}}
+
         <!--//Header-->
 
         <!--Content//-->
