@@ -396,7 +396,7 @@
 
                                     @php
                                         $categorys = App\Models\Admin\Category::where('status', '1')
-                                            ->orderBy('id', 'ASC')
+                                            ->orderBy('id', 'DESC')
                                             ->limit(4)
                                             ->latest()
                                             ->get();
@@ -420,8 +420,8 @@
 
                                                 <ul class="submenu level-1">
 
-                                                    @forelse ($products as $product)
-                                                        <li> <a href="">{{ $product->brand->brand_name }}</a>
+                                                    @forelse ($products as $brand)
+                                                        <li> <a href="">{{ $brand->brand->brand_name }}</a>
                                                         </li>
                                                     @empty
                                                         <p>No Brand</p>
@@ -439,7 +439,7 @@
 
                                 {{-- Brand List  --}}
 
-                                <li class="mega-menu static dropdown-icon">
+                                {{-- <li class="mega-menu static dropdown-icon">
                                     <a href="javascript:void(0)"
                                         onclick="window.location.href='shop-page.html'">Offers</a>
                                     <ul class="submenu mega-full">
@@ -512,7 +512,7 @@
                                             </ul>
                                         </li>
                                     </ul>
-                                </li>
+                                </li> --}}
 
                             </ul>
                         </nav>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\Admin\Offer;
 use App\Models\Admin\Product;
 use App\Models\User;
 use App\Models\Admin\EmployeeCategory;
@@ -35,7 +36,9 @@ class AdminController extends Controller
         $monthOrders = Order::where('order_month',Carbon::now()->format('F'))->limit(10)->latest()->get(); 
         $yearOrders = Order::where('order_year',Carbon::now()->format('Y'))->limit(9)->latest()->get(); 
 
-        return view('admin.index',compact('orders','monthOrders','yearOrders','profileDatas','totalUser','totalProduct','daliyRevenue','totalEmployee'));
+        $offers = Offer::latest()->get();
+
+        return view('admin.index',compact('orders','monthOrders','yearOrders','profileDatas','totalUser','totalProduct','daliyRevenue','totalEmployee','offers'));
     }
 
     //AdminProfile
