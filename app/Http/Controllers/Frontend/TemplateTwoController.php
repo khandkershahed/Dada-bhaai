@@ -22,7 +22,7 @@ class TemplateTwoController extends Controller
     public function SingleProductTemplateTwo($id)
     {
         $product = Product::find($id);
-        $sproducts = ProductSinglePage::where('product_id',$product->id)->get();
+        $sproducts = ProductSinglePage::where('product_id',$product->id)->first();
 
         return view('frontend.astell.product.single_product', compact('product','sproducts'));
     }
