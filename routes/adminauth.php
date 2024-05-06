@@ -97,8 +97,16 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     Route::get('/delete/employee-details/{id}', [AdminController::class, 'DeleteEmployeeDetails'])->name('delete.employee.details');
 
     //Admin Password
-    Route::get('/admin-password', [AdminController::class, 'AdmiPasswordPage'])->name('admin.password.page');
+    Route::get('/admin-password', [AdminController::class, 'AdminPasswordPage'])->name('admin.password.page');
     Route::post('/admin/password/update/submit', [AdminController::class, 'AdminPasswordUpdateSubmit'])->name('admin.password.update.submit');
+
+    //All User
+    Route::get('/all-user', [AdminController::class, 'AllUser'])->name('all.user');
+    Route::get('/delete-user/{id}', [AdminController::class, 'DeleteUser'])->name('delete.user');
+
+    //Active Or Inactive
+    Route::get('/admin/user-inactive/{id}', [AdminController::class, 'InactiveUserAdmin'])->name('user.inactive.admin');
+    Route::get('/admin/user-active/{id}', [AdminController::class, 'ActiveUserAdmin'])->name('user.active.admin');
 });
 
 Route::middleware(['auth:admin', 'verified'])->group(function () {

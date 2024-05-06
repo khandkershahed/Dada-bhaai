@@ -96,8 +96,6 @@ Route::post('/add-to-wishlist/{product_id}', [TemplateOneCartController::class, 
 // Template One Controller
 Route::controller(TemplateOneController::class)->group(function () {
 
-    ///////////////////////////// Template One //////////////////////////////
-
     //All Product
     Route::get('/all-product', 'TemplateOneAllProduct')->name('template.one.all_product');
     Route::post('/shop-filter', 'shopFilter')->name('shop.filter');
@@ -191,10 +189,57 @@ Route::controller(TemplateOneCartController::class)->group(function () {
 
 });
 
-/////////////////// Template Two //////////////////////
+// /////////////////// Template Two //////////////////////
+// Route::controller(TemplateTwoController::class)->group(function () {
+
+//     //All Product
+//     Route::get('/all-product', 'TemplateOneAllProduct')->name('template.one.all_product');
+
+// });
+
+
+// Template Two Controller
 Route::controller(TemplateTwoController::class)->group(function () {
 
-    //All Product
-    Route::get('/all-product', 'TemplateOneAllProduct')->name('template.one.all_product');
+    //Template
+    Route::get('/product-single/{id}', 'SingleProductTemplateTwo');
+
+    //Single Product
+    //Route::get('/single-product/{id}', 'SingleProduct')->name('single.product');
+
+    // //All Product
+    // Route::get('/all-product', 'TemplateOneAllProduct')->name('template.one.all_product');
+    // Route::post('/shop-filter', 'shopFilter')->name('shop.filter');
+
+    // //Brand Wise
+    // Route::get('/product/brand/{id}/{brand_slug}', 'BrandRelatedProductOne');
+
+    // //Category Page
+    // Route::get('/home-category', 'HomeAllCategory')->name('home.all.category.page');
+    // Route::get('/product/category/{id}/{category_slug}', 'CategoryRelatedProductOne');
+
+    // //Child Category
+    // Route::get('/product/childcategory/{id}/{childcategory_slug}', 'ChilldCategoryRelatedProductOne');
+
+    // //Contact
+    // Route::get('/user-contact', 'TemplateOneContact')->name('template_one.contact');
+    // Route::post('/user-contact/send', 'TemplateOneContactStore')->name('template_one.contact.store');
+
+    // //Product Search
+    // Route::post('/search', 'ProductSearch')->name('product.search');
+    // // Route::post('/search-product', 'SearchProduct');
+
+    // //Login
+    // Route::get('/dadabhai-login', 'TemplateOneLogin')->name('template.one.login');
+
+    // //Faq
+    // Route::get('/faq', 'TemplateOneFaq')->name('template.one.faq');
+
+    // //About Us
+    // Route::get('/about-us', 'TemplateOneAboutUs')->name('template.one.about');
+
+    // //Track Order
+    // Route::get('/user/tracking/order', 'TemplateOneTackOrder')->name('template.one.track.order');
+    // Route::post('/tracking-order', 'TemplateOneTackOrderSearch')->name('track.order.search');
 
 });

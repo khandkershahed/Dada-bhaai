@@ -1,5 +1,6 @@
 @extends('admin.admin_dashboard')
 @section('admin')
+
     <!--begin::Toolbar-->
     <div class="toolbar" id="kt_toolbar">
         <!--begin::Container-->
@@ -11,17 +12,17 @@
                 <!--begin::Title-->
                 <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Dashboard
                     <!--begin::Separator-->
-                    <span class="h-20px border-1 border-gray-200 border-start ms-3 mx-2 me-1"></span>
+                    {{-- <span class="h-20px border-1 border-gray-200 border-start ms-3 mx-2 me-1"></span> --}}
                     <!--end::Separator-->
                     <!--begin::Description-->
-                    <span class="text-muted fs-7 fw-bold mt-2">#XRS-45670</span>
+                    <span class="text-muted fs-7 fw-bold mt-2"></span>
                     <!--end::Description-->
                 </h1>
                 <!--end::Title-->
             </div>
             <!--end::Page title-->
             <!--begin::Actions-->
-            <div class="d-flex align-items-center gap-2 gap-lg-3">
+            {{-- <div class="d-flex align-items-center gap-2 gap-lg-3">
                 <!--begin::Filter menu-->
                 <div class="m-0">
                     <!--begin::Menu toggle-->
@@ -128,12 +129,13 @@
                 <a href="../../demo1/dist/.html" class="btn btn-sm btn-primary" data-bs-toggle="modal"
                     data-bs-target="#kt_modal_create_app">Create</a>
                 <!--end::Primary button-->
-            </div>
+            </div> --}}
             <!--end::Actions-->
         </div>
         <!--end::Container-->
     </div>
     <!--end::Toolbar-->
+    
     <!--begin::Post-->
     <div class="post d-flex flex-column-fluid" id="kt_post">
         <!--begin::Container-->
@@ -157,41 +159,25 @@
                                 <!--begin::Row-->
                                 <div class="row">
                                     <!--begin::Col-->
-                                    <div class="col-lg-3 bg-light-warning px-4 py-8 rounded-2">
+                                    <div class="col-lg-3 bg-light-success px-4 py-8 rounded-2">
                                         <!--begin::Svg Icon | path: icons/duotune/general/gen032.svg-->
                                         <span class="svg-icon svg-icon-3x svg-icon-warning d-block my-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <rect x="8" y="9" width="3" height="10" rx="1.5"
-                                                    fill="currentColor" />
-                                                <rect opacity="0.5" x="13" y="5" width="3" height="14"
-                                                    rx="1.5" fill="currentColor" />
-                                                <rect x="18" y="11" width="3" height="8" rx="1.5"
-                                                    fill="currentColor" />
-                                                <rect x="3" y="13" width="3" height="6" rx="1.5"
-                                                    fill="currentColor" />
-                                            </svg>
+                                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32" xml:space="preserve"><style>.st1{fill:#333}</style><path class="st1" d="M25.838 31H6.162a3.957 3.957 0 0 1-3.245-1.661 3.956 3.956 0 0 1-.549-3.604l.704-2.113a6.034 6.034 0 0 1 4.966-4.059C10.131 19.307 13.211 19 16 19c2.788 0 5.869.307 7.963.563a6.032 6.032 0 0 1 4.965 4.059l.704 2.113a3.954 3.954 0 0 1-.55 3.604A3.955 3.955 0 0 1 25.838 31zM16 21c-2.688 0-5.681.298-7.718.549a4.02 4.02 0 0 0-3.312 2.706l-.704 2.112c-.206.618-.106 1.274.274 1.802S5.511 29 6.162 29h19.676a1.98 1.98 0 0 0 1.622-.83c.381-.528.48-1.185.275-1.803l-.704-2.112a4.02 4.02 0 0 0-3.312-2.706C21.681 21.298 18.687 21 16 21zM16 18c-4.687 0-8.5-3.813-8.5-8.5S11.313 1 16 1c4.687 0 8.5 3.813 8.5 8.5S20.687 18 16 18zm0-15c-3.584 0-6.5 2.916-6.5 6.5S12.416 16 16 16s6.5-2.916 6.5-6.5S19.584 3 16 3z"/><path d="M12.04 10.54c-.543 0-.988-.435-1-.98a4.964 4.964 0 0 1 1.394-3.564 4.968 4.968 0 0 1 3.505-1.535c.562.01 1.009.428 1.02.98a1 1 0 0 1-.98 1.02 2.982 2.982 0 0 0-2.103.92 2.981 2.981 0 0 0-.836 2.139 1 1 0 0 1-.98 1.02h-.02z" style="fill:#008ad0"/></svg>
                                         </span>
                                         <!--end::Svg Icon-->
-                                        <a href="#" class="text-warning fw-bold fs-6">Weekly Sales</a>
+                                        <a href="{{ route('all.user') }}" class="text-dark fw-bold fs-6">Total User</a>
+                                        <span class="float-end fw-bolder badge bg-success">{{ count($totalUser) }}</span>
                                     </div>
                                     <!--end::Col-->
                                     <!--begin::Col-->
                                     <div class="col-lg-3 bg-light-primary px-4 py-8 rounded-2">
                                         <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
                                         <span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <path opacity="0.3"
-                                                    d="M20 15H4C2.9 15 2 14.1 2 13V7C2 6.4 2.4 6 3 6H21C21.6 6 22 6.4 22 7V13C22 14.1 21.1 15 20 15ZM13 12H11C10.5 12 10 12.4 10 13V16C10 16.5 10.4 17 11 17H13C13.6 17 14 16.6 14 16V13C14 12.4 13.6 12 13 12Z"
-                                                    fill="currentColor" />
-                                                <path
-                                                    d="M14 6V5H10V6H8V5C8 3.9 8.9 3 10 3H14C15.1 3 16 3.9 16 5V6H14ZM20 15H14V16C14 16.6 13.5 17 13 17H11C10.5 17 10 16.6 10 16V15H4C3.6 15 3.3 14.9 3 14.7V18C3 19.1 3.9 20 5 20H19C20.1 20 21 19.1 21 18V14.7C20.7 14.9 20.4 15 20 15Z"
-                                                    fill="currentColor" />
-                                            </svg>
+                                            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.88 114.58"><title>product</title><path d="M118.13,9.54a3.25,3.25,0,0,1,2.2.41,3.28,3.28,0,0,1,2,3l.57,78.83a3.29,3.29,0,0,1-1.59,3L89.12,113.93a3.29,3.29,0,0,1-2,.65,3.07,3.07,0,0,1-.53,0L3.11,105.25A3.28,3.28,0,0,1,0,102V21.78H0A3.28,3.28,0,0,1,2,18.7L43.89.27h0A3.19,3.19,0,0,1,45.63,0l72.5,9.51Zm-37.26,1.7-24.67,14,30.38,3.88,22.5-14.18-28.21-3.7Zm-29,20L50.75,64.62,38.23,56.09,25.72,63.17l2.53-34.91L6.55,25.49V99.05l77.33,8.6V35.36l-32-4.09Zm-19.7-9.09L56.12,8,45.7,6.62,15.24,20l16.95,2.17ZM90.44,34.41v71.12l25.9-15.44-.52-71.68-25.38,16Z"/></svg>
                                         </span>
                                         <!--end::Svg Icon-->
-                                        <a href="#" class="text-primary fw-bold fs-6">New Projects</a>
+                                        <a href="{{ route('all.product') }}" class="text-primary fw-bold fs-6">Total Product</a>
+                                        <span class="float-end fw-bolder badge bg-primary">{{ count($totalProduct) }}</span>
                                     </div>
                                     <!--end::Col-->
 
@@ -210,13 +196,14 @@
                                             </svg>
                                         </span>
                                         <!--end::Svg Icon-->
-                                        <a href="#" class="text-danger fw-bold fs-6 mt-2">Item Orders</a>
+                                        <a href="#" class="text-danger fw-bold fs-6 mt-2">Daliy Revenue</a>
+                                        <span class="float-end fw-bolder text-danger">Tk {{ ($daliyRevenue) }}</span>
                                     </div>
                                     <!--end::Col-->
                                     <!--begin::Col-->
-                                    <div class="col-lg-3 bg-light-success px-4 py-8 rounded-2 ">
+                                    <div class="col-lg-3 bg-light-info px-4 py-8 rounded-2 ">
                                         <!--begin::Svg Icon | path: icons/duotune/communication/com010.svg-->
-                                        <span class="svg-icon svg-icon-3x svg-icon-success d-block my-2">
+                                        <span class="svg-icon svg-icon-3x svg-icon-info d-block my-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" fill="none">
                                                 <path
@@ -228,7 +215,8 @@
                                             </svg>
                                         </span>
                                         <!--end::Svg Icon-->
-                                        <a href="#" class="text-success fw-bold fs-6 mt-2">Bug Reports</a>
+                                        <a href="{{ route('all.admin.permission') }}" class="text-info fw-bold fs-6 mt-2">Total Employee</a>
+                                        <span class="float-end fw-bolder badge bg-info">{{ count($totalEmployee) }}</span>
                                     </div>
                                     <!--end::Col-->
                                 </div>
@@ -290,7 +278,7 @@
                         <!--begin::Beader-->
                         <div class="card-header border-0">
                             <h3 class="card-title align-items-start flex-column">
-                                <span class="card-label fw-bolder fs-3 mb-1">Status</span>
+                                <span class="card-label fw-bolder fs-3 mb-1">Order Status</span>
                                 <span class="text-muted fw-bold fs-7">Latest order status</span>
                             </h3>
 

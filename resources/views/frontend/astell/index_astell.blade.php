@@ -5,11 +5,9 @@
 
     @include('frontend.astell.home_page.image_banner')
 
-    {{-- @include('frontend.astell.home_page.category') --}}
+    @include('frontend.astell.home_page.category')
     
     @include('frontend.astell.home_page.banner')
-    
-
     
 
 @endsection

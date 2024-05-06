@@ -48,7 +48,7 @@
 
                         <div class="btn-group tmpProductInfo tmpProductInfo_0"
                             {{ $loop->first ? '' : 'style=display:none;' }}>
-                            <a href="" class="lnk-ty1">Find store</a>
+                            <a href="{{ url('product-single' . '/' . $product->id) }}" class="lnk-ty1">Find store</a>
                             <div class="mark-group">
                                 <img src="https://i.ibb.co/Tbdf3yk/20221109162717-caaf539d-336d-4eff-90b1-e9711f8f4af1.png"
                                     alt="1.png" />

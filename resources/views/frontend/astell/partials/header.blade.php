@@ -1,5 +1,5 @@
 <header class="dark">
-    <div class="menu">
+    {{-- <div class="menu">
         <div class="overlay"></div>
         <a href="#" class="btn-menu">
             <span class="line"></span>
@@ -399,15 +399,16 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div> --}}
     <h1>
-        <a href="index.html"></a>
+        <a href="{{ route('index') }}"></a>
     </h1>
+
     <div class="gnb">
         <ul class="depth1">
             <li>
-                <a href="#">STORY</a>
-                <ul class="depth2">
+                <a href="{{ route('index') }}">Home</a>
+                {{-- <ul class="depth2">
                     <li>
                         <a href="story/story.html">All Story</a>
                     </li>
@@ -423,32 +424,15 @@
                     <li>
                         <a href="story/story16fa.html?categoryCode=People">People</a>
                     </li>
-                </ul>
+                </ul> --}}
             </li>
             <li>
-                <a href="#">PRODUCT</a>
-                <ul class="depth2">
-                    <li>
-                        <a href="product/whatsNew.html">What's New</a>
-                    </li>
-                    <li>
-                        <a href="product/productd8fe.html?productCode1=DAP">DAP</a>
-                    </li>
-                    <li>
-                        <a href="product/product56ac.html?productCode1=Headphones">Headphones</a>
-                    </li>
-                    <li>
-                        <a href="product/product6f70.html?productCode1=HomeAudio">Home Audio</a>
-                    </li>
-                    <li>
-                        <a href="product/product83ec.html?productCode1=Accessories">Accessories</a>
-                    </li>
-                    <li>
-                        <a href="https://www.activostyle.com/" target="_blank">Activo</a>
-                    </li>
-                </ul>
+                <a href="">PRODUCT</a>
+
+                
             </li>
-            <li>
+
+            {{-- <li>
                 <a href="#">MEDIA</a>
                 <ul class="depth2">
                     <li>
@@ -464,10 +448,11 @@
                         <a href="media/awards.html">Awards</a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
+
             <li>
-                <a href="#">AK NEWS</a>
-                <ul class="depth2" style="display: none">
+                <a href="">Category</a>
+                {{-- <ul class="depth2" style="display: none">
                     <li>
                         <a href="aknews/akNews.html">All View</a>
                     </li>
@@ -477,11 +462,11 @@
                     <li>
                         <a href="aknews/akNewsc6a5.html?newsCategoryNo=8">Exibition</a>
                     </li>
-                </ul>
+                </ul> --}}
             </li>
             <li>
-                <a href="#">SUPPORT</a>
-                <ul class="depth2">
+                <a href="">Brand</a>
+                {{-- <ul class="depth2">
                     <li>
                         <a href=""aq.html">FAQ</a>
                     </li>
@@ -494,10 +479,11 @@
                     <li>
                         <a href=""">Contact Us</a>
                     </li>
-                </ul>
+                </ul> --}}
             </li>
         </ul>
     </div>
+    
     <a href="#" class="btn-srch"></a>
     <div class="srch-box">
         <div class="overlay"></div>
