@@ -45,37 +45,37 @@
 
         {{-- 1 2 3 4 --}}
         @if (
-            !empty($product->row_two_image_one) &&
-                !empty($product->row_two_image_two) &&
-                !empty($product->row_two_image_three) &&
-                !empty($product->row_two_image_four))
+            !empty($sproducts->row_two_image_one) &&
+                !empty($sproducts->row_two_image_two) &&
+                !empty($sproducts->row_two_image_three) &&
+                !empty($sproducts->row_two_image_four))
             <section class="img-group scrollAni n2">
                 <ul>
                     <li>
                         <a href="javascript:void(0);" data-type="popMediaOpenN1"
                             style="
-                                background-image: url('{{ asset('storage/single_product/' . $product->row_two_image_one) }}');
+                                background-image: url('{{ asset('storage/single_product/' . $sproducts->row_two_image_one) }}');
 
                             "></a>
                     </li>
                     <li>
                         <a href="javascript:void(0);" data-type="popMediaOpenN2"
                             style="
-                                background-image: url('{{ asset('storage/single_product/' . $product->row_two_image_two) }}');
+                                background-image: url('{{ asset('storage/single_product/' . $sproducts->row_two_image_two) }}');
                                 ">
                         </a>
                     </li>
                     <li>
                         <a href="javascript:void(0);" data-type="popMediaOpenN3"
                             style="
-                            background-image: url('{{ asset('storage/single_product/' . $product->row_two_image_three) }}');
+                            background-image: url('{{ asset('storage/single_product/' . $sproducts->row_two_image_three) }}');
                             ">
                         </a>
                     </li>
                     <li>
                         <a href="javascript:void(0);" data-type="popMediaOpenN4"
                             style="
-                            background-image: url('{{ asset('storage/single_product/' . $product->row_two_image_four) }}');
+                            background-image: url('{{ asset('storage/single_product/' . $sproducts->row_two_image_four) }}');
                             "></a>
                     </li>
                 </ul>
@@ -111,16 +111,16 @@
         </section> --}}
 
         @if (
-            !empty($product->row_two_image_one) &&
-                !empty($product->row_two_image_two) &&
-                !empty($product->row_two_image_three) &&
-                !empty($product->row_two_image_four))
+            !empty($sproducts->row_two_image_one) &&
+                !empty($sproducts->row_two_image_two) &&
+                !empty($sproducts->row_two_image_three) &&
+                !empty($sproducts->row_two_image_four))
             <div class="popup-media n1" style="display: none">
                 <div class="overlay" data-type="popMediaClose"></div>
                 <div class="pop-inner">
                     <a href="javascript:void(0);" class="pop-close" data-type="popMediaClose"></a>
                     <div class="cont">
-                        <img src="{{ asset('storage/single_product/' . $product->sproducts->row_two_image_one) }}" alt="product" />
+                        <img src="{{ asset('storage/single_product/' . $sproducts->row_two_image_one) }}" alt="product" />
                     </div>
                 </div>
             </div>
@@ -129,7 +129,7 @@
                 <div class="pop-inner">
                     <a href="javascript:void(0);" class="pop-close" data-type="popMediaClose"></a>
                     <div class="cont">
-                        <img src="{{ asset('storage/single_product/' . $product->sproducts->row_two_image_two) }}" alt="product" />
+                        <img src="{{ asset('storage/single_product/' . $sproducts->row_two_image_two) }}" alt="product" />
                     </div>
                 </div>
             </div>
@@ -138,7 +138,8 @@
                 <div class="pop-inner">
                     <a href="javascript:void(0);" class="pop-close" data-type="popMediaClose"></a>
                     <div class="cont">
-                        <img src="{{ asset('storage/single_product/' . $product->sproducts->row_two_image_three) }}" alt="product" />
+                        <img src="{{ asset('storage/single_product/' . $sproducts->row_two_image_three) }}"
+                            alt="product" />
                     </div>
                 </div>
             </div>
@@ -147,7 +148,7 @@
                 <div class="pop-inner">
                     <a href="javascript:void(0);" class="pop-close" data-type="popMediaClose"></a>
                     <div class="cont">
-                        <img src="{{ asset('storage/single_product/' . $product->sproducts->row_two_image_four) }}" alt="product" />
+                        <img src="{{ asset('storage/single_product/' . $sproducts->row_two_image_four) }}" alt="product" />
                     </div>
                 </div>
             </div>
@@ -155,18 +156,18 @@
 
         <section class="detail-group1 scrollAni n3">
             <div class="wrap">
-                <h3>{{ $product->row_three_title }}</h3>
+                <h3>{{ $sproducts->row_three_title }}</h3>
                 <p>
-                    {{ $product->row_three_description }}
+                    {{ $sproducts->row_three_description }}
                 </p>
             </div>
-            {{-- <div class="gallery">
+            <div class="gallery">
                 <div class="swiper-container top">
                     <ul class="swiper-wrapper">
-                        @foreach ($productImages as $image)
-                        <li class="swiper-slide">
-                            <img src="{{ asset('storage/' . $image->images) }}" alt="product" />
-                        </li>
+                        @foreach ($multiImages as $image)
+                            <li class="swiper-slide">
+                                <img src="{{ asset($image->multi_image) }}" alt="product" />
+                            </li>
                         @endforeach
                     </ul>
                     <div class="swiper-page-group">
@@ -177,14 +178,14 @@
                 </div>
                 <div class="swiper-container thumbs">
                     <ul class="swiper-wrapper">
-                        @foreach ($productImages as $image)
-                        <li class="swiper-slide">
-                            <img src="{{ asset('storage/' . $image->images) }}" alt="product" />
-                        </li>
+                        @foreach ($multiImages as $image)
+                            <li class="swiper-slide">
+                                <img src="{{ asset($image->multi_image) }}" alt="product" />
+                            </li>
                         @endforeach
                     </ul>
                 </div>
-            </div> --}}
+            </div>
         </section>
 
         {{-- <section class="detail-group80 scrollAni n3" style="background-color: #e4f2ff">
@@ -229,27 +230,25 @@
 
         <!-- 비교테이블 -->
 
-        @if (!empty($product->row_six_background_image))
+        @if (!empty($sproducts->row_six_background_image))
             <section class="detail-group29 scrollAni n4">
                 <div class="bg"
-                    style="
-                            background-image: url('{{ asset('storage/single_product/' . $product->row_six_background_image) }}');
-                            ">
+                    style="background-image: url('{{ asset('storage/single_product/' . $sproducts->row_six_background_image) }}');">
                 </div>
                 <div class="wrap">
                     <h2>
-                        {{ $product->row_six_title }}
+                        {{ $sproducts->row_six_title }}
                     </h2>
                     <div class="n4-wrapper">
                         <h3 class="custom-title">
-                            {{ $product->row_six_sub_title }}
+                            {{ $sproducts->row_six_sub_title }}
                         </h3>
                         <div class="n4-item">
                             <p>
-                                {{ $product->row_six_short_description }}
+                                {{ $sproducts->row_six_short_description }}
                             </p>
                             <p>
-                                {{ $product->row_six_description }}
+                                {{ $sproducts->row_six_description }}
                             </p>
                         </div>
                     </div>
@@ -342,15 +341,15 @@
         </section> --}}
 
         <!-- 비교테이블 -->
-        @if (!empty($product->row_seven_background_image))
+        @if (!empty($sproducts->row_seven_background_image))
             <section class="detail-group10 scrollAni n5">
                 <div class="bg"
-                    style="ackground-image:  url('{{ asset('storage/single_product/' . $product->row_seven_background_image) }}');">
+                    style="background-image:  url('{{ asset('storage/single_product/' . $sproducts->row_seven_background_image) }}');">
                 </div>
                 <div class="wrap">
                     <div class="inner">
                         <h2>
-                            {{ $product->row_seven_title }}
+                            {{ $sproducts->row_seven_title }}
                         </h2>
                     </div>
                 </div>
@@ -378,10 +377,10 @@
                 </div>
             </div>
         </section> --}}
-        @if (!empty($product->row_nine_background_image))
+        @if (!empty($sproducts->row_eight_image))
             <section class="detail-group10 scrollAni n6">
                 <div class="wrap">
-                    <img src="{{ asset('storage/single_product/' . $product->row_eight_image) }}" />
+                    <img src="{{ asset('storage/single_product/' . $sproducts->row_eight_image) }}" />
                 </div>
             </section>
         @endif
@@ -407,9 +406,9 @@
             </div>
         </section> --}}
 
-        @if (!empty($product->row_nine_background_image))
+        @if (!empty($sproducts->row_nine_background_image))
             <section class="detail-group10 scrollAni n7"
-                style="background: #111420 url('{{ asset('storage/single_product/' . $product->row_nine_background_image) }}') no-repeat right bottom;">
+                style="background: #111420 url('{{ asset('storage/single_product/' . $sproducts->row_nine_background_image) }}') no-repeat right bottom;">
                 {{-- row_nine_background_image --}}
                 {{-- <style>
                     .detail-group10.n7 {}
@@ -417,14 +416,14 @@
 
                 <div class="wrap">
                     <h3>
-                        {{ $product->row_nine_title }}
+                        {{ $sproducts->row_nine_title }}
                     </h3>
                     <p>
-                        {{ $product->row_nine_sub_title }}
+                        {{ $sproducts->row_nine_sub_title }}
                     </p>
-                    <a href="" class="lnk-ty2">Discover more
-                    </a>
-                    <img src="{{ asset('storage/' . $product->row_nine_image) }}" />
+                    {{-- <a href="" class="lnk-ty2">Discover more
+                    </a> --}}
+                    <img src="{{ asset('storage/single_product/' . $sproducts->row_nine_image) }}" />
                 </div>
             </section>
         @endif
@@ -470,29 +469,32 @@
 
         <!-- &lt;section class="detail-group8 v1 scrollAni n7" style="background-image: url('https://www.iriverplus.com/site/ak/eng/img/userdata/sp1000m/img_usq_pattern_lg.png')"&gt; -->
 
-        @if (!empty($product->row_ten_image_one) && !empty($product->row_ten_image_two) && !empty($product->row_eleven_image))
+        @if (
+            !empty($sproducts->row_ten_image_one) &&
+                !empty($sproducts->row_ten_image_two) &&
+                !empty($sproducts->row_eleven_image))
             <section class="detail-group29 scrollAni n8">
                 <div class="wrap">
                     <h3>
-                        <span>{{ $product->row_ten_title }}</span>
+                        <span>{{ $sproducts->row_ten_title }}</span>
                     </h3>
                     <div class="thumbnail">
-                        <img src="{{ asset('storage/single_product/' . $product->row_ten_image_one) }}" />
-                        <img src="{{ asset('storage/single_product/' . $product->row_ten_image_two) }}" />
+                        <img src="{{ asset('storage/single_product/' . $sproducts->row_ten_image_one) }}" />
+                        <img src="{{ asset('storage/single_product/' . $sproducts->row_ten_image_two) }}" />
                     </div>
                     <p>
-                        {{ $product->row_ten_description }}
+                        {{ $sproducts->row_ten_description }}
                     </p>
                     <div class="box">
                         <div>
                             <h3>
-                                {{ $product->row_eleven_title }}</h3>
+                                {{ $sproducts->row_eleven_title }}</h3>
                             <p>
 
-                                {{ $product->row_eleven_description }}
+                                {{ $sproducts->row_eleven_description }}
                             </p>
                         </div>
-                        <img src="{{ asset('storage/single_product/' . $single_product->row_eleven_image) }}" />
+                        <img src="{{ asset('storage/single_product/' . $sproducts->row_eleven_image) }}" />
                     </div>
                 </div>
             </section>
@@ -524,7 +526,7 @@
         <section class="detail-group9 v3 scrollAni n9">
             {{-- <div class="wrap">
                 <div class="box"> --}}
-            {!! $product->row_twelve_description !!}
+            {!! $sproducts->row_twelve_description !!}
             {{-- </div> --}}
         </section>
 
@@ -571,23 +573,23 @@
         </section> --}}
 
         @if (
-            !empty($product->row_thirteen_background_image) &&
-                !empty($product->row_thirteen_image_one) &&
-                !empty($product->row_thirteen_image_two))
+            !empty($sproducts->row_thirteen_background_image) &&
+                !empty($sproducts->row_thirteen_image_one) &&
+                !empty($sproducts->row_thirteen_image_two))
             <section class="detail-group8 v1 scrollAni n10">
                 <div class="bg"
                     style="
-                        background-image: url('{{ asset('storage/single_product/' . $product->row_thirteen_background_image) }}');
+                        background-image: url('{{ asset('storage/single_product/' . $sproducts->row_thirteen_background_image) }}');
                         ">
                 </div>
                 <div class="wrap">
-                    <h3>{{ $product->row_thirteen_image_one_title }}</h3>
+                    <h3>{{ $sproducts->row_thirteen_image_one_title }}</h3>
                     <p></p>
-                    <img class="img1" src="{{ asset('storage/single_product/' . $product->row_thirteen_image_one) }}"
+                    <img class="img1" src="{{ asset('storage/single_product/' . $sproducts->row_thirteen_image_one) }}"
                         alt="img" />
-                    <h3>{{ $product->row_thirteen_image_two_title }}</h3>
+                    <h3>{{ $sproducts->row_thirteen_image_two_title }}</h3>
                     <p></p>
-                    <img class="img2" src="{{ asset('storage/single_product/' . $product->row_thirteen_image_two) }}"
+                    <img class="img2" src="{{ asset('storage/single_product/' . $sproducts->row_thirteen_image_two) }}"
                         alt="img" />
                 </div>
             </section>
@@ -630,17 +632,17 @@
             </ul>
         </section> --}}
 
-        @if (!empty($product->row_fourteen_background_image))
+        @if (!empty($sproducts->row_fourteen_background_image))
             <section class="detail-group3 scrollAni n11">
                 <div class="bg"
                     style="
-                    background-image:  url('{{ asset('storage/single_product/' . $product->row_fourteen_background_image) }}');
+                    background-image:  url('{{ asset('storage/single_product/' . $sproducts->row_fourteen_background_image) }}');
                     background-color: transparent;
                     background-position: center bottom;
                     ">
                 </div>
                 <div class="wrap">
-                    <h3>{{ $product->row_fourteen_title }}</h3>
+                    <h3>{{ $sproducts->row_fourteen_title }}</h3>
                 </div>
             </section>
         @endif
@@ -793,44 +795,44 @@
             }
         </style> --}}
 
-        @if (!empty($product->row_fifteen_image))
+        @if (!empty($sproducts->row_fifteen_image))
             <section class="detail-group4 scrollAni n12">
-                <div class="bg">{{ $product->row_fifteen_title }}</div>
+                <div class="bg">{{ $sproducts->row_fifteen_title }}</div>
                 <div class="wrap">
                     <h3>
-                        {{ $product->row_fifteen_sub_title }}
+                        {{ $sproducts->row_fifteen_sub_title }}
                     </h3>
                     <p>
-                        {{ $product->row_fifteen_description }}
+                        {{ $sproducts->row_fifteen_description }}
                 </div>
             </section>
         @endif
 
-        @if (!empty($product->row_sixteen_background_image) && !empty($product->row_sixteen_image))
+        @if (!empty($sproducts->row_sixteen_background_image) && !empty($sproducts->row_sixteen_image))
             <section class="detail-group29 scrollAni n13">
                 <div class="bg"
                     style="
-                    background-image: url({{ asset('storage/single_product/' . $product->row_sixteen_background_image) }});
+                    background-image: url({{ asset('storage/single_product/' . $sproducts->row_sixteen_background_image) }});
                     ">
                 </div>
                 <div class="wrap">
                     <h3>
-                        <span>{{ $product->row_sixteen_title }}</span>
-                        {{ $product->row_sixteen_sub_title }}
+                        <span>{{ $sproducts->row_sixteen_title }}</span>
+                        {{ $sproducts->row_sixteen_sub_title }}
                     </h3>
                     <p>
-                        {{ $product->row_sixteen_description }}
+                        {{ $sproducts->row_sixteen_description }}
                     </p>
-                    <img src="{{ asset('storage/single_product/' . $product->row_sixteen_image) }}" alt="detail_5" />
+                    <img src="{{ asset('storage/single_product/' . $sproducts->row_sixteen_image) }}" alt="detail_5" />
                 </div>
             </section>
         @endif
 
-        @if (!empty($product->row_seventeen_image))
+        @if (!empty($sproducts->row_seventeen_image))
             <section class="detail-group19 scrollAni n14" style="background-color: #040802">
                 <div class="bg"
                     style="
-                    background-image: url({{ asset('storage/single_product/' . $product->row_seventeen_image) }});
+                    background-image: url({{ asset('storage/single_product/' . $sproducts->row_seventeen_image) }});
                     background-color: #040802;
                     background-size: cover;
                     ">
@@ -838,12 +840,15 @@
 
                 <div class="wrap">
                     <h3>
-                        {{ $product->row_seventeen_title }}
+                        {{ $sproducts->row_seventeen_title }}
                     </h3>
                 </div>
             </section>
         @endif
 
+        {{-- End 17 --}}
+
+        
 
 
         <!-- 디자인 -->

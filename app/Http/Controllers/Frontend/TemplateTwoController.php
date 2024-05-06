@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\HomePage;
+use App\Models\Admin\MultiImg;
 use App\Models\Admin\Product;
 use App\Models\Admin\ProductSinglePage;
 
@@ -22,8 +23,13 @@ class TemplateTwoController extends Controller
     public function SingleProductTemplateTwo($id)
     {
         $product = Product::find($id);
-        $sproducts = ProductSinglePage::where('product_id',$product->id)->first();
 
-        return view('frontend.astell.product.single_product', compact('product','sproducts'));
+        $sproducts = ProductSinglePage::where('status','active')->where('product_id',$product->id)->first();
+
+        $multiImages = MultiImg::where('product_id', $product->id)->get();
+        //dd($sproducts);
+
+        return view('frontend.astell.product.single_product', compact('product','sproducts','multiImages'));
+
     }
 }
