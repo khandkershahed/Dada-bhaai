@@ -3,14 +3,19 @@
         <div class="contaner-fluid footer-bg">
             <div class="container">
                 <div class="row">
+
+                    @php
+                        $site = App\Models\Sites::find(1);
+                    @endphp
+
                     <div class="col-xl-4 col-lg-6 col-md-8 mb-30 order-md-3 order-lg-2">
                         <div class="logo--header__middle">
                             <div class="logo">
+
                                 <a class="logo__link" href="home.html"><img class="" width="250px"
-                                        src="https://www.dadabhaai.com/storage/main/jaragroups404413.png"
-                                        alt=""></a>
-                                <p class="pt-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt,
-                                    ullam? Qui quia nobis illum eius possimus nemo minus adipisci illo!</p>
+                                        src="{{ asset('upload/logo_black/' . $site->logo_black) }}" alt=""></a>
+
+                                <p class="pt-3">{{ $site->site_slogan }}</p>
                             </div>
                         </div>
                     </div>
@@ -37,9 +42,10 @@
                             </div>
                             <div class="footer-menu h1foote-menu2">
                                 <ul>
-                                    <li><a href="#">Facebook</a></li>
-                                    <li><a href="#">What's App</a></li>
-                                    <li><a href="#">Skype</a></li>
+                                    <li><a href="{{ $site->facebook_url }}">Facebook</a></li>
+                                    <li><a href="{{ $site->skype_url }}">Skype</a></li>
+                                    <li><a href="{{ $site->youtube_url }}">Youtube</a></li>
+                                    <li><a href="{{ $site->linkedin_url }}">Linkdin</a></li>
                                 </ul>
                             </div>
                         </div>

@@ -6,7 +6,7 @@
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         <!--begin::Logo-->
         <a href="{{ route('admin.dashboard') }}">
-            <img alt="Logo" src="https://www.dadabhaai.com/storage/main/jaragroups404413.png" class="h-25px logo text-white" />
+            <img alt="Logo" src="{{ asset('upload/Dadabhaai Logo (White Variant).png') }}" class="h-25px logo text-white" />
         </a>
         <!--end::Logo-->
         <!--begin::Aside toggler-->

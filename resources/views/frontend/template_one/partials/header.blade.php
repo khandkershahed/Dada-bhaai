@@ -5,9 +5,12 @@
                 <div class="col-sm-12">
                     <div class="content--header__middle d-flex align-items-center justify-content-between">
                         <div class="logo--header__middle">
+                            @php
+                                $site = App\Models\Sites::find(1);
+                            @endphp
                             <div class="logo">
                                 <a class="logo__link" href="{{ route('index') }}"><img class="" width="250px"
-                                        src="https://www.dadabhaai.com/storage/main/jaragroups404413.png"
+                                        src="{{ asset('upload/logo_black/' . $site->logo_black) }}"
                                         alt="" /></a>
                             </div>
                         </div>
@@ -109,13 +112,17 @@
                                     @endauth
 
 
-                                    <li class="">
-                                        <a class="mini__cart--link" href="jaxascript:;"><i
-                                                class="fal fa-bags-shopping font-weight-bold text-muted">
-                                                <span class="cart__count" id="cartQty">0</span>
-                                            </i>
-                                        </a>
-                                    </li>
+
+                                    @if (Cart::total() > 0)
+                                        <li class="">
+                                            <a class="mini__cart--link" href="jaxascript:;"><i
+                                                    class="fal fa-bags-shopping font-weight-bold text-muted">
+                                                    <span class="cart__count" id="cartQty">0</span>
+                                                </i>
+                                            </a>
+                                        </li>
+                                    @endif
+
 
                                     <li class="d-none">
                                         <a href="#"><i class="fal fa-sync"></i></a>
@@ -140,7 +147,7 @@
                                     </li>
                                     <li>
                                         <div class="d-flex justify-content-between">
-                                            <a href="#" class="checkout">Checkout</a>
+                                            <a href="{{ route('template.one.checkout') }}" class="checkout">Checkout</a>
                                             <a href="{{ route('template.one.view.cart') }}" class="viewcart">View
                                                 Cart</a>
                                         </div>
@@ -416,7 +423,7 @@
                                                         ->get();
                                                 @endphp
 
-                                                
+
 
                                                 <ul class="submenu level-1">
 
