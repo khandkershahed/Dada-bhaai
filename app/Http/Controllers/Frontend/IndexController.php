@@ -56,8 +56,8 @@ class IndexController extends Controller
     {
         $product = Product::find($id);
 
-        // $color = $product->color_id;
-        // $product_colors = explode(',', $color);
+        $color = $product->color_id;
+        $product_colors = explode(' ', $color);
 
         $multiImages = MultiImg::where('product_id', $product->id)->get();
 
@@ -68,7 +68,7 @@ class IndexController extends Controller
         $child_id = $product->child_id;
         $relativeChild = Product::where('child_id', $child_id)->where('id', '!=', '$id')->orderBy('id', 'DESC')->limit(8)->get();
 
-        return view('frontend.template_one.product.single_product', compact('product', 'relativeProduct', 'multiImages', 'relativeChild'));
+        return view('frontend.template_one.product.single_product', compact('product', 'relativeProduct', 'multiImages', 'relativeChild','product_colors'));
     }
 
     //Single Product

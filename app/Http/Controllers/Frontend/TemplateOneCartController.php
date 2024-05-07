@@ -25,6 +25,15 @@ class TemplateOneCartController extends Controller
     public function OfferToCartTemplateOne(Request $request, $id)
     {
         $product = Offer::findOrFail($id);
+
+        $cartItem = Cart::search(function ($cartItem, $rowId) use ($id) {
+            return $cartItem->id === $id;
+        });
+
+        if ($cartItem->isNotEmpty()) {
+
+            return response()->json(['error' => 'This Product Has Already Added']);
+        }
         // dd($request->all());
         Cart::add([
 
@@ -47,6 +56,15 @@ class TemplateOneCartController extends Controller
     public function BuyToCartTemplateOne(Request $request, $id)
     {
         $product = Product::findOrFail($id);
+
+        $cartItem = Cart::search(function ($cartItem, $rowId) use ($id) {
+            return $cartItem->id === $id;
+        });
+
+        if ($cartItem->isNotEmpty()) {
+
+            return response()->json(['error' => 'This Product Has Already Added']);
+        }
 
         if ($product->price_status == 'rfq') {
 
@@ -104,6 +122,80 @@ class TemplateOneCartController extends Controller
     {
         $product = Product::findOrFail($id);
 
+        $cartItem = Cart::search(function ($cartItem, $rowId) use ($id) {
+            return $cartItem->id === $id;
+        });
+
+        if ($cartItem->isNotEmpty()) {
+
+            return response()->json(['error' => 'This Product Has Already Added']);
+        }
+
+        if ($product->price_status == 'rfq') {
+
+            Cart::add([
+
+                'id' => $id,
+                'name' => $request->product_name,
+                'qty' => $request->quantity,
+                'price' => $product->sas_price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $product->product_image,
+                    'color' => $request->color,
+                ],
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        } elseif ($product->price_status == 'discount_price') {
+
+            Cart::add([
+
+                'id' => $id,
+                'name' => $request->product_name,
+                'qty' => $request->quantity,
+                'price' => $product->discount_price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $product->product_image,
+                    'color' => $request->color,
+                ],
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        } else {
+
+            Cart::add([
+
+                'id' => $id,
+                'name' => $request->product_name,
+                'qty' => $request->quantity,
+                'price' => $product->price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $product->product_image,
+                    'color' => $request->color,
+                ],
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        }
+    }
+
+    //Add To Cart Related
+    public function AddToCartTemplateOneRelated(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+
+        $cartItem = Cart::search(function ($cartItem, $rowId) use ($id) {
+            return $cartItem->id === $id;
+        });
+
+        if ($cartItem->isNotEmpty()) {
+
+            return response()->json(['error' => 'This Product Has Already Added']);
+        }
+
         if ($product->price_status == 'rfq') {
 
             Cart::add([
@@ -153,6 +245,22 @@ class TemplateOneCartController extends Controller
 
             return response()->json(['success' => 'Successfully Added on Your Cart']);
         }
+    }
+
+    // Add MiniCart TemplateOne Related
+    public function AddMiniCartTemplateOneRelated()
+    {
+
+        $carts = Cart::content();
+        $cartQty = Cart::count();
+        $cartTotal = Cart::total();
+
+        return response()->json(array(
+            'carts' => $carts,
+            'cartQty' => $cartQty,
+            'cartTotal' => $cartTotal,
+
+        ));
     }
 
     // Add MiniCart

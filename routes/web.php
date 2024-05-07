@@ -179,6 +179,8 @@ Route::controller(TemplateOneCartController::class)->group(function () {
     Route::get('/product/mini-cart', 'AddMiniCartTemplateOne');
     Route::get('/minicart/product/remove/{rowId}', 'RemoveMiniCartTemplateOne');
 
+    Route::post('/product/store/related/{id}', 'AddToCartTemplateOneRelated');
+    Route::get('/product/mini/cart/related', 'AddMiniCartTemplateOneRelated');
     //View Cart
     Route::get('/view-cart', 'ViewCartTemplateOne')->name('template.one.view.cart');
     Route::get('/get-cart-product', 'GetCartProduct');

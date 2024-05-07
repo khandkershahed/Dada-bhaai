@@ -99,7 +99,6 @@
     </div>
     <!--end::Root-->
 
-
     <!--end::Main-->
 
     <!--begin::Javascript-->
@@ -136,18 +135,11 @@
     <script src="{{ asset('backend/assets/js/validate.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
 
+    @yield('barChart')
 
     <!--end::Javascript-->
 
-    {{-- <script type="text/javascript">
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        })
-    </script> --}}
-
-
+    
 
 </body>
 <!--end::Body-->
