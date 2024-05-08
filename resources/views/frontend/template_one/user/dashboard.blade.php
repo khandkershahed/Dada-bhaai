@@ -20,38 +20,61 @@
                                     <div class="heading-2">
                                         <h3 class="title-3 fsz-15 grenadier-color">All Details</h3>
                                     </div>
+
                                     {{-- Dashboard Cards --}}
                                     <div class="row">
+
+                                        @php
+                                            $orders = App\Models\User\Order::where('user_id', Auth::user()->id)->get();
+                                        @endphp
+
                                         <div class="col-lg-4">
                                             <div class="card">
                                                 <div class="card-body">
                                                     <div class="text-center">
-                                                        <h5 class="font-weight-bold">(01)</h5>
+                                                        <h5 class="font-weight-bold">({{ count($orders) }})</h5>
                                                         <p class="grenadier-color">Total Orders</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        @php
+                                            $wishlists = App\Models\Admin\Wishlist::where(
+                                                'user_id',
+                                                Auth::user()->id,
+                                            )->get();
+                                        @endphp
+
                                         <div class="col-lg-4">
                                             <div class="card">
                                                 <div class="card-body">
                                                     <div class="text-center">
-                                                        <h5 class="font-weight-bold">(01)</h5>
-                                                        <p class="grenadier-color">Wishlist</p>
+                                                        <h5 class="font-weight-bold">({{ count($wishlists) }})</h5>
+                                                        <p class="grenadier-color"><a
+                                                                href="{{ route('wishlist') }}">Wishlist</a></p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        @php
+                                            $orderss = App\Models\User\Order::where('user_id', Auth::user()->id)
+                                                ->where('status', 'delivered')
+                                                ->get();
+                                        @endphp
+
                                         <div class="col-lg-4">
                                             <div class="card">
                                                 <div class="card-body">
                                                     <div class="text-center">
-                                                        <h5 class="font-weight-bold">(01)</h5>
-                                                        <p class="grenadier-color">Ondemand</p>
+                                                        <h5 class="font-weight-bold">({{ count($orderss) }})</h5>
+                                                        <p class="grenadier-color">Delivery</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                     {{-- Dashboard Cards End --}}
 

@@ -144,7 +144,7 @@ Route::controller(CartController::class)->group(function () {
     // Route::post('/dcart/data/store/{id}', 'AddToCartDetails');
     // Route::get('/product/mini/cart', 'AddMiniCart');
     // Route::get('/minicart/product/remove/{rowId}', 'RemoveMiniCart');
-    // Route::get('/product-cart', 'TotalCart')->name('product.cart');
+    Route::get('/product-cart', 'TotalCart')->name('product.cart');
 
     // // My Cart
     // Route::get('/get-cart-product', 'GetCartProduct');

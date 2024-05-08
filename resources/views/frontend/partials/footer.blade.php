@@ -1,4 +1,4 @@
-<footer class="site-footer clearfix" itemscope itemtype="https://schema.org/WPFooter">
+{{-- <footer class="site-footer clearfix" itemscope itemtype="https://schema.org/WPFooter">
     <div class="site-main-footer container theme-container">
         <div class="row">
             <div class="col-md-3 col-sm-6 clearfix">
@@ -47,13 +47,13 @@
                     <h6 class="widget-title">My Account</h6>
                     <ul>
                         <li class="menu-item">
-                            <a href="{{ route('login') }}">Sign In</a>
+                            <a href="">Sign In</a>
                         </li>
                         <li class="menu-item">
-                            <a href="{{ route('contact.user') }}">Contact</a>
+                            <a href="">Contact</a>
                         </li>
                         <li class="menu-item">
-                            <a href="{{ route('faq') }}">F.A.Q</a>
+                            <a href="">F.A.Q</a>
                         </li>
                         <li class="menu-item">
                             <a href="#">Term & Policy</a>
@@ -106,20 +106,7 @@
         </div>
 
 
-        {{-- <div class="post-footer">
-            <div class="payment-systems text-center">
-
-                @foreach ($brands as $brand)
-                    <div class="item">
-                        <a href="#">
-                            <img src="{{ asset('storage/brand/'.$brand->brand_image) }}" style="width:40px;height:40px;" alt="" />
-                        </a>
-                    </div>
-                @endforeach
-
-            </div>
-        </div> --}}
-
+        
     </div>
     <div class="subfooter text-center">
         <div class="container theme-container">
@@ -129,4 +116,4 @@
             </p>
         </div>
     </div>
-</footer>
+</footer> --}}
