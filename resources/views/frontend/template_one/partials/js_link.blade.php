@@ -212,6 +212,8 @@
                         title: data.success,
                     })
 
+                    window.location.href= '/cart-checkout';
+
                 } else {
 
                     Toast.fire({
@@ -229,6 +231,7 @@
     }
 </script>
 {{-- BuyToCartOne --}}
+
 
 {{-- AddToCartOne --}}
 <script>
@@ -253,6 +256,8 @@
             },
 
             success: function(data) {
+
+                $('.cart_icon').removeClass('d-none');
 
                 miniCart();
 
@@ -415,6 +420,7 @@
                 $('span[id="cartSubTotal"]').text(response.cartTotal);
                 $('#cartQty').text(response.cartQty);
 
+
                 var miniCart = ""
 
                 $.each(response.carts, function(key, value) {
@@ -436,7 +442,7 @@
                                         </div>
 
                                         <div class="del-button">
-                                            <a type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"  ><i class="fi-rs-cross-small"></i>x</a>
+                                            <a type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"  style="cursor: pointer"><i class="fi-rs-cross-small"></i>x</a>
                                         </div>
 
                                     </li>

@@ -112,16 +112,13 @@
                                     @endauth
 
 
-
-                                    @if (Cart::total() > 0)
-                                        <li class="">
-                                            <a class="mini__cart--link" href="jaxascript:;"><i
-                                                    class="fal fa-bags-shopping font-weight-bold text-muted">
-                                                    <span class="cart__count" id="cartQty">0</span>
-                                                </i>
-                                            </a>
-                                        </li>
-                                    @endif
+                                    <li class="cart_icon {{ (Cart::total() > 0) ? '' : 'd-none' }}">
+                                        <a class="mini__cart--link" href="jaxascript:;"><i
+                                                class="fal fa-bags-shopping font-weight-bold text-muted">
+                                                <span class="cart__count" id="cartQty">0</span>
+                                            </i>
+                                        </a>
+                                    </li>
 
 
                                     <li class="d-none">
@@ -147,7 +144,8 @@
                                     </li>
                                     <li>
                                         <div class="d-flex justify-content-between">
-                                            <a href="{{ route('template.one.checkout') }}" class="checkout">Checkout</a>
+                                            <a href="{{ route('template.one.checkout') }}"
+                                                class="checkout">Checkout</a>
                                             <a href="{{ route('template.one.view.cart') }}" class="viewcart">View
                                                 Cart</a>
                                         </div>

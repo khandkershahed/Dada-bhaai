@@ -349,7 +349,9 @@
                                             <a
                                                 href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"><span
                                                     class="lnr lnr-cart"></span></a>
-                                            <a href="#"><span class="lnr lnr-sync"></span></a>
+
+                                            {{-- <a href="#"><span class="lnr lnr-sync"></span></a> --}}
+
                                         </div>
                                     </div>
 

@@ -174,6 +174,9 @@ Route::controller(TemplateOneCartController::class)->group(function () {
     //Buy To Cart
     Route::post('/product/buy/store/{id}', 'BuyToCartTemplateOne');
 
+    //Buy To Cart Single
+    // Route::post('/product/store-single/{id}', 'AddToCartTemplateOneSingle');
+
     //Add To Cart
     Route::post('/product/store/{id}', 'AddToCartTemplateOne');
     Route::get('/product/mini-cart', 'AddMiniCartTemplateOne');
@@ -181,6 +184,7 @@ Route::controller(TemplateOneCartController::class)->group(function () {
 
     Route::post('/product/store/related/{id}', 'AddToCartTemplateOneRelated');
     Route::get('/product/mini/cart/related', 'AddMiniCartTemplateOneRelated');
+
     //View Cart
     Route::get('/view-cart', 'ViewCartTemplateOne')->name('template.one.view.cart');
     Route::get('/get-cart-product', 'GetCartProduct');

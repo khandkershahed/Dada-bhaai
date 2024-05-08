@@ -305,11 +305,14 @@
 
                                     </div>
                                     <div class="product-action">
+
                                         <a style="cursor: pointer;" id="{{$product->id}}" onclick="addToWishList(this.id)"><span class="lnr lnr-heart"></span></a>
+                                        
                                         {{-- <a href="#"><span class="lnr lnr-eye"></span></a> --}}
                                         <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"><span
                                                 class="lnr lnr-cart"></span></a>
-                                        <a href="#"><span class="lnr lnr-sync"></span></a>
+
+                                        {{-- <a href="#"><span class="lnr lnr-sync"></span></a> --}}
                                     </div>
                                 </div>
 

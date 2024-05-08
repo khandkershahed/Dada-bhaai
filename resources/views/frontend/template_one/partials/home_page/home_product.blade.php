@@ -99,7 +99,7 @@
 
                                                     <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
                                                         class="btn btn-primary btn-sm">
-                                                        Add To Cart
+                                                        Add To Cart Details
                                                     </a>
 
                                                     <div class="price">
@@ -127,7 +127,7 @@
                                                 <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"><span
                                                         class="lnr lnr-cart"></span></a>
 
-                                                <a href="#"><span class="lnr lnr-sync"></span></a>
+                                                {{-- <a href="#"><span class="lnr lnr-sync"></span></a> --}}
 
                                             </div>
                                         </div>
