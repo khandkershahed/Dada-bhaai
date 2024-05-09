@@ -57,8 +57,10 @@
                     <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
 
                         <!--begin::Add product-->
-                        <a href="{{ route('add.single.page') }}" class="btn btn-light-primary btn-sm">Add
-                            Single Product</a>
+                        @if (Auth::guard('admin')->user()->can('add.sproduct'))
+                            <a href="{{ route('add.single.page') }}" class="btn btn-light-primary btn-sm">Add
+                                Single Product</a>
+                        @endif
                         <!--end::Add product-->
 
                     </div>
@@ -111,22 +113,33 @@
                                     </td>
                                     <td>
 
-                                        @if ($sproduct->status == 'active')
-                                            <a href="{{ route('inactive.single.page', $sproduct->id) }}" title="Inactive"><i
-                                                    class="bi bi-hand-thumbs-down text-danger fs-3"></i></a>
-                                        @else
-                                            <a href="{{ route('active.single.page', $sproduct->id) }}" title="Active"><i
-                                                    class="bi bi-hand-thumbs-up text-success fs-3"></i></a>
+                                        @if (Auth::guard('admin')->user()->can('status.sproduct'))
+                                            @if ($sproduct->status == 'active')
+                                                <a href="{{ route('inactive.single.page', $sproduct->id) }}"
+                                                    title="Inactive"><i
+                                                        class="bi bi-hand-thumbs-down text-danger fs-3"></i></a>
+                                            @else
+                                                <a href="{{ route('active.single.page', $sproduct->id) }}"
+                                                    title="Active"><i
+                                                        class="bi bi-hand-thumbs-up text-success fs-3"></i></a>
+                                            @endif
                                         @endif
 
                                         {{-- Edit Category Modal --}}
-                                        <a href="{{ route('edit.single.page', $sproduct->id) }}" class="ms-1" title="Edit" class="btn btn-primary btn-sm"><i
-                                                class="bi bi-pencil-square fs-3 text-primary"></i>
-                                        </a>
+                                        @if (Auth::guard('admin')->user()->can('edit.sproduct'))
+                                            <a href="{{ route('edit.single.page', $sproduct->id) }}" class="ms-1"
+                                                title="Edit" class="btn btn-primary btn-sm"><i
+                                                    class="bi bi-pencil-square fs-3 text-primary"></i>
+                                            </a>
+                                        @endif
+
+                                        @if (Auth::guard('admin')->user()->can('delete.sproduct'))
+                                            <a href="{{ route('delete.single.page', $sproduct->id) }}" class="ms-1"
+                                                id="delete" title="Delete"><i
+                                                    class="bi bi-trash3-fill fs-3 text-danger"></i></a>
+                                        @endif
 
 
-                                        <a href="{{ route('delete.single.page', $sproduct->id) }}" class="ms-1" id="delete" title="Delete"><i
-                                                class="bi bi-trash3-fill fs-3 text-danger"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

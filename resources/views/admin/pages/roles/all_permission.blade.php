@@ -1,5 +1,6 @@
 @extends('admin.admin_dashboard')
 @section('admin')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <!--begin::Content-->
 
 
@@ -35,8 +36,8 @@
 
                 <!--begin::Primary button-->
                 <a href="{{ route('all.role') }}" class="btn btn-sm btn-light-primary">Role</a>
-                    <a href="{{ route('all.permission') }}" class="btn btn-sm btn-light-info">Permission</a>
-                    <a href="{{ route('all.roles.permission') }}" class="btn btn-sm btn-light-dark">Role In Permission</a>
+                <a href="{{ route('all.permission') }}" class="btn btn-sm btn-light-info">Permission</a>
+                <a href="{{ route('all.roles.permission') }}" class="btn btn-sm btn-light-dark">Role In Permission</a>
                 <!--end::Primary button-->
 
             </div>
@@ -72,7 +73,8 @@
                 <!--begin::Card body-->
                 <div class="card-body pt-0">
                     <!--begin::Table-->
-                    <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_datatable_example_5">
+
+                    <table id="kt_datatable_example_5" class="table table-striped" style="width:100%">
 
                         <!--begin::Table head-->
                         <thead>
@@ -244,8 +246,6 @@
     </div>
     {{-- Add Permission --}}
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
     {{-- validate code  --}}
     <script type="text/javascript">
         $(document).ready(function() {
@@ -278,6 +278,26 @@
                     $(element).removeClass('is-invalid');
                 },
             });
+        });
+    </script>
+
+    {{-- DataTable  --}}
+    <script>
+        $("#kt_datatable_example_5").DataTable({
+            "language": {
+                "lengthMenu": "Show _MENU_",
+            },
+            "dom": "<'row'" +
+                "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
+                "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                ">" +
+
+                "<'table-responsive'tr>" +
+
+                "<'row'" +
+                "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                ">"
         });
     </script>
 @endsection

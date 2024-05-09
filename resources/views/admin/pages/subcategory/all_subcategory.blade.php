@@ -33,9 +33,17 @@
             <div class="d-flex align-items-center gap-2 gap-lg-3">
 
                 <!--begin::Primary button-->
-                <a href="{{ route('all.category') }}" class="btn btn-sm btn-light-primary">Category</a>
-                <a href="{{ route('all.subcategory') }}" class="btn btn-sm btn-light-info">Sub Category</a>
-                <a href="{{ route('all.childcategory') }}" class="btn btn-sm btn-light-dark">Child Category</a>
+                @if (Auth::guard('admin')->user()->can('all.category'))
+                    <a href="{{ route('all.category') }}" class="btn btn-sm btn-light-primary">Category</a>
+                @endif
+
+                @if (Auth::guard('admin')->user()->can('all.subcategory'))
+                    <a href="{{ route('all.subcategory') }}" class="btn btn-sm btn-light-info">Sub Category</a>
+                @endif
+
+                @if (Auth::guard('admin')->user()->can('all.childcategory'))
+                    <a href="{{ route('all.childcategory') }}" class="btn btn-sm btn-light-dark">Child Category</a>
+                @endif
                 <!--end::Primary button-->
 
             </div>
@@ -59,8 +67,11 @@
                     <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
 
                         <!--begin::Add product-->
-                        <a data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-light-primary btn-sm">Add
-                            SubCategory</a>
+                        @if (Auth::guard('admin')->user()->can('add.subcategory'))
+                            <a data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-light-primary btn-sm">Add
+                                SubCategory</a>
+                        @endif
+
                         <!--end::Add product-->
 
                     </div>
@@ -103,20 +114,27 @@
                                     </td>
                                     <td>
 
-                                        @if ($subcategory->status == 1)
-                                            <a href="{{ route('subcategory.inactive', $subcategory->id) }}"
-                                                title="Inactive"><i class="bi bi-hand-thumbs-down text-danger fs-3"></i></a>
-                                        @else
-                                            <a href="{{ route('subcategory.active', $subcategory->id) }}" title="Active"><i
-                                                    class="bi bi-hand-thumbs-up text-success fs-3"></i></a>
+                                        @if (Auth::guard('admin')->user()->can('status.subcategory'))
+                                            @if ($subcategory->status == 1)
+                                                <a href="{{ route('subcategory.inactive', $subcategory->id) }}"
+                                                    title="Inactive"><i
+                                                        class="bi bi-hand-thumbs-down text-danger fs-3"></i></a>
+                                            @else
+                                                <a href="{{ route('subcategory.active', $subcategory->id) }}"
+                                                    title="Active"><i
+                                                        class="bi bi-hand-thumbs-up text-success fs-3"></i></a>
+                                            @endif
                                         @endif
 
                                         {{-- Edit Category Modal --}}
-                                        <a href="" class="ms-1" title="Edit" data-bs-toggle="modal"
-                                            data-bs-target="#editModal{{ $subcategory->id }}"
-                                            class="btn btn-primary btn-sm"><i
-                                                class="bi bi-pencil-square fs-3 text-primary"></i>
-                                        </a>
+                                        @if (Auth::guard('admin')->user()->can('edit.subcategory'))
+                                            <a href="" class="ms-1" title="Edit" data-bs-toggle="modal"
+                                                data-bs-target="#editModal{{ $subcategory->id }}"
+                                                class="btn btn-primary btn-sm"><i
+                                                    class="bi bi-pencil-square fs-3 text-primary"></i>
+                                            </a>
+                                        @endif
+
 
                                         <!-- EditModal -->
 
@@ -224,9 +242,12 @@
 
                                         {{-- Edit Category Modal --}}
 
-                                        <a href="{{ route('delete.subcategory', $subcategory->id) }}" class="ms-1"
-                                            id="delete" title="Delete"><i
-                                                class="bi bi-trash3-fill fs-3 text-danger"></i></a>
+                                        @if (Auth::guard('admin')->user()->can('delete.subcategory'))
+                                            <a href="{{ route('delete.subcategory', $subcategory->id) }}" class="ms-1"
+                                                id="delete" title="Delete"><i
+                                                    class="bi bi-trash3-fill fs-3 text-danger"></i></a>
+                                        @endif
+
                                     </td>
                                 </tr>
                             @endforeach

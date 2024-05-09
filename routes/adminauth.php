@@ -129,7 +129,7 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
         //Order Status Change
         Route::get('/order-status/{id}', 'AdminOrderStatusChange')->name('admin.order.status');
 
-        Route::get('/multi-order-status-update-store','multuOrderStatusUpdate')->name('multuOrderStatusUpdate');
+        Route::get('/multi-order-status-update-store', 'multuOrderStatusUpdate')->name('multuOrderStatusUpdate');
 
         //Invoice
         Route::get('/order-invoice/{id}', 'AdminOrderInvoice')->name('admin.order.invoice');
@@ -439,6 +439,5 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
         Route::get('/admin-inactive/{id}', 'InactiveAdmin')->name('admin.inactive');
         Route::get('/admin-active/{id}', 'ActiveAdmin')->name('admin.active');
     });
-
 
 });

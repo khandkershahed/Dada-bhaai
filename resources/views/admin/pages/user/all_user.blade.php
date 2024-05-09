@@ -51,7 +51,7 @@
         <div id="kt_content_container" class="container">
             <!--begin::Products-->
             <div class="card card-flush">
-                
+
                 <!--begin::Card body-->
                 <div class="card-body pt-0">
                     <!--begin::Table-->
@@ -86,19 +86,22 @@
                                     </td>
                                     <td>
 
-                                        @if ($user->status == 1)
-                                            <a href="{{ route('user.inactive.admin', $user->id) }}" title="Inactive"><i
-                                                    class="bi bi-hand-thumbs-down text-danger fs-3"></i></a>
-                                        @else
-                                            <a href="{{ route('user.active.admin', $user->id) }}" title="Active"><i
-                                                    class="bi bi-hand-thumbs-up text-success fs-3"></i></a>
+                                        @if (Auth::guard('admin')->user()->can('status.user'))
+                                            @if ($user->status == 1)
+                                                <a href="{{ route('user.inactive.admin', $user->id) }}" title="Inactive"><i
+                                                        class="bi bi-hand-thumbs-down text-danger fs-3"></i></a>
+                                            @else
+                                                <a href="{{ route('user.active.admin', $user->id) }}" title="Active"><i
+                                                        class="bi bi-hand-thumbs-up text-success fs-3"></i></a>
+                                            @endif
                                         @endif
 
-                                        
+                                        @if (Auth::guard('admin')->user()->can('delete.user'))
+                                            <a href="{{ route('delete.user', $user->id) }}" class="ms-1" id="delete"
+                                                title="Delete"><i class="bi bi-trash3-fill fs-3 text-danger"></i></a>
+                                        @endif
 
-                                        <a href="{{ route('delete.user', $user->id) }}" class="ms-1"
-                                            id="delete" title="Delete"><i
-                                                class="bi bi-trash3-fill fs-3 text-danger"></i></a>
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -116,7 +119,7 @@
     <!--end::Post-->
 
 
-  
+
 
 
     {{-- DataTable  --}}

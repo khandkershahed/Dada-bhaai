@@ -34,11 +34,25 @@
             <!--begin::Actions-->
             <div class="d-flex align-items-center gap-2 gap-lg-3">
 
-                <a href="{{ route('admin.all.order') }}" class="btn btn-light-danger btn-sm">Pending</a>
-                <a href="{{ route('all.processing.order') }}" class="btn btn-light-primary btn-sm">Processing</a>
-                <a href="{{ route('all.shipped.order') }}" class="btn btn-light-dark btn-sm">Shipped</a>
-                <a href="{{ route('all.delivered.order') }}" class="btn btn-light-info btn-sm">Delivered</a>
-                <a href="{{ route('all.cancel.order') }}" class="btn btn-light-danger btn-sm">Cancel</a>
+                @if (Auth::guard('admin')->user()->can('all.pending'))
+                    <a href="{{ route('admin.all.order') }}" class="btn btn-light-danger btn-sm">Pending</a>
+                @endif
+
+                @if (Auth::guard('admin')->user()->can('all.processing'))
+                    <a href="{{ route('all.processing.order') }}" class="btn btn-light-primary btn-sm">Processing</a>
+                @endif
+
+                @if (Auth::guard('admin')->user()->can('all.shipped'))
+                    <a href="{{ route('all.shipped.order') }}" class="btn btn-light-dark btn-sm">Shipped</a>
+                @endif
+
+                @if (Auth::guard('admin')->user()->can('all.delivered'))
+                    <a href="{{ route('all.delivered.order') }}" class="btn btn-light-info btn-sm">Delivered</a>
+                @endif
+
+                @if (Auth::guard('admin')->user()->can('all.cancel'))
+                    <a href="{{ route('all.cancel.order') }}" class="btn btn-light-danger btn-sm">Cancel</a>
+                @endif
 
             </div>
             <!--end::Actions-->
@@ -60,12 +74,12 @@
 
                             <tr>
                                 <th style="width: 40px;">No</th>
-                                <th >Invoice No</th>
-                                <th >Order Number</th>
-                                <th >Amount</th>
-                                <th >Order Date</th>
-                                <th >Payment Method</th>
-                                <th >Status</th>
+                                <th>Invoice No</th>
+                                <th>Order Number</th>
+                                <th>Amount</th>
+                                <th>Order Date</th>
+                                <th>Payment Method</th>
+                                <th>Status</th>
 
                                 <th scope="col">Action</th>
                             </tr>
@@ -83,7 +97,7 @@
                                     <td>{{ $order->order_date }}</td>
                                     <td>{{ $order->payment_method }}</td>
 
-                                    <td class="text-center">
+                                    <td class="">
                                         @if ($order->status == 'pending')
                                             <span class="badge badge-danger">{{ $order->status }}</span>
                                         @elseif($order->status == 'processing')
@@ -100,7 +114,7 @@
                                     </td>
 
                                     <td>
-                                        
+
                                         <a href="{{ route('admin.order.details', $order->id) }}"><i
                                                 class="fa fa fa-eye text-muted pr-2"></i></a>
 
@@ -108,7 +122,7 @@
                                                 class="fa fa-download text-success"></i></a>
 
                                         <a href="{{ route('admin.order.delete', $order->id) }}" id="delete"><i
-                                                    class="fa fa-trash text-danger"></i></a>
+                                                class="fa fa-trash text-danger"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

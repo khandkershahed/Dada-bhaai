@@ -79,9 +79,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="footer-copyright text-center">
-                        <a class="m-0 text-center text-muted" href="home.html">
+                        <a class="m-0 text-center text-muted" href="https://www.dadabhaai.com/">
                             Copyright 2024
-                            <span class="grenadier-color">Dada Bhaihaai</span> All Rights
+                            <span class="grenadier-color">DadaBhaai</span> All Rights
                             Reserved.
                         </a>
                     </div>

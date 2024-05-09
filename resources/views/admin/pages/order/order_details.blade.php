@@ -177,23 +177,25 @@
 
                                 </tr>
 
-                                <tr>
-                                    <td>
-                                        <form action="{{ route('admin.order.status', $order->id) }}">
-                                            @csrf
-                                            <label for="" class="mb-2">Status Change</label>
-                                            <select name="status" class="form-select form-select-sm" class="mx-3">
-                                                <option selected disabled>Change Status</option>
-                                                <option value="pending">Pending</option>
-                                                <option value="processing">Processing</option>
-                                                <option value="shipped">Shipped</option>
-                                                <option value="delivered">Delivered</option>
-                                                <option value="cancelled">Cancel</option>
-                                            </select>
-                                            <button class="btn btn-light-primary btn-sm mt-3 float-end">Submit</button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                @if (Auth::guard('admin')->user()->can('status.order'))
+                                    <tr>
+                                        <td>
+                                            <form action="{{ route('admin.order.status', $order->id) }}">
+                                                @csrf
+                                                <label for="" class="mb-2">Status Change</label>
+                                                <select name="status" class="form-select form-select-sm" class="mx-3">
+                                                    <option selected disabled>Change Status</option>
+                                                    <option value="pending">Pending</option>
+                                                    <option value="processing">Processing</option>
+                                                    <option value="shipped">Shipped</option>
+                                                    <option value="delivered">Delivered</option>
+                                                    <option value="cancelled">Cancel</option>
+                                                </select>
+                                                <button class="btn btn-light-primary btn-sm mt-3 float-end">Submit</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endif
 
                             </thead>
                         </table>
