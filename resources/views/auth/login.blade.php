@@ -5,7 +5,7 @@
         <div class="login-wrap text-center">
             <h2 class="fsz-35 spcbtm-15">
                 <span class="bold-font-3 blk-clr">DADA</span>
-                <span class="thm-clr funky-font">VAAI</span>
+                <span class="thm-clr funky-font">BhAAI</span>
             </h2>
             <p class="fsz-20 title-3">WELCOME TO OUR SHOPPING ZONE</p>
             </p>

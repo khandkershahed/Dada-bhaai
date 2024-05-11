@@ -134,19 +134,7 @@
 
                                                             <div class="row">
 
-                                                                <div class="col-6 mb-3">
-
-                                                                    <div class="form-group mb-3">
-                                                                        <label for="" class="mb-2">Name</label>
-                                                                        <input type="text" name="name"
-                                                                            class="form-control form-control-sm form-control-solid"
-                                                                            placeholder="Offer Name"
-                                                                            value="{{ $offer->name }}" autocomplete="off">
-                                                                    </div>
-
-                                                                </div>
-
-                                                                <div class="col-6 mb-3">
+                                                                <div class="col-4 mb-3">
 
                                                                     <div class="form-group mb-3">
                                                                         <label for="" class="mb-2">Offer Category
@@ -166,6 +154,30 @@
                                                                             @endforeach
 
                                                                         </select>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="col-4 mb-3">
+
+                                                                    <div class="form-group mb-3">
+                                                                        <label for="" class="mb-2">Offer Name</label>
+                                                                        <input type="text" name="offer_name"
+                                                                            class="form-control form-control-sm form-control-solid"
+                                                                            placeholder="Offer Name"
+                                                                            value="{{ $offer->offer_name }}" autocomplete="off">
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="col-4 mb-3">
+
+                                                                    <div class="form-group mb-3">
+                                                                        <label for="" class="mb-2">Name</label>
+                                                                        <input type="text" name="name"
+                                                                            class="form-control form-control-sm form-control-solid"
+                                                                            placeholder="Product Name"
+                                                                            value="{{ $offer->name }}" autocomplete="off">
                                                                     </div>
 
                                                                 </div>
@@ -303,18 +315,7 @@
 
                         <div class="row">
 
-                            <div class="col-6 mb-3">
-
-                                <div class="form-group mb-3">
-                                    <label for="" class="mb-2">Name</label>
-                                    <input type="text" name="name"
-                                        class="form-control form-control-sm form-control-solid" placeholder="Offer Name"
-                                        value="{{ old('name') }}" autocomplete="off">
-                                </div>
-
-                            </div>
-
-                            <div class="col-6 mb-3">
+                            <div class="col-4 mb-3">
 
                                 <div class="form-group mb-3">
                                     <label for="" class="mb-2">Offer Category Name</label>
@@ -332,6 +333,29 @@
                                 </div>
 
                             </div>
+
+                            <div class="col-4 mb-3">
+
+                                <div class="form-group mb-3">
+                                    <label for="" class="mb-2">Offer Name</label>
+                                    <input type="text" name="offer_name"
+                                        class="form-control form-control-sm form-control-solid" placeholder="Offer Name"
+                                        value="{{ old('offer_name') }}" autocomplete="off">
+                                </div>
+
+                            </div>
+
+                            <div class="col-4 mb-3">
+
+                                <div class="form-group mb-3">
+                                    <label for="" class="mb-2">Name</label>
+                                    <input type="text" name="name"
+                                        class="form-control form-control-sm form-control-solid" placeholder="Product Name"
+                                        value="{{ old('name') }}" autocomplete="off">
+                                </div>
+
+                            </div>
+                            
 
                             <div class="col-3 mb-3">
 

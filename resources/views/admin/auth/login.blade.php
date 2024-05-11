@@ -80,7 +80,7 @@
                             <!--begin::Heading-->
                             <div class="text-center mb-10">
                                 <!--begin::Title-->
-                                <h1 class="text-dark mb-3">Sign In DadaBhai</h1>
+                                <h1 class="text-dark mb-3">Sign In DadaBhaai</h1>
                                 <!--end::Title-->
                             </div>
                             <!--begin::Heading-->
@@ -100,16 +100,16 @@
                                 @enderror --}}
 
                                 <!--begin::Label-->
-                                <label class="form-label fs-6 fw-bolder text-dark">Email</label>
+                                <label class="form-label fs-6 fw-bolder text-dark">Email Or Phone</label>
                                 <!--end::Label-->
 
                                 <!--begin::Input-->
                                 <input
-                                    class="form-control form-control-lg form-control-solid @error('email') is-invalid @enderror"
-                                    type="text" id="email" placeholder="example@gmail.com" name="email"
+                                    class="form-control form-control-lg form-control-solid @error('login') is-invalid @enderror"
+                                    type="text" id="login" placeholder="Email Or Phone" name="login"
                                     autocomplete="off" />
 
-                                @error('email')
+                                @error('login')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                                 <!--end::Input-->

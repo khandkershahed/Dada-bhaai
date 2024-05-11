@@ -2715,7 +2715,7 @@
                     <!--begin::Menu wrapper-->
                     <div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
                         data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-                        <img src="{{ !empty($profileData->photo) ? url('upload/admin_images/' . $profileData->photo) : url('upload/no_image.jpg') }}"
+                        <img src="{{ !empty($profileData->photo) ? url('upload/admin_images/' . $profileData->photo) : Avatar::create($profileData->name)->toBase64() }}"
                             alt="admin" />
                     </div>
                     <!--begin::User account menu-->
@@ -2728,7 +2728,9 @@
                                 <!--begin::Avatar-->
                                 <div class="symbol symbol-50px me-5">
                                     <img alt="Logo"
-                                        src="{{ !empty($profileData->photo) ? url('upload/admin_images/' . $profileData->photo) : url('upload/no_image.jpg') }}" />
+                                        src="{{ !empty($profileData->photo) ? url('upload/admin_images/' . $profileData->photo) : Avatar::create($profileData->name)->toBase64() }}" />
+
+                                    {{-- <img src="{{ Avatar::create($profileData->name)->toBase64() }}" alt=""> --}}
                                 </div>
                                 <!--end::Avatar-->
                                 <!--begin::Username-->

@@ -11,6 +11,8 @@ use Illuminate\Support\Str;
 
 class BrandController extends Controller
 {
+
+    
     //All Brand
     public function AllBrand()
     {

@@ -112,7 +112,7 @@
                                     @endauth
 
 
-                                    <li class="cart_icon {{ (Cart::total() > 0) ? '' : 'd-none' }}">
+                                    <li class="cart_icon {{ Cart::total() > 0 ? '' : 'd-none' }}">
                                         <a class="mini__cart--link" href="jaxascript:;"><i
                                                 class="fal fa-bags-shopping font-weight-bold text-muted">
                                                 <span class="cart__count" id="cartQty">0</span>
@@ -444,80 +444,49 @@
 
                                 {{-- Brand List  --}}
 
-                                {{-- <li class="mega-menu static dropdown-icon">
-                                    <a href="javascript:void(0)"
-                                        onclick="window.location.href='shop-page.html'">Offers</a>
+                                <li class="mega-menu static dropdown-icon">
+                                    <a href="javascript:void(0)">Offers</a>
+
+                                    @php
+                                        $offercats = App\Models\Admin\OfferCategory::where('status', '1')
+                                            ->orderBy('id', 'DESC')
+                                            ->limit(4)
+                                            ->latest()
+                                            ->get();
+                                    @endphp
+
                                     <ul class="submenu mega-full">
-                                        <li>
-                                            <a href="">Offers 01</a>
-                                            <ul class="submenu level-1">
-                                                <li>
-                                                    <a href="">Furniture</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Fasion</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Bags</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Lather</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="">Offers 02</a>
-                                            <ul class="submenu level-1">
-                                                <li>
-                                                    <a href="">Electronics</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Chair</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Table</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Book</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="">Offers 03</a>
-                                            <ul class="submenu">
-                                                <li>
-                                                    <a href="">Clock</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Watch</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Mobile</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">sunglass</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="">Offers 04</a>
-                                            <ul class="submenu">
-                                                <li>
-                                                    <a href="">Chair</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Lather</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Table</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Clock</a>
-                                                </li>
-                                            </ul>
-                                        </li>
+
+                                        @forelse ($offercats as $offercat)
+                                            <li>
+                                                <a href="javascript:;">{{ $offercat->offer_category_name }}</a>
+
+                                                @php
+                                                    $offers = App\Models\Admin\Offer::where('status', '1')->where('offer_category_id',$offercat->id)
+                                                        ->orderBy('id', 'DESC')
+                                                        ->limit(4)
+                                                        ->latest()
+                                                        ->get();
+                                                @endphp
+
+                                                <ul class="submenu level-1">
+
+                                                    @forelse ($offers as $offer)
+                                                    <li>
+                                                        <a href="">{{ $offer->offer_name }}</a>
+                                                    </li>
+                                                    @empty
+                                                        <p>No Item Avaiable</p>
+                                                    @endforelse
+
+                                                </ul>
+                                            </li>
+                                        @empty
+                                            <p class="text-center">No Offer Avaiable</p>
+                                        @endforelse
+
                                     </ul>
-                                </li> --}}
+                                </li>
 
                             </ul>
                         </nav>
