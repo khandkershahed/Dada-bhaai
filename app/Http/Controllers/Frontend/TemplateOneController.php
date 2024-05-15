@@ -3,14 +3,22 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\About;
 use App\Models\Admin\Category;
 use App\Models\Admin\ChildCategory;
 use App\Models\Admin\Contact;
 use App\Models\Admin\Faq;
 use App\Models\Admin\Product;
+use App\Models\Admin\Terms;
 use App\Models\Brand;
 use App\Models\Sites;
+use App\Models\User;
+use App\Models\User\Order;
+use App\Models\User\OrderItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 
 class TemplateOneController extends Controller
 {
@@ -33,6 +41,12 @@ class TemplateOneController extends Controller
             $slugs = explode(',', $_GET['brand']);
             $brandIds = Brand::select('id')->whereIn('brand_slug', $slugs)->pluck('id')->toArray();
             $products = $products->whereIn('brand_id', $brandIds);
+        }
+
+        //price range product
+        if (!empty($_GET['price'])) {
+            $price = explode('-', $_GET['price']);
+            $products = $products->whereBetween('price', $price);
         }
 
         //sortByProduct
@@ -95,7 +109,13 @@ class TemplateOneController extends Controller
             $sortByUrl .= '&sortBy=' . $data['sortBy'];
         }
 
-        return redirect()->route('template.one.all_product', $catUrl . $brandUrl . $sortByUrl);
+        //filter sortBy
+        $priceRangeUrl = "";
+        if (!empty($data['price_range'])) {
+            $priceRangeUrl .= '&price=' . $data['price_range'];
+        }
+
+        return redirect()->route('template.one.all_product', $catUrl . $brandUrl . $sortByUrl . $priceRangeUrl);
     }
 
     //Brand Wise Product One
@@ -295,6 +315,20 @@ class TemplateOneController extends Controller
 
     // }
 
+    //Template One Faq
+    public function TemplateOneFaq()
+    {
+        $faqs = Faq::where('status', '1')->orderBy('order', 'ASC')->latest()->get();
+        return view('frontend.template_one.faq.faq', compact('faqs'));
+    }
+
+    //Template One About
+    public function TemplateOneAboutUs()
+    {
+        $about = About::where('status', 'tamplate_one')->find(1);
+        return view('frontend.template_one.about.about_us', compact('about'));
+    }
+
     //Template One Login
     public function TemplateOneLogin()
     {
@@ -305,14 +339,134 @@ class TemplateOneController extends Controller
     //TemplateOneDashboard
     public function TemplateOneDashboard()
     {
-        return view('frontend.template_one.user.dashboard');
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+
+        return view('frontend.template_one.user.dashboard', compact('profileData'));
     }
 
-    //Template One Faq
-    public function TemplateOneFaq()
+    //Template One ProfileUpdate
+    public function TemplateOneProfileUpdate(Request $request)
     {
-        $faqs = Faq::where('status', '1')->orderBy('order', 'ASC')->latest()->get();
-        return view('frontend.template_one.faq.faq', compact('faqs'));
+
+        $id = Auth::user()->id;
+        $update = User::findOrFail($id);
+
+        $update->name = $request->name;
+        $update->email = $request->email;
+        $update->phone = $request->phone;
+        $update->address = $request->address;
+        $update->address_two = $request->address_two;
+
+        $update->country = $request->country;
+        $update->city = $request->city;
+        $update->postal_code = $request->postal_code;
+
+        $update->save();
+
+        toastr()->success('Profile Update Successfully');
+
+        return redirect()->back();
+    }
+
+    public function TemplateOnePasswordUpdate(Request $request)
+    {
+        //validate
+        $request->validate([
+
+            'old_password' => 'required',
+            'new_password' => [
+
+                'required', 'confirmed', Rules\Password::min(8)->mixedCase()->symbols()->letters()->numbers(),
+
+            ],
+        ]);
+
+        //Match Old Password
+        if (!Hash::check($request->old_password, auth::user()->password)) {
+
+            toastr()->error('Old Password Not Match');
+
+            return redirect()->back();
+        }
+
+        //Update New Password
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password),
+        ]);
+
+        toastr()->success('Password Change Successfully');
+
+        return redirect()->back();
+    }
+
+    //Template One UserLogout
+    public function TemplateOneUserLogout(Request $request)
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        toastr()->success('Logout Successfully!!');
+
+        return redirect()->route('index');
+    }
+
+    //Template One OrderDetails
+    public function TemplateOneOrderDetails($id)
+    {
+        $order = Order::where('id', $id)->where('user_id', Auth::id())->first();
+        $orderitem = OrderItem::with('product')->where('order_id', $id)->orderBy('id', 'DESC')->get();
+
+        return view('frontend.template_one.user.order_details', compact('order', 'orderitem'));
+    }
+
+    //Template One OrderDetails
+    public function TemplateOneOrderInvoice($id)
+    {
+        $order = Order::where('id', $id)->where('user_id', Auth::id())->first();
+        $orderitem = OrderItem::with('product')->where('order_id', $id)->orderBy('id', 'DESC')->get();
+
+        return view('frontend.template_one.user.invoice', compact('order', 'orderitem'));
+
+        // $pdf = Pdf::loadView('frontend.template_one.user.invoice', compact('order', 'orderitem'))->setPaper('a4')->setOption([
+        //     'tempDir' => public_path(),
+        //     'chroot' => public_path(),
+        // ]);
+
+        // return $pdf->download('user_invoice.pdf');
+    }
+
+    //Template One Tack Order
+    public function TemplateOneTackOrder()
+    {
+        return view('frontend.template_one.user.track_order');
+    }
+
+    //Template One TackOrder Search
+    public function TemplateOneTackOrderSearch(Request $request)
+    {
+        $invoice = $request->code;
+
+        $track = Order::where('billing_phone', $invoice)->first();
+
+        if ($track) {
+            $orderItems = OrderItem::where('order_id', $track->id)->get();
+            return view('frontend.template_one.user.track_order_search', compact('track', 'orderItems'));
+        } else {
+            toastr()->error('Invalid Invoice Number');
+            return redirect()->back();
+        }
+
+    }
+
+    //Template One Term
+    public function TemplateOneTerm()
+    {
+        $term = Terms::first();
+        return view('frontend.template_one.term.term', compact('term'));
     }
 
 }

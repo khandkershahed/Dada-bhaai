@@ -26,7 +26,86 @@
                     @endphp
 
                     <div class="common-sidebar shop-banner-sidebar">
+
+                        {{-- Category  --}}
                         <div class="common-cat">
+                            <div class="side-title">
+                                <h6>Category</h6>
+                            </div>
+                            {{-- Brands Accordion --}}
+                            <div id="accordionBrands" class="accordion">
+                                <div class="card border-0 shadow-none mb-0">
+
+                                    @foreach ($categorys as $category)
+                                        <div class="card-header collapsed pl-0" data-toggle="collapse"
+                                            data-parent="#accordion" href="#cat{{ $category->id }}">
+                                            <a class="card-title">
+                                                {{ $category->category_name }}
+                                            </a>
+                                        </div>
+
+                                        <div id="cat{{ $category->id }}" class="collapse" data-parent="#accordion"
+                                            style="background-color: #f5f5f5;">
+
+                                            @php
+                                                $subcategorys = App\Models\Admin\SubCategory::where('status', '1')
+                                                    ->where('category_id', $category->id)
+                                                    ->latest()
+                                                    ->get();
+                                            @endphp
+
+                                            <div id="accordion2" class="accordion pl-3">
+
+                                                @forelse ($subcategorys as $subcategory)
+                                                    <div class="card border-0 shadow-none mb-0">
+                                                        <div class="card-header collapsed pl-0" data-toggle="collapse"
+                                                            data-target="#sub{{ $subcategory->id }}">
+                                                            <a class="card-title">
+                                                                {{ $subcategory->subcategory_name }}
+                                                            </a>
+                                                        </div>
+                                                        <div id="sub{{ $subcategory->id }}" class="collapse"
+                                                            data-parent="#accordion2" style="background-color: #f5f5f5;">
+
+                                                            @php
+                                                                $childcategorys = App\Models\Admin\ChildCategory::where(
+                                                                    'status',
+                                                                    '1',
+                                                                )
+                                                                    ->where('subcategory_id', $subcategory->id)
+                                                                    ->latest()
+                                                                    ->get();
+                                                            @endphp
+                                                            @forelse ($childcategorys as $childcategory)
+                                                                <div class="card-body p-2">
+                                                                    <a href="{{ url('product/childcategory/' . $childcategory->id . '/' . $childcategory->childcategory_slug) }}"
+                                                                        class="pl-3 text-muted">{{ $childcategory->childcategory_name }}</a>
+                                                                </div>
+                                                            @empty
+                                                                <p>No ChildCategory Avaiable</p>
+                                                            @endforelse
+
+                                                        </div>
+                                                    </div>
+                                                @empty
+                                                    <p>No SubCategory Avaiable</p>
+                                                @endforelse
+
+
+                                            </div>
+                                        </div>
+                                    @endforeach
+
+                                    {{-- Multi Accordion End --}}
+                                </div>
+                            </div>
+
+                        </div>
+                        {{-- Category  --}}
+
+                        {{-- Brand  --}}
+                        <div class="common-cat mt-4">
+
                             <div class="side-title">
                                 <h6>Brands</h6>
                             </div>
@@ -39,22 +118,11 @@
                                     <p>No Brand Avaiable</p>
                                 @endforelse
                             </ul>
+
                         </div>
-                        <div class="common-cat mt-4">
-                            <div class="side-title">
-                                <h6>Categories</h6>
-                            </div>
-                            <ul>
-                                @forelse ($categorys as $category)
-                                    <li><a
-                                            href="{{ url('product/category/' . $category->id . '/' . $category->category_slug) }}">{{ $category->category_name }}</a>
-                                    </li>
-                                @empty
-                                    <p>No Category Avaiable</p>
-                                @endforelse
-                            </ul>
-                        </div>
-                        <div class="slider-range mt-50">
+                        {{-- Brand  --}}
+
+                        {{-- <div class="slider-range mt-50">
                             <div class="side-title mb-30">
                                 <h6>Filter By Price</h6>
                             </div>
@@ -63,8 +131,9 @@
                                 <label for="amount">Price :</label>
                                 <input type="text" id="amount" readonly>
                             </p>
-                        </div>
-                        <div class="side-color mt-45">
+                        </div> --}}
+
+                        {{-- <div class="side-color mt-45">
                             <div class="side-title">
                                 <h6>Color</h6>
                             </div>
@@ -73,7 +142,7 @@
                                     <a href="#">Blue (2)</a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> --}}
 
                         {{-- <div class="side-size mt-50">
                             <div class="side-title">
@@ -93,7 +162,7 @@
                             </ul>
                         </div> --}}
 
-                        <div class="common-tag mt-50">
+                        {{-- <div class="common-tag mt-50">
                             <div class="side-title">
                                 <h6>Popular Tag</h6>
                             </div>
@@ -116,9 +185,10 @@
                                 @endforelse
                             </ul>
 
-                        </div>
+                        </div> --}}
 
                     </div>
+
                 </div>
 
                 <div class="col-lg-9 order-1 order-lg-2">
@@ -140,6 +210,7 @@
                     </div>
                     <div class="border-b">
                         <div class="row">
+
                             <div class="col-lg-5 col-md-4">
                                 <div class="shop-bar d-flex align-items-center">
                                     <h4 class="f-800 cod__black-color">Product</h4>
@@ -152,12 +223,18 @@
                                     </nav>
                                 </div>
                             </div>
-                            <div class="col-lg-7 col-md-8">
+
+                            <div class="col-lg-4 col-md-2">
+                                <div class="text-center" style="margin-top: 10px;">
+                                    <span>Showing {{ count($products) }} of {{ $products->total() }} Results</span>
+                                </div>
+                            </div>
+
+                            {{-- <div class="col-lg-3 col-md-6">
+                                
                                 <div class="bar-wrapper">
 
-                                    <div class="select-text">
-                                        <span>Showing {{ count($products) }} of {{ $products->total() }} Results</span>
-                                    </div>
+                                    
 
                                     <div class="shop-select">
                                         <select name="select" id="sortBy">
@@ -174,7 +251,8 @@
                                     </div>
 
                                 </div>
-                            </div>
+                            </div> --}}
+
                         </div>
                     </div>
 
@@ -188,67 +266,55 @@
                                     <div class="product__box">
                                         <div class="product__thumb">
 
-                                            <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
-                                                class="img-wrapper">
-
+                                            <a href="product-details.html" class="img-wrapper">
                                                 <img class="img" src="{{ asset($product->product_image) }}"
                                                     alt="" style="height: 230px;" />
 
-                                                {{-- <img class="img secondary-img"
-                                        src="img/allproducts/products__thumb__02.jpg" alt="" /> --}}
                                             </a>
-
                                         </div>
+
                                         <div class="product__content--top">
-                                            <span class="cate-name">{{ $product->category->category_name }}</span>
+                                            <span class="cate-name">{{ $product['category']['category_name'] }}</span>
                                             <h6 class="product__title mine__shaft-color f-700 mb-0">
                                                 <a
                                                     href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ $product->product_name }}</a>
                                             </h6>
                                         </div>
 
-                                        <div class="product__content--rating d-flex justify-content-between">
+                                        <div
+                                            class="product__content--rating d-flex justify-content-between align-items-center">
 
-                                            <div class="rating">
-                                                {{-- <ul class="list-inline">
-                                        <li class="rating-active">
-                                            <i class="fas fa-star"></i>
-                                        </li>
-                                        <li class="rating-active">
-                                            <i class="fas fa-star"></i>
-                                        </li>
-                                        <li class="rating-active">
-                                            <i class="fas fa-star"></i>
-                                        </li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                    </ul> --}}
-                                            </div>
+                                            <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
+                                                class="btn btn-primary btn-sm">
+                                                Add To Cart
+                                            </a>
 
                                             <div class="price">
-
                                                 @if ($product->price_status == 'rfq')
                                                     <h5 class="grenadier-color f-600">
-                                                        ${{ $product->sas_price }}
+                                                        Tk {{ $product->sas_price }}
                                                     </h5>
                                                 @elseif ($product->price_status == 'offer_price')
                                                     <h5 class="grenadier-color f-600">
-                                                        ${{ $product->discount_price }}</h5>
+                                                        Tk {{ $product->discount_price }}</h5>
                                                 @else
-                                                    <h5 class="grenadier-color f-600">${{ $product->price }}
+                                                    <h5 class="grenadier-color f-600">Tk {{ $product->price }}
                                                     </h5>
                                                 @endif
-
                                             </div>
 
                                         </div>
+
                                     </div>
                                     <div class="product-action">
-                                        <a href="#"><span class="lnr lnr-heart"></span></a>
+                                        <a style="cursor: pointer;" id="{{$product->id}}" onclick="addToWishList(this.id)"><span class="lnr lnr-heart"></span></a>
                                         {{-- <a href="#"><span class="lnr lnr-eye"></span></a> --}}
-                                        <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"><span
+                                        <a
+                                            href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"><span
                                                 class="lnr lnr-cart"></span></a>
-                                        <a href="#"><span class="lnr lnr-sync"></span></a>
+
+                                        {{-- <a href="#"><span class="lnr lnr-sync"></span></a> --}}
+
                                     </div>
                                 </div>
 

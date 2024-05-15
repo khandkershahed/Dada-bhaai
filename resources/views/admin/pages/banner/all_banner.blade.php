@@ -33,8 +33,12 @@
             <div class="d-flex align-items-center gap-2 gap-lg-3">
 
                 <!--begin::Primary button-->
-                <a href="" data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-light-primary btn-sm">Add
-                    Banner</a>
+                @if (Auth::guard('admin')->user()->can('add.banner'))
+                    <a href="" data-bs-toggle="modal" data-bs-target="#addModal"
+                        class="btn btn-light-primary btn-sm">Add
+                        Banner</a>
+                @endif
+
                 <!--end::Primary button-->
 
             </div>
@@ -84,18 +88,23 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($banner->status == 1)
-                                            <a href="{{ route('banner.inactive', $banner->id) }}" title="Inactive"><i
-                                                    class="bi bi-hand-thumbs-down text-danger fs-3"></i></a>
-                                        @else
-                                            <a href="{{ route('banner.active', $banner->id) }}" title="Active"><i
-                                                    class="bi bi-hand-thumbs-up text-success fs-3"></i></a>
+                                        @if (Auth::guard('admin')->user()->can('status.banner'))
+                                            @if ($banner->status == 1)
+                                                <a href="{{ route('banner.inactive', $banner->id) }}" title="Inactive"><i
+                                                        class="bi bi-hand-thumbs-down text-danger fs-3"></i></a>
+                                            @else
+                                                <a href="{{ route('banner.active', $banner->id) }}" title="Active"><i
+                                                        class="bi bi-hand-thumbs-up text-success fs-3"></i></a>
+                                            @endif
                                         @endif
 
                                         {{-- Edit Modal  --}}
-                                        <a href="" data-bs-toggle="modal"
-                                            data-bs-target="#editModal{{ $banner->id }}" class="ms-1" title="Edit"><i
-                                                class="bi bi-pencil-square fs-3 text-primary"></i></a>
+                                        @if (Auth::guard('admin')->user()->can('edit.banner'))
+                                            <a href="" data-bs-toggle="modal"
+                                                data-bs-target="#editModal{{ $banner->id }}" class="ms-1"
+                                                title="Edit"><i class="bi bi-pencil-square fs-3 text-primary"></i></a>
+                                        @endif
+
 
                                         {{-- Edit Modal  --}}
                                         <div class="modal fade" id="editModal{{ $banner->id }}" tabindex="-1"
@@ -175,9 +184,12 @@
                                         </div>
 
                                         {{-- Delete --}}
-                                        <a href="{{ route('delete.banner', $banner->id) }}" class="ms-1"
-                                            id="delete" title="Delete"><i
-                                                class="bi bi-trash3-fill fs-3 text-danger"></i></a>
+                                        @if (Auth::guard('admin')->user()->can('delete.banner'))
+                                            <a href="{{ route('delete.banner', $banner->id) }}" class="ms-1"
+                                                id="delete" title="Delete"><i
+                                                    class="bi bi-trash3-fill fs-3 text-danger"></i></a>
+                                        @endif
+
                                     </td>
                                 </tr>
                             @endforeach

@@ -32,9 +32,17 @@
             <div class="d-flex align-items-center gap-2 gap-lg-3">
 
                 <!--begin::Primary button-->
-                <a href="{{ route('all.category') }}" class="btn btn-sm btn-light-primary">Category</a>
-                <a href="{{ route('all.subcategory') }}" class="btn btn-sm btn-light-info">Sub Category</a>
-                <a href="{{ route('all.childcategory') }}" class="btn btn-sm btn-light-dark">Child Category</a>
+                @if (Auth::guard('admin')->user()->can('all.category'))
+                    <a href="{{ route('all.category') }}" class="btn btn-sm btn-light-primary">Category</a>
+                @endif
+
+                @if (Auth::guard('admin')->user()->can('all.subcategory'))
+                    <a href="{{ route('all.subcategory') }}" class="btn btn-sm btn-light-info">Sub Category</a>
+                @endif
+
+                @if (Auth::guard('admin')->user()->can('all.childcategory'))
+                    <a href="{{ route('all.childcategory') }}" class="btn btn-sm btn-light-dark">Child Category</a>
+                @endif
                 <!--end::Primary button-->
 
             </div>
@@ -58,8 +66,10 @@
                     <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
 
                         <!--begin::Add product-->
-                        <a data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-light-primary btn-sm">Add
-                            ChildCategory</a>
+                        @if (Auth::guard('admin')->user()->can('add.childcategory'))
+                            <a data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-light-primary btn-sm">Add
+                                ChildCategory</a>
+                        @endif
                         <!--end::Add product-->
 
                     </div>
@@ -111,12 +121,15 @@
                                         @endif
 
                                         {{-- Edit Category Modal --}}
+                                        @if (Auth::guard('admin')->user()->can('edit.childcategory'))
+                                            <a href="" class="ms-1" title="Edit" data-bs-toggle="modal"
+                                                data-bs-target="#editModal{{ $childcategory->id }}"
+                                                class="btn btn-primary btn-sm"><i
+                                                    class="bi bi-pencil-square fs-3 text-primary"></i>
+                                            </a>
+                                        @endif
 
-                                        <a href="" class="ms-1" title="Edit" data-bs-toggle="modal"
-                                            data-bs-target="#editModal{{ $childcategory->id }}"
-                                            class="btn btn-primary btn-sm"><i
-                                                class="bi bi-pencil-square fs-3 text-primary"></i>
-                                        </a>
+
 
                                         <!-- EditModal -->
 
@@ -213,14 +226,13 @@
                                                                 <div class="col-12 mb-3">
                                                                     <label for=""
                                                                         class="mb-2">Description</label>
-                                                                    <textarea name="description" placeholder="Write Some In ChildCategory" autocomplete="off" class="form-control form-control-sm" cols="3"
-                                                                        rows="3">{{ $childcategory->description }}</textarea>
+                                                                    <textarea name="description" placeholder="Write Some In ChildCategory" autocomplete="off"
+                                                                        class="form-control form-control-sm" cols="3" rows="3">{{ $childcategory->description }}</textarea>
                                                                 </div>
 
                                                                 <div class="col-12">
                                                                     <label for="" class="mb-2">Image</label>
-                                                                    <input type="file"
-                                                                        name="childcategory_image"
+                                                                    <input type="file" name="childcategory_image"
                                                                         class="form-control form-control-sm imageSrc @error('childcategory_image') is-invalid @enderror">
 
                                                                     @error('childcategory_image')
@@ -229,8 +241,8 @@
                                                                     @enderror
 
                                                                     <img src="{{ asset('storage/childcategory/' . $childcategory->childcategory_image) }}"
-                                                                         class="mt-3 showImageSrc"
-                                                                        style="width: 73px;" alt="">
+                                                                        class="mt-3 showImageSrc" style="width: 73px;"
+                                                                        alt="">
                                                                 </div>
 
                                                             </div>
@@ -250,10 +262,13 @@
                                         </div>
 
                                         {{-- Edit Category Modal --}}
+                                        @if (Auth::guard('admin')->user()->can('delete.childcategory'))
+                                            <a href="{{ route('delete.childcategory', $childcategory->id) }}"
+                                                class="ms-1" id="delete" title="Delete"><i
+                                                    class="bi bi-trash3-fill fs-3 text-danger"></i></a>
+                                        @endif
 
-                                        <a href="{{ route('delete.childcategory', $childcategory->id) }}" class="ms-1"
-                                            id="delete" title="Delete"><i
-                                                class="bi bi-trash3-fill fs-3 text-danger"></i></a>
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -293,7 +308,8 @@
                             <div class="col-4 mb-3">
                                 <label for="" class="mb-2">Category Name</label>
 
-                                <select name="category_id" autocomplete="off" class="form-select form-select-sm" id="">
+                                <select name="category_id" autocomplete="off" class="form-select form-select-sm"
+                                    id="">
 
                                     <option value="">Choose Category</option>
 
@@ -337,8 +353,8 @@
 
                             <div class="col-12 mb-3">
                                 <label for="" class="mb-2">Description</label>
-                                <textarea name="description" placeholder="Write Some In ChildCategory" autocomplete="off" class="form-control" cols="2"
-                                    rows="2"></textarea>
+                                <textarea name="description" placeholder="Write Some In ChildCategory" autocomplete="off" class="form-control"
+                                    cols="2" rows="2"></textarea>
                             </div>
 
                             <div class="col-12">
@@ -350,7 +366,8 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
 
-                                <img src="{{ asset('upload/no_image.jpg') }}" style="width: 73px; height:73px;" class="showImageSrc mt-3" alt="">
+                                <img src="{{ asset('upload/no_image.jpg') }}" style="width: 73px; height:73px;"
+                                    class="showImageSrc mt-3" alt="">
                             </div>
 
                         </div>

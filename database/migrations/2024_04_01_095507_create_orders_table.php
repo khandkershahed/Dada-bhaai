@@ -48,15 +48,15 @@ return new class extends Migration
             $table->text('notes')->nullable();
             $table->enum('payment_status', ['paid', 'unpaid'])->default('unpaid');
 
-            $table->date('order_date')->nullable();//
-            $table->date('order_month')->nullable();//
-            $table->date('order_year')->nullable();//
+            $table->string('order_date')->nullable();//
+            $table->string('order_month')->nullable();//
+            $table->string('order_year')->nullable();//
             $table->enum('status', ['pending', 'processing', 'shipped', 'delivered', 'cancelled', 'return'])->default('pending');
 
-            $table->date('processing_date')->nullable();
-            $table->date('shipped_date')->nullable();
-            $table->date('delivered_date')->nullable();
-            $table->date('return_date')->nullable();
+            $table->string('processing_date')->nullable();
+            $table->string('shipped_date')->nullable();
+            $table->string('delivered_date')->nullable();
+            $table->string('return_date')->nullable();
 
             $table->text('return_reason')->nullable();
             $table->string('return_amount', 10, 2)->nullable();

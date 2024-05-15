@@ -9,6 +9,7 @@ use App\Models\Admin\SubCategory;
 use Helper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class ChildCategoryController extends Controller
 {
@@ -55,7 +56,7 @@ class ChildCategoryController extends Controller
                     'category_id' => $request->category_id,
                     'subcategory_id' => $request->subcategory_id,
                     'childcategory_name' => $request->childcategory_name,
-                    'childcategory_slug' => strtolower(str_replace('', '-', $request->childcategory_name)),
+                    'childcategory_slug' => Str::slug($request->childcategory_name , "-"),
                     'description' => $request->description,
 
                 ]);
@@ -70,7 +71,7 @@ class ChildCategoryController extends Controller
                         'category_id' => $request->category_id,
                         'subcategory_id' => $request->subcategory_id,
                         'childcategory_name' => $request->childcategory_name,
-                        'childcategory_slug' => strtolower(str_replace('', '-', $request->childcategory_name)),
+                        'childcategory_slug' => Str::slug($request->childcategory_name , "-"),
                         'description' => $request->description,
 
                         'childcategory_image' => $globalFunImg['file_name'],
@@ -138,7 +139,7 @@ class ChildCategoryController extends Controller
                     'category_id' => $request->category_id,
                     'subcategory_id' => $request->subcategory_id,
                     'childcategory_name' => $request->childcategory_name,
-                    'childcategory_slug' => strtolower(str_replace('', '-', $request->childcategory_name)),
+                    'childcategory_slug' => Str::slug($request->childcategory_name , "-"),
                     'description' => $request->description,
 
                     'childcategory_image' => $globalFunImg['status'] == 1 ? $globalFunImg['file_name'] : $childcat->childcategory_image,

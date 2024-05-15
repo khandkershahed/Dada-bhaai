@@ -4,7 +4,6 @@
 
     <!--begin::Content-->
 
-
     <!--begin::Toolbar-->
     <div class="toolbar" id="kt_toolbar">
         <!--begin::Container-->
@@ -34,8 +33,11 @@
             <!--begin::Actions-->
             <div class="d-flex align-items-center gap-2 gap-lg-3">
 
-                <a href="" class="btn btn-light-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addModal">Add
-                    Offer</a>
+                @if (Auth::guard('admin')->user()->can('add.offer'))
+                    <a href="" class="btn btn-light-primary btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#addModal">Add
+                        Offer</a>
+                @endif
 
             </div>
             <!--end::Actions-->
@@ -92,17 +94,21 @@
 
                                     <td style="width: 70px;">
 
-                                        @if ($offer->status == 1)
-                                            <a href="{{ route('offer.inactive', $offer->id) }}" title="Inactive"><i
-                                                    class="bi bi-hand-thumbs-down text-danger fs-3"></i></a>
-                                        @else
-                                            <a href="{{ route('offer.active', $offer->id) }}" title="Active"><i
-                                                    class="bi bi-hand-thumbs-up text-success fs-3"></i></a>
+                                        @if (Auth::guard('admin')->user()->can('status.offer'))
+                                            @if ($offer->status == 1)
+                                                <a href="{{ route('offer.inactive', $offer->id) }}" title="Inactive"><i
+                                                        class="bi bi-hand-thumbs-down text-danger fs-3"></i></a>
+                                            @else
+                                                <a href="{{ route('offer.active', $offer->id) }}" title="Active"><i
+                                                        class="bi bi-hand-thumbs-up text-success fs-3"></i></a>
+                                            @endif
                                         @endif
 
-                                        <a href="" data-bs-toggle="modal"
-                                            data-bs-target="#editModal{{ $offer->id }}" class="ms-1" title="Edit"><i
-                                                class="bi bi-pencil-square fs-3 text-primary"></i></a>
+                                        @if (Auth::guard('admin')->user()->can('edit.offer'))
+                                            <a href="" data-bs-toggle="modal"
+                                                data-bs-target="#editModal{{ $offer->id }}" class="ms-1"
+                                                title="Edit"><i class="bi bi-pencil-square fs-3 text-primary"></i></a>
+                                        @endif
 
                                         {{-- Edit Modal --}}
 
@@ -128,19 +134,7 @@
 
                                                             <div class="row">
 
-                                                                <div class="col-6 mb-3">
-
-                                                                    <div class="form-group mb-3">
-                                                                        <label for="" class="mb-2">Name</label>
-                                                                        <input type="text" name="name"
-                                                                            class="form-control form-control-sm form-control-solid"
-                                                                            placeholder="Offer Name"
-                                                                            value="{{ $offer->name }}" autocomplete="off">
-                                                                    </div>
-
-                                                                </div>
-
-                                                                <div class="col-6 mb-3">
+                                                                <div class="col-4 mb-3">
 
                                                                     <div class="form-group mb-3">
                                                                         <label for="" class="mb-2">Offer Category
@@ -160,6 +154,30 @@
                                                                             @endforeach
 
                                                                         </select>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="col-4 mb-3">
+
+                                                                    <div class="form-group mb-3">
+                                                                        <label for="" class="mb-2">Offer Name</label>
+                                                                        <input type="text" name="offer_name"
+                                                                            class="form-control form-control-sm form-control-solid"
+                                                                            placeholder="Offer Name"
+                                                                            value="{{ $offer->offer_name }}" autocomplete="off">
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="col-4 mb-3">
+
+                                                                    <div class="form-group mb-3">
+                                                                        <label for="" class="mb-2">Name</label>
+                                                                        <input type="text" name="name"
+                                                                            class="form-control form-control-sm form-control-solid"
+                                                                            placeholder="Product Name"
+                                                                            value="{{ $offer->name }}" autocomplete="off">
                                                                     </div>
 
                                                                 </div>
@@ -254,8 +272,13 @@
                                             </div>
                                         </div>
 
-                                        <a href="{{ route('delete.offer', $offer->id) }}" class="ms-1" id="delete"
-                                            title="Delete"><i class="bi bi-trash3-fill fs-3 text-danger"></i></a>
+                                        @if (Auth::guard('admin')->user()->can('delete.offer'))
+                                            <a href="{{ route('delete.offer', $offer->id) }}" class="ms-1"
+                                                id="delete" title="Delete"><i
+                                                    class="bi bi-trash3-fill fs-3 text-danger"></i></a>
+                                        @endif
+
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -292,18 +315,7 @@
 
                         <div class="row">
 
-                            <div class="col-6 mb-3">
-
-                                <div class="form-group mb-3">
-                                    <label for="" class="mb-2">Name</label>
-                                    <input type="text" name="name"
-                                        class="form-control form-control-sm form-control-solid" placeholder="Offer Name"
-                                        value="{{ old('name') }}" autocomplete="off">
-                                </div>
-
-                            </div>
-
-                            <div class="col-6 mb-3">
+                            <div class="col-4 mb-3">
 
                                 <div class="form-group mb-3">
                                     <label for="" class="mb-2">Offer Category Name</label>
@@ -321,6 +333,29 @@
                                 </div>
 
                             </div>
+
+                            <div class="col-4 mb-3">
+
+                                <div class="form-group mb-3">
+                                    <label for="" class="mb-2">Offer Name</label>
+                                    <input type="text" name="offer_name"
+                                        class="form-control form-control-sm form-control-solid" placeholder="Offer Name"
+                                        value="{{ old('offer_name') }}" autocomplete="off">
+                                </div>
+
+                            </div>
+
+                            <div class="col-4 mb-3">
+
+                                <div class="form-group mb-3">
+                                    <label for="" class="mb-2">Name</label>
+                                    <input type="text" name="name"
+                                        class="form-control form-control-sm form-control-solid" placeholder="Product Name"
+                                        value="{{ old('name') }}" autocomplete="off">
+                                </div>
+
+                            </div>
+                            
 
                             <div class="col-3 mb-3">
 

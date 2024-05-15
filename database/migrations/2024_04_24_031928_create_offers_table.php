@@ -16,6 +16,7 @@ return new class extends Migration
 
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
+            $table->string('offer_name')->nullable();
 
             $table->unsignedBigInteger('offer_category_id')->nullable();
             $table->foreign('offer_category_id')->references('id')->on('offer_categories')->onDelete('cascade');

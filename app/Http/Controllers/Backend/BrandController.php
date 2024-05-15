@@ -7,9 +7,12 @@ use App\Models\Brand;
 use Helper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class BrandController extends Controller
 {
+
+    
     //All Brand
     public function AllBrand()
     {
@@ -43,7 +46,7 @@ class BrandController extends Controller
                 Brand::create([
 
                     'brand_name' => $request->brand_name,
-                    'brand_slug' => strtolower(str_replace('', '-', $request->brand_name)),
+                    'brand_slug' => Str::slug($request->brand_name, "-"),
                     'description' => $request->description,
 
                 ]);
@@ -55,7 +58,7 @@ class BrandController extends Controller
                     Brand::create([
 
                         'brand_name' => $request->brand_name,
-                        'brand_slug' => strtolower(str_replace('', '-', $request->brand_name)),
+                        'brand_slug' => Str::slug($request->brand_name, "-"),
                         'description' => $request->description,
 
                         'brand_image' => $globalFunImg['file_name'],
@@ -115,7 +118,7 @@ class BrandController extends Controller
                 $brand->update([
 
                     'brand_name' => $request->brand_name,
-                    'brand_slug' => strtolower(str_replace('', '-', $request->brand_name)),
+                    'brand_slug' => Str::slug($request->brand_name, "-"),
                     'description' => $request->description,
                     'brand_image' => $globalFunImg['status'] == 1 ? $globalFunImg['file_name'] : $brand->brand_image,
 
@@ -133,7 +136,7 @@ class BrandController extends Controller
     {
 
         $brand = Brand::find($id);
-        
+
         if (File::exists(public_path('storage/brand/requestImg/') . $brand->brand_image)) {
             File::delete(public_path('storage/brand/requestImg/') . $brand->brand_image);
         }

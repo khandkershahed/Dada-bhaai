@@ -46,6 +46,19 @@
 <script src="{{ asset('frontend/template_one/assets/js/validate.min.js') }}"></script>
 <script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    })
+</script>
+
 {{-- Releted Accesories --}}
 <script>
     $(document).ready(function() {
@@ -92,19 +105,11 @@
     });
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<script type="text/javascript">
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    })
-</script>
 
 @yield('catscripts')
 @yield('childcatscripts')
 @yield('brandscripts')
+@yield('pricescripts')
 
 {{-- OfferToCartOne --}}
 <script>
@@ -133,11 +138,16 @@
 
                 miniCart();
 
+<<<<<<< HEAD
                 // Start Message
+=======
+                // Start Message 
+
+>>>>>>> 202353e99b5117f2cd83076ae8f750f173d07041
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
-                    icon: 'success',
+
                     showConfirmButton: false,
                     timer: 3000
                 })
@@ -145,19 +155,24 @@
 
                     Toast.fire({
                         type: 'success',
+                        icon: 'success',
                         title: data.success,
                     })
-
-                    window.location.href = '/cart-checkout';
 
                 } else {
 
                     Toast.fire({
                         type: 'error',
+                        icon: 'error',
                         title: data.error,
                     })
                 }
+<<<<<<< HEAD
                 // End Message
+=======
+
+                // End Message  
+>>>>>>> 202353e99b5117f2cd83076ae8f750f173d07041
             }
 
         })
@@ -189,11 +204,16 @@
 
                 miniCart();
 
+<<<<<<< HEAD
                 // Start Message
+=======
+                // Start Message 
+
+>>>>>>> 202353e99b5117f2cd83076ae8f750f173d07041
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
-                    icon: 'success',
+
                     showConfirmButton: false,
                     timer: 3000
                 })
@@ -201,19 +221,26 @@
 
                     Toast.fire({
                         type: 'success',
+                        icon: 'success',
                         title: data.success,
                     })
 
-                    window.location.href = '/cart-checkout';
+                    window.location.href= '/cart-checkout';
 
                 } else {
 
                     Toast.fire({
                         type: 'error',
+                        icon: 'error',
                         title: data.error,
                     })
                 }
+<<<<<<< HEAD
                 // End Message
+=======
+
+                // End Message  
+>>>>>>> 202353e99b5117f2cd83076ae8f750f173d07041
             }
 
         })
@@ -222,6 +249,7 @@
 </script>
 {{-- BuyToCartOne --}}
 
+
 {{-- AddToCartOne --}}
 <script>
     function addToCartOne() {
@@ -229,6 +257,8 @@
         var product_name = $('#dpname').text();
         var id = $('#oneproduct_id').val();
         var quantity = $('#dqty').val();
+
+        var color = $('#dcolor option:selected').text();
 
         $.ajax({
 
@@ -239,17 +269,25 @@
             data: {
                 quantity: quantity,
                 product_name: product_name,
+                color: color,
             },
 
             success: function(data) {
 
+                $('.cart_icon').removeClass('d-none');
+
                 miniCart();
 
+<<<<<<< HEAD
                 // Start Message
+=======
+                // Start Message 
+
+>>>>>>> 202353e99b5117f2cd83076ae8f750f173d07041
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
-                    icon: 'success',
+
                     showConfirmButton: false,
                     timer: 3000
                 })
@@ -257,6 +295,7 @@
 
                     Toast.fire({
                         type: 'success',
+                        icon: 'success',
                         title: data.success,
                     })
 
@@ -264,10 +303,16 @@
 
                     Toast.fire({
                         type: 'error',
+                        icon: 'error',
                         title: data.error,
                     })
                 }
+<<<<<<< HEAD
                 // End Message
+=======
+
+                // End Message 
+>>>>>>> 202353e99b5117f2cd83076ae8f750f173d07041
             }
 
         })
@@ -275,6 +320,117 @@
     }
 </script>
 {{-- AddToCartOne --}}
+
+{{-- ========================================== --}}
+{{-- AddToCartOneRelated --}}
+<script>
+    function addToCartOneRelated() {
+
+        var product_name = $('#drpname').text();
+        var id = $('#onerproduct_id').val();
+        var quantity = $('#drqty').val();
+
+        // var color = $('#dcolor option:selected').text();
+
+        $.ajax({
+
+            type: "POST",
+            dataType: 'json',
+            url: '/product/store/related/' + id,
+
+            data: {
+                quantity: quantity,
+                product_name: product_name,
+                // color: color,
+            },
+
+            success: function(data) {
+
+                miniCart();
+                miniCartRelated();
+
+                // Start Message 
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success,
+                    })
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error,
+                    })
+                }
+
+                // End Message  
+            }
+
+        })
+
+    }
+</script>
+{{-- AddToCartOneRelated --}}
+
+{{-- Mini Cart Related --}}
+<script type="text/javascript">
+    function miniCartRelated() {
+        $.ajax({
+            type: 'GET',
+            url: '/product/mini/cart/related',
+            dataType: 'json',
+            success: function(response) {
+                // console.log(response)
+
+                $('span[id="cartSubTotal"]').text(response.cartTotal);
+                $('#cartQty').text(response.cartQty);
+
+                var miniCartRelated = ""
+
+                $.each(response.carts, function(key, value) {
+                    miniCartRelated +=
+
+
+                        `
+                    
+                    <ul style="list-style-type: circle !important;">
+                                                <li class="d-flex mb-2 align-items-center">
+
+
+                                                    <a href="javascript:;" style="margin-right: 15px;">${value.name}</a> x ${value.qty}
+                                                    Qty
+
+                                                    {{-- <input type="number" class="form-control form-control-sm w-25"
+                                                        name="" id="" value="1" min="1" /> --}}
+                                                </li>
+                                            </ul>
+
+                    <ul>  `
+                });
+
+                $('#miniCartRelated').html(miniCartRelated);
+
+            }
+
+        })
+    }
+    miniCartRelated();
+</script>
+{{-- Mini Cart Related --}}
+
+{{-- ==================================================== --}}
 
 {{-- MiniCart --}}
 <script>
@@ -288,6 +444,7 @@
 
                 $('span[id="cartSubTotal"]').text(response.cartTotal);
                 $('#cartQty').text(response.cartQty);
+
 
                 var miniCart = ""
 
@@ -310,7 +467,7 @@
                                         </div>
 
                                         <div class="del-button">
-                                            <a type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"  ><i class="fi-rs-cross-small"></i>x</a>
+                                            <a type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"  style="cursor: pointer"><i class="fi-rs-cross-small"></i>x</a>
                                         </div>
 
                                     </li>

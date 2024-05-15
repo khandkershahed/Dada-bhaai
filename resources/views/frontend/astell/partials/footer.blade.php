@@ -1,4 +1,4 @@
-<footer>
+{{-- <footer>
     <div class="wrap">
         <div class="logo"></div>
         <div class="inner">
@@ -32,4 +32,4 @@
             <a href="#" target="_blank" class="youtube"></a>
         </div>
     </div>
-</footer>
+</footer> --}}

@@ -53,7 +53,7 @@
                     <table id="kt_datatable_example_5" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Sl No</th>
+                                <th style="width:35px;">No</th>
                                 <th>Logo White</th>
                                 {{-- <th>Logo Black</th> --}}
                                 <th>Favicon</th>
@@ -88,8 +88,10 @@
 
                                     <td>
 
-                                        <a href="{{ route('edit.site',$site->id) }}" class="ms-1" title="Edit"><i
-                                                class="bi bi-pencil-square fs-3 text-primary"></i></a>
+                                        @if (Auth::guard('admin')->user()->can('edit.setting'))
+                                            <a href="{{ route('edit.site', $site->id) }}" class="ms-1" title="Edit"><i
+                                                    class="bi bi-pencil-square fs-3 text-primary"></i></a>
+                                        @endif
 
                                         {{-- Edit Modal --}}
 
@@ -102,7 +104,7 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
-                                                    
+
                                                 </div>
                                             </div>
                                         </div>

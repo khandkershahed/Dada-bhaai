@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\About;
 use App\Models\Admin\Category;
-use App\Models\Admin\ChildCategory;
 use App\Models\Admin\Contact;
 use App\Models\Admin\Faq;
+use App\Models\Admin\HomePage;
 use App\Models\Admin\MultiImg;
 use App\Models\Admin\Product;
 use App\Models\Admin\Template;
@@ -28,7 +28,19 @@ class IndexController extends Controller
 
         } else if ($template->name == 'template_two') {
 
-            return view('frontend.astell.index_astell');
+            $homepage = HomePage::where('status', 'tamplate_two')->latest('id')->first();
+            
+            $categoryIds = [
+                $homepage->category_tab_one_id,
+                $homepage->category_tab_two_id,
+                $homepage->category_tab_three_id,
+                $homepage->category_tab_four_id,
+            ];
+
+            $categories = Category::with('products')->whereIn('id', $categoryIds)->get();
+            // dd($homepage);
+
+            return view('frontend.astell.index_astell', compact('homepage','categories'));
 
         } else if ($template->name == 'template_three') {
             $banners = Banner::where('status', '1')->orderBy('id', 'ASC')->latest()->get();
@@ -44,8 +56,8 @@ class IndexController extends Controller
     {
         $product = Product::find($id);
 
-        // $color = $product->color_id;
-        // $product_colors = explode(',', $color);
+        $color = $product->color_id;
+        $product_colors = explode(' ', $color);
 
         $multiImages = MultiImg::where('product_id', $product->id)->get();
 
@@ -53,10 +65,10 @@ class IndexController extends Controller
         $cat_id = $product->category_id;
         $relativeProduct = Product::where('category_id', $cat_id)->where('id', '!=', '$id')->orderBy('id', 'ASC')->limit(5)->get();
 
-        $child_id = $product->child_id;
-        $relativeChild = Product::where('child_id', $child_id)->where('id', '!=', '$id')->orderBy('id', 'DESC')->limit(8)->get();
+        $child_id = $product->childcategory_id;
+        $relativeChild = Product::where('childcategory_id', $child_id)->where('id', '!=', '$id')->orderBy('id', 'DESC')->limit(6)->get();
 
-        return view('frontend.template_one.product.single_product', compact('product', 'relativeProduct', 'multiImages','relativeChild'));
+        return view('frontend.template_one.product.single_product', compact('product', 'relativeProduct', 'multiImages', 'relativeChild','product_colors'));
     }
 
     //Single Product
@@ -162,5 +174,4 @@ class IndexController extends Controller
         return view('frontend.pages.about_page', compact('about'));
     }
 
-    
 }

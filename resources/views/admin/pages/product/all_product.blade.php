@@ -2,7 +2,7 @@
 @section('admin')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-    
+
     <!--begin::Toolbar-->
     <div class="toolbar" id="kt_toolbar">
         <!--begin::Container-->
@@ -33,8 +33,10 @@
             <div class="d-flex align-items-center gap-2 gap-lg-3">
 
                 <!--begin::Primary button-->
-                <a href="{{ route('add.product') }}" class="btn btn-light-primary btn-sm">Add
-                    Product</a>
+                @if (Auth::guard('admin')->user()->can('add.product'))
+                    <a href="{{ route('add.product') }}" class="btn btn-light-primary btn-sm">Add
+                        Product</a>
+                @endif
                 <!--end::Primary button-->
 
             </div>
@@ -79,21 +81,32 @@
                                             @endif
                                         </td>
                                         <td>
-                                            @if ($product->status == 1)
-                                                <a href="{{ route('product.inactive', $product->id) }}"
-                                                    title="Is_Inactive"><i
-                                                        class="bi bi-hand-thumbs-down text-danger fs-3"></i></a>
-                                            @else
-                                                <a href="{{ route('product.active', $product->id) }}" title="Is-Approve"><i
-                                                        class="bi bi-hand-thumbs-up text-success fs-3"></i></a>
+
+                                            @if (Auth::guard('admin')->user()->can('status.product'))
+                                                @if ($product->status == 1)
+                                                    <a href="{{ route('product.inactive', $product->id) }}"
+                                                        title="Is_Inactive"><i
+                                                            class="bi bi-hand-thumbs-down text-danger fs-3"></i></a>
+                                                @else
+                                                    <a href="{{ route('product.active', $product->id) }}"
+                                                        title="Is-Approve"><i
+                                                            class="bi bi-hand-thumbs-up text-success fs-3"></i></a>
+                                                @endif
                                             @endif
 
-                                            <a href="{{ route('edit.product', $product->id) }}" class="ms-1"
-                                                title="Edit"><i class="bi bi-pencil-square fs-3 text-primary"></i></a>
 
-                                            <a href="{{ route('delete.product', $product->id) }}" class="ms-1"
+                                            @if (Auth::guard('admin')->user()->can('edit.product'))
+                                                <a href="{{ route('edit.product', $product->id) }}" class="ms-1"
+                                                    title="Edit"><i class="bi bi-pencil-square fs-3 text-primary"></i></a>
+                                            @endif
+
+                                            @if (Auth::guard('admin')->user()->can('delete.product'))
+                                                <a href="{{ route('delete.product', $product->id) }}" class="ms-1"
                                                     id="delete" title="Delete"><i
                                                         class="bi bi-trash3-fill fs-3 text-danger"></i></a>
+                                            @endif
+
+
                                         </td>
                                     </tr>
                                 @endforeach
@@ -127,5 +140,4 @@
                 ">"
         });
     </script>
-
 @endsection

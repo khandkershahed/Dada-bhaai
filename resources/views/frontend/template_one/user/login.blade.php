@@ -11,7 +11,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">My Account.</li>
+                                <li class="breadcrumb-item active" aria-current="page">My Account</li>
                             </ol>
                         </nav>
                     </div>
@@ -74,7 +74,7 @@
                                         <input type="checkbox" name="remember" id="remember_me" class="check">
                                         Remember me
                                     </span>
-                                    {{-- <a href="#" class="lost-pass">Lost Your Password?</a> --}}
+                                    <a href="{{ route('password.request') }}" class="lost-pass">Forgot Password?</a>
                                 </form>
 
                             </div>

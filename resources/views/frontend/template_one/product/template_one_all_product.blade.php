@@ -98,25 +98,56 @@
                                     <h6>Filter By Price</h6>
                                 </div>
 
-                                <div id="slider-range"></div>
+                                <div id="slider-range" data-min="{{ HelperShop::minPrice() }}"
+                                    data-max="{{ HelperShop::maxPrice() }}"></div>
 
                                 <p>
+                                    <input type="hidden" id="price_range" name="price_range"
+                                        value="@if (!empty($_GET['price'])) {{ $_GET['price'] }} @endif">
+
+                                    @if (!empty($_GET['price']))
+                                        @php
+                                            $price = explode('-', $_GET['price']);
+                                        @endphp
+                                    @endif
+
                                     <label for="amount">Price :</label>
-                                    <input type="text" id="amount" readonly>
+
+                                    <input type="text" id="amount" class=""
+                                        value="@if (!empty($_GET['price'])) ${{ $price[0] }} @else {{ HelperShop::minPrice() }} @endif-@if (!empty($_GET['price'])) ${{ $price[1] }} @else {{ HelperShop::maxPrice() }} @endif"
+                                        readonly>
+
+
                                 </p>
+
+                                <button type="submit" class="lnk btn btn-primary">Filter</button>
 
                             </div>
                             {{-- Price --}}
 
                             {{-- Color --}}
+
+                            @php
+                                $colors = App\Models\Admin\Color::latest()->get();
+                            @endphp
+
                             <div class="side-color mt-45">
                                 <div class="side-title">
                                     <h6>Color</h6>
                                 </div>
                                 <ul class="mt-15">
-                                    <li>
-                                        <a href="#">Blue (2)</a>
-                                    </li>
+                                    @foreach ($colors as $color)
+                                        @php
+                                            $colorProduct = App\Models\Admin\Product::where(
+                                                'color_id',
+                                                $color->id,
+                                            )->get();
+                                        @endphp
+
+                                        <li>
+                                            <a href="#">{{ $color->color_name }} ({{ count($colorProduct) }})</a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                             {{-- Color --}}
@@ -206,9 +237,9 @@
 
                                 {{-- New Section  --}}
                                 <div class="col-lg-4 col-md-2">
-                                    {{-- <div class="text-center" style="margin-top: 10px;">
+                                    <div class="text-center" style="margin-top: 10px;">
                                         <span>Showing {{ count($products) }} of {{ $products->total() }} Results</span>
-                                    </div> --}}
+                                    </div>
                                 </div>
 
                                 <div class="col-lg-3 col-md-6">
@@ -313,12 +344,14 @@
 
                                         </div>
                                         <div class="product-action">
-                                            <a href="#"><span class="lnr lnr-heart"></span></a>
+                                            <a style="cursor: pointer;" id="{{$product->id}}" onclick="addToWishList(this.id)"><span class="lnr lnr-heart"></span></a>
                                             {{-- <a href="#"><span class="lnr lnr-eye"></span></a> --}}
                                             <a
                                                 href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"><span
                                                     class="lnr lnr-cart"></span></a>
-                                            <a href="#"><span class="lnr lnr-sync"></span></a>
+
+                                            {{-- <a href="#"><span class="lnr lnr-sync"></span></a> --}}
+
                                         </div>
                                     </div>
 
@@ -349,4 +382,29 @@
         </div>
     </form>
     <!-- shop area end -->
+@endsection
+@section('pricescripts')
+    <script>
+        $(document).ready(function() {
+            if ($('#slider-range').length > 0) {
+                const max_price = parseInt($('#slider-range').data('max'));
+                const min_price = parseInt($('#slider-range').data('min'));
+                let price_range = min_price + "-" + max_price;
+                if ($('#price_range').length > 0 && $('#price_range').val()) {
+                    price_range = $('#price_range').val().trim();
+                }
+                let price = price_range.split('-');
+                $("#slider-range").slider({
+                    range: true,
+                    min: min_price,
+                    max: max_price,
+                    values: price,
+                    slide: function(event, ui) {
+                        $("#amount").val('$' + ui.values[0] + "-" + '$' + ui.values[1]);
+                        $("#price_range").val(ui.values[0] + "-" + ui.values[1]);
+                    }
+                });
+            }
+        });
+    </script>
 @endsection

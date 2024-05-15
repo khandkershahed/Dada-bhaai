@@ -3,16 +3,21 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\OrderMail;
+use App\Models\Admin;
 use App\Models\Admin\Offer;
 use App\Models\Admin\Product;
 use App\Models\Admin\Wishlist;
 use App\Models\User\Order;
 use App\Models\User\OrderItem;
+use App\Notifications\OrderComplete;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Helper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
 
 class TemplateOneCartController extends Controller
 {
@@ -21,12 +26,21 @@ class TemplateOneCartController extends Controller
     {
         $product = Offer::findOrFail($id);
 
+        $cartItem = Cart::search(function ($cartItem, $rowId) use ($id) {
+            return $cartItem->id === $id;
+        });
+
+        if ($cartItem->isNotEmpty()) {
+
+            return response()->json(['error' => 'This Product Has Already Added']);
+        }
+        // dd($request->all());
         Cart::add([
 
             'id' => $id,
-            'name' => $request->name,
+            'name' => $request->product_name,
             'qty' => $request->quantity,
-            'price' => $product->price,
+            'price' => $request->price,
             'weight' => 1,
             'options' => [
                 'image' => $product->offer_image,
@@ -34,7 +48,7 @@ class TemplateOneCartController extends Controller
             ],
         ]);
 
-        return response()->json(['success' => 'Successfully Buy on Your Cart']);
+        return response()->json(['success' => 'Successfully Add on Your Cart']);
 
     }
 
@@ -42,6 +56,15 @@ class TemplateOneCartController extends Controller
     public function BuyToCartTemplateOne(Request $request, $id)
     {
         $product = Product::findOrFail($id);
+
+        $cartItem = Cart::search(function ($cartItem, $rowId) use ($id) {
+            return $cartItem->id === $id;
+        });
+
+        if ($cartItem->isNotEmpty()) {
+
+            return response()->json(['error' => 'This Product Has Already Added']);
+        }
 
         if ($product->price_status == 'rfq') {
 
@@ -99,6 +122,80 @@ class TemplateOneCartController extends Controller
     {
         $product = Product::findOrFail($id);
 
+        $cartItem = Cart::search(function ($cartItem, $rowId) use ($id) {
+            return $cartItem->id === $id;
+        });
+
+        if ($cartItem->isNotEmpty()) {
+
+            return response()->json(['error' => 'This Product Has Already Added']);
+        }
+
+        if ($product->price_status == 'rfq') {
+
+            Cart::add([
+
+                'id' => $id,
+                'name' => $request->product_name,
+                'qty' => $request->quantity,
+                'price' => $product->sas_price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $product->product_image,
+                    'color' => $request->color,
+                ],
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        } elseif ($product->price_status == 'discount_price') {
+
+            Cart::add([
+
+                'id' => $id,
+                'name' => $request->product_name,
+                'qty' => $request->quantity,
+                'price' => $product->discount_price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $product->product_image,
+                    'color' => $request->color,
+                ],
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        } else {
+
+            Cart::add([
+
+                'id' => $id,
+                'name' => $request->product_name,
+                'qty' => $request->quantity,
+                'price' => $product->price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $product->product_image,
+                    'color' => $request->color,
+                ],
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        }
+    }
+
+    //Add To Cart Related
+    public function AddToCartTemplateOneRelated(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+
+        $cartItem = Cart::search(function ($cartItem, $rowId) use ($id) {
+            return $cartItem->id === $id;
+        });
+
+        if ($cartItem->isNotEmpty()) {
+
+            return response()->json(['error' => 'This Product Has Already Added']);
+        }
+
         if ($product->price_status == 'rfq') {
 
             Cart::add([
@@ -148,6 +245,22 @@ class TemplateOneCartController extends Controller
 
             return response()->json(['success' => 'Successfully Added on Your Cart']);
         }
+    }
+
+    // Add MiniCart TemplateOne Related
+    public function AddMiniCartTemplateOneRelated()
+    {
+
+        $carts = Cart::content();
+        $cartQty = Cart::count();
+        $cartTotal = Cart::total();
+
+        return response()->json(array(
+            'carts' => $carts,
+            'cartQty' => $cartQty,
+            'cartTotal' => $cartTotal,
+
+        ));
     }
 
     // Add MiniCart
@@ -223,18 +336,26 @@ class TemplateOneCartController extends Controller
     //Checkout Templat eOne
     public function CheckoutTemplateOne()
     {
-        if (Cart::total() > 0) {
+        if (Auth::check()) {
 
-            $carts = Cart::content();
-            $cartTotal = Cart::total();
-            $cartQty = Cart::count();
+            if (Cart::total() > 0) {
 
-            return view('frontend.template_one.cart.checkout', compact('carts', 'cartTotal', 'cartQty'));
+                $carts = Cart::content();
+                $cartQty = Cart::count();
+                $cartTotal = Cart::total();
 
+                return view('frontend.template_one.cart.checkout', compact('carts', 'cartQty', 'cartTotal'));
+            } else {
+
+                toastr()->error('You Need to Login First');
+
+                return redirect()->to('/');
+            }
         } else {
 
-            toastr()->error('Shopping At list One Product');
-            return redirect()->to('/');
+            toastr()->error('You Need to Login First');
+
+            return redirect()->route('template.one.login');
         }
 
     }
@@ -242,9 +363,12 @@ class TemplateOneCartController extends Controller
     public function CheckoutStoreTemplateOne(Request $request)
     {
         //dd($request->all());
+
+        $admin = Admin::where('status', 1)->get();
+
         $order_id = Order::insertGetId([
 
-            //'user_id' => Auth::id(),
+            'user_id' => Auth::id(),
 
             'billing_name' => $request->billing_name,
             'billing_address_line1' => $request->billing_address_line1,
@@ -265,13 +389,34 @@ class TemplateOneCartController extends Controller
             'invoice_number' => 'DV' . mt_rand(10000000, 99999999),
             'order_number' => Helper::generateOrderNumber(),
 
-            'order_date' => Carbon::now()->format('dmy'),
+            'order_date' => Carbon::now()->format('d F Y'),
             'order_month' => Carbon::now()->format('F'),
             'order_year' => Carbon::now()->format('Y'),
 
             'created_at' => Carbon::now(),
 
         ]);
+
+        //Send Mail
+        $invoice = Order::findOrFail($order_id);
+
+        $data = [
+
+            'invoice_number' => $invoice->invoice_number,
+            'total_amount' => $invoice->total_amount,
+            'billing_name' => $invoice->billing_name,
+            'billing_email' => $invoice->billing_email,
+            'billing_phone' => $invoice->billing_phone,
+            'billing_address_line1' => $invoice->billing_address_line1,
+
+        ];
+
+        Mail::to($request->billing_email)->send(new OrderMail($data));
+        //End Send Mail
+
+        //Notification
+        Notification::send($admin, new OrderComplete($request->billing_name));
+        //Notification
 
         $carts = Cart::content();
         foreach ($carts as $cart) {

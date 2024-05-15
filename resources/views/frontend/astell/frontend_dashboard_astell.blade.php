@@ -7,21 +7,25 @@
 
     <div class="overlay"></div>
 
-    <div class="line-bg">
-        <span class="line1"></span>
-        <span class="line2"></span>
-        <span class="line3"></span>
-        <span class="line4"></span>
-        <span class="line5"></span>
-        <span class="line6"></span>
-        <span class="line7"></span>
-        <span class="line8"></span>
-        <span class="line9"></span>
-        <span class="line10"></span>
-    </div>
+    @if (Route::is('index'))
+        <div class="line-bg">
+            <span class="line1"></span>
+            <span class="line2"></span>
+            <span class="line3"></span>
+            <span class="line4"></span>
+            <span class="line5"></span>
+            <span class="line6"></span>
+            <span class="line7"></span>
+            <span class="line8"></span>
+            <span class="line9"></span>
+            <span class="line10"></span>
+        </div>
+    @endif
+
+
 
     <div class="body-wrap">
-        
+
         <div class="side-group">
             <div class="quick">
                 <a href="#" class="btn-star"></a>
@@ -34,7 +38,10 @@
         </div>
 
         <!--Header//-->
+        {{-- @if (Route::is('index')) --}}
         @include('frontend.astell.partials.header')
+        {{-- @endif --}}
+
         <!--//Header-->
 
         <!--Content//-->

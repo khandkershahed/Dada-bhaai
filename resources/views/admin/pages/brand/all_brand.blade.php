@@ -32,8 +32,13 @@
             <!--begin::Actions-->
             <div class="d-flex align-items-center gap-2 gap-lg-3">
 
-                <a data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-light-primary btn-sm">Add
-                    Brand</a>
+                @if (Auth::guard('admin')->user()->can('add.brand'))
+                    <a href="" data-bs-toggle="modal" data-bs-target="#addModal"
+                        class="btn btn-light-primary btn-sm">Add
+                        Brand</a>
+                @endif
+
+
 
             </div>
             <!--end::Actions-->
@@ -78,17 +83,21 @@
                                     </td>
                                     <td>
 
-                                        @if ($brand->status == 1)
-                                            <a href="{{ route('brand.inactive', $brand->id) }}" title="Inactive"><i
-                                                    class="bi bi-hand-thumbs-down text-danger fs-3"></i></a>
-                                        @else
-                                            <a href="{{ route('brand.active', $brand->id) }}" title="Active"><i
-                                                    class="bi bi-hand-thumbs-up text-success fs-3"></i></a>
+                                        @if (Auth::guard('admin')->user()->can('status.brand'))
+                                            @if ($brand->status == 1)
+                                                <a href="{{ route('brand.inactive', $brand->id) }}" title="Inactive"><i
+                                                        class="bi bi-hand-thumbs-down text-danger fs-3"></i></a>
+                                            @else
+                                                <a href="{{ route('brand.active', $brand->id) }}" title="Active"><i
+                                                        class="bi bi-hand-thumbs-up text-success fs-3"></i></a>
+                                            @endif
                                         @endif
 
-                                        <a href="" data-bs-toggle="modal"
-                                            data-bs-target="#editModal{{ $brand->id }}" class="ms-1" title="Edit"><i
-                                                class="bi bi-pencil-square fs-3 text-primary"></i></a>
+                                        @if (Auth::guard('admin')->user()->can('edit.brand'))
+                                            <a href="" data-bs-toggle="modal"
+                                                data-bs-target="#editModal{{ $brand->id }}" class="ms-1"
+                                                title="Edit"><i class="bi bi-pencil-square fs-3 text-primary"></i></a>
+                                        @endif
 
                                         {{-- Edit Modal --}}
 
@@ -170,8 +179,12 @@
                                             </div>
                                         </div>
 
-                                        <a href="{{ route('delete.brand', $brand->id) }}" class="ms-1" id="delete"
-                                            title="Delete"><i class="bi bi-trash3-fill fs-3 text-danger"></i></a>
+                                        @if (Auth::guard('admin')->user()->can('delete.brand'))
+                                            <a href="{{ route('delete.brand', $brand->id) }}" class="ms-1"
+                                                id="delete" title="Delete"><i
+                                                    class="bi bi-trash3-fill fs-3 text-danger"></i></a>
+                                        @endif
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -284,5 +297,4 @@
                 ">"
         });
     </script>
-
 @endsection

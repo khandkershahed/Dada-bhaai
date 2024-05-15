@@ -16,10 +16,10 @@ class RoleController extends Controller
     //All Permission
     public function AllPermission()
     {
-        $permissions = Permission::orderBy('group_name','ASC')->get();
-        $groups = GroupName::orderBy('group_name','ASC')->latest()->get();
+        $permissions = Permission::orderBy('group_name', 'ASC')->get();
+        $groups = GroupName::orderBy('group_name', 'ASC')->latest()->get();
 
-        return view('admin.pages.roles.all_permission', compact('permissions','groups'));
+        return view('admin.pages.roles.all_permission', compact('permissions', 'groups'));
     }
 
     //Store Permission
@@ -38,9 +38,9 @@ class RoleController extends Controller
     public function EditPermission($id)
     {
         $permissions = Permission::find($id);
-        $groups = GroupName::orderBy('group_name','ASC')->latest()->get();
+        $groups = GroupName::orderBy('group_name', 'ASC')->latest()->get();
 
-        return view('admin.pages.roles.edit_permission', compact('permissions','groups'));
+        return view('admin.pages.roles.edit_permission', compact('permissions', 'groups'));
     }
 
     //Update Permission
@@ -73,7 +73,7 @@ class RoleController extends Controller
     //All Permission
     public function AllGroupName()
     {
-        $groups = GroupName::orderBy('group_name','ASC')->latest()->get();
+        $groups = GroupName::orderBy('group_name', 'ASC')->latest()->get();
         return view('admin.pages.roles.groupname.all_group_name', compact('groups'));
     }
 
@@ -88,21 +88,21 @@ class RoleController extends Controller
         return redirect()->route('all.group.name');
     }
 
-     //Update GroupName
-     public function UpdateGroupName(Request $request)
-     {
-         $id = $request->id;
- 
-         GroupName::find($id)->update([
-             'group_name' => strtolower($request->group_name),
-         ]);
- 
-         toastr()->success('Group Name Update Successfully');
- 
-         return redirect()->route('all.group.name');
-     }
+    //Update GroupName
+    public function UpdateGroupName(Request $request)
+    {
+        $id = $request->id;
 
-     //Delete Permission
+        GroupName::find($id)->update([
+            'group_name' => strtolower($request->group_name),
+        ]);
+
+        toastr()->success('Group Name Update Successfully');
+
+        return redirect()->route('all.group.name');
+    }
+
+    //Delete Permission
     public function DeleteGroupName($id)
     {
         GroupName::find($id)->delete();

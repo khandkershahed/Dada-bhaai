@@ -61,6 +61,27 @@
 
                         <input type="hidden" name="id" value="{{ $home->id }}">
 
+                        <div class="row mb-4">
+                            <div class="col-4 shadow-sm bg-white p-3">
+
+                                <label for="" class="mb-3">Status</label>
+                                <select name="status" id="" class="form-select form-select-sm" required>
+                                    <option selected disabled>Choose Tamplate</option>
+
+                                    <option value="tamplate_one"
+                                        {{ $home->status == 'tamplate_one' ? 'selected' : '' }}>Template One</option>
+
+                                    <option value="tamplate_two"
+                                        {{ $home->status == 'tamplate_two' ? 'selected' : '' }}>Template Two</option>
+
+                                    <option value="tamplate_three"
+                                        {{ $home->status == 'tamplate_three' ? 'selected' : '' }}>Template Three
+                                    </option>
+
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="row">
 
                             {{-- Video Area --}}
@@ -324,11 +345,24 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-12 mb-2">
+                                                    <div class="col-8 mb-2">
                                                         <div class="form-group">
                                                             <label for="" class="mb-2">One Description</label>
                                                             <textarea name="image_slider_one_description" id="" cols="2" rows="2" class="form-control">{{ $home->image_slider_one_description }}</textarea>
 
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-4 mb-2">
+                                                        <div class="form-group">
+                                                            <label for="">Image Slider One</label>
+        
+                                                            <input type="file" class="form-control form-control-sm mt-2"
+                                                                name="image_slider_one_image">
+        
+                                                            <img src="{{ asset('upload/home/' . $home->image_slider_one_image) }}"
+                                                                style="width: 50px;height:50px;" class="mt-2" alt="">
+        
                                                         </div>
                                                     </div>
 
@@ -402,11 +436,24 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-12 mb-2">
+                                                    <div class="col-8 mb-2">
                                                         <div class="form-group">
                                                             <label for="" class="mb-2">Two Description</label>
                                                             <textarea name="image_slider_two_description" id="" cols="2" rows="2" class="form-control">{{ $home->image_slider_two_description }}</textarea>
 
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-4 mb-2">
+                                                        <div class="form-group">
+                                                            <label for="">Image Slider Two</label>
+        
+                                                            <input type="file" class="form-control form-control-sm mt-2"
+                                                                name="image_slider_two_image">
+        
+                                                            <img src="{{ asset('upload/home/' . $home->image_slider_two_image) }}"
+                                                                style="width: 50px;height:50px;" class="mt-2" alt="">
+        
                                                         </div>
                                                     </div>
 
@@ -478,11 +525,24 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-12 mb-2">
+                                                    <div class="col-8 mb-2">
                                                         <div class="form-group">
                                                             <label for="" class="mb-2">Three Description</label>
                                                             <textarea name="image_slider_three_description" id="" cols="2" rows="2" class="form-control">{{ $home->image_slider_three_description }}</textarea>
 
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-4 mb-2">
+                                                        <div class="form-group">
+                                                            <label for="">Image Slider Three</label>
+        
+                                                            <input type="file" class="form-control form-control-sm mt-2"
+                                                                name="image_slider_three_image">
+        
+                                                            <img src="{{ asset('upload/home/' . $home->image_slider_three_image) }}"
+                                                                style="width: 50px;height:50px;" class="mt-2" alt="">
+        
                                                         </div>
                                                     </div>
 

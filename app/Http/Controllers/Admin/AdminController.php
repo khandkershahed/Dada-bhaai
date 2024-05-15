@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\Admin\Offer;
+use App\Models\Admin\Product;
+use App\Models\User;
 use App\Models\Admin\EmployeeCategory;
 use App\Models\Admin\EmployeeDept;
 use App\Models\Admin\EmployeeInformation;
+use App\Models\User\Order;
 use Helper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,13 +18,27 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Spatie\Permission\Models\Role;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
     //Admin Dashboard
     public function AdminDashboard()
     {
-        return view('admin.index');
+        $profileDatas = Admin::latest()->get();
+
+        $totalUser = User::latest()->get();
+        $totalProduct = Product::where('status','1')->latest()->get();
+        $daliyRevenue = Order::where('order_date',Carbon::now()->format('d F Y'))->sum('total_amount');
+        $totalEmployee = Admin::latest()->get();
+
+        $orders = Order::where('order_date',Carbon::now()->format('d F Y'))->latest()->get(); 
+        $monthOrders = Order::where('order_month',Carbon::now()->format('F'))->limit(10)->latest()->get(); 
+        $yearOrders = Order::where('order_year',Carbon::now()->format('Y'))->limit(9)->latest()->get(); 
+
+        $offers = Offer::latest()->get();
+
+        return view('admin.index',compact('orders','monthOrders','yearOrders','profileDatas','totalUser','totalProduct','daliyRevenue','totalEmployee','offers'));
     }
 
     //AdminProfile
@@ -84,7 +102,7 @@ class AdminController extends Controller
     }
 
     //Admin Password
-    public function AdmiPasswordPage()
+    public function AdminPasswordPage()
     {
         $id = Auth::guard('admin')->user()->id;
         $profileData = Admin::find($id);
@@ -543,6 +561,48 @@ class AdminController extends Controller
         toastr()->success('Employee Form Delete Successfully');
         return redirect()->route('all.employee.details');
 
+    }
+
+    //All User
+    public function AllUser()
+    {
+        $users = User::latest()->get();
+
+        return view('admin.pages.user.all_user', compact('users'));
+    }
+
+    //Inactive User
+    public function InactiveUserAdmin($id)
+    {
+        User::find($id)->update([
+            'status' => '0',
+        ]);
+
+        toastr()->success('User Inactive Successfully');
+
+        return redirect()->back();
+    }
+
+    //Active User
+    public function ActiveUserAdmin($id)
+    {
+
+        User::find($id)->update([
+            'status' => '1',
+        ]);
+
+        toastr()->success('User Active Successfully');
+
+        return redirect()->back();
+    }
+
+    //Delete Category
+    public function DeleteUser($id)
+    {
+        User::find($id)->delete();
+
+        toastr()->success('User Delete Successfully');
+        return redirect()->back();
     }
 
 }

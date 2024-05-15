@@ -3,9 +3,9 @@
     <div class="container-fluid">
         <!--begin::Copyright-->
         <div class="text-dark order-2 order-md-1">
-            <span class="text-muted fw-bold me-1">2024</span>
-            <a href="javascript:;" target="_blank"
-                class="text-gray-800 text-hover-primary">Ecommerce</a>
+            <span class="text-muted fw-bold me-1"></span>
+            <a href="https://www.dadabhaai.com/" target="_blank"
+                class="text-gray-800 text-hover-primary">Copyright 2024 DadaBhaai All Rights Reserved.</a>
         </div>
         <!--end::Copyright-->
 

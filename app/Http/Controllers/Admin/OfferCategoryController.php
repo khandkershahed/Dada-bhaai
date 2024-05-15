@@ -167,6 +167,7 @@ class OfferCategoryController extends Controller
                 'slug' => strtolower(str_replace('-', '', $request->name)),
 
                 'offer_category_id' => $request->offer_category_id,
+                'offer_name' => $request->offer_name,
 
                 'price' => $request->price,
                 'discount_price' => $request->discount_price,
@@ -185,9 +186,10 @@ class OfferCategoryController extends Controller
                 Offer::insert([
 
                     'name' => $request->name,
-                    'slug' => strtolower(str_replace('-', '', $request->name)),
+                    'slug' => strtolower(str_replace('-', ' ', $request->name)),
 
                     'offer_category_id' => $request->offer_category_id,
+                    'offer_name' => $request->offer_name,
 
                     'price' => $request->price,
                     'discount_price' => $request->discount_price,
@@ -242,6 +244,7 @@ class OfferCategoryController extends Controller
                 'slug' => strtolower(str_replace('-', '', $request->name)),
 
                 'offer_category_id' => $request->offer_category_id,
+                'offer_name' => $request->offer_name,
 
                 'price' => $request->price,
                 'discount_price' => $request->discount_price,

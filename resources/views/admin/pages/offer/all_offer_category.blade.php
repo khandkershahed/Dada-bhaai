@@ -34,8 +34,11 @@
             <!--begin::Actions-->
             <div class="d-flex align-items-center gap-2 gap-lg-3">
 
-                <a href="" class="btn btn-light-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addModal">Add
-                    Offer Category</a>
+                @if (Auth::guard('admin')->user()->can('add.offer'))
+                    <a href="" class="btn btn-light-primary btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#addModal">Add
+                        Offer Category</a>
+                @endif
 
             </div>
             <!--end::Actions-->
@@ -82,17 +85,23 @@
 
                                     <td>
 
-                                        @if ($offercat->status == 1)
-                                            <a href="{{ route('offer.inactive.category', $offercat->id) }}"
-                                                title="Inactive"><i class="bi bi-hand-thumbs-down text-danger fs-3"></i></a>
-                                        @else
-                                            <a href="{{ route('offer.active.category', $offercat->id) }}" title="Active"><i
-                                                    class="bi bi-hand-thumbs-up text-success fs-3"></i></a>
+                                        @if (Auth::guard('admin')->user()->can('status.offer'))
+                                            @if ($offercat->status == 1)
+                                                <a href="{{ route('offer.inactive.category', $offercat->id) }}"
+                                                    title="Inactive"><i
+                                                        class="bi bi-hand-thumbs-down text-danger fs-3"></i></a>
+                                            @else
+                                                <a href="{{ route('offer.active.category', $offercat->id) }}"
+                                                    title="Active"><i
+                                                        class="bi bi-hand-thumbs-up text-success fs-3"></i></a>
+                                            @endif
                                         @endif
 
-                                        <a href="" data-bs-toggle="modal"
-                                            data-bs-target="#editModal{{ $offercat->id }}" class="ms-1" title="Edit"><i
-                                                class="bi bi-pencil-square fs-3 text-primary"></i></a>
+                                        @if (Auth::guard('admin')->user()->can('edit.offer'))
+                                            <a href="" data-bs-toggle="modal"
+                                                data-bs-target="#editModal{{ $offercat->id }}" class="ms-1"
+                                                title="Edit"><i class="bi bi-pencil-square fs-3 text-primary"></i></a>
+                                        @endif
 
                                         {{-- Edit Modal --}}
 
@@ -161,9 +170,13 @@
                                             </div>
                                         </div>
 
-                                        <a href="{{ route('delete.offer.category', $offercat->id) }}" class="ms-1"
-                                            id="delete" title="Delete"><i
-                                                class="bi bi-trash3-fill fs-3 text-danger"></i></a>
+                                        @if (Auth::guard('admin')->user()->can('delete.offer'))
+                                            <a href="{{ route('delete.offer.category', $offercat->id) }}" class="ms-1"
+                                                id="delete" title="Delete"><i
+                                                    class="bi bi-trash3-fill fs-3 text-danger"></i></a>
+                                        @endif
+
+
                                     </td>
                                 </tr>
                             @endforeach

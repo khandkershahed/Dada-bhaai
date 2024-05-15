@@ -1,5 +1,9 @@
 @php
+<<<<<<< HEAD
     $categorys = App\Models\Admin\Category::where('status', '1')->orderBy('id', 'DESC')->limit(4)->get();
+=======
+    $categorys = App\Models\Admin\Category::where('status', '1')->orderBy('id','DESC')->limit(5)->get();
+>>>>>>> 202353e99b5117f2cd83076ae8f750f173d07041
 @endphp
 
 
@@ -70,6 +74,7 @@
                                                         onclick="addToWishList(this.id)"><i
                                                             class="fas fa-heart"></i></a>
                                                     <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
+<<<<<<< HEAD
                                                         class="add-to-cart"><i class="fas fa-shopping-cart"></i> add to
                                                         cart</a>
                                                     <a href="#"><i class="fas fa-random"></i></a>
@@ -82,6 +87,13 @@
                                                             href="#">{{ $product->product_name }}</a>
                                                     </h3>
                                                     <div class="price w-25 text-right">
+=======
+                                                        class="btn btn-primary btn-sm">
+                                                        Add To Cart Details
+                                                    </a>
+
+                                                    <div class="price">
+>>>>>>> 202353e99b5117f2cd83076ae8f750f173d07041
                                                         @if ($product->price_status == 'rfq')
                                                             <h5 class="grenadier-color fw-bold">
                                                                 Tk {{ $product->sas_price }}
@@ -96,6 +108,21 @@
                                                         @endif
                                                     </div>
                                                 </div>
+<<<<<<< HEAD
+=======
+
+                                            </div>
+                                            <div class="product-action">
+
+                                                <a style="cursor: pointer;" id="{{$product->id}}" onclick="addToWishList(this.id)"><span class="lnr lnr-heart"></span></a>
+
+                                                {{-- <a href="#"><span class="lnr lnr-eye"></span></a> --}}
+                                                <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"><span
+                                                        class="lnr lnr-cart"></span></a>
+
+                                                {{-- <a href="#"><span class="lnr lnr-sync"></span></a> --}}
+
+>>>>>>> 202353e99b5117f2cd83076ae8f750f173d07041
                                             </div>
                                         </div>
                                     @empty

@@ -697,7 +697,7 @@
                                             </li>
                                             <li role="separator" class="divider"></li>
                                             <li>
-                                                <a href="{{ route('faq') }}">
+                                                <a href="">
                                                     Help &amp; FAQ</a>
                                             </li>
                                             <li>
@@ -707,12 +707,12 @@
                                             </li>
                                             <li role="separator" class="divider"></li>
                                             <li>
-                                                <a href="{{ route('contact.user') }}">
+                                                <a href="">
                                                     Contact Us
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('about.page') }}">
+                                                <a href="">
                                                     About Us
                                                 </a>
                                             </li>

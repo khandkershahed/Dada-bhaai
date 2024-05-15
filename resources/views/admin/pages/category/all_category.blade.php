@@ -33,9 +33,19 @@
             <div class="d-flex align-items-center gap-2 gap-lg-3">
 
                 <!--begin::Primary button-->
-                <a href="{{ route('all.category') }}" class="btn btn-sm btn-light-primary">Category</a>
-                <a href="{{ route('all.subcategory') }}" class="btn btn-sm btn-light-info">Sub Category</a>
-                <a href="{{ route('all.childcategory') }}" class="btn btn-sm btn-light-dark">Child Category</a>
+
+                @if (Auth::guard('admin')->user()->can('all.category'))
+                    <a href="{{ route('all.category') }}" class="btn btn-sm btn-light-primary">Category</a>
+                @endif
+
+                @if (Auth::guard('admin')->user()->can('all.subcategory'))
+                    <a href="{{ route('all.subcategory') }}" class="btn btn-sm btn-light-info">Sub Category</a>
+                @endif
+
+                @if (Auth::guard('admin')->user()->can('all.childcategory'))
+                    <a href="{{ route('all.childcategory') }}" class="btn btn-sm btn-light-dark">Child Category</a>
+                @endif
+
                 <!--end::Primary button-->
 
             </div>
@@ -59,8 +69,10 @@
                     <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
 
                         <!--begin::Add product-->
-                        <a data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-light-primary btn-sm">Add
-                            Category</a>
+                        @if (Auth::guard('admin')->user()->can('add.category'))
+                            <a data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-light-primary btn-sm">Add
+                                Category</a>
+                        @endif
                         <!--end::Add product-->
 
                     </div>
@@ -101,19 +113,26 @@
                                     </td>
                                     <td>
 
-                                        @if ($category->status == 1)
-                                            <a href="{{ route('category.inactive', $category->id) }}" title="Inactive"><i
-                                                    class="bi bi-hand-thumbs-down text-danger fs-3"></i></a>
-                                        @else
-                                            <a href="{{ route('category.active', $category->id) }}" title="Active"><i
-                                                    class="bi bi-hand-thumbs-up text-success fs-3"></i></a>
+                                        @if (Auth::guard('admin')->user()->can('status.category'))
+                                            @if ($category->status == 1)
+                                                <a href="{{ route('category.inactive', $category->id) }}"
+                                                    title="Inactive"><i
+                                                        class="bi bi-hand-thumbs-down text-danger fs-3"></i></a>
+                                            @else
+                                                <a href="{{ route('category.active', $category->id) }}" title="Active"><i
+                                                        class="bi bi-hand-thumbs-up text-success fs-3"></i></a>
+                                            @endif
                                         @endif
 
                                         {{-- Edit Category Modal --}}
-                                        <a href="" class="ms-1" title="Edit" data-bs-toggle="modal"
-                                            data-bs-target="#editModal{{ $category->id }}" class="btn btn-primary btn-sm"><i
-                                                class="bi bi-pencil-square fs-3 text-primary"></i>
-                                        </a>
+                                        @if (Auth::guard('admin')->user()->can('edit.category'))
+                                            <a href="" class="ms-1" title="Edit" data-bs-toggle="modal"
+                                                data-bs-target="#editModal{{ $category->id }}"
+                                                class="btn btn-primary btn-sm"><i
+                                                    class="bi bi-pencil-square fs-3 text-primary"></i>
+                                            </a>
+                                        @endif
+
 
                                         <!-- EditModal -->
                                         <div class="modal fade" id="editModal{{ $category->id }}" tabindex="-1"
@@ -210,9 +229,12 @@
                                         </div>
                                         {{-- Edit Category Modal --}}
 
-                                        <a href="{{ route('delete.category', $category->id) }}" class="ms-1"
-                                            id="delete" title="Delete"><i
-                                                class="bi bi-trash3-fill fs-3 text-danger"></i></a>
+                                        @if (Auth::guard('admin')->user()->can('delete.category'))
+                                            <a href="{{ route('delete.category', $category->id) }}" class="ms-1"
+                                                id="delete" title="Delete"><i
+                                                    class="bi bi-trash3-fill fs-3 text-danger"></i></a>
+                                        @endif
+
                                     </td>
                                 </tr>
                             @endforeach

@@ -76,20 +76,16 @@
 
                                         <td>
 
-                                            {{-- <a href="{{ route('admin.about-us.edit', $item->id) }}"
-                                        class="text-primary">
-                                        <i class="ph-pen"></i>
-                                    </a>
-                                    <a href="{{ route('admin.about-us.destroy', [$item->id]) }}"
-                                        class="text-danger mx-2 delete">
-                                        <i class="ph-trash"></i>
-                                    </a> --}}
+                                            @if (Auth::guard('admin')->user()->can('edit.about'))
+                                                <a href="{{ route('edit.about', $about->id) }}" class="ms-1"
+                                                    title="Edit"><i class="bi bi-pencil-square fs-3 text-primary"></i></a>
+                                            @endif
 
-                                            <a href="{{ route('edit.about', $about->id) }}" class="ms-1" title="Edit"><i
-                                                    class="bi bi-pencil-square fs-3 text-primary"></i></a>
-
-                                            <a href="{{ route('delete.about', $about->id) }}" class="ms-1" id="delete"
-                                                title="Delete"><i class="bi bi-trash3-fill fs-3 text-danger"></i></a>
+                                            @if (Auth::guard('admin')->user()->can('delete.about'))
+                                                <a href="{{ route('delete.about', $about->id) }}" class="ms-1"
+                                                    id="delete" title="Delete"><i
+                                                        class="bi bi-trash3-fill fs-3 text-danger"></i></a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

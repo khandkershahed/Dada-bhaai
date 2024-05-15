@@ -100,6 +100,8 @@
 
                                 </div>
                             </div>
+
+                            {{-- Side Bar Price Section --}}
                             <div class="col-lg-5 col-md-6 order-2 order-lg-3">
                                 <div class="cart-wrapper">
                                     <div class="cart-title">
@@ -108,6 +110,26 @@
                                         </h6>
                                     </div>
                                     <div class="mb-20 row">
+
+                                        <div class="col-lg-12 mb-3">
+                                            <label class="mb-0">Color:</label>
+                                            <div class="number d-flex align-items-center">
+
+                                                <select name="dcolor" id="dcolor" class="form-select">
+                                                    <option selected disabled>Choose Color</option>
+
+                                                    @foreach ($product_colors as $color)
+                                                        <option value="{{ $color }}">
+                                                            {{ App\Models\Admin\Color::where('id', $color)->value('color_name') }}
+                                                        </option>
+                                                    @endforeach
+
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+
                                         <div class="col-lg-6">
                                             {{-- <del>$3,200.55</del> --}}
                                             <h5>Price</h5>
@@ -138,28 +160,12 @@
 
                                     </div>
 
-                                    {{-- <div class="mb-4">
+                                    <div class="mb-4">
                                         <p class="mb-0">Accessories</p>
-                                        <div>
-                                            <ul style="list-style-type: circle !important;">
-                                                <li class="d-flex mb-2 align-items-center">
-                                                    <span class="pr-2">1.</span>
-                                                    <input type="text" class="form-control form-control-sm w-100"
-                                                        name="" id="" placeholder="Blue Color Headset" />
-                                                    <input type="number" class="form-control form-control-sm w-25"
-                                                        name="" id="" placeholder="1" />
-                                                </li>
-                                            </ul>
-                                            <li class="d-flex mb-2 align-items-center">
-                                                <span class="pr-2">2.</span>
-                                                <input type="text" class="form-control form-control-sm w-100"
-                                                    name="" id="" placeholder="Blue Color Headset" />
-                                                <input type="number" class="form-control form-control-sm w-25"
-                                                    name="" id="" placeholder="1" />
-                                            </li>
-                                            </ul>
-                                        </div>
-                                    </div> --}}
+
+                                        <div id="miniCartRelated"></div>
+
+                                    </div>
 
                                     <div class="d-flex align-items-center">
 
@@ -169,7 +175,9 @@
                                         <a type="submit" onclick="addToCartOne()" class="cart-button w-100 mt-0">Add
                                             Cart</a>
 
-                                        <a type="submit" onclick="buyToCartOne()" class="cart-button w-100 ml-3 mt-0">Buy Now</a>
+                                        <a type="submit" onclick="buyToCartOne()"
+                                            class="cart-button w-100 ml-3 mt-0">Buy
+                                            Now</a>
 
                                     </div>
 
@@ -179,6 +187,8 @@
                                     </div> --}}
                                 </div>
                             </div>
+                            {{-- Side Bar Price Section --}}
+
                         </div>
                         <div class="row">
 
@@ -208,13 +218,26 @@
                                                 <div class="container">
                                                     <div class="row align-items-center">
                                                         <div class="col-lg-12 p-1" style="background-color: #eee">
-                                                            <small class="text-black">{{ $product->product_name }}</small>
+                                                            <small id="drpname"
+                                                                class="text-black">{{ $product->product_name }}</small>
                                                         </div>
 
                                                         <div class="col-lg-6 p-0">
 
-                                                            <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
+                                                            <input type="hidden" class="mb-0  border-1" name=""
+                                                                value="1" min="1" id="drqty"
+                                                                style="width: 50px" />
+
+                                                            {{-- <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
+                                                                class="btn btn-primary btn-sm">+Add</a> --}}
+
+                                                            <input type="hidden" id="onerproduct_id"
+                                                                value="{{ $product->id }}">
+
+                                                            <a type="submit" onclick="addToCartOneRelated()"
                                                                 class="btn btn-primary btn-sm">+Add</a>
+
+
 
                                                         </div>
 
@@ -443,12 +466,16 @@
 
                                     </div>
                                     <div class="product-action">
-                                        <a href="#"><span class="lnr lnr-heart"></span></a>
+
+                                        <a style="cursor: pointer;" id="{{$product->id}}" onclick="addToWishList(this.id)"><span class="lnr lnr-heart"></span></a>
+
                                         {{-- <a href="#"><span class="lnr lnr-eye"></span></a> --}}
                                         <a
                                             href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"><span
                                                 class="lnr lnr-cart"></span></a>
-                                        <a href="#"><span class="lnr lnr-sync"></span></a>
+
+                                        {{-- <a href="#"><span class="lnr lnr-sync"></span></a> --}}
+
                                     </div>
                                 </div>
 

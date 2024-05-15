@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminAuth\PasswordResetLinkController;
 use App\Http\Controllers\AdminAuth\VerifyEmailController;
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ChargeController;
 use App\Http\Controllers\Admin\ChildCategoryController;
@@ -96,16 +97,51 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     Route::get('/delete/employee-details/{id}', [AdminController::class, 'DeleteEmployeeDetails'])->name('delete.employee.details');
 
     //Admin Password
-    Route::get('/admin-password', [AdminController::class, 'AdmiPasswordPage'])->name('admin.password.page');
+    Route::get('/admin-password', [AdminController::class, 'AdminPasswordPage'])->name('admin.password.page');
     Route::post('/admin/password/update/submit', [AdminController::class, 'AdminPasswordUpdateSubmit'])->name('admin.password.update.submit');
+
+    //All User
+    Route::get('/all-user', [AdminController::class, 'AllUser'])->name('all.user');
+    Route::get('/delete-user/{id}', [AdminController::class, 'DeleteUser'])->name('delete.user');
+
+    //Active Or Inactive
+    Route::get('/admin/user-inactive/{id}', [AdminController::class, 'InactiveUserAdmin'])->name('user.inactive.admin');
+    Route::get('/admin/user-active/{id}', [AdminController::class, 'ActiveUserAdmin'])->name('user.active.admin');
 });
 
-Route::middleware(['auth:admin', 'verified'])->group(function () {
+Route::middleware(['auth:admin','verified'])->group(function () {
+
+    //Order Section
+    Route::controller(AdminOrderController::class)->prefix('admin-order')->group(function () {
+
+        Route::get('/order', 'AdminAllOrder')->name('admin.all.order')->middleware('permission:all.order');
+        Route::get('/order-details/{id}', 'AdminOrderDetails')->name('admin.order.details');
+
+        //Processing
+        Route::get('/order-processing', 'AdminProcessingOrder')->name('all.processing.order');
+        //Shipped
+        Route::get('/order-shipped', 'AdminShippedOrder')->name('all.shipped.order');
+        //Deliver
+        Route::get('/order-deliver', 'AdminDeliverOrder')->name('all.delivered.order');
+        //Cancel
+        Route::get('/order-cancel', 'AdminCancelOrder')->name('all.cancel.order');
+
+        //Order Status Change
+        Route::get('/order-status/{id}', 'AdminOrderStatusChange')->name('admin.order.status');
+
+        Route::get('/multi-order-status-update-store', 'multuOrderStatusUpdate')->name('multuOrderStatusUpdate');
+
+        //Invoice
+        Route::get('/order-invoice/{id}', 'AdminOrderInvoice')->name('admin.order.invoice');
+
+        //Delete
+        Route::get('/order-delete/{id}', 'AdminOrderDelete')->name('admin.order.delete');
+    });
 
     //Product Section
     Route::controller(ProductController::class)->group(function () {
 
-        Route::get('/all/product', 'AllProduct')->name('all.product');
+        Route::get('/all/product', 'AllProduct')->name('all.product')->middleware('permission:all.product');
         Route::get('/add/product', 'AddProduct')->name('add.product');
         Route::post('/store/product', 'StoreProduct')->name('store.product');
         Route::get('/edit/product/{id}', 'EditProduct')->name('edit.product');
@@ -127,7 +163,7 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     //Shipping Charge
     Route::controller(ChargeController::class)->prefix('shipping')->group(function () {
 
-        Route::get('/all/charge', 'AllShippingCharge')->name('all.shipping.charge');
+        Route::get('/all/charge', 'AllShippingCharge')->name('all.shipping.charge')->middleware('permission:all.shipping');
         Route::post('/store/charge', 'StoreShippingCharge')->name('store.shipping.charge');
         Route::post('/update/charge', 'UpdateShippingCharge')->name('update.shipping.charge');
         Route::get('/delete/charge/{id}', 'DeleteShippingCharge')->name('delete.shipping.charge');
@@ -140,7 +176,7 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     //Shipping Charge
     Route::controller(CouponCrontroller::class)->prefix('coupon')->group(function () {
 
-        Route::get('/all', 'AllCoupon')->name('all.coupon');
+        Route::get('/all', 'AllCoupon')->name('all.coupon')->middleware('permission:all.coupon');
         Route::post('/store', 'StoreCoupon')->name('store.coupon');
         Route::post('/update', 'UpdateCoupon')->name('update.coupon');
         Route::get('/delete/{id}', 'DeleteCoupon')->name('delete.coupon');
@@ -153,7 +189,7 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     //Employee Dept Section
     Route::controller(EmployeeController::class)->prefix('employee')->group(function () {
 
-        Route::get('/all', 'AllDept')->name('all.dept');
+        Route::get('/all', 'AllDept')->name('all.dept')->middleware('permission:all.dept');
         Route::post('/store', 'StoreDept')->name('store.dept');
         Route::post('/update', 'UpdateDept')->name('update.dept');
         Route::get('/delete/{id}', 'DeleteDept')->name('delete.dept');
@@ -162,7 +198,7 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     //Employee Category Section
     Route::controller(EmployeeCategoryController::class)->prefix('employee-category')->group(function () {
 
-        Route::get('/all', 'AllEmployeeCategory')->name('all.employcat');
+        Route::get('/all', 'AllEmployeeCategory')->name('all.employcat')->middleware('permission:all.dept');
         Route::post('/store', 'StoreEmployeeCategory')->name('store.employcat');
         Route::post('/update', 'UpdateEmployeeCategory')->name('update.employcat');
         Route::get('/delete/{id}', 'DeleteEmployeeCategory')->name('delete.employcat');
@@ -171,7 +207,7 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     //Color Section
     Route::controller(ColorController::class)->prefix('color')->group(function () {
 
-        Route::get('/all', 'AllColor')->name('all.color');
+        Route::get('/all', 'AllColor')->name('all.color')->middleware('permission:all.color');
         Route::post('/store', 'StoreColor')->name('store.color');
         Route::post('/update', 'UpdateColor')->name('update.color');
         Route::get('/delete/{id}', 'DeleteColor')->name('delete.color');
@@ -180,7 +216,7 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     //Sites Section
     Route::controller(SiteController::class)->prefix('sites')->group(function () {
 
-        Route::get('/all', 'AllSite')->name('all.sites');
+        Route::get('/all', 'AllSite')->name('all.sites')->middleware('permission:all.setting');
         Route::post('/update', 'UpdateSite')->name('update.site');
         Route::get('/edit/{id}', 'EditSite')->name('edit.site');
     });
@@ -188,7 +224,7 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     //Contact Section
     Route::controller(ContactController::class)->prefix('contact')->group(function () {
 
-        Route::get('/all', 'AllContact')->name('all.contact');
+        Route::get('/all', 'AllContact')->name('all.contact')->middleware('permission:all.contact');
         Route::post('/store', 'StoreContact')->name('store.contact');
         Route::post('/update', 'UpdateContact')->name('update.contact');
         Route::get('/delete/{id}', 'DeleteContact')->name('delete.contact');
@@ -197,7 +233,7 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     //Offer Category Section
     Route::controller(OfferCategoryController::class)->prefix('offer')->group(function () {
 
-        Route::get('/all', 'AllOffer')->name('all.offer');
+        Route::get('/all', 'AllOffer')->name('all.offer')->middleware('permission:all.offer');
         Route::post('/store', 'StoreOffer')->name('store.offer');
         Route::post('/update', 'UpdateOffer')->name('update.offer');
         Route::get('/delete/{id}', 'DeleteOffer')->name('delete.offer');
@@ -218,7 +254,7 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     //HomePage Section
     Route::controller(HomePageController::class)->prefix('home-page')->group(function () {
 
-        Route::get('/all', 'AllHome')->name('all.home');
+        Route::get('/all', 'AllHome')->name('all.home')->middleware('permission:all.home');
         Route::get('/edit/{id}', 'EditHome')->name('edit.home');
         Route::post('/update', 'UpdateHome')->name('update.home');
         Route::get('/delete/{id}', 'DeleteHome')->name('delete.home');
@@ -227,7 +263,7 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     //Single Page Section
     Route::controller(SinglePageController::class)->prefix('single-page')->group(function () {
 
-        Route::get('/all', 'AllSinglePage')->name('all.single.page');
+        Route::get('/all', 'AllSinglePage')->name('all.single.page')->middleware('permission:all.sproduct');
         Route::get('/add', 'AddSinglePage')->name('add.single.page');
         Route::post('/store', 'StoreSinglePage')->name('store.single.page');
         Route::get('/edit/{id}', 'EditSinglePage')->name('edit.single.page');
@@ -241,14 +277,14 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     //Template Section
     Route::controller(TemplateController::class)->prefix('template')->group(function () {
 
-        Route::get('/all', 'AllTemplate')->name('all.template');
+        Route::get('/all', 'AllTemplate')->name('all.template')->middleware('permission:all.template');
         Route::post('/update', 'UpdateTemplate')->name('update.template');
     });
 
     //About Section
     Route::controller(AboutController::class)->prefix('about')->group(function () {
 
-        Route::get('/all', 'AllAbout')->name('all.about');
+        Route::get('/all', 'AllAbout')->name('all.about')->middleware('permission:all.about');
         Route::get('/edit/{id}', 'EditAbout')->name('edit.about');
         Route::post('/update', 'UpdateAbout')->name('update.about');
         Route::get('/delete/{id}', 'DeleteAbout')->name('delete.about');
@@ -257,7 +293,7 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     //Faq Section
     Route::controller(FaqController::class)->prefix('faq')->group(function () {
 
-        Route::get('/all', 'AllFaq')->name('all.faq');
+        Route::get('/all', 'AllFaq')->name('all.faq')->middleware('permission:all.faq');
         Route::post('/store', 'StoreFaq')->name('store.faq');
         Route::post('/update', 'UpdateFaq')->name('update.faq');
         Route::get('/delete/{id}', 'DeleteFaq')->name('delete.faq');
@@ -282,7 +318,7 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     //Terms Section
     Route::controller(TermController::class)->prefix('terms')->group(function () {
 
-        Route::get('/all', 'AllTerm')->name('all.term');
+        Route::get('/all', 'AllTerm')->name('all.term')->middleware('permission:all.term');
         Route::get('/add', 'AddTerm')->name('add.term');
         Route::post('/store', 'StoreTerm')->name('store.term');
         Route::get('/edit/{id}', 'EditTerm')->name('edit.term');
@@ -297,7 +333,7 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     //Category Section
     Route::controller(CategoryController::class)->prefix('category')->group(function () {
 
-        Route::get('/all', 'AllCategory')->name('all.category');
+        Route::get('/all', 'AllCategory')->name('all.category')->middleware('permission:all.category');
         Route::post('/store', 'StoreCategory')->name('store.category');
         Route::post('/update', 'UpdateCategory')->name('update.category');
         Route::get('/delete/{id}', 'DeleteCategory')->name('delete.category');
@@ -310,7 +346,7 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     //SubCategory Section
     Route::controller(SubCategoryController::class)->group(function () {
 
-        Route::get('/all', 'AllSubCategory')->name('all.subcategory');
+        Route::get('/all', 'AllSubCategory')->name('all.subcategory')->middleware('permission:all.subcategory');
         Route::post('/store', 'StoreSubCategory')->name('store.subcategory');
         Route::post('/update', 'UpdateSubCategory')->name('update.subcategory');
         Route::get('/delete/{id}', 'DeleteSubCategory')->name('delete.subcategory');
@@ -326,7 +362,7 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     //ChildCategory Section
     Route::controller(ChildCategoryController::class)->prefix('ChildCategory')->group(function () {
 
-        Route::get('/all', 'AllChildCategory')->name('all.childcategory');
+        Route::get('/all', 'AllChildCategory')->name('all.childcategory')->middleware('permission:all.childcategory');
         Route::post('/store', 'StoreChildCategory')->name('store.childcategory');
         Route::post('/update', 'UpdateChildCategory')->name('update.childcategory');
         Route::get('/delete/{id}', 'DeleteChildCategory')->name('delete.childcategory');
@@ -339,7 +375,7 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     //Banner Section
     Route::controller(BannerController::class)->prefix('banner')->group(function () {
 
-        Route::get('/all', 'AllBanner')->name('all.banner');
+        Route::get('/all', 'AllBanner')->name('all.banner')->middleware('permission:all.banner');
         Route::post('/store', 'StoreBanner')->name('store.banner');
         Route::post('/update', 'UpdateBanner')->name('update.banner');
         Route::get('/delete/{id}', 'DeleteBanner')->name('delete.banner');
@@ -352,7 +388,7 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     //Brand Section
     Route::controller(BrandController::class)->prefix('brand')->group(function () {
 
-        Route::get('/all', 'AllBrand')->name('all.brand');
+        Route::get('/all', 'AllBrand')->name('all.brand')->middleware('permission:all.brand');
         Route::post('/store', 'StoreBrand')->name('store.brand');
         Route::post('/update', 'UpdateBrand')->name('update.brand');
         Route::get('/delete/{id}', 'DeleteBrand')->name('delete.brand');
@@ -366,27 +402,27 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     Route::controller(RoleController::class)->group(function () {
 
         //Permission
-        Route::get('/all/permission', 'AllPermission')->name('all.permission');
+        Route::get('/all/permission', 'AllPermission')->name('all.permission')->middleware('permission:all.role');
         Route::post('/store/permission', 'StorePermission')->name('store.permission');
         Route::get('/edit/permission/{id}', 'EditPermission')->name('edit.permission');
         Route::post('/update/permission', 'UpdatePermission')->name('update.permission');
         Route::get('/delete/permission/{id}', 'DeletePermission')->name('delete.permission');
 
         //Group Name
-        Route::get('/all/group-name', 'AllGroupName')->name('all.group.name');
+        Route::get('/all/group-name', 'AllGroupName')->name('all.group.name')->middleware('permission:all.role');
         Route::post('/store/group-name', 'StoreGroupName')->name('store.group.name');
         Route::post('/update/group-name', 'UpdateGroupName')->name('update.group.name');
         Route::get('/delete/group-name/{id}', 'DeleteGroupName')->name('delete.group.name');
 
         //Role
-        Route::get('/all/role', 'AllRole')->name('all.role');
+        Route::get('/all/role', 'AllRole')->name('all.role')->middleware('permission:all.role');
         Route::post('/store/role', 'StoreRole')->name('store.role');
         // Route::get('/edit/role/{id}', 'EditRole')->name('edit.role');
         Route::post('/update/role', 'UpdateRole')->name('update.role');
         Route::get('/delete/role/{id}', 'DeleteRole')->name('delete.role');
 
         //Role In Permission
-        Route::get('/add/roles/permission', 'AddRolesPermission')->name('add.roles.permission');
+        Route::get('/add/roles/permission', 'AddRolesPermission')->name('add.roles.permission')->middleware('permission:all.role');
         Route::post('/role/permission/store', 'RolePermissionStore')->name('store.roles.permission');
         Route::get('/all/roles/permission', 'AllRolesPermission')->name('all.roles.permission');
         Route::get('/admin/edit/roles/{id}', 'AdminRolesEdit')->name('admin.edit.roles');
@@ -394,7 +430,7 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
         Route::get('/admin/delete/roles/{id}', 'AdminRolesDelete')->name('admin.delete.roles');
 
         //Admin Role Permission
-        Route::get('/admin-all', 'AdminPermission')->name('all.admin.permission');
+        Route::get('/admin-all', 'AdminPermission')->name('all.admin.permission')->middleware('permission:all.role');
         Route::post('/admin-store', 'StoreAdminPermission')->name('store.admin.permission');
         Route::get('/admin-edit/{id}', 'EditAdminPermission')->name('edit.admin.permission');
         Route::post('/admin-update/{id}', 'UpdateAdmin')->name('update.admin');
@@ -403,6 +439,5 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
         Route::get('/admin-inactive/{id}', 'InactiveAdmin')->name('admin.inactive');
         Route::get('/admin-active/{id}', 'ActiveAdmin')->name('admin.active');
     });
-
 
 });

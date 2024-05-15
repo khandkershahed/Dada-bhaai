@@ -78,10 +78,13 @@
 
 
                                         {{-- Edit Category Modal --}}
-                                        <a href="" class="ms-1" title="Edit" data-bs-toggle="modal"
-                                            data-bs-target="#editModal{{ $color->id }}" class="btn btn-primary btn-sm"><i
-                                                class="bi bi-pencil-square fs-3 text-primary"></i>
-                                        </a>
+                                        @if (Auth::guard('admin')->user()->can('edit.color'))
+                                            <a href="" class="ms-1" title="Edit" data-bs-toggle="modal"
+                                                data-bs-target="#editModal{{ $color->id }}"
+                                                class="btn btn-primary btn-sm"><i
+                                                    class="bi bi-pencil-square fs-3 text-primary"></i>
+                                            </a>
+                                        @endif
 
                                         <!-- EditModal -->
                                         <div class="modal fade" id="editModal{{ $color->id }}" tabindex="-1"
@@ -161,8 +164,10 @@
                                         </div>
                                         {{-- Edit Category Modal --}}
 
-                                        <a href="{{ route('delete.color', $color->id) }}" class="ms-1" id="delete"
-                                            title="Delete"><i class="bi bi-trash3-fill fs-3 text-danger"></i></a>
+                                        @if (Auth::guard('admin')->user()->can('delete.color'))
+                                            <a href="{{ route('delete.color', $color->id) }}" class="ms-1" id="delete"
+                                                title="Delete"><i class="bi bi-trash3-fill fs-3 text-danger"></i></a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
@@ -173,46 +178,48 @@
 
         </div>
 
-        <div class="col-4">
+        @if (Auth::guard('admin')->user()->can('add.color'))
+            <div class="col-4">
 
-            <div class="card">
-                <div class="card-body">
+                <div class="card">
+                    <div class="card-body">
 
-                    <form action="{{ route('store.color') }}" method="POST">
-                        @csrf
+                        <form action="{{ route('store.color') }}" method="POST">
+                            @csrf
 
-                        <h4>Add Color</h4>
+                            <h4>Add Color</h4>
 
-                        <div class="form-group mb-3 mt-3">
-                            <label for="">Color Name</label>
-                            <input type="text" required name="color_name" placeholder="Color Name" autocomplete="off"
-                                class="form-control form-control-sm">
-                        </div>
+                            <div class="form-group mb-3 mt-3">
+                                <label for="">Color Name</label>
+                                <input type="text" required name="color_name" placeholder="Color Name"
+                                    autocomplete="off" class="form-control form-control-sm">
+                            </div>
 
-                        <div class="form-group">
-                            <label for="">Color Code</label><br>
-                            <div class="row mt-2">
-                                <div class="col-4">
+                            <div class="form-group">
+                                <label for="">Color Code</label><br>
+                                <div class="row mt-2">
                                     <div class="col-4">
-                                        <input type="color" pattern="#[0-9a-fA-F]{6}" class="colorCode"
-                                            name="color_code" id="colorCode" placeholder="Enter Color Code" required>
+                                        <div class="col-4">
+                                            <input type="color" pattern="#[0-9a-fA-F]{6}" class="colorCode"
+                                                name="color_code" id="colorCode" placeholder="Enter Color Code" required>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-8">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text rounded-0 colorCodePreview"
-                                            id="colorCodePreview">#000000</span>
+                                    <div class="col-8">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text rounded-0 colorCodePreview"
+                                                id="colorCodePreview">#000000</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <button type="submit" class="btn btn-primary btn-sm mt-3 float-end">Submit</button>
-                    </form>
+                            <button type="submit" class="btn btn-primary btn-sm mt-3 float-end">Submit</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
+        @endif
 
     </div>
 

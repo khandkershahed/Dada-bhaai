@@ -2,6 +2,7 @@
 
 namespace App\Models\Admin;
 
+use App\Models\Brand;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -28,6 +29,13 @@ class Product extends Model
     public function color()
     {
         return $this->belongsTo(Color::class, 'color_id', 'id');
+    }
+
+    
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class, 'brand_id', 'id');
     }
 
     

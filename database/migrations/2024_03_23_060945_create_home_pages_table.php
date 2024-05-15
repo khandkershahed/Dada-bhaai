@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('home_pages', function (Blueprint $table) {
             $table->id();
 
-            $table->enum('status', ['lookone', 'looktwo','lookthree'])->default('lookone');
+            $table->string('status')->nullable();
 
             $table->string('video_slider_one_title')->nullable();
             $table->string('video_slider_one_sub_title')->nullable();
@@ -31,6 +31,7 @@ return new class extends Migration
             $table->text('image_slider_one_description')->nullable();
             $table->string('image_slider_one_button_name')->nullable();
             $table->text('image_slider_one_button_link')->nullable();
+            $table->text('image_slider_one_image')->nullable();
 
             $table->string('image_slider_two_header')->nullable();
             $table->string('image_slider_two_badge')->nullable();
@@ -39,6 +40,7 @@ return new class extends Migration
             $table->text('image_slider_two_description')->nullable();
             $table->string('image_slider_two_button_name')->nullable();
             $table->text('image_slider_two_button_link')->nullable();
+            $table->text('image_slider_two_image')->nullable();
 
             $table->string('image_slider_three_header')->nullable();
             $table->string('image_slider_three_badge')->nullable();
@@ -47,6 +49,7 @@ return new class extends Migration
             $table->text('image_slider_three_description')->nullable();
             $table->string('image_slider_three_button_name')->nullable();
             $table->text('image_slider_three_button_link')->nullable();
+            $table->text('image_slider_three_image')->nullable();
 
             $table->string('category_tab_one_id')->nullable();
             $table->string('category_tab_two_id')->nullable();
