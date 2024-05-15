@@ -4,6 +4,9 @@
 @include('frontend.template_one.partials.style_link')
 
 <body>
+    <!-- Loader -->
+    <div id="loader" class="loader"></div>
+    <!-- Loader End -->
 
     <!-- Header -->
     @include('frontend.template_one.partials.header')
@@ -24,6 +27,15 @@
     <!-- JS here -->
     @include('frontend.template_one.partials.js_link')
     <!-- JS here -->
+
+    <!-- JavaScript to hide loader when body content is loaded -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var loader = document.getElementById("loader");
+            loader.style.display = "none";
+        });
+    </script>
+    <!-- JavaScript End -->
 
 </body>
 

@@ -44,6 +44,7 @@
 <script src="{{ asset('frontend/template_one/assets/js/search_advance.js') }}"></script>
 
 <script src="{{ asset('frontend/template_one/assets/js/validate.min.js') }}"></script>
+<script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>
 
 {{-- Releted Accesories --}}
 <script>
@@ -132,7 +133,7 @@
 
                 miniCart();
 
-                // Start Message 
+                // Start Message
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -156,7 +157,7 @@
                         title: data.error,
                     })
                 }
-                // End Message 
+                // End Message
             }
 
         })
@@ -188,7 +189,7 @@
 
                 miniCart();
 
-                // Start Message 
+                // Start Message
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -212,7 +213,7 @@
                         title: data.error,
                     })
                 }
-                // End Message 
+                // End Message
             }
 
         })
@@ -244,7 +245,7 @@
 
                 miniCart();
 
-                // Start Message 
+                // Start Message
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -266,7 +267,7 @@
                         title: data.error,
                     })
                 }
-                // End Message 
+                // End Message
             }
 
         })
@@ -338,7 +339,7 @@
             dataType: 'json',
             success: function(data) {
                 miniCart();
-                // Start Message 
+                // Start Message
 
                 const Toast = Swal.mixin({
                     toast: true,
@@ -362,7 +363,7 @@
                     })
                 }
 
-                // End Message  
+                // End Message
 
             }
 
@@ -419,7 +420,7 @@
                                                                     aria-label="Amount (to the nearest dollar)"
                                                                     value="${value.qty}" min="1" />
 
-                                                                <a type="submit" id="${value.rowId}" onclick="cartIncrement(this.id)" 
+                                                                <a type="submit" id="${value.rowId}" onclick="cartIncrement(this.id)"
                                                                     class="input-group-prepend p-0 border-0 shadow-none incrementBtn"
                                                                     style="cursor: pointer">
                                                                     <span class="input-group-text">+</span>
@@ -466,7 +467,7 @@
                 cart();
                 miniCart();
                 // couponCalculation();
-                // Start Message 
+                // Start Message
 
                 const Toast = Swal.mixin({
                     toast: true,
@@ -492,7 +493,7 @@
                     })
                 }
 
-                // End Message  
+                // End Message
 
 
             }
@@ -501,7 +502,7 @@
 </script>
 
 <script>
-    // Cart INCREMENT 
+    // Cart INCREMENT
 
     function cartIncrement(rowId) {
         $.ajax({
@@ -518,7 +519,7 @@
     }
 
 
-    // Cart INCREMENT End 
+    // Cart INCREMENT End
 
     // Cart Decrement Start
 
@@ -537,7 +538,7 @@
     }
 
 
-    // Cart Decrement End 
+    // Cart Decrement End
 </script>
 
 <!--  /// Start Wishlist Add -->
@@ -550,7 +551,7 @@
 
             success: function(data) {
                 wishlist();
-                // Start Message 
+                // Start Message
 
                 const Toast = Swal.mixin({
                     toast: true,
@@ -576,7 +577,7 @@
                     })
                 }
 
-                // End Message  
+                // End Message
 
 
             }
@@ -604,7 +605,7 @@
 
                         `<tr class="border-bottom">
 
-                                    
+
 
                                     <td>
                                         <img class="img-fluid"
@@ -630,11 +631,11 @@
                                                 ? `<p class="text-brand">Tk ${value.product.discount_price}</p>`
 
                                                 : `<p class="text-brand">Tk ${value.product.price}</p>`
-                                                
+
                                                 }
 
 
-                                                
+
                                     </td>
 
                                     <td class="">
@@ -667,7 +668,7 @@
 
             success: function(data) {
                 wishlist();
-                // Start Message 
+                // Start Message
 
                 const Toast = Swal.mixin({
                     toast: true,
@@ -693,7 +694,7 @@
                     })
                 }
 
-                // End Message  
+                // End Message
 
 
             }
@@ -702,3 +703,79 @@
 </script>
 
 {{-- // Wishlist Remove End --}}
+<script>
+    $(document).ready(function() {
+        var submitIcon = $('.searchbox-icon');
+        var inputBox = $('.searchbox-input');
+        var searchBox = $('.searchbox');
+        var isOpen = false;
+        submitIcon.click(function() {
+            if (isOpen == false) {
+                searchBox.addClass('searchbox-open');
+                inputBox.focus();
+                isOpen = true;
+            } else {
+                searchBox.removeClass('searchbox-open');
+                inputBox.focusout();
+                isOpen = false;
+            }
+        });
+        submitIcon.mouseup(function() {
+            return false;
+        });
+        searchBox.mouseup(function() {
+            return false;
+        });
+        $(document).mouseup(function() {
+            if (isOpen == true) {
+                $('.searchbox-icon').css('display', 'block');
+                submitIcon.click();
+            }
+        });
+    });
+
+    function buttonUp() {
+        var inputVal = $('.searchbox-input').val();
+        inputVal = $.trim(inputVal).length;
+        if (inputVal !== 0) {
+            $('.searchbox-icon').css('display', 'none');
+        } else {
+            $('.searchbox-input').val('');
+            $('.searchbox-icon').css('display', 'block');
+        }
+    }
+</script>
+
+<script>
+    // Close dropdown on outside click
+    $(document).on('click', function(event) {
+        var $trigger = $("#navbarDropdown").closest('.dropdown');
+        if ($trigger.length && !$trigger.has(event.target).length) {
+            $('.dropdown-menu').removeClass('show');
+        }
+    });
+
+    // Prevent dropdown menu from closing on click inside
+    $('.dropdown-menu').on('click', function(event) {
+        event.stopPropagation();
+    });
+
+    // Ensure the dropdown menu opens correctly
+    $('#navbarDropdown').on('click', function(event) {
+        event.stopPropagation();
+        $(this).next('.dropdown-menu').toggleClass('show');
+    });
+</script>
+<script>
+    const header = document.querySelector(".page-header");
+    const toggleClass = "is-sticky";
+
+    window.addEventListener("scroll", () => {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll > 150) {
+            header.classList.add(toggleClass);
+        } else {
+            header.classList.remove(toggleClass);
+        }
+    });
+</script>

@@ -1,10 +1,10 @@
 @php
-    $categorys = App\Models\Admin\Category::where('status', '1')->orderBy('id','DESC')->limit(4)->get();
+    $categorys = App\Models\Admin\Category::where('status', '1')->orderBy('id', 'DESC')->limit(4)->get();
 @endphp
 
 
-<section class="all__product pt-80 pb-20">
-    <div class="all__product--nav">
+<section class="pt-80 pb-20">
+    <div class="">
         <div class="container">
             <div class="row all__product--row align-items-center justify-content-between">
                 <div class="col-xl-12 col-md-12">
@@ -36,14 +36,6 @@
                         </nav>
                     </div>
                 </div>
-
-                <div class="col-xl-12">
-                    <div class="all__product--link text-center mb-30">
-                        <a class="all-link" href="{{ route('template.one.all_product') }}">Discover All Products<span
-                                class="lnr lnr-arrow-right"></span></a>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
@@ -51,15 +43,11 @@
     <div class="all__product--body">
         <div class="container">
             <div class="row">
-
                 <div class="col-sm-12">
-
                     <div class="tab-content" id="nav-tabContent">
-
                         @foreach ($categorys as $key => $category)
                             <div class="tab-pane fade show {{ $key == 0 ? 'active' : '' }}"
                                 id="categorys{{ $category->id }}" role="tabpanel" aria-labelledby="nav-home-tab">
-
                                 @php
 
                                     $catwiseProduct = App\Models\Admin\Product::where('status', '1')
@@ -70,76 +58,52 @@
                                         ->get();
 
                                 @endphp
-
-                                <div class="product__active owl-carousel">
-
+                                <div class="product__active owl-carousel mr-2">
                                     @forelse ($catwiseProduct as $product)
-                                        <div class="product__single">
-                                            <div class="product__box">
-                                                <div class="product__thumb">
-
-                                                    <a href="product-details.html" class="img-wrapper">
-                                                        <img class="img" src="{{ asset($product->product_image) }}"
-                                                            alt="" style="height: 230px;" />
-
-                                                    </a>
-                                                </div>
-
-                                                <div class="product__content--top">
-                                                    <span
-                                                        class="cate-name">{{ $product['category']['category_name'] }}</span>
-                                                    <h6 class="product__title mine__shaft-color f-700 mb-0">
-                                                        <a
-                                                            href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ $product->product_name }}</a>
-                                                    </h6>
-                                                </div>
-
-                                                <div
-                                                    class="product__content--rating d-flex justify-content-between align-items-center">
-
+                                        <div class="product-grid mr-4">
+                                            <div class="product-image">
+                                                <a href="#" class="image">
+                                                    <img class="pic-1" src="{{ asset($product->product_image) }}">
+                                                </a>
+                                                <div class="product-button-group">
+                                                    <a style="cursor: pointer;" id="{{ $product->id }}"
+                                                        onclick="addToWishList(this.id)"><i
+                                                            class="fas fa-heart"></i></a>
                                                     <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
-                                                        class="btn btn-primary btn-sm">
-                                                        Add To Cart
-                                                    </a>
-
-                                                    <div class="price">
+                                                        class="add-to-cart"><i class="fas fa-shopping-cart"></i> add to
+                                                        cart</a>
+                                                    <a href="#"><i class="fas fa-random"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="product-content bg-light">
+                                                <p class="cate-name">{{ $product['category']['category_name'] }}</p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h3 class="title w-75"><a
+                                                            href="#">{{ $product->product_name }}</a>
+                                                    </h3>
+                                                    <div class="price w-25 text-right">
                                                         @if ($product->price_status == 'rfq')
-                                                            <h5 class="grenadier-color f-600">
+                                                            <h5 class="grenadier-color fw-bold">
                                                                 Tk {{ $product->sas_price }}
                                                             </h5>
                                                         @elseif ($product->price_status == 'offer_price')
-                                                            <h5 class="grenadier-color f-600">
+                                                            <h5 class="grenadier-color fw-bold">
                                                                 Tk {{ $product->discount_price }}</h5>
                                                         @else
-                                                            <h5 class="grenadier-color f-600">Tk {{ $product->price }}
+                                                            <h5 class="grenadier-color fw-bold">Tk
+                                                                {{ $product->price }}
                                                             </h5>
                                                         @endif
                                                     </div>
-
                                                 </div>
-
-                                            </div>
-                                            <div class="product-action">
-
-                                                <a style="cursor: pointer;" id="{{$product->id}}" onclick="addToWishList(this.id)"><span class="lnr lnr-heart"></span></a>
-
-                                                {{-- <a href="#"><span class="lnr lnr-eye"></span></a> --}}
-                                                <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"><span
-                                                        class="lnr lnr-cart"></span></a>
-
-                                                <a href="#"><span class="lnr lnr-sync"></span></a>
-
                                             </div>
                                         </div>
                                     @empty
                                         <p>No Product Avaiable</p>
                                     @endforelse
-
                                 </div>
                             </div>
                         @endforeach
-
-
                     </div>
                 </div>
             </div>
