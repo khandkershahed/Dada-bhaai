@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Offer extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
 
     public function category()
@@ -15,5 +16,8 @@ class Offer extends Model
         return $this->belongsTo(OfferCategory::class,'offer_category_id','id');
     }
 
-    
+    public function products()
+    {
+        return $this->belongsTo(Product::class,'product_id','id');
+    }
 }

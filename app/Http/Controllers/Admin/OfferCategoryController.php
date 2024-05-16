@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Offer;
 use App\Models\Admin\OfferCategory;
+use App\Models\Admin\Product;
 use Helper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -148,8 +149,9 @@ class OfferCategoryController extends Controller
     public function AllOffer()
     {
         $offers = Offer::latest()->get();
+        $products = Product::latest()->get();
         $offercats = OfferCategory::latest()->get();
-        return view('admin.pages.offer.all_offer', compact('offers','offercats'));
+        return view('admin.pages.offer.all_offer', compact('offers','offercats','products'));
     }
 
     //StoreOffer
@@ -168,6 +170,9 @@ class OfferCategoryController extends Controller
 
                 'offer_category_id' => $request->offer_category_id,
                 'offer_name' => $request->offer_name,
+                // 'product_id' => json_encode($request->product_id),
+
+                'product_id' => $request->product_id,
 
                 'price' => $request->price,
                 'discount_price' => $request->discount_price,
@@ -190,6 +195,9 @@ class OfferCategoryController extends Controller
 
                     'offer_category_id' => $request->offer_category_id,
                     'offer_name' => $request->offer_name,
+                    // 'product_id' => json_encode($request->product_id),
+
+                    'product_id' => $request->product_id,
 
                     'price' => $request->price,
                     'discount_price' => $request->discount_price,
@@ -245,6 +253,9 @@ class OfferCategoryController extends Controller
 
                 'offer_category_id' => $request->offer_category_id,
                 'offer_name' => $request->offer_name,
+                // 'product_id' => json_encode($request->product_id),
+
+                'product_id' => $request->product_id,
 
                 'price' => $request->price,
                 'discount_price' => $request->discount_price,

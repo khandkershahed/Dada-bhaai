@@ -1,5 +1,5 @@
 @php
-    $categorys = App\Models\Admin\Category::where('status', '1')->orderBy('id','DESC')->limit(5)->get();
+    $categorys = App\Models\Admin\Category::where('status', '1')->orderBy('id', 'DESC')->limit(5)->get();
 @endphp
 
 
@@ -21,17 +21,7 @@
                                     <p>No Category Avaiable</p>
                                 @endforelse
 
-                                {{-- <a class="nav-item nav-link active btn orange-bg-btn pure__black-color"
-                                    id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
-                                    aria-controls="nav-home" aria-selected="true">Electronics Devices</a>
 
-                                <a class="nav-item nav-link btn gray-bg-btn pure__black-color" id="nav-profile-tab"
-                                    data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile"
-                                    aria-selected="false">TV & Home Appliances</a>
-
-                                <a class="nav-item nav-link btn gray-bg-btn pure__black-color" id="nav-contact-tab"
-                                    data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact"
-                                    aria-selected="false">Electronic Accessories</a> --}}
                             </div>
                         </nav>
                     </div>
@@ -78,7 +68,7 @@
                                             <div class="product__box">
                                                 <div class="product__thumb">
 
-                                                    <a href="product-details.html" class="img-wrapper">
+                                                    <a href="" class="img-wrapper">
                                                         <img class="img" src="{{ asset($product->product_image) }}"
                                                             alt="" style="height: 230px;" />
 
@@ -88,19 +78,33 @@
                                                 <div class="product__content--top">
                                                     <span
                                                         class="cate-name">{{ $product['category']['category_name'] }}</span>
-                                                    <h6 class="product__title mine__shaft-color f-700 mb-0">
+
+                                                    <h6 class="product__title mine__shaft-color f-700 mb-0"
+                                                        id="fname">
                                                         <a
                                                             href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ $product->product_name }}</a>
                                                     </h6>
+
                                                 </div>
+
+                                                <input type="hidden" class="mb-0  border-1" name=""
+                                                    value="1" min="1" id="fqty" style="width: 50px" />
+
+                                                <input type="text" id="fproduct_id" value="{{ $product->id }}">
 
                                                 <div
                                                     class="product__content--rating d-flex justify-content-between align-items-center">
 
-                                                    <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
-                                                        class="btn btn-primary btn-sm">
+
+                                                    <a type="submit" data-product_id="{{ $product->id }}" 
+                                                        class="btn btn-primary btn-sm add_to_cart_btn_product">
                                                         Add To Cart Details
                                                     </a>
+
+                                                    {{-- <button type="submit" onclick="addToCartDetailsF()"
+                                                        class="btn btn-primary btn-sm">
+                                                        Add To Cart Details
+                                                    </button> --}}
 
                                                     <div class="price">
                                                         @if ($product->price_status == 'rfq')
@@ -121,10 +125,13 @@
                                             </div>
                                             <div class="product-action">
 
-                                                <a style="cursor: pointer;" id="{{$product->id}}" onclick="addToWishList(this.id)"><span class="lnr lnr-heart"></span></a>
+                                                <a style="cursor: pointer;" id="{{ $product->id }}"
+                                                    onclick="addToWishList(this.id)"><span
+                                                        class="lnr lnr-heart"></span></a>
 
                                                 {{-- <a href="#"><span class="lnr lnr-eye"></span></a> --}}
-                                                <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"><span
+                                                <a
+                                                    href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"><span
                                                         class="lnr lnr-cart"></span></a>
 
                                                 {{-- <a href="#"><span class="lnr lnr-sync"></span></a> --}}

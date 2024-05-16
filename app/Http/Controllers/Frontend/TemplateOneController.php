@@ -8,6 +8,8 @@ use App\Models\Admin\Category;
 use App\Models\Admin\ChildCategory;
 use App\Models\Admin\Contact;
 use App\Models\Admin\Faq;
+use App\Models\Admin\Offer;
+use App\Models\Admin\OfferCategory;
 use App\Models\Admin\Product;
 use App\Models\Admin\Terms;
 use App\Models\Brand;
@@ -188,6 +190,17 @@ class TemplateOneController extends Controller
         $catSlug = $category_slug;
 
         return view('frontend.template_one.category.category_wise_product', compact('products', 'catwiseproduct', 'route', 'catId', 'catSlug', 'sort'));
+    }
+
+    //OfferCategory RelatedProduct One One
+    public function OfferCategoryRelatedProductOne(Request $request, $id)
+    {
+        
+        $products = Offer::where('status', '1')->where('offer_category_id', $id)->paginate(12);
+
+        $offercatwiseproduct = OfferCategory::find($id);
+
+        return view('frontend.template_one.offer_category.offer_category_wise_product', compact('offercatwiseproduct','products'));
     }
 
     //Child Category Wise Product One

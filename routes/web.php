@@ -108,6 +108,9 @@ Route::controller(TemplateOneController::class)->group(function () {
     Route::get('/home-category', 'HomeAllCategory')->name('home.all.category.page');
     Route::get('/product/category/{id}/{category_slug}', 'CategoryRelatedProductOne');
 
+    //Offer Category Page
+    Route::get('/offer-categorywise/product/{id}', 'OfferCategoryRelatedProductOne')->name('offer-categorywise.product');
+
     //Child Category
     Route::get('/product/childcategory/{id}/{childcategory_slug}', 'ChilldCategoryRelatedProductOne');
 
@@ -181,6 +184,13 @@ Route::controller(TemplateOneCartController::class)->group(function () {
     Route::post('/product/store/{id}', 'AddToCartTemplateOne');
     Route::get('/product/mini-cart', 'AddMiniCartTemplateOne');
     Route::get('/minicart/product/remove/{rowId}', 'RemoveMiniCartTemplateOne');
+
+    Route::post('/fcart/data/store/{id}', 'AddToCartTemplateOneFrontend');
+
+    //AddToCartOfferProductTemplateOne
+    Route::post('/offer-product-store', 'AddToCartOfferProductTemplateOne');
+
+    Route::post('/product-store-cart', 'AddToCartProductHome');
 
     Route::post('/product/store/related/{id}', 'AddToCartTemplateOneRelated');
     Route::get('/product/mini/cart/related', 'AddMiniCartTemplateOneRelated');

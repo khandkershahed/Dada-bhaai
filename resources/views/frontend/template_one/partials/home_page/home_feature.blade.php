@@ -95,25 +95,7 @@
                     </div>
                 </div>
 
-                {{-- <div class="col-lg-6">
-                <div class="offer-banner offer--banner__bg mb-30" data-background="{{ asset('frontend/template_one/assets/img/offer/offer__thumb__3.jpg') }}">
-                    <div class="offer--banner__text">
-                        <span class="f-200 white-color">Student Table Lamps</span>
-                        <h4 class="white-color f-900 mb-40">55% Flate</h4>
-                        <a href="shop-collection.html">View Collection<i class="icofont-long-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="offer-banner offer--banner__bg mb-30" data-background="{{ asset('frontend/template_one/assets/img/offer/offer__thumb__3.jpg') }}">
-                    <div class="offer--banner__text">
-                        <span class="f-200 white-color">Flower Pot Decorative</span>
-                        <h4 class="white-color f-900 mb-40">75% Flate</h4>
-                        <a href="shop-collection.html">View Collection<i class="icofont-long-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div> --}}
+                
 
             </div>
         </div>

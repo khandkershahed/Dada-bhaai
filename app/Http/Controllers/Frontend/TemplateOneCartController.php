@@ -118,6 +118,71 @@ class TemplateOneCartController extends Controller
     }
 
     //Add To Cart
+    public function AddToCartTemplateOneFrontend(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+
+        $cartItem = Cart::search(function ($cartItem, $rowId) use ($id) {
+            return $cartItem->id === $id;
+        });
+
+        if ($cartItem->isNotEmpty()) {
+
+            return response()->json(['error' => 'This Product Has Already Added']);
+        }
+
+        if ($product->price_status == 'rfq') {
+
+            Cart::add([
+
+                'id' => $id,
+                'name' => $request->product_name,
+                'qty' => 1,
+                'price' => $product->sas_price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $product->product_image,
+
+                ],
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        } elseif ($product->price_status == 'discount_price') {
+
+            Cart::add([
+
+                'id' => $id,
+                'name' => $request->product_name,
+                'qty' => 1,
+                'price' => $product->discount_price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $product->product_image,
+
+                ],
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        } else {
+
+            Cart::add([
+
+                'id' => $id,
+                'name' => $request->product_name,
+                'qty' => 1,
+                'price' => $product->price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $product->product_image,
+
+                ],
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        }
+    }
+
+    //Add To Cart
     public function AddToCartTemplateOne(Request $request, $id)
     {
         $product = Product::findOrFail($id);
@@ -180,6 +245,119 @@ class TemplateOneCartController extends Controller
 
             return response()->json(['success' => 'Successfully Added on Your Cart']);
         }
+    }
+
+    //Add To Cart Offer Product Template One
+    public function AddToCartOfferProductTemplateOne(Request $request)
+    {
+        $id = $request->product_id;
+
+        $product = Product::findOrFail($id);
+
+        $cartItem = Cart::search(function ($cartItem, $rowId) use ($id) {
+            return $cartItem->id === $id;
+        });
+
+        if ($cartItem->isNotEmpty()) {
+
+            return response()->json(['error' => 'This Product Has Already Added']);
+        }
+
+        Cart::add([
+
+            'id' => $id,
+
+            'name' => $product->product_name,
+            'qty' => 1,
+            'price' => $request->price,
+            'weight' => 1,
+
+            'options' => [
+                'image' => $product->product_image,
+                // 'color' => $request->color,
+            ],
+
+        ]);
+
+        return response()->json(['success' => 'Successfully Added on Your Cart']);
+
+    }
+
+    //AddToCartProductHome
+    public function AddToCartProductHome(Request $request)
+    {
+        $id = $request->product_id;
+
+        $product = Product::findOrFail($id);
+
+        $cartItem = Cart::search(function ($cartItem, $rowId) use ($id) {
+            return $cartItem->id === $id;
+        });
+
+        if ($cartItem->isNotEmpty()) {
+
+            return response()->json(['error' => 'This Product Has Already Added']);
+        }
+
+        if ($product->price_status == 'rfq') {
+
+            Cart::add([
+
+                'id' => $id,
+
+                'name' => $product->product_name,
+                'qty' => 1,
+                'price' => $product->sas_price,
+                'weight' => 1,
+
+                'options' => [
+                    'image' => $product->product_image,
+                    // 'color' => $request->color,
+                ],
+
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        } elseif ($product->price_status == 'discount_price') {
+
+            Cart::add([
+
+                'id' => $id,
+
+                'name' => $product->product_name,
+                'qty' => 1,
+                'price' => $product->offer_price,
+                'weight' => 1,
+
+                'options' => [
+                    'image' => $product->product_image,
+                    // 'color' => $request->color,
+                ],
+
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        } else {
+
+            Cart::add([
+
+                'id' => $id,
+
+                'name' => $product->product_name,
+                'qty' => 1,
+                'price' => $product->price,
+                'weight' => 1,
+
+                'options' => [
+                    'image' => $product->product_image,
+                    // 'color' => $request->color,
+                ],
+
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        }
+
     }
 
     //Add To Cart Related

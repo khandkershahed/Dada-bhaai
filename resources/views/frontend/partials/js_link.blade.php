@@ -311,48 +311,7 @@
 
 
 {{-- ============================ --}}
-{{-- <script type="text/javascript">
-    function cart() {
-        $.ajax({
-            type: 'GET',
-            url: '/get-cart-product1',
-            dataType: 'json',
-            success: function(response) {
-                // console.log(response)
 
-                var rows = ""
-
-                $.each(response.carts, function(key, value) {
-                    rows += `
-
-
-                    <tr class="cart-subtotal">
-                                                <th>Sub Total:</th>
-                                                <td><span class="drk-gry">Tk ${value.subtotal}</span></td>
-                                            </tr>
-
-                                            
-
-                                            <tr class="order-total">
-                                                <th>Order Total</th>
-                                                <td>
-                                                    <strong><span class="amount">Tk ${value.subtotal}</span></strong>
-                                                </td>
-                                            </tr>
-                    
-                    
-                    
-                    `
-                });
-
-                $('#cartPage1').html(rows);
-
-            }
-
-        })
-    }
-    cart();
-</script> --}}
 {{-- ====================================== --}}
 
 {{-- // Cart INCREMENT  --}}

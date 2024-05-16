@@ -161,14 +161,41 @@
                                                                 <div class="col-4 mb-3">
 
                                                                     <div class="form-group mb-3">
-                                                                        <label for="" class="mb-2">Offer Name</label>
-                                                                        <input type="text" name="offer_name"
-                                                                            class="form-control form-control-sm form-control-solid"
-                                                                            placeholder="Offer Name"
-                                                                            value="{{ $offer->offer_name }}" autocomplete="off">
+                                                                        <label for="" class="mb-2">Product
+                                                                            Name</label>
+
+                                                                        <select
+                                                                            class="form-select form-select-solid form-select-sm"
+                                                                            name="product_id" id="field2" required>
+
+                                                                            {{-- <option selected disabled>Choose Product Name</option> --}}
+
+                                                                            @foreach ($products as $product)
+                                                                                <option value="{{ $product->id }}"
+                                                                                    {{ $offer->product_id == $product->id ? 'selected' : '' }}>
+                                                                                    {{ $product->product_name }}
+
+                                                                                </option>
+                                                                            @endforeach
+
+                                                                        </select>
                                                                     </div>
 
                                                                 </div>
+
+                                                                {{-- <div class="col-4 mb-3">
+
+                                                                    <div class="form-group mb-3">
+                                                                        <label for="" class="mb-2">Offer
+                                                                            Name</label>
+                                                                        <input type="text" name="offer_name"
+                                                                            class="form-control form-control-sm form-control-solid"
+                                                                            placeholder="Offer Name"
+                                                                            value="{{ $offer->offer_name }}"
+                                                                            autocomplete="off">
+                                                                    </div>
+
+                                                                </div> --}}
 
                                                                 <div class="col-4 mb-3">
 
@@ -188,7 +215,8 @@
                                                                         <label for="" class="mb-2">Price</label>
                                                                         <input type="number" name="price"
                                                                             class="form-control form-control-sm form-control-solid"
-                                                                            placeholder="Price" value="{{ $offer->price }}"
+                                                                            placeholder="Price"
+                                                                            value="{{ $offer->price }}"
                                                                             autocomplete="off">
                                                                     </div>
 
@@ -337,13 +365,33 @@
                             <div class="col-4 mb-3">
 
                                 <div class="form-group mb-3">
+                                    <label for="" class="mb-2">Product Name</label>
+
+                                    <select class="form-select form-select-solid form-select-sm" name="product_id"
+                                        id="field2">
+
+                                        {{-- <option selected disabled>Choose Product Name</option> --}}
+
+                                        @foreach ($products as $product)
+                                            <option value="{{ $product->id }}">{{ $product->product_name }}
+                                            </option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            {{-- <div class="col-4 mb-3">
+
+                                <div class="form-group mb-3">
                                     <label for="" class="mb-2">Offer Name</label>
                                     <input type="text" name="offer_name"
                                         class="form-control form-control-sm form-control-solid" placeholder="Offer Name"
                                         value="{{ old('offer_name') }}" autocomplete="off">
                                 </div>
 
-                            </div>
+                            </div> --}}
 
                             <div class="col-4 mb-3">
 
@@ -355,7 +403,7 @@
                                 </div>
 
                             </div>
-                            
+
 
                             <div class="col-3 mb-3">
 
@@ -567,6 +615,10 @@
                     end_date: {
                         required: true,
                     },
+
+                    product_id: {
+                        required: true,
+                    },
                 },
                 messages: {
                     name: {
@@ -591,6 +643,10 @@
 
                     end_date: {
                         required: 'Please Enter End Date',
+                    },
+
+                    product_id: {
+                        required: 'Please Enter Product Name',
                     },
                 },
                 errorElement: 'span',
