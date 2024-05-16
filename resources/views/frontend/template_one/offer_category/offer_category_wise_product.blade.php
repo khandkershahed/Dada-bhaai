@@ -1,7 +1,7 @@
 @extends('frontend.template_one.frontend_dashboard_template_one')
 @section('index_template_one')
     <!-- shop area start -->
-    <div class="product shop-page pt-30 pb-80">
+    <div class="product shop-page pt-30 pb-80" style="margin-top: 60px;">
         <div class="container">
             <div class="row">
 
@@ -118,11 +118,10 @@
                         </div>
                         {{-- Brand  --}}
 
-                        
+
 
                     </div>
                 </div>
-
 
                 <div class="col-lg-9 order-1 order-lg-2">
                     <div class="row">
@@ -157,35 +156,7 @@
                                 </div>
                             </div>
 
-                            {{-- New Section  --}}
 
-                            {{-- <div class="col-lg-4 col-md-2">
-                                <div class="text-center" style="margin-top: 10px;">
-                                    <span>Showing {{ count($products) }} of {{ $products->total() }} Results</span>
-                                </div>
-                            </div> --}}
-
-                            {{-- <div class="col-lg-3 col-md-6">
-                                <div class="">
-
-                                    <div class="">
-                                        <select name="" id="sortBy">
-                                            <option selected disabled>SortBy Product</option>
-
-                                            <option value="nameAtoZ" {{ $sort == 'nameAtoZ' ? 'selected' : '' }}>Product
-                                                Name: A to Z
-                                            </option>
-
-                                            <option value="nameZtoA" {{ $sort == 'nameZtoA' ? 'selected' : '' }}>Product
-                                                Name: Z to A
-                                            </option>
-
-                                        </select>
-                                    </div>
-
-                                </div>
-                            </div> --}}
-                            {{-- New Setion  --}}
 
                         </div>
                     </div>
@@ -197,64 +168,64 @@
                         @forelse ($products as $product)
                             <div class="col-lg-4">
 
-                                <div class="product__single">
-                                    <div class="product__box">
-                                        <div class="product__thumb">
+                                <div class="product-grid mr-4">
 
-                                            <a href="product-details.html" class="img-wrapper">
-                                                <img class="img" src="{{ asset($product->products->product_image) }}"
-                                                    alt="" style="height: 230px;" />
+                                    <div class="product-image">
 
+                                        <a href="{{ url('product' . '/' . $product->products->id . '/' . $product->products->product_slug) }}"
+                                            class="img-wrapper">
+
+                                            <img class="img product_id"
+                                                src="{{ asset($product->products->product_image) }}" alt=""
+                                                style="height: 230px;" data-id="{{ $product->products->id }}" />
+
+                                        </a>
+
+                                        <div class="product-button-group">
+
+                                            {{-- Wishlist Icon --}}
+                                            <a style="cursor: pointer;" id="{{ $product->id }}"
+                                                onclick="addToWishList(this.id)"><i class="fas fa-heart"></i></a>
+
+                                            {{-- Add To Cart Icon --}}
+                                            <a type="submit" style="cursor:pointer;"
+                                                data-offer_price="{{ $product->discount_price }}"
+                                                data-product_id="{{ $product->products->id }}"
+                                                class="add-to-cart add_to_cart_btn"><i class="fas fa-shopping-cart"></i>
+                                                Add To
+                                                Cart
                                             </a>
-                                        </div>
 
-                                        <div class="product__content--top">
-                                            <span class="cate-name">{{ $product['category']['category_name'] }}</span>
-                                            <h6 class="product__title mine__shaft-color f-700 mb-0">
-                                                <a
-                                                    href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ $product->products->product_name }}</a>
-                                            </h6>
-                                        </div>
-
-                                        <div
-                                            class="product__content--rating d-flex justify-content-between align-items-center">
-
-                                            <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
-                                                class="btn btn-primary btn-sm">
+                                            {{-- <a type="submit" data-offer_price="{{ $product->discount_price }}"
+                                                data-product_id="{{ $product->products->id }}"
+                                                class="btn btn-primary btn-sm add_to_cart_btn">
                                                 Add To Cart
-                                            </a>
+                                            </a> --}}
 
-                                            <div class="price">
-                                                {{-- @if ($product->price_status == 'rfq')
-                                                    <h5 class="grenadier-color f-600">
-                                                        Tk {{ $product->sas_price }}
-                                                    </h5>
-                                                @elseif ($product->price_status == 'offer_price')
-                                                    <h5 class="grenadier-color f-600">
-                                                        Tk {{ $product->discount_price }}</h5>
-                                                @else
-                                                    <h5 class="grenadier-color f-600">Tk {{ $product->price }}
-                                                    </h5>
-                                                @endif --}}
+                                            {{-- Compare Icon --}}
+                                            <a href="#"><i class="fas fa-random"></i></a>
 
-                                                <h5 class="grenadier-color f-600">
+                                        </div>
+                                    </div>
+                                    <div class="product-content row align-items-center">
+                                        <div class="col-lg-8">
+
+                                            <span class="cate-name">{{ $product->category->offer_category_name }}</span>
+
+                                            <h6 class="product__title mine__shaft-color f-700 mb-0" id="offerProductName">
+                                                {{ $product->products->product_name }}
+                                            </h6>
+
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="price text-end">
+
+                                                <h5 class="grenadier-color f-600" id="">
                                                     Tk {{ $product->discount_price }}
                                                 </h5>
+
                                             </div>
-
                                         </div>
-
-                                    </div>
-                                    <div class="product-action">
-
-                                        <a style="cursor: pointer;" id="{{$product->id}}" onclick="addToWishList(this.id)"><span class="lnr lnr-heart"></span></a>
-
-                                        {{-- <a href="#"><span class="lnr lnr-eye"></span></a> --}}
-                                        <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"><span
-                                                class="lnr lnr-cart"></span></a>
-
-                                        {{-- <a href="#"><span class="lnr lnr-sync"></span></a> --}}
-
                                     </div>
                                 </div>
 
@@ -274,11 +245,9 @@
                     </div>
 
                 </div>
+
             </div>
         </div>
     </div>
     <!-- shop area end -->
-
 @endsection
-
-

@@ -4,7 +4,8 @@
     <!-- shop area start -->
     <form action="{{ route('shop.filter') }}" method="POST">
         @csrf
-        <div class="product shop-page pt-30 pb-80">
+
+        <div class="product shop-page pt-30 pb-80" style="margin-top: 60px;">
             <div class="container">
                 <div class="row">
 
@@ -209,12 +210,6 @@
                                     data-background="{{ asset('frontend/template_one/assets/img/bg/shop-banner-bg.jpg') }}">
                                     <div class="collection-text">
                                         <h5 class="f-800"><a href="javascript:;">Product</a></h5>
-                                        {{-- <span class="f-200 mb-40">{{ $brandwiseproduct->brand_name }}</span> --}}
-                                        {{-- <div class="product-countdown-three">
-                                        <div class="time-count-deal">
-                                            <div class="countdown-list" data-countdown="2020/12/01"></div>
-                                        </div>
-                                    </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -260,36 +255,6 @@
 
                                 </div>
 
-                                {{-- <div class="col-lg-7 col-md-8">
-                                    <div class="bar-wrapper">
-
-                                        <div class="select-text">
-                                            <span>Showing {{ count($products) }} of {{ $products->total() }}
-                                                Results</span>
-                                        </div>
-
-                                        <div class="shop-select">
-
-                                            <select name="sortBy" onchange="this.form.submit();">
-
-                                                <option selected disabled>Sort By Products</option>
-
-                                                <option value="nameAtoZ" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == 'nameAtoZ') selected @endif>
-                                                    Product
-                                                    Name: A to Z
-                                                </option>
-
-                                                <option value="nameZtoA" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == 'nameZtoA') selected @endif>
-                                                    Product
-                                                    Name: Z to A
-                                                </option>
-
-                                            </select>
-                                        </div>
-
-                                    </div>
-                                </div> --}}
-
                             </div>
                         </div>
 
@@ -299,59 +264,60 @@
                             @forelse ($products as $product)
                                 <div class="col-lg-4">
 
-                                    <div class="product__single">
-                                        <div class="product__box">
-                                            <div class="product__thumb">
+                                    <div class="product-grid mr-4">
+                                        <div class="product-image">
+                                            <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
+                                                class="image">
+                                                <img class="pic-1" src="{{ asset($product->product_image) }}">
+                                            </a>
+                                            <div class="product-button-group">
 
-                                                <a href="product-details.html" class="img-wrapper">
-                                                    <img class="img" src="{{ asset($product->product_image) }}"
-                                                        alt="" style="height: 230px;" />
+                                                {{-- Wishlist Icon --}}
+                                                <a style="cursor: pointer;" id="{{ $product->id }}"
+                                                    onclick="addToWishList(this.id)"><i class="fas fa-heart"></i></a>
 
+                                                {{-- Add To Cart Icon --}}
+                                                <a type="submit" style="cursor:pointer;"
+                                                    data-product_id="{{ $product->id }}"
+                                                    class="add-to-cart add_to_cart_btn_product"><i
+                                                        class="fas fa-shopping-cart"></i> Add To
+                                                    Cart
                                                 </a>
-                                            </div>
 
-                                            <div class="product__content--top">
-                                                <span class="cate-name">{{ $product['category']['category_name'] }}</span>
-                                                <h6 class="product__title mine__shaft-color f-700 mb-0">
+                                                {{-- <a type="submit" data-product_id="{{ $product->id }}" 
+                                                    class="btn btn-primary btn-sm add_to_cart_btn_product">
+                                                    Add To Cart Details
+                                                </a> --}}
+
+                                                {{-- Compare Icon --}}
+                                                <a href="#"><i class="fas fa-random"></i></a>
+
+                                            </div>
+                                        </div>
+                                        <div class="product-content row align-items-center">
+                                            <div class="col-lg-8">
+                                                <span class="cate-name">{{ $product->category->category_name }}</span>
+                                                <h6 class="product__title mine__shaft-color f-700 mb-0 text-start">
                                                     <a
                                                         href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ $product->product_name }}</a>
                                                 </h6>
                                             </div>
-
-                                            <div
-                                                class="product__content--rating d-flex justify-content-between align-items-center">
-
-                                                <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
-                                                    class="btn btn-primary btn-sm">
-                                                    Add To Cart
-                                                </a>
-
-                                                <div class="price">
+                                            <div class="col-lg-4">
+                                                <div class="price text-end">
                                                     @if ($product->price_status == 'rfq')
-                                                        <h5 class="grenadier-color f-600">
+                                                        <h5 class="grenadier-color mb-0 fw-bold">
                                                             Tk {{ $product->sas_price }}
                                                         </h5>
                                                     @elseif ($product->price_status == 'offer_price')
-                                                        <h5 class="grenadier-color f-600">
+                                                        <h5 class="grenadier-color mb-0 fw-bold">
                                                             Tk {{ $product->discount_price }}</h5>
                                                     @else
-                                                        <h5 class="grenadier-color f-600">Tk {{ $product->price }}
+                                                        <h5 class="grenadier-color mb-0 fw-bold">Tk
+                                                            {{ $product->price }}
                                                         </h5>
                                                     @endif
                                                 </div>
-
                                             </div>
-
-                                        </div>
-                                        <div class="product-action">
-                                            <a style="cursor: pointer;" id="{{$product->id}}" onclick="addToWishList(this.id)"><span class="lnr lnr-heart"></span></a>
-                                            {{-- <a href="#"><span class="lnr lnr-eye"></span></a> --}}
-                                            <a
-                                                href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"><span
-                                                    class="lnr lnr-cart"></span></a>
-
-                                            {{-- <a href="#"><span class="lnr lnr-sync"></span></a> --}}
-
                                         </div>
                                     </div>
 

@@ -2,7 +2,7 @@
 
     $products = App\Models\Admin\Product::where('status', '1')
         ->where('status', '1')
-        ->orderBy('id', 'ASC')
+        ->orderBy('id', 'DESC')
         ->limit(8)
         ->latest()
         ->get();
@@ -33,60 +33,61 @@
 
                 @forelse ($products as $product)
                     <div class="col-lg-3 col-md-6">
+                        <div class="product-grid mr-4">
+                            <div class="product-image">
+                                <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
+                                    class="image">
+                                    <img class="pic-1" src="{{ asset($product->product_image) }}">
+                                </a>
+                                <div class="product-button-group">
 
-                        <div class="product__single mb-30">
-                            <div class="product__box">
-                                <div class="product__thumb">
+                                    {{-- Wishlist Icon --}}
+                                    <a style="cursor: pointer;" id="{{ $product->id }}"
+                                        onclick="addToWishList(this.id)"><i class="fas fa-heart"></i></a>
 
-                                    <a href="product-details.html" class="img-wrapper">
-                                        <img class="img" src="{{ asset($product->product_image) }}" alt=""
-                                            style="height: 230px;" />
-
+                                    {{-- Add To Cart Icon --}}
+                                    <a type="submit" style="cursor:pointer;" data-product_id="{{ $product->id }}"
+                                        class="add-to-cart add_to_cart_btn_product"><i class="fas fa-shopping-cart"></i>
+                                        Add To
+                                        Cart
                                     </a>
-                                </div>
 
-                                <div class="product__content--top">
-                                    <span class="cate-name">{{ $product['category']['category_name'] }}</span>
-                                    <h6 class="product__title mine__shaft-color f-700 mb-0">
+                                    {{-- <a type="submit" data-product_id="{{ $product->id }}" 
+                                        class="btn btn-primary btn-sm add_to_cart_btn_product">
+                                        Add To Cart Details
+                                    </a> --}}
+
+                                    {{-- Compare Icon --}}
+                                    <a href="#"><i class="fas fa-random"></i></a>
+
+                                </div>
+                            </div>
+                            <div class="product-content row align-items-center">
+                                <div class="col-lg-8">
+                                    <span class="cate-name">{{ $product->category->category_name }}</span>
+                                    <h6 class="product__title mine__shaft-color f-700 mb-0 text-start">
                                         <a
                                             href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ $product->product_name }}</a>
                                     </h6>
                                 </div>
-
-                                <div class="product__content--rating d-flex justify-content-between align-items-center">
-
-                                    <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
-                                        class="btn btn-primary btn-sm">
-                                        Add To Cart
-                                    </a>
-
-                                    <div class="price">
+                                <div class="col-lg-4">
+                                    <div class="price text-end">
                                         @if ($product->price_status == 'rfq')
-                                            <h5 class="grenadier-color f-600">
-                                                ${{ $product->sas_price }}.00
+                                            <h5 class="grenadier-color mb-0 fw-bold">
+                                                Tk {{ $product->sas_price }}
                                             </h5>
                                         @elseif ($product->price_status == 'offer_price')
-                                            <h5 class="grenadier-color f-600">
-                                                ${{ $product->discount_price }}.00</h5>
+                                            <h5 class="grenadier-color mb-0 fw-bold">
+                                                Tk {{ $product->discount_price }}</h5>
                                         @else
-                                            <h5 class="grenadier-color f-600">${{ $product->price }}.00
+                                            <h5 class="grenadier-color mb-0 fw-bold">Tk
+                                                {{ $product->price }}
                                             </h5>
                                         @endif
                                     </div>
-
                                 </div>
-
-                            </div>
-                            <div class="product-action">
-                                <a style="cursor: pointer;" id="{{ $product->id }}"
-                                    onclick="addToWishList(this.id)"><span class="lnr lnr-heart"></span></a>
-                                {{-- <a href="#"><span class="lnr lnr-eye"></span></a> --}}
-                                <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"><span
-                                        class="lnr lnr-cart"></span></a>
-                                {{-- <a href="#"><span class="lnr lnr-sync"></span></a> --}}
                             </div>
                         </div>
-
                     </div>
                 @empty
                     <p>No Product Avaiable</p>

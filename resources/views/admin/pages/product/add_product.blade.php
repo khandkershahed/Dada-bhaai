@@ -270,21 +270,21 @@
                                                     <div class="rfq_price d-none">
                                                         <label class="ms-1" for="price_status">SAS Price <span
                                                                 class="text-danger">*</span></label>
-                                                        <input class="form-control form-control-sm" type="text"
+                                                        <input class="form-control form-control-sm" type="number"
                                                             name="sas_price" placeholder="RFQ Price for Sas">
                                                     </div>
 
                                                     <div class="price d-none">
                                                         <label class="ms-1" for="price_status">Price <span
                                                                 class="text-danger">*</span></label>
-                                                        <input class="form-control form-control-sm" type="text"
+                                                        <input class="form-control form-control-sm" type="number"
                                                             name="price" placeholder="Price">
                                                     </div>
 
                                                     <div class="offer_price d-none">
                                                         <label class="ms-1" for="price_status">Discount Price <span
                                                                 class="text-danger">*</span></label>
-                                                        <input class="form-control form-control-sm" type="text"
+                                                        <input class="form-control form-control-sm" type="number"
                                                             name="discount_price" placeholder="Discounted Price">
                                                     </div>
 
@@ -602,7 +602,7 @@
                                             <div class="col-lg-4 mb-3" id="dealsInputContainer" style="display: none;">
                                                 <label class="form-label">Deal
                                                     Price</label>
-                                                <input type="text"
+                                                <input type="number"
                                                     class="form-control form-select-sm form-control-solid" name="deal"
                                                     placeholder="Enter Deal" />
                                             </div>
@@ -749,7 +749,7 @@
                                                                             value="{{ old('source_one_price') }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter source one price"
-                                                                            type="text" />
+                                                                            type="number" />
                                                                     </div>
                                                                 </td>
                                                                 <td>
@@ -823,7 +823,7 @@
                                                                             value="{{ old('source_two_price') }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter source two price"
-                                                                            type="text" />
+                                                                            type="number" />
                                                                     </div>
                                                                 </td>
                                                                 <td>
@@ -925,7 +925,7 @@
                                                                             value="{{ old('competitor_one_price') }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter Product Name"
-                                                                            type="text" />
+                                                                            type="number" />
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -954,7 +954,7 @@
                                                                             value="{{ old('competitor_two_price') }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter Product Name"
-                                                                            type="text" />
+                                                                            type="number" />
                                                                     </div>
                                                                 </td>
                                                             </tr>

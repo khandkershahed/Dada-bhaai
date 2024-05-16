@@ -138,12 +138,7 @@
 
                 miniCart();
 
-<<<<<<< HEAD
                 // Start Message
-=======
-                // Start Message 
-
->>>>>>> 202353e99b5117f2cd83076ae8f750f173d07041
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -167,12 +162,7 @@
                         title: data.error,
                     })
                 }
-<<<<<<< HEAD
                 // End Message
-=======
-
-                // End Message  
->>>>>>> 202353e99b5117f2cd83076ae8f750f173d07041
             }
 
         })
@@ -204,12 +194,7 @@
 
                 miniCart();
 
-<<<<<<< HEAD
                 // Start Message
-=======
-                // Start Message 
-
->>>>>>> 202353e99b5117f2cd83076ae8f750f173d07041
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -235,12 +220,7 @@
                         title: data.error,
                     })
                 }
-<<<<<<< HEAD
                 // End Message
-=======
-
-                // End Message  
->>>>>>> 202353e99b5117f2cd83076ae8f750f173d07041
             }
 
         })
@@ -278,12 +258,7 @@
 
                 miniCart();
 
-<<<<<<< HEAD
                 // Start Message
-=======
-                // Start Message 
-
->>>>>>> 202353e99b5117f2cd83076ae8f750f173d07041
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -307,12 +282,7 @@
                         title: data.error,
                     })
                 }
-<<<<<<< HEAD
                 // End Message
-=======
-
-                // End Message 
->>>>>>> 202353e99b5117f2cd83076ae8f750f173d07041
             }
 
         })
@@ -503,7 +473,8 @@
 
     }
 </script>
-{{-- ================================= --}}
+
+
 {{-- AddToCartOneRelated --}}
 <script>
     function addToCartOneRelated() {
@@ -612,7 +583,7 @@
 </script>
 {{-- Mini Cart Related --}}
 
-{{-- ==================================================== --}}
+
 
 {{-- MiniCart --}}
 <script>
@@ -840,6 +811,7 @@
     }
 </script>
 
+{{-- // Cart INCREMENT --}}
 <script>
     // Cart INCREMENT
 
@@ -1041,7 +1013,6 @@
     }
 </script>
 
-{{-- // Wishlist Remove End --}}
 <script>
     $(document).ready(function() {
         var submitIcon = $('.searchbox-icon');
@@ -1105,6 +1076,7 @@
         $(this).next('.dropdown-menu').toggleClass('show');
     });
 </script>
+
 <script>
     const header = document.querySelector(".page-header");
     const toggleClass = "is-sticky";

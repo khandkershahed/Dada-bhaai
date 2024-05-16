@@ -266,6 +266,11 @@
                             </div>
                         </div>
                     </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link main-menu-link" href="{{ route('template.one.all_product') }}">Product<span
+                                class="sr-only">(current)</span></a>
+                    </li>
                 </ul>
                 <div>
                     <div class="row align-items-center">
