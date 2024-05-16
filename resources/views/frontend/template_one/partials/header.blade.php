@@ -1,6 +1,18 @@
-<header class="header">
-    <div class="middle header__middle bg--header__middle pt-35 pb-35">
+<header class="page-header">
+    <nav class="navbar navbar-expand-lg navbar-white bg-white" style="border-bottom: 1px solid #eee">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="container">
+<<<<<<< HEAD
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand" href="{{ route('index') }}">
+                    <img class="" width="250px"
+                        src="https://www.dadabhaai.com/upload/logo_black/202405071136jaragroups404413.png"
+                        alt="" />
+                </a>
+=======
             <div class="row">
                 <div class="col-sm-12">
                     <div class="content--header__middle d-flex align-items-center justify-content-between">
@@ -164,6 +176,7 @@
     <div class="bottom header__bottom header__bottom--border custom-header-bottom">
         <div class="container">
             <div class="row">
+>>>>>>> 202353e99b5117f2cd83076ae8f750f173d07041
                 <div class="col-xl-3 col-lg-4 col-md-5 col-10">
                     <!-- Extra shopping cart for mobile device start -->
                     <div class="cart--header__middle d-block d-md-none dept__menu-box">
@@ -230,7 +243,6 @@
                             </ul>
                         </div>
                     </div>
-
                     @php
                         $categorys = App\Models\Admin\Category::where('status', '1')
                             ->orderBy('category_name', 'ASC')
@@ -244,18 +256,16 @@
                         <nav>
                             <ul class="dept__menu--list">
                                 <li>
-
-                                    <a class="dept__menu-mlink f-900 cod__gray-color" href="#"
+                                    <a class="dept__menu-mlink card-title cod__gray-color mb-0" href="#"
                                         id="categoryLink">
                                         <i class="fa fa-th pr-2" aria-hidden="true"></i>Category
                                     </a>
 
                                     <ul class="dept__menu--dropdown custom_main_menu_dropdown py-0"
                                         id="categoryDropdown">
-                                        <div class="row bg-white" style="border-top: 1px solid #eee">
+                                        <div class="row bg-white" style="border-top: 1px solid #eee; margin-top: 16px;">
                                             <div class="col-lg-2 px-0" style="background-color: #eee">
-                                                <ul class="nav nav-tabs flex-column px-0" id="myTab"
-                                                    role="tablist">
+                                                <ul class="nav nav-tabs flex-column px-0" id="myTab" role="tablist">
 
                                                     @foreach ($categorys as $key => $category)
                                                         <li class="nav-item">
@@ -266,37 +276,14 @@
                                                                 aria-selected="true">{{ $category->category_name }}</a>
                                                         </li>
                                                     @endforeach
-
-                                                    {{-- <li class="nav-item">
-                                                        <a class="nav-link main_cat_triger active" id="Cosmetics-tab"
-                                                            data-toggle="tab" href="#Cosmetics" role="tab"
-                                                            aria-controls="Cosmetics"
-                                                            aria-selected="true">Cosmetics</a>
-                                                    </li>
-
-
-                                                    <li class="nav-item">
-                                                        <a class="nav-link main_cat_triger" id="Lifestyle-tab"
-                                                            data-toggle="tab" href="#Lifestyle" role="tab"
-                                                            aria-controls="Lifestyle"
-                                                            aria-selected="false">Electronics Devices</a>
-                                                    </li> --}}
-
-                                                    {{-- <div>
-                                                        <a href="{{ route('home.all.category.page') }}" class="category_btn">All Category</a>
-                                                    </div> --}}
-
                                                 </ul>
                                             </div>
                                             <div class="col-lg-10">
                                                 <div class="tab-content" id="myTabContent">
-
-
                                                     @foreach ($categorys as $key => $category)
                                                         <div class="tab-pane fade show {{ $key == 0 ? 'active' : '' }}"
                                                             id="category{{ $category->id }}" role="tabpanel"
                                                             aria-labelledby="Cosmetics-tab">
-
                                                             @php
                                                                 $catwissubcat = App\Models\Admin\SubCategory::where(
                                                                     'status',
@@ -307,9 +294,7 @@
                                                                     ->latest()
                                                                     ->get();
                                                             @endphp
-
                                                             <div class="row main-cat-height">
-
                                                                 @forelse ($catwissubcat as $subcat)
                                                                     <div class="col-lg-3">
                                                                         <p
@@ -328,9 +313,7 @@
                                                                                 ->latest()
                                                                                 ->get();
                                                                         @endphp
-
                                                                         <ul>
-
                                                                             @forelse ($childcats as $childcat)
                                                                                 <li>
 
@@ -346,37 +329,9 @@
                                                                 @empty
                                                                     <p>No Subcategory Avaiable</p>
                                                                 @endforelse
-
-
                                                             </div>
-
-                                                            {{-- <div class="row py-2 mt-5" style="background-color: #cd3301">
-                                                            <div class="col-lg-3">
-                                                                <a href=""
-                                                                    class="grenadier-color font-weight-bold text-white">View
-                                                                    All</a>
-                                                            </div>
-                                                            <div class="col-lg-3">
-                                                                <a href=""
-                                                                    class="grenadier-color font-weight-bold text-white">View
-                                                                    All</a>
-                                                            </div>
-                                                            <div class="col-lg-3">
-                                                                <a href=""
-                                                                    class="grenadier-color font-weight-bold text-white">View
-                                                                    All</a>
-                                                            </div>
-                                                            <div class="col-lg-3">
-                                                                <a href=""
-                                                                    class="grenadier-color font-weight-bold text-white">View
-                                                                    All</a>
-                                                            </div>
-                                                        </div> --}}
-
                                                         </div>
                                                     @endforeach
-
-
                                                 </div>
                                             </div>
                                         </div>
@@ -386,14 +341,178 @@
                         </nav>
                     </div>
                 </div>
-                <div class="col-xl-9 col-lg-8 col-md-7 col-2">
-                    <div class="main-menu">
-                        <nav id="mobile-menu">
-                            <ul>
-                                <li>
-                                    <a href="{{ route('index') }}">Home</a>
-                                </li>
+                <ul class="navbar-nav mr-auto mobile-menu">
+                    <li class="nav-item active">
+                        <a class="nav-link main-menu-link" href="{{ route('index') }}">Home <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    {{-- All Brands Menu --}}
+                    <li class="nav-item dropdown position-static">
+                        <a class="nav-link main-menu-link dropdown-toggle" href="javascript:void(0)"
+                            id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Brands
+                        </a>
 
+<<<<<<< HEAD
+                        @php
+                            $brands = App\Models\Brand::where('status', '1')
+                                ->orderBy('brand_name', 'ASC')
+                                ->limit(8)
+                                ->latest()
+                                ->get();
+                        @endphp
+                        <div class="dropdown-menu w-100 mt-0 rounded-0 border-bottom-0 main-menu-drop"
+                            style="border-top: 4px solid #cd3301" aria-labelledby="navbarDropdown">
+                            <div class="container">
+                                <div class="row">
+                                    @foreach ($brands as $brand)
+                                        <div class="col-lg-3">
+                                            <a href="javascript:;" class="main-sub-menu">{{ $brand->brand_name }}</a>
+                                            <div class="link-divider"></div>
+                                            @php
+                                                $categorys = App\Models\Admin\Product::where('category_id', $brand->id)
+                                                    ->latest()
+                                                    ->get();
+                                            @endphp
+                                            <ul class="submenu level-1">
+                                                @forelse ($categorys as $category)
+                                                    <li class=""> <a
+                                                            href="javascript:void();">{{ $category['category']['category_name'] }}</a>
+                                                    </li>
+                                                @empty
+                                                    <p>No Category Avaiable</p>
+                                                @endforelse
+                                            </ul>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{-- All Brands Menu --}}
+                    <li class="nav-item dropdown position-static">
+                        <a class="nav-link main-menu-link dropdown-toggle" href="javascript:void(0)"
+                            id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Offers
+                        </a>
+
+                        @php
+                            $brands = App\Models\Brand::where('status', '1')
+                                ->orderBy('brand_name', 'ASC')
+                                ->limit(8)
+                                ->latest()
+                                ->get();
+                        @endphp
+                        <div class="dropdown-menu w-100 mt-0 rounded-0 border-bottom-0 main-menu-drop"
+                            style="border-top: 4px solid #cd3301" aria-labelledby="navbarDropdown">
+                            <div class="container">
+                                <div class="row">
+                                    @foreach ($brands as $brand)
+                                        <div class="col-lg-3">
+                                            <a href="javascript:;" class="main-sub-menu">{{ $brand->brand_name }}</a>
+                                            <div class="link-divider"></div>
+                                            @php
+                                                $categorys = App\Models\Admin\Product::where('category_id', $brand->id)
+                                                    ->latest()
+                                                    ->get();
+                                            @endphp
+                                            <ul class="submenu level-1">
+                                                @forelse ($categorys as $category)
+                                                    <li class=""> <a
+                                                            href="javascript:void();">{{ $category['category']['category_name'] }}</a>
+                                                    </li>
+                                                @empty
+                                                    <p>No Category Avaiable</p>
+                                                @endforelse
+                                            </ul>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-8">
+                            <form class="searchbox" action="{{ route('product.search') }}" method="POST">
+                                @csrf
+                                <input type="search" placeholder="Search......" name="search"
+                                    class="searchbox-input" id="search" name="search" onkeyup="buttonUp();"
+                                    required>
+                                <button class="searchbox-submit" value="GO"><i
+                                        class="icofont-search-2"></i></button>
+                                <span class="searchbox-icon"><i class="icofont-search-2"></i></span>
+                            </form>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="cart--header__middle d-none d-md-block">
+                                <div class="cart--header__list">
+                                    <ul class="list-inline">
+                                        <li>
+                                            <div class="dropdown">
+                                                <a href="" class="border-0 bg-none text-muted" type="button"
+                                                    id="dropdownMenuButton" data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false"
+                                                    style="font-size: 20px;">
+                                                    <i class="fa-solid fa-user text-muted"></i>
+                                                </a>
+                                                <div class="dropdown-menu p-3 user-panel-login"
+                                                    aria-labelledby="dropdownMenuButton" style="">
+                                                    <a href="registration.html"
+                                                        class="btn btn-primary w-100">Login</a>
+                                                    <hr class="mb-2 mt-3">
+                                                    <p>First time here? <a href="" class="text-danger">Sign
+                                                            Up</a>
+                                                    </p>
+                                                    <a class="dropdown-item" href="#"><i
+                                                            class="fal fa-user pr-2"></i>
+                                                        My Profile</a>
+                                                    <a class="dropdown-item" href="#"><i
+                                                            class="fal fa-star pr-2" aria-hidden="true"></i> My
+                                                        Favorites</a>
+                                                    <a class="dropdown-item" href="#"><i
+                                                            class="fal fa-list pr-2" aria-hidden="true"></i> My
+                                                        Booked</a>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="">
+                                            <a href="{{ route('wishlist') }}" style="font-size: 20px;">
+                                                <i class="fa-solid fa-heart text-muted">
+                                                    <span class="cart__count" id="wishQty">0</span>
+                                                </i>
+                                            </a>
+                                        </li>
+
+
+                                        <li class="">
+                                            <a class="mini__cart--link" href="jaxascript:;" style="font-size: 20px;">
+                                                <i class="fa-solid fa-cart-plus text-muted">
+                                                    <span class="cart__count" id="cartQty">0</span>
+                                                </i>
+                                            </a>
+                                        </li>
+
+                                        <li class="d-none">
+                                            <a href="#"><i class="fal fa-sync text-muted"
+                                                    style="font-size: 20px;"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="mini__cart--box">
+                                    <div id="miniCart">
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <div class="total-text d-flex justify-content-between">
+                                                <span class="f-800 cod__black-color">Total Bag</span>
+                                                <span class="f-800 cod__black-color">Tk <span
+                                                        id="cartSubTotal"></span></span>
+=======
                                 {{-- Brand List  --}}
 
                                 <li class="mega-menu static dropdown-icon">
@@ -487,15 +606,25 @@
 
                                     </ul>
                                 </li>
+>>>>>>> 202353e99b5117f2cd83076ae8f750f173d07041
 
-                            </ul>
-                        </nav>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="d-flex justify-content-between">
+                                                <a href="{{ route('template.one.view.cart') }}"
+                                                    class="checkout">Checkout</a>
+                                                <a href="{{ route('template.one.view.cart') }}" class="viewcart">View
+                                                    Cart</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-12">
-                    <div class="mobile-menu"></div>
                 </div>
             </div>
         </div>
-    </div>
+    </nav>
 </header>
