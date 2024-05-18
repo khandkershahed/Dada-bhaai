@@ -507,6 +507,7 @@
                 {{-- Employee Section --}}
 
                 {{-- Role & Permission Section --}}
+                
                 {{-- @if (Auth::guard('admin')->user()->can('role.menu')) --}}
                     <div class="menu-item">
                         <a class="menu-link" href="{{ route('all.roles.permission') }}" title="Role In Permission"
