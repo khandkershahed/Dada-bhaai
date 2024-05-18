@@ -1,5 +1,6 @@
 @extends('frontend.template_one.frontend_dashboard_template_one')
 @section('index_template_one')
+@section('title', 'Dada Bhaai')
     <!-- page banner area start -->
     <section class="page-banner-area blog-page"
         data-background="{{ asset('frontend/template_one/assets/img/bg/blog-page-banner.jpg') }}">

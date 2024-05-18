@@ -29,7 +29,7 @@ class IndexController extends Controller
         } else if ($template->name == 'template_two') {
 
             $homepage = HomePage::where('status', 'tamplate_two')->latest('id')->first();
-            
+
             $categoryIds = [
                 $homepage->category_tab_one_id,
                 $homepage->category_tab_two_id,
@@ -40,7 +40,7 @@ class IndexController extends Controller
             $categories = Category::with('products')->whereIn('id', $categoryIds)->get();
             // dd($homepage);
 
-            return view('frontend.astell.index_astell', compact('homepage','categories'));
+            return view('frontend.astell.index_astell', compact('homepage', 'categories'));
 
         } else if ($template->name == 'template_three') {
             $banners = Banner::where('status', '1')->orderBy('id', 'ASC')->latest()->get();
@@ -63,12 +63,21 @@ class IndexController extends Controller
 
         //Releted Category
         $cat_id = $product->category_id;
-        $relativeProduct = Product::where('category_id', $cat_id)->where('id', '!=', '$id')->orderBy('id', 'ASC')->limit(5)->get();
+        $relativeProduct = Product::where('category_id', $cat_id)->where('id', '!=', $id)->orderBy('id', 'ASC')->limit(5)->get();
 
-        $child_id = $product->childcategory_id;
-        $relativeChild = Product::where('childcategory_id', $child_id)->where('id', '!=', '$id')->orderBy('id', 'DESC')->limit(6)->get();
+        // $child_id = $product->child_id;
+        // $relativeChild = Product::where('child_id', $child_id)->where('id', '!=', '$id')->orderBy('id', 'DESC')->limit(6)->get();
 
-        return view('frontend.template_one.product.single_product', compact('product', 'relativeProduct', 'multiImages', 'relativeChild','product_colors'));
+        $child_id = $product->child_id;
+
+        // Retrieve related products based on the child_id, excluding the product with ID equal to $id
+        $relativeChild = Product::where('child_id', $child_id)
+            ->where('id', '!=', $id) // Remove the single quotes around $id
+            ->orderBy('id', 'DESC')
+            ->limit(6)
+            ->get();
+
+        return view('frontend.template_one.product.single_product', compact('product', 'relativeProduct', 'multiImages', 'relativeChild', 'product_colors'));
     }
 
     //Single Product

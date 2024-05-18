@@ -1,5 +1,6 @@
 @extends('frontend.template_one.frontend_dashboard_template_one')
 @section('index_template_one')
+@section('title', 'Dada Bhaai | Product Details')
     <!-- Main -->
     <main class="main--wrapper">
         <!-- Shop-details start -->
@@ -193,7 +194,7 @@
                                     <div class="product-section2 mt-40">
                                         <h6 class="product--section__title2 pb-30" id="releted-tab" data-toggle="tab"
                                             href="#releted" role="tab" aria-controls="releted" aria-selected="true">
-                                            <span>Releted </span> Accessories Of This Product
+                                            <span>Related </span> Accessories Of This Product
                                         </h6>
                                     </div>
                                 </div>
@@ -352,7 +353,7 @@
                                     <div class="product-section2">
                                         <h6 class="product--section__title2" id="releted-tab" data-toggle="tab"
                                             href="#releted" role="tab" aria-controls="releted" aria-selected="true">
-                                            <span>Releted Category</span>
+                                            <span>Related Category</span>
                                         </h6>
                                     </div>
                                 </div>

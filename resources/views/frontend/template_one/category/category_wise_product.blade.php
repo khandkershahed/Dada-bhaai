@@ -1,5 +1,6 @@
 @extends('frontend.template_one.frontend_dashboard_template_one')
 @section('index_template_one')
+@section('title', 'Dada Bhaai | ' . $catwiseproduct->category_name)
     <!-- shop area start -->
     <div class="product shop-page pt-30 pb-80" style="margin-top: 60px;">
         <div class="container">
