@@ -173,8 +173,6 @@ class ProductController extends Controller
         $subcats = $editProduct->subcategory_id;
         $childcategorys = ChildCategory::where('subcategory_id', $subcats)->latest()->get();
 
-//         $subcats = $editProduct->subcategory_id; // Corrected variable name: subcategory_id instead of subategory_id
-// $childcategories = ChildCategory::where('subcategory_id', $subcats)->latest()->get(); // Corrected method: ChildCategory instead of ChildCategorys
 
         $multiImages = MultiImg::where('product_id', $id)->latest()->get();
 

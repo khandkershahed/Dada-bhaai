@@ -507,7 +507,7 @@
                 {{-- Employee Section --}}
 
                 {{-- Role & Permission Section --}}
-                @if (Auth::guard('admin')->user()->can('role.menu'))
+                {{-- @if (Auth::guard('admin')->user()->can('role.menu')) --}}
                     <div class="menu-item">
                         <a class="menu-link" href="{{ route('all.roles.permission') }}" title="Role In Permission"
                             data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click"
@@ -538,7 +538,7 @@
                             <span class="menu-title">Role In Permission</span>
                         </a>
                     </div>
-                @endif
+                {{-- @endif --}}
 
 
                 {{-- User Section --}}
@@ -579,6 +579,7 @@
                 {{-- Setting Section --}}
                 @if (Auth::guard('admin')->user()->can('setting.menu'))
                     <div class="menu-item">
+                        @if (Auth::guard('admin')->user()->can('all.setting'))
                         <a class="menu-link" href="{{ route('all.sites') }}" title="Setting Page"
                             data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click"
                             data-bs-placement="right">
@@ -607,6 +608,7 @@
                             </span>
                             <span class="menu-title">Setting</span>
                         </a>
+                        @endif
                     </div>
                 @endif
                 {{-- Setting Section --}}
