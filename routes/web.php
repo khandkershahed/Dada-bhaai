@@ -110,6 +110,7 @@ Route::controller(TemplateOneController::class)->group(function () {
 
     //Offer Category Page
     Route::get('/offer-categorywise/product/{id}', 'OfferCategoryRelatedProductOne')->name('offer-categorywise.product');
+    Route::get('/offerwise/product/{id}', 'OfferWiseProductOne')->name('offerwise.product');
 
     //Child Category
     Route::get('/product/childcategory/{id}/{childcategory_slug}', 'ChilldCategoryRelatedProductOne');

@@ -176,11 +176,65 @@
                     </div>
                 </div>
                 <ul class="navbar-nav mr-auto mobile-menu">
+
                     <li class="nav-item active">
                         <a class="nav-link main-menu-link" href="{{ route('index') }}">Home <span
                                 class="sr-only">(current)</span></a>
                     </li>
+
                     {{-- All Brands Menu --}}
+
+                    {{-- <li class="nav-item dropdown position-static">
+                        <a class="nav-link main-menu-link dropdown-toggle" href="javascript:void(0)"
+                            id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Brands
+                        </a>
+
+                        @php
+                            $categoriesWithBrands = DB::table('categories')
+                                ->leftJoin('products', 'categories.id', '=', 'products.category_id')
+                                ->leftJoin('brands', 'products.brand_id', '=', 'brands.id')
+                                ->select(
+                                    'categories.id',
+                                    'categories.category_name as category_name',
+                                    'brands.id as brand_id',
+                                    'brands.brand_name as brand_name',
+                                )
+                                ->orderBy('categories.id')
+                                ->limit(8)
+                                ->get();
+
+                            // Filter unique categories
+                            $uniqueCategories = $categoriesWithBrands->unique('id');
+                        @endphp
+
+                        <div class="dropdown-menu w-100 mt-0 rounded-0 border-bottom-0 main-menu-drop"
+                            style="border-top: 4px solid #cd3301" aria-labelledby="navbarDropdown">
+                            <div class="container">
+                                <div class="row">
+                                    @foreach ($uniqueCategories as $category)
+                                        <div class="col-lg-3">
+                                            <a href="javascript:;"
+                                                class="main-sub-menu">{{ $category->category_name }}</a>
+                                            <div class="link-divider"></div>
+                                            <ul class="submenu level-1">
+                                                
+                                                @foreach ($categoriesWithBrands as $brand)
+
+                                                    @if ($brand->id == $category->id)
+                                                        <li>{{ $brand->brand_name }}</li>
+                                                    @endif
+                                                    
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </li> --}}
+
                     <li class="nav-item dropdown position-static">
                         <a class="nav-link main-menu-link dropdown-toggle" href="javascript:void(0)"
                             id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -189,41 +243,58 @@
                         </a>
 
                         @php
-                            $brands = App\Models\Brand::where('status', '1')
-                                ->orderBy('brand_name', 'ASC')
+                            $categoriesWithBrands = DB::table('categories')
+                                ->leftJoin('products', 'categories.id', '=', 'products.category_id')
+                                ->leftJoin('brands', 'products.brand_id', '=', 'brands.id')
+                                ->select(
+                                    'categories.id',
+                                    'categories.category_name as category_name',
+                                    'brands.id as brand_id',
+                                    'brands.brand_name as brand_name',
+                                    'brands.brand_slug as brand_slug', // assuming this is the slug field
+                                )
+                                ->orderBy('categories.id')
                                 ->limit(8)
-                                ->latest()
                                 ->get();
+
+                            // Group brands by category and remove duplicates
+                            $brandsByCategory = [];
+                            foreach ($categoriesWithBrands as $category) {
+                                $brandsByCategory[$category->category_name][] = $category;
+                            }
+                            // Remove duplicates
+                            foreach ($brandsByCategory as &$brands) {
+                                $brands = array_unique($brands, SORT_REGULAR);
+                            }
+                            unset($brands); // unset reference variable
                         @endphp
+
                         <div class="dropdown-menu w-100 mt-0 rounded-0 border-bottom-0 main-menu-drop"
                             style="border-top: 4px solid #cd3301" aria-labelledby="navbarDropdown">
                             <div class="container">
                                 <div class="row">
-                                    @foreach ($brands as $brand)
+
+                                    @foreach ($brandsByCategory as $categoryName => $brands)
                                         <div class="col-lg-3">
-                                            <a href="javascript:;" class="main-sub-menu">{{ $brand->brand_name }}</a>
+                                            <a href="javascript:;" class="main-sub-menu">{{ $categoryName }}</a>
                                             <div class="link-divider"></div>
-                                            @php
-                                                $categorys = App\Models\Admin\Product::where('category_id', $brand->id)
-                                                    ->latest()
-                                                    ->get();
-                                            @endphp
                                             <ul class="submenu level-1">
-                                                @forelse ($categorys as $category)
-                                                    <li class=""> <a
-                                                            href="javascript:void();">{{ $category['category']['category_name'] }}</a>
+                                                @foreach ($brands as $brand)
+                                                    <li><a
+                                                            href="{{ url('product/brand/' . $brand->brand_id . '/' . $brand->brand_slug) }}">{{ $brand->brand_name }}</a>
                                                     </li>
-                                                @empty
-                                                    <p>No Category Avaiable</p>
-                                                @endforelse
+                                                @endforeach
                                             </ul>
                                         </div>
                                     @endforeach
+
                                 </div>
                             </div>
                         </div>
                     </li>
-                    {{-- All Brands Menu --}}
+
+
+                    {{-- All Offer Menu --}}
                     <li class="nav-item dropdown position-static">
                         <a class="nav-link main-menu-link dropdown-toggle" href="javascript:void(0)"
                             id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -232,9 +303,9 @@
                         </a>
 
                         @php
-                            $brands = App\Models\Brand::where('status', '1')
-                                ->orderBy('brand_name', 'ASC')
-                                ->limit(8)
+                            $offers = App\Models\Admin\OfferCategory::where('status', '1')
+                                ->orderBy('offer_category_name', 'ASC')
+                                ->limit(4)
                                 ->latest()
                                 ->get();
                         @endphp
@@ -242,23 +313,29 @@
                             style="border-top: 4px solid #cd3301" aria-labelledby="navbarDropdown">
                             <div class="container">
                                 <div class="row">
-                                    @foreach ($brands as $brand)
+                                    @foreach ($offers as $offer)
                                         <div class="col-lg-3">
-                                            <a href="javascript:;" class="main-sub-menu">{{ $brand->brand_name }}</a>
+                                            <a href="javascript:;"
+                                                class="main-sub-menu">{{ $offer->offer_category_name }}</a>
                                             <div class="link-divider"></div>
-                                            @php
-                                                $categorys = App\Models\Admin\Product::where('category_id', $brand->id)
-                                                    ->latest()
-                                                    ->get();
-                                            @endphp
+
                                             <ul class="submenu level-1">
-                                                @forelse ($categorys as $category)
+
+                                                @php
+                                                    $offerNames = App\Models\Admin\Offer::where('status', '1')
+                                                        ->where('offer_category_id', $offer->id)
+                                                        ->limit(4)
+                                                        ->latest()
+                                                        ->get();
+                                                @endphp
+
+                                                @forelse ($offerNames as $offerName)
                                                     <li class=""> <a
-                                                            href="javascript:void();">{{ $category['category']['category_name'] }}</a>
+                                                            href="{{ route('offerwise.product', $offerName->id) }}">{{ $offerName->name }}</a>
                                                     </li>
                                                 @empty
-                                                    <p>No Category Avaiable</p>
                                                 @endforelse
+
                                             </ul>
                                         </div>
                                     @endforeach
@@ -268,9 +345,11 @@
                     </li>
 
                     <li class="nav-item active">
-                        <a class="nav-link main-menu-link" href="{{ route('template.one.all_product') }}">Product<span
+                        <a class="nav-link main-menu-link"
+                            href="{{ route('template.one.all_product') }}">Product<span
                                 class="sr-only">(current)</span></a>
                     </li>
+
                 </ul>
                 <div>
                     <div class="row align-items-center">
@@ -297,24 +376,42 @@
                                                     style="font-size: 20px;">
                                                     <i class="fa-solid fa-user text-muted"></i>
                                                 </a>
+
                                                 <div class="dropdown-menu p-3 user-panel-login"
                                                     aria-labelledby="dropdownMenuButton" style="">
-                                                    <a href="registration.html"
-                                                        class="btn btn-primary w-100">Login</a>
-                                                    <hr class="mb-2 mt-3">
-                                                    <p>First time here? <a href="" class="text-danger">Sign
-                                                            Up</a>
-                                                    </p>
-                                                    <a class="dropdown-item" href="#"><i
-                                                            class="fal fa-user pr-2"></i>
-                                                        My Profile</a>
-                                                    <a class="dropdown-item" href="#"><i
-                                                            class="fal fa-star pr-2" aria-hidden="true"></i> My
-                                                        Favorites</a>
-                                                    <a class="dropdown-item" href="#"><i
-                                                            class="fal fa-list pr-2" aria-hidden="true"></i> My
-                                                        Booked</a>
+
+                                                    @if (Auth::user())
+                                                        <a href="{{ route('template.one.login') }}"
+                                                            class="btn btn-primary w-100">Login</a>
+
+                                                        <hr class="mb-2 mt-3">
+
+                                                        <p>First time here? <a
+                                                                href="{{ route('template.one.login') }}"
+                                                                class="text-danger">Sign
+                                                                Up</a>
+                                                        </p>
+                                                        <a class="dropdown-item" href="#"><i
+                                                                class="fal fa-user pr-2"></i>
+                                                            My Dashboard</a>
+                                                        <a class="dropdown-item" href="#"><i
+                                                                class="fal fa-star pr-2"
+                                                                aria-hidden="true"></i>Password Change</a>
+                                                    @else
+                                                        <a href="{{ route('template.one.login') }}"
+                                                            class="btn btn-primary w-100">Login</a>
+
+                                                        <hr class="mb-2 mt-3">
+
+                                                        <p>First time here? <a
+                                                                href="{{ route('template.one.login') }}"
+                                                                class="text-danger">Sign
+                                                                Up</a>
+                                                        </p>
+                                                    @endif
+
                                                 </div>
+
                                             </div>
                                         </li>
 
