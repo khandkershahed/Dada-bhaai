@@ -1,5 +1,6 @@
 @extends('frontend.template_one.frontend_dashboard_template_one')
 @section('index_template_one')
+@section('title', 'Dada Bhaai | Contact Us')
     <!-- contact area start -->
     <section class="contact-area pt-80">
         <div class="container">

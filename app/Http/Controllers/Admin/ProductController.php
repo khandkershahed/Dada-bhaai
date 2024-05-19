@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Brand;
-use App\Models\Admin\Color;
-use Illuminate\Http\Request;
-use App\Models\Admin\Product;
-use App\Models\Admin\Category;
-use App\Models\Admin\MultiImg;
-use App\Models\Admin\SubCategory;
-use App\Models\Admin\ChildCategory;
 use App\Http\Controllers\Controller;
-use Intervention\Image\Facades\Image;
 use App\Http\Requests\ProductRequest;
+use App\Models\Admin\Category;
+use App\Models\Admin\ChildCategory;
+use App\Models\Admin\Color;
+use App\Models\Admin\MultiImg;
+use App\Models\Admin\Product;
+use App\Models\Admin\SubCategory;
+use App\Models\Brand;
+use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
 {
@@ -170,8 +170,9 @@ class ProductController extends Controller
         $subcategorys = SubCategory::where('category_id', $cats)->latest()->get();
 
         //$childcats = $editProduct->category_id;
-        $subcats = $editProduct->subategory_id;
+        $subcats = $editProduct->subcategory_id;
         $childcategorys = ChildCategory::where('subcategory_id', $subcats)->latest()->get();
+
 
         $multiImages = MultiImg::where('product_id', $id)->latest()->get();
 

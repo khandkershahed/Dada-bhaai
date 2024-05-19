@@ -65,7 +65,7 @@ class TemplateOneController extends Controller
                 $products = $products->where('status', 1)->orderBy('id', 'DESC')->paginate(9);
             }
         } else {
-            $products = $products->where('status', 1)->orderBy('id', 'DESC')->paginate(12);
+            $products = $products->where('status', 1)->orderBy('id', 'DESC')->paginate(15);
         }
 
         $brands = Brand::where('status', '1')->orderBy('brand_name', 'ASC')->latest()->get();
@@ -192,15 +192,26 @@ class TemplateOneController extends Controller
         return view('frontend.template_one.category.category_wise_product', compact('products', 'catwiseproduct', 'route', 'catId', 'catSlug', 'sort'));
     }
 
-    //OfferCategory RelatedProduct One One
+    //OfferCategory RelatedProduct One
     public function OfferCategoryRelatedProductOne(Request $request, $id)
     {
-        
+
         $products = Offer::where('status', '1')->where('offer_category_id', $id)->paginate(12);
 
         $offercatwiseproduct = OfferCategory::find($id);
 
-        return view('frontend.template_one.offer_category.offer_category_wise_product', compact('offercatwiseproduct','products'));
+        return view('frontend.template_one.offer_category.offer_category_wise_product', compact('offercatwiseproduct', 'products'));
+    }
+
+    //OfferWise Product One
+    public function OfferWiseProductOne(Request $request, $id)
+    {
+
+        $products = Offer::where('status', '1')->where('id', $id)->paginate(12);
+
+        $offerwiseproduct = Offer::find($id);
+
+        return view('frontend.template_one.offer_category.offerwise_product', compact('offerwiseproduct', 'products'));
     }
 
     //Child Category Wise Product One

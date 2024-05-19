@@ -8,10 +8,11 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Dada Bhaai || Product In Your Door</title>
+    <title>@yield('title')</title>
 
-    <link rel="manifest" href="site.html" />
-    <link rel="shortcut icon" type="image/x-icon" href="https://www.dadabhaai.com/storage/jZApfk6oOdphqzaDbWvKGDOzNqPf5GKrf6wg17RW.png" />
+    <link rel="manifest" href="" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.dadabhaai.com/upload/logo_black/202405071136jaragroups404413.png" />
 
     <!-- Place favicon.ico in the root directory -->
 

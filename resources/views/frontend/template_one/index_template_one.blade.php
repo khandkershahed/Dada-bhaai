@@ -1,5 +1,6 @@
 @extends('frontend.template_one.frontend_dashboard_template_one')
 @section('index_template_one')
+@section('title', 'Dada Bhaai')
     <!-- hero  -->
     @include('frontend.template_one.partials.home_page.hero')
     <!-- Hero end -->

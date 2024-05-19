@@ -1,5 +1,6 @@
 @extends('frontend.template_one.frontend_dashboard_template_one')
 @section('index_template_one')
+@section('title', 'Dada Bhaai | Product Details')
     <!-- Main -->
     <main class="main--wrapper">
         <!-- Shop-details start -->
@@ -33,10 +34,7 @@
                             <div class="col-lg-12 col-md-6 order-1 order-lg-1">
                                 <div class="pro-img">
 
-
-
                                     <div class="tab-content" id="myTabContent">
-
 
                                         @forelse ($multiImages as $key => $multiImage)
                                             <div class="tab-pane fade show {{ $key == 0 ? 'active' : '' }}"
@@ -175,8 +173,7 @@
                                         <a type="submit" onclick="addToCartOne()" class="cart-button w-100 mt-0">Add
                                             Cart</a>
 
-                                        <a type="submit" onclick="buyToCartOne()"
-                                            class="cart-button w-100 ml-3 mt-0">Buy
+                                        <a type="submit" onclick="buyToCartOne()" class="cart-button w-100 ml-3 mt-0">Buy
                                             Now</a>
 
                                     </div>
@@ -197,7 +194,7 @@
                                     <div class="product-section2 mt-40">
                                         <h6 class="product--section__title2 pb-30" id="releted-tab" data-toggle="tab"
                                             href="#releted" role="tab" aria-controls="releted" aria-selected="true">
-                                            <span>Releted </span> Accessories Of This Product
+                                            <span>Related </span> Accessories Of This Product
                                         </h6>
                                     </div>
                                 </div>
@@ -207,6 +204,7 @@
                                 <div class="releted_accessories">
 
                                     @forelse ($relativeChild as $product)
+
                                         <div class="card border-0 shadow-sm">
 
                                             <div class="card-header p-0 border-0">
@@ -261,6 +259,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                     @empty
                                         <P>No Product Avaiable</P>
                                     @endforelse
@@ -354,60 +353,10 @@
                                     <div class="product-section2">
                                         <h6 class="product--section__title2" id="releted-tab" data-toggle="tab"
                                             href="#releted" role="tab" aria-controls="releted" aria-selected="true">
-                                            <span>Releted Category</span>
+                                            <span>Related Category</span>
                                         </h6>
                                     </div>
                                 </div>
-
-                                {{-- <div class="col-xl-6 col-sm-6">
-                                    <ul class="nav nav-tabs border-0 d-flex justify-content-center" id="myTab"
-                                        role="tablist">
-                                        <li class="nav-item mb-0 pb-0 border-0">
-                                            <a class="nav-link border-0 active" id="releted_product-tab"
-                                                data-toggle="tab" href="#releted_product" role="tab"
-                                                aria-controls="releted_product" aria-selected="true">Relted
-                                                Category</a>
-                                        </li>
-                                        <li class="nav-item mb-0 pb-0 border-0">
-                                            <a class="nav-link border-0" id="apple-tab" data-toggle="tab" href="#apple"
-                                                role="tab" aria-controls="apple" aria-selected="true">Apple</a>
-                                        </li>
-                                        <li class="nav-item mb-0 pb-0 border-0">
-                                            <a class="nav-link border-0" id="mark-tab" data-toggle="tab" href="#mark"
-                                                role="tab" aria-controls="mark" aria-selected="false">Oppo</a>
-                                        </li>
-                                        <li class="nav-item mb-0 pb-0 border-0">
-                                            <a class="nav-link border-0" id="acronis-tab" data-toggle="tab"
-                                                href="#acronis" role="tab" aria-controls="acronis"
-                                                aria-selected="false">Nikon</a>
-                                        </li>
-                                        <li class="nav-item mb-0 pb-0 border-0">
-                                            <a class="nav-link border-0" id="apple-tab" data-toggle="tab" href="#apple"
-                                                role="tab" aria-controls="apple" aria-selected="true">Veloce</a>
-                                        </li>
-                                        <li class="nav-item mb-0 pb-0 border-0">
-                                            <a class="nav-link border-0" id="mark-tab" data-toggle="tab" href="#mark"
-                                                role="tab" aria-controls="mark" aria-selected="false">Motul</a>
-                                        </li>
-                                        <li class="nav-item mb-0 pb-0 border-0">
-                                            <a class="nav-link border-0" id="acronis-tab" data-toggle="tab"
-                                                href="#acronis" role="tab" aria-controls="acronis"
-                                                aria-selected="false">Nokia</a>
-                                        </li>
-                                        <li class="nav-item mb-0 pb-0 border-0">
-                                            <a class="nav-link border-0" id="acronis-tab" data-toggle="tab"
-                                                href="#acronis" role="tab" aria-controls="acronis"
-                                                aria-selected="false">Remarkable</a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="col-xl-3 col-sm-6">
-                                    <div class="all__product--link text-right">
-                                        <a class="all-link" href="shop-collection.html">Discover All Products<span
-                                                class="lnr lnr-arrow-right"></span></a>
-                                    </div>
-                                </div> --}}
 
                             </div>
                         </div>
@@ -421,61 +370,60 @@
                         <div class="product__active owl-carousel">
 
                             @forelse ($relativeProduct as $product)
-                                <div class="product__single">
-                                    <div class="product__box">
-                                        <div class="product__thumb">
 
-                                            <a href="product-details.html" class="img-wrapper">
-                                                <img class="img" src="{{ asset($product->product_image) }}"
-                                                    alt="" style="height: 230px;" />
+                                <div class="product-grid mr-4">
+                                    <div class="product-image">
+                                        <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
+                                            class="image">
+                                            <img class="pic-1" src="{{ asset($product->product_image) }}">
+                                        </a>
+                                        <div class="product-button-group">
 
+                                            {{-- Wishlist Icon --}}
+                                            <a style="cursor: pointer;" id="{{ $product->id }}"
+                                                onclick="addToWishList(this.id)"><i class="fas fa-heart"></i></a>
+
+                                            {{-- Add To Cart Icon --}}
+                                            <a type="submit" style="cursor:pointer;" data-product_id="{{ $product->id }}"
+                                                class="add-to-cart add_to_cart_btn_product"><i
+                                                    class="fas fa-shopping-cart"></i> Add To
+                                                Cart
                                             </a>
-                                        </div>
 
-                                        <div class="product__content--top">
-                                            <span class="cate-name">{{ $product['category']['category_name'] }}</span>
-                                            <h6 class="product__title mine__shaft-color f-700 mb-0">
+                                            {{-- <a type="submit" data-product_id="{{ $product->id }}" 
+                                                        class="btn btn-primary btn-sm add_to_cart_btn_product">
+                                                        Add To Cart Details
+                                                    </a> --}}
+
+                                            {{-- Compare Icon --}}
+                                            <a href="#"><i class="fas fa-random"></i></a>
+
+                                        </div>
+                                    </div>
+                                    <div class="product-content row align-items-center">
+                                        <div class="col-lg-8">
+                                            <span class="cate-name">{{ $product->category->category_name }}</span>
+                                            <h6 class="product__title mine__shaft-color f-700 mb-0 text-start">
                                                 <a
                                                     href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ $product->product_name }}</a>
                                             </h6>
                                         </div>
-
-                                        <div
-                                            class="product__content--rating d-flex justify-content-between align-items-center">
-
-                                            <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
-                                                class="btn btn-primary btn-sm">
-                                                Add To Cart
-                                            </a>
-
-                                            <div class="price">
+                                        <div class="col-lg-4">
+                                            <div class="price text-end">
                                                 @if ($product->price_status == 'rfq')
-                                                    <h5 class="grenadier-color f-600">
+                                                    <h5 class="grenadier-color mb-0 fw-bold">
                                                         Tk {{ $product->sas_price }}
                                                     </h5>
                                                 @elseif ($product->price_status == 'offer_price')
-                                                    <h5 class="grenadier-color f-600">
+                                                    <h5 class="grenadier-color mb-0 fw-bold">
                                                         Tk {{ $product->discount_price }}</h5>
                                                 @else
-                                                    <h5 class="grenadier-color f-600">Tk {{ $product->price }}
+                                                    <h5 class="grenadier-color mb-0 fw-bold">Tk
+                                                        {{ $product->price }}
                                                     </h5>
                                                 @endif
                                             </div>
-
                                         </div>
-
-                                    </div>
-                                    <div class="product-action">
-
-                                        <a style="cursor: pointer;" id="{{$product->id}}" onclick="addToWishList(this.id)"><span class="lnr lnr-heart"></span></a>
-
-                                        {{-- <a href="#"><span class="lnr lnr-eye"></span></a> --}}
-                                        <a
-                                            href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"><span
-                                                class="lnr lnr-cart"></span></a>
-
-                                        {{-- <a href="#"><span class="lnr lnr-sync"></span></a> --}}
-
                                     </div>
                                 </div>
 

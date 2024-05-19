@@ -2,7 +2,7 @@
 
     $products = App\Models\Admin\Product::where('status', '1')
         ->where('status', '1')
-        ->orderBy('id', 'ASC')
+        ->orderBy('id', 'DESC')
         ->limit(8)
         ->latest()
         ->get();
