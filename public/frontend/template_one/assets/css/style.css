@@ -610,6 +610,7 @@ label {
     padding: 0px 0;
     backdrop-filter: blur(0);
     animation: slideDown 0.35s ease-out;
+    z-index: 55;
 }
 
 .page-header.is-sticky img {
@@ -1746,6 +1747,11 @@ ul.sub__menu.sub__dept--menu li:hover ul.sub__menu.level2 {
     transform: translateX(0);
 }
 
+.footer-topbar{
+    background-color: #eb2f06;
+    padding: 5px;
+
+}
 .product-grid .product-like-icon {
     color: #333;
     font-size: 18px;
@@ -1876,7 +1882,7 @@ ul.sub__menu.sub__dept--menu li:hover ul.sub__menu.level2 {
     justify-content: center;
     z-index: 0;
     position: relative;
-    height: 70px;
+    height: 90px;
 }
 
 .product-grid .title {
@@ -2592,7 +2598,7 @@ ul.sub__menu.sub__dept--menu li:hover ul.sub__menu.level2 {
 .brand-active {
     padding-top: 55px;
     border-top: 1px solid #e0e0e0;
-    padding-bottom: 70px;
+    /* padding-bottom: 30px; */
 }
 
 .brand-two .brand-active {

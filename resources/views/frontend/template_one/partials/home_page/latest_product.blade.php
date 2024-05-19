@@ -53,6 +53,8 @@
                             </div>
                             <div class="product-content row align-items-center">
                                 <div class="col-lg-8">
+                                    <span
+                                    class="cate-name">{{ $product->category->category_name }}</span>
                                     <h6 class="product__title mine__shaft-color f-700 mb-0 text-start">
                                         <a
                                             href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ $product->product_name }}</a>

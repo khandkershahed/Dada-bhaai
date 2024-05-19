@@ -4,9 +4,12 @@
 
 <footer class="footer--area">
     <div class="footer--top pt-70 pb-25">
+        <div class="footer-topbar">
+            <p class="mb-0 text-center text-white p-3">Discover a wide range of products at Dadavhai, your one-stop e-commerce destination. Enjoy seamless shopping, great deals, and excellent customer service.</p>
+        </div>
         <div class="contaner-fluid footer-bg">
             <div class="container">
-                <div class="row gx-0">
+                <div class="row gx-0 pt-5">
                     <div class="col-xl-4 col-lg-6 col-md-8 mb-30 order-md-3 order-lg-2">
                         <div>
                             <a class="logo__link" href="{{ route('index') }}"><img class="" width="250px"
