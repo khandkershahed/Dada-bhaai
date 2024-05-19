@@ -39,7 +39,6 @@
             </div>
             <div class="col-xl-9">
                 <div class="product__active--small owl-carousel mb-30">
-
                     @forelse ($products as $product)
                         <div class="product__single">
                             <div class="product__box">
