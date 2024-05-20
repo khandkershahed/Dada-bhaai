@@ -602,6 +602,8 @@ label {
     left: 0;
     z-index: 1;
     background-color: rgba(255, 255, 255, 0.15);
+    animation: slideUp 0.35s ease-out;
+    z-index: 444;
 }
 
 .page-header.is-sticky {
@@ -610,7 +612,7 @@ label {
     padding: 0px 0;
     backdrop-filter: blur(0);
     animation: slideDown 0.35s ease-out;
-    z-index: 5555;
+    z-index: 444;
 }
 .releted-accessories-items {
     box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
@@ -642,6 +644,10 @@ label {
 .page-header.is-sticky button {
     font-size: 14px;
     padding: 7px 10px;
+}
+.swal2-popup.swal2-toast.swal2-show{
+    position: relative;
+    z-index: 5556 !important;
 }
 
 @keyframes slideDown {
@@ -773,7 +779,23 @@ label {
 cart--header__middle.cart--header__two {
     margin: 0px;
 }
+#miniCart{
+    height: 100%;
+    overflow: auto;
+    max-height: 300px;
+}
+#miniCart::-webkit-scrollbar {
+    width: 0.5em;
+}
 
+#miniCart::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+#miniCart::-webkit-scrollbar-thumb {
+    background-color: #ef4416;
+    outline: 1px solid #ef4416;
+}
 .cart--header__middle.cart--header__two {
     margin-left: auto;
 }
@@ -782,7 +804,7 @@ cart--header__middle.cart--header__two {
     position: absolute;
     top: 145%;
     right: 0px;
-    width: 265px;
+    width: 330px;
     background: #fff;
     padding: 20px;
     display: none;
@@ -806,6 +828,7 @@ cart--header__middle.cart--header__two {
 
 .mini__cart--box ul li {
     overflow: hidden;
+    border-bottom: 1px solid #f5f5f5;
 }
 
 .mini__cart--box ul li .cart-image {
@@ -847,14 +870,15 @@ cart--header__middle.cart--header__two {
 
 .mini__cart--box ul li .del-button a {
     color: #969696;
+    text-align: start;
     font-size: 18px;
     padding-top: 2px;
     display: block;
 }
 
-.mini__cart--box ul li .total-text {
+/* .mini__cart--box ul li .total-text {
     border-top: 1px solid #ddd;
-}
+} */
 
 .mini__cart--box ul li .total-text span {
     font-size: 16px;
@@ -866,7 +890,6 @@ cart--header__middle.cart--header__two {
     font-size: 14px;
     color: #a6a6a6;
     font-weight: 800;
-    margin: 5px 0px;
     transition: 0.4s;
 }
 
@@ -4064,7 +4087,7 @@ html .ui-button.ui-state-disabled:active {
     width: 100%;
 }
 
-.main-btn{
+.main-btn {
     font-size: 14px;
     font-weight: 800;
     color: #fff !important;
@@ -4119,7 +4142,7 @@ html .ui-button.ui-state-disabled:active {
 
 .shop-details-area .pro-img .tab-content img {
     position: relative;
-    z-index: 991;
+    z-index: 333;
 }
 
 .shop-details-area .pro-img ul.nav {
@@ -4303,6 +4326,12 @@ html .ui-button.ui-state-disabled:active {
 }
 .marks {
     color: #ef4416 !important;
+}
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #eb2f06;
+    border-color: #eeeeee;
 }
 .accordion .card-header:after {
     font-family: "Font Awesome 5 Free";

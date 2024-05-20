@@ -350,13 +350,11 @@
                             </div>
                         </div>
                     </li>
-
                     <li class="nav-item active">
                         <a class="nav-link main-menu-link"
                             href="{{ route('template.one.all_product') }}">Product<span
                                 class="sr-only">(current)</span></a>
                     </li>
-
                 </ul>
                 <div>
                     <div class="row align-items-center">
@@ -388,8 +386,9 @@
                                                     aria-labelledby="dropdownMenuButton" style="">
 
                                                     @if (Auth::user())
-                                                        <a href="{{ route('template.one.login') }}"
-                                                            class="btn btn-primary w-100">Login</a>
+                                                        <a class="cart-button w-100 mt-0" href="{{ route('template.one.login') }}"
+                                                            class="">Login
+                                                        </a>
 
                                                         <hr class="mb-2 mt-3">
 
@@ -406,7 +405,9 @@
                                                                 aria-hidden="true"></i>Password Change</a>
                                                     @else
                                                         <a href="{{ route('template.one.login') }}"
-                                                            class="btn btn-primary w-100">Login</a>
+                                                            class="cart-button w-100 mt-0">
+                                                            Login
+                                                        </a>
 
                                                         <hr class="mb-2 mt-3">
 
@@ -446,10 +447,10 @@
                                     </ul>
                                 </div>
                                 <div class="mini__cart--box">
-                                    <div id="miniCart">
+                                    <div id="miniCart" style="">
                                     </div>
                                     <ul>
-                                        <li>
+                                        <li style="border: none">
                                             <div class="total-text d-flex justify-content-between">
                                                 <span class="f-800 cod__black-color">Total Price</span>
                                                 <span class="f-800 cod__black-color">Tk <span
@@ -457,7 +458,7 @@
 
                                             </div>
                                         </li>
-                                        <li>
+                                        <li style="border: none">
                                             <div class="d-flex justify-content-between">
                                                 <a href="{{ route('template.one.view.cart') }}"
                                                     class="checkout main-btn">Checkout</a>
