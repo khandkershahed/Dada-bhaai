@@ -12,7 +12,11 @@
 
     <link rel="manifest" href="" />
 
-    <link rel="shortcut icon" type="image/x-icon" href="https://www.dadabhaai.com/upload/logo_black/202405071136jaragroups404413.png" />
+    @php
+            $site = App\Models\Sites::find(1);
+        @endphp
+
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('upload/favicon/' . $site->favicon) }}" />
 
     <!-- Place favicon.ico in the root directory -->
 

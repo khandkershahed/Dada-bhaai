@@ -28,7 +28,7 @@
                                                 class="img" src="{{ asset('storage/category/' . $category->icon) }}"
                                                 style="width: 255px; height: 255px;" alt="" /></a>
                                         <h6 class="f-800 pure__black-color cate-title">
-                                            <a href="#">{{ $category->category_name }}</a>
+                                            <a href="{{ url('product/category/' . $category->id . '/' . $category->category_slug) }}">{{ $category->category_name }}</a>
                                         </h6>
                                     </div>
                                 </div>
