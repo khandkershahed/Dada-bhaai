@@ -4064,7 +4064,7 @@ html .ui-button.ui-state-disabled:active {
     width: 100%;
 }
 
-.main-btn{
+.main-btn {
     font-size: 14px;
     font-weight: 800;
     color: #fff !important;
@@ -4303,6 +4303,12 @@ html .ui-button.ui-state-disabled:active {
 }
 .marks {
     color: #ef4416 !important;
+}
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #eb2f06;
+    border-color: #eeeeee;
 }
 .accordion .card-header:after {
     font-family: "Font Awesome 5 Free";

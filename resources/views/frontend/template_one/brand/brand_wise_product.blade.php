@@ -32,14 +32,16 @@
 
                             <div class="col-lg-4 col-md-4">
                                 <div class="shop-bar d-flex align-items-center">
-                                    <h4 class="f-800 cod__black-color">Brand</h4>
-                                    {{-- <nav aria-label="breadcrumb">
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">
-                                                {{ $brandwiseproduct->brand_name }}</li>
-                                        </ol>
-                                    </nav> --}}
+                                    <div class="shop-bar">
+                                        <h6 class="f-800 cod__black-color">Brand</h6>
+                                        <nav aria-label="breadcrumb">
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
+                                                <li class="breadcrumb-item active" aria-current="page">
+                                                    {{ $brandwiseproduct->brand_name }}</li>
+                                            </ol>
+                                        </nav>
+                                    </div>
                                 </div>
                             </div>
 
@@ -82,7 +84,7 @@
                         @forelse ($products as $product)
                             <div class="col-lg-4">
 
-                                <div class="product-grid mr-4">
+                                <div class="product-grid">
                                     <div class="product-image">
                                         <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
                                             class="image">
