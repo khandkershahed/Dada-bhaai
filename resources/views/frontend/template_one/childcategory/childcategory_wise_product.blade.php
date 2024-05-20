@@ -2,7 +2,7 @@
 @section('index_template_one')
 @section('title', 'Dada Bhaai | ' . $childcatwiseproduct->childcategory_name)
     <!-- shop area start -->
-    <div class="product shop-page pt-30 pb-80" style="margin-top: 60px;">
+    <div class="product shop-page pt-30 pb-80" style="margin-top: 45px;">
         <div class="container">
             <div class="row">
 
@@ -11,33 +11,33 @@
                 <div class="col-lg-9 order-1 order-lg-2">
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="shop-banner-bg pt-60 pb-60 mb-50"
+                            <div class="shop-banner-bg pt-120 pb-120 mb-50"
                                 data-background="{{ asset('storage/childcategory/' . $childcatwiseproduct->childcategory_image) }}">
-                                <div class="collection-text">
+                                {{-- <div class="collection-text">
                                     <h5 class="f-800"><a href="javascript:;">ChildCategory</a></h5>
                                     <span class="f-200 mb-40">{{ $childcatwiseproduct->childcategory_name }}</span>
-                                    {{-- <div class="product-countdown-three">
+                                    <div class="product-countdown-three">
                                         <div class="time-count-deal">
                                             <div class="countdown-list" data-countdown="2020/12/01"></div>
                                         </div>
-                                    </div> --}}
-                                </div>
+                                    </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
                     <div class="border-b">
                         <div class="row">
 
-                            <div class="col-lg-5 col-md-4">
+                            <div class="col-lg-4 col-md-4">
                                 <div class="shop-bar d-flex align-items-center">
-                                    <h4 class="f-800 cod__black-color">ChildCategory</h4>
-                                    <nav aria-label="breadcrumb">
+                                    <h4 class="f-800 cod__black-color">{{ $childcatwiseproduct->childcategory_name }}</h4>
+                                    {{-- <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">
                                                 {{ $childcatwiseproduct->childcategory_name }}</li>
                                         </ol>
-                                    </nav>
+                                    </nav> --}}
                                 </div>
                             </div>
 
@@ -48,24 +48,20 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-3 col-md-6">
-                                <div class="">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="float-right">
+                                    <select name="" id="sortBy">
+                                        <option selected disabled>SortBy Product</option>
 
-                                    <div class="">
-                                        <select name="" id="sortBy">
-                                            <option selected disabled>SortBy Product</option>
+                                        <option value="nameAtoZ" {{ $sort == 'nameAtoZ' ? 'selected' : '' }}>Product
+                                            Name: A to Z
+                                        </option>
 
-                                            <option value="nameAtoZ" {{ $sort == 'nameAtoZ' ? 'selected' : '' }}>Product
-                                                Name: A to Z
-                                            </option>
+                                        <option value="nameZtoA" {{ $sort == 'nameZtoA' ? 'selected' : '' }}>Product
+                                            Name: Z to A
+                                        </option>
 
-                                            <option value="nameZtoA" {{ $sort == 'nameZtoA' ? 'selected' : '' }}>Product
-                                                Name: Z to A
-                                            </option>
-
-                                        </select>
-                                    </div>
-
+                                    </select>
                                 </div>
                             </div>
 
@@ -81,7 +77,7 @@
                         @forelse ($products as $product)
                             <div class="col-lg-4">
 
-                                <div class="product-grid mr-4">
+                                <div class="product-grid">
                                     <div class="product-image">
                                         <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
                                             class="image">
@@ -100,7 +96,7 @@
                                                 Cart
                                             </a>
 
-                                            {{-- <a type="submit" data-product_id="{{ $product->id }}" 
+                                            {{-- <a type="submit" data-product_id="{{ $product->id }}"
                                                         class="btn btn-primary btn-sm add_to_cart_btn_product">
                                                         Add To Cart Details
                                                     </a> --}}
@@ -121,16 +117,16 @@
                                         <div class="col-lg-4">
                                             <div class="price text-end">
                                                 @if ($product->price_status == 'rfq')
-                                                    <h5 class="grenadier-color mb-0 fw-bold">
+                                                    <h6 class="grenadier-color mb-0 fw-bold">
                                                         Tk {{ $product->sas_price }}
-                                                    </h5>
+                                                    </h6>
                                                 @elseif ($product->price_status == 'offer_price')
-                                                    <h5 class="grenadier-color mb-0 fw-bold">
-                                                        Tk {{ $product->discount_price }}</h5>
+                                                    <h6 class="grenadier-color mb-0 fw-bold">
+                                                        Tk {{ $product->discount_price }}</h6>
                                                 @else
-                                                    <h5 class="grenadier-color mb-0 fw-bold">Tk
+                                                    <h6 class="grenadier-color mb-0 fw-bold">Tk
                                                         {{ $product->price }}
-                                                    </h5>
+                                                    </h6>
                                                 @endif
                                             </div>
                                         </div>

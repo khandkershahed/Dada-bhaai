@@ -37,7 +37,7 @@
                     <div class="col-xl-2 col-lg-6 col-md-8 mb-30 order-md-3 order-lg-2">
                         <div class="footer-widget">
                             <div class="footer-title">
-                                <h6 class="f-800">Contact Platform</h6>
+                                <h6 class="f-800">Social Platform</h6>
                             </div>
                             <div class="footer-menu h1foote-menu2">
                                 <ul>

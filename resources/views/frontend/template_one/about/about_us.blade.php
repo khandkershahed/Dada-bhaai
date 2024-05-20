@@ -2,11 +2,11 @@
 @section('index_template_one')
 @section('title', 'Dada Bhaai | About Us')
     <!-- page banner area start -->
-    <section class="page-banner-area" data-background="{{ asset('frontend/template_one/assets/img/bg/page-banner.jpg') }}">
+    <section class="page-banner-area" data-background="{{ asset('frontend/template_one/assets/img/bg/page-banner.jpg') }}" style="margin-top: 4.7rem;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2 col-sm-12">
-                    <div class="banner-text text-center pt-90 pb-25">
+                    <div class="banner-text text-center pt-90 pb-90">
                         <h2 class="f-800 cod__black-color">{{ $about->breadcrumb_title }}</h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">

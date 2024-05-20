@@ -63,16 +63,16 @@
                                 <div class="col-lg-4">
                                     <div class="price text-end">
                                         @if ($product->price_status == 'rfq')
-                                            <h5 class="grenadier-color mb-0 fw-bold">
+                                            <h6 class="grenadier-color mb-0 fw-bold">
                                                 Tk {{ $product->sas_price }}
-                                            </h5>
+                                            </h6>
                                         @elseif ($product->price_status == 'offer_price')
-                                            <h5 class="grenadier-color mb-0 fw-bold">
-                                                Tk {{ $product->discount_price }}</h5>
+                                            <h6 class="grenadier-color mb-0 fw-bold">
+                                                Tk {{ $product->discount_price }}</h6>
                                         @else
-                                            <h5 class="grenadier-color mb-0 fw-bold">Tk
+                                            <h6 class="grenadier-color mb-0 fw-bold">Tk
                                                 {{ $product->price }}
-                                            </h5>
+                                            </h6>
                                         @endif
                                     </div>
                                 </div>

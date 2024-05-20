@@ -194,17 +194,17 @@
                 <div class="col-lg-9 order-1 order-lg-2">
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="shop-banner-bg pt-60 pb-60 mb-50"
+                            <div class="shop-banner-bg pt-120 pb-120 mb-50"
                                 data-background="{{ asset('frontend/template_one/assets/img/bg/shop-banner-bg.jpg') }}">
-                                <div class="collection-text">
+                                {{-- <div class="collection-text">
                                     <h5 class="f-800"><a href="javascript:;">Product</a></h5>
-                                    {{-- <span class="f-200 mb-40">{{ $brandwiseproduct->brand_name }}</span> --}}
-                                    {{-- <div class="product-countdown-three">
+                                    <span class="f-200 mb-40">{{ $brandwiseproduct->brand_name }}</span>
+                                    <div class="product-countdown-three">
                                         <div class="time-count-deal">
                                             <div class="countdown-list" data-countdown="2020/12/01"></div>
                                         </div>
-                                    </div> --}}
-                                </div>
+                                    </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -231,10 +231,10 @@
                             </div>
 
                             {{-- <div class="col-lg-3 col-md-6">
-                                
+
                                 <div class="bar-wrapper">
 
-                                    
+
 
                                     <div class="shop-select">
                                         <select name="select" id="sortBy">

@@ -3,7 +3,7 @@
 @section('title', 'Dada Bhaai')
     <!-- page banner area start -->
     <section class="page-banner-area blog-page"
-        data-background="{{ asset('frontend/template_one/assets/img/bg/blog-page-banner.jpg') }}">
+        data-background="{{ asset('frontend/template_one/assets/img/bg/blog-page-banner.jpg') }}" style="margin-top: 4.7rem;">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">

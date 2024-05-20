@@ -161,7 +161,11 @@
                                                                         </ul>
                                                                     </div>
                                                                 @empty
-                                                                    <p>No Subcategory Avaiable</p>
+                                                                    <div class="col-lg-12">
+                                                                        <div class="d-flex justify-content-center align-items-center h-100">
+                                                                            <p>No Subcategory Avaiable</p>
+                                                                        </div>
+                                                                    </div>
                                                                 @endforelse
                                                             </div>
                                                         </div>
@@ -219,13 +223,13 @@
                                                 class="main-sub-menu">{{ $category->category_name }}</a>
                                             <div class="link-divider"></div>
                                             <ul class="submenu level-1">
-                                                
+
                                                 @foreach ($categoriesWithBrands as $brand)
 
                                                     @if ($brand->id == $category->id)
                                                         <li>{{ $brand->brand_name }}</li>
                                                     @endif
-                                                    
+
                                                 @endforeach
                                             </ul>
                                         </div>

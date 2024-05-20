@@ -5,7 +5,7 @@
     <form action="{{ route('shop.filter') }}" method="POST">
         @csrf
 
-        <div class="product shop-page pt-30 pb-80" style="margin-top: 60px;">
+        <div class="product shop-page pt-30 pb-80" style="margin-top: 45px;">
             <div class="container">
                 <div class="row">
 
@@ -206,7 +206,7 @@
                     <div class="col-lg-9 order-1 order-lg-2">
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="shop-banner-bg pt-60 pb-60 mb-50"
+                                <div class="shop-banner-bg pt-120 pb-120 mb-50"
                                     data-background="{{ asset('frontend/template_one/assets/img/bg/shop-banner-bg.jpg') }}">
                                     <div class="collection-text">
                                         <h5 class="f-800"><a href="javascript:;">Product</a></h5>
@@ -284,7 +284,7 @@
                                                     Cart
                                                 </a>
 
-                                                {{-- <a type="submit" data-product_id="{{ $product->id }}" 
+                                                {{-- <a type="submit" data-product_id="{{ $product->id }}"
                                                     class="btn btn-primary btn-sm add_to_cart_btn_product">
                                                     Add To Cart Details
                                                 </a> --}}
@@ -305,16 +305,16 @@
                                             <div class="col-lg-4">
                                                 <div class="price text-end">
                                                     @if ($product->price_status == 'rfq')
-                                                        <h5 class="grenadier-color mb-0 fw-bold">
+                                                        <h6 class="grenadier-color mb-0 fw-bold">
                                                             Tk {{ $product->sas_price }}
-                                                        </h5>
+                                                        </h6>
                                                     @elseif ($product->price_status == 'offer_price')
-                                                        <h5 class="grenadier-color mb-0 fw-bold">
-                                                            Tk {{ $product->discount_price }}</h5>
+                                                        <h6 class="grenadier-color mb-0 fw-bold">
+                                                            Tk {{ $product->discount_price }}</h6>
                                                     @else
-                                                        <h5 class="grenadier-color mb-0 fw-bold">Tk
+                                                        <h6 class="grenadier-color mb-0 fw-bold">Tk
                                                             {{ $product->price }}
-                                                        </h5>
+                                                        </h6>
                                                     @endif
                                                 </div>
                                             </div>
