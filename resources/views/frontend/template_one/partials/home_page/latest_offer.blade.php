@@ -39,42 +39,21 @@
             </div>
             <div class="col-xl-9">
                 <div class="product__active--small owl-carousel mb-30">
-
                     @forelse ($products as $product)
-                    
-                        <div class="product-grid mr-4">
-
+                        <div class="product-grid">
                             <div class="product-image">
-
-                                <a href="{{ url('product' . '/' . $product->products->id . '/' . $product->products->product_slug) }}"
-                                    class="img-wrapper">
-
-                                    <img class="img product_id" src="{{ asset($product->products->product_image) }}"
-                                        alt="" style="height: 230px;" data-id="{{ $product->products->id }}" />
-
+                                <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
+                                    class="image">
+                                    <img class="pic-1" src="{{ asset($product->product_image) }}">
                                 </a>
-
                                 <div class="product-button-group">
-
                                     {{-- Wishlist Icon --}}
                                     <a style="cursor: pointer;" id="{{ $product->id }}"
                                         onclick="addToWishList(this.id)"><i class="fas fa-heart"></i></a>
-
                                     {{-- Add To Cart Icon --}}
-                                    <a type="submit" style="cursor:pointer;"
-                                        data-offer_price="{{ $product->discount_price }}"
-                                        data-product_id="{{ $product->products->id }}"
-                                        class="add-to-cart add_to_cart_btn"><i class="fas fa-shopping-cart"></i>
-                                        Add To
-                                        Cart
-                                    </a>
-
-                                    {{-- <a type="submit" data-offer_price="{{ $product->discount_price }}"
-                                        data-product_id="{{ $product->products->id }}"
-                                        class="btn btn-primary btn-sm add_to_cart_btn">
-                                        Add To Cart
-                                    </a> --}}
-
+                                    <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
+                                        class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add To
+                                        Cart</a>
                                     {{-- Compare Icon --}}
                                     <a href="#"><i class="fas fa-random"></i></a>
 
@@ -82,84 +61,30 @@
                             </div>
                             <div class="product-content row align-items-center">
                                 <div class="col-lg-8">
-
-                                    <span class="cate-name">{{ $offercats->offer_category_name }}</span>
-
-                                    <h6 class="product__title mine__shaft-color f-700 mb-0" id="offerProductName">
-                                        {{ $product->products->product_name }}
+                                    <span class="cate-name">{{ $product->category->category_name }}</span>
+                                    <h6 class="product__title mine__shaft-color f-700 mb-0 text-start">
+                                        <a
+                                            href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ $product->product_name }}</a>
                                     </h6>
-
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="price text-end">
-
-                                        <h5 class="grenadier-color f-600" id="">
-                                            Tk {{ $product->discount_price }}
-                                        </h5>
-
+                                        @if ($product->price_status == 'rfq')
+                                            <h6 class="grenadier-color mb-0 fw-bold">
+                                                Tk {{ $product->sas_price }}
+                                            </h6>
+                                        @elseif ($product->price_status == 'offer_price')
+                                            <h6 class="grenadier-color mb-0 fw-bold">
+                                                Tk {{ $product->discount_price }}</h6>
+                                        @else
+                                            <h6 class="grenadier-color mb-0 fw-bold">Tk
+                                                {{ $product->price }}
+                                            </h6>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        {{-- <div class="product__single">
-                            <div class="product__box">
-                                <div class="product__thumb">
-
-                                    <a href="{{ url('product' . '/' . $product->products->id . '/' . $product->products->product_slug) }}"
-                                        class="img-wrapper">
-
-                                        <img class="img product_id" src="{{ asset($product->products->product_image) }}"
-                                            alt="" style="height: 230px;"
-                                            data-id="{{ $product->products->id }}" />
-
-                                    </a>
-                                </div>
-
-                                <div class="product__content--top">
-                                    <span class="cate-name">{{ $offercats->offer_category_name }}</span>
-
-                                    <h6 class="product__title mine__shaft-color f-700 mb-0" id="offerProductName">
-                                        {{ $product->products->product_name }}
-                                    </h6>
-
-                                </div>
-
-                                <div class="product__content--rating d-flex justify-content-between align-items-center">
-
-
-
-                                    <a type="submit" data-offer_price="{{ $product->discount_price }}"
-                                        data-product_id="{{ $product->products->id }}"
-                                        class="btn btn-primary btn-sm add_to_cart_btn">
-                                        Add To Cart
-                                    </a>
-
-
-                                    <div class="price">
-
-
-                                        <h5 class="grenadier-color f-600" id="">
-                                            Tk {{ $product->discount_price }}
-                                        </h5>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <div class="product-action">
-
-                                <a style="cursor: pointer;" id="{{ $product->id }}"
-                                    onclick="addToWishList(this.id)"><span class="lnr lnr-heart"></span></a>
-
-
-
-                                <a
-                                    href="{{ url('product' . '/' . $product->products->id . '/' . $product->products->product_slug) }}"><span
-                                        class="lnr lnr-cart"></span></a>
-                            </div>
-                        </div> --}}
 
                     @empty
                         <p>No Product Avaiable</p>

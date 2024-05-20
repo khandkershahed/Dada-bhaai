@@ -14,9 +14,9 @@
 
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="shop-banner-bg pt-60 pb-60 mb-50"
+                            <div class="shop-banner-bg pt-120 pb-120 mb-50"
                                 data-background="{{ asset('storage/category/' . $catwiseproduct->category_image) }}">
-                                <div class="collection-text">
+                                {{-- <div class="collection-text">
                                     <h5 class="f-800"><a href="javascript:;">Category</a></h5>
                                     <span class="f-200 mb-40">{{ $catwiseproduct->category_name }}</span>
                                     <div class="product-countdown-three">
@@ -24,15 +24,15 @@
                                             <div class="countdown-list" data-countdown="2020/12/01"></div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
                     <div class="border-b">
                         <div class="row">
                             <div class="col-lg-5 col-md-4">
-                                <div class="shop-bar d-flex align-items-center">
-                                    <h4 class="f-800 cod__black-color">Category</h4>
+                                <div class="shop-bar">
+                                    <h6 class="f-800 cod__black-color">Category</h6>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
@@ -93,7 +93,7 @@
                                                 Cart
                                             </a>
 
-                                            {{-- <a type="submit" data-product_id="{{ $product->id }}" 
+                                            {{-- <a type="submit" data-product_id="{{ $product->id }}"
                                                         class="btn btn-primary btn-sm add_to_cart_btn_product">
                                                         Add To Cart Details
                                                     </a> --}}
@@ -114,16 +114,16 @@
                                         <div class="col-lg-4">
                                             <div class="price text-end">
                                                 @if ($product->price_status == 'rfq')
-                                                    <h5 class="grenadier-color mb-0 fw-bold">
+                                                    <h6 class="grenadier-color mb-0 fw-bold">
                                                         Tk {{ $product->sas_price }}
-                                                    </h5>
+                                                    </h6>
                                                 @elseif ($product->price_status == 'offer_price')
-                                                    <h5 class="grenadier-color mb-0 fw-bold">
-                                                        Tk {{ $product->discount_price }}</h5>
+                                                    <h6 class="grenadier-color mb-0 fw-bold">
+                                                        Tk {{ $product->discount_price }}</h6>
                                                 @else
-                                                    <h5 class="grenadier-color mb-0 fw-bold">Tk
+                                                    <h6 class="grenadier-color mb-0 fw-bold">Tk
                                                         {{ $product->price }}
-                                                    </h5>
+                                                    </h6>
                                                 @endif
                                             </div>
                                         </div>

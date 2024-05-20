@@ -27,36 +27,25 @@
                             class="lnr lnr-arrow-right"></span></a>
                 </div>
             </div> --}}
-
             </div>
             <div class="row">
-
                 @forelse ($products as $product)
                     <div class="col-lg-3 col-md-6">
-                        <div class="product-grid mr-4">
+                        <div class="product-grid">
                             <div class="product-image">
                                 <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
                                     class="image">
                                     <img class="pic-1" src="{{ asset($product->product_image) }}">
                                 </a>
                                 <div class="product-button-group">
-
                                     {{-- Wishlist Icon --}}
                                     <a style="cursor: pointer;" id="{{ $product->id }}"
-                                        onclick="addToWishList(this.id)"><i class="fas fa-heart"></i></a>
-
+                                        onclick="addToWishList(this.id)"><i
+                                            class="fas fa-heart"></i></a>
                                     {{-- Add To Cart Icon --}}
-                                    <a type="submit" style="cursor:pointer;" data-product_id="{{ $product->id }}"
-                                        class="add-to-cart add_to_cart_btn_product"><i class="fas fa-shopping-cart"></i>
-                                        Add To
-                                        Cart
-                                    </a>
-
-                                    {{-- <a type="submit" data-product_id="{{ $product->id }}" 
-                                        class="btn btn-primary btn-sm add_to_cart_btn_product">
-                                        Add To Cart Details
-                                    </a> --}}
-
+                                    <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
+                                        class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add To
+                                        Cart</a>
                                     {{-- Compare Icon --}}
                                     <a href="#"><i class="fas fa-random"></i></a>
 
@@ -64,7 +53,8 @@
                             </div>
                             <div class="product-content row align-items-center">
                                 <div class="col-lg-8">
-                                    <span class="cate-name">{{ $product->category->category_name }}</span>
+                                    <span
+                                    class="cate-name">{{ $product->category->category_name }}</span>
                                     <h6 class="product__title mine__shaft-color f-700 mb-0 text-start">
                                         <a
                                             href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ $product->product_name }}</a>
@@ -73,16 +63,16 @@
                                 <div class="col-lg-4">
                                     <div class="price text-end">
                                         @if ($product->price_status == 'rfq')
-                                            <h5 class="grenadier-color mb-0 fw-bold">
+                                            <h6 class="grenadier-color mb-0 fw-bold">
                                                 Tk {{ $product->sas_price }}
-                                            </h5>
+                                            </h6>
                                         @elseif ($product->price_status == 'offer_price')
-                                            <h5 class="grenadier-color mb-0 fw-bold">
-                                                Tk {{ $product->discount_price }}</h5>
+                                            <h6 class="grenadier-color mb-0 fw-bold">
+                                                Tk {{ $product->discount_price }}</h6>
                                         @else
-                                            <h5 class="grenadier-color mb-0 fw-bold">Tk
+                                            <h6 class="grenadier-color mb-0 fw-bold">Tk
                                                 {{ $product->price }}
-                                            </h5>
+                                            </h6>
                                         @endif
                                     </div>
                                 </div>

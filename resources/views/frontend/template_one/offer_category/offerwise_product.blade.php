@@ -12,17 +12,17 @@
 
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="shop-banner-bg pt-60 pb-60 mb-50"
+                            <div class="shop-banner-bg pt-120 pb-120 mb-50"
                                 data-background="{{ asset('storage/offer_category_image/' . $offerwiseproduct->offer_image) }}">
-                                <div class="collection-text">
+                                {{-- <div class="collection-text">
                                     <h5 class="f-800"><a href="javascript:;">Offer</a></h5>
                                     <span class="f-200 mb-40">{{ $offerwiseproduct->name }}</span>
-                                    {{-- <div class="product-countdown-three">
+                                    <div class="product-countdown-three">
                                         <div class="time-count-deal">
                                             <div class="countdown-list" data-countdown="2020/12/01"></div>
                                         </div>
-                                    </div> --}}
-                                </div>
+                                    </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -106,9 +106,9 @@
                                         <div class="col-lg-4">
                                             <div class="price text-end">
 
-                                                <h5 class="grenadier-color f-600" id="">
+                                                <h6 class="grenadier-color f-600" id="">
                                                     Tk {{ $product->discount_price }}
-                                                </h5>
+                                                </h6>
 
                                             </div>
                                         </div>

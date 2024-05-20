@@ -13,11 +13,11 @@
                 <div class="col-lg-9 order-1 order-lg-2">
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="shop-banner-bg pt-60 pb-60 mb-50"
+                            <div class="shop-banner-bg pt-120 pb-120 mb-50"
                                 data-background="{{ asset('storage/brand/' . $brandwiseproduct->brand_image) }}">
                                 <div class="collection-text">
-                                    <h5 class="f-800"><a href="javascript:;">Brand</a></h5>
-                                    <span class="f-200 mb-40">{{ $brandwiseproduct->brand_name }}</span>
+                                    {{-- <h5 class="f-800"><a href="javascript:;">Brand</a></h5> --}}
+                                    {{-- <span class="f-200 mb-40">{{ $brandwiseproduct->brand_name }}</span> --}}
                                     {{-- <div class="product-countdown-three">
                                         <div class="time-count-deal">
                                             <div class="countdown-list" data-countdown="2020/12/01"></div>
@@ -30,30 +30,30 @@
                     <div class="border-b">
                         <div class="row">
 
-                            <div class="col-lg-5 col-md-4">
+                            <div class="col-lg-4 col-md-4">
                                 <div class="shop-bar d-flex align-items-center">
                                     <h4 class="f-800 cod__black-color">Brand</h4>
-                                    <nav aria-label="breadcrumb">
+                                    {{-- <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">
                                                 {{ $brandwiseproduct->brand_name }}</li>
                                         </ol>
-                                    </nav>
+                                    </nav> --}}
                                 </div>
                             </div>
 
                             {{-- New Section  --}}
                             <div class="col-lg-4 col-md-2">
                                 <div class="text-center" style="margin-top: 10px;">
-                                    <span>Showing {{ count($products) }} of {{ $products->total() }} Results</span>
+                                    <span>Showing <span class="grenadier-color">{{ count($products) }}</span> of <span class="grenadier-color">{{ $products->total() }}</span> Results</span>
                                 </div>
                             </div>
 
-                            <div class="col-lg-3 col-md-6">
+                            <div class="col-lg-4 col-md-6">
                                 <div class="">
 
-                                    <div class="">
+                                    <div class="float-right">
                                         <select name="" id="sortBy">
                                             <option selected disabled>SortBy Product</option>
 
@@ -101,7 +101,7 @@
                                                 Cart
                                             </a>
 
-                                            {{-- <a type="submit" data-product_id="{{ $product->id }}" 
+                                            {{-- <a type="submit" data-product_id="{{ $product->id }}"
                                                         class="btn btn-primary btn-sm add_to_cart_btn_product">
                                                         Add To Cart Details
                                                     </a> --}}
@@ -122,16 +122,16 @@
                                         <div class="col-lg-4">
                                             <div class="price text-end">
                                                 @if ($product->price_status == 'rfq')
-                                                    <h5 class="grenadier-color mb-0 fw-bold">
+                                                    <h6 class="grenadier-color mb-0 fw-bold">
                                                         Tk {{ $product->sas_price }}
-                                                    </h5>
+                                                    </h6>
                                                 @elseif ($product->price_status == 'offer_price')
-                                                    <h5 class="grenadier-color mb-0 fw-bold">
-                                                        Tk {{ $product->discount_price }}</h5>
+                                                    <h6 class="grenadier-color mb-0 fw-bold">
+                                                        Tk {{ $product->discount_price }}</h6>
                                                 @else
-                                                    <h5 class="grenadier-color mb-0 fw-bold">Tk
+                                                    <h6 class="grenadier-color mb-0 fw-bold">Tk
                                                         {{ $product->price }}
-                                                    </h5>
+                                                    </h6>
                                                 @endif
                                             </div>
                                         </div>

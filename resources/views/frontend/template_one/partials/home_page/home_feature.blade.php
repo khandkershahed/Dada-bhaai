@@ -36,7 +36,7 @@
                     <div class="product__active owl-carousel mb-20">
 
                         @forelse ($products as $product)
-                        
+
                             <div class="product-grid mr-4">
                                 <div class="product-image">
                                     <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
@@ -56,7 +56,7 @@
                                             Cart
                                         </a>
 
-                                        {{-- <a type="submit" data-product_id="{{ $product->id }}" 
+                                        {{-- <a type="submit" data-product_id="{{ $product->id }}"
                                                         class="btn btn-primary btn-sm add_to_cart_btn_product">
                                                         Add To Cart Details
                                                     </a> --}}
@@ -77,16 +77,16 @@
                                     <div class="col-lg-4">
                                         <div class="price text-end">
                                             @if ($product->price_status == 'rfq')
-                                                <h5 class="grenadier-color mb-0 fw-bold">
+                                                <h6 class="grenadier-color mb-0 fw-bold">
                                                     Tk {{ $product->sas_price }}
-                                                </h5>
+                                                </h6>
                                             @elseif ($product->price_status == 'offer_price')
-                                                <h5 class="grenadier-color mb-0 fw-bold">
-                                                    Tk {{ $product->discount_price }}</h5>
+                                                <h6 class="grenadier-color mb-0 fw-bold">
+                                                    Tk {{ $product->discount_price }}</h6>
                                             @else
-                                                <h5 class="grenadier-color mb-0 fw-bold">Tk
+                                                <h6 class="grenadier-color mb-0 fw-bold">Tk
                                                     {{ $product->price }}
-                                                </h5>
+                                                </h6>
                                             @endif
                                         </div>
                                     </div>

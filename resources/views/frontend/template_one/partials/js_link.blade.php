@@ -63,7 +63,7 @@
 <script>
     $(document).ready(function() {
         $(".releted_accessories").slick({
-            slidesToShow: 5,
+            slidesToShow: 3,
             slidesToScroll: 1,
             autoplay: true,
             autoplaySpeed: 6000,
@@ -293,9 +293,9 @@
 
 {{-- addToCartOneOffer --}}
 <script>
-    $('.add_to_cart_btn').click(function() {
+    $('.add_to_cart_btn').click(function() {
 
-        
+
         var price = $(this).data('offer_price');
         var product_id = $(this).data('product_id');
 
@@ -320,7 +320,7 @@
 
                 miniCart();
 
-                // Start Message 
+                // Start Message
 
                 const Toast = Swal.mixin({
                     toast: true,
@@ -346,7 +346,7 @@
                     })
                 }
 
-                // End Message 
+                // End Message
             }
 
         })
@@ -357,9 +357,9 @@
 
 {{-- add_to_cart_btn_product --}}
 <script>
-    $('.add_to_cart_btn_product').click(function() {
+    $('.add_to_cart_btn_product').click(function() {
 
-        
+
         // var price = $(this).data('offer_price');
         var product_id = $(this).data('product_id');
 
@@ -384,7 +384,7 @@
 
                 miniCart();
 
-                // Start Message 
+                // Start Message
 
                 const Toast = Swal.mixin({
                     toast: true,
@@ -410,7 +410,7 @@
                     })
                 }
 
-                // End Message 
+                // End Message
             }
 
         })
@@ -442,7 +442,7 @@
 
                 miniCart();
 
-                // Start Message 
+                // Start Message
 
                 const Toast = Swal.mixin({
                     toast: true,
@@ -466,7 +466,7 @@
                     })
                 }
 
-                // End Message 
+                // End Message
             }
 
         })
@@ -502,7 +502,7 @@
                 miniCart();
                 miniCartRelated();
 
-                // Start Message 
+                // Start Message
 
                 const Toast = Swal.mixin({
                     toast: true,
@@ -528,7 +528,7 @@
                     })
                 }
 
-                // End Message  
+                // End Message
             }
 
         })
@@ -557,7 +557,7 @@
 
 
                         `
-                    
+
                     <ul style="list-style-type: circle !important;">
                                                 <li class="d-flex mb-2 align-items-center">
 
@@ -1056,7 +1056,7 @@
     }
 </script>
 
-<script>
+{{-- <script>
     // Close dropdown on outside click
     $(document).on('click', function(event) {
         var $trigger = $("#navbarDropdown").closest('.dropdown');
@@ -1075,7 +1075,7 @@
         event.stopPropagation();
         $(this).next('.dropdown-menu').toggleClass('show');
     });
-</script>
+</script> --}}
 
 <script>
     const header = document.querySelector(".page-header");
@@ -1089,4 +1089,39 @@
             header.classList.remove(toggleClass);
         }
     });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+    const qtyInput = document.getElementById('dqty');
+    const increaseBtn = document.getElementById('increase');
+    const decreaseBtn = document.getElementById('decrease');
+
+    increaseBtn.addEventListener('click', () => {
+        qtyInput.value = parseInt(qtyInput.value) + 1;
+    });
+
+    decreaseBtn.addEventListener('click', () => {
+        if (qtyInput.value > 1) {
+            qtyInput.value = parseInt(qtyInput.value) - 1;
+        }
+    });
+});
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+    const qtyInput = document.getElementById('dqtyAccesories');
+    const increaseBtn = document.getElementById('increaseAccesories');
+    const decreaseBtn = document.getElementById('decreaseAccesories');
+
+    increaseBtn.addEventListener('click', () => {
+        qtyInput.value = parseInt(qtyInput.value) + 1;
+    });
+
+    decreaseBtn.addEventListener('click', () => {
+        if (qtyInput.value > 1) {
+            qtyInput.value = parseInt(qtyInput.value) - 1;
+        }
+    });
+});
 </script>
