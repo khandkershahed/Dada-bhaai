@@ -624,11 +624,12 @@ label {
 .number input {
     text-align: center;
     margin: 0 5px;
+    font-size: 12px;
 }
 
 .buttons-count {
     width: 25px;
-    height: 28px;
+    height: 25px;
     display: flex;
     justify-content: center;
     cursor: pointer;
@@ -779,7 +780,7 @@ cart--header__middle.cart--header__two {
 
 .mini__cart--box {
     position: absolute;
-    top: 160%;
+    top: 145%;
     right: 0px;
     width: 265px;
     background: #fff;
@@ -4294,7 +4295,13 @@ html .ui-button.ui-state-disabled:active {
 }
 
 /* Updated custom style with modified class names */
-.accordion .card-header:not(.collapsed) {
+.accordion .mark-cat:not(.collapsed) {
+    color: #ef4416 !important;
+}
+.accordion .mark-sub-cat:not(.collapsed) {
+    color: #ef4416 !important;
+}
+.marks {
     color: #ef4416 !important;
 }
 .accordion .card-header:after {

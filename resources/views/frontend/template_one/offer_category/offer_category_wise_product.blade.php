@@ -33,7 +33,7 @@
                                 <div class="card border-0 shadow-none mb-0">
 
                                     @foreach ($categorys as $category)
-                                        <div class="card-header collapsed pl-0" data-toggle="collapse"
+                                        <div class="card-header mark-cat collapsed pl-0" data-toggle="collapse"
                                             data-parent="#accordion" href="#cat{{ $category->id }}">
                                             <a class="card-title">
                                                 {{ $category->category_name }}
@@ -54,7 +54,7 @@
 
                                                 @forelse ($subcategorys as $subcategory)
                                                     <div class="card border-0 shadow-none mb-0">
-                                                        <div class="card-header collapsed pl-0" data-toggle="collapse"
+                                                        <div class="card-header mark-sub-cat collapsed pl-0" data-toggle="collapse"
                                                             data-target="#sub{{ $subcategory->id }}">
                                                             <a class="card-title">
                                                                 {{ $subcategory->subcategory_name }}
