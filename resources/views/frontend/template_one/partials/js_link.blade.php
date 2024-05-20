@@ -559,10 +559,10 @@
                         `
 
                     <ul style="list-style-type: circle !important;">
-                                                <li class="d-flex mb-2 align-items-center">
+                                                <li class="d-flex mb-2 align-items-center pt-2">
 
 
-                                                    <a href="javascript:;" style="margin-right: 15px;">${value.name}</a> x ${value.qty}
+                                                    <a class="text-muted" href="javascript:;" style="margin-right: 15px;">${value.name}</a> x ${value.qty}
                                                     Qty
 
                                                     {{-- <input type="number" class="form-control form-control-sm w-25"

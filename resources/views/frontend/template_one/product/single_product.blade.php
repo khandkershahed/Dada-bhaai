@@ -74,10 +74,20 @@
 
                                 <div class="pro-code">
                                     <ul class="d-flex flex-column justify-content-between">
-                                        <li>SKU: <span>{{ $product->sku_code }}</span></li>
-                                        <li>MF Code: <span>{{ $product->mf_code }}</span></li>
-                                        <li>Price: <span class="" style="#CD3301">{{ $product->price }}</span>
+                                        <li>SKU: <span class="mr-2 ml-1">{{ $product->sku_code }}</span>MF Code:
+                                            <span class="mr-2 ml-1">{{ $product->mf_code }}</span>
                                         </li>
+                                        <li class="">
+                                            <h5 class="grenadier-color f-600 mb-0">
+                                                Price: {{ $product->price }}
+                                            </h5>
+                                            <h5 class="f-600 mb-0 text-black">
+                                                {{-- Discont Price  --}}
+                                                Old:
+                                                <del> {{ $product->price }}</del>
+                                            </h5>
+                                        </li>
+
                                     </ul>
                                     <p>{!! $product->short_desc !!}</p>
                                 </div>
@@ -132,10 +142,11 @@
                                                         style="border-top: 1px solid white;padding-top: 5px;">
                                                         <div class="d-flex justify-content-between align-items-center">
                                                             <div>
-                                                                <small><a type="submit" onclick="addToCartOneRelated()"
+                                                                <small><a type="submit"
+                                                                        onclick="addToCartOneRelated()"
                                                                         class=""> <span
                                                                             class="badge p-2 text-white"
-                                                                            style="background-color: #cd3301">Add
+                                                                            style="background-color: #cd3301; cursor: pointer;">Add
                                                                             Accessories</span></a></small>
 
                                                                 <input type="hidden" class="mb-0  border-1"
@@ -146,7 +157,7 @@
                                                             </div>
                                                             {{-- Count Box --}}
                                                             <div class="number d-flex align-items-center">
-                                                                <button type="button"
+                                                                <button type="button" style="cursor: pointer"
                                                                     class="buttons-countAccesories border-0 bg-white"
                                                                     id="decreaseAccesories">-</button>
                                                                 <input type="text" disabled
@@ -155,7 +166,7 @@
                                                                     style="width: 30px" />
                                                                 <button type="button"
                                                                     class="buttons-countAccesories border-0 bg-white"
-                                                                    id="increaseAccesories">+</button>
+                                                                    id="increaseAccesories" style="cursor: pointer">+</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -210,7 +221,8 @@
                             </div>
                         </div>
                         <div class="mb-4">
-                            <p class="mb-0" style="border-bottom: 1px solid #ccc;">Accessories</p>
+                            <p class="mb-0 fw-bolder text-black" style="border-bottom: 1px solid #ccc;"><span
+                                    style="color: black;" class="fw-bold">Accessories</span></p>
                             <div id="miniCartRelated"></div>
                         </div>
                         <div class="d-flex align-items-center">
