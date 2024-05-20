@@ -1,4 +1,5 @@
 <div class="col-lg-3 order-2 order-lg-1">
+
     @php
         $brands = App\Models\Brand::where('status', '1')->orderBy('brand_name', 'ASC')->latest()->limit(7)->get();
 
@@ -7,7 +8,6 @@
             ->latest()
             ->limit(9)
             ->get();
-
     @endphp
 
     <div class="common-sidebar shop-banner-sidebar">
