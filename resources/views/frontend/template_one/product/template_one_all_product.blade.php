@@ -5,7 +5,7 @@
     <form action="{{ route('shop.filter') }}" method="POST">
         @csrf
 
-        <div class="product shop-page pt-30 pb-80" style="margin-top: 45px;">
+        <div class="product shop-page pt-30 pb-80" style="margin-top: 60px;">
             <div class="container">
                 <div class="row">
 

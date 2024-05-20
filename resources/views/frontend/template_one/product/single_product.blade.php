@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-5">
+            <div class="row my-5">
                 <div class="col-lg-4">
                     <div class="pro-img">
                         <div class="tab-content" id="myTabContent">
@@ -36,7 +36,7 @@
                                 <div class="tab-pane fade show {{ $key == 0 ? 'active' : '' }}"
                                     id="multiImg{{ $multiImage->id }}" role="tabpanel" aria-labelledby="home-tab5">
                                     <img src="{{ asset($multiImage->multi_image) }}" class="img-fluid mb-2"
-                                        alt="" style="width:100%; height: 400px;" />
+                                        alt="" style="width:100%; height: 100%;" />
                                 </div>
                             @empty
                                 <img src="{{ asset('upload/no_image.jpg') }}" class="img-fluid mb-2" alt=""
@@ -50,7 +50,8 @@
                                         href="#multiImg{{ $multiImage->id }}" role="tab" aria-controls="home5"
                                         aria-selected="true">
                                         <img src="{{ asset($multiImage->multi_image) }}" class="img-fluid"
-                                            alt="" style="width: 75px;height: 75px; margin-bottom: 10px;" />
+                                            alt="" style="width: 75px;height: 75px; margin-bottom: 10px; background-size: cover;
+                                            object-fit: fill;" />
                                     </a>
                                 </li>
                             @empty
@@ -62,7 +63,7 @@
                 </div>
                 <div class="col-lg-5">
                     <div class="row gx-0">
-                        <div class="col-lg-8 col-md-12 order-3 order-lg-2">
+                        <div class="col-lg-8 col-md-12 order-3 order-lg-2 px-0">
                             <div class="pro-content">
                                 <span>{{ $product->category->category_name }}</span>
 
@@ -74,7 +75,7 @@
                                     <ul class="d-flex flex-column justify-content-between">
                                         <li>SKU: <span>{{ $product->sku_code }}</span></li>
                                         <li>MF Code: <span>{{ $product->mf_code }}</span></li>
-                                        <li>Price: <span class="grenadier-color">{{ $product->price }}</span></li>
+                                        <li>Price: <span class="" style="#CD3301">{{ $product->price }}</span></li>
                                     </ul>
                                     <p>{!! $product->short_desc !!}</p>
                                 </div>
@@ -96,22 +97,18 @@
 
                         <div class="col-lg-12 px-0">
                             <div class="releted_accessories">
-
                                 @forelse ($relativeChild as $product)
-                                    <div class="card border-0 shadow-sm">
-
+                                    <div class="card border-0 shadow-sm releted-accessories-items">
                                         <div class="card-header p-0 border-0">
-                                            <img src="{{ asset($product->product_image) }}" class="border img-fluid"
+                                            <img src="{{ asset($product->product_image) }}" class="img-fluid"
                                                 style="width: 100%; height: 140px;" alt="" />
                                         </div>
-
                                         <div class="card-body p-0">
                                             <div class="container">
                                                 <div class="row align-items-center p-1" style="background-color: #eee">
                                                     <div class="col-lg-6 px-0">
                                                         <small id="drpname"
                                                             class="text-black">{{ $product->product_name }}</small>
-
                                                     </div>
                                                     <div class="col-lg-6 px-0">
                                                         <div class="text-right">
@@ -129,14 +126,31 @@
                                                             @endif
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-12">
-                                                        <small><a type="submit" onclick="addToCartOneRelated()"
-                                                                class="">+</a></small>
-                                                        <input type="hidden" class="mb-0  border-1" name=""
-                                                            value="1" min="1" id="drqty"
-                                                            style="width: 50px" />
-                                                        <input type="hidden" id="onerproduct_id"
-                                                            value="{{ $product->id }}">
+                                                    <div class="col-lg-12 px-0" style="border-top: 1px solid white;padding-top: 5px;">
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <div>
+                                                                <small><a type="submit" onclick="addToCartOneRelated()"
+                                                                        class=""> <span
+                                                                            class="badge p-2 text-white" style="background-color: #cd3301">Add Accessories</span></a></small>
+
+                                                                <input type="hidden" class="mb-0  border-1"
+                                                                    name="" value="1" min="1"
+                                                                    id="drqty" style="width: 50px" />
+                                                                <input type="hidden" id="onerproduct_id"
+                                                                    value="{{ $product->id }}">
+                                                            </div>
+                                                            {{-- Count Box --}}
+                                                            <div class="number d-flex align-items-center">
+                                                                <button type="button" class="buttons-countAccesories border-0 bg-white"
+                                                                    id="decreaseAccesories">-</button>
+                                                                <input type="text" disabled
+                                                                    class="mb-0 border-1 text-center" name=""
+                                                                    value="1" min="1" id="dqtyAccesories"
+                                                                    style="width: 30px" />
+                                                                <button type="button" class="buttons-countAccesories border-0 bg-white"
+                                                                    id="increaseAccesories">+</button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -149,10 +163,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3" style="border: 1px solid #f5f5f5;box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 2px;">
                     <div class="cart-wrapper">
                         <div class="cart-title d-flex justify-content-between align-items-center">
-                            <h6 class="d-flex justify-content-between align-items-center">
+                            <h6 class="d-flex justify-content-between align-items-center w-100">
                                 <div>
                                     Product
                                 </div>

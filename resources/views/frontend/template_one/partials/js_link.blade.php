@@ -1110,9 +1110,9 @@
 </script>
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
-    const qtyInput = document.getElementById('dqty');
-    const increaseBtn = document.getElementById('increase');
-    const decreaseBtn = document.getElementById('decrease');
+    const qtyInput = document.getElementById('dqtyAccesories');
+    const increaseBtn = document.getElementById('increaseAccesories');
+    const decreaseBtn = document.getElementById('decreaseAccesories');
 
     increaseBtn.addEventListener('click', () => {
         qtyInput.value = parseInt(qtyInput.value) + 1;

@@ -5,28 +5,21 @@
     <div class="product shop-page pt-30 pb-80">
         <div class="container">
             <div class="row">
-
                 {{-- Brand  --}}
                 <div class="col-lg-3 order-2 order-lg-1">
-
                     @php
-
                         $brands = App\Models\Brand::where('status', '1')
                             ->orderBy('brand_name', 'ASC')
                             ->latest()
                             ->limit(7)
                             ->get();
-
                         $categorys = App\Models\Admin\Category::where('status', '1')
                             ->orderBy('category_name', 'ASC')
                             ->latest()
                             ->limit(9)
                             ->get();
-
                     @endphp
-
                     <div class="common-sidebar shop-banner-sidebar">
-
                         {{-- Category  --}}
                         <div class="common-cat">
                             <div class="side-title">
@@ -35,7 +28,6 @@
                             {{-- Brands Accordion --}}
                             <div id="accordionBrands" class="accordion">
                                 <div class="card border-0 shadow-none mb-0">
-
                                     @foreach ($categorys as $category)
                                         <div class="card-header collapsed pl-0" data-toggle="collapse"
                                             data-parent="#accordion" href="#cat{{ $category->id }}">
@@ -43,7 +35,6 @@
                                                 {{ $category->category_name }}
                                             </a>
                                         </div>
-
                                         <div id="cat{{ $category->id }}" class="collapse" data-parent="#accordion"
                                             style="background-color: #f5f5f5;">
 

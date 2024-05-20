@@ -2,7 +2,7 @@
 @section('index_template_one')
 @section('title', 'Dada Bhaai | ' . $catwiseproduct->category_name)
     <!-- shop area start -->
-    <div class="product shop-page pt-30 pb-80" style="margin-top: 45px;">
+    <div class="product shop-page pt-30 pb-80" style="margin-top: 60px;">
         <div class="container">
             <div class="row">
 
@@ -31,8 +31,8 @@
                     <div class="border-b">
                         <div class="row">
                             <div class="col-lg-5 col-md-4">
-                                <div class="shop-bar d-flex align-items-center">
-                                    <h4 class="f-800 cod__black-color">Category</h4>
+                                <div class="shop-bar">
+                                    <h6 class="f-800 cod__black-color">Category</h6>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>

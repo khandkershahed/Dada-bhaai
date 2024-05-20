@@ -214,7 +214,7 @@
                         @endphp
 
                         <div class="dropdown-menu w-100 mt-0 rounded-0 border-bottom-0 main-menu-drop"
-                            style="border-top: 4px solid #cd3301" aria-labelledby="navbarDropdown">
+                            style="border-top: 2px solid #cd3301" aria-labelledby="navbarDropdown">
                             <div class="container">
                                 <div class="row">
                                     @foreach ($uniqueCategories as $category)
@@ -274,7 +274,7 @@
                         @endphp
 
                         <div class="dropdown-menu w-100 mt-0 rounded-0 border-bottom-0 main-menu-drop"
-                            style="border-top: 4px solid #cd3301" aria-labelledby="navbarDropdown">
+                            style="border-top: 2px solid #cd3301" aria-labelledby="navbarDropdown">
                             <div class="container">
                                 <div class="row">
 
@@ -314,7 +314,7 @@
                                 ->get();
                         @endphp
                         <div class="dropdown-menu w-100 mt-0 rounded-0 border-bottom-0 main-menu-drop"
-                            style="border-top: 4px solid #cd3301" aria-labelledby="navbarDropdown">
+                            style="border-top: 2px solid #cd3301" aria-labelledby="navbarDropdown">
                             <div class="container">
                                 <div class="row">
                                     @foreach ($offers as $offer)
@@ -448,7 +448,7 @@
                                     <ul>
                                         <li>
                                             <div class="total-text d-flex justify-content-between">
-                                                <span class="f-800 cod__black-color">Total Bag</span>
+                                                <span class="f-800 cod__black-color">Total Price</span>
                                                 <span class="f-800 cod__black-color">Tk <span
                                                         id="cartSubTotal"></span></span>
 
@@ -457,8 +457,8 @@
                                         <li>
                                             <div class="d-flex justify-content-between">
                                                 <a href="{{ route('template.one.view.cart') }}"
-                                                    class="checkout">Checkout</a>
-                                                <a href="{{ route('template.one.view.cart') }}" class="viewcart">View
+                                                    class="checkout main-btn">Checkout</a>
+                                                <a href="{{ route('template.one.view.cart') }}" class="viewcart main-btn">View
                                                     Cart</a>
                                             </div>
                                         </li>
