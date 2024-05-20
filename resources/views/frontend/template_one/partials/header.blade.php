@@ -449,10 +449,10 @@
                                     </ul>
                                 </div>
                                 <div class="mini__cart--box">
-                                    <div id="miniCart">
+                                    <div id="miniCart" style="">
                                     </div>
                                     <ul>
-                                        <li>
+                                        <li style="border: none">
                                             <div class="total-text d-flex justify-content-between">
                                                 <span class="f-800 cod__black-color">Total Price</span>
                                                 <span class="f-800 cod__black-color">Tk <span
@@ -460,7 +460,7 @@
 
                                             </div>
                                         </li>
-                                        <li>
+                                        <li style="border: none">
                                             <div class="d-flex justify-content-between">
                                                 <a href="{{ route('template.one.view.cart') }}"
                                                     class="checkout main-btn">Checkout</a>
