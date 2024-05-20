@@ -610,7 +610,7 @@
 
                                         <div class="cart-image">
                                             <a href="javascript:;"><img src="/${value.options.image}"
-                                                    alt="" style="width:70px;height:30px;" /></a>
+                                                    alt="" style="width:100%;height:100%;" /></a>
                                         </div>
 
                                         <div class="cart-text">

@@ -388,8 +388,9 @@
                                                     aria-labelledby="dropdownMenuButton" style="">
 
                                                     @if (Auth::user())
-                                                        <a href="{{ route('template.one.login') }}"
-                                                            class="btn btn-primary w-100">Login</a>
+                                                        <a class="cart-button w-100 mt-0" href="{{ route('template.one.login') }}"
+                                                            class="">Login
+                                                        </a>
 
                                                         <hr class="mb-2 mt-3">
 
@@ -406,7 +407,9 @@
                                                                 aria-hidden="true"></i>Password Change</a>
                                                     @else
                                                         <a href="{{ route('template.one.login') }}"
-                                                            class="btn btn-primary w-100">Login</a>
+                                                            class="cart-button w-100 mt-0">
+                                                            Login
+                                                        </a>
 
                                                         <hr class="mb-2 mt-3">
 

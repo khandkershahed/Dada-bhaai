@@ -602,6 +602,8 @@ label {
     left: 0;
     z-index: 1;
     background-color: rgba(255, 255, 255, 0.15);
+    animation: slideUp 0.35s ease-out;
+    z-index: 444;
 }
 
 .page-header.is-sticky {
@@ -610,7 +612,7 @@ label {
     padding: 0px 0;
     backdrop-filter: blur(0);
     animation: slideDown 0.35s ease-out;
-    z-index: 5555;
+    z-index: 444;
 }
 .releted-accessories-items {
     box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
@@ -642,6 +644,10 @@ label {
 .page-header.is-sticky button {
     font-size: 14px;
     padding: 7px 10px;
+}
+.swal2-popup.swal2-toast.swal2-show{
+    position: relative;
+    z-index: 5556 !important;
 }
 
 @keyframes slideDown {
@@ -782,7 +788,7 @@ cart--header__middle.cart--header__two {
     position: absolute;
     top: 145%;
     right: 0px;
-    width: 265px;
+    width: 330px;
     background: #fff;
     padding: 20px;
     display: none;
@@ -4119,7 +4125,7 @@ html .ui-button.ui-state-disabled:active {
 
 .shop-details-area .pro-img .tab-content img {
     position: relative;
-    z-index: 991;
+    z-index: 333;
 }
 
 .shop-details-area .pro-img ul.nav {
