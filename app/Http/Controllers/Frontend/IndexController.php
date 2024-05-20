@@ -62,8 +62,8 @@ class IndexController extends Controller
         $multiImages = MultiImg::where('product_id', $product->id)->get();
 
         //Releted Category
-        $cat_id = $product->category_id;
-        $relativeProduct = Product::where('category_id', $cat_id)->where('id', '!=', $id)->orderBy('id', 'ASC')->limit(5)->get();
+        $cat_id = $product->childcategory_id;
+        $relativeProduct = Product::where('childcategory_id', $cat_id)->where('id', '!=', $id)->orderBy('id', 'ASC')->limit(5)->get();
 
         // $child_id = $product->child_id;
         // $relativeChild = Product::where('child_id', $child_id)->where('id', '!=', '$id')->orderBy('id', 'DESC')->limit(6)->get();

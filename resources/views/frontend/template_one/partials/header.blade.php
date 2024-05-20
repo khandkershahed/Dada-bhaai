@@ -4,11 +4,14 @@
             aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        @php
+            $site = App\Models\Sites::find(1);
+        @endphp
         <div class="container">
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <a class="navbar-brand" href="{{ route('index') }}">
                     <img class="" width="250px"
-                        src="https://www.dadabhaai.com/upload/logo_black/202405071136jaragroups404413.png"
+                        src="{{ asset('upload/logo_black/' . $site->logo_black) }}"
                         alt="" />
                 </a>
                 <div class="col-xl-3 col-lg-4 col-md-5 col-10">

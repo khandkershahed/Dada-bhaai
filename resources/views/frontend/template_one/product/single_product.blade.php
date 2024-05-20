@@ -50,7 +50,8 @@
                                         href="#multiImg{{ $multiImage->id }}" role="tab" aria-controls="home5"
                                         aria-selected="true">
                                         <img src="{{ asset($multiImage->multi_image) }}" class="img-fluid"
-                                            alt="" style="width: 75px;height: 75px; margin-bottom: 10px; background-size: cover;
+                                            alt=""
+                                            style="width: 75px;height: 75px; margin-bottom: 10px; background-size: cover;
                                             object-fit: fill;" />
                                     </a>
                                 </li>
@@ -75,7 +76,8 @@
                                     <ul class="d-flex flex-column justify-content-between">
                                         <li>SKU: <span>{{ $product->sku_code }}</span></li>
                                         <li>MF Code: <span>{{ $product->mf_code }}</span></li>
-                                        <li>Price: <span class="" style="#CD3301">{{ $product->price }}</span></li>
+                                        <li>Price: <span class="" style="#CD3301">{{ $product->price }}</span>
+                                        </li>
                                     </ul>
                                     <p>{!! $product->short_desc !!}</p>
                                 </div>
@@ -126,12 +128,15 @@
                                                             @endif
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-12 px-0" style="border-top: 1px solid white;padding-top: 5px;">
+                                                    <div class="col-lg-12 px-0"
+                                                        style="border-top: 1px solid white;padding-top: 5px;">
                                                         <div class="d-flex justify-content-between align-items-center">
                                                             <div>
                                                                 <small><a type="submit" onclick="addToCartOneRelated()"
                                                                         class=""> <span
-                                                                            class="badge p-2 text-white" style="background-color: #cd3301">Add Accessories</span></a></small>
+                                                                            class="badge p-2 text-white"
+                                                                            style="background-color: #cd3301">Add
+                                                                            Accessories</span></a></small>
 
                                                                 <input type="hidden" class="mb-0  border-1"
                                                                     name="" value="1" min="1"
@@ -141,13 +146,15 @@
                                                             </div>
                                                             {{-- Count Box --}}
                                                             <div class="number d-flex align-items-center">
-                                                                <button type="button" class="buttons-countAccesories border-0 bg-white"
+                                                                <button type="button"
+                                                                    class="buttons-countAccesories border-0 bg-white"
                                                                     id="decreaseAccesories">-</button>
                                                                 <input type="text" disabled
                                                                     class="mb-0 border-1 text-center" name=""
                                                                     value="1" min="1" id="dqtyAccesories"
                                                                     style="width: 30px" />
-                                                                <button type="button" class="buttons-countAccesories border-0 bg-white"
+                                                                <button type="button"
+                                                                    class="buttons-countAccesories border-0 bg-white"
                                                                     id="increaseAccesories">+</button>
                                                             </div>
                                                         </div>
@@ -305,7 +312,7 @@
                                 <div class="product-section2">
                                     <h6 class="product--section__title2" id="releted-tab" data-toggle="tab"
                                         href="#releted" role="tab" aria-controls="releted" aria-selected="true">
-                                        <span>Related Category</span>
+                                        <span>Related Product</span>
                                     </h6>
                                 </div>
                             </div>
