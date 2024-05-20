@@ -241,8 +241,9 @@ class TemplateOneController extends Controller
         $childcatSlug = $childcategory_slug;
 
         $childcatwiseproduct = ChildCategory::find($id);
+        $catwiseproduct = Category::find($childcatwiseproduct->category_id);
 
-        return view('frontend.template_one.childcategory.childcategory_wise_product', compact('products', 'childcatwiseproduct', 'childcatId', 'childcatSlug', 'sort', 'route'));
+        return view('frontend.template_one.childcategory.childcategory_wise_product', compact('products', 'childcatwiseproduct', 'childcatId', 'childcatSlug', 'sort', 'route','catwiseproduct'));
     }
 
     //Contact

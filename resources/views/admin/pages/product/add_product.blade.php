@@ -645,25 +645,29 @@
                                     <div class="fv-row">
                                         <div class="row">
 
-                                            <div class="col-lg-6 mb-2">
+
+                                            <div class="col-lg-12 mb-2">
                                                 <label class="form-label mb-0">Short Desc</label>
-                                                <textarea name="short_desc" class="tinymce_metronic" placeholder="">
+                                                <textarea name="short_desc" class="editor form-control" placeholder="">
                                                     {{ old('short_desc') }}
                                                 </textarea>
                                             </div>
 
-                                            <div class="col-lg-6 mb-2">
+                                            <div class="col-lg-12 mb-2">
                                                 <label class="form-label mb-0">Overview</label>
-                                                <textarea name="overview" placeholder="" class="form-control tinymce_metronic">{{ old('overview') }}</textarea>
+                                                <textarea name="overview" placeholder="" class="editor form-control">{{ old('overview') }}</textarea>
                                             </div>
-                                            <div class="col-lg-6 mb-2">
+
+                                            <div class="col-lg-12 mb-2">
                                                 <label class="form-label mb-0">Specification</label>
-                                                <textarea name="specification" placeholder="" class="form-control tinymce_metronic">{{ old('specification') }}</textarea>
+                                                <textarea name="specification" placeholder="" class="editor form-control">{{ old('specification') }}</textarea>
                                             </div>
-                                            <div class="col-lg-6 mb-2">
+
+                                            <div class="col-lg-12 mb-2">
                                                 <label class="form-label mb-0">Accessories</label>
-                                                <textarea name="accessories" placeholder="" class="form-control tinymce_metronic">{{ old('specification') }}</textarea>
+                                                <textarea name="accessories" placeholder="" class="editor form-control">{{ old('specification') }}</textarea>
                                             </div>
+
                                         </div>
                                         <div class="row mt-2 justify-content-end">
                                             <div class="d-flex align-items-center justify-content-between">
