@@ -324,7 +324,7 @@
                                 <div class="product-section2">
                                     <h6 class="product--section__title2" id="releted-tab" data-toggle="tab"
                                         href="#releted" role="tab" aria-controls="releted" aria-selected="true">
-                                        <span>Related Category</span>
+                                        <span>Related Product</span>
                                     </h6>
                                 </div>
                             </div>
