@@ -13,7 +13,10 @@ use App\Models\Admin\Product;
 use App\Models\Admin\Template;
 use App\Models\Banner;
 use App\Models\Brand;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 class IndexController extends Controller
 {
@@ -182,5 +185,38 @@ class IndexController extends Controller
 
         return view('frontend.pages.about_page', compact('about'));
     }
+
+    //Login Google
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function googleCallback()
+    {
+        $user = Socialite::driver('google')->user();
+        $this->registerOrlogin($user);
+
+        return redirect()->route('template.one.dashboard');
+    }
+
+    public function registerOrlogin($data)
+    {
+        $user = User::where('email','=',$data->email)->first();
+
+        if(!$user)
+        {
+            $user = new User();
+            $user->name = $data->name;
+            $user->email = $data->email;
+            $user->google_id = $data->google_id;
+            $user->save();
+        }
+
+        Auth::login($user);
+
+    }
+
+
 
 }
