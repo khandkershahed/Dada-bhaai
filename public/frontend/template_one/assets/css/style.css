@@ -1142,10 +1142,12 @@ cart--header__middle.cart--header__two {
 
 /* User */
 .user-panel-login {
-    transform: translate3d(-100px, 20px, 0px) !important;
+    transform: translate3d(-65px, 20px, 0px) !important;
     border: 0;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     border-radius: 0;
+    min-width: 215px;
+    max-width: 100%;
 }
 
 .user-dashboard-menu {
@@ -4621,7 +4623,13 @@ html .ui-button.ui-state-disabled:active {
     display: block;
     background: #cd3301;
 }
-
+.cart-button:hover {
+    color: #fff;
+}
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: .25rem 0.2rem;}
 /* .checkout-page-form.collapsed {
   background-color: #cd3301 !important;
   color: white !important;

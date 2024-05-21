@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div>
-                        <div class="banner-text text-center pt-80 pb-80">
+                        <div class="banner-text text-center pt-180 pb-120">
                             <h2 class="f-800 cod__black-color">
                                 WishList <span class="grenadier-color">PRODUCT</span>
                             </h2>
@@ -32,7 +32,7 @@
     <!-- page banner area end -->
 
     <!-- shop area start -->
-    <div class="product shop-page pt-80 pb-80 fix">
+    <div class="product shop-page pt-90 pb-90 fix">
         <div class="container">
             <div class="border-b">
                 <div class="row">
@@ -55,7 +55,7 @@
                         <div class="card-body">
                             <div class="row">
 
-                                <div class="col-lg-12">
+                                <div class="col-lg-12 px-0">
                                     <div class="table-responsive">
                                         <table class="table">
                                             <!-- Cart Header -->

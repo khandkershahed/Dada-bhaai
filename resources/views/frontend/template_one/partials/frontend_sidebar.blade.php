@@ -23,9 +23,8 @@
                     {{-- Multi Accordion End --}}
 
                     @foreach ($categorys as $category)
-                        <div class="card-header {{ optional($catwiseproduct)->id == $category->id ? 'mark-cat' : 'collapsed' }}  pl-0"
-                            data-toggle="collapse" data-parent="#accordion"
-                            aria-expanded="{{ optional($catwiseproduct)->id == $category->id ? 'true' : 'false' }}"
+
+                        <div class="card-header {{ $catwiseproduct->id == $category->id ? 'mark-cat' : 'collapsed' }}  pl-0" data-toggle="collapse" data-parent="#accordion" aria-expanded="{{ $catwiseproduct->id == $category->id ? 'true' : 'false' }}"
                             href="#cat{{ $category->id }}">
                             <a class="card-title {{ optional($catwiseproduct)->id == $category->id ? 'mark-cat' : '' }}">
                                 {{ $category->category_name }}
@@ -46,9 +45,8 @@
 
                                 @forelse ($subcategorys as $subcategory)
                                     <div class="card border-0 shadow-none mb-0">
-
-                                        <div class="card-header category-filter {{ optional($childcatwiseproduct)->subcategory_id == $subcategory->id ? 'mark-sub-cat' : 'collapsed' }} pl-0"
-                                            data-toggle="collapse" data-target="#sub{{ $subcategory->id }}">
+                                        <div class="card-header category-filter {{ $catwiseproduct->id == $subcategory->category_id ? 'mark-sub-cat' : 'collapsed' }} pl-0" data-toggle="collapse"
+                                            data-target="#sub{{ $subcategory->id }}">
                                             <a class="card-title">
                                                 {{ $subcategory->subcategory_name }}
                                             </a>
@@ -64,39 +62,26 @@
                                                     ->get();
                                             @endphp
                                             @forelse ($childcategorys as $childcategory)
-                                                
-
-                                                <div class="card-body p-2 {{ optional($childcatwiseproduct)->id == $childcategory->id ? 'marks' : '' }}"
-                                                    aria-expanded="{{ optional($childcatwiseproduct)->id == $childcategory->id ? 'true' : 'false' }}">
-                                                    <a href="{{ url('product/childcategory/' . $childcategory->id . '/' . $childcategory->childcategory_slug) }}"
-                                                        class="pl-3 text-muted childcategory-link {{ optional($childcatwiseproduct)->id == $childcategory->id ? 'marks' : 'collapsed' }}">{{ $childcategory->childcategory_name }}</a>
-
+                                                <div class="card-body p-2">
+                                                    <a class="marks" href="{{ url('product/childcategory/' . $childcategory->id . '/' . $childcategory->childcategory_slug) }}"
+                                                        class="pl-3 text-muted">{{ $childcategory->childcategory_name }}</a>
                                                 </div>
-
                                             @empty
                                                 <p>No ChildCategory Avaiable</p>
                                             @endforelse
-
                                         </div>
                                     </div>
                                 @empty
                                     <p>No SubCategory Avaiable</p>
                                 @endforelse
-
-
                             </div>
                         </div>
                     @endforeach
-
                     {{-- Multi Accordion End --}}
-
                 </div>
             </div>
-
         </div>
         {{-- Category  --}}
-
-
     </div>
 
     <div class="common-sidebar shop-banner-sidebar">

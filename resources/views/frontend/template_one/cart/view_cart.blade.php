@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div>
-                        <div class="banner-text text-center pt-80 pb-80">
+                        <div class="banner-text text-center pt-150 pb-120">
                             <h2 class="f-800 cod__black-color">
                                 DADA VAI <span class="grenadier-color">PRODUCT</span>
                             </h2>
@@ -31,7 +31,7 @@
     </section>
     <!-- page banner area end -->
     <!-- shop area start -->
-    <div class="product shop-page pt-80 pb-80 fix">
+    <div class="product shop-page pt-150 pb-120 fix">
         <div class="container">
 
             <div class="border-b">
@@ -98,17 +98,17 @@
                                                                 <td>Sub Total:</td>
                                                                 <td class="text-right">Tk <span id="cartSubTotal"></span></td>
                                                             </tr>
-                                                            
+
                                                             <tr>
                                                                 <th scope="col">ORDER TOTAL</th>
                                                                 <th class="text-right">Tk <span id="cartTotal"></span></th>
                                                             </tr>
                                                         </tbody>
-                                                        
+
                                                     </table>
                                                     <div>
                                                         <div class="d-flex justify-content-end">
-                                                            
+
                                                             <a href="{{ route('template.one.checkout') }}" class="cart-button w-100">
                                                                 Check Out
                                                             </a>

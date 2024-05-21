@@ -426,11 +426,9 @@
 
                                                         <hr class="mb-2 mt-3">
 
-                                                        <p>First time here? <a
-                                                                href="{{ route('template.one.login') }}"
-                                                                class="text-danger">Sign
-                                                                Up</a>
-                                                        </p>
+                                                        <a href="{{ route('template.one.login') }}"
+                                                            class="text-muted">First time here? <span
+                                                                class="text-danger">Sign Up</span></a>
                                                     @endif
 
                                                 </div>
