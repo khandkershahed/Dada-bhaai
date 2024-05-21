@@ -65,8 +65,8 @@ Route::controller(IndexController::class)->group(function () {
     Route::get('/about', 'AboutPage')->name('about.page');
 
     // lOGIN wITH gOOGLE
-    Route::get('/login/google', 'redirectToGoogle')->name('login.google');
-    Route::get('/login/google/callback', 'googleCallback');
+    Route::get('login/google', 'redirectToGoogle')->name('login.google');
+    Route::get('login/google/callback', 'googleCallback');
 
 
 });

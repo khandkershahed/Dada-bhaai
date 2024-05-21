@@ -16,6 +16,8 @@ use App\Models\Brand;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
 class IndexController extends Controller
@@ -202,21 +204,23 @@ class IndexController extends Controller
 
     public function registerOrlogin($data)
     {
-        $user = User::where('email','=',$data->email)->first();
+        // Find user by email
+        $user = User::where('email', $data->email)->first();
 
-        if(!$user)
-        {
+        // If user doesn't exist, create a new one
+        if (!$user) {
             $user = new User();
             $user->name = $data->name;
             $user->email = $data->email;
-            $user->google_id = $data->google_id;
+            $user->google_id = $data->id;
+            // Generate a random password for the user
+            $user->password = Hash::make(Str::random(8)); // You can adjust the password length as needed
             $user->save();
         }
 
+        // Log in the user
         Auth::login($user);
 
     }
-
-
 
 }
