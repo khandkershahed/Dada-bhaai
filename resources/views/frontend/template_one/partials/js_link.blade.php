@@ -1125,3 +1125,31 @@
     });
 });
 </script>
+
+<script>
+    $(document).ready(function(){
+    // Initialize accordion
+    $('.card-header').each(function(){
+        if ($(this).hasClass('mark-cat')) {
+            $(this).addClass('collapsed').next().collapse('show');
+        } else {
+            $(this).addClass('collapsed').next().collapse('hide');
+        }
+    });
+
+    // Handle click events to toggle accordion
+    $('.category-filter, .card-header').click(function(){
+        $(this).toggleClass('collapsed').next().collapse('toggle');
+    });
+});
+</script>
+<script>
+    $(document).ready(function(){
+    $('.childcategory-link').click(function(){
+        // Remove "marks" class from all links
+        $('.childcategory-link').removeClass('marks');
+        // Add "marks" class to the clicked link
+        $(this).addClass('marks');
+    });
+});
+</script>
