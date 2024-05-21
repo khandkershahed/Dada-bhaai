@@ -144,12 +144,14 @@ class TemplateOneController extends Controller
         }
 
         $brandwiseproduct = Brand::find($id);
+        $catwiseproduct = '';
+        $childcatwiseproduct = '';
 
         $route = 'product/brand';
         $brandId = $id;
         $brandSlug = $brand_slug;
 
-        return view('frontend.template_one.brand.brand_wise_product', compact('products', 'brandwiseproduct', 'route', 'brandId', 'brandSlug', 'sort'));
+        return view('frontend.template_one.brand.brand_wise_product', compact('products', 'brandwiseproduct', 'route', 'brandId', 'brandSlug', 'sort','catwiseproduct','childcatwiseproduct'));
     }
 
     //Home All Category

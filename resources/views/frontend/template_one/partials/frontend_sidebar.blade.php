@@ -23,11 +23,11 @@
                     {{-- Multi Accordion End --}}
 
                     @foreach ($categorys as $category)
-                        <div class="card-header {{ $catwiseproduct->id == $category->id ? 'mark-cat' : 'collapsed' }}  pl-0"
+                        <div class="card-header {{ optional($catwiseproduct)->id == $category->id ? 'mark-cat' : 'collapsed' }}  pl-0"
                             data-toggle="collapse" data-parent="#accordion"
-                            aria-expanded="{{ $catwiseproduct->id == $category->id ? 'true' : 'false' }}"
+                            aria-expanded="{{ optional($catwiseproduct)->id == $category->id ? 'true' : 'false' }}"
                             href="#cat{{ $category->id }}">
-                            <a class="card-title {{ $catwiseproduct->id == $category->id ? 'mark-cat' : '' }}">
+                            <a class="card-title {{ optional($catwiseproduct)->id == $category->id ? 'mark-cat' : '' }}">
                                 {{ $category->category_name }}
                             </a>
                         </div>
@@ -121,7 +121,8 @@
         {{-- Brand  --}}
 
         {{-- Tags --}}
-        <div class="common-tag mt-30">
+
+        {{-- <div class="common-tag mt-30">
             <div class="side-title">
                 <h6>Popular Tag</h6>
             </div>
@@ -139,7 +140,8 @@
                     <p class="mb-0 text-dark">No Tags Avaiable</p>
                 @endforelse
             </ul>
-        </div>
+        </div> --}}
+
     </div>
 
 </div>
