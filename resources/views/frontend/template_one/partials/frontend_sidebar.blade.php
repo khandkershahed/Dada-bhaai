@@ -115,6 +115,7 @@
                 @empty
                     <p>No Brand Avaiable</p>
                 @endforelse
+
             </div>
         </div>
         {{-- Brand  --}}

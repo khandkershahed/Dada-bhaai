@@ -60,6 +60,9 @@
                                 </div>
                                 <div class="field">
                                     <label>Password</label>
+                                    @error('password')
+                                        <div class="text-danger" style="margin-top: 0px;">{{ $message }}</div>
+                                    @enderror
                                     <input type="password" class="form-control form-control-sm " name="password"
                                         placeholder="Password" required>
                                 </div>
