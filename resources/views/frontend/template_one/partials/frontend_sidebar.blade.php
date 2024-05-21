@@ -20,13 +20,14 @@
             <div id="accordionBrands" class="accordion">
                 <div class="card border-0 shadow-none mb-0">
 
-                    {{-- hhhhhhhhhhhh --}}
+                    {{-- Multi Accordion End --}}
+
                     @foreach ($categorys as $category)
                         <div class="card-header {{ $catwiseproduct->id == $category->id ? 'mark-cat' : 'collapsed' }}  pl-0"
                             data-toggle="collapse" data-parent="#accordion"
                             aria-expanded="{{ $catwiseproduct->id == $category->id ? 'true' : 'false' }}"
                             href="#cat{{ $category->id }}">
-                            <a class="card-title">
+                            <a class="card-title {{ $catwiseproduct->id == $category->id ? 'mark-cat' : '' }}">
                                 {{ $category->category_name }}
                             </a>
                         </div>
@@ -46,7 +47,7 @@
                                 @forelse ($subcategorys as $subcategory)
                                     <div class="card border-0 shadow-none mb-0">
 
-                                        <div class="card-header category-filter {{ $childcatwiseproduct->subcategory_id == $subcategory->id ? 'mark-sub-cat' : 'collapsed' }} pl-0"
+                                        <div class="card-header category-filter {{ optional($childcatwiseproduct)->subcategory_id == $subcategory->id ? 'mark-sub-cat' : 'collapsed' }} pl-0"
                                             data-toggle="collapse" data-target="#sub{{ $subcategory->id }}">
                                             <a class="card-title">
                                                 {{ $subcategory->subcategory_name }}
@@ -63,16 +64,12 @@
                                                     ->get();
                                             @endphp
                                             @forelse ($childcategorys as $childcategory)
-                                                {{-- <div class="card-body p-2">
-                                                    <a class="marks"
-                                                        href="{{ url('product/childcategory/' . $childcategory->id . '/' . $childcategory->childcategory_slug) }}"
-                                                        class="pl-3 text-muted">{{ $childcategory->childcategory_name }}</a>
-                                                </div> --}}
+                                                
 
-                                                <div class="card-body p-2 {{ $childcatwiseproduct->id == $childcategory->id ? 'marks' : '' }}"
-                                                    aria-expanded="{{ $childcatwiseproduct->id == $childcategory->id ? 'true' : 'false' }}">
+                                                <div class="card-body p-2 {{ optional($childcatwiseproduct)->id == $childcategory->id ? 'marks' : '' }}"
+                                                    aria-expanded="{{ optional($childcatwiseproduct)->id == $childcategory->id ? 'true' : 'false' }}">
                                                     <a href="{{ url('product/childcategory/' . $childcategory->id . '/' . $childcategory->childcategory_slug) }}"
-                                                        class="pl-3 text-muted childcategory-link {{ $childcatwiseproduct->id == $childcategory->id ? 'marks' : 'collapsed' }}">{{ $childcategory->childcategory_name }}</a>
+                                                        class="pl-3 text-muted childcategory-link {{ optional($childcatwiseproduct)->id == $childcategory->id ? 'marks' : 'collapsed' }}">{{ $childcategory->childcategory_name }}</a>
 
                                                 </div>
 
@@ -92,6 +89,7 @@
                     @endforeach
 
                     {{-- Multi Accordion End --}}
+
                 </div>
             </div>
 
