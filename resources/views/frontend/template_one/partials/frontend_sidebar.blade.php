@@ -66,31 +66,22 @@
                                                     <a class="marks" href="{{ url('product/childcategory/' . $childcategory->id . '/' . $childcategory->childcategory_slug) }}"
                                                         class="pl-3 text-muted">{{ $childcategory->childcategory_name }}</a>
                                                 </div>
-
                                             @empty
                                                 <p>No ChildCategory Avaiable</p>
                                             @endforelse
-
                                         </div>
                                     </div>
                                 @empty
                                     <p>No SubCategory Avaiable</p>
                                 @endforelse
-
-
                             </div>
                         </div>
                     @endforeach
-
                     {{-- Multi Accordion End --}}
-
                 </div>
             </div>
-
         </div>
         {{-- Category  --}}
-
-
     </div>
 
     <div class="common-sidebar shop-banner-sidebar">

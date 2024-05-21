@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div>
-                        <div class="banner-text text-center pt-80 pb-80">
+                        <div class="banner-text text-center pt-150 pb-120">
                             <h2 class="f-800 cod__black-color">
                                 DADA VAI <span class="grenadier-color">PRODUCT</span>
                             </h2>
@@ -37,7 +37,7 @@
 
         @csrf
 
-        <div class="product shop-page pt-80 pb-80 fix">
+        <div class="product shop-page pt-150 pb-120 fix">
             <div class="container">
                 <div class="border-b">
                     <div class="row">
@@ -426,7 +426,7 @@
                     billing_address_line1: {
                         required: 'Please Enter Address Name',
                     },
-                    
+
                     shipping_charge: {
                         required: 'Please Select Shipping Charge',
                     },

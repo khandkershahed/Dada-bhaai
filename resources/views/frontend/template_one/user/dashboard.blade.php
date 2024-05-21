@@ -2,7 +2,7 @@
 @section('index_template_one')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
     <div class="container mt-5 mb-5">
-        <div class="row">
+        <div class="row pt-80 pb-80">
             <div class="col-lg-12">
                 <div class="row">
 
@@ -134,7 +134,7 @@
                                             </table>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                                 <div>
                                     <div class="heading-2">
@@ -177,7 +177,7 @@
                                             </table>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </div> --}}
                             {{-- End --}}

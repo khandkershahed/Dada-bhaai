@@ -10,8 +10,7 @@
         <div class="container">
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <a class="navbar-brand" href="{{ route('index') }}">
-                    <img class="" width="250px"
-                        src="{{ asset('upload/logo_black/' . $site->logo_black) }}"
+                    <img class="" width="250px" src="{{ asset('upload/logo_black/' . $site->logo_black) }}"
                         alt="" />
                 </a>
                 <div class="col-xl-3 col-lg-4 col-md-5 col-10">
@@ -165,7 +164,8 @@
                                                                     </div>
                                                                 @empty
                                                                     <div class="col-lg-12">
-                                                                        <div class="d-flex justify-content-center align-items-center h-100">
+                                                                        <div
+                                                                            class="d-flex justify-content-center align-items-center h-100">
                                                                             <p>No Subcategory Avaiable</p>
                                                                         </div>
                                                                     </div>
@@ -386,17 +386,16 @@
                                                     aria-labelledby="dropdownMenuButton" style="">
 
                                                     @if (Auth::user())
-                                                        <a class="cart-button w-100 mt-0" href="{{ route('template.one.login') }}"
+                                                        <a class="cart-button w-100 mt-0"
+                                                            href="{{ route('template.one.login') }}"
                                                             class="">Login
                                                         </a>
 
                                                         <hr class="mb-2 mt-3">
 
-                                                        <p>First time here? <a
-                                                                href="{{ route('template.one.login') }}"
-                                                                class="text-danger">Sign
-                                                                Up</a>
-                                                        </p>
+                                                        <a href="{{ route('template.one.login') }}"
+                                                            class="text-muted">First time here? <span
+                                                                class="text-danger">Sign Up</span></a>
                                                         <a class="dropdown-item" href="#"><i
                                                                 class="fal fa-user pr-2"></i>
                                                             My Dashboard</a>
@@ -411,11 +410,9 @@
 
                                                         <hr class="mb-2 mt-3">
 
-                                                        <p>First time here? <a
-                                                                href="{{ route('template.one.login') }}"
-                                                                class="text-danger">Sign
-                                                                Up</a>
-                                                        </p>
+                                                        <a href="{{ route('template.one.login') }}"
+                                                            class="text-muted">First time here? <span
+                                                                class="text-danger">Sign Up</span></a>
                                                     @endif
 
                                                 </div>
@@ -462,7 +459,8 @@
                                             <div class="d-flex justify-content-between">
                                                 <a href="{{ route('template.one.view.cart') }}"
                                                     class="checkout main-btn">Checkout</a>
-                                                <a href="{{ route('template.one.view.cart') }}" class="viewcart main-btn">View
+                                                <a href="{{ route('template.one.view.cart') }}"
+                                                    class="viewcart main-btn">View
                                                     Cart</a>
                                             </div>
                                         </li>
