@@ -280,11 +280,17 @@
                                                         data-allow-clear="true" required>
                                                         <option></option>
 
-                                                        <option value="rfq" {{ $editProduct->price_status == 'rfq' ? 'selected' : '' }}>RFQ</option>
+                                                        <option value="rfq"
+                                                            {{ $editProduct->price_status == 'rfq' ? 'selected' : '' }}>RFQ
+                                                        </option>
 
-                                                        <option value="price" {{ $editProduct->price_status == 'price' ? 'selected' : '' }}>Price</option>
+                                                        <option value="price"
+                                                            {{ $editProduct->price_status == 'price' ? 'selected' : '' }}>
+                                                            Price</option>
 
-                                                        <option value="offer_price" {{ $editProduct->price_status == 'offer_price' ? 'selected' : '' }}>Offer Price</option>
+                                                        <option value="offer_price"
+                                                            {{ $editProduct->price_status == 'offer_price' ? 'selected' : '' }}>
+                                                            Offer Price</option>
 
                                                     </select>
                                                     <div class="invalid-feedback">
@@ -299,22 +305,27 @@
                                                     <div class="rfq_price d-none">
                                                         <label class="ms-1 mb-2" for="price_status">SAS Price <span
                                                                 class="text-danger">*</span></label>
-                                                        <input class="form-control form-control-sm form-control-solid" type="number"
-                                                            name="sas_price" value="{{ $editProduct->sas_price }}" placeholder="RFQ Price for Sas">
+                                                        <input class="form-control form-control-sm form-control-solid"
+                                                            type="number" name="sas_price"
+                                                            value="{{ $editProduct->sas_price }}"
+                                                            placeholder="RFQ Price for Sas">
                                                     </div>
 
                                                     <div class="price d-none">
                                                         <label class="ms-1 mb-2" for="price_status">Price <span
                                                                 class="text-danger">*</span></label>
-                                                        <input class="form-control form-control-sm form-control-solid" type="number"
-                                                            name="price" value="{{ $editProduct->price }}" placeholder="Price">
+                                                        <input class="form-control form-control-sm form-control-solid"
+                                                            type="number" name="price"
+                                                            value="{{ $editProduct->price }}" placeholder="Price">
                                                     </div>
 
                                                     <div class="offer_price d-none">
                                                         <label class="ms-1 mb-2" for="price_status">Discount Price <span
                                                                 class="text-danger">*</span></label>
-                                                        <input class="form-control form-control-sm form-control-solid" type="number"
-                                                            name="discount_price" value="{{ $editProduct->discount_price }}" placeholder="Discounted Price">
+                                                        <input class="form-control form-control-sm form-control-solid"
+                                                            type="number" name="discount_price"
+                                                            value="{{ $editProduct->discount_price }}"
+                                                            placeholder="Discounted Price">
                                                     </div>
 
                                                 </div>
@@ -591,9 +602,8 @@
                                                 <label class="form-label"></label>
                                                 <div class="form-check form-check-custom form-check-solid mb-5">
 
-                                                    <input class="form-check-input me-3" name="feature"
-                                                        type="checkbox" value="1"
-                                                        {{ $editProduct->feature == '1' ? 'checked' : '' }}
+                                                    <input class="form-check-input me-3" name="feature" type="checkbox"
+                                                        value="1" {{ $editProduct->feature == '1' ? 'checked' : '' }}
                                                         id="kt_docs_formvalidation_checkbox_option_1" />
 
                                                     <label class="form-check-label"
@@ -683,26 +693,28 @@
                                     <div class="fv-row">
                                         <div class="row">
 
-                                            <div class="col-lg-6 mb-2">
+                                            <div class="col-lg-12 mb-2">
                                                 <label class="form-label mb-0">Short Desc</label>
-                                                <textarea name="short_desc" class="tinymce_metronic" placeholder="">
+                                                <textarea name="short_desc" class="editor form-control" placeholder="">
                                                     {{ $editProduct->short_desc }}
                                                 </textarea>
                                             </div>
 
-                                            <div class="col-lg-6 mb-2">
+                                            <div class="col-lg-12 mb-2">
                                                 <label class="form-label mb-0">Overview</label>
-                                                <textarea name="overview" placeholder="" class="form-control tinymce_metronic">{{ $editProduct->overview }}</textarea>
+                                                <textarea name="overview" placeholder="" class="editor form-control">{{ $editProduct->overview }}</textarea>
                                             </div>
 
-                                            <div class="col-lg-6 mb-2">
+                                            <div class="col-lg-12 mb-2">
                                                 <label class="form-label mb-0">Specification</label>
-                                                <textarea name="specification" placeholder="" class="form-control tinymce_metronic">{{ $editProduct->specification }}</textarea>
+                                                <textarea name="specification" placeholder="" class="editor form-control">{{ $editProduct->specification }}</textarea>
                                             </div>
-                                            <div class="col-lg-6 mb-2">
+
+                                            <div class="col-lg-12 mb-2">
                                                 <label class="form-label mb-0">Accessories</label>
-                                                <textarea name="accessories" placeholder="" class="form-control tinymce_metronic">{{ $editProduct->accessories }}</textarea>
+                                                <textarea name="accessories" placeholder="" class="editor form-control">{{ $editProduct->accessories }}</textarea>
                                             </div>
+
                                         </div>
                                         <div class="row mt-2 justify-content-end">
                                             <div class="d-flex align-items-center justify-content-between">
@@ -1282,7 +1294,8 @@
                                                 autocomplete="off">
                                         </td>
                                         <td>
-                                            <button type="submit" class="btn btn-light-primary btn-sm p-2">Update</button>
+                                            <button type="submit"
+                                                class="btn btn-light-primary btn-sm p-2">Update</button>
 
                                             <a href="{{ route('delete.multiimg', $img->id) }}" id="delete"
                                                 class="btn btn-light-danger btn-sm p-2"><i

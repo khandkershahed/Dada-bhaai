@@ -19,12 +19,14 @@
             {{-- Brands Accordion --}}
             <div id="accordionBrands" class="accordion">
                 <div class="card border-0 shadow-none mb-0">
+
+                    {{-- Multi Accordion End --}}
+
                     @foreach ($categorys as $category)
-                        <div class="card-header  pl-0"
-                            data-toggle="collapse" data-parent="#accordion"
-                           
+
+                        <div class="card-header {{ $catwiseproduct->id == $category->id ? 'mark-cat' : 'collapsed' }}  pl-0" data-toggle="collapse" data-parent="#accordion" aria-expanded="{{ $catwiseproduct->id == $category->id ? 'true' : 'false' }}"
                             href="#cat{{ $category->id }}">
-                            <a class="card-title">
+                            <a class="card-title {{ optional($catwiseproduct)->id == $category->id ? 'mark-cat' : '' }}">
                                 {{ $category->category_name }}
                             </a>
                         </div>
@@ -43,12 +45,13 @@
 
                                 @forelse ($subcategorys as $subcategory)
                                     <div class="card border-0 shadow-none mb-0">
-                                        <div class="card-header category-filter {{ $catwiseproduct->id == $subcategory->category_id ? 'mark-sub-cat' : 'collapsed' }} pl-0"
-                                            data-toggle="collapse" data-target="#sub{{ $subcategory->id }}">
+                                        <div class="card-header category-filter {{ $catwiseproduct->id == $subcategory->category_id ? 'mark-sub-cat' : 'collapsed' }} pl-0" data-toggle="collapse"
+                                            data-target="#sub{{ $subcategory->id }}">
                                             <a class="card-title">
                                                 {{ $subcategory->subcategory_name }}
                                             </a>
                                         </div>
+
                                         <div id="sub{{ $subcategory->id }}" class="collapse" data-parent="#accordion2"
                                             style="background-color: #f5f5f5;">
 
@@ -60,9 +63,10 @@
                                             @endphp
                                             @forelse ($childcategorys as $childcategory)
                                                 <div class="card-body p-2">
-                                                    <a href="{{ url('product/childcategory/' . $childcategory->id . '/' . $childcategory->childcategory_slug) }}"
-                                                        class="pl-3 text-muted childcategory-link">{{ $childcategory->childcategory_name }}</a>
+                                                    <a class="marks" href="{{ url('product/childcategory/' . $childcategory->id . '/' . $childcategory->childcategory_slug) }}"
+                                                        class="pl-3 text-muted">{{ $childcategory->childcategory_name }}</a>
                                                 </div>
+
                                             @empty
                                                 <p>No ChildCategory Avaiable</p>
                                             @endforelse
@@ -79,6 +83,7 @@
                     @endforeach
 
                     {{-- Multi Accordion End --}}
+
                 </div>
             </div>
 
@@ -110,7 +115,8 @@
         {{-- Brand  --}}
 
         {{-- Tags --}}
-        <div class="common-tag mt-30">
+
+        {{-- <div class="common-tag mt-30">
             <div class="side-title">
                 <h6>Popular Tag</h6>
             </div>
@@ -128,7 +134,8 @@
                     <p class="mb-0 text-dark">No Tags Avaiable</p>
                 @endforelse
             </ul>
-        </div>
+        </div> --}}
+
     </div>
 
 </div>

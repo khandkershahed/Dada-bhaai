@@ -1135,6 +1135,17 @@
         } else {
             $(this).addClass('collapsed').next().collapse('hide');
         }
+        if ($(this).hasClass('mark-sub-cat')) {
+            $(this).addClass('collapsed').next().collapse('show');
+        } else {
+            $(this).addClass('collapsed').next().collapse('hide');
+        }
+
+        if ($(this).hasClass('marks')) {
+            $(this).addClass('collapsed').next().collapse('show');
+        } else {
+            $(this).addClass('collapsed').next().collapse('hide');
+        }
     });
 
     // Handle click events to toggle accordion

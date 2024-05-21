@@ -116,7 +116,7 @@ Route::controller(TemplateOneController::class)->group(function () {
     Route::get('/product/childcategory/{id}/{childcategory_slug}', 'ChilldCategoryRelatedProductOne');
 
     //Contact
-    Route::get('/user-contact', 'TemplateOneContact')->name('template_one.contact');
+    Route::get('/contact', 'TemplateOneContact')->name('template_one.contact');
     Route::post('/user-contact/send', 'TemplateOneContactStore')->name('template_one.contact.store');
 
     //Product Search
