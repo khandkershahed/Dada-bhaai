@@ -32,7 +32,15 @@ class NewPasswordController extends Controller
         $request->validate([
             'token' => ['required'],
             'email' => ['required', 'email'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => [
+                'required',
+                'confirmed',
+                Rules\Password::min(8) // Set minimum length to 8 characters
+                    ->letters() // Require at least one letter (upper or lower case)
+                    ->mixedCase() // Require at least one uppercase and one lowercase letter
+                    ->symbols() // Require at least one special character
+                    ->uncompromised(), // Optional: Check if the password has been compromised in a data breach
+            ],
         ]);
 
         // Here we will attempt to reset the user's password. If it is successful we

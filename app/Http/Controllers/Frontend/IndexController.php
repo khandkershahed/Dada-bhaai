@@ -77,7 +77,7 @@ class IndexController extends Controller
         $child_id = $product->child_id;
 
         // Retrieve related products based on the child_id, excluding the product with ID equal to $id
-        $relativeChild = Product::where('child_id', $child_id)
+        $relativeChild = Product::where('id', $child_id)
             ->where('id', '!=', $id) // Remove the single quotes around $id
             ->orderBy('id', 'DESC')
             ->limit(6)

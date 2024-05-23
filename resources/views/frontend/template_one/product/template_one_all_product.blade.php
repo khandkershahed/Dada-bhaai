@@ -209,7 +209,7 @@
                                 <div class="shop-banner-bg pt-120 pb-120 mb-50"
                                     data-background="{{ asset('frontend/template_one/assets/img/bg/shop-banner-bg.jpg') }}">
                                     <div class="collection-text">
-                                        <h5 class="f-800"><a href="javascript:;">Product</a></h5>
+                                        <h5 class="f-800"><a href="javascript:;"></a></h5>
                                     </div>
                                 </div>
                             </div>

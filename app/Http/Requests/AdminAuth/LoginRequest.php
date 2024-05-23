@@ -42,33 +42,34 @@ class LoginRequest extends FormRequest
      */
     public function authenticate(): void
     {
-
         $this->ensureIsNotRateLimited();
 
         $admin = Admin::where('email', $this->login)
-                ->orWhere('phone', $this->login)
-                ->first();
+            ->orWhere('phone', $this->login)
+            ->first();
 
-        // if (!Auth::guard('admin')->attempt($this->only('email', 'password'), $this->boolean('remember'))) {
-        //     RateLimiter::hit($this->throttleKey());
-
-        //     throw ValidationException::withMessages([
-        //         'email' => trans('auth.failed'),
-        //     ]);
-        // }
-
-        if(!$admin || !Hash::check($this->password,$admin->password)){
-
+        if (!$admin) {
+            // If admin record doesn't exist, hit rate limiter and throw validation exception for both email and phone
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'login' => trans('auth.custom_email_failed'),
             ]);
-
         }
 
-        Auth::guard('admin')->login($admin,$this->boolean('remember'));
+        if (!Hash::check($this->password, $admin->password)) {
+            // If password doesn't match, hit rate limiter and throw validation exception for password
+            RateLimiter::hit($this->throttleKey());
 
+            throw ValidationException::withMessages([
+                'password' => trans('auth.custom_password_failed'),
+            ]);
+        }
+
+        // If authentication is successful, log in the admin user
+        Auth::guard('admin')->login($admin, $this->boolean('remember'));
+
+        // Clear the rate limiter
         RateLimiter::clear($this->throttleKey());
     }
 

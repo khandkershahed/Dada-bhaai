@@ -166,7 +166,8 @@
                                                                     style="width: 30px" />
                                                                 <button type="button"
                                                                     class="buttons-countAccesories border-0 bg-white"
-                                                                    id="increaseAccesories" style="cursor: pointer">+</button>
+                                                                    id="increaseAccesories"
+                                                                    style="cursor: pointer">+</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -252,33 +253,39 @@
                 <div class="col-sm-12">
                     <div class="desc-wrapper">
                         <ul class="nav custom-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
+
+                            {{-- <li class="nav-item">
                                 <a class="nav-link" id="home-tab11" data-toggle="tab" href="#home11" role="tab"
-                                    aria-controls="home11" aria-selected="true">Specification</a>
-                            </li>
+                                    aria-controls="home11" aria-selected="true">Accessories</a>
+                            </li> --}}
+
                             <li class="nav-item">
                                 <a class="nav-link active" id="profile-tab11" data-toggle="tab" href="#profile11"
-                                    role="tab" aria-controls="profile11" aria-selected="false">Accessories
+                                    role="tab" aria-controls="profile11" aria-selected="false">Overview
                                 </a>
                             </li>
+
                             <li class="nav-item">
                                 <a class="nav-link" id="contact-tab11" data-toggle="tab" href="#product-blogs"
-                                    role="tab" aria-controls="product-blogs" aria-selected="false">Overview</a>
+                                    role="tab" aria-controls="product-blogs"
+                                    aria-selected="false">Specification</a>
                             </li>
+
                         </ul>
 
                         <div class="tab-content" id="myTabContent1">
-                            <div class="tab-pane fade" id="home11" role="tabpanel" aria-labelledby="home-tab11">
+
+                            {{-- <div class="tab-pane fade" id="home11" role="tabpanel" aria-labelledby="home-tab11">
                                 <div class="desc-content mt-60">
                                     <div class="row">
                                         <div class="col-md-12 mb-30">
                                             <div class="spe-wrapper">
-                                                <p>{!! $product->specification !!}</p>
+                                                <p>{!! $product->accessories !!}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="tab-pane fade show active" id="profile11" role="tabpanel"
                                 aria-labelledby="profile-tab11">
@@ -286,7 +293,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="single-content mb-40">
-                                                <p>{!! $product->accessories !!}</p>
+                                                <p>{!! $product->overview !!}</p>
                                             </div>
                                         </div>
 
@@ -299,7 +306,7 @@
                                 <div class="desc-content mt-60">
                                     <div class="row small-padding">
 
-                                        <p>{!! $product->overview !!}</p>
+                                        <p>{!! $product->specification !!}</p>
 
                                     </div>
                                 </div>
