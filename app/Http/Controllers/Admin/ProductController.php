@@ -61,7 +61,12 @@ class ProductController extends Controller
         $save_url = 'upload/product/mainimage/' . $name_gen;
 
         $color = $request->color_id;
-        $colors = implode(',', $color);
+        // $colors = implode(',', $color);
+        if ($color !== null) {
+            $colors = implode(',', $color);
+        } else {
+            $colors = null; // Or any other default value or logic you want to apply
+        }
 
         // $child_id = $request->child_id;
         // $child_ids = implode(',', $child_id);
@@ -70,7 +75,7 @@ class ProductController extends Controller
         if ($child_id !== null) {
             $child_ids = implode(',', $child_id);
         } else {
-            $child_ids = Null; // Or any other default value or logic you want to apply
+            $child_ids = null; // Or any other default value or logic you want to apply
         }
 
         $product_id = Product::insertGetId([
@@ -216,8 +221,16 @@ class ProductController extends Controller
         $update = $request->id;
         $old_img = $request->old_image;
 
+        // $color = $request->color_id;
+        // $colors = implode(',', $color);
+
         $color = $request->color_id;
-        $colors = implode(',', $color);
+        // $colors = implode(',', $color);
+        if ($color !== null) {
+            $colors = implode(',', $color);
+        } else {
+            $colors = null; // Or any other default value or logic you want to apply
+        }
 
         // $child_id = $request->child_id;
         // $child_ids = implode(',', $child_id);
@@ -226,7 +239,7 @@ class ProductController extends Controller
         if ($child_id !== null) {
             $child_ids = implode(',', $child_id);
         } else {
-            $child_ids = Null; // Or any other default value or logic you want to apply
+            $child_ids = null; // Or any other default value or logic you want to apply
         }
 
         if ($request->file('product_image')) {
