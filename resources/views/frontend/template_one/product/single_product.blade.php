@@ -107,12 +107,13 @@
                             </div>
                         </div>
 
+                        {{-- Child Product  --}}
                         <div class="col-lg-12 px-0">
                             <div class="releted_accessories">
-                                @forelse ($relativeChild as $product)
+                                @forelse ($relativeChild as $childproduct)
                                     <div class="card border-0 shadow-sm releted-accessories-items">
                                         <div class="card-header p-0 border-0">
-                                            <img src="{{ asset($product->product_image) }}" class="img-fluid"
+                                            <img src="{{ asset($childproduct->product_image) }}" class="img-fluid"
                                                 style="width: 100%; height: 140px;" alt="" />
                                         </div>
                                         <div class="card-body p-0">
@@ -120,20 +121,20 @@
                                                 <div class="row align-items-center p-1" style="background-color: #eee">
                                                     <div class="col-lg-6 px-0">
                                                         <small id="drpname"
-                                                            class="text-black">{{ $product->product_name }}</small>
+                                                            class="text-black">{{ $childproduct->product_name }}</small>
                                                     </div>
                                                     <div class="col-lg-6 px-0">
                                                         <div class="text-right">
-                                                            @if ($product->price_status == 'rfq')
+                                                            @if ($childproduct->price_status == 'rfq')
                                                                 <small class="grenadier-color mb-0">
                                                                     Tk {{ $product->sas_price }}
                                                                 </small>
-                                                            @elseif ($product->price_status == 'offer_price')
+                                                            @elseif ($childproduct->price_status == 'offer_price')
                                                                 <small class="grenadier-color mb-0">
                                                                     Tk {{ $product->discount_price }}</small>
                                                             @else
                                                                 <small class="grenadier-color mb-0">Tk
-                                                                    {{ $product->price }}
+                                                                    {{ $childproduct->price }}
                                                                 </small>
                                                             @endif
                                                         </div>
@@ -153,7 +154,7 @@
                                                                     name="" value="1" min="1"
                                                                     id="drqty" style="width: 50px" />
                                                                 <input type="hidden" id="onerproduct_id"
-                                                                    value="{{ $product->id }}">
+                                                                    value="{{ $childproduct->id }}">
                                                             </div>
                                                             {{-- Count Box --}}
                                                             <div class="number d-flex align-items-center">
@@ -180,6 +181,8 @@
                                 @endforelse
                             </div>
                         </div>
+                        {{-- Child Product  --}}
+
                     </div>
                 </div>
                 <div class="col-lg-3" style="border: 1px solid #f5f5f5;box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 2px;">
