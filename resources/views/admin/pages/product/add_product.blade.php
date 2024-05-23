@@ -370,7 +370,8 @@
 
                                                     <input type="file" autocomplete="off" id=""
                                                         name="product_image"
-                                                        class="image form-control form-control-sm border-0 form-control-solid" required>
+                                                        class="image form-control form-control-sm border-0 form-control-solid"
+                                                        required>
 
                                                     <div class="invalid-feedback mb-2">
                                                         Please fill image field
@@ -478,6 +479,7 @@
 
                                                         @if (count($products) > 0)
                                                             @foreach ($products as $parent_product)
+                                                                <option selected disabled>Select Parent</option>
                                                                 <option value="{{ $parent_product->id }}">
                                                                     {{ $parent_product->product_name }}</option>
                                                             @endforeach
