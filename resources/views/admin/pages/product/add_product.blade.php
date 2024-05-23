@@ -413,7 +413,8 @@
 
                                                 <label class="form-label required">Multi Image</label>
 
-                                                <input type="file" autocomplete="off" class="form-control form-control-sm border-0 form-control-solid"
+                                                <input type="file" autocomplete="off"
+                                                    class="form-control form-control-sm border-0 form-control-solid"
                                                     id="multiImg" name="multi_img[]" multiple="">
 
                                                 <div class="row mt-3" id="preview_img"></div>
@@ -537,10 +538,10 @@
                                                     <label class="form-label">Child
                                                         Products</label>
 
-                                                    <select
-                                                        class="form-select form-select-solid form-select-sm stock_select"
-                                                        name="child_id" data-control="select2"
-                                                        data-placeholder="Select Child" data-allow-clear="true">
+                                                    <select class="form-select form-select-solid form-select-sm"
+                                                        name="child_id[]" id="field2" multiple=""
+                                                        multiselect-search="true" multiselect-select-all="true"
+                                                        multiselect-max-items="2">
 
                                                         @if (count($products) > 0)
                                                             @foreach ($products as $child_product)
@@ -560,9 +561,8 @@
                                             <div class="col-lg-2 mb-3">
                                                 <label class="form-label"></label>
                                                 <div class="form-check form-check-custom form-check-solid mb-5">
-                                                    <input class="form-check-input me-3" name="feature"
-                                                        type="checkbox" value="1"
-                                                        id="kt_docs_formvalidation_checkbox_option_1" />
+                                                    <input class="form-check-input me-3" name="feature" type="checkbox"
+                                                        value="1" id="kt_docs_formvalidation_checkbox_option_1" />
                                                     <label class="form-check-label"
                                                         for="kt_docs_formvalidation_checkbox_option_1">
                                                         <div class="fw-bolder text-gray-800">Is

@@ -523,6 +523,7 @@
                                                 <div class="fv-row mb-3">
                                                     <label class="form-label required">Product
                                                         Colors</label>
+
                                                     <select class="form-select form-select-solid form-select-sm"
                                                         name="color_id[]" id="field2" multiple=""
                                                         multiselect-search="true" multiselect-select-all="true"
@@ -531,11 +532,13 @@
                                                         @if (count($colors) > 0)
                                                             @foreach ($colors as $color)
                                                                 <option value="{{ $color->id }}"
-                                                                    {{ $editProduct->color_id == $color->id ? 'selected' : '' }}>
+                                                                    {{ in_array($color->id, explode(',', $editProduct->color_id)) ? 'selected' : '' }}>
                                                                     {{ $color->color_name }}
                                                                 </option>
                                                             @endforeach
                                                         @endif
+
+
                                                     </select>
                                                     <div class="invalid-feedback">
                                                         Please Enter Product
@@ -577,17 +580,23 @@
                                                     <label class="form-label">Child
                                                         Products</label>
 
-                                                    <select
-                                                        class="form-select form-select-solid form-select-sm stock_select"
-                                                        name="child_id" data-control="select2"
-                                                        data-placeholder="Select Child" data-allow-clear="true">
+
+                                                    <select class="form-select form-select-solid form-select-sm"
+                                                        name="child_id[]" id="field2" multiple=""
+                                                        multiselect-search="true" multiselect-select-all="true"
+                                                        multiselect-max-items="2">
 
                                                         @if (count($products) > 0)
+
                                                             @foreach ($products as $child_product)
+
                                                                 <option value="{{ $child_product->id }}"
-                                                                    {{ $editProduct->child_id == $child_product->id ? 'selected' : '' }}>
-                                                                    {{ $child_product->product_name }}</option>
+                                                                    {{ in_array($child_product->id, explode(',', $editProduct->child_id)) ? 'selected' : '' }}>
+                                                                    {{ $child_product->product_name }}
+                                                                </option>
+
                                                             @endforeach
+
                                                         @endif
 
                                                     </select>

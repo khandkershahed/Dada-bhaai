@@ -49,10 +49,10 @@
                             <div class="row">
 
                                 <div class="col-md-4 pe-md-0">
-                                    <div class="auth-side-wrapper">
+                                    <div class="">
                                         <img alt="Logo"
-                                            src="{{ asset('backend/login/assets/logo/Key-rafiki.png') }}" class=""
-                                            style="width: 100%; height:452px;" />
+                                            src="{{ asset('backend/login/assets/logo/5500661.jpg') }}" class=""
+                                            style="width: 240px; height:480px;" />
                                     </div>
                                 </div>
 

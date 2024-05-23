@@ -23,7 +23,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <link rel="shortcut icon" href="{{ asset('backend/assets/media/logos/favicon.ico') }}" />
+    <link rel="shortcut icon" href="{{ asset('backend/login/assets/logo/Favicon_Dadabhaai.png') }}" />
 
     <link href="{{ asset('backend/assets/css/tagsinput.css') }}" rel="stylesheet">
 

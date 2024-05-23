@@ -20,7 +20,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
-
 class IndexController extends Controller
 {
     //Index
@@ -74,14 +73,19 @@ class IndexController extends Controller
         // $child_id = $product->child_id;
         // $relativeChild = Product::where('child_id', $child_id)->where('id', '!=', '$id')->orderBy('id', 'DESC')->limit(6)->get();
 
-        $child_id = $product->child_id;
+        // $child_id = $product->child_id;
+        $child_ids = explode(',', $product->child_id);
+
+        //dd(($child_id));
+        foreach ($child_ids as $key => $child_id) {
+            $relativeChild[] = Product::where('id', $child_id)
+                ->orderBy('id', 'DESC')
+                ->first();
+        }
 
         // Retrieve related products based on the child_id, excluding the product with ID equal to $id
-        $relativeChild = Product::where('id', $child_id)
-            ->where('id', '!=', $id) // Remove the single quotes around $id
-            ->orderBy('id', 'DESC')
-            ->limit(6)
-            ->get();
+
+        // dd($relativeChild);
 
         return view('frontend.template_one.product.single_product', compact('product', 'relativeProduct', 'multiImages', 'relativeChild', 'product_colors'));
     }

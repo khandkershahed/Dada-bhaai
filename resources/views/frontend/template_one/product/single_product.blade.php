@@ -110,8 +110,9 @@
                         {{-- Child Product  --}}
                         <div class="col-lg-12 px-0">
                             <div class="releted_accessories">
+
                                 @forelse ($relativeChild as $childproduct)
-                                    <div class="card border-0 shadow-sm releted-accessories-items">
+                                    <div class="card border-0 shadow-sm releted-accessories-items mx-2">
                                         <div class="card-header p-0 border-0">
                                             <img src="{{ asset($childproduct->product_image) }}" class="img-fluid"
                                                 style="width: 100%; height: 140px;" alt="" />
@@ -127,11 +128,11 @@
                                                         <div class="text-right">
                                                             @if ($childproduct->price_status == 'rfq')
                                                                 <small class="grenadier-color mb-0">
-                                                                    Tk {{ $product->sas_price }}
+                                                                    Tk {{ $childproduct->sas_price }}
                                                                 </small>
                                                             @elseif ($childproduct->price_status == 'offer_price')
                                                                 <small class="grenadier-color mb-0">
-                                                                    Tk {{ $product->discount_price }}</small>
+                                                                    Tk {{ $childproduct->discount_price }}</small>
                                                             @else
                                                                 <small class="grenadier-color mb-0">Tk
                                                                     {{ $childproduct->price }}
@@ -179,6 +180,7 @@
                                 @empty
                                     <P>No Product Avaiable</P>
                                 @endforelse
+
                             </div>
                         </div>
                         {{-- Child Product  --}}
@@ -415,243 +417,7 @@
                     </div>
                 </div>
 
-                {{-- <div class="tab-content" id="myTabContent">
-
-                        <div class="tab-pane fade show active" id="releted_product" role="tabpanel"
-                            aria-labelledby="releted_product-tab">
-
-                            <div class="row">
-
-                                <div class="col-xl-4 mb-4">
-
-                                    @forelse ($relativeProduct as $product)
-                                        <div class="product__single">
-                                            <div class="product__box">
-                                                <div class="product__thumb">
-                                                    <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
-                                                        class="img-wrapper">
-                                                        <img class="img" src="{{ asset($product->product_image) }}"
-                                                            alt="" style="height: 230px;" />
-                                                        <img class="img secondary-img"
-                                                        src="img/allproducts/products__thumb__02.jpg" alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="product__content--top">
-                                                    <span class="cate-name">{{ $product->category->category_name }}</span>
-                                                    <h6 class="product__title mine__shaft-color f-700 mb-0">
-                                                        <a
-                                                            href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ $product->product_name }}</a>
-                                                    </h6>
-                                                </div>
-
-                                                <div class="product__content--rating d-flex justify-content-between">
-
-                                                    <div class="rating">
-                                                        <ul class="list-inline">
-                                                            <li class="rating-active">
-                                                                <i class="fas fa-star"></i>
-                                                            </li>
-                                                            <li class="rating-active">
-                                                                <i class="fas fa-star"></i>
-                                                            </li>
-                                                            <li class="rating-active">
-                                                                <i class="fas fa-star"></i>
-                                                            </li>
-                                                            <li><i class="fas fa-star"></i></li>
-                                                            <li><i class="fas fa-star"></i></li>
-                                                        </ul>
-                                                    </div>
-
-                                                    <div class="price">
-
-                                                        @if ($product->price_status == 'rfq')
-                                                            <h5 class="grenadier-color f-600">${{ $product->sas_price }}
-                                                            </h5>
-                                                        @elseif ($product->price_status == 'offer_price')
-                                                            <h5 class="grenadier-color f-600">
-                                                                ${{ $product->discount_price }}</h5>
-                                                        @else
-                                                            <h5 class="grenadier-color f-600">${{ $product->price }}</h5>
-                                                        @endif
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="product-action">
-                                                <a href="#"><span class="lnr lnr-heart"></span></a>
-                                                <a href="#"><span class="lnr lnr-eye"></span></a>
-                                                <a href="#"><span class="lnr lnr-cart"></span></a>
-                                                <a href="#"><span class="lnr lnr-sync"></span></a>
-                                            </div>
-                                        </div>
-                                    @empty
-                                        <span>No Product Avaiable</span>
-                                    @endforelse
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="tab-pane fade" id="apple" role="tabpanel" aria-labelledby="apple-tab">
-                            <div class="row">
-                                <div class="col-xl-3 mb-4">
-                                    <div class="product__single">
-                                        <div class="product__box">
-                                            <div class="product__content--top">
-                                                <span class="cate-name">SAMSUNG</span>
-                                                <h6 class="product__title mine__shaft-color f-700 mb-0">
-                                                    <a href="product-details.html">Wireless Audioing Systems Purple
-                                                        Degree</a>
-                                                </h6>
-                                            </div>
-                                            <div class="product__thumb">
-                                                <a href="product-details.html" class="img-wrapper">
-                                                    <img class="img" src="img/allproducts/products__thumb__33.jpg"
-                                                        alt="" />
-                                                    <img class="img secondary-img"
-                                                        src="img/allproducts/products__thumb__05.jpg" alt="" />
-                                                </a>
-                                            </div>
-                                            <div class="product__content--rating d-flex justify-content-between">
-                                                <div class="rating">
-                                                    <ul class="list-inline">
-                                                        <li class="rating-active">
-                                                            <i class="fas fa-star"></i>
-                                                        </li>
-                                                        <li class="rating-active">
-                                                            <i class="fas fa-star"></i>
-                                                        </li>
-                                                        <li class="rating-active">
-                                                            <i class="fas fa-star"></i>
-                                                        </li>
-                                                        <li><i class="fas fa-star"></i></li>
-                                                        <li><i class="fas fa-star"></i></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="price">
-                                                    <h5 class="grenadier-color f-600">$2,299.00</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-action">
-                                            <a href="#"><span class="lnr lnr-heart"></span></a>
-                                            <a href="#"><span class="lnr lnr-eye"></span></a>
-                                            <a href="#"><span class="lnr lnr-cart"></span></a>
-                                            <a href="#"><span class="lnr lnr-sync"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="mark" role="tabpanel" aria-labelledby="mark-tab">
-                            <div class="row">
-                                <div class="col-xl-3 mb-4">
-                                    <div class="product__single">
-                                        <div class="product__box">
-                                            <div class="product__content--top">
-                                                <span class="cate-name">SAMSUNG</span>
-                                                <h6 class="product__title mine__shaft-color f-700 mb-0">
-                                                    <a href="product-details.html">Wireless Audioing Systems Purple
-                                                        Degree</a>
-                                                </h6>
-                                            </div>
-                                            <div class="product__thumb">
-                                                <a href="product-details.html" class="img-wrapper">
-                                                    <img class="img" src="img/allproducts/products__thumb__33.jpg"
-                                                        alt="" />
-                                                    <img class="img secondary-img"
-                                                        src="img/allproducts/products__thumb__05.jpg" alt="" />
-                                                </a>
-                                            </div>
-                                            <div class="product__content--rating d-flex justify-content-between">
-                                                <div class="rating">
-                                                    <ul class="list-inline">
-                                                        <li class="rating-active">
-                                                            <i class="fas fa-star"></i>
-                                                        </li>
-                                                        <li class="rating-active">
-                                                            <i class="fas fa-star"></i>
-                                                        </li>
-                                                        <li class="rating-active">
-                                                            <i class="fas fa-star"></i>
-                                                        </li>
-                                                        <li><i class="fas fa-star"></i></li>
-                                                        <li><i class="fas fa-star"></i></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="price">
-                                                    <h5 class="grenadier-color f-600">$2,299.00</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-action">
-                                            <a href="#"><span class="lnr lnr-heart"></span></a>
-                                            <a href="#"><span class="lnr lnr-eye"></span></a>
-                                            <a href="#"><span class="lnr lnr-cart"></span></a>
-                                            <a href="#"><span class="lnr lnr-sync"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="acronis" role="tabpanel" aria-labelledby="acronis-tab">
-                            <div class="row">
-                                <div class="col-xl-3 mb-4">
-                                    <div class="product__single">
-                                        <div class="product__box">
-                                            <div class="product__content--top">
-                                                <span class="cate-name">SAMSUNG</span>
-                                                <h6 class="product__title mine__shaft-color f-700 mb-0">
-                                                    <a href="product-details.html">Wireless Audioing Systems Purple
-                                                        Degree</a>
-                                                </h6>
-                                            </div>
-                                            <div class="product__thumb">
-                                                <a href="product-details.html" class="img-wrapper">
-                                                    <img class="img" src="img/allproducts/products__thumb__33.jpg"
-                                                        alt="" />
-                                                    <img class="img secondary-img"
-                                                        src="img/allproducts/products__thumb__05.jpg" alt="" />
-                                                </a>
-                                            </div>
-                                            <div class="product__content--rating d-flex justify-content-between">
-                                                <div class="rating">
-                                                    <ul class="list-inline">
-                                                        <li class="rating-active">
-                                                            <i class="fas fa-star"></i>
-                                                        </li>
-                                                        <li class="rating-active">
-                                                            <i class="fas fa-star"></i>
-                                                        </li>
-                                                        <li class="rating-active">
-                                                            <i class="fas fa-star"></i>
-                                                        </li>
-                                                        <li><i class="fas fa-star"></i></li>
-                                                        <li><i class="fas fa-star"></i></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="price">
-                                                    <h5 class="grenadier-color f-600">$2,299.00</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-action">
-                                            <a href="#"><span class="lnr lnr-heart"></span></a>
-                                            <a href="#"><span class="lnr lnr-eye"></span></a>
-                                            <a href="#"><span class="lnr lnr-cart"></span></a>
-                                            <a href="#"><span class="lnr lnr-sync"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div> --}}
+                
 
             </div>
 
@@ -659,39 +425,6 @@
     </div>
     <!-- Product end -->
 
-    <!-- Subscribe -->
-    {{-- <div class="subscribe subscribe--area grenadier-bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="newsletter newsletter--box d-flex justify-content-between align-items-center pos-rel">
-                            <div class="left d-flex justify-content-between align-items-center">
-                                <div class="newsletter__title">
-                                    <span class="notification--icon"><img src="img/icon/notification-icon.png"
-                                            alt="notification" /></span>
-                                    <span class="notification__title--heading f-800 white-color">Subscribe for Join
-                                        Us!</span>
-                                </div>
-                                <div class="newsletter--message d-none d-xl-block">
-                                    <p class="newsletter__message__title mb-0">
-                                        .... & receive $20 coupne for first Shopping & free
-                                        delivery.
-                                    </p>
-                                </div>
-                            </div>
-                            <form class="right newsletter--form pos-rel">
-                                <input class="newsletter--input" type="text"
-                                    placeholder="Enter Your Email Address ..." />
-                                <button class="btn newsletter--button" type="button">
-                                    <img src="img/icon/plan-icon.png" alt="" />
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-    <!-- Subscribe End -->
 
 </main>
 <!-- Main End -->
