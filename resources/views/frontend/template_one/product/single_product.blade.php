@@ -108,75 +108,85 @@
                         </div>
 
                         {{-- Child Product  --}}
+
+
                         <div class="col-lg-12 px-0">
                             <div class="releted_accessories">
 
                                 @forelse ($relativeChild as $childproduct)
-                                    <div class="card border-0 shadow-sm releted-accessories-items mx-2">
-                                        <div class="card-header p-0 border-0">
-                                            <img src="{{ asset($childproduct->product_image) }}" class="img-fluid"
-                                                style="width: 100%; height: 140px;" alt="" />
-                                        </div>
-                                        <div class="card-body p-0">
-                                            <div class="container">
-                                                <div class="row align-items-center p-1" style="background-color: #eee">
-                                                    <div class="col-lg-6 px-0">
-                                                        <small id="drpname"
-                                                            class="text-black">{{ $childproduct->product_name }}</small>
-                                                    </div>
-                                                    <div class="col-lg-6 px-0">
-                                                        <div class="text-right">
-                                                            @if ($childproduct->price_status == 'rfq')
-                                                                <small class="grenadier-color mb-0">
-                                                                    Tk {{ $childproduct->sas_price }}
-                                                                </small>
-                                                            @elseif ($childproduct->price_status == 'offer_price')
-                                                                <small class="grenadier-color mb-0">
-                                                                    Tk {{ $childproduct->discount_price }}</small>
-                                                            @else
-                                                                <small class="grenadier-color mb-0">Tk
-                                                                    {{ $childproduct->price }}
-                                                                </small>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12 px-0"
-                                                        style="border-top: 1px solid white;padding-top: 5px;">
-                                                        <div class="d-flex justify-content-between align-items-center">
-                                                            <div>
-                                                                <small><a type="submit"
-                                                                        onclick="addToCartOneRelated()"
-                                                                        class=""> <span
-                                                                            class="badge p-2 text-white"
-                                                                            style="background-color: #cd3301; cursor: pointer;">Add
-                                                                            Accessories</span></a></small>
 
-                                                                <input type="hidden" class="mb-0  border-1"
-                                                                    name="" value="1" min="1"
-                                                                    id="drqty" style="width: 50px" />
-                                                                <input type="hidden" id="onerproduct_id"
-                                                                    value="{{ $childproduct->id }}">
+                                    @if (!empty($childproduct->product_image))
+                                        <div class="card border-0 shadow-sm releted-accessories-items mx-2">
+                                            <div class="card-header p-0 border-0">
+                                                <img src="{{ asset($childproduct->product_image) }}" class="img-fluid"
+                                                    style="width: 100%; height: 140px;" alt="" />
+                                            </div>
+                                            <div class="card-body p-0">
+                                                <div class="container">
+                                                    <div class="row align-items-center p-1"
+                                                        style="background-color: #eee">
+                                                        <div class="col-lg-6 px-0">
+                                                            <small id="drpname"
+                                                                class="text-black">{{ $childproduct->product_name }}</small>
+                                                        </div>
+                                                        <div class="col-lg-6 px-0">
+                                                            <div class="text-right">
+                                                                @if ($childproduct->price_status == 'rfq')
+                                                                    <small class="grenadier-color mb-0">
+                                                                        Tk {{ $childproduct->sas_price }}
+                                                                    </small>
+                                                                @elseif ($childproduct->price_status == 'offer_price')
+                                                                    <small class="grenadier-color mb-0">
+                                                                        Tk {{ $childproduct->discount_price }}</small>
+                                                                @else
+                                                                    <small class="grenadier-color mb-0">Tk
+                                                                        {{ $childproduct->price }}
+                                                                    </small>
+                                                                @endif
                                                             </div>
-                                                            {{-- Count Box --}}
-                                                            <div class="number d-flex align-items-center">
-                                                                <button type="button" style="cursor: pointer"
-                                                                    class="buttons-countAccesories border-0 bg-white"
-                                                                    id="decreaseAccesories">-</button>
-                                                                <input type="text" disabled
-                                                                    class="mb-0 border-1 text-center" name=""
-                                                                    value="1" min="1" id="dqtyAccesories"
-                                                                    style="width: 30px" />
-                                                                <button type="button"
-                                                                    class="buttons-countAccesories border-0 bg-white"
-                                                                    id="increaseAccesories"
-                                                                    style="cursor: pointer">+</button>
+                                                        </div>
+                                                        <div class="col-lg-12 px-0"
+                                                            style="border-top: 1px solid white;padding-top: 5px;">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center">
+                                                                <div>
+                                                                    <small><a type="submit"
+                                                                            onclick="addToCartOneRelated()"
+                                                                            class=""> <span
+                                                                                class="badge p-2 text-white"
+                                                                                style="background-color: #cd3301; cursor: pointer;">Add
+                                                                                Accessories</span></a></small>
+
+                                                                    <input type="hidden" class="mb-0  border-1"
+                                                                        name="" value="1" min="1"
+                                                                        id="drqty" style="width: 50px" />
+                                                                    <input type="hidden" id="onerproduct_id"
+                                                                        value="{{ $childproduct->id }}">
+                                                                </div>
+                                                                {{-- Count Box --}}
+                                                                <div class="number d-flex align-items-center">
+                                                                    <button type="button" style="cursor: pointer"
+                                                                        class="buttons-countAccesories border-0 bg-white"
+                                                                        id="decreaseAccesories">-</button>
+                                                                    <input type="text" disabled
+                                                                        class="mb-0 border-1 text-center"
+                                                                        name="" value="1" min="1"
+                                                                        id="dqtyAccesories" style="width: 30px" />
+                                                                    <button type="button"
+                                                                        class="buttons-countAccesories border-0 bg-white"
+                                                                        id="increaseAccesories"
+                                                                        style="cursor: pointer">+</button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @else
+                                        <span>No Accessories Avaiable</span>
+                                    @endif
+
                                 @empty
                                     <P>No Product Avaiable</P>
                                 @endforelse
@@ -417,7 +427,7 @@
                     </div>
                 </div>
 
-                
+
 
             </div>
 
