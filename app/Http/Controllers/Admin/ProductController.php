@@ -140,20 +140,41 @@ class ProductController extends Controller
 
         // Multi Image
 
+        // $images = $request->file('multi_img');
+
+        // foreach ($images as $img) {
+        //     $make_gen = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
+        //     Image::make($img)->save('upload/product/multiimage/' . $make_gen);
+        //     $uploadPath = 'upload/product/multiimage/' . $make_gen;
+
+        //     MultiImg::insert([
+
+        //         'product_id' => $product_id,
+        //         'multi_image' => $uploadPath,
+        //         'created_at' => now(),
+
+        //     ]);
+        // }
+
+        // Multi Image
+
         $images = $request->file('multi_img');
 
-        foreach ($images as $img) {
-            $make_gen = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
-            Image::make($img)->save('upload/product/multiimage/' . $make_gen);
-            $uploadPath = 'upload/product/multiimage/' . $make_gen;
+        // Check if $images is not null and is an array
+        if ($images !== null && is_array($images)) {
+            foreach ($images as $img) {
+                $make_gen = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
+                Image::make($img)->save('upload/product/multiimage/' . $make_gen);
+                $uploadPath = 'upload/product/multiimage/' . $make_gen;
 
-            MultiImg::insert([
-
-                'product_id' => $product_id,
-                'multi_image' => $uploadPath,
-                'created_at' => now(),
-
-            ]);
+                MultiImg::insert([
+                    'product_id' => $product_id,
+                    'multi_image' => $uploadPath,
+                    'created_at' => now(),
+                ]);
+            }
+        } else {
+            
         }
 
         toastr()->success('Product Created Successfully');

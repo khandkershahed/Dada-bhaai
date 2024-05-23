@@ -79,7 +79,7 @@
             <div class="card">
                 <div class="card-body">
 
-                    <form action="{{ route('store.product') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('store.product') }}" id="myForm" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="tab-content" id="myTabContent">
@@ -360,56 +360,33 @@
 
                                         {{-- product_image --}}
                                         <div class="row">
-                                            <div class="col-4">
+
+                                            <div class="col-5">
                                                 <label class="form-label required">Product Image</label>
                                                 <!--begin::Image input wrapper-->
-                                                <div class="mt-1">
+                                                <div class="">
+
                                                     <!--begin::Image input-->
-                                                    <div class="image-input image-input-outline"
-                                                        data-kt-image-input="true"
-                                                        style="background-image: url('assets/media/svg/avatars/blank.svg')">
-                                                        <!--begin::Preview existing avatar-->
-                                                        <div class="image-input-wrapper w-90px h-90px"
-                                                            style="background-image: url({{ asset('backend/assets/media/avatars/no_image.jpg') }}">
-                                                        </div>
-                                                        <!--end::Preview existing avatar-->
-                                                        <!--begin::Edit-->
-                                                        <label
-                                                            class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                                            data-kt-image-input-action="change" data-bs-toggle="tooltip"
-                                                            title="Change avatar">
-                                                            <i class="bi bi-pencil-fill fs-7"></i>
-                                                            <!--begin::Inputs-->
-                                                            <input type="file" name="product_image"
-                                                                accept=".png, .jpg, .jpeg" />
-                                                            <input type="hidden" name="product_image" />
-                                                            <!--end::Inputs-->
-                                                        </label>
-                                                        <!--end::Edit-->
-                                                        <!--begin::Cancel-->
-                                                        <span
-                                                            class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                                            data-kt-image-input-action="cancel" data-bs-toggle="tooltip"
-                                                            title="Cancel avatar">
-                                                            <i class="bi bi-x fs-2"></i>
-                                                        </span>
-                                                        <!--end::Cancel-->
-                                                        <!--begin::Remove-->
-                                                        <span
-                                                            class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                                            data-kt-image-input-action="remove" data-bs-toggle="tooltip"
-                                                            title="Remove avatar">
-                                                            <i class="bi bi-x fs-2"></i>
-                                                        </span>
-                                                        <!--end::Remove-->
+
+                                                    <input type="file" autocomplete="off" id=""
+                                                        name="product_image"
+                                                        class="image form-control form-control-sm border-0 form-control-solid" required>
+
+                                                    <div class="invalid-feedback mb-2">
+                                                        Please fill image field
                                                     </div>
+
+                                                    <img src="{{ url('upload/no_image.jpg') }}" style="width:73px"
+                                                        class="showImage mt-2" alt="">
+
                                                     <!--end::Image input-->
+
                                                 </div>
                                                 <!--end::Image input wrapper-->
 
                                             </div>
 
-                                            <div class="col-8">
+                                            <div class="col-7">
 
                                                 <label class="form-label required">Multi Image</label>
 
@@ -419,25 +396,6 @@
 
                                                 <div class="row mt-3" id="preview_img"></div>
 
-
-                                                {{-- <label class="form-label required">Multi Image</label>
-                                                <div class="dropzone-field">
-                                                    <label for="files" class="custom-file-upload">
-                                                        <div class="d-flex align-items-center">
-                                                            <p class="mb-0"><i
-                                                                    class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
-                                                            </p>
-                                                            <h5 class="mb-0">Drop files here or click to upload.
-                                                                <br>
-                                                                <span class="text-muted" style="font-size: 10px">Upload 10
-                                                                    File</span>
-                                                            </h5>
-                                                        </div>
-                                                    </label>
-                                                    <input type="file" id="files" name="multi_img[]" multiple
-                                                        class="form-control" style="display: none;" />
-                                                    <div class="row mt-3" id="preview_img"></div>
-                                                </div> --}}
 
                                             </div>
 
@@ -1438,7 +1396,18 @@
         });
     </script>
 
-
+    {{-- Image Show  --}}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.image').change(function(e) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('.showImage').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(e.target.files['0']);
+            });
+        });
+    </script>
 
 
 @endsection
