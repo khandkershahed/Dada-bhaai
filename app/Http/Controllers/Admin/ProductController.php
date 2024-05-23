@@ -63,8 +63,15 @@ class ProductController extends Controller
         $color = $request->color_id;
         $colors = implode(',', $color);
 
+        // $child_id = $request->child_id;
+        // $child_ids = implode(',', $child_id);
+
         $child_id = $request->child_id;
-        $child_ids = implode(',', $child_id);
+        if ($child_id !== null) {
+            $child_ids = implode(',', $child_id);
+        } else {
+            $child_ids = Null; // Or any other default value or logic you want to apply
+        }
 
         $product_id = Product::insertGetId([
 
@@ -174,7 +181,7 @@ class ProductController extends Controller
                 ]);
             }
         } else {
-            
+
         }
 
         toastr()->success('Product Created Successfully');
