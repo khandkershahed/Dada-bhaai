@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('brand_name');
             $table->string('brand_slug');
             $table->string('brand_image');
+            $table->string('icon')->nullable();
             $table->string('description')->nullable();
             $table->string('status')->default(1);
 

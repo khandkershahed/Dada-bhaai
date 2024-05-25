@@ -70,11 +70,15 @@
 
                                     <td>{{ $key + 1 }}</td>
                                     <td>
-                                        <img src="{{ asset('storage/offer_category_image/' . $offercat->offer_category_image) }}"
+                                        <img src="{{ !empty($offercat->offer_category_image) ? url('storage/offer_category_image/' . $offercat->offer_category_image) : url('https://ui-avatars.com/api/?name=' . urlencode($offercat->offer_category_name)) }}"
                                             style="width: 40px;height:40px;" alt="">
+
+
+
                                     </td>
 
                                     <td>{{ $offercat->offer_category_name }}</td>
+
                                     <td>
                                         @if ($offercat->status == 1)
                                             <span class="badge badge-light-success">Is_active</span>
@@ -107,7 +111,7 @@
 
                                         <div class="modal fade" id="editModal{{ $offercat->id }}" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-dialog modal-dialog-centered modal-lg">
                                                 <div class="modal-content">
                                                     <div class="modal-header" style="background: #6196A6;height: 50px;">
                                                         <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">Edit
@@ -141,11 +145,27 @@
 
                                                                 </div>
 
-
-                                                                <div class="col-12">
+                                                                <div class="col-6">
                                                                     <div class="form-group mb-3">
 
-                                                                        <label for="" class="mb-2">Image</label>
+                                                                        <label for="" class="mb-2">Icon Image</label>
+
+                                                                        <input type="file" autocomplete="off"
+                                                                            id="" name="icon_image"
+                                                                            class="form-control form-control-sm border-1 mb-2 image1">
+
+                                                                        <img src="{{ asset('storage/offer_category_image/' . $offercat->icon_image) }}"
+                                                                            style="width:73px" class="showImage1"
+                                                                            alt="">
+
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div class="col-6">
+                                                                    <div class="form-group mb-3">
+
+                                                                        <label for="" class="mb-2">Banner Image</label>
 
                                                                         <input type="file" autocomplete="off"
                                                                             id="" name="offer_category_image"
@@ -198,7 +218,7 @@
     <!-- Add Modal -->
 
     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header" style="background: #6196A6;height: 50px;">
                     <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">Add Offer Category</h1>
@@ -226,16 +246,29 @@
 
                             </div>
 
-
-                            <div class="col-12">
+                            <div class="col-6">
                                 <div class="form-group mb-3">
 
-                                    <label for="" class="mb-2">Image</label>
+                                    <label for="" class="mb-2">Offer Icon Image</label>
 
-                                    <input type="file" autocomplete="off" id="" name="offer_category_image"
+                                    <input type="file" autocomplete="off" id="" name="icon_image"
                                         class="form-control form-control-sm border-1 form-control-solid mb-2 image">
 
                                     <img src="{{ url('upload/no_image.jpg') }}" style="width:73px" class="showImage"
+                                        alt="">
+                                </div>
+                            </div>
+
+
+                            <div class="col-6">
+                                <div class="form-group mb-3">
+
+                                    <label for="" class="mb-2">Offer Banner Image</label>
+
+                                    <input type="file" autocomplete="off" id="" name="offer_category_image"
+                                        class="form-control form-control-sm border-1 form-control-solid mb-2 image1">
+
+                                    <img src="{{ url('upload/no_image.jpg') }}" style="width:73px" class="showImage1"
                                         alt="">
                                 </div>
                             </div>
@@ -261,6 +294,18 @@
                 var reader = new FileReader();
                 reader.onload = function(e) {
                     $('.showImage').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(e.target.files['0']);
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.image1').change(function(e) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('.showImage1').attr('src', e.target.result);
                 }
                 reader.readAsDataURL(e.target.files['0']);
             });

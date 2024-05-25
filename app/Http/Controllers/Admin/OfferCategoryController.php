@@ -27,12 +27,27 @@ class OfferCategoryController extends Controller
         $mainFile = $request->file('offer_category_image');
         $imgPath = storage_path('app/public/offer_category_image');
 
+        $iconmainFile = $request->file('icon_image'); ///////
+        $iconimgPath = storage_path('app/public/offer_category_image'); //////
+
+        ////////
+        if (empty($iconmainFile)) {
+
+            $globalFunIconImg['file_name'] = '';
+
+        } else {
+            $globalFunIconImg = Helper::customUpload($iconmainFile, $iconimgPath);
+            $globalFunIconImg['file_name'] = $globalFunIconImg['file_name'];
+        }
+        /////////////////////
+
         if (empty($mainFile)) {
 
             OfferCategory::insert([
 
                 'offer_category_name' => $request->offer_category_name,
                 'offer_category_image' => $request->offer_category_image,
+                'icon_image' => $request->icon_image,
 
             ]);
         } else {
@@ -44,6 +59,7 @@ class OfferCategoryController extends Controller
 
                     'offer_category_name' => $request->offer_category_name,
                     'offer_category_image' => $globalFunImg['file_name'],
+                    'icon_image' => $globalFunIconImg['file_name'], ////////
 
                 ]);
             } else {
@@ -62,8 +78,18 @@ class OfferCategoryController extends Controller
         $offer = OfferCategory::findOrFail($request->id);
 
         $mainFile = $request->file('offer_category_image');
-
         $uploadPath = storage_path('app/public/offer_category_image');
+
+        $iconmainFile = $request->file('icon_image'); ///////
+        $iconimgPath = storage_path('app/public/offer_category_image'); //////
+
+        ////////////
+        if (isset($iconmainFile)) {
+            $globalFunIconImg = Helper::customUpload($iconmainFile, $iconimgPath);
+        } else {
+            $globalFunIconImg['status'] = 0;
+        }
+        /////////////
 
         if (isset($mainFile)) {
             $globalFunImg = Helper::customUpload($mainFile, $uploadPath);
@@ -82,11 +108,26 @@ class OfferCategoryController extends Controller
                 }
             }
 
+            ///////////
+
+            if ($globalFunIconImg['status'] == 1) {
+                if (File::exists(public_path('storage/offer_category_image/requestImg/') . $offer->icon)) {
+                    File::delete(public_path('storage/offer_category_image/requestImg/') . $offer->icon);
+                }
+                if (File::exists(public_path('storage/offer_category_image/') . $offer->icon)) {
+                    File::delete(public_path('storage/offer_category_image/') . $offer->icon);
+                }
+            }
+
+            ////////
+
             $offer->update([
 
                 'offer_category_name' => $request->offer_category_name,
 
                 'offer_category_image' => $globalFunImg['status'] == 1 ? $globalFunImg['file_name'] : $offer->offer_category_image,
+
+                'icon_image' => $globalFunIconImg['status'] == 1 ? $globalFunIconImg['file_name'] : $offer->icon_image, ////
 
             ]);
         }
@@ -108,6 +149,14 @@ class OfferCategoryController extends Controller
 
         if (File::exists(public_path('storage/offer_category_image/') . $offer->offer_category_image)) {
             File::delete(public_path('storage/offer_category_image/') . $offer->offer_category_image);
+        }
+
+        if (File::exists(public_path('storage/offer_category_image/requestImg/') . $offer->icon_image)) {
+            File::delete(public_path('storage/offer_category_image/requestImg/') . $offer->icon_image);
+        }
+
+        if (File::exists(public_path('storage/offer_category_image/') . $offer->icon_image)) {
+            File::delete(public_path('storage/offer_category_image/') . $offer->icon_image);
         }
 
         $offer->delete();
@@ -151,7 +200,7 @@ class OfferCategoryController extends Controller
         $offers = Offer::latest()->get();
         $products = Product::latest()->get();
         $offercats = OfferCategory::latest()->get();
-        return view('admin.pages.offer.all_offer', compact('offers','offercats','products'));
+        return view('admin.pages.offer.all_offer', compact('offers', 'offercats', 'products'));
     }
 
     //StoreOffer

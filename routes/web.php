@@ -73,7 +73,7 @@ Route::controller(IndexController::class)->group(function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    // //User Dashboard
+    //User Dashboard
     Route::get('/dashboard', [TemplateOneController::class, 'TemplateOneDashboard'])->name('template.one.dashboard');
     Route::post('/user/profile-update', [TemplateOneController::class, 'TemplateOneProfileUpdate'])->name('template.one.user.profile.update');
 

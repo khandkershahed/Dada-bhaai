@@ -32,11 +32,14 @@
             <div class="row">
                 @forelse ($products as $product)
                     <div class="col-lg-3 col-md-6">
+
                         <div class="product-grid">
+
                             <div class="product-image">
                                 <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
                                     class="image">
-                                    <img class="pic-1" src="{{ asset($product->product_image) }}">
+                                    <img class="pic-1" src="{{ asset($product->product_image) }}"
+                                        title="{{ $product->product_name }}">
                                 </a>
                                 <div class="product-button-group">
                                     {{-- Wishlist Icon --}}
@@ -60,8 +63,11 @@
 
                                     <h6 class="product__title mine__shaft-color f-700 mb-0 text-start">
                                         <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
-                                            title="{{ $product->product_name }}">{{ Str::words($product->product_name, 3) }}</a>
+                                            title="{{ $product->product_name }}">
+                                            {{ substr($product->product_name, 0, 18) }}
+                                        </a>
                                     </h6>
+
 
                                 </div>
                                 <div class="col-lg-4">
@@ -81,7 +87,9 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
+
                     </div>
                 @empty
                     <p>No Product Avaiable</p>

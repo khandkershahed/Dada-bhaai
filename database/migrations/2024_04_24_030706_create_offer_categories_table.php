@@ -16,6 +16,7 @@ return new class extends Migration
 
             $table->string('offer_category_name');
             $table->string('offer_category_image')->nullable();
+            $table->string('icon_image')->nullable();
             $table->string('status')->default(1);
 
             $table->timestamps();

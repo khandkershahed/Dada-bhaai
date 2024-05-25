@@ -149,21 +149,41 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="form-group mb-3">
+                                                                <div class="col-6">
+                                                                    <div class="form-group mb-3">
 
-                                                                    <label for="" class="mb-2">Image</label>
+                                                                        <label for="" class="mb-2">Icon
+                                                                            Image</label>
 
-                                                                    <input type="file" autocomplete="off"
-                                                                        name="brand_image"
-                                                                        class="image form-control form-control-sm mb-2 @error('brand_image') is-invalid @enderror">
+                                                                        <input type="file" autocomplete="off"
+                                                                            name="icon"
+                                                                            class="image1 form-control form-control-sm mb-2">
 
-                                                                    @error('brand_image')
-                                                                        <div class="text-danger mb-2"> {{ $message }}
-                                                                        </div>
-                                                                    @enderror
+                                                                        <img src="{{ asset('storage/brand/' . $brand->icon) }}"
+                                                                            style="width:73px" class="showImage1"
+                                                                            alt="">
+                                                                    </div>
+                                                                </div>
 
-                                                                    <img src="{{ asset('storage/brand/' . $brand->brand_image) }}"
-                                                                        style="width:73px" class="showImage" alt="">
+                                                                <div class="col-6">
+                                                                    <div class="form-group mb-3">
+
+                                                                        <label for="" class="mb-2">Banner
+                                                                            Image</label>
+
+                                                                        <input type="file" autocomplete="off"
+                                                                            name="brand_image"
+                                                                            class="image form-control form-control-sm mb-2 @error('brand_image') is-invalid @enderror">
+
+                                                                        @error('brand_image')
+                                                                            <div class="text-danger mb-2"> {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+
+                                                                        <img src="{{ asset('storage/brand/' . $brand->brand_image) }}"
+                                                                            style="width:73px" class="showImage"
+                                                                            alt="">
+                                                                    </div>
                                                                 </div>
 
 
@@ -227,6 +247,7 @@
                                         <span class="text-danger"> {{ $message }} </span>
                                     @enderror
                                 </div>
+
                             </div>
 
                             <div class="col-12">
@@ -236,19 +257,34 @@
                                 </div>
                             </div>
 
-                            <div class="form-group mb-3">
+                            <div class="col-6">
+                                <div class="form-group mb-3">
 
-                                <label for="" class="mb-2">Image</label>
+                                    <label for="" class="mb-2">Icon</label>
 
-                                <input type="file" autocomplete="off" id="" name="brand_image"
-                                    class="image form-control form-control-sm mb-2 @error('brand_image') is-invalid @enderror">
+                                    <input type="file" autocomplete="off" id="" name="icon"
+                                        class="image1 form-control form-control-sm mb-2">
 
-                                @error('brand_image')
-                                    <div class="text-danger mb-2"> {{ $message }} </div>
-                                @enderror
+                                    <img src="{{ url('upload/no_image.jpg') }}" style="width:73px" class="showImage1"
+                                        alt="">
+                                </div>
+                            </div>
 
-                                <img src="{{ url('upload/no_image.jpg') }}" style="width:73px" class="showImage"
-                                    alt="">
+                            <div class="col-6">
+                                <div class="form-group mb-3">
+
+                                    <label for="" class="mb-2">Banner Image</label>
+
+                                    <input type="file" autocomplete="off" id="" name="brand_image"
+                                        class="image form-control form-control-sm mb-2 @error('brand_image') is-invalid @enderror">
+
+                                    @error('brand_image')
+                                        <div class="text-danger mb-2"> {{ $message }} </div>
+                                    @enderror
+
+                                    <img src="{{ url('upload/no_image.jpg') }}" style="width:73px" class="showImage"
+                                        alt="">
+                                </div>
                             </div>
 
 
@@ -272,6 +308,18 @@
                 var reader = new FileReader();
                 reader.onload = function(e) {
                     $('.showImage').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(e.target.files['0']);
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.image1').change(function(e) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('.showImage1').attr('src', e.target.result);
                 }
                 reader.readAsDataURL(e.target.files['0']);
             });
