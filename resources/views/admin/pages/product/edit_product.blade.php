@@ -242,7 +242,7 @@
                                             </div>
 
                                             {{-- brand_id --}}
-                                            <div class="col-6 mb-3">
+                                            <div class="col-3 mb-3">
                                                 <div class="fv-row mb-3">
 
                                                     <label class="form-label required">Brand Name</label>
@@ -263,6 +263,18 @@
                                                     </select>
 
                                                     <div class="invalid-feedback"> Please Enter Brand Name.</div>
+
+                                                </div>
+
+                                            </div>
+
+                                            {{-- Discount Price--}}
+                                            <div class="col-3 mb-3">
+                                                <div class="fv-row mb-3">
+
+                                                    <label class="form-label">Discount Price</label>
+
+                                                    <input type="number" name="pdiscount_price" class="form-control form-control-sm form-control-solid" value="{{ old($editProduct->category_idpdiscount_price) }}" placeholder="Discount Price">
 
                                                 </div>
 

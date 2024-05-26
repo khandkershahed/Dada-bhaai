@@ -102,6 +102,7 @@ class ProductController extends Controller
             'color_id' => $colors,
 
             'parent_id' => $request->parent_id,
+            'pdiscount_price' => $request->pdiscount_price,
             'child_id' => $child_ids,
             'refurbished' => $request->refurbished,
             'feature' => $request->feature,
@@ -274,6 +275,8 @@ class ProductController extends Controller
                 'childcategory_id' => $request->childcategory_id,
                 'tags' => $request->tags,
                 'color_id' => $colors,
+
+                'pdiscount_price' => $request->pdiscount_price,
 
                 'parent_id' => $request->parent_id,
                 'child_id' => $child_ids,

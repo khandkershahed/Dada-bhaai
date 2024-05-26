@@ -29,6 +29,7 @@
                 </div>
             </div>
             <div class="row my-5">
+
                 <div class="col-lg-4">
                     <div class="pro-img">
                         <div class="tab-content" id="myTabContent">
@@ -62,11 +63,12 @@
                         </ul>
                     </div>
                 </div>
+
                 <div class="col-lg-5">
                     <div class="row gx-0">
                         <div class="col-lg-8 col-md-12 order-3 order-lg-2 px-0">
                             <div class="pro-content">
-                                <span>{{ $product->category->category_name }}</span>
+                                <span>{{ $product->brand->brand_name }}</span>
 
                                 <h5 class="title" id="dpname">
                                     {{ $product->product_name }}
@@ -79,28 +81,54 @@
                                         </li>
                                         <li class="d-flex justify-content-between align-items-center">
                                             <div class="d-flex">
+
+                                                <h5 class="f-600 mb-0 text-black">
+                                                    Price: <del class="mr-2">
+                                                        @if ($product->pdiscount_price == Null)
+                                                        
+                                                        @else
+                                                        Tk {{ $product->pdiscount_price }}  
+                                                        @endif
+                                                    </del>
+                                                </h5>
+
                                                 <h5 class="grenadier-color f-600 mb-0">
-                                                    Price: {{ $product->price }}
+                                                    Tk {{ $product->price }}
                                                 </h5>
-                                                <h5 class="f-600 mb-0 text-black pl-2">
-                                                    {{-- Discont Price  --}}
-                                                    Old:
-                                                    <del> {{ $product->price }}</del>
-                                                </h5>
+
                                             </div>
-                                            <div>
-                                                <div>
-                                                    <div class="number d-flex align-items-center">
-                                                        <button type="button" class="buttons-count" id="decrease">-</button>
-                                                        <input type="text" disabled class="mb-0 border-1 text-center"
-                                                            name="" value="1" min="1" id="dqty"
-                                                            style="width: 50px" />
-                                                        <button type="button" class="buttons-count" id="increase">+</button>
-                                                    </div>
-                                                </div>
+
+                                            {{-- <div class="number d-flex align-items-center">
+                                                <button type="button" class="buttons-count" id="decrease">-</button>
+                                                <input type="text" disabled class="mb-0 border-1 text-center"
+                                                    name="" value="1" min="1" id="dqty"
+                                                    style="width: 50px" />
+                                                <button type="button" class="buttons-count" id="increase">+</button>
+                                            </div> --}}
+
+                                            <div class="">
+
+                                                Qty:<input type="number" class="ml-2 mb-0 text-center" name=""
+                                                    value="1" min="1" id="dqty" style="width: 50px" />
                                             </div>
+
+
                                         </li>
                                     </ul>
+
+                                    <div class="d-flex align-items-center mt-3 product--footer__deals mb-4">
+
+                                        <input type="hidden" id="oneproduct_id" value="{{ $product->id }}">
+
+                                        <a type="submit" style="cursor: pointer" onclick="addToCartOne()"
+                                            class="mt-0 add-link f-700 grenadier-color">+ Add
+                                            Cart</a>
+
+                                        <a type="submit" style="cursor: pointer" onclick="buyToCartOne()"
+                                            class="ml-3 mt-0 add-link f-700 grenadier-color">+ Buy
+                                            Now</a>
+                                    </div>
+
                                     <p>{!! $product->short_desc !!}</p>
                                 </div>
 
@@ -120,8 +148,6 @@
                         </div>
 
                         {{-- Child Product  --}}
-
-
                         <div class="col-lg-12 px-0">
                             <div class="releted_accessories">
 
@@ -130,8 +156,9 @@
                                     @if (!empty($childproduct->product_image))
                                         <div class="card border-0 shadow-sm releted-accessories-items mx-2">
                                             <div class="card-header p-0 border-0">
-                                                <img src="{{ asset($childproduct->product_image) }}" class="img-fluid"
-                                                    style="width: 100%; height: 140px;" alt="" />
+                                                <img src="{{ asset($childproduct->product_image) }}"
+                                                    class="img-fluid" style="width: 100%; height: 140px;"
+                                                    alt="" />
                                             </div>
                                             <div class="card-body p-0">
                                                 <div class="container">
@@ -209,7 +236,8 @@
 
                     </div>
                 </div>
-                <div class="col-lg-3" style="border: 1px solid #f5f5f5;box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 2px;">
+
+                <div class="col-lg-3" style="border: 0px solid #f5f5f5;box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 2px;">
                     <div class="cart-wrapper">
                         <div class="mb-20 d-flex justify-content-between align-items-center">
                             {{-- <div>
@@ -227,17 +255,28 @@
                                 <del class="text-muted">Tk {{ $product->price }}</del>
                             </div> --}}
                         </div>
+
                         <div class="mb-4">
                             <p class="mb-0 fw-bolder text-black" style="border-bottom: 1px solid #ccc;"><span
                                     style="color: black;" class="fw-bold">Accessories</span></p>
-                            <div id="miniCartRelated"></div>
+
+                            <div id="miniCartRelated" class="mt-3"></div>
+
                         </div>
-                        <div class="d-flex align-items-center">
+
+                        {{-- <div class="d-flex align-items-center">
                             <input type="hidden" id="oneproduct_id" value="{{ $product->id }}">
                             <a type="submit" onclick="addToCartOne()" class="cart-button w-100 mt-0">Add
                                 Cart</a>
                             <a type="submit" onclick="buyToCartOne()" class="cart-button w-100 ml-3 mt-0">Buy
                                 Now</a>
+                        </div> --}}
+
+                        <div class="d-flex align-items-center">
+
+                            <a href="" class="cart-button w-100 mt-0">View Cart</a>
+                            <a href="" class="cart-button w-100 ml-3 mt-0">CheckOut</a>
+
                         </div>
 
                         {{-- <div class="last pt-15 align-items-center d-flex justify-content-center">
@@ -354,62 +393,63 @@
                     <div class="product__active owl-carousel">
 
                         @forelse ($relativeProduct as $product)
+
                             <div class="product-grid mr-4">
-                                <div class="product-image">
-                                    <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
-                                        class="image">
-                                        <img class="pic-1" src="{{ asset($product->product_image) }}">
+
+                            <div class="product-image">
+                                <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
+                                    class="image">
+                                    <img class="pic-1" src="{{ asset($product->product_image) }}"
+                                        title="{{ $product->product_name }}">
+                                </a>
+                                <div class="product-button-group">
+                                    {{-- Wishlist Icon --}}
+                                    <a style="cursor: pointer;" id="{{ $product->id }}"
+                                        onclick="addToWishList(this.id)"><i class="fas fa-heart"></i></a>
+
+                                    {{-- Add To Cart Icon --}}
+                                    <a type="submit" style="cursor:pointer;" data-product_id="{{ $product->id }}"
+                                        class="add-to-cart add_to_cart_btn_product"><i class="fas fa-shopping-cart"></i>
+                                        Add To Cart
                                     </a>
-                                    <div class="product-button-group">
 
-                                        {{-- Wishlist Icon --}}
-                                        <a style="cursor: pointer;" id="{{ $product->id }}"
-                                            onclick="addToWishList(this.id)"><i class="fas fa-heart"></i></a>
+                                    {{-- Compare Icon --}}
+                                    <a href="javascript:;"><i class="fas fa-random"></i></a>
 
-                                        {{-- Add To Cart Icon --}}
-                                        <a type="submit" style="cursor:pointer;"
-                                            data-product_id="{{ $product->id }}"
-                                            class="add-to-cart add_to_cart_btn_product"><i
-                                                class="fas fa-shopping-cart"></i> Add To
-                                            Cart
-                                        </a>
-
-                                        {{-- <a type="submit" data-product_id="{{ $product->id }}"
-                                                        class="btn btn-primary btn-sm add_to_cart_btn_product">
-                                                        Add To Cart Details
-                                                    </a> --}}
-
-                                        {{-- Compare Icon --}}
-                                        <a href="#"><i class="fas fa-random"></i></a>
-
-                                    </div>
                                 </div>
-                                <div class="product-content row align-items-center">
-                                    <div class="col-lg-8">
-                                        <span class="cate-name">{{ $product->category->category_name }}</span>
-                                        <h6 class="product__title mine__shaft-color f-700 mb-0 text-start">
-                                            <a
-                                                href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ $product->product_name }}</a>
-                                        </h6>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="price text-end">
-                                            @if ($product->price_status == 'rfq')
-                                                <h6 class="grenadier-color mb-0 fw-bold">
-                                                    Tk {{ $product->sas_price }}
-                                                </h6>
-                                            @elseif ($product->price_status == 'offer_price')
-                                                <h6 class="grenadier-color mb-0 fw-bold">
-                                                    Tk {{ $product->discount_price }}</h6>
-                                            @else
-                                                <h6 class="grenadier-color mb-0 fw-bold">Tk
-                                                    {{ $product->price }}
-                                                </h6>
-                                            @endif
-                                        </div>
+                            </div>
+                            <div class="product-content row align-items-center">
+                                <div class="col-lg-8">
+                                    <span class="cate-name">{{ $product->brand->brand_name }}</span>
+
+                                    <h6 class="product__title mine__shaft-color f-700 mb-0 text-start">
+                                        <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
+                                            title="{{ $product->product_name }}">
+                                            {{ substr($product->product_name, 0, 18) }}
+                                        </a>
+                                    </h6>
+
+
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="price text-end">
+                                        @if ($product->price_status == 'rfq')
+                                            <h6 class="grenadier-color mb-0 fw-bold">
+                                                Tk {{ $product->sas_price }}
+                                            </h6>
+                                        @elseif ($product->price_status == 'offer_price')
+                                            <h6 class="grenadier-color mb-0 fw-bold">
+                                                Tk {{ $product->discount_price }}</h6>
+                                        @else
+                                            <h6 class="grenadier-color mb-0 fw-bold">Tk
+                                                {{ $product->price }}
+                                            </h6>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
+
+                        </div>
 
                         @empty
                             <span>No Product Avaiable</span>

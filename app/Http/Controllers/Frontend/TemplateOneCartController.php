@@ -465,6 +465,32 @@ class TemplateOneCartController extends Controller
 
     }
 
+    //Remove MiniCart Related TemplateOne
+    public function RemoveMiniCartRelatedTemplateOne($rowId)
+    {
+        Cart::remove($rowId);
+        return response()->json(['success' => 'Product Remove From Cart']);
+
+    }
+
+    //Increase MiniCart Related TemplateOne
+    public function IncreaseMiniCartTemplateOneRelated($rowId)
+    {
+        $row = Cart::get($rowId);
+        Cart::update($rowId, $row->qty + 1);
+
+        return response()->json(['success' => 'Qty Update Successfully']);
+    }
+
+    //Decrease MiniCart Related TemplateOne
+    public function DecreaseMiniCartTemplateOneRelated($rowId)
+    {
+        $row = Cart::get($rowId);
+        Cart::update($rowId, $row->qty - 1);
+
+        return response()->json(['success' => 'Qty Update Successfully']);
+    }
+
     //View Cart TemplateOne
     public function ViewCartTemplateOne()
     {
