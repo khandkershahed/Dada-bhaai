@@ -243,6 +243,7 @@
                     </li> --}}
 
                     <li class="nav-item dropdown position-static">
+
                         <a class="nav-link main-menu-link dropdown-toggle" href="javascript:void(0)"
                             id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
@@ -362,7 +363,7 @@
                             <form class="searchbox" action="{{ route('product.search') }}" method="POST">
                                 @csrf
                                 <input type="search" placeholder="Search......" name="search"
-                                    class="searchbox-input" id="search" name="search" onkeyup="buttonUp();"
+                                    class="searchbox-input" id="search" autocomplete="off" name="search" onkeyup="buttonUp();"
                                     required>
                                 <button class="searchbox-submit" value="GO"><i
                                         class="icofont-search-2"></i></button>
@@ -435,6 +436,7 @@
 
                                             </div>
                                         </li>
+
 
                                         <li class="">
                                             <a href="{{ route('wishlist') }}" style="font-size: 20px;">
