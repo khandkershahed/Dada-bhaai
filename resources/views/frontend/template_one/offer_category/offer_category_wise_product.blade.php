@@ -5,138 +5,20 @@
         <div class="container">
             <div class="row">
 
-
-                <div class="col-lg-3 order-2 order-lg-1">
-                    @php
-                        $brands = App\Models\Brand::where('status', '1')
-                            ->orderBy('brand_name', 'ASC')
-                            ->latest()
-                            ->limit(7)
-                            ->get();
-
-                        $categorys = App\Models\Admin\Category::where('status', '1')
-                            ->orderBy('category_name', 'ASC')
-                            ->latest()
-                            ->limit(9)
-                            ->get();
-
-                    @endphp
-                    <div class="common-sidebar shop-banner-sidebar">
-
-                        {{-- Category  --}}
-                        <div class="common-cat">
-                            <div class="side-title">
-                                <h6>Category</h6>
-                            </div>
-                            {{-- Brands Accordion --}}
-                            <div id="accordionBrands" class="accordion">
-                                <div class="card border-0 shadow-none mb-0">
-
-                                    @foreach ($categorys as $category)
-                                        <div class="card-header mark-cat collapsed pl-0" data-toggle="collapse"
-                                            data-parent="#accordion" href="#cat{{ $category->id }}">
-                                            <a class="card-title">
-                                                {{ $category->category_name }}
-                                            </a>
-                                        </div>
-
-                                        <div id="cat{{ $category->id }}" class="collapse" data-parent="#accordion"
-                                            style="background-color: #f5f5f5;">
-
-                                            @php
-                                                $subcategorys = App\Models\Admin\SubCategory::where('status', '1')
-                                                    ->where('category_id', $category->id)
-                                                    ->latest()
-                                                    ->get();
-                                            @endphp
-
-                                            <div id="accordion2" class="accordion pl-3">
-
-                                                @forelse ($subcategorys as $subcategory)
-                                                    <div class="card border-0 shadow-none mb-0">
-                                                        <div class="card-header mark-sub-cat collapsed pl-0" data-toggle="collapse"
-                                                            data-target="#sub{{ $subcategory->id }}">
-                                                            <a class="card-title">
-                                                                {{ $subcategory->subcategory_name }}
-                                                            </a>
-                                                        </div>
-                                                        <div id="sub{{ $subcategory->id }}" class="collapse"
-                                                            data-parent="#accordion2" style="background-color: #f5f5f5;">
-
-                                                            @php
-                                                                $childcategorys = App\Models\Admin\ChildCategory::where(
-                                                                    'status',
-                                                                    '1',
-                                                                )
-                                                                    ->where('subcategory_id', $subcategory->id)
-                                                                    ->latest()
-                                                                    ->get();
-                                                            @endphp
-                                                            @forelse ($childcategorys as $childcategory)
-                                                                <div class="card-body p-2">
-                                                                    <a href="{{ url('product/childcategory/' . $childcategory->id . '/' . $childcategory->childcategory_slug) }}"
-                                                                        class="pl-3 text-muted">{{ $childcategory->childcategory_name }}</a>
-                                                                </div>
-                                                            @empty
-                                                                <p>No ChildCategory Avaiable</p>
-                                                            @endforelse
-
-                                                        </div>
-                                                    </div>
-                                                @empty
-                                                    <p>No SubCategory Avaiable</p>
-                                                @endforelse
+                @php
+                    $catwiseproduct = '';
+                    $childcatwiseproduct = '';
+                @endphp
 
 
-                                            </div>
-                                        </div>
-                                    @endforeach
-
-                                    {{-- Multi Accordion End --}}
-                                </div>
-                            </div>
-
-                        </div>
-                        {{-- Category  --}}
-
-                        {{-- Brand  --}}
-                        <div class="common-cat mt-4">
-
-                            <div class="side-title">
-                                <h6>Brands</h6>
-                            </div>
-                            <ul>
-                                @forelse ($brands as $brand)
-                                    <li><a
-                                            href="{{ url('product/brand/' . $brand->id . '/' . $brand->brand_slug) }}">{{ $brand->brand_name }}</a>
-                                    </li>
-                                @empty
-                                    <p>No Brand Avaiable</p>
-                                @endforelse
-                            </ul>
-
-                        </div>
-                        {{-- Brand  --}}
-
-
-
-                    </div>
-                </div>
+                @include('frontend.template_one.partials.frontend_sidebar')
 
                 <div class="col-lg-9 order-1 order-lg-2">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="shop-banner-bg pt-120 pb-120 mb-50"
                                 data-background="{{ asset('storage/offer_category_image/' . $offercatwiseproduct->offer_category_image) }}">
-                                {{-- <div class="collection-text">
-                                    <h5 class="f-800"><a href="javascript:;">Offer Category</a></h5>
-                                    <span class="f-200 mb-40">{{ $offercatwiseproduct->offer_category_name }}</span>
-                                    <div class="product-countdown-three">
-                                        <div class="time-count-deal">
-                                            <div class="countdown-list" data-countdown="2020/12/01"></div>
-                                        </div>
-                                    </div>
-                                </div> --}}
+
                             </div>
                         </div>
                     </div>
@@ -172,12 +54,11 @@
 
                                     <div class="product-image">
 
-                                        <a href="{{ url('product' . '/' . $product->products->id . '/' . $product->products->product_slug) }}"
-                                            class="img-wrapper">
+                                        <a href="javascript:;" class="img-wrapper">
 
-                                            <img class="img product_id"
-                                                src="{{ asset($product->products->product_image) }}" alt=""
-                                                style="height: 230px;" data-id="{{ $product->products->id }}" />
+                                            <img class="img product_id" src="{{ asset($product->products->product_image) }}"
+                                                alt="" style="height: 230px;"
+                                                data-id="{{ $product->products->id }}" />
 
                                         </a>
 

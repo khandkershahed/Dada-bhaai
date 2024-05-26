@@ -44,8 +44,8 @@
                         <div class="tab-pane fade show active" id="home" role="tabpanel"
                             aria-labelledby="home-tab">
                             <div class="mt-2 d-flex justify-content-between aligin-items-center">
-                                <button class="w-100 mr-2">Google Login</button>
-                                <button class="w-100">Facebook Login</button>
+                                <a href="{{ route('login.google') }}" class="cart-button w-100 mt-0">Google Login</a>
+                                <a class="w-100">Facebook Login</a>
                             </div>
                             <x-auth-session-status class="mb-4" :status="session('status')" />
                             <form method="POST" action="{{ route('login') }}">
@@ -60,6 +60,9 @@
                                 </div>
                                 <div class="field">
                                     <label>Password</label>
+                                    @error('password')
+                                        <div class="text-danger" style="margin-top: 0px;">{{ $message }}</div>
+                                    @enderror
                                     <input type="password" class="form-control form-control-sm " name="password"
                                         placeholder="Password" required>
                                 </div>

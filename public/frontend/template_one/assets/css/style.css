@@ -1681,6 +1681,7 @@ ul.sub__menu.sub__dept--menu li:hover ul.sub__menu.level2 {
     background-size: cover;
     background-position: center center;
     border-radius: 4px;
+    height: 290px;
 }
 
 .offer--banner__text > h4 {

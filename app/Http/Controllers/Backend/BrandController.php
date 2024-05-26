@@ -38,8 +38,21 @@ class BrandController extends Controller
         if ($validator) {
 
             $mainFile = $request->file('brand_image');
-
             $imgPath = storage_path('app/public/brand');
+
+            $iconmainFile = $request->file('icon'); ///////
+            $iconimgPath = storage_path('app/public/brand'); //////
+
+            ////////
+            if (empty($iconmainFile)) {
+
+                $globalFunIconImg['file_name'] = '';
+
+            } else {
+                $globalFunIconImg = Helper::customUpload($iconmainFile, $iconimgPath);
+                $globalFunIconImg['file_name'] = $globalFunIconImg['file_name'];
+            }
+            /////////////////////
 
             if (empty($mainFile)) {
 
@@ -62,6 +75,7 @@ class BrandController extends Controller
                         'description' => $request->description,
 
                         'brand_image' => $globalFunImg['file_name'],
+                        'icon' => $globalFunIconImg['file_name'], ////////
 
                     ]);
                 } else {
@@ -95,14 +109,24 @@ class BrandController extends Controller
         if ($validator) {
 
             $mainFile = $request->file('brand_image');
-
             $uploadPath = storage_path('app/public/brand');
+
+            $iconmainFile = $request->file('icon'); ///////
+            $iconimgPath = storage_path('app/public/brand'); //////
 
             if (isset($mainFile)) {
                 $globalFunImg = Helper::customUpload($mainFile, $uploadPath, 200, 200);
             } else {
                 $globalFunImg['status'] = 0;
             }
+
+            ////////////
+            if (isset($iconmainFile)) {
+                $globalFunIconImg = Helper::customUpload($iconmainFile, $iconimgPath);
+            } else {
+                $globalFunIconImg['status'] = 0;
+            }
+            /////////////
 
             if (!empty($brand)) {
 
@@ -115,12 +139,27 @@ class BrandController extends Controller
                     }
                 }
 
+                ///////////
+
+                if ($globalFunIconImg['status'] == 1) {
+                    if (File::exists(public_path('storage/brand/requestImg/') . $brand->icon)) {
+                        File::delete(public_path('storage/brand/requestImg/') . $brand->icon);
+                    }
+                    if (File::exists(public_path('storage/brand/') . $brand->icon)) {
+                        File::delete(public_path('storage/brand/') . $brand->icon);
+                    }
+                }
+
+                ////////
+
                 $brand->update([
 
                     'brand_name' => $request->brand_name,
                     'brand_slug' => Str::slug($request->brand_name, "-"),
                     'description' => $request->description,
                     'brand_image' => $globalFunImg['status'] == 1 ? $globalFunImg['file_name'] : $brand->brand_image,
+
+                    'icon' => $globalFunIconImg['status'] == 1 ? $globalFunIconImg['file_name'] : $brand->icon, ////
 
                 ]);
             }
@@ -143,6 +182,14 @@ class BrandController extends Controller
 
         if (File::exists(public_path('storage/brand/') . $brand->brand_image)) {
             File::delete(public_path('storage/brand/') . $brand->brand_image);
+        }
+
+        if (File::exists(public_path('storage/brand/requestImg/') . $brand->icon)) {
+            File::delete(public_path('storage/brand/requestImg/') . $brand->icon);
+        }
+
+        if (File::exists(public_path('storage/brand/') . $brand->icon)) {
+            File::delete(public_path('storage/brand/') . $brand->icon);
         }
 
         $brand->delete();

@@ -12,6 +12,7 @@ use App\Models\Admin\Product;
 use App\Models\Admin\SubCategory;
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
@@ -60,7 +61,22 @@ class ProductController extends Controller
         $save_url = 'upload/product/mainimage/' . $name_gen;
 
         $color = $request->color_id;
-        $colors = implode(' ', $color);
+        // $colors = implode(',', $color);
+        if ($color !== null) {
+            $colors = implode(',', $color);
+        } else {
+            $colors = null; // Or any other default value or logic you want to apply
+        }
+
+        // $child_id = $request->child_id;
+        // $child_ids = implode(',', $child_id);
+
+        $child_id = $request->child_id;
+        if ($child_id !== null) {
+            $child_ids = implode(',', $child_id);
+        } else {
+            $child_ids = null; // Or any other default value or logic you want to apply
+        }
 
         $product_id = Product::insertGetId([
 
@@ -68,7 +84,7 @@ class ProductController extends Controller
             'sku_code' => $request->sku_code,
             'mf_code' => $request->mf_code,
             'notification_days' => $request->notification_days,
-            'product_slug' => strtolower(str_replace(' ', '-', $request->product_name)),
+            'product_slug' => Str::slug($request->product_name, "-"),
 
             'product_type' => $request->product_type,
             'stock' => $request->stock,
@@ -86,7 +102,7 @@ class ProductController extends Controller
             'color_id' => $colors,
 
             'parent_id' => $request->parent_id,
-            'child_id' => $request->child_id,
+            'child_id' => $child_ids,
             'refurbished' => $request->refurbished,
             'feature' => $request->feature,
             'deal' => $request->deal,
@@ -136,20 +152,41 @@ class ProductController extends Controller
 
         // Multi Image
 
+        // $images = $request->file('multi_img');
+
+        // foreach ($images as $img) {
+        //     $make_gen = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
+        //     Image::make($img)->save('upload/product/multiimage/' . $make_gen);
+        //     $uploadPath = 'upload/product/multiimage/' . $make_gen;
+
+        //     MultiImg::insert([
+
+        //         'product_id' => $product_id,
+        //         'multi_image' => $uploadPath,
+        //         'created_at' => now(),
+
+        //     ]);
+        // }
+
+        // Multi Image
+
         $images = $request->file('multi_img');
 
-        foreach ($images as $img) {
-            $make_gen = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
-            Image::make($img)->save('upload/product/multiimage/' . $make_gen);
-            $uploadPath = 'upload/product/multiimage/' . $make_gen;
+        // Check if $images is not null and is an array
+        if ($images !== null && is_array($images)) {
+            foreach ($images as $img) {
+                $make_gen = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
+                Image::make($img)->save('upload/product/multiimage/' . $make_gen);
+                $uploadPath = 'upload/product/multiimage/' . $make_gen;
 
-            MultiImg::insert([
+                MultiImg::insert([
+                    'product_id' => $product_id,
+                    'multi_image' => $uploadPath,
+                    'created_at' => now(),
+                ]);
+            }
+        } else {
 
-                'product_id' => $product_id,
-                'multi_image' => $uploadPath,
-                'created_at' => now(),
-
-            ]);
         }
 
         toastr()->success('Product Created Successfully');
@@ -173,7 +210,6 @@ class ProductController extends Controller
         $subcats = $editProduct->subcategory_id;
         $childcategorys = ChildCategory::where('subcategory_id', $subcats)->latest()->get();
 
-
         $multiImages = MultiImg::where('product_id', $id)->latest()->get();
 
         return view('admin.pages.product.edit_product', compact('brands', 'categorys', 'colors', 'products', 'editProduct', 'subcategorys', 'childcategorys', 'multiImages'));
@@ -185,8 +221,26 @@ class ProductController extends Controller
         $update = $request->id;
         $old_img = $request->old_image;
 
+        // $color = $request->color_id;
+        // $colors = implode(',', $color);
+
         $color = $request->color_id;
-        $colors = implode(' ', $color);
+        // $colors = implode(',', $color);
+        if ($color !== null) {
+            $colors = implode(',', $color);
+        } else {
+            $colors = null; // Or any other default value or logic you want to apply
+        }
+
+        // $child_id = $request->child_id;
+        // $child_ids = implode(',', $child_id);
+
+        $child_id = $request->child_id;
+        if ($child_id !== null) {
+            $child_ids = implode(',', $child_id);
+        } else {
+            $child_ids = null; // Or any other default value or logic you want to apply
+        }
 
         if ($request->file('product_image')) {
             $image = $request->file('product_image');
@@ -204,7 +258,7 @@ class ProductController extends Controller
                 'sku_code' => $request->sku_code,
                 'mf_code' => $request->mf_code,
                 'notification_days' => $request->notification_days,
-                'product_slug' => strtolower(str_replace(' ', '-', $request->product_name)),
+                'product_slug' => Str::slug($request->product_name, "-"),
 
                 'product_type' => $request->product_type,
                 'stock' => $request->stock,
@@ -222,7 +276,7 @@ class ProductController extends Controller
                 'color_id' => $colors,
 
                 'parent_id' => $request->parent_id,
-                'child_id' => $request->child_id,
+                'child_id' => $child_ids,
                 'refurbished' => $request->refurbished,
                 'feature' => $request->feature,
                 'deal' => $request->deal,
@@ -293,7 +347,7 @@ class ProductController extends Controller
                 'color_id' => $colors,
 
                 'parent_id' => $request->parent_id,
-                'child_id' => $request->child_id,
+                'child_id' => $child_ids,
                 'refurbished' => $request->refurbished,
                 'deal' => $request->deal,
 

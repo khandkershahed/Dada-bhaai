@@ -64,11 +64,16 @@ Route::controller(IndexController::class)->group(function () {
     //About Page
     Route::get('/about', 'AboutPage')->name('about.page');
 
+    // lOGIN wITH gOOGLE
+    Route::get('login/google', 'redirectToGoogle')->name('login.google');
+    Route::get('login/google/callback', 'googleCallback');
+
+
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    // //User Dashboard
+    //User Dashboard
     Route::get('/dashboard', [TemplateOneController::class, 'TemplateOneDashboard'])->name('template.one.dashboard');
     Route::post('/user/profile-update', [TemplateOneController::class, 'TemplateOneProfileUpdate'])->name('template.one.user.profile.update');
 

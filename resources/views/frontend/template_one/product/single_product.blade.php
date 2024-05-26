@@ -107,78 +107,94 @@
                             </div>
                         </div>
 
+                        {{-- Child Product  --}}
+
+
                         <div class="col-lg-12 px-0">
                             <div class="releted_accessories">
-                                @forelse ($relativeChild as $product)
-                                    <div class="card border-0 shadow-sm releted-accessories-items">
-                                        <div class="card-header p-0 border-0">
-                                            <img src="{{ asset($product->product_image) }}" class="img-fluid"
-                                                style="width: 100%; height: 140px;" alt="" />
-                                        </div>
-                                        <div class="card-body p-0">
-                                            <div class="container">
-                                                <div class="row align-items-center p-1" style="background-color: #eee">
-                                                    <div class="col-lg-6 px-0">
-                                                        <small id="drpname"
-                                                            class="text-black">{{ $product->product_name }}</small>
-                                                    </div>
-                                                    <div class="col-lg-6 px-0">
-                                                        <div class="text-right">
-                                                            @if ($product->price_status == 'rfq')
-                                                                <small class="grenadier-color mb-0">
-                                                                    Tk {{ $product->sas_price }}
-                                                                </small>
-                                                            @elseif ($product->price_status == 'offer_price')
-                                                                <small class="grenadier-color mb-0">
-                                                                    Tk {{ $product->discount_price }}</small>
-                                                            @else
-                                                                <small class="grenadier-color mb-0">Tk
-                                                                    {{ $product->price }}
-                                                                </small>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12 px-0"
-                                                        style="border-top: 1px solid white;padding-top: 5px;">
-                                                        <div class="d-flex justify-content-between align-items-center">
-                                                            <div>
-                                                                <small><a type="submit"
-                                                                        onclick="addToCartOneRelated()"
-                                                                        class=""> <span
-                                                                            class="badge p-2 text-white"
-                                                                            style="background-color: #cd3301; cursor: pointer;">Add
-                                                                            Accessories</span></a></small>
 
-                                                                <input type="hidden" class="mb-0  border-1"
-                                                                    name="" value="1" min="1"
-                                                                    id="drqty" style="width: 50px" />
-                                                                <input type="hidden" id="onerproduct_id"
-                                                                    value="{{ $product->id }}">
+                                @forelse ($relativeChild as $childproduct)
+
+                                    @if (!empty($childproduct->product_image))
+                                        <div class="card border-0 shadow-sm releted-accessories-items mx-2">
+                                            <div class="card-header p-0 border-0">
+                                                <img src="{{ asset($childproduct->product_image) }}" class="img-fluid"
+                                                    style="width: 100%; height: 140px;" alt="" />
+                                            </div>
+                                            <div class="card-body p-0">
+                                                <div class="container">
+                                                    <div class="row align-items-center p-1"
+                                                        style="background-color: #eee">
+                                                        <div class="col-lg-6 px-0">
+                                                            <small id="drpname"
+                                                                class="text-black">{{ $childproduct->product_name }}</small>
+                                                        </div>
+                                                        <div class="col-lg-6 px-0">
+                                                            <div class="text-right">
+                                                                @if ($childproduct->price_status == 'rfq')
+                                                                    <small class="grenadier-color mb-0">
+                                                                        Tk {{ $childproduct->sas_price }}
+                                                                    </small>
+                                                                @elseif ($childproduct->price_status == 'offer_price')
+                                                                    <small class="grenadier-color mb-0">
+                                                                        Tk {{ $childproduct->discount_price }}</small>
+                                                                @else
+                                                                    <small class="grenadier-color mb-0">Tk
+                                                                        {{ $childproduct->price }}
+                                                                    </small>
+                                                                @endif
                                                             </div>
-                                                            {{-- Count Box --}}
-                                                            <div class="number d-flex align-items-center">
-                                                                <button type="button" style="cursor: pointer"
-                                                                    class="buttons-countAccesories border-0 bg-white"
-                                                                    id="decreaseAccesories">-</button>
-                                                                <input type="text" disabled
-                                                                    class="mb-0 border-1 text-center" name=""
-                                                                    value="1" min="1" id="dqtyAccesories"
-                                                                    style="width: 30px" />
-                                                                <button type="button"
-                                                                    class="buttons-countAccesories border-0 bg-white"
-                                                                    id="increaseAccesories" style="cursor: pointer">+</button>
+                                                        </div>
+                                                        <div class="col-lg-12 px-0"
+                                                            style="border-top: 1px solid white;padding-top: 5px;">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center">
+                                                                <div>
+                                                                    <small><a type="submit"
+                                                                            onclick="addToCartOneRelated()"
+                                                                            class=""> <span
+                                                                                class="badge p-2 text-white"
+                                                                                style="background-color: #cd3301; cursor: pointer;">Add
+                                                                                Accessories</span></a></small>
+
+                                                                    <input type="hidden" class="mb-0  border-1"
+                                                                        name="" value="1" min="1"
+                                                                        id="drqty" style="width: 50px" />
+                                                                    <input type="hidden" id="onerproduct_id"
+                                                                        value="{{ $childproduct->id }}">
+                                                                </div>
+                                                                {{-- Count Box --}}
+                                                                <div class="number d-flex align-items-center">
+                                                                    <button type="button" style="cursor: pointer"
+                                                                        class="buttons-countAccesories border-0 bg-white"
+                                                                        id="decreaseAccesories">-</button>
+                                                                    <input type="text" disabled
+                                                                        class="mb-0 border-1 text-center"
+                                                                        name="" value="1" min="1"
+                                                                        id="dqtyAccesories" style="width: 30px" />
+                                                                    <button type="button"
+                                                                        class="buttons-countAccesories border-0 bg-white"
+                                                                        id="increaseAccesories"
+                                                                        style="cursor: pointer">+</button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @else
+                                        <span>No Accessories Avaiable</span>
+                                    @endif
+
                                 @empty
                                     <P>No Product Avaiable</P>
                                 @endforelse
+
                             </div>
                         </div>
+                        {{-- Child Product  --}}
+
                     </div>
                 </div>
                 <div class="col-lg-3" style="border: 1px solid #f5f5f5;box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 2px;">
@@ -252,33 +268,39 @@
                 <div class="col-sm-12">
                     <div class="desc-wrapper">
                         <ul class="nav custom-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
+
+                            {{-- <li class="nav-item">
                                 <a class="nav-link" id="home-tab11" data-toggle="tab" href="#home11" role="tab"
-                                    aria-controls="home11" aria-selected="true">Specification</a>
-                            </li>
+                                    aria-controls="home11" aria-selected="true">Accessories</a>
+                            </li> --}}
+
                             <li class="nav-item">
                                 <a class="nav-link active" id="profile-tab11" data-toggle="tab" href="#profile11"
-                                    role="tab" aria-controls="profile11" aria-selected="false">Accessories
+                                    role="tab" aria-controls="profile11" aria-selected="false">Overview
                                 </a>
                             </li>
+
                             <li class="nav-item">
                                 <a class="nav-link" id="contact-tab11" data-toggle="tab" href="#product-blogs"
-                                    role="tab" aria-controls="product-blogs" aria-selected="false">Overview</a>
+                                    role="tab" aria-controls="product-blogs"
+                                    aria-selected="false">Specification</a>
                             </li>
+
                         </ul>
 
                         <div class="tab-content" id="myTabContent1">
-                            <div class="tab-pane fade" id="home11" role="tabpanel" aria-labelledby="home-tab11">
+
+                            {{-- <div class="tab-pane fade" id="home11" role="tabpanel" aria-labelledby="home-tab11">
                                 <div class="desc-content mt-60">
                                     <div class="row">
                                         <div class="col-md-12 mb-30">
                                             <div class="spe-wrapper">
-                                                <p>{!! $product->specification !!}</p>
+                                                <p>{!! $product->accessories !!}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="tab-pane fade show active" id="profile11" role="tabpanel"
                                 aria-labelledby="profile-tab11">
@@ -286,7 +308,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="single-content mb-40">
-                                                <p>{!! $product->accessories !!}</p>
+                                                <p>{!! $product->overview !!}</p>
                                             </div>
                                         </div>
 
@@ -299,7 +321,7 @@
                                 <div class="desc-content mt-60">
                                     <div class="row small-padding">
 
-                                        <p>{!! $product->overview !!}</p>
+                                        <p>{!! $product->specification !!}</p>
 
                                     </div>
                                 </div>
@@ -405,243 +427,7 @@
                     </div>
                 </div>
 
-                {{-- <div class="tab-content" id="myTabContent">
 
-                        <div class="tab-pane fade show active" id="releted_product" role="tabpanel"
-                            aria-labelledby="releted_product-tab">
-
-                            <div class="row">
-
-                                <div class="col-xl-4 mb-4">
-
-                                    @forelse ($relativeProduct as $product)
-                                        <div class="product__single">
-                                            <div class="product__box">
-                                                <div class="product__thumb">
-                                                    <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
-                                                        class="img-wrapper">
-                                                        <img class="img" src="{{ asset($product->product_image) }}"
-                                                            alt="" style="height: 230px;" />
-                                                        <img class="img secondary-img"
-                                                        src="img/allproducts/products__thumb__02.jpg" alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="product__content--top">
-                                                    <span class="cate-name">{{ $product->category->category_name }}</span>
-                                                    <h6 class="product__title mine__shaft-color f-700 mb-0">
-                                                        <a
-                                                            href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ $product->product_name }}</a>
-                                                    </h6>
-                                                </div>
-
-                                                <div class="product__content--rating d-flex justify-content-between">
-
-                                                    <div class="rating">
-                                                        <ul class="list-inline">
-                                                            <li class="rating-active">
-                                                                <i class="fas fa-star"></i>
-                                                            </li>
-                                                            <li class="rating-active">
-                                                                <i class="fas fa-star"></i>
-                                                            </li>
-                                                            <li class="rating-active">
-                                                                <i class="fas fa-star"></i>
-                                                            </li>
-                                                            <li><i class="fas fa-star"></i></li>
-                                                            <li><i class="fas fa-star"></i></li>
-                                                        </ul>
-                                                    </div>
-
-                                                    <div class="price">
-
-                                                        @if ($product->price_status == 'rfq')
-                                                            <h5 class="grenadier-color f-600">${{ $product->sas_price }}
-                                                            </h5>
-                                                        @elseif ($product->price_status == 'offer_price')
-                                                            <h5 class="grenadier-color f-600">
-                                                                ${{ $product->discount_price }}</h5>
-                                                        @else
-                                                            <h5 class="grenadier-color f-600">${{ $product->price }}</h5>
-                                                        @endif
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="product-action">
-                                                <a href="#"><span class="lnr lnr-heart"></span></a>
-                                                <a href="#"><span class="lnr lnr-eye"></span></a>
-                                                <a href="#"><span class="lnr lnr-cart"></span></a>
-                                                <a href="#"><span class="lnr lnr-sync"></span></a>
-                                            </div>
-                                        </div>
-                                    @empty
-                                        <span>No Product Avaiable</span>
-                                    @endforelse
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="tab-pane fade" id="apple" role="tabpanel" aria-labelledby="apple-tab">
-                            <div class="row">
-                                <div class="col-xl-3 mb-4">
-                                    <div class="product__single">
-                                        <div class="product__box">
-                                            <div class="product__content--top">
-                                                <span class="cate-name">SAMSUNG</span>
-                                                <h6 class="product__title mine__shaft-color f-700 mb-0">
-                                                    <a href="product-details.html">Wireless Audioing Systems Purple
-                                                        Degree</a>
-                                                </h6>
-                                            </div>
-                                            <div class="product__thumb">
-                                                <a href="product-details.html" class="img-wrapper">
-                                                    <img class="img" src="img/allproducts/products__thumb__33.jpg"
-                                                        alt="" />
-                                                    <img class="img secondary-img"
-                                                        src="img/allproducts/products__thumb__05.jpg" alt="" />
-                                                </a>
-                                            </div>
-                                            <div class="product__content--rating d-flex justify-content-between">
-                                                <div class="rating">
-                                                    <ul class="list-inline">
-                                                        <li class="rating-active">
-                                                            <i class="fas fa-star"></i>
-                                                        </li>
-                                                        <li class="rating-active">
-                                                            <i class="fas fa-star"></i>
-                                                        </li>
-                                                        <li class="rating-active">
-                                                            <i class="fas fa-star"></i>
-                                                        </li>
-                                                        <li><i class="fas fa-star"></i></li>
-                                                        <li><i class="fas fa-star"></i></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="price">
-                                                    <h5 class="grenadier-color f-600">$2,299.00</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-action">
-                                            <a href="#"><span class="lnr lnr-heart"></span></a>
-                                            <a href="#"><span class="lnr lnr-eye"></span></a>
-                                            <a href="#"><span class="lnr lnr-cart"></span></a>
-                                            <a href="#"><span class="lnr lnr-sync"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="mark" role="tabpanel" aria-labelledby="mark-tab">
-                            <div class="row">
-                                <div class="col-xl-3 mb-4">
-                                    <div class="product__single">
-                                        <div class="product__box">
-                                            <div class="product__content--top">
-                                                <span class="cate-name">SAMSUNG</span>
-                                                <h6 class="product__title mine__shaft-color f-700 mb-0">
-                                                    <a href="product-details.html">Wireless Audioing Systems Purple
-                                                        Degree</a>
-                                                </h6>
-                                            </div>
-                                            <div class="product__thumb">
-                                                <a href="product-details.html" class="img-wrapper">
-                                                    <img class="img" src="img/allproducts/products__thumb__33.jpg"
-                                                        alt="" />
-                                                    <img class="img secondary-img"
-                                                        src="img/allproducts/products__thumb__05.jpg" alt="" />
-                                                </a>
-                                            </div>
-                                            <div class="product__content--rating d-flex justify-content-between">
-                                                <div class="rating">
-                                                    <ul class="list-inline">
-                                                        <li class="rating-active">
-                                                            <i class="fas fa-star"></i>
-                                                        </li>
-                                                        <li class="rating-active">
-                                                            <i class="fas fa-star"></i>
-                                                        </li>
-                                                        <li class="rating-active">
-                                                            <i class="fas fa-star"></i>
-                                                        </li>
-                                                        <li><i class="fas fa-star"></i></li>
-                                                        <li><i class="fas fa-star"></i></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="price">
-                                                    <h5 class="grenadier-color f-600">$2,299.00</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-action">
-                                            <a href="#"><span class="lnr lnr-heart"></span></a>
-                                            <a href="#"><span class="lnr lnr-eye"></span></a>
-                                            <a href="#"><span class="lnr lnr-cart"></span></a>
-                                            <a href="#"><span class="lnr lnr-sync"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="acronis" role="tabpanel" aria-labelledby="acronis-tab">
-                            <div class="row">
-                                <div class="col-xl-3 mb-4">
-                                    <div class="product__single">
-                                        <div class="product__box">
-                                            <div class="product__content--top">
-                                                <span class="cate-name">SAMSUNG</span>
-                                                <h6 class="product__title mine__shaft-color f-700 mb-0">
-                                                    <a href="product-details.html">Wireless Audioing Systems Purple
-                                                        Degree</a>
-                                                </h6>
-                                            </div>
-                                            <div class="product__thumb">
-                                                <a href="product-details.html" class="img-wrapper">
-                                                    <img class="img" src="img/allproducts/products__thumb__33.jpg"
-                                                        alt="" />
-                                                    <img class="img secondary-img"
-                                                        src="img/allproducts/products__thumb__05.jpg" alt="" />
-                                                </a>
-                                            </div>
-                                            <div class="product__content--rating d-flex justify-content-between">
-                                                <div class="rating">
-                                                    <ul class="list-inline">
-                                                        <li class="rating-active">
-                                                            <i class="fas fa-star"></i>
-                                                        </li>
-                                                        <li class="rating-active">
-                                                            <i class="fas fa-star"></i>
-                                                        </li>
-                                                        <li class="rating-active">
-                                                            <i class="fas fa-star"></i>
-                                                        </li>
-                                                        <li><i class="fas fa-star"></i></li>
-                                                        <li><i class="fas fa-star"></i></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="price">
-                                                    <h5 class="grenadier-color f-600">$2,299.00</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-action">
-                                            <a href="#"><span class="lnr lnr-heart"></span></a>
-                                            <a href="#"><span class="lnr lnr-eye"></span></a>
-                                            <a href="#"><span class="lnr lnr-cart"></span></a>
-                                            <a href="#"><span class="lnr lnr-sync"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div> --}}
 
             </div>
 
@@ -649,39 +435,6 @@
     </div>
     <!-- Product end -->
 
-    <!-- Subscribe -->
-    {{-- <div class="subscribe subscribe--area grenadier-bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="newsletter newsletter--box d-flex justify-content-between align-items-center pos-rel">
-                            <div class="left d-flex justify-content-between align-items-center">
-                                <div class="newsletter__title">
-                                    <span class="notification--icon"><img src="img/icon/notification-icon.png"
-                                            alt="notification" /></span>
-                                    <span class="notification__title--heading f-800 white-color">Subscribe for Join
-                                        Us!</span>
-                                </div>
-                                <div class="newsletter--message d-none d-xl-block">
-                                    <p class="newsletter__message__title mb-0">
-                                        .... & receive $20 coupne for first Shopping & free
-                                        delivery.
-                                    </p>
-                                </div>
-                            </div>
-                            <form class="right newsletter--form pos-rel">
-                                <input class="newsletter--input" type="text"
-                                    placeholder="Enter Your Email Address ..." />
-                                <button class="btn newsletter--button" type="button">
-                                    <img src="img/icon/plan-icon.png" alt="" />
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-    <!-- Subscribe End -->
 
 </main>
 <!-- Main End -->

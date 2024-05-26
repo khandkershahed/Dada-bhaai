@@ -13,7 +13,12 @@ use App\Models\Admin\Product;
 use App\Models\Admin\Template;
 use App\Models\Banner;
 use App\Models\Brand;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Laravel\Socialite\Facades\Socialite;
 
 class IndexController extends Controller
 {
@@ -68,14 +73,19 @@ class IndexController extends Controller
         // $child_id = $product->child_id;
         // $relativeChild = Product::where('child_id', $child_id)->where('id', '!=', '$id')->orderBy('id', 'DESC')->limit(6)->get();
 
-        $child_id = $product->child_id;
+        // $child_id = $product->child_id;
+        $child_ids = explode(',', $product->child_id);
+
+        //dd(($child_id));
+        foreach ($child_ids as $key => $child_id) {
+            $relativeChild[] = Product::where('id', $child_id)
+                ->orderBy('id', 'DESC')
+                ->first();
+        }
 
         // Retrieve related products based on the child_id, excluding the product with ID equal to $id
-        $relativeChild = Product::where('child_id', $child_id)
-            ->where('id', '!=', $id) // Remove the single quotes around $id
-            ->orderBy('id', 'DESC')
-            ->limit(6)
-            ->get();
+
+        // dd($relativeChild);
 
         return view('frontend.template_one.product.single_product', compact('product', 'relativeProduct', 'multiImages', 'relativeChild', 'product_colors'));
     }
@@ -181,6 +191,41 @@ class IndexController extends Controller
         $about = About::where('status', 'tamplate_one')->find(1);
 
         return view('frontend.pages.about_page', compact('about'));
+    }
+
+    //Login Google
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function googleCallback()
+    {
+        $user = Socialite::driver('google')->user();
+        $this->registerOrlogin($user);
+
+        return redirect()->route('template.one.dashboard');
+    }
+
+    public function registerOrlogin($data)
+    {
+        // Find user by email
+        $user = User::where('email', $data->email)->first();
+
+        // If user doesn't exist, create a new one
+        if (!$user) {
+            $user = new User();
+            $user->name = $data->name;
+            $user->email = $data->email;
+            $user->google_id = $data->id;
+            // Generate a random password for the user
+            $user->password = Hash::make(Str::random(8)); // You can adjust the password length as needed
+            $user->save();
+        }
+
+        // Log in the user
+        Auth::login($user);
+
     }
 
 }

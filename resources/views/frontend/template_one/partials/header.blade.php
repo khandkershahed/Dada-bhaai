@@ -243,6 +243,7 @@
                     </li> --}}
 
                     <li class="nav-item dropdown position-static">
+
                         <a class="nav-link main-menu-link dropdown-toggle" href="javascript:void(0)"
                             id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
@@ -362,7 +363,7 @@
                             <form class="searchbox" action="{{ route('product.search') }}" method="POST">
                                 @csrf
                                 <input type="search" placeholder="Search......" name="search"
-                                    class="searchbox-input" id="search" name="search" onkeyup="buttonUp();"
+                                    class="searchbox-input" id="search" autocomplete="off" name="search" onkeyup="buttonUp();"
                                     required>
                                 <button class="searchbox-submit" value="GO"><i
                                         class="icofont-search-2"></i></button>
@@ -386,20 +387,36 @@
                                                     aria-labelledby="dropdownMenuButton" style="">
 
                                                     @if (Auth::user())
-                                                        <a class="cart-button w-100 mt-0"
-                                                            href="{{ route('template.one.login') }}"
-                                                            class="">Login
-                                                        </a>
+                                                        {{-- <a class="cart-button w-100 mt-0"
+                                                            href=""
+                                                            class="">Logout
+                                                        </a> --}}
+
+                                                        <form method="POST" action="{{ route('logout') }}">
+                                                            @csrf
+
+                                                            <a href="{{ route('logout') }}"
+                                                                onclick="event.preventDefault();this.closest('form').submit();"
+                                                                class="cart-button w-100 mt-0">
+                                                                Logout
+
+                                                            </a>
+
+                                                        </form>
 
                                                         <hr class="mb-2 mt-3">
 
-                                                        <a href="{{ route('template.one.login') }}"
-                                                            class="text-muted">First time here? <span
-                                                                class="text-danger">Sign Up</span></a>
-                                                        <a class="dropdown-item" href="#"><i
+                                                        <p>First time here? <a
+                                                                href="{{ route('template.one.login') }}"
+                                                                class="text-danger">Sign
+                                                                Up</a>
+                                                        </p>
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('template.one.dashboard') }}"><i
                                                                 class="fal fa-user pr-2"></i>
                                                             My Dashboard</a>
-                                                        <a class="dropdown-item" href="#"><i
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('template.one.dashboard') }}"><i
                                                                 class="fal fa-star pr-2"
                                                                 aria-hidden="true"></i>Password Change</a>
                                                     @else
@@ -419,6 +436,7 @@
 
                                             </div>
                                         </li>
+
 
                                         <li class="">
                                             <a href="{{ route('wishlist') }}" style="font-size: 20px;">

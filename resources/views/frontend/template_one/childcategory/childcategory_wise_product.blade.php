@@ -28,16 +28,17 @@
                 <div class="border-b">
                     <div class="row">
 
-                        <div class="col-lg-4 col-md-4">
-                            <div class="shop-bar d-flex align-items-center">
-                                <h4 class="f-800 cod__black-color">{{ $childcatwiseproduct->childcategory_name }}</h4>
-                                {{-- <nav aria-label="breadcrumb">
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">
-                                                {{ $childcatwiseproduct->childcategory_name }}</li>
-                                        </ol>
-                                    </nav> --}}
+
+                        <div class="col-lg-5 col-md-4">
+                            <div class="shop-bar">
+                                <h6 class="f-800 cod__black-color">SubCategory</h6>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">
+                                            {{ $childcatwiseproduct->childcategory_name }}</li>
+                                    </ol>
+                                </nav>
                             </div>
                         </div>
 
@@ -48,7 +49,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-6">
+                        <div class="col-lg-3 col-md-6">
                             <div class="float-right">
                                 <select name="" id="sortBy">
                                     <option selected disabled>SortBy Product</option>
@@ -64,7 +65,6 @@
                                 </select>
                             </div>
                         </div>
-
                         {{-- New Setion  --}}
 
                     </div>
@@ -78,13 +78,14 @@
                         <div class="col-lg-4">
 
                             <div class="product-grid">
+
                                 <div class="product-image">
                                     <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
                                         class="image">
-                                        <img class="pic-1" src="{{ asset($product->product_image) }}">
+                                        <img class="pic-1" src="{{ asset($product->product_image) }}"
+                                            title="{{ $product->product_name }}">
                                     </a>
                                     <div class="product-button-group">
-
                                         {{-- Wishlist Icon --}}
                                         <a style="cursor: pointer;" id="{{ $product->id }}"
                                             onclick="addToWishList(this.id)"><i class="fas fa-heart"></i></a>
@@ -92,27 +93,27 @@
                                         {{-- Add To Cart Icon --}}
                                         <a type="submit" style="cursor:pointer;" data-product_id="{{ $product->id }}"
                                             class="add-to-cart add_to_cart_btn_product"><i
-                                                class="fas fa-shopping-cart"></i> Add To
-                                            Cart
+                                                class="fas fa-shopping-cart"></i>
+                                            Add To Cart
                                         </a>
 
-                                        {{-- <a type="submit" data-product_id="{{ $product->id }}"
-                                                        class="btn btn-primary btn-sm add_to_cart_btn_product">
-                                                        Add To Cart Details
-                                                    </a> --}}
-
                                         {{-- Compare Icon --}}
-                                        <a href="#"><i class="fas fa-random"></i></a>
+                                        <a href="javascript:;"><i class="fas fa-random"></i></a>
 
                                     </div>
                                 </div>
                                 <div class="product-content row align-items-center">
                                     <div class="col-lg-8">
-                                        <span class="cate-name">{{ $product->category->category_name }}</span>
+                                        <span class="cate-name">{{ $product->brand->brand_name }}</span>
+
                                         <h6 class="product__title mine__shaft-color f-700 mb-0 text-start">
-                                            <a
-                                                href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ $product->product_name }}</a>
+                                            <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
+                                                title="{{ $product->product_name }}">
+                                                {{ substr($product->product_name, 0, 18) }}
+                                            </a>
                                         </h6>
+
+
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="price text-end">
@@ -131,6 +132,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
 
                         </div>
