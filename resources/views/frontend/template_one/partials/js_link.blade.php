@@ -1164,3 +1164,19 @@
     });
 });
 </script>
+
+<script>
+     $(document).ready(function() {
+    // Listen for change event on checkbox
+    $('#defaultCheck1').change(function() {
+      // Check if checkbox is checked
+      if ($(this).is(':checked')) {
+        // If checked, hide the on-check-show div
+        $('.on-check-show').hide();
+      } else {
+        // If not checked, show the on-check-show div
+        $('.on-check-show').show();
+      }
+    });
+  });
+  </script>
