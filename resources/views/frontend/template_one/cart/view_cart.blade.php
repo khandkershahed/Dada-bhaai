@@ -57,7 +57,7 @@
                             <div class="row">
                                 <div class="col-lg-8">
                                     <div class="table-responsive">
-                                        <table class="table">
+                                        <table class="table table-striped table-hover">
                                             <!-- Cart Header -->
                                             <thead class="bg-light border-none">
                                                 <tr>

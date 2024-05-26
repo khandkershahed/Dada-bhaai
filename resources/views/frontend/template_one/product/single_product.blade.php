@@ -77,17 +77,29 @@
                                         <li>SKU: <span class="mr-2 ml-1">{{ $product->sku_code }}</span>MF Code:
                                             <span class="mr-2 ml-1">{{ $product->mf_code }}</span>
                                         </li>
-                                        <li class="">
-                                            <h5 class="grenadier-color f-600 mb-0">
-                                                Price: {{ $product->price }}
-                                            </h5>
-                                            <h5 class="f-600 mb-0 text-black">
-                                                {{-- Discont Price  --}}
-                                                Old:
-                                                <del> {{ $product->price }}</del>
-                                            </h5>
+                                        <li class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex">
+                                                <h5 class="grenadier-color f-600 mb-0">
+                                                    Price: {{ $product->price }}
+                                                </h5>
+                                                <h5 class="f-600 mb-0 text-black pl-2">
+                                                    {{-- Discont Price  --}}
+                                                    Old:
+                                                    <del> {{ $product->price }}</del>
+                                                </h5>
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <div class="number d-flex align-items-center">
+                                                        <button type="button" class="buttons-count" id="decrease">-</button>
+                                                        <input type="text" disabled class="mb-0 border-1 text-center"
+                                                            name="" value="1" min="1" id="dqty"
+                                                            style="width: 50px" />
+                                                        <button type="button" class="buttons-count" id="increase">+</button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </li>
-
                                     </ul>
                                     <p>{!! $product->short_desc !!}</p>
                                 </div>
@@ -199,29 +211,8 @@
                 </div>
                 <div class="col-lg-3" style="border: 1px solid #f5f5f5;box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 2px;">
                     <div class="cart-wrapper">
-                        <div class="cart-title d-flex justify-content-between align-items-center">
-                            <h6 class="d-flex justify-content-between align-items-center w-100">
-                                <div>
-                                    Product
-                                </div>
-                                <div>
-                                    Availability: <span class="text-danger">Pre Order</span>
-                                </div>
-                            </h6>
-                        </div>
                         <div class="mb-20 d-flex justify-content-between align-items-center">
-                            <div>
-                                <div>
-                                    <div class="number d-flex align-items-center">
-                                        <button type="button" class="buttons-count" id="decrease">-</button>
-                                        <input type="text" disabled class="mb-0 border-1 text-center"
-                                            name="" value="1" min="1" id="dqty"
-                                            style="width: 50px" />
-                                        <button type="button" class="buttons-count" id="increase">+</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
+                            {{-- <div>
                                 @if ($product->price_status == 'rfq')
                                     <h5 class="grenadier-color f-600 mb-0">
                                         Tk {{ $product->sas_price }}
@@ -234,7 +225,7 @@
                                     </h5>
                                 @endif
                                 <del class="text-muted">Tk {{ $product->price }}</del>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="mb-4">
                             <p class="mb-0 fw-bolder text-black" style="border-bottom: 1px solid #ccc;"><span

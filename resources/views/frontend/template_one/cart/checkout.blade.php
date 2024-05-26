@@ -60,7 +60,7 @@
                             <div class="card-body">
                                 <div class="row">
 
-                                    <div class="col-lg-8">
+                                    <div class="col-lg-8 px-0">
 
                                         {{-- Billing Info --}}
                                         <div class="card border-0 shadow-none mb-0">
@@ -169,7 +169,113 @@
 
                                         </div>
                                         {{-- Billing Info --}}
+                                        <div class="">
+                                            <div class="form-check shipping py-3 pt-0">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="defaultCheck1">
+                                                <label class="form-check-label" for="defaultCheck1">
+                                                    Shipping Address Same as Billing Address
+                                                </label>
+                                            </div>
+                                            <div class="on-check-show mb-3">
+                                                <div class="card border-0 rounded-0">
+                                                    <div class="card-body p-0">
+                                                        <div class="bg-light p-3">
 
+
+                                                            <div class="row">
+
+                                                                <div class="form-group col-sm-4">
+                                                                    <label for="user_id">User Name
+                                                                    </label>
+                                                                    <input type="text" class="form-control"
+                                                                        placeholder="Billing Name"
+                                                                        value="{{ Auth::user()->name }}" name="billing_name" />
+                                                                </div>
+
+                                                                <div class="form-group col-sm-4">
+                                                                    <label for="phone">Phone
+                                                                    </label>
+                                                                    <input type="text" class="form-control"
+                                                                        placeholder="Billing Phone"
+                                                                        value="{{ Auth::user()->phone }}"
+                                                                        name="billing_phone" />
+                                                                </div>
+
+                                                                <div class="form-group col-sm-4">
+                                                                    <label for="email">Email
+                                                                    </label>
+                                                                    <input type="email" class="form-control"
+                                                                        value="{{ Auth::user()->email }}"
+                                                                        placeholder="example@gmail.com" name="billing_email" />
+                                                                </div>
+
+                                                                <div class="form-group col-sm-4">
+                                                                    <label for="city">City
+                                                                    </label>
+                                                                    <input type="text" class="form-control"
+                                                                        value="{{ Auth::user()->city }}" name="billing_city"
+                                                                        placeholder="City Name" />
+                                                                </div>
+
+                                                                <div class="form-group col-sm-4">
+                                                                    <label for="state">State
+                                                                    </label>
+                                                                    <input type="text" class="form-control"
+                                                                        value="{{ old('billing_state') }}" name="billing_state"
+                                                                        placeholder="State Name" />
+                                                                </div>
+
+                                                                <div class="form-group col-sm-4">
+                                                                    <label for="postal_code">Postal Code
+                                                                    </label>
+                                                                    <input type="text" class="form-control"
+                                                                        value="{{ Auth::user()->postal_code }}"
+                                                                        name="billing_postal_code" placeholder="Postal Code" />
+                                                                </div>
+
+                                                                <div class="form-group col-sm-4">
+                                                                    <label for="country">Country
+                                                                    </label>
+
+                                                                    <input type="text" class="form-control"
+                                                                        value="{{ Auth::user()->country }}"
+                                                                        name="billing_country" placeholder="Country Name" />
+                                                                </div>
+
+
+                                                                <div class="form-group col-sm-4">
+                                                                    <label for="address_line1">Address 1
+                                                                    </label>
+                                                                    <input type="text" class="form-control"
+                                                                        value="{{ Auth::user()->address }}"
+                                                                        name="billing_address_line1"
+                                                                        placeholder="Address One" />
+                                                                </div>
+
+                                                                <div class="form-group col-sm-4">
+                                                                    <label for="address_line2">Address 2
+                                                                    </label>
+                                                                    <input type="text" class="form-control"
+                                                                        value="{{ Auth::user()->address_two }}"
+                                                                        name="billing_address_line2"
+                                                                        placeholder="Address Two" />
+                                                                </div>
+
+                                                                <div class="form-group col-sm-12">
+                                                                    <label for="address_line2">Note
+                                                                    </label>
+                                                                    <textarea class="form-control" placeholder="Write Something" name="notes" id="" cols="1"
+                                                                        rows="1"></textarea>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         {{-- Payment Info  --}}
                                         <div class="card-header checkout-page-form">
                                             <a class="card-title"> Payment Info </a>
@@ -286,7 +392,8 @@
                                                         {{-- Delivery System  --}}
                                                         <div class="mt-5">
                                                             <h5 class="cart-title-highlight title-3">Payment Method</h5>
-                                                            <ul class="payment_methods methods list-unstyled mt-3 form-group">
+                                                            <ul
+                                                                class="payment_methods methods list-unstyled mt-3 form-group">
 
                                                                 <li class="payment_method_bacs">
 

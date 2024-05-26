@@ -1401,7 +1401,9 @@ ul > li > ul.sub__menu.sub__dept--menu {
     top: 0;
     border-left: 1px solid #d1d1d1;
 }
-
+.on-check-show {
+    display: block; /* Set to block by default */
+  }
 ul.dept__menu--dropdown li:hover ul.sub__menu.sub__dept--menu {
     opacity: 1;
     transition: 0.4s;
