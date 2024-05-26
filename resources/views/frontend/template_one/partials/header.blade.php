@@ -446,6 +446,8 @@
                                             </a>
                                         </li>
 
+                                        
+
 
                                         <li class="">
                                             <a class="mini__cart--link" href="jaxascript:;" style="font-size: 20px;">
@@ -492,3 +494,5 @@
         </div>
     </nav>
 </header>
+
+

@@ -852,6 +852,9 @@
     // Cart Decrement End
 </script>
 
+{{-- ============================================== --}}
+{{-- ============================================== --}}
+
 <!--  /// Start Wishlist Add -->
 <script type="text/javascript">
     function addToWishList(product_id) {
@@ -925,27 +928,28 @@
                                     </td>
 
                                     <td>
-                                        <p>${value.product.product_name}</p>
+                                        <p>
+                                            ${value.product.product_name.length > 16 ? value.product.product_name.substring(0, 16) : value.product.product_name}
+
+                                        </p>
+
                                     </td>
 
                                     <td>
-                                                ${value.product.price_status == 'rfq'
+                                       ${
+                                        value.product.price_status === 'rfq'
 
-                                                ? `<p class="text-brand">Tk ${value.product.sas_price}</p>`
+                                        ? `<p class="text-brand">Tk ${value.product.sas_price}</p>`
 
-                                                : ``
+                                        : (value.product.price_status === 'offer_price'
+                                            ? `<p class="text-brand">Tk ${value.product.discount_price}</p>`
 
-                                                }
-
-                                                ${value.product.price_status == 'offer_price'
-
-                                                ? `<p class="text-brand">Tk ${value.product.discount_price}</p>`
-
-                                                : `<p class="text-brand">Tk ${value.product.price}</p>`
-
-                                                }
-
-
+                                            : (value.product.price_status === 'price'
+                                                ? `<p class="text-brand">Tk ${value.product.price}</p>`
+                                                : ''
+                                            )
+                                        )
+                                    }
 
                                     </td>
 
@@ -1093,74 +1097,74 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
-    const qtyInput = document.getElementById('dqty');
-    const increaseBtn = document.getElementById('increase');
-    const decreaseBtn = document.getElementById('decrease');
+        const qtyInput = document.getElementById('dqty');
+        const increaseBtn = document.getElementById('increase');
+        const decreaseBtn = document.getElementById('decrease');
 
-    increaseBtn.addEventListener('click', () => {
-        qtyInput.value = parseInt(qtyInput.value) + 1;
-    });
+        increaseBtn.addEventListener('click', () => {
+            qtyInput.value = parseInt(qtyInput.value) + 1;
+        });
 
-    decreaseBtn.addEventListener('click', () => {
-        if (qtyInput.value > 1) {
-            qtyInput.value = parseInt(qtyInput.value) - 1;
-        }
+        decreaseBtn.addEventListener('click', () => {
+            if (qtyInput.value > 1) {
+                qtyInput.value = parseInt(qtyInput.value) - 1;
+            }
+        });
     });
-});
 </script>
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
-    const qtyInput = document.getElementById('dqtyAccesories');
-    const increaseBtn = document.getElementById('increaseAccesories');
-    const decreaseBtn = document.getElementById('decreaseAccesories');
+        const qtyInput = document.getElementById('dqtyAccesories');
+        const increaseBtn = document.getElementById('increaseAccesories');
+        const decreaseBtn = document.getElementById('decreaseAccesories');
 
-    increaseBtn.addEventListener('click', () => {
-        qtyInput.value = parseInt(qtyInput.value) + 1;
-    });
+        increaseBtn.addEventListener('click', () => {
+            qtyInput.value = parseInt(qtyInput.value) + 1;
+        });
 
-    decreaseBtn.addEventListener('click', () => {
-        if (qtyInput.value > 1) {
-            qtyInput.value = parseInt(qtyInput.value) - 1;
-        }
+        decreaseBtn.addEventListener('click', () => {
+            if (qtyInput.value > 1) {
+                qtyInput.value = parseInt(qtyInput.value) - 1;
+            }
+        });
     });
-});
 </script>
 
 <script>
-    $(document).ready(function(){
-    // Initialize accordion
-    $('.card-header').each(function(){
-        if ($(this).hasClass('mark-cat')) {
-            $(this).addClass('collapsed').next().collapse('show');
-        } else {
-            $(this).addClass('collapsed').next().collapse('hide');
-        }
-        if ($(this).hasClass('mark-sub-cat')) {
-            $(this).addClass('collapsed').next().collapse('show');
-        } else {
-            $(this).addClass('collapsed').next().collapse('hide');
-        }
+    $(document).ready(function() {
+        // Initialize accordion
+        $('.card-header').each(function() {
+            if ($(this).hasClass('mark-cat')) {
+                $(this).addClass('collapsed').next().collapse('show');
+            } else {
+                $(this).addClass('collapsed').next().collapse('hide');
+            }
+            if ($(this).hasClass('mark-sub-cat')) {
+                $(this).addClass('collapsed').next().collapse('show');
+            } else {
+                $(this).addClass('collapsed').next().collapse('hide');
+            }
 
-        if ($(this).hasClass('marks')) {
-            $(this).addClass('collapsed').next().collapse('show');
-        } else {
-            $(this).addClass('collapsed').next().collapse('hide');
-        }
-    });
+            if ($(this).hasClass('marks')) {
+                $(this).addClass('collapsed').next().collapse('show');
+            } else {
+                $(this).addClass('collapsed').next().collapse('hide');
+            }
+        });
 
-    // Handle click events to toggle accordion
-    $('.category-filter, .card-header').click(function(){
-        $(this).toggleClass('collapsed').next().collapse('toggle');
+        // Handle click events to toggle accordion
+        $('.category-filter, .card-header').click(function() {
+            $(this).toggleClass('collapsed').next().collapse('toggle');
+        });
     });
-});
 </script>
 <script>
-    $(document).ready(function(){
-    $('.childcategory-link').click(function(){
-        // Remove "marks" class from all links
-        $('.childcategory-link').removeClass('marks');
-        // Add "marks" class to the clicked link
-        $(this).addClass('marks');
+    $(document).ready(function() {
+        $('.childcategory-link').click(function() {
+            // Remove "marks" class from all links
+            $('.childcategory-link').removeClass('marks');
+            // Add "marks" class to the clicked link
+            $(this).addClass('marks');
+        });
     });
-});
 </script>
