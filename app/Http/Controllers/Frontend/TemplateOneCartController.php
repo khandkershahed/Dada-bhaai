@@ -551,7 +551,7 @@ class TemplateOneCartController extends Controller
                 return view('frontend.template_one.cart.checkout', compact('carts', 'cartQty', 'cartTotal'));
             } else {
 
-                toastr()->error('You Need to Login First');
+                toastr()->error('At least add to Cart One Product');
 
                 return redirect()->to('/');
             }

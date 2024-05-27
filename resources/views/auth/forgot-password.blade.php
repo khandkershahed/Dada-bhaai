@@ -1,84 +1,76 @@
-
-
 @extends('frontend.template_one.frontend_dashboard_template_one')
 @section('index_template_one')
-    <!-- page banner area start -->
-    <section class="page-banner-area" data-background="{{ asset('frontend/template_one/assets/img/bg/page-banner.jpg') }}" style="margin-top: 4.7rem;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2 col-sm-12">
-                    <div class="banner-text text-center pt-90 pb-90">
-                        <h2 class="f-800 cod__black-color">Forgot Password</h2>
+@section('title')
+    DadaBhaai | Forgot Password
+@endsection
+<!-- page banner area start -->
+<section class="page-banner-area" data-background="{{ asset('frontend/template_one/assets/img/bg/banner.jpeg') }}"
+    style="margin-top: 4.7rem;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 col-sm-12">
+                <div class="banner-text text-center pt-90 pb-90">
+                    <h2 class="f-800 cod__black-color">Forgot Password</h2>
 
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">My Account</li>
-                            </ol>
-                        </nav>
-                    </div>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">My Account</li>
+                        </ol>
+                    </nav>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- page banner area end -->
+    </div>
+</section>
+<!-- page banner area end -->
 
-    <!-- reg area start -->
-    <section class="reg-area pt-60 pb-75">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 text-center">
-                    <div class="reg-wrapper">
-                        <ul class="nav" id="myTab" role="tablist">
-                            <li class="nav-item mr-40">
-                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                    aria-controls="home" aria-selected="true">Forgot Password</a>
-                            </li>
-                        </ul>
-
-                        <div class="tab-content" id="myTabContent">
-
-                            {{-- Login  --}}
-                            <div class="tab-pane fade show active" id="home" role="tabpanel"
-                                aria-labelledby="home-tab">
-
-                                <x-auth-session-status class="mb-4 text-danger" :status="session('status')" />
-
-                                <form method="POST" action="{{ route('password.email') }}">
-
-                                    @csrf
-
-                                    <div class="field">
-                                        <label>Email Address</label>
-
-                                        @error('email')
-                                            <div class="text-danger" style="margin-top: 0px;">{{ $message }}</div>
-                                        @enderror
-
-                                        <input type="email" placeholder="Email Address" value="{{ old('email') }}"
-                                            required name="email" id="email">
-                                    </div>
+<!-- reg area start -->
+<section class="reg-area pt-60 pb-75">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <div class="reg-wrapper">
+                    <ul class="nav" id="myTab" role="tablist">
+                        <li class="nav-item mr-40">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                aria-controls="home" aria-selected="true">Forgot Password</a>
+                        </li>
+                    </ul>
 
 
+                    {{-- Login  --}}
 
-                                    <button type="submit">Password Reset</button>
+                    <x-auth-session-status class="mb-4 text-danger" :status="session('status')" />
 
-                                    {{-- <a href="{{ route('password.request') }}" class="lost-pass">Forgot Password?</a> --}}
-                                </form>
+                    <form method="POST" action="{{ route('password.email') }}">
 
-                            </div>
-                            {{-- Login  --}}
+                        @csrf
 
+                        <div class="">
+                            <label>Email Address</label>
 
+                            @error('email')
+                                <div class="text-danger" style="margin-top: 0px;">{{ $message }}</div>
+                            @enderror
 
-
+                            <input type="email" placeholder="Email Address" value="{{ old('email') }}" required
+                                name="email" class="form-control" id="email">
                         </div>
-                    </div>
+
+                        <button type="submit">Password Reset</button>
+
+                    </form>
+
+                    {{-- Login  --}}
+
+
                 </div>
             </div>
         </div>
-    </section>
-    <!-- reg area end -->
+    </div>
+</section>
+<!-- reg area end -->
 @endsection
 
 

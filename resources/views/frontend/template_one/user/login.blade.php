@@ -2,7 +2,7 @@
 @section('index_template_one')
 @section('title', 'Dada Bhaai | Login')
 <!-- page banner area start -->
-<section class="page-banner-area" data-background="{{ asset('frontend/template_one/assets/img/bg/page-banner.jpg') }}"
+<section class="page-banner-area" data-background="{{ asset('frontend/template_one/assets/img/bg/banner.jpeg') }}"
     style="margin-top: 4.7rem;">
     <div class="container">
         <div class="row">

@@ -274,7 +274,7 @@
 
                                                     <label class="form-label">Discount Price</label>
 
-                                                    <input type="number" name="pdiscount_price" class="form-control form-control-sm form-control-solid" value="{{ old($editProduct->category_idpdiscount_price) }}" placeholder="Discount Price">
+                                                    <input type="number" name="pdiscount_price" class="form-control form-control-sm form-control-solid" value="{{ old($editProduct->pdiscount_price) }}" placeholder="Discount Price">
 
                                                 </div>
 

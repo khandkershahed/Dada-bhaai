@@ -1022,6 +1022,7 @@
 </script>
 
 {{-- ============================================== --}}
+
 {{-- ============================================== --}}
 
 <!--  /// Start Wishlist Add -->
@@ -1034,6 +1035,9 @@
 
             success: function(data) {
                 wishlist();
+
+                
+
                 // Start Message
 
                 const Toast = Swal.mixin({
