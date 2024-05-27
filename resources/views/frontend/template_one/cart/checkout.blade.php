@@ -356,9 +356,8 @@
 
                                                     <div class="form-group col-lg-8">
 
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Billing Name"
-                                                            value="{{ Auth::user()->name }}" name="billing_name" />
+                                                        <input type="text" class="form-control "
+                                                            placeholder="Coupon Name" name="" />
                                                     </div>
 
                                                     <div class="form-group col-lg-4">
