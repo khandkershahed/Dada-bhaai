@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Mail\OrderMail;
 use App\Models\Admin;
+use App\Models\Admin\Coupon;
 use App\Models\Admin\Offer;
 use App\Models\Admin\Product;
 use App\Models\Admin\Wishlist;
@@ -82,7 +83,7 @@ class TemplateOneCartController extends Controller
             ]);
 
             return response()->json(['success' => 'Successfully Buy on Your Cart']);
-        } elseif ($product->price_status == 'discount_price') {
+        } elseif ($product->price_status == 'offer_price') {
 
             Cart::add([
 
@@ -147,7 +148,7 @@ class TemplateOneCartController extends Controller
             ]);
 
             return response()->json(['success' => 'Successfully Added on Your Cart']);
-        } elseif ($product->price_status == 'discount_price') {
+        } elseif ($product->price_status == 'offer_price') {
 
             Cart::add([
 
@@ -212,7 +213,8 @@ class TemplateOneCartController extends Controller
             ]);
 
             return response()->json(['success' => 'Successfully Added on Your Cart']);
-        } elseif ($product->price_status == 'discount_price') {
+
+        } elseif ($product->price_status == 'offer_price') {
 
             Cart::add([
 
@@ -318,7 +320,8 @@ class TemplateOneCartController extends Controller
             ]);
 
             return response()->json(['success' => 'Successfully Added on Your Cart']);
-        } elseif ($product->price_status == 'discount_price') {
+
+        } elseif ($product->price_status == 'offer_price') {
 
             Cart::add([
 
@@ -326,7 +329,7 @@ class TemplateOneCartController extends Controller
 
                 'name' => $product->product_name,
                 'qty' => 1,
-                'price' => $product->offer_price,
+                'price' => $product->discount_price,
                 'weight' => 1,
 
                 'options' => [
@@ -390,7 +393,7 @@ class TemplateOneCartController extends Controller
             ]);
 
             return response()->json(['success' => 'Successfully Added on Your Cart']);
-        } elseif ($product->price_status == 'discount_price') {
+        } elseif ($product->price_status == 'offer_price') {
 
             Cart::add([
 
@@ -689,6 +692,25 @@ class TemplateOneCartController extends Controller
     {
         Wishlist::where('user_id', Auth::id())->where('id', $id)->delete();
         return response()->json(['success' => 'Successfully Product Remove']);
+    }
+
+    // =================================
+    public function applyCoupon(Request $request)
+    {
+        $coupon = $request->input('coupon');
+        $validCoupon = Coupon::where('coupon_name', $coupon)->first();
+
+        if ($validCoupon) {
+            return response()->json([
+                'success' => true,
+                'discount' => $validCoupon->coupon_discount,
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Invalid coupon code.',
+            ]);
+        }
     }
 
 }

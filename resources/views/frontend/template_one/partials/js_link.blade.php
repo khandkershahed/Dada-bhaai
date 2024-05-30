@@ -257,6 +257,7 @@
                 $('.cart_icon').removeClass('d-none');
 
                 miniCart();
+                miniCartRelated();
 
                 // Start Message
                 const Toast = Swal.mixin({
@@ -359,12 +360,7 @@
 <script>
     $('.add_to_cart_btn_product').click(function() {
 
-
-        // var price = $(this).data('offer_price');
         var product_id = $(this).data('product_id');
-
-
-        // var color = $('#dcolor option:selected').text();
 
         $.ajax({
 
@@ -373,9 +369,7 @@
             url: '/product-store-cart',
 
             data: {
-                // price: price,
                 product_id: product_id,
-                // color: color,
             },
 
             success: function(data) {
@@ -383,6 +377,7 @@
                 $('.cart_icon').removeClass('d-none');
 
                 miniCart();
+                miniCartRelated();
 
                 // Start Message
 
@@ -1036,7 +1031,7 @@
             success: function(data) {
                 wishlist();
 
-                
+
 
                 // Start Message
 
@@ -1357,3 +1352,6 @@
         });
     });
 </script>
+
+{{-- ======================================================= --}}
+

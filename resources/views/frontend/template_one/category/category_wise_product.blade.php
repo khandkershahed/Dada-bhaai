@@ -30,7 +30,7 @@
                 </div>
                 <div class="border-b">
                     <div class="row">
-                        
+
                         <div class="col-lg-5 col-md-4">
                             <div class="shop-bar">
                                 <h6 class="f-800 cod__black-color">Category</h6>
@@ -114,19 +114,23 @@
 
                                     </div>
                                     <div class="col-lg-4">
-                                        <div class="price text-end">
+                                        <div class="text-end">
+
                                             @if ($product->price_status == 'rfq')
                                                 <h6 class="grenadier-color mb-0 fw-bold">
                                                     Tk {{ $product->sas_price }}
                                                 </h6>
                                             @elseif ($product->price_status == 'offer_price')
-                                                <h6 class="grenadier-color mb-0 fw-bold">
-                                                    Tk {{ $product->discount_price }}</h6>
-                                            @else
+                                                <del>Tk {{ $product->price }}</del>
                                                 <h6 class="grenadier-color mb-0 fw-bold">Tk
-                                                    {{ $product->price }}
+                                                    {{ $product->discount_price }}
+                                                </h6>
+                                            @elseif ($product->price_status == 'price')
+                                                <h6 class="grenadier-color mb-0 fw-bold">
+                                                    Tk {{ $product->price }}
                                                 </h6>
                                             @endif
+
                                         </div>
                                     </div>
                                 </div>

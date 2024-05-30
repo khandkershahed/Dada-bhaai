@@ -215,6 +215,10 @@ Route::controller(TemplateOneCartController::class)->group(function () {
     Route::get('/cart-checkout', 'CheckoutTemplateOne')->name('template.one.checkout');
     Route::post('/cart-checkout-store', 'CheckoutStoreTemplateOne')->name('template.checkout.store');
 
+    // ==================================
+    Route::post('/apply-coupon', 'applyCoupon')->name('apply.coupon');
+
+
 });
 
 // /////////////////// Template Two //////////////////////
