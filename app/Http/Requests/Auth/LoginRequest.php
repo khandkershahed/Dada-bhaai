@@ -56,6 +56,7 @@ class LoginRequest extends FormRequest
         }
 
         // If the email exists, attempt to authenticate with the given password
+        
         if (!Auth::attempt($credentials, $remember)) {
             RateLimiter::hit($this->throttleKey());
 

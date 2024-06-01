@@ -218,7 +218,6 @@ Route::controller(TemplateOneCartController::class)->group(function () {
     // ==================================
     Route::post('/apply-coupon', 'applyCoupon')->name('apply.coupon');
 
-
 });
 
 // /////////////////// Template Two //////////////////////

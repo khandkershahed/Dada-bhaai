@@ -1,7 +1,6 @@
 @php
 
     $products = App\Models\Admin\Product::where('status', '1')
-        ->where('status', '1')
         ->where('feature', '1')
         ->orderBy('id', 'DESC')
         ->limit(8)
