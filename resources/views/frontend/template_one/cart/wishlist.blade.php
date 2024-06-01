@@ -5,7 +5,7 @@
 @endsection
     <!-- page banner area start -->
     <section class="page-banner-area blog-page"
-        data-background="{{ asset('frontend/template_one/assets/img/bg/banner.jpeg') }}">
+        data-background="{{ asset('frontend/template_one/assets/img/bg/banner.jpg') }}">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">

@@ -357,6 +357,7 @@ class ProductController extends Controller
                 'child_id' => $child_ids,
                 'refurbished' => $request->refurbished,
                 'deal' => $request->deal,
+                'feature' => $request->feature,
 
                 'short_desc' => $request->short_desc,
                 'overview' => $request->overview,

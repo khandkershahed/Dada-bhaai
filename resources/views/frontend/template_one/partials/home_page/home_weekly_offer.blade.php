@@ -10,7 +10,7 @@
 @if (count($offer_cats) > 0)
     <div class="offer-deals">
         <div class="offer--deals__main offer-deals--bg pt-75 pb-45"
-            data-background="{{ asset('frontend/template_one/assets/img/bg/offer__deals__bg.png') }}">
+            data-background="{{ asset('frontend/template_one/assets/img/bg/offer_banner.jpg') }}">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -26,19 +26,17 @@
                                             aria-labelledby="home-tab">
                                             <div class="row align-items-center">
                                                 <div class="col-xl-4 col-lg-4">
-                                                    <div class="offer--deals__title mb-30">
-                                                        <h2>
-                                                            Offer
-                                                            <span
-                                                                class="f-800 pure__black-color d-block">{{ $offer_cat->offer_category_name }}</span>
-                                                        </h2>
-                                                        <p>Hurry Up Before Offer Will End</p>
-                                                    </div>
+
+                                                    <h2>{{ $offer_cat->offer_category_name }}</h2>
+                                                    <h6 class="mb-3">{{ $offer_cat->offer->name }}</h6>
+
+                                                    <p>Hurry Up Before Offer Will End</p>
+
                                                 </div>
                                                 <div class="col-xl-4 col-lg-4">
-                                                    {{-- <img class="img-fluid"
-                                                    src="{{ asset('storage/offer_image/' . $offer_cat->offer->offer_image) }}"
-                                                    alt=""> --}}
+                                                    <img class="img-fluid"
+                                                        src="{{ asset($offer_cat->offer->products->product_image) }}"
+                                                        alt="" style="height: 280px; width: 300px;">
                                                 </div>
                                                 <div class="col-xl-4 col-lg-4">
                                                     <div class="offer--deals__products mb-30">
@@ -46,7 +44,7 @@
                                                         <div class="products--deals__content mb-35">
                                                             <h6 class="f-700 mb-20">
                                                                 <a href="javascript:;"
-                                                                    id="opname">{{ $offer_cat->offer->name }}</a>
+                                                                    id="opname">{{ $offer_cat->offer->products->product_name }}</a>
                                                             </h6>
 
                                                             <span>Tk </span><span
@@ -56,13 +54,13 @@
                                                                     class="price-new f-600 grenadier-color"
                                                                     id="">{{ $offer_cat->offer->discount_price }}</span></span>
 
-                                                            <input type="hidden" class="mb-0  border-1" name=""
+                                                            {{-- <input type="hidden" class="mb-0  border-1" name=""
                                                                 value="{{ $offer_cat->offer->discount_price }}"
                                                                 min="1" id="opprice" style="width: 50px" />
 
                                                             <input type="hidden" class="mb-0  border-1" name=""
                                                                 value="1" min="1" id="oqty"
-                                                                style="width: 50px" />
+                                                                style="width: 50px" /> --}}
 
                                                         </div>
                                                         <div class="product-countdown mb-15">
@@ -73,14 +71,19 @@
                                                             </div>
                                                         </div>
 
-                                                        <input type="hidden" id="offerproduct_id"
-                                                            value="{{ $offer_cat->offer->id }}">
+                                                        {{-- <input type="hidden" id="offerproduct_id"
+                                                            value="{{ $offer_cat->offer->id }}"> --}}
 
                                                         <div class="product--footer__deals">
+
                                                             <a type="submit" style="cursor:pointer;"
-                                                                onclick="offerToCartOne()" class="add-link f-700">+ Add
+                                                                data-product_id="{{ $offer_cat->offer->products->id }}"
+                                                                data-discount_price="{{ $offer_cat->offer->discount_price }}"
+                                                                class="add-link f-700 add_to_offer_btn">+ Add
                                                                 To Cart</a>
+
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </div>

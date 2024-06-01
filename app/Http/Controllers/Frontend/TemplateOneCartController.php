@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Mail\OrderMail;
 use App\Models\Admin;
 use App\Models\Admin\Coupon;
-use App\Models\Admin\Offer;
 use App\Models\Admin\Product;
 use App\Models\Admin\Wishlist;
 use App\Models\User\Order;
@@ -23,9 +22,11 @@ use Illuminate\Support\Facades\Notification;
 class TemplateOneCartController extends Controller
 {
     //Offer To Cart
-    public function OfferToCartTemplateOne(Request $request, $id)
+    public function OfferToCartTemplateOne(Request $request)
     {
-        $product = Offer::findOrFail($id);
+        $id = $request->product_id;
+
+        $product = Product::findOrFail($id);
 
         $cartItem = Cart::search(function ($cartItem, $rowId) use ($id) {
             return $cartItem->id === $id;
@@ -35,16 +36,16 @@ class TemplateOneCartController extends Controller
 
             return response()->json(['error' => 'This Product Has Already Added']);
         }
-        // dd($request->all());
+
         Cart::add([
 
             'id' => $id,
-            'name' => $request->product_name,
-            'qty' => $request->quantity,
+            'name' => $product->product_name,
+            'qty' => 1,
             'price' => $request->price,
             'weight' => 1,
             'options' => [
-                'image' => $product->offer_image,
+                'image' => $product->product_image,
                 // 'color' => $request->color,
             ],
         ]);

@@ -177,7 +177,7 @@ Route::controller(CartController::class)->group(function () {
 Route::controller(TemplateOneCartController::class)->group(function () {
 
     //Offer To Cart
-    Route::post('/product/offer/store/{id}', 'OfferToCartTemplateOne');
+    Route::post('/product/offer/store', 'OfferToCartTemplateOne');
 
     //Buy To Cart
     Route::post('/product/buy/store/{id}', 'BuyToCartTemplateOne');

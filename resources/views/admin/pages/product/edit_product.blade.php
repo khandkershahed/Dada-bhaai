@@ -620,7 +620,7 @@
                                                 <div class="form-check form-check-custom form-check-solid mb-5">
 
                                                     <input class="form-check-input me-3" name="feature" type="checkbox"
-                                                        value="1" {{ $editProduct->feature == '1' ? 'checked' : '' }}
+                                                        value="1" {{ $editProduct->feature == 1 ? 'checked' : '' }}
                                                         id="kt_docs_formvalidation_checkbox_option_1" />
 
                                                     <label class="form-check-label"

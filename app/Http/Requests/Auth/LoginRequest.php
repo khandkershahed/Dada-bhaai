@@ -64,6 +64,12 @@ class LoginRequest extends FormRequest
             ]);
         }
 
+        $id = Auth::user()->id;
+        $data = User::find($id);
+        $name = $data->name;
+
+        toastr()->success(' ' . $name . ' Login Successfully');
+
         RateLimiter::clear($this->throttleKey());
     }
 

@@ -113,32 +113,31 @@
 
 {{-- OfferToCartOne --}}
 <script>
-    function offerToCartOne() {
+    $('.add_to_offer_btn').click(function() {
 
-        var product_name = $('#opname').text();
-        var id = $('#offerproduct_id').val();
-        var quantity = $('#oqty').val();
-
-        var price = $('#opprice').val();
+        var price = $(this).data('discount_price');
+        var product_id = $(this).data('product_id');
 
         $.ajax({
 
             type: "POST",
             dataType: 'json',
-            url: '/product/offer/store/' + id,
+            url: '/product/offer/store',
 
             data: {
-                quantity: quantity,
-                product_name: product_name,
-
                 price: price,
+                product_id: product_id,
+                // color: color,
             },
 
             success: function(data) {
 
+                $('.cart_icon').removeClass('d-none');
+
                 miniCart();
 
                 // Start Message
+
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -162,12 +161,74 @@
                         title: data.error,
                     })
                 }
+
                 // End Message
             }
 
         })
 
-    }
+
+
+    })
+
+
+    // function offerToCartOne() {
+
+    //     var product_name = $('#opname').text();
+    //     var id = $('#offerproduct_id').val();
+    //     var quantity = $('#oqty').val();
+
+    //     var price = $('#opprice').val();
+
+    //     $.ajax({
+
+    //         type: "POST",
+    //         dataType: 'json',
+    //         url: '/product/offer/store/' + id,
+
+    //         data: {
+    //             quantity: quantity,
+    //             product_name: product_name,
+
+    //             price: price,
+    //         },
+
+    //         success: function(data) {
+
+    //             miniCart();
+
+    //             // Start Message 
+
+    //             const Toast = Swal.mixin({
+    //                 toast: true,
+    //                 position: 'top-end',
+
+    //                 showConfirmButton: false,
+    //                 timer: 3000
+    //             })
+    //             if ($.isEmptyObject(data.error)) {
+
+    //                 Toast.fire({
+    //                     type: 'success',
+    //                     icon: 'success',
+    //                     title: data.success,
+    //                 })
+
+    //             } else {
+
+    //                 Toast.fire({
+    //                     type: 'error',
+    //                     icon: 'error',
+    //                     title: data.error,
+    //                 })
+    //             }
+
+    //             // End Message  
+    //         }
+
+    //     })
+
+    // }
 </script>
 {{-- OfferToCartOne --}}
 
@@ -1354,4 +1415,3 @@
 </script>
 
 {{-- ======================================================= --}}
-

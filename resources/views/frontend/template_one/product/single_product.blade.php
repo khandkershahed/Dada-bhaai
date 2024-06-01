@@ -305,25 +305,27 @@
 
                         </div>
 
-                        {{-- <div class="d-flex align-items-center">
-                            <input type="hidden" id="oneproduct_id" value="{{ $product->id }}">
-                            <a type="submit" onclick="addToCartOne()" class="cart-button w-100 mt-0">Add
-                                Cart</a>
-                            <a type="submit" onclick="buyToCartOne()" class="cart-button w-100 ml-3 mt-0">Buy
-                                Now</a>
-                        </div> --}}
+                        {{-- @if (!empty($cartQty) && $cartQty > 0)
+                            <div class="d-flex align-items-center" id="cartButtons">
+                                <a href="{{ route('template.one.view.cart') }}" class="cart-button w-100 mt-0">View
+                                    Cart</a>
+                                <a href="{{ route('template.one.checkout') }}"
+                                    class="cart-button w-100 ml-3 mt-0">Checkout</a>
+                            </div>
+                        @endif --}}
 
-                        <div class="d-flex align-items-center">
+                        @if (!empty($cartQty) && $cartQty > 0)
 
-                            <a href="" class="cart-button w-100 mt-0">View Cart</a>
-                            <a href="" class="cart-button w-100 ml-3 mt-0">CheckOut</a>
+                            <div class="d-flex align-items-center" id="cartButtons" style="display: none;">
+                                <a href="{{ route('template.one.view.cart') }}" class="cart-button w-100 mt-0">View
+                                    Cart</a>
+                                <a href="{{ route('template.one.checkout') }}"
+                                    class="cart-button w-100 ml-3 mt-0">Checkout</a>
+                            </div>
+                            
+                        @endif
 
-                        </div>
 
-                        {{-- <div class="last pt-15 align-items-center d-flex justify-content-center">
-                                <a href="#">Add To Wishlist</a>
-                                <a href="#">Compare</a>
-                            </div> --}}
                     </div>
                 </div>
 
@@ -515,4 +517,34 @@
 
 </main>
 <!-- Main End -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Function to toggle cart buttons visibility
+        function toggleCartButtons(cartQty) {
+            if (cartQty > 0) {
+                $('#cartButtons').show();
+            } else {
+                $('#cartButtons').hide();
+            }
+        }
+
+        // Initial toggle based on $cartQty value
+        var cartQty = {{ $cartQty ?? 0 }};
+        toggleCartButtons(cartQty);
+
+        // Example: Assume a product is added dynamically, for demonstration purposes
+        // This could be triggered by an AJAX call or other events
+        $('#addProductBtn').on('click', function() {
+            // Code to add the product
+            cartQty++; // Assuming the cart quantity is increased by 1
+            toggleCartButtons(cartQty);
+        });
+    });
+</script>
+
+
+
+
 @endsection
