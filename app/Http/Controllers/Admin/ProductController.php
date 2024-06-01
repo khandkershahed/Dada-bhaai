@@ -344,6 +344,10 @@ class ProductController extends Controller
                 'brand_id' => $request->brand_id,
                 'category_id' => $request->category_id,
 
+                'price' => $request->price,
+                'discount_price' => $request->discount_price,
+                'sas_price' => $request->sas_price,
+
                 'subcategory_id' => $request->subcategory_id,
                 'childcategory_id' => $request->childcategory_id,
                 'tags' => $request->tags,
