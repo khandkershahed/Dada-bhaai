@@ -18,7 +18,7 @@
 
     // minicart toggle
 
-    $(".mini__cart--link").on('click',function() {
+    $(".mini__cart--link").on('click', function () {
 
         $(".mini__cart--box").slideToggle();
 
@@ -160,7 +160,7 @@
 
                 }
 
-		]
+            ]
 
         });
 
@@ -242,7 +242,7 @@
 
             1199: {
 
-                items:4
+                items: 4
 
             }
 
@@ -250,7 +250,7 @@
 
     });
 
-    
+
 
     // product active for shop banner page 
 
@@ -290,7 +290,7 @@
 
             1199: {
 
-                items:4
+                items: 4
 
             }
 
@@ -298,7 +298,7 @@
 
     });
 
-    
+
 
     // product active
 
@@ -338,7 +338,7 @@
 
             1199: {
 
-                items:3
+                items: 3
 
             }
 
@@ -346,7 +346,7 @@
 
     });
 
-    
+
 
     // product active small
 
@@ -600,7 +600,7 @@
 
                 }
 
-    },
+            },
 
             {
 
@@ -616,7 +616,7 @@
 
                 }
 
-    },
+            },
 
             {
 
@@ -632,15 +632,15 @@
 
                 }
 
-    }
+            }
 
-    // You can unslick at a given breakpoint now by adding:
+            // You can unslick at a given breakpoint now by adding:
 
-    // settings: "unslick"
+            // settings: "unslick"
 
-    // instead of a settings object
+            // instead of a settings object
 
-  ]
+        ]
 
     });
 
@@ -680,7 +680,7 @@
 
                 }
 
-    },
+            },
 
             {
 
@@ -694,7 +694,7 @@
 
                 }
 
-    },
+            },
 
             {
 
@@ -708,19 +708,19 @@
 
                 }
 
-    }
+            }
 
-    // You can unslick at a given breakpoint now by adding:
+            // You can unslick at a given breakpoint now by adding:
 
-    // settings: "unslick"
+            // settings: "unslick"
 
-    // instead of a settings object
+            // instead of a settings object
 
-  ]
+        ]
 
     });
 
-    
+
 
     //brand-activation
 
@@ -796,11 +796,11 @@
 
     });
 
-    
+
 
     //blog details page activation
 
-    
+
 
     $('.blog-details-img-active').slick({
 
@@ -846,41 +846,41 @@
 
     });
 
-    
+
 
     //range slider activation
 
-    
 
-        $("#slider-range").slider({
 
-            range: true,
+    $("#slider-range").slider({
 
-            min: 0,
+        range: true,
 
-            max: 500,
+        min: 0,
 
-            values: [75, 300],
+        max: 500,
 
-            slide: function (event, ui) {
+        values: [75, 200],
 
-                $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+        slide: function (event, ui) {
 
-            }
+            $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
 
-        });
+        }
 
-        $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+    });
 
-            " - $" + $("#slider-range").slider("values", 1));
+    $("#amount").val("$" + $("#slider-range").slider("values", 0) +
 
-    
+        " - $" + $("#slider-range").slider("values", 1));
 
-    
+
+
+
 
     // WOW active
 
-    
+
 
     new WOW().init();
 

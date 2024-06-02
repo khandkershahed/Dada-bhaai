@@ -90,14 +90,15 @@
                         {{-- Brand  --}}
 
                         {{-- Price --}}
+
                         <div class="slider-range mt-50">
 
                             <div class="side-title mb-30">
                                 <h6>Filter By Price</h6>
                             </div>
 
-                            <div id="slider-range" data-min="{{ HelperShop::minPrice() }}"
-                                data-max="{{ HelperShop::maxPrice() }}"></div>
+                            <div id="slider-range" data-min="{{ Helper::minPrice() }}"
+                                data-max="{{ Helper::maxPrice() }}"></div>
 
                             <p>
                                 <input type="hidden" id="price_range" name="price_range"
@@ -112,7 +113,7 @@
                                 <label for="amount">Price :</label>
 
                                 <input type="text" id="amount" class=""
-                                    value="@if (!empty($_GET['price'])) ${{ $price[0] }} @else {{ HelperShop::minPrice() }} @endif-@if (!empty($_GET['price'])) ${{ $price[1] }} @else {{ HelperShop::maxPrice() }} @endif"
+                                    value="@if (!empty($_GET['price'])) ${{ $price[0] }} @else {{ Helper::minPrice() }} @endif-@if (!empty($_GET['price'])) ${{ $price[1] }} @else {{ Helper::maxPrice() }} @endif"
                                     readonly>
 
 
@@ -121,6 +122,7 @@
                             <button type="submit" class="lnk btn btn-primary">Filter</button>
 
                         </div>
+
                         {{-- Price --}}
 
                         {{-- Color --}}
@@ -353,6 +355,7 @@
 </form>
 <!-- shop area end -->
 @endsection
+
 @section('pricescripts')
 <script>
     $(document).ready(function() {

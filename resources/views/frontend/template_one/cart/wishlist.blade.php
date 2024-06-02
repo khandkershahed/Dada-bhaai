@@ -45,7 +45,7 @@
                                 <span class="grenadier-color">WishList</span>
                             </h5>
                             <a href="{{ route('index') }}" class="f-800 cod__black-color">
-                                <span class="grenadier-color">CONTINUE SHOPPING <i
+                                <span class="grenadier-color">Continue Shopping<i
                                         class="fa fa-long-arrow-right"></i></span>
                             </a>
                         </div>
@@ -67,6 +67,7 @@
                                                     <th style="width: 10%">Image</th>
                                                     <th style="width: 35%">Product Name</th>
                                                     <th style="width: 10%">Price</th>
+                                                    <th style="width: 10%">Cart</th>
                                                     <th style="width: 13%">Remove</th>
                                                 </tr>
                                             </thead>

@@ -1,8 +1,9 @@
 <?php
 
+use App\Models\Admin\Product;
 use App\Models\User\Order;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 class Helper
 {
@@ -32,7 +33,7 @@ class Helper
 
                 $img = Image::make($mainFile)->resize($reqWidth, $reqHeight);
                 $img->save("{$uploadPath}/requestImg/{$fileName}");
-                
+
             };
 
         } else {
@@ -71,5 +72,15 @@ class Helper
         }
 
         return $orderNumber;
+    }
+
+    public static function minPrice()
+    {
+        return (Product::where('status', 1)->min('price'));
+    }
+
+    public static function maxPrice()
+    {
+        return (Product::where('status', 1)->max('price'));
     }
 }

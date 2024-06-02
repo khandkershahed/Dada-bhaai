@@ -446,9 +446,6 @@
                                             </a>
                                         </li>
 
-                                        
-
-
 
                                         <li class="">
                                             <a class="mini__cart--link" href="jaxascript:;" style="font-size: 20px;">
@@ -458,6 +455,7 @@
                                             </a>
                                         </li>
 
+                                        
                                         <li class="d-none">
                                             <a href="#"><i class="fal fa-sync text-muted"
                                                     style="font-size: 20px;"></i></a>
