@@ -878,9 +878,13 @@
                 var miniCart = "";
 
                 if (response.carts.length === 0) {
+
+                    $('#cartQty').closest('li').hide();
                     // Mini cart is empty
                     miniCart += `<ul><li class="mb-20 text-center">Mini cart is empty</li></ul>`;
                 } else {
+
+                    $('#cartQty').closest('li').show();
                     $.each(response.carts, function(key, value) {
                         miniCart +=
                             `<ul>
@@ -1056,6 +1060,9 @@
                     // Cart is empty
                     rows += `<tr><td colspan="7" class="text-center">Cart is empty</td></tr>`;
                 } else {
+
+                    $('#cartQty').closest('li').show();
+
                     $.each(response.carts, function(key, value) {
                         rows +=
                             `<tr class="border-bottom">
