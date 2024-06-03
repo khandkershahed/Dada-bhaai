@@ -477,13 +477,30 @@ class TemplateOneController extends Controller
     {
         $invoice = $request->code;
 
-        $track = Order::where('billing_phone', $invoice)->first();
+        $track = Order::where('billing_phone', $invoice)->orWhere('invoice_number', $invoice)->first();
+
+        if ($track) {
+
+            return redirect()->route('track.order.product', $track->id);
+            
+        } else {
+            toastr()->error('Invalid Invoice Or Phone Number');
+            return redirect()->back();
+        }
+
+    }
+
+    //Template One TackOrder Search
+    public function TemplateOneTackOrderProduct($id)
+    {
+
+        $track = Order::where('id', $id)->first();
 
         if ($track) {
             $orderItems = OrderItem::where('order_id', $track->id)->get();
             return view('frontend.template_one.user.track_order_search', compact('track', 'orderItems'));
         } else {
-            toastr()->error('Invalid Invoice Number');
+            toastr()->error('Invalid Invoice Or Phone Number');
             return redirect()->back();
         }
 

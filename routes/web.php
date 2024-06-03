@@ -141,9 +141,10 @@ Route::controller(TemplateOneController::class)->group(function () {
     //About Us
     Route::get('/about-us', 'TemplateOneAboutUs')->name('template.one.about');
 
-    //Track Order
+    // Track Order
     Route::get('/user/tracking/order', 'TemplateOneTackOrder')->name('template.one.track.order');
     Route::post('/tracking-order', 'TemplateOneTackOrderSearch')->name('track.order.search');
+    Route::get('/tracking-order/{id}', 'TemplateOneTackOrderProduct')->name('track.order.product');
 
 });
 
