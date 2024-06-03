@@ -118,10 +118,7 @@
                                 </div>
                             </div>
                         </div>
-
                         {{-- Child Product  --}}
-
-
                         <div class="col-lg-12 px-0">
                             <div class="releted_accessories">
 
