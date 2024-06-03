@@ -68,7 +68,6 @@ Route::controller(IndexController::class)->group(function () {
     Route::get('login/google', 'redirectToGoogle')->name('login.google');
     Route::get('login/google/callback', 'googleCallback');
 
-
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -93,6 +92,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/all-wishlist', [TemplateOneCartController::class, 'TemplateOneWishlist'])->name('wishlist');
     Route::get('/get-wishlist-product', [TemplateOneCartController::class, 'GetWishlistProduct']);
     Route::get('/wishlist-remove/{id}', [TemplateOneCartController::class, 'WishlistRemove']);
+
+    Route::post('/add-to-cart-wishlist/{id}', [TemplateOneCartController::class, 'AddToCartWishlist']);
 
 });
 
@@ -178,7 +179,7 @@ Route::controller(CartController::class)->group(function () {
 Route::controller(TemplateOneCartController::class)->group(function () {
 
     //Offer To Cart
-    Route::post('/product/offer/store/{id}', 'OfferToCartTemplateOne');
+    Route::post('/product/offer/store', 'OfferToCartTemplateOne');
 
     //Buy To Cart
     Route::post('/product/buy/store/{id}', 'BuyToCartTemplateOne');
@@ -200,6 +201,9 @@ Route::controller(TemplateOneCartController::class)->group(function () {
 
     Route::post('/product/store/related/{id}', 'AddToCartTemplateOneRelated');
     Route::get('/product/mini/cart/related', 'AddMiniCartTemplateOneRelated');
+    Route::get('/mini-cart/increase/{rowId}', 'IncreaseMiniCartTemplateOneRelated');
+    Route::get('/mini-cart/decrease/{rowId}', 'DecreaseMiniCartTemplateOneRelated');
+    Route::get('/minicart-related-remove/{rowId}', 'RemoveMiniCartRelatedTemplateOne');
 
     //View Cart
     Route::get('/view-cart', 'ViewCartTemplateOne')->name('template.one.view.cart');
@@ -212,6 +216,12 @@ Route::controller(TemplateOneCartController::class)->group(function () {
     //CheckOut
     Route::get('/cart-checkout', 'CheckoutTemplateOne')->name('template.one.checkout');
     Route::post('/cart-checkout-store', 'CheckoutStoreTemplateOne')->name('template.checkout.store');
+
+    // ==================================
+    Route::post('/apply-coupon', 'applyCoupon')->name('apply.coupon');
+
+    //Compare
+    Route::get('/compare', 'ProductCompare')->name('compare');
 
 });
 

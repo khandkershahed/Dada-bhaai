@@ -242,7 +242,7 @@
                                             </div>
 
                                             {{-- brand_id --}}
-                                            <div class="col-6 mb-3">
+                                            <div class="col-4 mb-3">
                                                 <div class="fv-row mb-3">
 
                                                     <label class="form-label required">Brand Name</label>
@@ -268,8 +268,20 @@
 
                                             </div>
 
+                                            {{-- Discount Price --}}
+                                            {{-- <div class="col-3 mb-3">
+                                                <div class="fv-row mb-3">
+
+                                                    <label class="form-label">Discount Price(Main Price)</label>
+
+                                                    <input type="number" name="pdiscount_price" class="form-control form-control-sm form-control-solid" value="{{ $editProduct->pdiscount_price }}" placeholder="Discount Price">
+
+                                                </div>
+
+                                            </div> --}}
+
                                             {{-- price_status --}}
-                                            <div class="col-3 mb-3">
+                                            <div class="col-4 mb-3">
                                                 <div class="fv-row mb-3">
                                                     <label class="form-label required">Price
                                                         Status</label>
@@ -299,7 +311,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-3 mb-3">
+                                            <div class="col-4 mb-3">
                                                 <div class="fv-row mb-3">
 
                                                     <div class="rfq_price d-none">
@@ -587,16 +599,12 @@
                                                         multiselect-max-items="2">
 
                                                         @if (count($products) > 0)
-
                                                             @foreach ($products as $child_product)
-
                                                                 <option value="{{ $child_product->id }}"
                                                                     {{ in_array($child_product->id, explode(',', $editProduct->child_id)) ? 'selected' : '' }}>
                                                                     {{ $child_product->product_name }}
                                                                 </option>
-
                                                             @endforeach
-
                                                         @endif
 
                                                     </select>
@@ -612,7 +620,7 @@
                                                 <div class="form-check form-check-custom form-check-solid mb-5">
 
                                                     <input class="form-check-input me-3" name="feature" type="checkbox"
-                                                        value="1" {{ $editProduct->feature == '1' ? 'checked' : '' }}
+                                                        value="1" {{ $editProduct->feature == 1 ? 'checked' : '' }}
                                                         id="kt_docs_formvalidation_checkbox_option_1" />
 
                                                     <label class="form-check-label"
@@ -1353,7 +1361,7 @@
                 } else if (price_value == 'offer_price') {
                     $(".offer_price").removeClass("d-none");
                     $(".rfq_price").addClass("d-none");
-                    $(".price").addClass("d-none");
+                    $(".price").removeClass("d-none");
                 } else if (price_value == 'price') {
                     $(".price").removeClass("d-none");
                     $(".offer_price").addClass("d-none");

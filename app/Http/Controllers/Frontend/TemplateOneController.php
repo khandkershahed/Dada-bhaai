@@ -65,7 +65,7 @@ class TemplateOneController extends Controller
                 $products = $products->where('status', 1)->orderBy('id', 'DESC')->paginate(9);
             }
         } else {
-            $products = $products->where('status', 1)->orderBy('id', 'DESC')->paginate(15);
+            $products = $products->where('status', 1)->orderBy('id', 'DESC')->paginate(35);
         }
 
         $brands = Brand::where('status', '1')->orderBy('brand_name', 'ASC')->latest()->get();
@@ -151,7 +151,7 @@ class TemplateOneController extends Controller
         $brandId = $id;
         $brandSlug = $brand_slug;
 
-        return view('frontend.template_one.brand.brand_wise_product', compact('products', 'brandwiseproduct', 'route', 'brandId', 'brandSlug', 'sort','catwiseproduct','childcatwiseproduct'));
+        return view('frontend.template_one.brand.brand_wise_product', compact('products', 'brandwiseproduct', 'route', 'brandId', 'brandSlug', 'sort', 'catwiseproduct', 'childcatwiseproduct'));
     }
 
     //Home All Category
@@ -191,7 +191,7 @@ class TemplateOneController extends Controller
         $catId = $id;
         $catSlug = $category_slug;
 
-        return view('frontend.template_one.category.category_wise_product', compact('products', 'catwiseproduct', 'route', 'catId', 'catSlug', 'sort','childcatwiseproduct'));
+        return view('frontend.template_one.category.category_wise_product', compact('products', 'catwiseproduct', 'route', 'catId', 'catSlug', 'sort', 'childcatwiseproduct'));
     }
 
     //OfferCategory RelatedProduct One
@@ -245,7 +245,7 @@ class TemplateOneController extends Controller
         $childcatwiseproduct = ChildCategory::find($id);
         $catwiseproduct = Category::find($childcatwiseproduct->category_id);
 
-        return view('frontend.template_one.childcategory.childcategory_wise_product', compact('products', 'childcatwiseproduct', 'childcatId', 'childcatSlug', 'sort', 'route','catwiseproduct'));
+        return view('frontend.template_one.childcategory.childcategory_wise_product', compact('products', 'childcatwiseproduct', 'childcatId', 'childcatSlug', 'sort', 'route', 'catwiseproduct'));
     }
 
     //Contact

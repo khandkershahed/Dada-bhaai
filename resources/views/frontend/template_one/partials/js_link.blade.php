@@ -113,32 +113,31 @@
 
 {{-- OfferToCartOne --}}
 <script>
-    function offerToCartOne() {
+    $('.add_to_offer_btn').click(function() {
 
-        var product_name = $('#opname').text();
-        var id = $('#offerproduct_id').val();
-        var quantity = $('#oqty').val();
-
-        var price = $('#opprice').val();
+        var price = $(this).data('discount_price');
+        var product_id = $(this).data('product_id');
 
         $.ajax({
 
             type: "POST",
             dataType: 'json',
-            url: '/product/offer/store/' + id,
+            url: '/product/offer/store',
 
             data: {
-                quantity: quantity,
-                product_name: product_name,
-
                 price: price,
+                product_id: product_id,
+                // color: color,
             },
 
             success: function(data) {
 
+                $('.cart_icon').removeClass('d-none');
+
                 miniCart();
 
                 // Start Message
+
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -162,12 +161,74 @@
                         title: data.error,
                     })
                 }
+
                 // End Message
             }
 
         })
 
-    }
+
+
+    })
+
+
+    // function offerToCartOne() {
+
+    //     var product_name = $('#opname').text();
+    //     var id = $('#offerproduct_id').val();
+    //     var quantity = $('#oqty').val();
+
+    //     var price = $('#opprice').val();
+
+    //     $.ajax({
+
+    //         type: "POST",
+    //         dataType: 'json',
+    //         url: '/product/offer/store/' + id,
+
+    //         data: {
+    //             quantity: quantity,
+    //             product_name: product_name,
+
+    //             price: price,
+    //         },
+
+    //         success: function(data) {
+
+    //             miniCart();
+
+    //             // Start Message 
+
+    //             const Toast = Swal.mixin({
+    //                 toast: true,
+    //                 position: 'top-end',
+
+    //                 showConfirmButton: false,
+    //                 timer: 3000
+    //             })
+    //             if ($.isEmptyObject(data.error)) {
+
+    //                 Toast.fire({
+    //                     type: 'success',
+    //                     icon: 'success',
+    //                     title: data.success,
+    //                 })
+
+    //             } else {
+
+    //                 Toast.fire({
+    //                     type: 'error',
+    //                     icon: 'error',
+    //                     title: data.error,
+    //                 })
+    //             }
+
+    //             // End Message  
+    //         }
+
+    //     })
+
+    // }
 </script>
 {{-- OfferToCartOne --}}
 
@@ -257,6 +318,7 @@
                 $('.cart_icon').removeClass('d-none');
 
                 miniCart();
+                miniCartRelated();
 
                 // Start Message
                 const Toast = Swal.mixin({
@@ -359,12 +421,7 @@
 <script>
     $('.add_to_cart_btn_product').click(function() {
 
-
-        // var price = $(this).data('offer_price');
         var product_id = $(this).data('product_id');
-
-
-        // var color = $('#dcolor option:selected').text();
 
         $.ajax({
 
@@ -373,9 +430,7 @@
             url: '/product-store-cart',
 
             data: {
-                // price: price,
                 product_id: product_id,
-                // color: color,
             },
 
             success: function(data) {
@@ -383,6 +438,7 @@
                 $('.cart_icon').removeClass('d-none');
 
                 miniCart();
+                miniCartRelated();
 
                 // Start Message
 
@@ -544,7 +600,9 @@
             type: 'GET',
             url: '/product/mini/cart/related',
             dataType: 'json',
+
             success: function(response) {
+
                 // console.log(response)
 
                 $('span[id="cartSubTotal"]').text(response.cartTotal);
@@ -561,12 +619,40 @@
                     <ul style="list-style-type: circle !important;">
                                                 <li class="d-flex mb-2 align-items-center pt-2">
 
+                                                    <div class="row">
 
-                                                    <a class="text-muted" href="javascript:;" style="margin-right: 15px;">${value.name}</a> x ${value.qty}
-                                                    Qty
+                                                        <div class="col-lg-4">
+                                                            <span class="text-muted" href="javascript:;" style="margin-right: 10px;">${value.name}</span>${value.qty}*
+                                                                Tk ${value.price} 
+                                                        </div>
 
-                                                    {{-- <input type="number" class="form-control form-control-sm w-25"
-                                                        name="" id="" value="1" min="1" /> --}}
+                                                        <div class="col-lg-4">
+
+                                                            <div class="number d-flex align-items-center">
+
+                                                                <a type="submit" id="${value.rowId}" onclick="miniCartRelatedDecrease(this.id)" class="buttons-count" id="decrease">-</a>
+
+                                                                <input type="text" disabled class="mb-0 border-1 text-center"
+                                                                    name="" value="${value.qty}" min="1" 
+                                                                    style="width: 20px" />
+
+                                                                <a type="submit" id="${value.rowId}" onclick="miniCartRelatedIncrease(this.id)" class="buttons-count" id="increase">+</a>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="col-lg-4">
+                                                            <span class="">Tk ${value.subtotal}</span>
+
+                                                            <span id="${value.rowId}" onclick="miniCartRelatedRemove(this.id)" class="ml-4" style="color: #cd3301; cursor: pointer;"> x </span>
+
+                                                        </div>
+
+
+                                                    </div>
+
+                                                    
                                                 </li>
                                             </ul>
 
@@ -583,10 +669,149 @@
 </script>
 {{-- Mini Cart Related --}}
 
+{{-- MiNi Cart Related Increase --}}
+<script>
+    function miniCartRelatedIncrease(rowId) {
+        $.ajax({
+
+            type: 'GET',
+            dataType: 'json',
+
+            url: '/mini-cart/increase/' + rowId,
+
+            success: function(data) {
+
+                miniCartRelated();
+
+                // Start Message
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        title: data.success,
+                    })
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        title: data.error,
+                    })
+                }
+
+                // End Message
+
+            }
+
+        })
+    }
+</script>
+{{-- MiNi Cart Related Increase  --}}
+
+{{-- MiNi Cart Related Decrease --}}
+<script>
+    function miniCartRelatedDecrease(rowId) {
+        $.ajax({
+
+            type: 'GET',
+            dataType: 'json',
+
+            url: '/mini-cart/decrease/' + rowId,
+
+            success: function(data) {
+
+                miniCartRelated();
+
+                // Start Message
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        title: data.success,
+                    })
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        title: data.error,
+                    })
+                }
+
+                // End Message
+
+            }
+
+        })
+    }
+</script>
+{{-- MiNi Cart Related Decrease  --}}
+
+{{-- Mini Cart Related Remove --}}
+<script>
+    function miniCartRelatedRemove(rowId) {
+        $.ajax({
+
+            type: 'GET',
+            dataType: 'json',
+
+            url: '/minicart-related-remove/' + rowId,
+
+            success: function(data) {
+
+                miniCartRelated();
+
+                // Start Message
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        title: data.success,
+                    })
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        title: data.error,
+                    })
+                }
+
+                // End Message
+            }
+
+        })
+    }
+</script>
+{{-- MinI Cart Related remove --}}
 
 
 {{-- MiniCart --}}
-<script>
+{{-- <script>
     function miniCart() {
         $.ajax({
             type: 'GET',
@@ -637,7 +862,56 @@
         })
     }
     miniCart();
+</script> --}}
+<script>
+    function miniCart() {
+        $.ajax({
+            type: 'GET',
+            url: '/product/mini-cart',
+            dataType: 'json',
+            success: function(response) {
+                // console.log(response)
+
+                $('span[id="cartSubTotal"]').text(response.cartTotal);
+                $('#cartQty').text(response.cartQty);
+
+                var miniCart = "";
+
+                if (response.carts.length === 0) {
+
+                    $('#cartQty').closest('li').hide();
+                    // Mini cart is empty
+                    miniCart += `<ul><li class="mb-20 text-center">Mini cart is empty</li></ul>`;
+                } else {
+
+                    $('#cartQty').closest('li').show();
+                    $.each(response.carts, function(key, value) {
+                        miniCart +=
+                            `<ul>
+                                <li class="mb-20">
+                                    <div class="cart-image">
+                                        <img src="/${value.options.image}" alt="" style="width:100%;height:100%;" />
+                                    </div>
+                                    <div class="cart-text">
+                                        <p class="title f-400 cod__black-color">${value.name}</p>
+                                        <span class="cart-price f-400 dusty__gray-color">${value.qty} x <span class="price f-800 cod__black-color">Tk ${value.price}</span></span>
+                                    </div>
+                                    <div class="del-button">
+                                        <a type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"  style="cursor: pointer"><i class="fi-rs-cross-small"></i>x</a>
+                                    </div>
+                                </li>
+                            </ul>`;
+                    });
+                }
+
+                $('#miniCart').html(miniCart);
+            }
+        });
+    }
+    miniCart();
 </script>
+
+
 {{-- MiniCart --}}
 
 {{-- MiNi Cart Remove --}}
@@ -683,7 +957,8 @@
 </script>
 
 <!--  Start Load MY Cart // -->
-<script type="text/javascript">
+
+{{-- <script type="text/javascript">
     function cart() {
         $.ajax({
             type: 'GET',
@@ -762,6 +1037,82 @@
         })
     }
     cart();
+</script> --}}
+
+<script type="text/javascript">
+    function cart() {
+        $.ajax({
+            type: 'GET',
+            url: '/get-cart-product',
+            dataType: 'json',
+            success: function(response) {
+                // console.log(response)
+
+                $('span[id="cartSubTotal"]').text(response.cartTotal);
+                $('#cartTotal').text(response.cartTotal);
+
+                var rows = "";
+
+                if (response.carts.length === 0) {
+
+                    $('#cartQty').closest('li').hide();
+
+                    // Cart is empty
+                    rows += `<tr><td colspan="7" class="text-center">Cart is empty</td></tr>`;
+                } else {
+
+                    $('#cartQty').closest('li').show();
+
+                    $.each(response.carts, function(key, value) {
+                        rows +=
+                            `<tr class="border-bottom">
+                                <td>1</td>
+                                <td>
+                                    <div>
+                                        <img class="img-fluid"
+                                            src="/${value.options.image}"
+                                            alt="" style="width:100%;height:60px;" />
+                                    </div>
+                                </td>
+                                <td>${value.name}</td>
+                                <td>${value.price} TK</td>
+                                <td>
+                                    <div>
+                                        <div class="input-group mb-3">
+                                            <a type="submit" id="${value.rowId}" onclick="cartDecrement(this.id)"
+                                                class="input-group-append decrementBtn p-0 border-0 shadow-none"
+                                                style="cursor: pointer">
+                                                <span class="input-group-text">-</span>
+                                            </a>
+                                            <input  type="text"
+                                                class="form-control text-center amountInput"
+                                                aria-label="Amount (to the nearest dollar)"
+                                                value="${value.qty}" min="1" />
+                                            <a type="submit" id="${value.rowId}" onclick="cartIncrement(this.id)"
+                                                class="input-group-prepend p-0 border-0 shadow-none incrementBtn"
+                                                style="cursor: pointer">
+                                                <span class="input-group-text">+</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>${value.subtotal} Tk</td>
+                                <td class="text-center">
+                                    <div>
+                                        <a type="submit" style="cursor: pointer" id="${value.rowId}" onclick="cartRemove(this.id)">
+                                            <i class="fa fa-trash text-danger delet-icons"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>`;
+                    });
+                }
+
+                $('#cartPage').html(rows);
+            }
+        });
+    }
+    cart();
 </script>
 
 {{-- Remove Load Cart --}}
@@ -811,6 +1162,9 @@
     }
 </script>
 
+
+
+
 {{-- // Cart INCREMENT --}}
 <script>
     // Cart INCREMENT
@@ -853,6 +1207,7 @@
 </script>
 
 {{-- ============================================== --}}
+
 {{-- ============================================== --}}
 
 <!--  /// Start Wishlist Add -->
@@ -865,6 +1220,9 @@
 
             success: function(data) {
                 wishlist();
+
+
+
                 // Start Message
 
                 const Toast = Swal.mixin({
@@ -901,7 +1259,8 @@
 <!--  /// End Wishlist Add -->
 
 {{-- Get Wishlist --}}
-<script type="text/javascript">
+
+{{-- <script type="text/javascript">
     function wishlist() {
         $.ajax({
             type: "GET",
@@ -956,9 +1315,17 @@
                                     <td class="">
 
 
-                                        <a type="submit" class="text-body" id="${value.id}" onclick="wishlistRemove(this.id)" ><i class="fa fa-trash text-danger"></i></a>
+                                        <a type="submit" class="add-link" style="cursor:pointer;text-decoration: underline;" id="${value.product.id}" onclick="addToCartWishlist(this.id)" >+Add To Cart</a>
 
                                     </td>
+
+                                    <td class="">
+
+
+                                        <a type="submit" class="text-body" id="${value.id}" onclick="wishlistRemove(this.id)" ><i class="fa fa-trash text-danger"></i></a>
+
+                                        </td>
+
                                     </tr>`
 
 
@@ -971,11 +1338,77 @@
     }
 
     wishlist();
+</script> --}}
+
+
+<script type="text/javascript">
+    function wishlist() {
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            url: "/get-wishlist-product/",
+            success: function(response) {
+                $('#wishQty').text(response.wishQty);
+                var rows = "";
+
+                if (response.wishQty === 0) {
+                    // Wishlist is empty, hide the wishlist count
+                    $('#wishQty').closest('li').hide();
+
+                    rows += `<tr>
+                                <td style="text-align: center;">Wishlist is empty</td>
+                             </tr>`;
+                } else {
+                    // Wishlist is not empty, show the wishlist count
+                    $('#wishQty').closest('li').show();
+
+                    $.each(response.wishlist, function(key, value) {
+                        rows +=
+                            `<tr class="border-bottom">
+                                <td>
+                                    <img class="img-fluid"
+                                        src="/${value.product.product_image}" style="width:60px;height:60px;" alt="" />
+                                </td>
+                                <td>
+                                    <p>${value.product.product_name.length > 16 ? value.product.product_name.substring(0, 16) : value.product.product_name}</p>
+                                </td>
+                                <td>
+                                    ${
+                                        value.product.price_status === 'rfq'
+                                        ? `<p class="text-brand">Tk ${value.product.sas_price}</p>`
+                                        : (value.product.price_status === 'offer_price'
+                                            ? `<p class="text-brand">Tk ${value.product.discount_price}</p>`
+                                            : (value.product.price_status === 'price'
+                                                ? `<p class="text-brand">Tk ${value.product.price}</p>`
+                                                : ''
+                                            )
+                                        )
+                                    }
+                                </td>
+                                <td class="">
+                                    <a type="submit" class="add-link" style="cursor:pointer;text-decoration: underline;" id="${value.product.id}" onclick="addToCartWishlist(this.id)" >+Add To Cart</a>
+                                </td>
+                                <td class="">
+                                    <a type="submit" style="cursor:pointer;" class="text-body" id="${value.id}" onclick="wishlistRemove(this.id)" ><i class="fa fa-trash text-danger"></i></a>
+                                </td>
+                            </tr>`;
+                    });
+                }
+                $('#wishlist').html(rows);
+            }
+        });
+    }
+
+    wishlist();
 </script>
+
+
+
 
 {{-- // Wishlist Remove Start  --}}
 <script>
     function wishlistRemove(id) {
+
         $.ajax({
             type: "GET",
             dataType: 'json',
@@ -1057,6 +1490,54 @@
             $('.searchbox-input').val('');
             $('.searchbox-icon').css('display', 'block');
         }
+    }
+</script>
+
+{{-- Add Cart Wishlist --}}
+<script>
+    function addToCartWishlist(id) {
+
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            url: "/add-to-cart-wishlist/" + id,
+
+            success: function(data) {
+
+                miniCart();
+                miniCartRelated();
+
+                // Start Message
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success,
+                    })
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error,
+                    })
+                }
+
+                // End Message
+
+
+            }
+        })
     }
 </script>
 
@@ -1170,17 +1651,21 @@
 </script>
 
 <script>
-     $(document).ready(function() {
-    // Listen for change event on checkbox
-    $('#defaultCheck1').change(function() {
-      // Check if checkbox is checked
-      if ($(this).is(':checked')) {
-        // If checked, hide the on-check-show div
-        $('.on-check-show').hide();
-      } else {
-        // If not checked, show the on-check-show div
-        $('.on-check-show').show();
-      }
+    $(document).ready(function() {
+        // Listen for change event on checkbox
+        $('#defaultCheck1').change(function() {
+            // Check if checkbox is checked
+            if ($(this).is(':checked')) {
+                // If checked, hide the on-check-show div
+                $('.on-check-show').hide();
+            } else {
+                // If not checked, show the on-check-show div
+                $('.on-check-show').show();
+            }
+        });
     });
-  });
-  </script>
+</script>
+
+{{-- ======================================================= --}}
+
+{{-- =========================== --}}

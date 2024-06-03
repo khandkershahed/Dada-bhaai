@@ -13,8 +13,8 @@
     <link rel="manifest" href="" />
 
     @php
-            $site = App\Models\Sites::find(1);
-        @endphp
+        $site = App\Models\Sites::find(1);
+    @endphp
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('upload/favicon/' . $site->favicon) }}" />
 
@@ -25,6 +25,6 @@
     <link rel="stylesheet" href="{{ asset('frontend/template_one/assets/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/template_one/assets/css/responsive.css') }}" />
 
-    
+
 
 </head>

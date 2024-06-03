@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class IndexController extends Controller
 {
@@ -83,11 +84,14 @@ class IndexController extends Controller
                 ->first();
         }
 
+        $carts = Cart::content();
+        $cartQty = Cart::count();
+
         // Retrieve related products based on the child_id, excluding the product with ID equal to $id
 
         // dd($relativeChild);
 
-        return view('frontend.template_one.product.single_product', compact('product', 'relativeProduct', 'multiImages', 'relativeChild', 'product_colors'));
+        return view('frontend.template_one.product.single_product', compact('product', 'relativeProduct', 'multiImages', 'relativeChild', 'product_colors','carts','cartQty'));
     }
 
     //Single Product
@@ -104,7 +108,10 @@ class IndexController extends Controller
         $cat_id = $product->category_id;
         $relativeProduct = Product::where('category_id', $cat_id)->where('id', '!=', $id)->orderBy('id', 'ASC')->limit(5)->get();
 
-        return view('frontend.pages.product.single_product', compact('product', 'multiImages', 'relativeProduct', 'product_colors'));
+        $carts = Cart::content();
+        $cartQty = Cart::count();
+
+        return view('frontend.pages.product.single_product', compact('product', 'multiImages', 'relativeProduct', 'product_colors','carts','cartQty'));
     }
 
     //Faq

@@ -56,6 +56,7 @@ class LoginRequest extends FormRequest
         }
 
         // If the email exists, attempt to authenticate with the given password
+        
         if (!Auth::attempt($credentials, $remember)) {
             RateLimiter::hit($this->throttleKey());
 
@@ -63,6 +64,12 @@ class LoginRequest extends FormRequest
                 'password' => trans('auth.custom_password_failed'),
             ]);
         }
+
+        $id = Auth::user()->id;
+        $data = User::find($id);
+        $name = $data->name;
+
+        toastr()->success(' ' . $name . ' Login Successfully');
 
         RateLimiter::clear($this->throttleKey());
     }

@@ -1691,7 +1691,11 @@ ul.sub__menu.sub__dept--menu li:hover ul.sub__menu.level2 {
 .offer--banner__text > h2 {
     text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.43);
 }
-
+/* Home banner CSS Start */
+.home-main-banner{
+    margin-top: 4rem;
+}
+/* Home banner CSS End */
 /* 6. Products */
 .all__product--menu .nav-tabs a.nav-link {
     font-size: 14px;

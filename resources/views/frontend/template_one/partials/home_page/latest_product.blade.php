@@ -53,7 +53,7 @@
                                     </a>
 
                                     {{-- Compare Icon --}}
-                                    <a href="javascript:;"><i class="fas fa-random"></i></a>
+                                    <a href="{{ route('compare') }}"><i class="fas fa-random"></i></a>
 
                                 </div>
                             </div>
@@ -71,19 +71,23 @@
 
                                 </div>
                                 <div class="col-lg-4">
-                                    <div class="price text-end">
+                                    <div class="text-end">
+
                                         @if ($product->price_status == 'rfq')
                                             <h6 class="grenadier-color mb-0 fw-bold">
                                                 Tk {{ $product->sas_price }}
                                             </h6>
                                         @elseif ($product->price_status == 'offer_price')
+                                            <del>Tk {{ $product->price }}</del>
+                                            <h6 class="grenadier-color mb-0 fw-bold">Tk {{ $product->discount_price }}
+                                            </h6>
+                                        @elseif ($product->price_status == 'price')
                                             <h6 class="grenadier-color mb-0 fw-bold">
-                                                Tk {{ $product->discount_price }}</h6>
-                                        @else
-                                            <h6 class="grenadier-color mb-0 fw-bold">Tk
-                                                {{ $product->price }}
+                                                Tk {{ $product->price }}
                                             </h6>
                                         @endif
+
+
                                     </div>
                                 </div>
                             </div>

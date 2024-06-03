@@ -52,7 +52,7 @@
                                     <div class="">
                                         <img alt="Logo"
                                             src="{{ asset('backend/login/assets/logo/5500661.jpg') }}" class=""
-                                            style="width: 240px; height:480px;" />
+                                            style="width: 100%; height:480px;" />
                                     </div>
                                 </div>
 

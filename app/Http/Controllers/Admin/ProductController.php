@@ -102,6 +102,7 @@ class ProductController extends Controller
             'color_id' => $colors,
 
             'parent_id' => $request->parent_id,
+            'pdiscount_price' => $request->pdiscount_price,
             'child_id' => $child_ids,
             'refurbished' => $request->refurbished,
             'feature' => $request->feature,
@@ -275,6 +276,8 @@ class ProductController extends Controller
                 'tags' => $request->tags,
                 'color_id' => $colors,
 
+                'pdiscount_price' => $request->pdiscount_price,
+
                 'parent_id' => $request->parent_id,
                 'child_id' => $child_ids,
                 'refurbished' => $request->refurbished,
@@ -341,6 +344,10 @@ class ProductController extends Controller
                 'brand_id' => $request->brand_id,
                 'category_id' => $request->category_id,
 
+                'price' => $request->price,
+                'discount_price' => $request->discount_price,
+                'sas_price' => $request->sas_price,
+
                 'subcategory_id' => $request->subcategory_id,
                 'childcategory_id' => $request->childcategory_id,
                 'tags' => $request->tags,
@@ -350,6 +357,7 @@ class ProductController extends Controller
                 'child_id' => $child_ids,
                 'refurbished' => $request->refurbished,
                 'deal' => $request->deal,
+                'feature' => $request->feature,
 
                 'short_desc' => $request->short_desc,
                 'overview' => $request->overview,

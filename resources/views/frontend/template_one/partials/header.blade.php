@@ -363,8 +363,8 @@
                             <form class="searchbox" action="{{ route('product.search') }}" method="POST">
                                 @csrf
                                 <input type="search" placeholder="Search......" name="search"
-                                    class="searchbox-input" id="search" autocomplete="off" name="search" onkeyup="buttonUp();"
-                                    required>
+                                    class="searchbox-input" id="search" autocomplete="off" name="search"
+                                    onkeyup="buttonUp();" required>
                                 <button class="searchbox-submit" value="GO"><i
                                         class="icofont-search-2"></i></button>
                                 <span class="searchbox-icon"><i class="icofont-search-2"></i></span>
@@ -438,15 +438,15 @@
                                         </li>
 
 
-                                        <li class="">
-                                            <a href="{{ route('wishlist') }}" style="font-size: 20px;">
-                                                <i class="fa-solid fa-heart text-muted">
-                                                    <span class="cart__count" id="wishQty">0</span>
-                                                </i>
-                                            </a>
-                                        </li>
-
-                                        
+                                        @if (Auth::check())
+                                            <li class="">
+                                                <a href="{{ route('wishlist') }}" style="font-size: 20px;">
+                                                    <i class="fa-solid fa-heart text-muted">
+                                                        <span class="cart__count" id="wishQty">0</span>
+                                                    </i>
+                                                </a>
+                                            </li>
+                                        @endif
 
 
                                         <li class="">
@@ -456,6 +456,7 @@
                                                 </i>
                                             </a>
                                         </li>
+
 
                                         <li class="d-none">
                                             <a href="#"><i class="fal fa-sync text-muted"
@@ -494,5 +495,3 @@
         </div>
     </nav>
 </header>
-
-

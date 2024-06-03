@@ -242,6 +242,18 @@
 
                                             </div>
 
+                                            {{-- Discount Price--}}
+                                            {{-- <div class="col-3 mb-3">
+                                                <div class="fv-row mb-3">
+
+                                                    <label class="form-label">Discount Price(Main Price)</label>
+
+                                                    <input type="number" name="pdiscount_price" class="form-control form-control-sm form-control-solid" value="{{ old('pdiscount_price') }}" placeholder="Discount Price">
+
+                                                </div>
+
+                                            </div> --}}
+
                                             {{-- price_status --}}
                                             <div class="col-4 mb-3">
                                                 <div class="fv-row mb-3">
@@ -265,7 +277,7 @@
                                             </div>
 
                                             <div class="col-4 mb-3">
-                                                <div class="fv-row mb-3">
+                                                <div class="row mb-3">
 
                                                     <div class="rfq_price d-none">
                                                         <label class="ms-1" for="price_status">SAS Price <span
@@ -290,6 +302,8 @@
 
                                                 </div>
                                             </div>
+
+                                            
 
                                             {{-- category_id --}}
                                             <div class="col-4 mb-3">
@@ -1155,7 +1169,7 @@
                 } else if (price_value == 'offer_price') {
                     $(".offer_price").removeClass("d-none");
                     $(".rfq_price").addClass("d-none");
-                    $(".price").addClass("d-none");
+                    $(".price").removeClass("d-none");
                 } else if (price_value == 'price') {
                     $(".price").removeClass("d-none");
                     $(".offer_price").addClass("d-none");

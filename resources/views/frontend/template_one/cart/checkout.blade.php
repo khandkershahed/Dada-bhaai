@@ -2,14 +2,14 @@
 @section('index_template_one')
     <!-- page banner area start -->
     <section class="page-banner-area blog-page"
-        data-background="{{ asset('frontend/template_one/assets/img/bg/blog-page-banner.jpg') }}">
+        data-background="{{ asset('frontend/template_one/assets/img/bg/banner.jpg') }}" style="margin-top: 60px;">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
                     <div>
-                        <div class="banner-text text-center pt-150 pb-120">
+                        <div class="banner-text text-center pt-80 pb-80">
                             <h2 class="f-800 cod__black-color">
-                                DADA VAI <span class="grenadier-color">PRODUCT</span>
+                                DadaBhaai <span class="grenadier-color">Product</span>
                             </h2>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb pt-3">
@@ -37,17 +37,17 @@
 
         @csrf
 
-        <div class="product shop-page pt-150 pb-120 fix">
+        <div class="product shop-page pt-80 pb-80 fix">
             <div class="container">
                 <div class="border-b">
                     <div class="row">
                         <div class="col-lg-12 col-md-4">
                             <div class="shop-bar d-flex align-items-center justify-content-between">
-                                <h5 class="f-800 cod__black-color">
+                                <p class="f-800 cod__black-color">
                                     <span class="grenadier-color">Information</span>
-                                </h5>
+                                </p>
                                 <a href="{{ route('index') }}" class="f-800 cod__black-color">
-                                    <span class="grenadier-color">CONTINUE SHOPPING <i
+                                    <span class="grenadier-color">Continue Shopping<i
                                             class="fa fa-long-arrow-right"></i></span>
                                 </a>
                             </div>
@@ -60,16 +60,16 @@
                             <div class="card-body">
                                 <div class="row">
 
-                                    <div class="col-lg-8 px-0">
+                                    <div class="col-lg-8">
 
                                         {{-- Billing Info --}}
                                         <div class="card border-0 shadow-none mb-0">
 
                                             <div class="card-header checkout-page-form">
-                                                <a class="card-title"> Billing Info </a>
+                                                <a class="card-title">Billing Info</a>
                                             </div>
 
-                                            <div id="" class="show" data-parent=""
+                                            <div id="" class="" data-parent=""
                                                 style="background-color: #f5f5f5">
                                                 <div class="card-body p-0">
                                                     <div class="mb-3 bg-light p-3">
@@ -169,116 +169,10 @@
 
                                         </div>
                                         {{-- Billing Info --}}
-                                        <div class="">
-                                            <div class="form-check shipping py-3 pt-0">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="defaultCheck1">
-                                                <label class="form-check-label" for="defaultCheck1">
-                                                    Shipping Address Same as Billing Address
-                                                </label>
-                                            </div>
-                                            <div class="on-check-show mb-3">
-                                                <div class="card border-0 rounded-0">
-                                                    <div class="card-body p-0">
-                                                        <div class="bg-light p-3">
 
-
-                                                            <div class="row">
-
-                                                                <div class="form-group col-sm-4">
-                                                                    <label for="user_id">User Name
-                                                                    </label>
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Billing Name"
-                                                                        value="{{ Auth::user()->name }}" name="billing_name" />
-                                                                </div>
-
-                                                                <div class="form-group col-sm-4">
-                                                                    <label for="phone">Phone
-                                                                    </label>
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Billing Phone"
-                                                                        value="{{ Auth::user()->phone }}"
-                                                                        name="billing_phone" />
-                                                                </div>
-
-                                                                <div class="form-group col-sm-4">
-                                                                    <label for="email">Email
-                                                                    </label>
-                                                                    <input type="email" class="form-control"
-                                                                        value="{{ Auth::user()->email }}"
-                                                                        placeholder="example@gmail.com" name="billing_email" />
-                                                                </div>
-
-                                                                <div class="form-group col-sm-4">
-                                                                    <label for="city">City
-                                                                    </label>
-                                                                    <input type="text" class="form-control"
-                                                                        value="{{ Auth::user()->city }}" name="billing_city"
-                                                                        placeholder="City Name" />
-                                                                </div>
-
-                                                                <div class="form-group col-sm-4">
-                                                                    <label for="state">State
-                                                                    </label>
-                                                                    <input type="text" class="form-control"
-                                                                        value="{{ old('billing_state') }}" name="billing_state"
-                                                                        placeholder="State Name" />
-                                                                </div>
-
-                                                                <div class="form-group col-sm-4">
-                                                                    <label for="postal_code">Postal Code
-                                                                    </label>
-                                                                    <input type="text" class="form-control"
-                                                                        value="{{ Auth::user()->postal_code }}"
-                                                                        name="billing_postal_code" placeholder="Postal Code" />
-                                                                </div>
-
-                                                                <div class="form-group col-sm-4">
-                                                                    <label for="country">Country
-                                                                    </label>
-
-                                                                    <input type="text" class="form-control"
-                                                                        value="{{ Auth::user()->country }}"
-                                                                        name="billing_country" placeholder="Country Name" />
-                                                                </div>
-
-
-                                                                <div class="form-group col-sm-4">
-                                                                    <label for="address_line1">Address 1
-                                                                    </label>
-                                                                    <input type="text" class="form-control"
-                                                                        value="{{ Auth::user()->address }}"
-                                                                        name="billing_address_line1"
-                                                                        placeholder="Address One" />
-                                                                </div>
-
-                                                                <div class="form-group col-sm-4">
-                                                                    <label for="address_line2">Address 2
-                                                                    </label>
-                                                                    <input type="text" class="form-control"
-                                                                        value="{{ Auth::user()->address_two }}"
-                                                                        name="billing_address_line2"
-                                                                        placeholder="Address Two" />
-                                                                </div>
-
-                                                                <div class="form-group col-sm-12">
-                                                                    <label for="address_line2">Note
-                                                                    </label>
-                                                                    <textarea class="form-control" placeholder="Write Something" name="notes" id="" cols="1"
-                                                                        rows="1"></textarea>
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         {{-- Payment Info  --}}
-                                        <div class="card-header checkout-page-form">
-                                            <a class="card-title"> Payment Info </a>
+                                        <div class="card-header">
+                                            <a class=""> Payment Info </a>
                                         </div>
                                         <div class="" style="background-color: #f5f5f5">
                                             <div class="card-body p-0">
@@ -340,7 +234,29 @@
                                                     ORDER SUMMERY
                                                 </div>
                                                 <div class="card-body border-0">
+
+                                                    @php
+                                                        $coupons = App\Models\Admin\Coupon::where('status', '1')
+                                                            ->latest()
+                                                            ->get();
+
+                                                    @endphp
+
+                                                    <div class="row">
+
+                                                        @if (count($coupons) > 0)
+                                                            <div class="form-group col-lg-12">
+                                                                <a>
+                                                                    Please Provide a coupon ? <span style="cursor:pointer"
+                                                                        data-toggle="modal"
+                                                                        data-target="#exampleModal">Click Here</span>
+                                                                </a>
+                                                            </div>
+                                                        @endif
+
+                                                    </div>
                                                     <div class="table-responsive border-0">
+
                                                         <table class="table border-0">
 
                                                             <thead style="background: #dfdddd">
@@ -352,12 +268,27 @@
 
                                                             <tbody>
 
-                                                                @foreach ($carts as $item)
-                                                                    <tr class="">
-                                                                        <td>Sub Total:</td>
-                                                                        <td class="text-right">Tk {{ $item->price }}</td>
+
+                                                                <tr class="">
+                                                                    <td>Price:</td>
+                                                                    <td class="text-right">Tk {{ $cartTotal }}</td>
+                                                                </tr>
+
+
+                                                                {{-- <tr class="">
+                                                                    <td>Coupon Discount :</td>
+                                                                    <td class="text-right">Tk <b
+                                                                            class="drk-gry couponDiscount">0.00</b></td>
+                                                                </tr> --}}
+
+                                                                @if (count($coupons) > 0 ? 'd-none' : '')
+                                                                    <tr class="coupon-discount">
+                                                                        <td>Coupon Discount :</td>
+                                                                        <td class="text-right">Tk <b
+                                                                                class="drk-gry couponDiscount">0.00</b>
+                                                                        </td>
                                                                     </tr>
-                                                                @endforeach
+                                                                @endif
 
 
                                                                 <tr class="">
@@ -367,13 +298,8 @@
 
                                                                 </tr>
 
-                                                                {{-- <tr class="">
-                                                                    <td>Delivery Charge :</td>
-                                                                    <td class="text-right">50 TK</td>
-                                                                </tr> --}}
-
                                                                 <tr>
-                                                                    <th scope="col">ORDER TOTAL</th>
+                                                                    <th scope="col">Order Total</th>
 
                                                                     <th class="text-right">
                                                                         <input class="" type="hidden"
@@ -407,7 +333,7 @@
 
                                                                 </li>
 
-                                                                <li class="payment_method_cod">
+                                                                {{-- <li class="payment_method_cod">
 
                                                                     <div class="">
                                                                         <label class="radio-inline">
@@ -417,7 +343,7 @@
                                                                         </label>
                                                                     </div>
 
-                                                                </li>
+                                                                </li> --}}
                                                             </ul>
 
                                                         </div>
@@ -556,4 +482,92 @@
             });
         });
     </script>
+
+    <script>
+        $(document).ready(function() {
+            var subTotal = {{ $cartTotal }};
+            var shippingCharge = $('.shippingCharge');
+            var grandTotal = $('.grandTotal');
+            var couponDiscount = $('.couponDiscount');
+            var hiddenTotalInput = $('input[name="total_amount"]');
+
+            // Function to calculate grand total
+            function calculateGrandTotal(shipping, discount) {
+                var total = subTotal + shipping - discount;
+                grandTotal.text(total.toFixed(2));
+                hiddenTotalInput.val(total.toFixed(2));
+            }
+
+            // Update total amount when shipping charge changes
+            $('input:radio[name="shipping_charge"]').change(function() {
+                var shippingMethod = parseFloat($(this).val());
+                var discount = parseFloat(couponDiscount.text()) || 0;
+                shippingCharge.text(shippingMethod.toFixed(2));
+                calculateGrandTotal(shippingMethod, discount);
+            });
+
+            // Apply coupon logic
+            $('#applyCoupon').click(function() {
+                var coupon = $('#couponCode').val();
+                $.ajax({
+                    url: '{{ route('apply.coupon') }}',
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        coupon: coupon
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            var discount = parseFloat(response.discount);
+                            couponDiscount.text(discount.toFixed(2));
+                            var shipping = parseFloat(shippingCharge.text()) || 0;
+                            calculateGrandTotal(shipping, discount);
+
+                            $('#exampleModal').modal('hide');
+                        } else {
+                            alert(response.message);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+
+    <script>
+        // JavaScript to handle coupon application without refreshing the page
+        $(document).ready(function() {
+            // Assuming you have some JavaScript code to handle applying the coupon and updating the UI accordingly
+            // When the coupon is applied successfully, you can add a class to show the coupon discount field
+            // For example:
+            $('#applyCouponButton').click(function() {
+                // Assuming this function applies the coupon and returns a boolean indicating success
+                var success =
+                    applyCoupon(); // You should replace this with your actual code to apply the coupon
+                if (success) {
+                    $('.coupon-discount').removeClass('d-none'); // Show the coupon discount field
+                    $appliedCoupon = true; // Update the appliedCoupon variable
+                }
+            });
+        });
+    </script>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="container">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <label for="">Coupon Name</label>
+                        <input type="text" id="couponCode" placeholder="Coupon Name" autocomplete="off"
+                            class="form-control">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="applyCoupon">Apply Coupon</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

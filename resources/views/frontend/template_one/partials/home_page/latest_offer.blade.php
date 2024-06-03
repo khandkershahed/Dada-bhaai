@@ -1,10 +1,3 @@
-{{-- @php
-    $offercats = App\Models\Admin\OfferCategory::where('status', '1')->inRandomOrder()->first();
-    $products = App\Models\Admin\Offer::where('status', '1')
-        ->where('offer_category_id', $offercats->id)
-        ->get();
-@endphp --}}
-
 @php
     $offercats = App\Models\Admin\OfferCategory::where('status', '1')->inRandomOrder()->first();
     $products = [];
@@ -44,7 +37,7 @@
 
                                 <img src="{{ !empty($offercats->icon_image) ? url('storage/offer_category_image/' . $offercats->icon_image) : url('https://ui-avatars.com/api/?size=500&background=random&color=fff&rounded=false&name=' . urlencode($offercats->offer_category_name)) }}"
                                     alt="" />
-                                </a>
+                            </a>
 
                             <div class="small__banner--content text-center">
                                 <span class="f-300 text-white">{{ $offercats->offer_category_name }}</span>
@@ -62,8 +55,7 @@
                                     <a href="javascript:;" class="image">
 
                                         <img class="img product_id" src="{{ asset($product->products->product_image) }}"
-                                            alt="" 
-                                            data-id="{{ $product->products->id }}" />
+                                            alt="" data-id="{{ $product->products->id }}" />
 
                                     </a>
                                     <div class="product-button-group">
