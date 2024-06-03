@@ -778,4 +778,11 @@ class TemplateOneCartController extends Controller
         }
     }
 
+    //Compare
+    public function ProductCompare()
+    {
+        $products = Product::latest()->get();
+        return view('frontend.template_one.cart.compare',compact('products'));
+    }
+
 }

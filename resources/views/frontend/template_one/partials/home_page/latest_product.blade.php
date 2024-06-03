@@ -53,7 +53,7 @@
                                     </a>
 
                                     {{-- Compare Icon --}}
-                                    <a href="javascript:;"><i class="fas fa-random"></i></a>
+                                    <a href="{{ route('compare') }}"><i class="fas fa-random"></i></a>
 
                                 </div>
                             </div>

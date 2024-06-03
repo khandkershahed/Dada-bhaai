@@ -220,6 +220,9 @@ Route::controller(TemplateOneCartController::class)->group(function () {
     // ==================================
     Route::post('/apply-coupon', 'applyCoupon')->name('apply.coupon');
 
+    //Compare
+    Route::get('/compare', 'ProductCompare')->name('compare');
+
 });
 
 // /////////////////// Template Two //////////////////////
