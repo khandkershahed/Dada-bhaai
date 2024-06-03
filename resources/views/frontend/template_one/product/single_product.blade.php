@@ -321,7 +321,7 @@
                                 <a href="{{ route('template.one.checkout') }}"
                                     class="cart-button w-100 ml-3 mt-0">Checkout</a>
                             </div>
-                            
+
                         @endif
 
 
