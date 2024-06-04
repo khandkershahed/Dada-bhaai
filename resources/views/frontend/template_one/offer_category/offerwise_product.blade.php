@@ -5,6 +5,10 @@
         <div class="container">
             <div class="row">
 
+                @php
+                    $catwiseproduct = '';
+                    $childcatwiseproduct = '';
+                @endphp
 
                 @include('frontend.template_one.partials.frontend_sidebar')
 
@@ -61,9 +65,9 @@
                                         <a href="{{ url('product' . '/' . $product->products->id . '/' . $product->products->product_slug) }}"
                                             class="img-wrapper">
 
-                                            <img class="img product_id"
-                                                src="{{ asset($product->products->product_image) }}" alt=""
-                                                style="height: 230px;" data-id="{{ $product->products->id }}" />
+                                            <img class="img product_id" src="{{ asset($product->products->product_image) }}"
+                                                alt="" style="height: 230px;"
+                                                data-id="{{ $product->products->id }}" />
 
                                         </a>
 
