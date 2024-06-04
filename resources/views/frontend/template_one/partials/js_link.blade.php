@@ -112,7 +112,6 @@
 @yield('pricescripts')
 
 {{-- Add Cart To Compare --}}
-
 <script>
     $('.add_to_compare').click(function() {
 
@@ -164,6 +163,140 @@
         })
 
     })
+</script>
+
+{{-- Load Compare --}}
+<script>
+    function compare() {
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: '/get-compare',
+            success: function(response) {
+                var tableHtml = "";
+
+                $.each(response.carts, function(key, value) {
+                    tableHtml += `
+                    
+
+                <li class="product">
+                    <div class="top-info">
+                        <div class="check">
+                            </div>
+                        <img src="/${value.options.image}" style="width:400px; height:200px;" alt="product image">
+                    </div>
+
+                    <ul class="cd-features-list">
+                        <li>${value.name.length > 20 ? `${value.name.substring(0, 20)}...` : value.name}</li>
+                        <li>Tk ${value.price}</li>
+
+                        <li style="cursor:pointer;text-decoration: underline;" id="${value.id}" onclick="addToCartCompare(this.id)" >Add To Cart</li>
+
+                        <li style="cursor:pointer;text-decoration: underline;" id="${value.rowId}" onclick="compareRemove(this.id)">Delete</li>
+                    </ul>
+                </li>
+
+                
+
+                `;
+                });
+
+                $('#compare').html(tableHtml);
+            }
+        });
+    }
+
+    compare();
+</script>
+
+{{-- Add Cart Compare --}}
+<script>
+    function addToCartCompare(id) {
+
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            url: "/add-to-cart-compare/" + id,
+
+            success: function(data) {
+
+                miniCart();
+                miniCartRelated();
+
+                // Start Message
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success,
+                    })
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error,
+                    })
+                }
+
+                // End Message
+
+
+            }
+        })
+    }
+</script>
+
+{{-- Compare Remove --}}
+<script>
+    function compareRemove(rowId) {
+        $.ajax({
+            type: 'GET',
+            url: '/compare/product/remove/' + rowId,
+            dataType: 'json',
+            success: function(data) {
+                miniCart();
+                // Start Message
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        title: data.success,
+                    })
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        title: data.error,
+                    })
+                }
+
+                // End Message
+
+            }
+
+
+        })
+    }
 </script>
 
 {{-- OfferToCartOne --}}
@@ -1218,8 +1351,6 @@
 </script>
 
 
-
-
 {{-- // Cart INCREMENT --}}
 <script>
     // Cart INCREMENT
@@ -1648,6 +1779,7 @@
         });
     });
 </script>
+
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         const qtyInput = document.getElementById('dqtyAccesories');
@@ -1694,6 +1826,7 @@
         });
     });
 </script>
+
 <script>
     $(document).ready(function() {
         $('.childcategory-link').click(function() {

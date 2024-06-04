@@ -151,7 +151,10 @@ Route::controller(TemplateOneController::class)->group(function () {
 
     //Add To Compare
     Route::post('/add-to-compare', 'AddToCompare');
-    Route::get('/compare-product/{id}', 'CompareProduct');
+    Route::get('/compare-product', 'CompareProduct')->name('compare.product');
+    Route::get('/get-compare', 'GetCompare');
+    Route::post('/add-to-cart-compare/{id}', 'AddToCartCompare');
+    Route::get('/compare/product/remove/{rowId}', 'RemoveCompareTemplateOne');
 
 });
 
@@ -227,8 +230,6 @@ Route::controller(TemplateOneCartController::class)->group(function () {
 
     // ==================================
     Route::post('/apply-coupon', 'applyCoupon')->name('apply.coupon');
-
-    
 
 });
 

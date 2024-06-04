@@ -240,17 +240,17 @@
                             <div class="col-lg-3 col-md-6">
 
                                 <select name="sortBy" onchange="this.form.submit();">
-
-                                    <option selected disabled>Sort By Product</option>
-
-                                    <option value="nameAtoZ" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == 'nameAtoZ') selected @endif>Product
-                                        Name: A to Z
+                                    <option selected disabled>Show</option>
+                                    <option value="10" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == '10') selected @endif>10</option>
+                                    <option value="20" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == '20') selected @endif>20</option>
+                                    <option value="30" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == '30') selected @endif>30
                                     </option>
-
-                                    <option value="nameZtoA" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == 'nameZtoA') selected @endif>Product
-                                        Name: Z to A
+                                    <option value="40" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == '40') selected @endif>40
                                     </option>
-
+                                    <option value="50" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == '50') selected @endif>50
+                                    </option>
+                                    <option value="60" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == '60') selected @endif>60
+                                    </option>
                                 </select>
 
                             </div>
