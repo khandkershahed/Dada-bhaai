@@ -14,7 +14,7 @@
                 <div>
                     <div class="banner-text text-center pt-180 pb-120">
                         <h2 class="f-800 cod__black-color">
-                            WishList <span class="grenadier-color">Product</span>
+                            Compare <span class="grenadier-color">Product</span>
                         </h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb pt-3">
@@ -23,7 +23,7 @@
                                 </li>
                                 <li class="breadcrumb-item grenadier-color active" aria-current="page">
                                     <a href="">
-                                        <span class="grenadier-color">WishList</span>
+                                        <span class="grenadier-color">Compare</span>
                                     </a>
                                 </li>
                             </ol>
@@ -34,12 +34,15 @@
         </div>
     </div>
 </section>
+
+{{-- Compare List  --}}
 <section>
     <div class="container pt-5">
         <div class="row">
             <div class="col-lg-12 table-responsive" style="overflow-y: hidden;">
                 <table class="table table-bordered">
                     <tbody>
+
                         <tr class="text-center">
                             <th class="compare-label blk-clr"
                                 style="vertical-align: middle !important;background: #edebeb;padding: 25px;">
@@ -181,22 +184,19 @@
                                 Action
                             </th>
                             <td class="blklt-clr action" style="vertical-align: middle !important">
-                                <a href=""
-                                    onclick="return confirm('Are you sure want to delete this data?')"
+                                <a href="" onclick="return confirm('Are you sure want to delete this data?')"
                                     title="" style="padding: 3px 3px 3px 3px">
                                     <i class="fa fa-close"></i>
                                 </a>
                             </td>
                             <td class="blklt-clr action" style="vertical-align: middle !important">
-                                <a href=""
-                                    onclick="return confirm('Are you sure want to delete this data?')"
+                                <a href="" onclick="return confirm('Are you sure want to delete this data?')"
                                     title="" style="padding: 3px 3px 3px 3px">
                                     <i class="fa fa-close"></i>
                                 </a>
                             </td>
                             <td class="blklt-clr action" style="vertical-align: middle !important">
-                                <a href=""
-                                    onclick="return confirm('Are you sure want to delete this data?')"
+                                <a href="" onclick="return confirm('Are you sure want to delete this data?')"
                                     title="" style="padding: 3px 3px 3px 3px">
                                     <i class="fa fa-close"></i>
                                 </a>
@@ -208,9 +208,9 @@
         </div>
     </div>
 </section>
-<!-- page banner area end -->
+{{-- Compare List  --}}
 
-<!-- shop area start -->
+
 
 
 @endsection

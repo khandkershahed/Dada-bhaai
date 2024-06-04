@@ -111,6 +111,61 @@
 @yield('brandscripts')
 @yield('pricescripts')
 
+{{-- Add Cart To Compare --}}
+
+<script>
+    $('.add_to_compare').click(function() {
+
+        var product_id = $(this).data('product_id');
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+
+            data: {
+                product_id: product_id,
+            },
+
+            url: '/add-to-compare',
+
+            success: function(data) {
+
+
+                // Start Message
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success,
+                    })
+
+                    window.location.href = '/compare-product';
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error,
+                    })
+                }
+
+                // End Message
+            }
+        })
+
+    })
+</script>
+
 {{-- OfferToCartOne --}}
 <script>
     $('.add_to_offer_btn').click(function() {
@@ -132,7 +187,7 @@
 
             success: function(data) {
 
-                $('.cart_icon').removeClass('d-none');
+                // $('.cart_icon').removeClass('d-none');
 
                 miniCart();
 

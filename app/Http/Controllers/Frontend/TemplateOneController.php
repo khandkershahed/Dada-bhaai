@@ -13,6 +13,7 @@ use App\Models\Admin\OfferCategory;
 use App\Models\Admin\Product;
 use App\Models\Admin\Terms;
 use App\Models\Brand;
+use App\Models\Compare;
 use App\Models\Sites;
 use App\Models\User;
 use App\Models\User\Order;
@@ -511,6 +512,27 @@ class TemplateOneController extends Controller
     {
         $term = Terms::first();
         return view('frontend.template_one.term.term', compact('term'));
+    }
+
+    //Compare
+    public function AddToCompare(Request $request)
+    {
+        
+        Compare::insert([
+
+            'product_id' => $request->product_id,
+            'created_at' => now(),
+
+        ]);
+
+        return response()->json(['success'=> 'Product Add to compare successfully']);
+
+    }
+
+    //Compare Product
+    public function CompareProduct($id)
+    {
+        return view('frontend.template_one.cart.compare');
     }
 
 }

@@ -146,6 +146,13 @@ Route::controller(TemplateOneController::class)->group(function () {
     Route::post('/tracking-order', 'TemplateOneTackOrderSearch')->name('track.order.search');
     Route::get('/tracking-order/{id}', 'TemplateOneTackOrderProduct')->name('track.order.product');
 
+    //Compare
+    Route::get('/compare', 'ProductCompare')->name('compare');
+
+    //Add To Compare
+    Route::post('/add-to-compare', 'AddToCompare');
+    Route::get('/compare-product/{id}', 'CompareProduct');
+
 });
 
 //Cart Controller
@@ -221,8 +228,7 @@ Route::controller(TemplateOneCartController::class)->group(function () {
     // ==================================
     Route::post('/apply-coupon', 'applyCoupon')->name('apply.coupon');
 
-    //Compare
-    Route::get('/compare', 'ProductCompare')->name('compare');
+    
 
 });
 
