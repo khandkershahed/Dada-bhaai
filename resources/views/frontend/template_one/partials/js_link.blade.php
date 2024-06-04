@@ -1532,7 +1532,7 @@
         $.ajax({
             type: "GET",
             dataType: 'json',
-            url: "/get-wishlist-product/",
+            url: "/get-wishlist-product",
             success: function(response) {
                 $('#wishQty').text(response.wishQty);
                 var rows = "";
