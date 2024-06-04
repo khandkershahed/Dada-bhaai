@@ -7,16 +7,7 @@ Primary style
   box-sizing: border-box;
 }
 
-html {
-  font-size: 62.5%;
-}
 
-body {
-  font-size: 1.6rem;
-  font-family: "Source Sans Pro", sans-serif;
-  color: #404042;
-  background-color: #ffffff;
-}
 
 a {
   color: #9dc997;
