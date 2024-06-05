@@ -1411,29 +1411,56 @@
 
                 // Start Message
 
+                // const Toast = Swal.mixin({
+                //     toast: true,
+                //     position: 'top-end',
+
+                //     showConfirmButton: false,
+                //     timer: 3000
+                // })
+                // if ($.isEmptyObject(data.error)) {
+
+                //     Toast.fire({
+                //         type: 'success',
+                //         icon: 'success',
+                //         title: data.success,
+                //     })
+
+                // } else {
+
+                //     Toast.fire({
+                //         type: 'error',
+                //         icon: 'error',
+                //         title: data.error,
+                //     })
+                // }
+
+                // Start Message
                 const Toast = Swal.mixin({
                     toast: true,
-                    position: 'top-end',
-
+                    position: 'bottom-end', // Position set to bottom-end
                     showConfirmButton: false,
-                    timer: 3000
-                })
+                    timer: 3000,
+                    customClass: { // Custom class to make the toast smaller
+                        popup: 'swal2-toast',
+                        title: 'swal2-toast-title',
+                        content: 'swal2-toast-content'
+                    }
+                });
+
                 if ($.isEmptyObject(data.error)) {
-
                     Toast.fire({
-                        type: 'success',
                         icon: 'success',
-                        title: data.success,
-                    })
-
+                        title: data.success
+                    });
                 } else {
-
                     Toast.fire({
-                        type: 'error',
                         icon: 'error',
-                        title: data.error,
-                    })
+                        title: data.error
+                    });
                 }
+                // End Message update code
+
 
                 // End Message
 
