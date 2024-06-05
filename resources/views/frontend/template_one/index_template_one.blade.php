@@ -1,47 +1,47 @@
 @extends('frontend.template_one.frontend_dashboard_template_one')
 @section('index_template_one')
 @section('title', 'Dada Bhaai')
-    <!-- hero  -->
-    @include('frontend.template_one.partials.home_page.hero')
-    <!-- Hero end -->
+<!-- hero  -->
+@include('frontend.template_one.partials.home_page.hero')
+<!-- Hero end -->
 
-    <!-- Top Category Area  -->
-    @include('frontend.template_one.partials.home_page.home_category')
-    <!-- Top Category Area end -->
+<!-- Top Category Area  -->
+@include('frontend.template_one.partials.home_page.home_category')
+<!-- Top Category Area end -->
 
-    <!-- Discover All Product  -->
-    @include('frontend.template_one.partials.home_page.home_product')
-    <!-- Discover All Product end -->
+<!-- Discover All Product  -->
+@include('frontend.template_one.partials.home_page.home_product')
+<!-- Discover All Product end -->
 
-    <!-- Weekly Deals -->
-    @include('frontend.template_one.partials.home_page.home_weekly_offer')
-    <!-- Weekly Deals end -->
+<!-- Weekly Deals -->
+@include('frontend.template_one.partials.home_page.home_weekly_offer')
+<!-- Weekly Deals end -->
 
-    <!-- Featured  -->
-    @include('frontend.template_one.partials.home_page.home_feature')
-    <!-- Featured end -->
+<!-- Featured  -->
+@include('frontend.template_one.partials.home_page.home_feature')
+<!-- Featured end -->
 
-    <!-- Offer Banner  -->
+<!-- Offer Banner  -->
 
-    @include('frontend.template_one.partials.home_page.offer_banner')
+@include('frontend.template_one.partials.home_page.offer_banner')
 
-    <!-- Offer Banner -->
+<!-- Offer Banner -->
 
-    <!-- Latest Items   -->
-    @include('frontend.template_one.partials.home_page.latest_product')
-    <!-- Latest Items  end -->
+<!-- Latest Items   -->
+@include('frontend.template_one.partials.home_page.latest_product')
+<!-- Latest Items  end -->
 
-    <!-- Latest Offer  -->
-    @include('frontend.template_one.partials.home_page.latest_offer')
-    <!-- Latest Offer end -->
+<!-- Latest Offer  -->
+@include('frontend.template_one.partials.home_page.latest_offer')
+<!-- Latest Offer end -->
 
-    <!-- Brand -->
-    @include('frontend.template_one.partials.home_page.home_brand')
-    
-    <!-- Brand End -->
+<!-- Brand -->
+@include('frontend.template_one.partials.home_page.home_brand')
 
-    <!-- Subscribe -->
-    {{-- <div class="subscribe subscribe--area grenadier-bg">
+<!-- Brand End -->
+
+<!-- Subscribe -->
+{{-- <div class="subscribe subscribe--area grenadier-bg">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -72,9 +72,9 @@
             </div>
         </div>
     </div> --}}
-    <!-- Subscribe End -->
+<!-- Subscribe End -->
 
-    <!-- modal area start --
+<!-- modal area start --
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
               Launch demo modal
           </button>

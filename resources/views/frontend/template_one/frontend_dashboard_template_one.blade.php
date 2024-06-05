@@ -5,7 +5,7 @@
 
 <body>
     <!-- Loader -->
-    <div id="loader" class="loader"></div>
+    <div class="loader"></div>
     <!-- Loader End -->
 
     <!-- Header -->

@@ -197,7 +197,7 @@
 
     //             miniCart();
 
-    //             // Start Message 
+    //             // Start Message
 
     //             const Toast = Swal.mixin({
     //                 toast: true,
@@ -223,7 +223,7 @@
     //                 })
     //             }
 
-    //             // End Message  
+    //             // End Message
     //         }
 
     //     })
@@ -623,7 +623,7 @@
 
                                                         <div class="col-lg-4">
                                                             <span class="text-muted" href="javascript:;" style="margin-right: 10px;">${value.name}</span>${value.qty}*
-                                                                Tk ${value.price} 
+                                                                Tk ${value.price}
                                                         </div>
 
                                                         <div class="col-lg-4">
@@ -633,7 +633,7 @@
                                                                 <a type="submit" id="${value.rowId}" onclick="miniCartRelatedDecrease(this.id)" class="buttons-count" id="decrease">-</a>
 
                                                                 <input type="text" disabled class="mb-0 border-1 text-center"
-                                                                    name="" value="${value.qty}" min="1" 
+                                                                    name="" value="${value.qty}" min="1"
                                                                     style="width: 20px" />
 
                                                                 <a type="submit" id="${value.rowId}" onclick="miniCartRelatedIncrease(this.id)" class="buttons-count" id="increase">+</a>
@@ -652,7 +652,7 @@
 
                                                     </div>
 
-                                                    
+
                                                 </li>
                                             </ul>
 
@@ -1665,6 +1665,12 @@
         });
     });
 </script>
+
+<script>
+    $(window).load(function () {
+      $(".loader").fadeOut(3000);
+    });
+  </script>
 
 {{-- ======================================================= --}}
 

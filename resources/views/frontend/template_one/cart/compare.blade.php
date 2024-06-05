@@ -205,6 +205,14 @@
                     </tbody>
                 </table>
             </div>
+            <div class="col-lg-12 mt-4">
+                <div class="alert alert-danger">
+                    <h1 style="text-align: center">
+                      Your Compare list is empty! Add product to compare list to compare
+                      them.
+                    </h1>
+                  </div>
+            </div>
         </div>
     </div>
 </section>
