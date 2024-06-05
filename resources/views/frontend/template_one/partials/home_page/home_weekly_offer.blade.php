@@ -1,6 +1,19 @@
-@php
+{{-- @php
     $offer_cats = App\Models\Admin\OfferCategory::with('offer')
         ->whereHas('offer')
+        ->where('status', '1')
+        ->limit(4)
+        ->latest()
+        ->get();
+@endphp --}}
+
+@php
+    use Carbon\Carbon;
+    use App\Models\Admin\OfferCategory;
+
+    $offer_cats = OfferCategory::with(['offer' => function ($query) {
+            $query->where('end_date', '>', Carbon::now());
+        }])
         ->where('status', '1')
         ->limit(4)
         ->latest()
@@ -35,7 +48,7 @@
                                                 </div>
                                                 <div class="col-xl-4 col-lg-4">
                                                     <img class="img-fluid"
-                                                        src="{{ asset($offer_cat->offer->products->product_image) }}"
+                                                        src="{{ asset('storage/offer_image/' . $offer_cat->offer->offer_image) }}"
                                                         alt="" style="height: 280px; width: 300px;">
                                                 </div>
                                                 <div class="col-xl-4 col-lg-4">

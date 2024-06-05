@@ -113,7 +113,7 @@
                                     <div class="col-md-3 col-sm-6">
                                         <div class="portfolio-wrapper">
                                             <div class="portfolio-thumb">
-                                                <img src="{{ asset($product->product_image ) }}"
+                                                <img src="{{ asset($product->product_image) }}"
                                                     style="width:270px; height: 270px;" alt="" />
                                                 <div class="portfolio-content">
                                                     <div class="rating">

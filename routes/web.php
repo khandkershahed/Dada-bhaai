@@ -141,9 +141,20 @@ Route::controller(TemplateOneController::class)->group(function () {
     //About Us
     Route::get('/about-us', 'TemplateOneAboutUs')->name('template.one.about');
 
-    //Track Order
+    // Track Order
     Route::get('/user/tracking/order', 'TemplateOneTackOrder')->name('template.one.track.order');
     Route::post('/tracking-order', 'TemplateOneTackOrderSearch')->name('track.order.search');
+    Route::get('/tracking-order/{id}', 'TemplateOneTackOrderProduct')->name('track.order.product');
+
+    //Compare
+    Route::get('/compare', 'ProductCompare')->name('compare');
+
+    //Add To Compare
+    Route::post('/add-to-compare', 'AddToCompare');
+    Route::get('/compare-product', 'CompareProduct')->name('compare.product');
+    Route::get('/get-compare', 'GetCompare');
+    Route::post('/add-to-cart-compare/{id}', 'AddToCartCompare');
+    Route::get('/compare/product/remove/{rowId}', 'RemoveCompareTemplateOne');
 
 });
 
@@ -219,9 +230,6 @@ Route::controller(TemplateOneCartController::class)->group(function () {
 
     // ==================================
     Route::post('/apply-coupon', 'applyCoupon')->name('apply.coupon');
-
-    //Compare
-    Route::get('/compare', 'ProductCompare')->name('compare');
 
 });
 

@@ -20,11 +20,14 @@
 
     <!-- Place favicon.ico in the root directory -->
 
+    {{-- <link rel="stylesheet" href="{{ asset('frontend/template_one/assets/css/comparereset.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/template_one/assets/css/comparestyle.css') }}" /> --}}
+
     <!-- CSS here -->
     <link rel="stylesheet" href="{{ asset('frontend/template_one/assets/css/meanmenu.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/template_one/assets/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/template_one/assets/css/responsive.css') }}" />
 
-
+    
 
 </head>

@@ -17,6 +17,7 @@ use App\Models\Sites;
 use App\Models\User;
 use App\Models\User\Order;
 use App\Models\User\OrderItem;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -53,19 +54,26 @@ class TemplateOneController extends Controller
 
         //sortByProduct
         if (!empty($_GET['sortBy'])) {
+            $perPage = (int) $_GET['sortBy']; // Cast to integer for safety
 
-            if ($_GET['sortBy'] == 'nameAtoZ') {
-                $products = $products->where(['status' => 1])->orderBy('product_name', 'ASC')->paginate(9);
-
-            } elseif ($_GET['sortBy'] == 'nameZtoA') {
-
-                $products = $products->where(['status' => 1])->orderBy('product_name', 'DESC')->paginate(9);
-
+            if ($perPage == 10) {
+                $products = $products->where('status', 1)->orderBy('product_name', 'ASC')->paginate($perPage);
+            } elseif ($perPage == 20) {
+                $products = $products->where('status', 1)->orderBy('product_name', 'ASC')->paginate($perPage);
+            } elseif ($perPage == 30) {
+                $products = $products->where('status', 1)->orderBy('product_name', 'ASC')->paginate($perPage);
+            } elseif ($perPage == 40) {
+                $products = $products->where('status', 1)->orderBy('product_name', 'ASC')->paginate($perPage);
+            } elseif ($perPage == 50) {
+                $products = $products->where('status', 1)->orderBy('product_name', 'ASC')->paginate($perPage);
+            } elseif ($perPage == 60) {
+                $products = $products->where('status', 1)->orderBy('product_name', 'ASC')->paginate($perPage);
             } else {
-                $products = $products->where('status', 1)->orderBy('id', 'DESC')->paginate(9);
+                // Default case, if sortBy doesn't match any defined value
+                $products = $products->where('status', 1)->orderBy('id', 'DESC')->paginate(20);
             }
         } else {
-            $products = $products->where('status', 1)->orderBy('id', 'DESC')->paginate(35);
+            $products = $products->where('status', 1)->orderBy('id', 'DESC')->paginate(18);
         }
 
         $brands = Brand::where('status', '1')->orderBy('brand_name', 'ASC')->latest()->get();
@@ -477,13 +485,30 @@ class TemplateOneController extends Controller
     {
         $invoice = $request->code;
 
-        $track = Order::where('billing_phone', $invoice)->first();
+        $track = Order::where('billing_phone', $invoice)->orWhere('invoice_number', $invoice)->first();
+
+        if ($track) {
+
+            return redirect()->route('track.order.product', $track->id);
+
+        } else {
+            toastr()->error('Invalid Invoice Or Phone Number');
+            return redirect()->back();
+        }
+
+    }
+
+    //Template One TackOrder Search
+    public function TemplateOneTackOrderProduct($id)
+    {
+
+        $track = Order::where('id', $id)->first();
 
         if ($track) {
             $orderItems = OrderItem::where('order_id', $track->id)->get();
             return view('frontend.template_one.user.track_order_search', compact('track', 'orderItems'));
         } else {
-            toastr()->error('Invalid Invoice Number');
+            toastr()->error('Invalid Invoice Or Phone Number');
             return redirect()->back();
         }
 
@@ -494,6 +519,176 @@ class TemplateOneController extends Controller
     {
         $term = Terms::first();
         return view('frontend.template_one.term.term', compact('term'));
+    }
+
+    //Compare
+    public function AddToCompare(Request $request)
+    {
+        $id = $request->product_id;
+
+        $product = Product::findOrFail($id);
+
+        $cartItem = Cart::instance('compare')->search(function ($cartItem, $rowId) use ($id) {
+            return $cartItem->id === $id;
+        });
+
+        if ($cartItem->isNotEmpty()) {
+
+            return response()->json(['error' => 'This Product Has Already Added On Compare']);
+        }
+
+        if ($product->price_status == 'rfq') {
+
+            Cart::instance('compare')->add([
+
+                'id' => $id,
+
+                'name' => $product->product_name,
+                'qty' => 1,
+                'price' => $product->sas_price,
+                'weight' => 1,
+
+                'options' => [
+                    'image' => $product->product_image,
+                    // 'color' => $request->color,
+                ],
+
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Compare']);
+
+        } elseif ($product->price_status == 'offer_price') {
+
+            Cart::instance('compare')->add([
+
+                'id' => $id,
+
+                'name' => $product->product_name,
+                'qty' => 1,
+                'price' => $product->discount_price,
+                'weight' => 1,
+
+                'options' => [
+                    'image' => $product->product_image,
+                    // 'color' => $request->color,
+                ],
+
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Compare']);
+        } else {
+
+            Cart::instance('compare')->add([
+
+                'id' => $id,
+
+                'name' => $product->product_name,
+                'qty' => 1,
+                'price' => $product->price,
+                'weight' => 1,
+
+                'options' => [
+                    'image' => $product->product_image,
+                    // 'color' => $request->color,
+                ],
+
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Compare']);
+        }
+
+    }
+
+    //Compare Product
+    public function CompareProduct()
+    {
+        return view('frontend.template_one.cart.compare');
+    }
+
+    //GetCompare
+    public function GetCompare()
+    {
+        $carts = Cart::instance('compare')->content()->take(4); // Limiting to 3 products
+        $cartQty = Cart::instance('compare')->count();
+        $cartTotal = Cart::instance('compare')->total();
+
+        return response()->json(array(
+            'carts' => $carts,
+            'cartQty' => $cartQty,
+            'cartTotal' => $cartTotal,
+        ));
+    }
+
+    public function AddToCartCompare(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+
+        $cartItem = Cart::search(function ($cartItem, $rowId) use ($id) {
+            return $cartItem->id === $id;
+        });
+
+        if ($cartItem->isNotEmpty()) {
+
+            return response()->json(['error' => 'This Product Has Already Added']);
+        }
+
+        if ($product->price_status == 'rfq') {
+
+            Cart::add([
+
+                'id' => $id,
+                'name' => $product->product_name,
+                'qty' => 1,
+                'price' => $product->sas_price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $product->product_image,
+
+                ],
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        } elseif ($product->price_status == 'offer_price') {
+
+            Cart::add([
+
+                'id' => $id,
+                'name' => $product->product_name,
+                'qty' => 1,
+                'price' => $product->discount_price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $product->product_image,
+
+                ],
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        } else {
+
+            Cart::add([
+
+                'id' => $id,
+                'name' => $product->product_name,
+                'qty' => 1,
+                'price' => $product->price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $product->product_image,
+
+                ],
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        }
+    }
+
+    //CartRemove
+    public function RemoveCompareTemplateOne($rowId)
+    {
+        Cart::instance('compare')->remove($rowId);
+
+        return response()->json(['success' => 'Successfully Remove From Compare']);
     }
 
 }

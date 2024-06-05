@@ -53,7 +53,7 @@
                                     </a>
 
                                     {{-- Compare Icon --}}
-                                    <a href="{{ route('compare') }}"><i class="fas fa-random"></i></a>
+                                    <a type="submit" style="cursor:pointer;" data-product_id="{{ $product->id }}" class="add_to_compare"><i class="fas fa-random"></i></a>
 
                                 </div>
                             </div>

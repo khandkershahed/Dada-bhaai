@@ -10,7 +10,7 @@
         <div class="container">
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <a class="navbar-brand" href="{{ route('index') }}">
-                    <img class="" width="250px" src="{{ asset('upload/logo_black/' . $site->logo_black) }}"
+                    <img class="" width="240px" src="{{ asset('upload/logo_black/' . $site->logo_black) }}"
                         alt="" />
                 </a>
                 <div class="col-xl-3 col-lg-4 col-md-5 col-10">
