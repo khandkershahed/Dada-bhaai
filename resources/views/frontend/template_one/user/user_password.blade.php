@@ -5,7 +5,7 @@
             <h3 class="title-3 fsz-15 grenadier-color">Change Password</h3>
         </div>
 
-        <form action="{{ route('template.one.user.password.update') }}" method="POST" class="col-md-12 text-start"
+        <form action="{{ route('template.one.user.password.update') }}" method="POST" class="col-md-12 text-start px-0"
             id="myForm">
 
             @csrf

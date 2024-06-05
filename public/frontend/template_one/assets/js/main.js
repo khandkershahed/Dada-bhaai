@@ -18,11 +18,26 @@
 
     // minicart toggle
 
-    $(".mini__cart--link").on('click', function () {
+    $(document).ready(function() {
+        $(".mini__cart--link").on('click', function(event) {
+            event.stopPropagation();
+            $(".mini__cart--box").slideToggle();
+        });
 
-        $(".mini__cart--box").slideToggle();
+        $(document).on('click', function(event) {
+            if (!$(event.target).closest('.mini__cart--box, .mini__cart--link').length) {
+                $(".mini__cart--box").slideUp();
+            }
+        });
 
+        // Ensure clicks within the mini cart box don't propagate to the document
+        $(".mini__cart--box").on('click', function(event) {
+            event.stopPropagation();
+        });
     });
+
+
+
 
 
 
@@ -252,7 +267,7 @@
 
 
 
-    // product active for shop banner page 
+    // product active for shop banner page
 
     $('.shop--banner__active').owlCarousel({
 

@@ -1,6 +1,25 @@
 @extends('frontend.template_one.frontend_dashboard_template_one')
 @section('index_template_one')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+    <section class="page-banner-area" data-background="http://127.0.0.1:7000/frontend/template_one/assets/img/bg/banner.jpg"
+        style="margin-top: 4.7rem; background-image: url(&quot;http://127.0.0.1:7000/frontend/template_one/assets/img/bg/banner.jpg&quot;);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-sm-12">
+                    <div class="banner-text text-center pt-90 pb-90">
+                        <h2 class="f-800 cod__black-color">My Dashboard</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page"><a
+                                        href="{{ route('template.one.dashboard') }}">My Account</a> </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <div class="container mt-5 mb-5">
         <div class="row pt-80 pb-80">
             <div class="col-lg-12">

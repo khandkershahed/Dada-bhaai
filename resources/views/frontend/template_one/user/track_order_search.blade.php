@@ -166,7 +166,25 @@
     </style>
 
 
+    <section class="page-banner-area" data-background="http://127.0.0.1:7000/frontend/template_one/assets/img/bg/banner.jpg"
+        style="margin-top: 4.7rem; background-image: url(&quot;http://127.0.0.1:7000/frontend/template_one/assets/img/bg/banner.jpg&quot;);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-sm-12">
+                    <div class="banner-text text-center pt-90 pb-90">
+                        <h2 class="f-800 cod__black-color">Product Tracking</h2>
 
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('template.one.dashboard') }}">Dashboard</a></li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <div class="container mt-5 mb-5">
         <div class="row">
             <div class="col-lg-12">
@@ -272,24 +290,25 @@
                                 <ul class="row">
 
                                     @foreach ($orderItems as $item)
-                                    <li class="col-md-4">
-                                        <figure class="itemside mb-3">
-                                            <div class="aside"><img src="{{ asset($item->product->product_image) }}"
-                                                    class="img-sm border"></div>
-                                            <figcaption class="info align-self-center">
-                                                <p class="title">{{ $item->product->product_name }} <br>Qty: {{ $item->qty }}</p> <span
-                                                    class="text-muted">Tk {{ $item->price }}</span>
-                                            </figcaption>
-                                        </figure>
-                                    </li>
+                                        <li class="col-md-4">
+                                            <figure class="itemside mb-3">
+                                                <div class="aside"><img src="{{ asset($item->product->product_image) }}"
+                                                        class="img-sm border"></div>
+                                                <figcaption class="info align-self-center">
+                                                    <p class="title">{{ $item->product->product_name }} <br>Qty:
+                                                        {{ $item->qty }}</p> <span class="text-muted">Tk
+                                                        {{ $item->price }}</span>
+                                                </figcaption>
+                                            </figure>
+                                        </li>
                                     @endforeach
 
 
 
                                 </ul>
                                 <hr>
-                                <a href="{{ route('template.one.dashboard') }}" class="btn btn-warning" data-abc="true"> <i
-                                        class="fa fa-chevron-left"></i> Back to orders</a>
+                                <a href="{{ route('template.one.dashboard') }}" class="btn btn-warning" data-abc="true">
+                                    <i class="fa fa-chevron-left"></i> Back to orders</a>
                             </div>
                         </article>
                     </div>

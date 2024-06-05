@@ -24,7 +24,7 @@
 <!-- page banner area end -->
 
 <!-- reg area start -->
-<section class="reg-area pt-60 pb-75">
+<section class="reg-area pt-60">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center">
@@ -45,7 +45,8 @@
                             aria-labelledby="home-tab">
                             <div class="mt-2 d-flex justify-content-between aligin-items-center">
                                 <a href="{{ route('login.google') }}" class="cart-button w-100 mt-0">Google Login</a>
-                                <a class="w-100">Facebook Login</a>
+                                <a href="{{ route('login.google') }}" class="cart-button w-100 mt-0 ml-2">Facebook
+                                    Login</a>
                             </div>
                             <x-auth-session-status class="mb-4" :status="session('status')" />
                             <form method="POST" action="{{ route('login') }}">
@@ -132,6 +133,12 @@
                                             <input type="password" class="form-control form-control-sm "
                                                 name="password_confirmation" id="password_confirmation"
                                                 placeholder="Confirm Password" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group form-check">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                            <label class="form-check-label pt-0" for="exampleCheck1">I agree on Tech Focus Term & Condition.</label>
                                         </div>
                                     </div>
                                 </div>

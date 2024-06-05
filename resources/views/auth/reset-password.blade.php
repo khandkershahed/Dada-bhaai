@@ -27,7 +27,7 @@
 <!-- page banner area end -->
 
 <!-- reg area start -->
-<section class="reg-area pt-60 pb-75">
+<section class="reg-area pt-60">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center">

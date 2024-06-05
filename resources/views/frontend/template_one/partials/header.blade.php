@@ -10,8 +10,10 @@
         <div class="container">
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <a class="navbar-brand" href="{{ route('index') }}">
-                    <img class="" width="240px" src="{{ asset('upload/logo_black/' . $site->logo_black) }}"
-                        alt="" />
+                    <img class="" width="200px"
+                        src="https://dadabhaai.com/upload/logo_black/202405200404Dadabhai%20Logo.png" alt="" />
+                    {{-- <img class="" width="240px" src="{{ asset('upload/logo_black/' . $site->logo_black) }}"
+                        alt="" /> --}}
                 </a>
                 <div class="col-xl-3 col-lg-4 col-md-5 col-10">
                     <!-- Extra shopping cart for mobile device start -->
@@ -406,7 +408,7 @@
 
                                                         <hr class="mb-2 mt-3">
 
-                                                        <p>First time here? <a
+                                                        <p class="text-muted pl-3">First time here? <a
                                                                 href="{{ route('template.one.login') }}"
                                                                 class="text-danger">Sign
                                                                 Up</a>
@@ -424,12 +426,32 @@
                                                             class="cart-button w-100 mt-0">
                                                             Login
                                                         </a>
-
                                                         <hr class="mb-2 mt-3">
-
                                                         <a href="{{ route('template.one.login') }}"
-                                                            class="text-muted">First time here? <span
-                                                                class="text-danger">Sign Up</span></a>
+                                                            class="text-muted pl-3" style="font-size: 12px;">First time
+                                                            here? <span class="text-danger">Sign Up</span></a>
+                                                        <hr class="mb-2 mt-2">
+                                                        <a class="dropdown-item pl-3" style="font-size: 12px;"
+                                                            href="{{ route('template.one.dashboard') }}"><i
+                                                                class="fal fa-user pr-2"></i>
+                                                            My Profile</a>
+                                                        <a class="dropdown-item pl-3" style="font-size: 12px;"
+                                                            href="{{ route('template.one.dashboard') }}"><i
+                                                                class="fal fa-heart pr-2"></i>
+                                                            My Wishlist</a>
+                                                        <a class="dropdown-item pl-3" style="font-size: 12px;"
+                                                            href="{{ route('template.one.dashboard') }}"><i
+                                                                class="fal fa-random pr-2"></i>
+                                                            My Compare</a>
+                                                        <a class="dropdown-item pl-3" style="font-size: 12px;"
+                                                            href="{{ route('template.one.dashboard') }}"><i
+                                                                class="fal fa-box pr-2"></i>
+                                                            My Order</a>
+                                                        <hr class="mb-2 mt-2">
+                                                        <a class="dropdown-item pl-3" style="font-size: 12px;"
+                                                            href="{{ route('template.one.dashboard') }}"><i
+                                                                class="fal fa-shopping-cart pr-2"></i>
+                                                            My Cart</a>
                                                     @endif
 
                                                 </div>
