@@ -1885,7 +1885,7 @@ ul.sub__menu.sub__dept--menu li:hover ul.sub__menu.level2 {
     transition: all 0.4s ease 0s;
 }
 .product-grid:hover .product-content {
-    transform: translateY(-40px);
+    transform: translateY(-65px);
 }
 .product-grid .title {
     font-size: 17px;
