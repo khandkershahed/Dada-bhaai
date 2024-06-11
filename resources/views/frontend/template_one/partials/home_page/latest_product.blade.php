@@ -29,19 +29,25 @@
                 </div> --}}
 
             </div>
+
             <div class="row">
+
                 @forelse ($products as $product)
                     <div class="col-lg-3 col-md-6">
                         <div class="product-grid mb-3">
                             <div class="product-image">
                                 <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
                                     class="image">
+
                                     <img class="pic-1" src="{{ asset($product->product_image) }}"
-                                     data-tip="{{ $product->product_name }}">
+                                        data-tip="{{ $product->product_name }}" style="width:100%;height: 500px;">
+
                                 </a>
+
                                 <ul class="product-labels">
-                                    <li>Hot</li>
+                                    <li class="px-3">New</li>
                                 </ul>
+
                                 <ul class="product-links">
                                     <li><a style="cursor: pointer;" id="{{ $product->id }}"
                                             onclick="addToWishList(this.id)" data-tip="Wishlist"><i
@@ -87,6 +93,7 @@
                 @endforelse
 
             </div>
+
         </div>
     </div>
 @endif
