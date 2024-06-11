@@ -36,7 +36,8 @@
                             <a href="javascript:;">
 
                                 <img src="{{ !empty($offercats->icon_image) ? url('storage/offer_category_image/' . $offercats->icon_image) : url('https://ui-avatars.com/api/?size=500&background=random&color=fff&rounded=false&name=' . urlencode($offercats->offer_category_name)) }}"
-                                    alt="" />
+                                    alt="" width="500" height="300" />
+
                             </a>
 
                             <div class="small__banner--content text-center">
@@ -55,26 +56,22 @@
                                     <a href="javascript:;" class="image">
 
                                         <img class="img product_id" src="{{ asset($product->products->product_image) }}"
-                                            alt="" data-id="{{ $product->products->id }}" />
+                                            alt="" data-id="{{ $product->products->id }}"
+                                            style="width:100%; height: 300px;" />
 
                                     </a>
-                                    <div class="product-button-group">
-                                        {{-- Wishlist Icon --}}
-                                        <a style="cursor: pointer;" id="{{ $product->id }}"
-                                            onclick="addToWishList(this.id)"><i class="fas fa-heart"></i></a>
+                                    {{-- <span class="product-discount-label">New</span> --}}
 
-                                        {{-- Add To Cart Icon --}}
-                                        <a type="submit" style="cursor:pointer;"
-                                            data-offer_price="{{ $product->discount_price }}"
-                                            data-product_id="{{ $product->products->id }}"
-                                            class="add-to-cart add_to_cart_btn"><i class="fas fa-shopping-cart"></i> Add
-                                            To
-                                            Cart</a>
+                                    <ul class="product-links">
 
-                                        {{-- Compare Icon --}}
-                                        <a href="#"><i class="fas fa-random"></i></a>
+                                        <li><a style="cursor: pointer;" id="{{ $product->id }}"
+                                                onclick="addToWishList(this.id)" data-tip="Wishlist"><i
+                                                    class="far fa-heart"></i></a></li>
 
-                                    </div>
+                                        <li><a type="submit" style="cursor:pointer;"
+                                                data-product_id="{{ $product->id }}" data-tip="Compare"><i
+                                                    class="fas fa-random"></i></a></li>
+                                    </ul>
                                 </div>
                                 <div class="product-content row align-items-center">
 
@@ -89,6 +86,8 @@
 
                                     </div>
 
+
+
                                     <div class="col-lg-4">
                                         <div class="price text-end">
 
@@ -99,6 +98,16 @@
                                         </div>
                                     </div>
 
+                                </div>
+
+                                <div>
+                                    {{-- <a type="submit" style="cursor:pointer;" class="add-cart add_to_cart_btn_product"
+                                        data-product_id="{{ $product->id }}">Add to cart</a> --}}
+
+                                    <a type="submit" style="cursor:pointer;"
+                                        data-offer_price="{{ $product->discount_price }}"
+                                        data-product_id="{{ $product->products->id }}"
+                                        class="add-cart add-to-cart add_to_cart_btn"> Add To Cart</a>
                                 </div>
                             </div>
 

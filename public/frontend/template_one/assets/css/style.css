@@ -1835,7 +1835,7 @@ ul.sub__menu.sub__dept--menu li:hover ul.sub__menu.level2 {
 }
 .product-grid .product-image img {
     width: 100%;
-    padding-top: 60px;
+    /* padding-top: 60px; */
 }
 .product-grid .product-discount-label {
     color: #fff;
