@@ -89,11 +89,16 @@
 
                                                         <div class="product--footer__deals">
 
-                                                            <a type="submit" style="cursor:pointer;"
-                                                                data-product_id="{{ $offer_cat->offer->products->id }}"
-                                                                data-discount_price="{{ $offer_cat->offer->discount_price }}"
-                                                                class="add-link f-700 add_to_offer_btn">+ Add
-                                                                To Cart</a>
+                                                            @if ($offer_cat->offer->end_date >= Carbon\Carbon::now())
+                                                                <a type="submit" style="cursor:pointer;"
+                                                                    data-product_id="{{ $offer_cat->offer->products->id }}"
+                                                                    data-discount_price="{{ $offer_cat->offer->discount_price }}"
+                                                                    class="add-link f-700 add_to_offer_btn">+ Add
+                                                                    To Cart</a>
+                                                            @else
+                                                                <p class="add-link f-700 add_to_offer_btn">Offer Ended
+                                                                </p>
+                                                            @endif
 
                                                         </div>
 
