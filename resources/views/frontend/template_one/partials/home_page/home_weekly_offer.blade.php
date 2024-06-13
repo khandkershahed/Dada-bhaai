@@ -1,13 +1,13 @@
-{{-- @php
+@php
     $offer_cats = App\Models\Admin\OfferCategory::with('offer')
         ->whereHas('offer')
         ->where('status', '1')
         ->limit(4)
         ->latest()
         ->get();
-@endphp --}}
+@endphp
 
-@php
+{{-- @php
     use Carbon\Carbon;
     use App\Models\Admin\OfferCategory;
 
@@ -18,7 +18,7 @@
         ->limit(4)
         ->latest()
         ->get();
-@endphp
+@endphp --}}
 
 @if (count($offer_cats) > 0)
     <div class="offer-deals">
