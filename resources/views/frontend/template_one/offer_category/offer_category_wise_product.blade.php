@@ -38,8 +38,6 @@
                                 </div>
                             </div>
 
-
-
                         </div>
                     </div>
 
@@ -62,32 +60,26 @@
 
                                         </a>
 
-                                        <div class="product-button-group">
+                                        @php
+                                            $amount = $product->price - $product->discount_price;
+                                            $discount = ($amount / $product->price) * 100;
+                                        @endphp
 
-                                            {{-- Wishlist Icon --}}
-                                            <a style="cursor: pointer;" id="{{ $product->id }}"
-                                                onclick="addToWishList(this.id)"><i class="fas fa-heart"></i></a>
+                                        <span class="product-discount-label">{{ round($discount) }} %</span>
 
-                                            {{-- Add To Cart Icon --}}
-                                            <a type="submit" style="cursor:pointer;"
-                                                data-offer_price="{{ $product->discount_price }}"
-                                                data-product_id="{{ $product->products->id }}"
-                                                class="add-to-cart add_to_cart_btn"><i class="fas fa-shopping-cart"></i>
-                                                Add To
-                                                Cart
-                                            </a>
+                                        <ul class="product-links">
 
-                                            {{-- <a type="submit" data-offer_price="{{ $product->discount_price }}"
-                                                data-product_id="{{ $product->products->id }}"
-                                                class="btn btn-primary btn-sm add_to_cart_btn">
-                                                Add To Cart
-                                            </a> --}}
+                                            <li><a style="cursor: pointer;" id="{{ $product->id }}"
+                                                    onclick="addToWishList(this.id)" data-tip="Wishlist"><i
+                                                        class="far fa-heart"></i></a></li>
 
-                                            {{-- Compare Icon --}}
-                                            <a href="#"><i class="fas fa-random"></i></a>
+                                            <li><a type="submit" style="cursor:pointer;"
+                                                    data-product_id="{{ $product->id }}" data-tip="Compare"><i
+                                                        class="fas fa-random"></i></a></li>
+                                        </ul>
 
-                                        </div>
                                     </div>
+
                                     <div class="product-content row align-items-center">
                                         <div class="col-lg-8">
 
@@ -108,6 +100,15 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div>
+
+                                        <a type="submit" style="cursor:pointer;"
+                                            data-offer_price="{{ $product->discount_price }}"
+                                            data-product_id="{{ $product->products->id }}"
+                                            class="add-cart add-to-cart add_to_cart_btn"> Add To Cart</a>
+                                    </div>
+
                                 </div>
 
                             </div>

@@ -37,6 +37,7 @@
             <div class="row gx-1">
 
                 @forelse ($products as $product)
+
                     <div class="col-lg-3 col-md-6">
                         <div class="product-grid mb-4">
                             <div class="product-image">

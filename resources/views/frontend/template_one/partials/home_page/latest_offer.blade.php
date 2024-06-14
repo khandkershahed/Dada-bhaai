@@ -60,7 +60,14 @@
                                             style="width:100%; height: 300px;" />
 
                                     </a>
-                                    {{-- <span class="product-discount-label">New</span> --}}
+
+
+                                    @php
+                                        $amount = $product->price - $product->discount_price;
+                                        $discount = ($amount / $product->price) * 100;
+                                    @endphp
+
+                                    <span class="product-discount-label">{{round($discount)}} %</span>
 
                                     <ul class="product-links">
 
@@ -72,7 +79,9 @@
                                                 data-product_id="{{ $product->id }}" data-tip="Compare"><i
                                                     class="fas fa-random"></i></a></li>
                                     </ul>
+
                                 </div>
+
                                 <div class="product-content row align-items-center">
 
                                     <div class="col-lg-8">
@@ -109,6 +118,7 @@
                                         data-product_id="{{ $product->products->id }}"
                                         class="add-cart add-to-cart add_to_cart_btn"> Add To Cart</a>
                                 </div>
+
                             </div>
 
                         @empty
