@@ -662,10 +662,18 @@ label {
         transform: translateY(0);
     }
 }
-
+.icon-red {
+    color: #cd3301 !important;
+}
 /* For Sticky TOp ENd*/
 .searchbox-open {
     width: 20%;
+}
+.userLogin:hover{
+    color: #cd3301 !important;
+}
+.wishlist:hover{
+    color: #cd3301 !important;
 }
 
 .search--header__form .nice-select {

@@ -1941,6 +1941,11 @@
     });
 </script>
 
+<script>
+    document.getElementById('userIcon').addEventListener('click', function() {
+        this.querySelector('i').classList.toggle('icon-red');
+    });
+</script>
 {{-- ======================================================= --}}
 
 {{-- =========================== --}}
