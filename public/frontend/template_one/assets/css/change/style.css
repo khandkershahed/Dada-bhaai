@@ -1181,7 +1181,7 @@ ul.sub__menu.sub__dept--menu li:hover ul.sub__menu.level2 {
 
 .slider-active .slick-dots {
   right: 0;
-  bottom: 7%;
+  bottom: 0%;
 }
 .hero-area-three .slider-active .slick-dots {
   right: inherit;
