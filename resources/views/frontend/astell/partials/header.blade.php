@@ -12,7 +12,7 @@
                 </div>
                 <ul class="depth1">
                     <li>
-                        <a href="#">Home</a>
+                        <a href="{{ route('index') }}">Home</a>
                     </li>
                     <li>
                         <a href="product.html">PRODUCT</a>
@@ -21,13 +21,13 @@
                         <a href="#">SUPPORT</a>
                         <ul class="depth2">
                             <li>
-                                <a href="">FAQ</a>
+                                <a href="{{ route('template.two.faq') }}">FAQ</a>
                             </li>
                             <li>
                                 <a href="">Buying Guide</a>
                             </li>
                             <li>
-                                <a href="">Contact Us</a>
+                                <a href="{{ route('template.two.contact') }}">Contact Us</a>
                             </li>
                         </ul>
                     </li>
@@ -41,7 +41,7 @@
     <div class="gnb">
         <ul class="depth1">
             <li>
-                <a href="#">Home</a>
+                <a href="{{ route('index') }}">Home</a>
             </li>
             <li>
                 <a href="product.html">PRODUCT</a>
@@ -50,13 +50,13 @@
                 <a href="#">SUPPORT</a>
                 <ul class="depth2">
                     <li>
-                        <a href="">FAQ</a>
+                        <a href="{{ route('template.two.faq') }}">FAQ</a>
                     </li>
                     <li>
                         <a href="">Buying Guide</a>
                     </li>
                     <li>
-                        <a href="">Contact Us</a>
+                        <a href="{{ route('template.two.contact') }}">Contact Us</a>
                     </li>
                 </ul>
             </li>

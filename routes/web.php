@@ -244,25 +244,21 @@ Route::controller(TemplateOneCartController::class)->group(function () {
 // Template Two Controller
 Route::controller(TemplateTwoController::class)->group(function () {
 
-    //Template
+    //Template Two
     Route::get('/product-single/{id}', 'SingleProductTemplateTwo');
 
-    // //All Product
-    // Route::get('/all-product', 'TemplateOneAllProduct')->name('template.one.all_product');
-    // Route::post('/shop-filter', 'shopFilter')->name('shop.filter');
-
-    // //Contact
-    // Route::get('/user-contact', 'TemplateOneContact')->name('template_one.contact');
-    // Route::post('/user-contact/send', 'TemplateOneContactStore')->name('template_one.contact.store');
+    //All Product
+    Route::get('/all-product-dadabhaai', 'TemplateTwoAllProduct')->name('template.two.all.product');
 
     // //Product Search
     // Route::post('/search', 'ProductSearch')->name('product.search');
     // // Route::post('/search-product', 'SearchProduct');
 
     //Faq
-    Route::get('/faq/astell', 'TemplateTwoFaq')->name('template.two.faq');
+    Route::get('/faq-dadabhaai', 'TemplateTwoFaq')->name('template.two.faq');
     //contact us
-    Route::get('/contact/astell', 'TemplateTwoContact')->name('template.two.contact');
+    Route::get('/contact-dadabhaai', 'TemplateTwoContact')->name('template.two.contact');
+    Route::post('/contact/store', 'TemplateTwoContactStore')->name('template.two.contact.store');
     //Buying Guide
     Route::get('/buying-guide', 'TemplateTwoBuying')->name('template.two.buying');
 

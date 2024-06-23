@@ -510,7 +510,21 @@ header .gnb .depth1>li:nth-child(2){width:186px;}
 header .gnb .depth1>li:nth-child(3){width:161px;}
 header .gnb .depth1>li:nth-child(4){width:184px;}
 header .gnb .depth1>li:nth-child(5){width:185px;}
-header .gnb .depth1>li>a{display:inline-block;width:100%;height:99px;line-height:99px;font-size:16px;letter-spacing:0.8px;text-align:center;white-space:nowrap;}
+header .gnb .depth1>li>a{
+    display: inline-block;
+    width: 100%;
+    height: 99px;
+    line-height: 99px;
+    font-size: 16px;
+    letter-spacing: 0.8px;
+    text-align: center;
+    white-space: nowrap;
+    color: #000;
+    text-decoration: none;
+}
+a{
+    text-decoration: none !important;
+}
 header .gnb .depth1>li>a:before{display:block;content:'';width:100%;position:absolute;bottom:0;left:50%;height:2px;background:#d81334;opacity:0;transition:all .3s ease-in-out}
 header .gnb .depth1>li:nth-child(1)>a:before{width:51px;margin-left:-25px;}
 header .gnb .depth1>li:nth-child(2)>a:before{width:75px;margin-left:-37px;}
@@ -1637,7 +1651,7 @@ main .video-js{width:100%;}
 .article-cont2 .edit ul, .article-cont2 .edit ol{display: block;list-style-type: disc;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0;margin-inline-end: 0;padding-inline-start: 40px;}
 .cont{
     height: 500px;
-    overflow: auto;
+    overflow: hidden;
 }
 @media (max-width: 1366px){/*tablet (ipad pro가로세로 ~ ipad가로)*/
     .article-cont{padding:90px 32px;}

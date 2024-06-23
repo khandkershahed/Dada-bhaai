@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Contact;
 use App\Models\Admin\Faq;
 use App\Models\Admin\HomePage;
 use App\Models\Admin\MultiImg;
 use App\Models\Admin\Product;
 use App\Models\Admin\ProductSinglePage;
+use Illuminate\Http\Request;
 
 class TemplateTwoController extends Controller
 {
@@ -34,6 +36,12 @@ class TemplateTwoController extends Controller
 
     }
 
+    //Template Two AllProduct
+    public function TemplateTwoAllProduct()
+    {
+        return view('frontend.astell.pages.all_product');
+    }
+
     //Faq
     public function TemplateTwoFaq()
     {
@@ -45,6 +53,35 @@ class TemplateTwoController extends Controller
     public function TemplateTwoContact()
     {
         return view('frontend.astell.pages.contact');
+    }
+
+    public function TemplateTwoContactStore(Request $request)
+    {
+        $typePrefix = 'MSG';
+
+        $today = date('dmy');
+
+        $lastCode = Contact::where('code', 'like', $typePrefix . '-' . $today . '%')
+            ->orderBy('id', 'desc')
+            ->first();
+
+        $newNumber = $lastCode ? (int) explode('-', $lastCode->code)[2] + 1 : 1;
+
+        $code = $typePrefix . '-' . $today . '-' . $newNumber;
+
+        Contact::insert([
+
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'message' => $request->message,
+            'code' => $code,
+
+        ]);
+
+        toastr()->success('Message Send Successfully');
+        return redirect()->back();
     }
 
     //Buying

@@ -13,52 +13,31 @@
         <section>
             <div class="wrap">
                 <h2 class="sub-tit">FAQ</h2>
+
                 <div class="list-dropdown">
-
                     <div class="cont">
-                        <ul>
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
                             @foreach ($faqs as $key => $faq)
-                                <li>
-                                    <div value="312" class="cont-top">
-                                        <span class="num">27</span>
-                                        <span class="t1">A/S</span>
-                                        <div class="t2">
-                                            [Astell&amp;Kern] Europe RMA center in Germany
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-heading{{ $key }}">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapse{{ $key }}" aria-expanded="false"
+                                            aria-controls="flush-collapse{{ $key }}">
+                                            <span class="num pe-3">{{ $key + 1 }}</span>
+                                            <span class="t1 pe-3">{{ $faq->category }}</span> {{ $faq->question }}
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapse{{ $key }}" class="accordion-collapse collapse"
+                                        aria-labelledby="flush-heading{{ $key }}"
+                                        data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            {{ $faq->answer }}
                                         </div>
                                     </div>
-                                    <div class="inner">
-                                        <ul class="file-ty">
-                                        </ul>
-                                        <div class="edit">
-                                            <div>Astell&amp;Kern official RMA center in Europe is<b>&nbsp;DM Solution</b>,
-                                                which
-                                                deals with enquiry&nbsp;and RMA service.</div>
-                                            <div><br></div>
-                                            <div>Please refer to the below information.&nbsp;</div>
-                                            <div>Before enquiry, please name us exact product information such as
-                                                Serial&nbsp;Number, Place of Purchase, Receipt to see the purchase date
-                                                etc.&nbsp;</div>
-                                            <div>The more detailed the symptom description is, the faster it can proceed.
-                                            </div>
-                                            <p><br>Address: &nbsp;DM Solution, Ober der Roeth 4, 65824 Schwalbach,
-                                                Germany<br>Email:&nbsp;<a href="mailto:info@astellkernservice.de"
-                                                    target="_blank"
-                                                    style="color: rgb(17, 85, 204);">info@astellkernservice.de</a><br>Tel :
-                                                +49
-                                                (0)
-                                                6196 / 953 573 0<br>Typical working time:&nbsp;<br>Monday to Friday&nbsp;
-                                                &nbsp;09:00 ~ 17:00&nbsp; Lunch time&nbsp; 12:00 ~ 13:00</p>
-                                            <div><br
-                                                    style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+                                </div>
                             @endforeach
-                        </ul>
+                        </div>
                     </div>
-
-
                 </div>
             </div>
         </section>

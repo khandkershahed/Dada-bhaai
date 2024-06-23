@@ -1,21 +1,24 @@
 <footer>
+    @php
+        $site = App\Models\Sites::find(1);
+    @endphp
     <div class="wrap">
-        <div class="logo"></div>
+        
         <div class="inner">
-            <a href="#">Contact Us</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">About Us</a>
+            <a class="logo__link" href="{{ route('index') }}"><img class="" style="width: 100px;"
+                src="{{ asset('upload/logo_white/' . $site->logo_white) }}" alt=""></a>
+
+            <a href="{{ route('template.two.contact') }}">Contact Us</a>
+            <a href="{{ route('template.two.faq') }}">Faq</a>
+            <a href="javascript:;">Buying Guide</a>
             <p>
-                311, Gangnam-daero, Seocho-Gu, Seoul, Republic of Korea | Business
-                registration No. 214-86-29288<br />
-                Representative Director Dong-Hun KIM<br /><br />
-                COPYRIGHT Dreamus Company, ALL RIGHT RESERVED.
+                {{ $site->address }}
             </p>
         </div>
         <div class="inner2">
-            <a href="#" target="_blank" class="insta"></a>
-            <a href="#" target="_blank" class="facebook"></a>
-            <a href="#" target="_blank" class="youtube"></a>
+            <a href="{{ $site->instagram_url }}" target="_blank" class="insta"></a>
+            <a href="{{ $site->facebook_url }}" target="_blank" class="facebook"></a>
+            <a href="{{ $site->youtube_url }}" target="_blank" class="youtube"></a>
         </div>
     </div>
 </footer>
