@@ -18,7 +18,6 @@
 
 
     <section class="product">
-
         <div class="tab-ty">
             <ul>
                 @foreach ($categories as $key => $category)
@@ -29,7 +28,6 @@
                 @endforeach
             </ul>
         </div>
-
         <div class="tab-cont n1 on" style="background-image: url('images/%40p_bg01.png')">
             <div class="wrap">
                 <div class="wl">
