@@ -36,6 +36,7 @@ class IndexController extends Controller
 
             $homepage = HomePage::with(['featureProductOne','featureProductTwo','featureProductThree','featureProductFour'])->where('status', 'tamplate_two')->latest('id')->first();
 
+            $categories = Category::latest()->limit(4)->get();
 
             // $categoryIds = [
             //     $homepage->category_tab_one_id,
@@ -47,9 +48,9 @@ class IndexController extends Controller
             // $categories = Category::with('products')->whereIn('id', $categoryIds)->get();
             // dd($homepage);
 
-            
 
-            return view('frontend.astell.index_astell', compact('homepage'));
+
+            return view('frontend.astell.index_astell', compact('homepage','categories'));
 
         } else if ($template->name == 'template_three') {
             $banners = Banner::where('status', '1')->orderBy('id', 'ASC')->latest()->get();

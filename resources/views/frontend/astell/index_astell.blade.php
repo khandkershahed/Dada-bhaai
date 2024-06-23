@@ -21,18 +21,12 @@
 
         <div class="tab-ty">
             <ul>
-                <li>
-                    <a href="javascript:void(0);" class="n1 on">DAP</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);" class="n2">Headphones</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);" class="n3">Home Audio</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);" class="n4">Accessories</a>
-                </li>
+                @foreach ($categories as $key => $category)
+                    <li>
+                        <a href="javascript:void(0);"
+                            class="n{{ $key }} {{ $loop->first ? 'on' : '' }}">{{ $category->category_name }}</a>
+                    </li>
+                @endforeach
             </ul>
         </div>
 
@@ -3223,7 +3217,7 @@
                 </div>
             </div>
         </div>
-        
+
     </section>
 
     {{-- Product Image Section Start  --}}

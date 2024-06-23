@@ -247,22 +247,9 @@ Route::controller(TemplateTwoController::class)->group(function () {
     //Template
     Route::get('/product-single/{id}', 'SingleProductTemplateTwo');
 
-    //Single Product
-    //Route::get('/single-product/{id}', 'SingleProduct')->name('single.product');
-
     // //All Product
     // Route::get('/all-product', 'TemplateOneAllProduct')->name('template.one.all_product');
     // Route::post('/shop-filter', 'shopFilter')->name('shop.filter');
-
-    // //Brand Wise
-    // Route::get('/product/brand/{id}/{brand_slug}', 'BrandRelatedProductOne');
-
-    // //Category Page
-    // Route::get('/home-category', 'HomeAllCategory')->name('home.all.category.page');
-    // Route::get('/product/category/{id}/{category_slug}', 'CategoryRelatedProductOne');
-
-    // //Child Category
-    // Route::get('/product/childcategory/{id}/{childcategory_slug}', 'ChilldCategoryRelatedProductOne');
 
     // //Contact
     // Route::get('/user-contact', 'TemplateOneContact')->name('template_one.contact');
@@ -272,17 +259,11 @@ Route::controller(TemplateTwoController::class)->group(function () {
     // Route::post('/search', 'ProductSearch')->name('product.search');
     // // Route::post('/search-product', 'SearchProduct');
 
-    // //Login
-    // Route::get('/dadabhai-login', 'TemplateOneLogin')->name('template.one.login');
-
-    // //Faq
-    // Route::get('/faq', 'TemplateOneFaq')->name('template.one.faq');
-
-    // //About Us
-    // Route::get('/about-us', 'TemplateOneAboutUs')->name('template.one.about');
-
-    // //Track Order
-    // Route::get('/user/tracking/order', 'TemplateOneTackOrder')->name('template.one.track.order');
-    // Route::post('/tracking-order', 'TemplateOneTackOrderSearch')->name('track.order.search');
+    //Faq
+    Route::get('/faq/astell', 'TemplateTwoFaq')->name('template.two.faq');
+    //contact us
+    Route::get('/contact/astell', 'TemplateTwoContact')->name('template.two.contact');
+    //Buying Guide
+    Route::get('/buying-guide', 'TemplateTwoBuying')->name('template.two.buying');
 
 });
