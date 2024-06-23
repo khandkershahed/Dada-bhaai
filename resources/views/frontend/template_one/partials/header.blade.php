@@ -67,7 +67,6 @@
                         <a class="nav-link main-menu-link" href="{{ route('index') }}">Home <span
                                 class="sr-only">(current)</span></a>
                     </li>
-<<<<<<< HEAD
 
                     {{-- All Brands Menu --}}
 
@@ -75,16 +74,10 @@
                         <a class="nav-link main-menu-link dropdown-toggle" href="javascript:void(0)"
                             id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
-=======
-                    <li class="nav-item dropdown position-static">
-                        <a class="nav-link dropdown-toggle main-menu-link" href="#" id="navbarDropdownFeatures"
-                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
->>>>>>> 2de5b1f316fde9d635bcb66e68d61557d9706ea0
                             Brands
                         </a>
 
                         @php
-<<<<<<< HEAD
                             $categories = DB::table('categories')->inRandomOrder()->limit(4)->get();
                         @endphp
 
@@ -121,49 +114,6 @@
                                                 @empty
                                                     <p>No brand available for this category.</p>
                                                 @endforelse
-=======
-                            $categoriesWithBrands = DB::table('categories')
-                                ->leftJoin('products', 'categories.id', '=', 'products.category_id')
-                                ->leftJoin('brands', 'products.brand_id', '=', 'brands.id')
-                                ->select(
-                                    'categories.id',
-                                    'categories.category_name as category_name',
-                                    'brands.id as brand_id',
-                                    'brands.brand_name as brand_name',
-                                    'brands.brand_slug as brand_slug', // assuming this is the slug field
-                                )
-                                ->orderBy('categories.id')
-                                ->limit(8)
-                                ->get();
-
-                            // Group brands by category and remove duplicates
-                            $brandsByCategory = [];
-                            foreach ($categoriesWithBrands as $category) {
-                                $brandsByCategory[$category->category_name][] = $category;
-                            }
-                            // Remove duplicates
-                            foreach ($brandsByCategory as &$brands) {
-                                $brands = array_unique($brands, SORT_REGULAR);
-                            }
-                            unset($brands); // unset reference variable
-                        @endphp
-
-                        <div class="dropdown-menu dropdown-menu-full main-menu-drop"
-                            aria-labelledby="navbarDropdownFeatures" style="border-top: 2px solid #cd3301">
-                            <div class="container">
-                                <div class="row">
-
-                                    @foreach ($brandsByCategory as $categoryName => $brands)
-                                        <div class="col-lg-3">
-                                            <a href="javascript:;" class="main-sub-menu">{{ $categoryName }}</a>
-                                            <div class="link-divider"></div>
-                                            <ul class="submenu level-1">
-                                                @foreach ($brands as $brand)
-                                                    <li><a
-                                                            href="{{ url('product/brand/' . $brand->brand_id . '/' . $brand->brand_slug) }}">{{ $brand->brand_name }}</a>
-                                                    </li>
-                                                @endforeach
->>>>>>> 2de5b1f316fde9d635bcb66e68d61557d9706ea0
                                             </ul>
                                         </div>
                                     @endforeach
@@ -171,11 +121,8 @@
                             </div>
                         </div>
                     </li>
-<<<<<<< HEAD
 
                     {{-- All Offer Menu --}}
-=======
->>>>>>> 2de5b1f316fde9d635bcb66e68d61557d9706ea0
                     <li class="nav-item dropdown position-static">
                         <a class="nav-link dropdown-toggle main-menu-link" href="#" id="navbarDropdownPricing"
                             role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -267,91 +214,6 @@
                                     <i class="fa-solid fa-user text-muted userLogin"></i>
                                 </a>
 
-<<<<<<< HEAD
-                                                        <form method="POST" action="{{ route('logout') }}">
-                                                            @csrf
-
-                                                            <a href="{{ route('logout') }}"
-                                                                onclick="event.preventDefault();this.closest('form').submit();"
-                                                                class="cart-button w-100 mt-0">
-                                                                Logout
-
-                                                            </a>
-
-                                                        </form>
-
-                                                        <hr class="mb-2 mt-3">
-
-                                                        <p class="text-muted pl-3">First time here? <a
-                                                                href="{{ route('template.one.login') }}"
-                                                                class="text-danger">Sign
-                                                                Up</a>
-                                                        </p>
-                                                        <a class="dropdown-item"
-                                                            href="{{ route('template.one.dashboard') }}"><i
-                                                                class="fal fa-user pr-2"></i>
-                                                            My Dashboard</a>
-                                                        <a class="dropdown-item"
-                                                            href="{{ route('template.one.dashboard') }}"><i
-                                                                class="fal fa-star pr-2"
-                                                                aria-hidden="true"></i>Password Change</a>
-                                                    @else
-                                                        <a href="{{ route('template.one.login') }}"
-                                                            class="cart-button w-100 mt-0">
-                                                            Login
-                                                        </a>
-                                                        <hr class="mb-2 mt-3">
-                                                        <a href="{{ route('template.one.login') }}"
-                                                            class="text-muted pl-3" style="font-size: 12px;">First
-                                                            time
-                                                            here? <span class="text-danger">Sign Up</span></a>
-                                                        <hr class="mb-2 mt-2">
-                                                        <a class="dropdown-item pl-3" style="font-size: 12px;"
-                                                            href="{{ route('template.one.dashboard') }}"><i
-                                                                class="fal fa-user pr-2"></i>
-                                                            My Profile</a>
-                                                        <a class="dropdown-item pl-3" style="font-size: 12px;"
-                                                            href="{{ route('template.one.dashboard') }}"><i
-                                                                class="fal fa-heart pr-2"></i>
-                                                            My Wishlist</a>
-                                                        <a class="dropdown-item pl-3" style="font-size: 12px;"
-                                                            href="{{ route('template.one.dashboard') }}"><i
-                                                                class="fal fa-random pr-2"></i>
-                                                            My Compare</a>
-                                                        <a class="dropdown-item pl-3" style="font-size: 12px;"
-                                                            href="{{ route('template.one.dashboard') }}"><i
-                                                                class="fal fa-box pr-2"></i>
-                                                            My Order</a>
-                                                        <hr class="mb-2 mt-2">
-                                                        <a class="dropdown-item pl-3" style="font-size: 12px;"
-                                                            href="{{ route('template.one.dashboard') }}"><i
-                                                                class="fal fa-shopping-cart pr-2"></i>
-                                                            My Cart</a>
-                                                    @endif
-
-                                                </div>
-
-                                            </div>
-                                        </li>
-
-
-                                        @if (Auth::check())
-                                            <li class="">
-                                                <a href="{{ route('wishlist') }}" style="font-size: 20px;">
-                                                    <i class="fa-solid fa-heart text-muted">
-                                                        <span class="cart__count" id="wishQty">0</span>
-                                                    </i>
-                                                </a>
-                                            </li>
-                                        @endif
-
-
-                                        <li class="">
-                                            <a class="mini__cart--link" href="jaxascript:;" style="font-size: 20px;">
-                                                <i class="fa-solid fa-cart-plus text-muted">
-                                                    <span class="cart__count" id="cartQty">0</span>
-                                                </i>
-=======
                                 <div class="dropdown-menu p-3 user-panel-login" aria-labelledby="dropdownMenuButton"
                                     style="">
                                     @if (Auth::user())
@@ -361,7 +223,6 @@
                                                 onclick="event.preventDefault();this.closest('form').submit();"
                                                 class="cart-button w-100 mt-0">
                                                 Logout
->>>>>>> 2de5b1f316fde9d635bcb66e68d61557d9706ea0
                                             </a>
                                         </form>
                                         <hr class="mb-2 mt-3">

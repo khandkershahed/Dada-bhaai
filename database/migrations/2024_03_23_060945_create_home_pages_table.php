@@ -51,6 +51,9 @@ return new class extends Migration
             $table->text('image_slider_three_button_link')->nullable();
             $table->text('image_slider_three_image')->nullable();
 
+            $table->string('video_slider_one_image')->nullable();
+            $table->string('video_slider_one_image')->nullable();
+
             $table->string('category_tab_one_id')->nullable();
             $table->string('category_tab_two_id')->nullable();
             $table->string('category_tab_three_id')->nullable();

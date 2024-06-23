@@ -32,4 +32,22 @@ class TemplateTwoController extends Controller
         return view('frontend.astell.product.single_product', compact('product','sproducts','multiImages'));
 
     }
+
+    //Faq
+    public function TemplateTwoFaq()
+    {
+        return view('frontend.astell.pages.faq');
+    }
+
+    //Contact
+    public function TemplateTwoContact()
+    {
+        return view('frontend.astell.pages.contact');
+    }
+
+    //Buying
+    public function TemplateTwoBuying()
+    {
+        return view('frontend.astell.pages.buying');
+    }
 }

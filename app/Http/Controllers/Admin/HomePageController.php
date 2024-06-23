@@ -70,6 +70,30 @@ class HomePageController extends Controller
             $video_slider_two_video = $fileName;
         }
 
+        //video_slider_one_image
+        if (!empty($request->file('video_slider_one_image'))) {
+
+            $file = $request->file('video_slider_one_image');
+
+            @unlink(public_path('upload/home/' . $home->video_slider_one_image));
+
+            $fileName = hexdec(uniqid()) . '.' . $file->getClientOriginalName();
+            $file->move(public_path('upload/home/'), $fileName);
+            $video_slider_one_image = $fileName;
+        }
+
+        //video_slider_two_image
+        if (!empty($request->file('video_slider_two_image'))) {
+
+            $file = $request->file('video_slider_two_image');
+
+            @unlink(public_path('upload/home/' . $home->video_slider_two_image));
+
+            $fileName = hexdec(uniqid()) . '.' . $file->getClientOriginalName();
+            $file->move(public_path('upload/home/'), $fileName);
+            $video_slider_two_image = $fileName;
+        }
+
         //image_slider_one_image
         if (!empty($request->file('image_slider_one_image'))) {
 
@@ -149,7 +173,7 @@ class HomePageController extends Controller
 
             'video_slider_one_title' => $request->video_slider_one_title,
             'video_slider_one_sub_title' => $request->video_slider_one_sub_title,
-            
+
             'video_slider_two_title' => $request->video_slider_two_title,
             'video_slider_two_sub_title' => $request->video_slider_two_sub_title,
 
@@ -202,6 +226,10 @@ class HomePageController extends Controller
             'background_image_two_image' => (!empty($background_image_two_image) ? $background_image_two_image : $home->background_image_two_image),
 
             'background_image_three_image' => (!empty($background_image_three_image) ? $background_image_three_image : $home->background_image_three_image),
+
+            'video_slider_one_image' => (!empty($video_slider_one_image) ? $video_slider_one_image : $home->video_slider_one_image),
+
+            'video_slider_two_image' => (!empty($video_slider_two_image) ? $video_slider_two_image : $home->video_slider_two_image),
 
             'image_slider_one_image' => (!empty($image_slider_one_image) ? $image_slider_one_image : $home->image_slider_one_image),
 
