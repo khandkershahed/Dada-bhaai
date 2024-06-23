@@ -1083,7 +1083,7 @@ main .video-js{width:100%;}
     .main .brand-story em{top:18px;right:18px;font-size:12px;}
 }
 
-.main .experience{position:relative;width:100%;height:1827px;}
+.main .experience{position:relative;width:100%;height:900px;}
 .main .experience h2{position:absolute;top:590px;left:50%;margin-left:-600px;width:900px;font-size:100px;letter-spacing:10px;line-height:100px;font-weight:700;color:#fff;z-index:100;}
 .main .experience .swiper-container{position:absolute;top:0;left:calc(50% - 965px);width:1762px;height:775px;}
 .main .experience .swiper-wrapper{height:720px;}
@@ -1637,7 +1637,7 @@ main .video-js{width:100%;}
 .article-cont2 .edit ul, .article-cont2 .edit ol{display: block;list-style-type: disc;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0;margin-inline-end: 0;padding-inline-start: 40px;}
 .cont{
     height: 500px;
-    overflow: scroll;
+    overflow: auto;
 }
 @media (max-width: 1366px){/*tablet (ipad pro가로세로 ~ ipad가로)*/
     .article-cont{padding:90px 32px;}
@@ -5082,7 +5082,7 @@ main .video-js{width:100%;}
 .contact-group .btn-ty2:hover{background:#d81334;}
 .contact-group .btn-ty2 span{position:absolute;right:60px;top:50%;margin-top:-12px;display:inline-block;font-size:14px;line-height:24px;letter-spacing:0.7px;font-weight:300;padding-right:23px;vertical-align:top;color:#fff;white-space:nowrap;}
 .contact-group .btn-ty2 span:after{content:'';position:absolute;right:0;top:0;display:inline-block;width:17px;height:24px;background:url("../images/i_arrow_white.png")right center no-repeat;background-size:auto 9px;transition: all .15s ease-in-out;}
-.contact-group .cont{width:1200px;margin:0 auto;padding:90px 0 150px;}
+.contact-group .cont{width:1200px;height: auto;margin:0 auto;padding:90px 0 150px;}
 .contact-group .cont>strong{display:block;text-align:center;font-size:28px;font-weight:500;}
 .contact-group .cont ul{margin-top:30px;font-size:0;}
 .contact-group .cont li{position:relative;display:inline-block;margin-top:12px;margin-right:12px;padding:0 30px 0 160px;width:calc(50% - 6px);height:120px;background:#fff;border:1px solid #ececec;vertical-align:top;}
