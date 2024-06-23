@@ -28,6 +28,27 @@
                 @endforeach
             </ul>
         </div>
+
+<<<<<<< HEAD
+        @forelse ($categories as $key => $category)
+            <div class="tab-cont n{{ $key }} {{ $loop->first ? 'on' : '' }}"
+                style="background-image: url('images/%40p_bg01.png')">
+                <div class="wrap">
+
+                    <div class="wl">
+                        <div class="swiper-container">
+                            <ul class="swiper-wrapper">
+
+                                @foreach ($category->products as $image)
+                                    <li class="swiper-slide">
+                                        <a href="">
+                                            <img src="{{ asset($image->product_image) }}" alt="{{ $image->product_name }}"
+                                                style="width: 400px; height: 400px;" />
+                                        </a>
+                                    </li>
+                                @endforeach
+
+=======
         <div class="tab-cont n1 on" style="background-image: url('images/%40p_bg01.png')">
             <div class="wrap">
                 <div class="wl">
@@ -3199,14 +3220,56 @@
                                         <span>PRF11 - AK Stereo MIC Kit</span>
                                     </a>
                                 </li>
+>>>>>>> 45c1c02058a38877024f48bf60ee71b6cb2b52c8
                             </ul>
-                            <div class="swiper-pagination"></div>
                         </div>
-                        <div class="swiper-slider"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
                     </div>
+
+                    <div class="wr">
+
+                        @forelse ($category->products as $key => $product)
+                            <strong class="tmpProductInfo tmpProductInfo_0"
+                                {{ $loop->first ? '' : 'style=display:none;' }}>{{ $product->product_name }}</strong>
+
+                            <p class="tmpProductInfo tmpProductInfo_0" {{ $loop->first ? '' : 'style=display:none;' }}>
+                                {!! $product->short_desc !!}
+                            </p>
+                            <div class="btn-group tmpProductInfo tmpProductInfo_0"
+                                {{ $loop->first ? '' : 'style=display:none;' }}>
+                                <a href="" class="lnk-ty1">Find store</a>
+
+                            </div>
+                        @empty
+                        @endforelse
+
+                        <div class="list">
+                            <div class="swiper-container">
+                                <ul class="swiper-wrapper">
+
+                                    @foreach ($category->products as $key => $image)
+                                        <li class="swiper-slide">
+                                            <a href="javascript:;" class="{{ $key == 0 ? 'active' : '' }}">
+                                                <img src="{{ asset($image->product_image) }}" alt="sp3000_list_1.png" />
+                                                <span>{{ $image->product_name }}</span>
+                                            </a>
+                                        </li>
+                                    @endforeach
+
+                                </ul>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                            <div class="swiper-slider"></div>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
-        </div>
+        @empty
+        @endforelse
+
 
     </section>
 
