@@ -177,7 +177,7 @@
 
                 $.each(response.carts, function(key, value) {
                     tableHtml += `
-                    
+
 
                 <li class="product">
                     <div class="top-info">
@@ -196,7 +196,7 @@
                     </ul>
                 </li>
 
-                
+
 
                 `;
                 });
@@ -1882,11 +1882,70 @@
 </script>
 
 <script>
-    $(window).load(function () {
-      $(".loader").fadeOut(3000);
+    $(window).load(function() {
+        $(".loader").fadeOut(3000);
     });
-  </script>
+</script>
+{{-- <script>
+    $(document).ready(function() {
+        var lastScrollTop = 0;
+        var navbar = $('.sticky-navbar');
 
+        $(window).scroll(function() {
+            var currentScrollTop = $(this).scrollTop();
+
+            if (currentScrollTop > lastScrollTop) {
+                // Scroll down
+                navbar.addClass('navbar-scrolled');
+            } else {
+                // Scroll up
+                if (currentScrollTop === 0) {
+                    navbar.removeClass('navbar-scrolled');
+                }
+            }
+
+            lastScrollTop = currentScrollTop;
+        });
+    });
+</script> --}}
+<script>
+    $(document).ready(function () {
+        var lastScrollTop = 0;
+        var navbar = $('.sticky-navbar');
+
+        $(window).scroll(function () {
+            var currentScrollTop = $(this).scrollTop();
+
+            if (currentScrollTop > lastScrollTop) {
+                // Scroll down
+                navbar.addClass('navbar-scrolled');
+            } else {
+                // Scroll up
+                if (currentScrollTop === 0) {
+                    navbar.removeClass('navbar-scrolled');
+                }
+            }
+
+            lastScrollTop = currentScrollTop;
+        });
+
+        // Prevent dropdown menu from closing when clicking inside
+        $('.dropdown-menu').click(function (e) {
+            e.stopPropagation();
+        });
+
+        // Close dropdown menu when clicking outside
+        $(document).click(function () {
+            $('.dropdown-menu').removeClass('show');
+        });
+    });
+</script>
+
+<script>
+    document.getElementById('userIcon').addEventListener('click', function() {
+        this.querySelector('i').classList.toggle('icon-red');
+    });
+</script>
 {{-- ======================================================= --}}
 
 {{-- =========================== --}}

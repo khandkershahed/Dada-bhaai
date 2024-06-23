@@ -662,10 +662,18 @@ label {
         transform: translateY(0);
     }
 }
-
+.icon-red {
+    color: #cd3301 !important;
+}
 /* For Sticky TOp ENd*/
 .searchbox-open {
-    width: 100%;
+    width: 20%;
+}
+.userLogin:hover{
+    color: #cd3301 !important;
+}
+.wishlist:hover{
+    color: #cd3301 !important;
 }
 
 .search--header__form .nice-select {
@@ -1114,7 +1122,34 @@ cart--header__middle.cart--header__two {
     display: block;
     padding-left: 0;
 }
-
+/* Sticky Header  */
+.sticky-navbar {
+    transition: top 0.3s; /* Smooth transition for the navbar */
+    position: sticky;
+    top: -56px; /* Initially off-screen */
+    z-index: 1000; /* Ensure navbar is on top of other content */
+}
+.navbar-scrolled {
+    top: 0; /* Sticky at the top when scrolled */
+    background-color: #eee !important; /* Dark background color when scrolled */
+}
+.dropdown-menu-full {
+    min-width: 100%;
+    left: 0 !important;
+    right: auto !important;
+    border-radius: 0;
+}
+.dropdown-toggle::after {
+    display: none; /* Hide the default dropdown caret */
+}
+.navbar-nav {
+    margin-left: auto; /* Move the navbar-nav items to the right */
+}
+.navbar-form {
+    display: flex;
+    align-items: center;
+}
+/* Sticky Header  End */
 .footer-bg {
     /* background-image: url('https://img.freepik.com/free-vector/gray-abstract-wireframe-background_53876-99911.jpg?t=st=1713349192~exp=1713352792~hmac=a55cda18a9ead1873e670f53e44fc504fa3794e56ab0381a30d7589645dbd738&w=1380'); */
     background-size: cover;
@@ -1721,10 +1756,15 @@ ul.sub__menu.sub__dept--menu li:hover ul.sub__menu.level2 {
 .offer--banner__text > h2 {
     text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.43);
 }
+/* .slick-track{
+    width: 1920px !important;
+    height: 550px !important;
+} */
+
 /* Home banner CSS Start */
-.home-main-banner {
+/* .home-main-banner {
     margin-top: 4rem;
-}
+} */
 /* Home banner CSS End */
 /* 6. Products */
 .all__product--menu .nav-tabs a.nav-link {
