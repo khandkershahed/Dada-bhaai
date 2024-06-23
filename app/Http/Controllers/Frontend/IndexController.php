@@ -14,12 +14,12 @@ use App\Models\Admin\Template;
 use App\Models\Banner;
 use App\Models\Brand;
 use App\Models\User;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
-use Gloudemans\Shoppingcart\Facades\Cart;
 
 class IndexController extends Controller
 {
@@ -34,19 +34,22 @@ class IndexController extends Controller
 
         } else if ($template->name == 'template_two') {
 
-            $homepage = HomePage::where('status', 'tamplate_two')->latest('id')->first();
+            $homepage = HomePage::with(['featureProductOne','featureProductTwo','featureProductThree','featureProductFour'])->where('status', 'tamplate_two')->latest('id')->first();
 
-            $categoryIds = [
-                $homepage->category_tab_one_id,
-                $homepage->category_tab_two_id,
-                $homepage->category_tab_three_id,
-                $homepage->category_tab_four_id,
-            ];
 
-            $categories = Category::with('products')->whereIn('id', $categoryIds)->get();
+            // $categoryIds = [
+            //     $homepage->category_tab_one_id,
+            //     $homepage->category_tab_two_id,
+            //     $homepage->category_tab_three_id,
+            //     $homepage->category_tab_four_id,
+            // ];
+
+            // $categories = Category::with('products')->whereIn('id', $categoryIds)->get();
             // dd($homepage);
 
-            return view('frontend.astell.index_astell', compact('homepage', 'categories'));
+            
+
+            return view('frontend.astell.index_astell', compact('homepage'));
 
         } else if ($template->name == 'template_three') {
             $banners = Banner::where('status', '1')->orderBy('id', 'ASC')->latest()->get();
@@ -91,7 +94,7 @@ class IndexController extends Controller
 
         // dd($relativeChild);
 
-        return view('frontend.template_one.product.single_product', compact('product', 'relativeProduct', 'multiImages', 'relativeChild', 'product_colors','carts','cartQty'));
+        return view('frontend.template_one.product.single_product', compact('product', 'relativeProduct', 'multiImages', 'relativeChild', 'product_colors', 'carts', 'cartQty'));
     }
 
     //Single Product
@@ -111,7 +114,7 @@ class IndexController extends Controller
         $carts = Cart::content();
         $cartQty = Cart::count();
 
-        return view('frontend.pages.product.single_product', compact('product', 'multiImages', 'relativeProduct', 'product_colors','carts','cartQty'));
+        return view('frontend.pages.product.single_product', compact('product', 'multiImages', 'relativeProduct', 'product_colors', 'carts', 'cartQty'));
     }
 
     //Faq

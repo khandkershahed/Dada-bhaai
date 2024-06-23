@@ -22,7 +22,8 @@
                                 <p class="txt3">
                                     {{ $homepage->image_slider_one_description }}
                                 </p>
-                                <a href="{{ $homepage->image_slider_one_button_link }}" class="btn-line-ty1">
+                                <a href="{{ $homepage->image_slider_one_button_link }}" target="blank"
+                                    class="btn-line-ty1">
                                     <span>{{ $homepage->image_slider_one_button_name }}</span>
                                 </a>
                             </div>
@@ -46,7 +47,8 @@
                                 <p class="txt3">
                                     {{ $homepage->image_slider_two_description }}
                                 </p>
-                                <a href="{{ $homepage->image_slider_two_button_link }}" class="btn-line-ty1">
+                                <a href="{{ $homepage->image_slider_two_button_link }}" target="blank"
+                                    class="btn-line-ty1">
                                     <span>{{ $homepage->image_slider_two_button_name }}</span>
                                 </a>
                             </div>
@@ -70,7 +72,8 @@
                                 <p class="txt3">
                                     {{ $homepage->image_slider_three_description }}
                                 </p>
-                                <a href="{{ $homepage->image_slider_three_button_link }}" class="btn-line-ty1">
+                                <a href="{{ $homepage->image_slider_three_button_link }}" target="blank"
+                                    class="btn-line-ty1">
                                     <span>{{ $homepage->image_slider_three_button_name }}</span>
                                 </a>
                             </div>
@@ -81,6 +84,7 @@
 
 
         </ul>
+
         <div class="swiper-button-prev">
             <span class="prev-info"></span>
         </div>

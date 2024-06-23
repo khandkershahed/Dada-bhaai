@@ -65,6 +65,17 @@ return new class extends Migration
             $table->text('background_image_one_image')->nullable()->comment('Dimensions: 1920 x 840 pixels');
             $table->text('background_image_two_image')->nullable()->comment('Dimensions: 1920 x 840 pixels');
             $table->text('background_image_three_image')->nullable()->comment('Dimensions: 1920 x 840 pixels');
+
+            $table->unsignedBigInteger('feature_product_one')->nullable();
+            $table->unsignedBigInteger('feature_product_two')->nullable();
+            $table->unsignedBigInteger('feature_product_three')->nullable();
+            $table->unsignedBigInteger('feature_product_four')->nullable();
+
+            $table->foreign('feature_product_one')->references('id')->on('products')->onDelete('set null');
+            $table->foreign('feature_product_two')->references('id')->on('products')->onDelete('set null');
+            $table->foreign('feature_product_three')->references('id')->on('products')->onDelete('set null');
+            $table->foreign('feature_product_four')->references('id')->on('products')->onDelete('set null');
+
             
 
             $table->timestamps();

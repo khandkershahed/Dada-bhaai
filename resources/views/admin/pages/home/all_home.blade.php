@@ -60,8 +60,12 @@
                             </tr>
                         </thead>
 
-                        @php
+                        {{-- @php
                             $words = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+                        @endphp --}}
+
+                        @php
+                            $words = ['', '', '', '', '', '', '', '', ''];
                         @endphp
 
                         <tbody>
@@ -82,8 +86,9 @@
                                             @endif
 
                                             @if (Auth::guard('admin')->user()->can('delete.home'))
-                                                <a href="{{ route('delete.home', $home->id) }}" class="ms-1" id="delete"
-                                                    title="Delete"><i class="bi bi-trash3-fill fs-3 text-danger"></i></a>
+                                                <a href="{{ route('delete.home', $home->id) }}" class="ms-1"
+                                                    id="delete" title="Delete"><i
+                                                        class="bi bi-trash3-fill fs-3 text-danger"></i></a>
                                             @endif
                                         </td>
                                     </tr>

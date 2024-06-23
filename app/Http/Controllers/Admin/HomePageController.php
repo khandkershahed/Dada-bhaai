@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Category;
 use App\Models\Admin\HomePage;
+use App\Models\Admin\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -22,8 +23,9 @@ class HomePageController extends Controller
     {
         $home = HomePage::find($id);
         $categorys = Category::orderBy('category_name', 'ASC')->latest()->get();
+        $products = Product::orderBy('product_name', 'ASC')->latest()->get();
 
-        return view('admin.pages.home.edit_home', compact('home', 'categorys'));
+        return view('admin.pages.home.edit_home', compact('home', 'categorys','products'));
     }
 
     //Update Home
@@ -147,6 +149,7 @@ class HomePageController extends Controller
 
             'video_slider_one_title' => $request->video_slider_one_title,
             'video_slider_one_sub_title' => $request->video_slider_one_sub_title,
+            
             'video_slider_two_title' => $request->video_slider_two_title,
             'video_slider_two_sub_title' => $request->video_slider_two_sub_title,
 
@@ -184,6 +187,11 @@ class HomePageController extends Controller
             'background_image_button_name' => $request->background_image_button_name,
             'background_image_button_link' => $request->background_image_button_link,
             'background_image_sub_title' => $request->background_image_sub_title,
+
+            'feature_product_one' => $request->feature_product_one,
+            'feature_product_two' => $request->feature_product_two,
+            'feature_product_three' => $request->feature_product_three,
+            'feature_product_four' => $request->feature_product_four,
 
             'video_slider_one_video' => (!empty($video_slider_one_video) ? $video_slider_one_video : $home->video_slider_one_video),
 

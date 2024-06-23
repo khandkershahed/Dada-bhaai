@@ -1,6 +1,6 @@
 @extends('frontend.astell.frontend_dashboard_astell')
 @section('index_astell')
-    {{-- @include('frontend.astell.home_page.home_video')
+    {{-- 
 
     @include('frontend.astell.home_page.image_banner')
 
@@ -8,188 +8,14 @@
 
     @include('frontend.astell.home_page.banner') --}}
 
+    {{-- Home Video Section Start  --}}
+    @include('frontend.astell.home_page.home_video')
+    {{-- Home Video Section End  --}}
 
-    <section class="key-visual">
-        <div class="swiper-container">
-            <ul class="swiper-wrapper">
-                <li class="swiper-slide" data-slide-type="vdo">
-                    <video class="video-js" muted controls autoplay playsinline>
-                        <source
-                            src="https://cdn.astellnkern.com/main_page_key_visual/202209/20220913110058_c4206e91-5c98-4f5b-81d3-7cfd0b81fe29.mp4"
-                            type="video/mp4" />
-                    </video>
-                    <div class="txt">
-                        <strong style="color: #ffffff">DIFFERENCE</strong>
-                        <p style="color: #ffffff">In Sound Quality</p>
-                    </div>
-                </li>
-            </ul>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-progress-bar">
-                <div class="progress"></div>
-            </div>
-        </div>
-    </section>
+    {{-- Image Banner Section Start  --}}
+    @include('frontend.astell.home_page.image_banner')
+    {{-- Image Banner Section End  --}}
 
-    <section class="product-banner">
-        <p class="top-txt">
-            Ultimate High Fidelity Sound System, <strong>Astell&Kern</strong>
-        </p>
-        <div class="swiper-container">
-            <ul class="swiper-wrapper">
-                <li class="swiper-slide">
-                    <div class="bg"
-                        style="
-                  background-image: url('main-images/main_page_product/202209/20220913110059_b236c0fd-5f95-4507-8138-ed6bb58c6817.jpg');
-                ">
-                    </div>
-                    <div class="inner" data-swiper-parallax="-100%">
-                        <div class="flex-center">
-                            <div>
-                                <p class="txt1">Luxury Meets Innovation</p>
-                                <p class="txt2">SP3000</p>
-                                <p class="txt3">
-                                    The A&amp;ultima SP3000 is the flagship product that is
-                                    the essence of everything learned and engineered over
-                                    the last 10+ years of digital music processing.
-                                </p>
-                                <a href="product/product_detailbcae.html?productNo=138" class="btn-line-ty1">
-                                    <span>Discover more</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="swiper-slide">
-                    <div class="bg"
-                        style="
-                  background-image: url('main-images/main_page_product/202305/20230510152756_711b599f-cb77-4ee6-b08c-3cd9fb8fe715.jpg');
-                ">
-                    </div>
-                    <div class="inner" data-swiper-parallax="-100%">
-                        <div class="flex-center">
-                            <div>
-                                <p class="txt1">The Future of Analog Sound</p>
-                                <p class="txt2">SE300</p>
-                                <p class="txt3">
-                                    SE300, the fourth model in the A&amp;futura, represents
-                                    Astell&amp;Kern&rsquo;s ceaseless efforts for
-                                    innovation, is equipped with an ultra-refined R-2R DAC,
-                                    Class A/AB dual amps.
-                                </p>
-                                <a href="product/product_detail4db7.html?productNo=146" class="btn-line-ty1">
-                                    <span>Discover more</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="swiper-slide">
-                    <div class="bg"
-                        style="
-                  background-image: url('https://i.ibb.co/2tZs2Jk/20230510152930-c48737cd-1f43-47e8-bc42-58735b2388e7.jpg');
-                ">
-                    </div>
-                    <div class="inner" data-swiper-parallax="-100%">
-                        <div class="flex-center">
-                            <div>
-                                <p class="txt1">Precision meets emotion</p>
-                                <p class="txt2">AURA</p>
-                                <p class="txt3">
-                                    Expertly crafted in Germany, AURA blends innovation,
-                                    sophisticated styling and cutting-edge technology to
-                                    create a listening experience like no other.
-                                </p>
-                                <a href="product/product_detail3dd7.html?productNo=147" class="btn-line-ty1">
-                                    <span>Discover more</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="swiper-slide">
-                    <div class="bg"
-                        style="
-                  background-image: url('https://i.ibb.co/dg05SJ3/20230406110446-ad574542-d4ac-4b47-918a-7f5b04fcc584.jpg');
-                ">
-                    </div>
-                    <div class="inner" data-swiper-parallax="-100%">
-                        <div class="flex-center">
-                            <div>
-                                <p class="txt1">Hi-Fi Sound on-the-go</p>
-                                <p class="txt2">SR35</p>
-                                <p class="txt3">
-                                    The A&amp;norma SR35 delivers the essence of true Hi-Fi
-                                    sound with its small and light weight and stunning audio
-                                    specifications such as Astell&amp;Kern's premium
-                                    amplifier circuit and Quad DAC.
-                                </p>
-                                <a href="product/product_detail40a2.html?productNo=143" class="btn-line-ty1">
-                                    <span>Discover more</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="swiper-slide">
-                    <div class="bg"
-                        style="
-                  background-image: url('https://i.ibb.co/dg05SJ3/20230406110446-ad574542-d4ac-4b47-918a-7f5b04fcc584.jpg');
-                ">
-                    </div>
-                    <div class="inner" data-swiper-parallax="-100%">
-                        <div class="flex-center">
-                            <div>
-                                <p class="txt1">Advanced Quad-brid IEM</p>
-                                <p class="txt2">AK ZERO2</p>
-                                <p class="txt3">
-                                    The AK ZERO2 is an IEM that features a 'Quad-brid'
-                                    design centered around an advanced driver array and
-                                    Super Low Noise Cross-Over Network perfectly tuned.
-                                </p>
-                                <a href="product/product_detail7d28.html?productNo=144" class="btn-line-ty1">
-                                    <span>Discover more</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="swiper-slide">
-                    <div class="bg"
-                        style="
-                  background-image: url('https://i.ibb.co/dg05SJ3/20230406110446-ad574542-d4ac-4b47-918a-7f5b04fcc584.jpg');
-                ">
-                    </div>
-                    <div class="inner" data-swiper-parallax="-100%">
-                        <div class="flex-center">
-                            <div>
-                                <p class="txt1">Engineered to Powerful Perfection</p>
-                                <p class="txt2">KANN MAX</p>
-                                <p class="txt3">
-                                    The 4th product of KANN series, KANN MAX builds on the
-                                    advantages of the KANN series with ultra-high output,
-                                    fullest sound of Quad-DAC and noise-free Circuit Design.
-                                </p>
-                                <a href="product/product_detail8fee.html?productNo=133" class="btn-line-ty1">
-                                    <span>Discover more</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <div class="swiper-button-prev">
-                <span class="prev-info"></span>
-            </div>
-            <div class="swiper-button-next">
-                <span class="next-info"></span>
-            </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-progress-bar">
-                <div class="progress"></div>
-            </div>
-        </div>
-    </section>
 
     <section class="product">
         <div class="tab-ty">
@@ -3394,194 +3220,70 @@
         </div>
     </section>
 
+    {{-- Product Image Section Start  --}}
     <section class="brand-story scrollAni n2">
         <h2>
             We believe <strong>Astell&Kern</strong> is the center of music
         </h2>
         <ul>
+
+            <li>
+                <a href="#">
+                    <div class="bg"
+                        style=" background-image: url('{{ asset( $homepage->featureProductOne->product_image) }}');">
+                    </div>
+
+                    <div class="inner bg-shadow">
+                        <p class="font-white">{{$homepage->featureProductOne->product_name }}</p>
+                        <strong class="font-white">{{$homepage->featureProductOne->category->category_name }}</strong>
+                    </div>
+
+                </a>
+            </li>
+
             <li>
                 <a href="#">
                     <div class="bg"
                         style="
-                  background-image: url('https://i.ibb.co/m5NdQFq/20211015134226-cc9d4f48-35cf-4c1d-bebc-dee317e49ce9.jpg');
-                ">
+                  background-image: url('{{ asset( $homepage->featureProductTwo->product_image) }}');">
                     </div>
                     <div class="inner bg-shadow">
-                        <p class="font-white">AK ULTIMATE SOUND SOLUTION</p>
-                        <strong class="font-white">TERATON ALPHA</strong>
+                        <p class="font-white">{{$homepage->featureProductTwo->product_name }}</p>
+                        <strong class="font-white">{{$homepage->featureProductTwo->category->category_name }}</strong>
                     </div>
                 </a>
             </li>
+
             <li>
                 <a href="#">
                     <div class="bg"
-                        style="
-                  background-image: url('https://i.ibb.co/m5NdQFq/20211015134226-cc9d4f48-35cf-4c1d-bebc-dee317e49ce9.jpg');
-                ">
+                        style="background-image: url('{{ asset( $homepage->featureProductThree->product_image) }}');">
                     </div>
                     <div class="inner bg-shadow">
-                        <p class="font-white">
-                            WE USE THE POWER OF MUSIC TO FULFILL YOUR LIFE
-                        </p>
-                        <strong class="font-white">Difference in Sound Quality
-                        </strong>
+                        <p class="font-white">{{$homepage->featureProductThree->product_name }}</p>
+                        <strong class="font-white">{{$homepage->featureProductThree->category->category_name }}</strong>
                     </div>
                 </a>
             </li>
+
             <li>
                 <a href="#">
                     <div class="bg"
-                        style="
-                  background-image: url('https://i.ibb.co/m5NdQFq/20211015134226-cc9d4f48-35cf-4c1d-bebc-dee317e49ce9.jpg');
-                ">
+                        style="background-image: url('{{ asset( $homepage->featureProductFour->product_image) }}');">
                     </div>
                     <div class="inner bg-shadow">
-                        <p class="font-white">
-                            The story of people who are inspired by music
-                        </p>
-                        <strong class="font-white">DAVID JAMIN</strong>
+                        <p class="font-white">{{$homepage->featureProductFour->product_name }}</p>
+                        <strong class="font-white">{{$homepage->featureProductFour->category->category_name }}</strong>
                     </div>
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <div class="bg"
-                        style="
-                  background-image: url('https://i.ibb.co/m5NdQFq/20211015134226-cc9d4f48-35cf-4c1d-bebc-dee317e49ce9.jpg');
-                ">
-                    </div>
-                    <div class="inner bg-shadow">
-                        <p class="font-white">People Story</p>
-                        <strong class="font-white">We Love Music</strong>
-                    </div>
-                </a>
-            </li>
+
         </ul>
     </section>
+    {{-- Product Image Section End  --}}
 
-    <section class="experience">
-        <h2>
-            IMAGINE<br />
-            YOUR OWN LIFE
-        </h2>
-        <div class="swiper-container">
-            <ul class="swiper-wrapper">
-                <li class="swiper-slide" data-slide-type="img">
-                    <div class="bg"
-                        style="
-                  background-image: url('https://i.ibb.co/5xtHZMF/20220322105041-923f9ad8-384d-46b5-a409-80ff96ed3ee2.jpg');
-                ">
-                    </div>
-                </li>
-                <li class="swiper-slide" data-slide-type="img">
-                    <div class="bg"
-                        style="
-                  background-image: url('https://i.ibb.co/YT6g4y1/20230112110038-696b3f1e-c929-42a8-942f-76168164274e.jpg');
-                ">
-                    </div>
-                </li>
-                <li class="swiper-slide" data-slide-type="img">
-                    <div class="bg"
-                        style="
-                  background-image: url('https://i.ibb.co/5xtHZMF/20220322105041-923f9ad8-384d-46b5-a409-80ff96ed3ee2.jpg');
-                ">
-                    </div>
-                </li>
-                <li class="swiper-slide" data-slide-type="img">
-                    <div class="bg"
-                        style="
-                  background-image: url('https://i.ibb.co/YT6g4y1/20230112110038-696b3f1e-c929-42a8-942f-76168164274e.jpg');
-                ">
-                    </div>
-                </li>
-                <li class="swiper-slide" data-slide-type="img">
-                    <div class="bg"
-                        style="
-                  background-image: url('https://i.ibb.co/5xtHZMF/20220322105041-923f9ad8-384d-46b5-a409-80ff96ed3ee2.jpg');
-                ">
-                    </div>
-                </li>
-            </ul>
-            <div class="swiper-button-prev">
-                <div class="bg"></div>
-                <span>Prev</span>
-            </div>
-            <div class="swiper-button-next">
-                <div class="bg"></div>
-                <span>Next</span>
-            </div>
-        </div>
-    </section>
+    {{-- Home Page Banner Section Start  --}}
+    @include('frontend.astell.home_page.banner')
+    {{-- Home Page Banner Section End  --}}
 
-    <section class="ak_news">
-        <h2>NEWS</h2>
-        <a href="#" class="lnk-ty2">Show All News</a>
-        <div class="list">
-            <div class="swiper-container">
-                <ul class="swiper-wrapper">
-                    <li class="swiper-slide">
-                        <a href="product_detail.html">
-                            <div class="img"
-                                style="
-                      background-image: url('https://i.ibb.co/42DSK0J/20211019142133-85e66c54-e93a-41bc-a0c0-1cb772690622.png');
-                    ">
-                            </div>
-                            <span>Exibition</span>
-                            <strong> HIGH END Munich 2023 (Germany) </strong>
-                        </a>
-                    </li>
-                    <li class="swiper-slide">
-                        <a href="product_detail.html">
-                            <div class="img"
-                                style="
-                      background-image: url('https://i.ibb.co/42DSK0J/20211019142133-85e66c54-e93a-41bc-a0c0-1cb772690622.png');
-                    ">
-                            </div>
-                            <span>Notice</span>
-                            <strong> Notice about Embedded Tidal APP </strong>
-                        </a>
-                    </li>
-                    <li class="swiper-slide">
-                        <a href="product_detail.html">
-                            <div class="img"
-                                style="
-                      background-image: url('https://i.ibb.co/42DSK0J/20211019142133-85e66c54-e93a-41bc-a0c0-1cb772690622.png');
-                    ">
-                            </div>
-                            <span>Notice</span>
-                            <strong> Notice about Embedded Deezer APP </strong>
-                        </a>
-                    </li>
-                    <li class="swiper-slide">
-                        <a href="product_detail.htmlknews/akNews_detaila128.html?newsNo=8">
-                            <div class="img"
-                                style="
-                      background-image: url('https://i.ibb.co/42DSK0J/20211019142133-85e66c54-e93a-41bc-a0c0-1cb772690622.png');
-                    ">
-                            </div>
-                            <span>Notice</span>
-                            <strong>
-                                MQS Streaming Server Software will be discontinued.
-                            </strong>
-                        </a>
-                    </li>
-                    <li class="swiper-slide">
-                        <a href="product_detail.htmlknews/akNews_detailcf93.html?newsNo=14">
-                            <div class="img"
-                                style="
-                      background-image: url('https://i.ibb.co/42DSK0J/20211019142133-85e66c54-e93a-41bc-a0c0-1cb772690622.png');
-                    ">
-                            </div>
-                            <span>Notice</span>
-                            <strong> Roon Ready support on the CA1000 </strong>
-                        </a>
-                    </li>
-                </ul>
-                <div class="swiper-pagination"></div>
-            </div>
-            <div class="swiper-slider"></div>
-            <div class="swiper-num">01</div>
-            <div class="swiper-num-all">05</div>
-        </div>
-    </section>
 @endsection
