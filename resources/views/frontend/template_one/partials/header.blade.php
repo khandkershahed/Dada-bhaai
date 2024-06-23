@@ -135,14 +135,8 @@
                                 ->latest()
                                 ->get();
                         @endphp
-<<<<<<< HEAD
-
-                        <div class="dropdown-menu w-100 mt-0 rounded-0 border-bottom-0 main-menu-drop"
-                            style="border-top: 2px solid #cd3301" aria-labelledby="navbarDropdown">
-=======
                         <div class="dropdown-menu dropdown-menu-full main-menu-drop"
                             style="border-top: 2px solid #cd3301" aria-labelledby="navbarDropdownPricing">
->>>>>>> 2de5b1f316fde9d635bcb66e68d61557d9706ea0
                             <div class="container">
                                 <div class="row">
                                     @foreach ($offers as $offer)
@@ -176,14 +170,8 @@
                         </div>
                     </li>
                     <li class="nav-item active">
-<<<<<<< HEAD
-                        <a class="nav-link main-menu-link"
-                            href="{{ route('template.one.all_product') }}">Products<span
-                                class="sr-only">(current)</span></a>
-=======
                         <a class="nav-link main-menu-link" href="{{ route('template.one.all_product') }}">Product
                             <span class="sr-only">(current)</span></a>
->>>>>>> 2de5b1f316fde9d635bcb66e68d61557d9706ea0
                     </li>
                 </ul>
             </div>
