@@ -29,4 +29,24 @@ class HomePage extends Model
     {
         return $this->belongsTo(Category::class,'category_tab_four_id','id');
     }
+
+    public function featureProductOne()
+    {
+        return $this->belongsTo(Product::class, 'feature_product_one')->withDefault();
+    }
+
+    public function featureProductTwo()
+    {
+        return $this->belongsTo(Product::class, 'feature_product_two')->withDefault();
+    }
+
+    public function featureProductThree()
+    {
+        return $this->belongsTo(Product::class, 'feature_product_three')->withDefault();
+    }
+
+    public function featureProductFour()
+    {
+        return $this->belongsTo(Product::class, 'feature_product_four')->withDefault();
+    }
 }

@@ -14,9 +14,7 @@
             @if (!empty($homepage->background_image_two_image))
                 <li class="swiper-slide" data-slide-type="img">
                     <div class="bg"
-                        style="
-              background-image: url('{{ asset('upload/home/' . $homepage->background_image_two_image) }}');
-            ">
+                        style="background-image: url('{{ asset('upload/home/' . $homepage->background_image_two_image) }}');">
                     </div>
                 </li>
             @endif
@@ -24,19 +22,14 @@
             @if (!empty($homepage->background_image_three_image))
                 <li class="swiper-slide" data-slide-type="img">
                     <div class="bg"
-                        style="
-              background-image: url('{{ asset('upload/home/' . $homepage->background_image_three_image) }}');
-            ">
+                        style=" background-image: url('{{ asset('upload/home/' . $homepage->background_image_three_image) }}');">
                     </div>
                 </li>
             @endif
 
 
-
-
-
-
         </ul>
+
         <div class="swiper-button-prev">
             <div class="bg"></div>
             <span>Prev</span>
@@ -45,5 +38,6 @@
             <div class="bg"></div>
             <span>Next</span>
         </div>
+        
     </div>
 </section>

@@ -68,11 +68,11 @@
                                 <select name="status" id="" class="form-select form-select-sm" required>
                                     <option selected disabled>Choose Tamplate</option>
 
-                                    <option value="tamplate_one"
-                                        {{ $home->status == 'tamplate_one' ? 'selected' : '' }}>Template One</option>
+                                    <option value="tamplate_one" {{ $home->status == 'tamplate_one' ? 'selected' : '' }}>
+                                        Template One</option>
 
-                                    <option value="tamplate_two"
-                                        {{ $home->status == 'tamplate_two' ? 'selected' : '' }}>Template Two</option>
+                                    <option value="tamplate_two" {{ $home->status == 'tamplate_two' ? 'selected' : '' }}>
+                                        Template Two</option>
 
                                     <option value="tamplate_three"
                                         {{ $home->status == 'tamplate_three' ? 'selected' : '' }}>Template Three
@@ -189,13 +189,11 @@
                                                         <option></option>
                                                         @if (count($categorys) > 0)
                                                             @foreach ($categorys as $category)
-
                                                                 <option
                                                                     value="{{ $category->id }}"{{ $home->category_tab_one_id == $category->id ? 'selected' : '' }}>
                                                                     {{ $category->category_name }}
 
                                                                 </option>
-                                                                
                                                             @endforeach
                                                         @endif
                                                     </select>
@@ -356,13 +354,15 @@
                                                     <div class="col-4 mb-2">
                                                         <div class="form-group">
                                                             <label for="">Image Slider One</label>
-        
-                                                            <input type="file" class="form-control form-control-sm mt-2"
+
+                                                            <input type="file"
+                                                                class="form-control form-control-sm mt-2"
                                                                 name="image_slider_one_image">
-        
+
                                                             <img src="{{ asset('upload/home/' . $home->image_slider_one_image) }}"
-                                                                style="width: 50px;height:50px;" class="mt-2" alt="">
-        
+                                                                style="width: 50px;height:50px;" class="mt-2"
+                                                                alt="">
+
                                                         </div>
                                                     </div>
 
@@ -447,13 +447,15 @@
                                                     <div class="col-4 mb-2">
                                                         <div class="form-group">
                                                             <label for="">Image Slider Two</label>
-        
-                                                            <input type="file" class="form-control form-control-sm mt-2"
+
+                                                            <input type="file"
+                                                                class="form-control form-control-sm mt-2"
                                                                 name="image_slider_two_image">
-        
+
                                                             <img src="{{ asset('upload/home/' . $home->image_slider_two_image) }}"
-                                                                style="width: 50px;height:50px;" class="mt-2" alt="">
-        
+                                                                style="width: 50px;height:50px;" class="mt-2"
+                                                                alt="">
+
                                                         </div>
                                                     </div>
 
@@ -536,13 +538,15 @@
                                                     <div class="col-4 mb-2">
                                                         <div class="form-group">
                                                             <label for="">Image Slider Three</label>
-        
-                                                            <input type="file" class="form-control form-control-sm mt-2"
+
+                                                            <input type="file"
+                                                                class="form-control form-control-sm mt-2"
                                                                 name="image_slider_three_image">
-        
+
                                                             <img src="{{ asset('upload/home/' . $home->image_slider_three_image) }}"
-                                                                style="width: 50px;height:50px;" class="mt-2" alt="">
-        
+                                                                style="width: 50px;height:50px;" class="mt-2"
+                                                                alt="">
+
                                                         </div>
                                                     </div>
 
@@ -556,6 +560,7 @@
                             </div>
 
                             <hr>
+
                             {{-- Background Image --}}
                             <div class="col-12 shadow-sm bg-white border-3">
                                 <div class="card">
@@ -639,6 +644,114 @@
                                                         style="width: 50px;height:50px;" class="mt-2" alt="">
                                                 </div>
                                             </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            {{-- Product Image --}}
+                            <div class="col-12 shadow-sm bg-white border-3">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <h3 class="fw-bolder text-danger">Product Section</h3>
+
+                                        <hr>
+
+                                        <div class="row">
+
+                                            {{-- Feature Product One --}}
+                                            <div class="col-3 mb-2">
+                                                <div class="form-group">
+                                                    <label for="">Product One</label>
+
+                                                    <select class="form-select form-select-solid form-select-sm"
+                                                        name="feature_product_one" data-control="select2"
+                                                        data-placeholder="Product Name" data-allow-clear="true" required>
+                                                        <option></option>
+                                                        @if (count($products) > 0)
+                                                            @foreach ($products as $product)
+                                                                <option
+                                                                    value="{{ $product->id }}"{{ $home->feature_product_one == $product->id ? 'selected' : '' }}>
+                                                                    {{ $product->product_name }}
+
+                                                                </option>
+                                                            @endforeach
+                                                        @endif
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            {{-- Feature Product Two --}}
+                                            <div class="col-3 mb-2">
+                                                <div class="form-group">
+                                                    <label for="">Product Two</label>
+
+                                                    <select class="form-select form-select-solid form-select-sm"
+                                                        name="feature_product_two" data-control="select2"
+                                                        data-placeholder="Product Name" data-allow-clear="true" required>
+                                                        <option></option>
+                                                        @if (count($products) > 0)
+                                                            @foreach ($products as $product)
+                                                                <option
+                                                                    value="{{ $product->id }}"{{ $home->feature_product_two == $product->id ? 'selected' : '' }}>
+                                                                    {{ $product->product_name }}
+
+                                                                </option>
+                                                            @endforeach
+                                                        @endif
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            {{-- Feature Product Three --}}
+                                            <div class="col-3 mb-2">
+                                                <div class="form-group">
+                                                    <label for="">Product Three</label>
+
+                                                    <select class="form-select form-select-solid form-select-sm"
+                                                        name="feature_product_three" data-control="select2"
+                                                        data-placeholder="Product Name" data-allow-clear="true" required>
+                                                        <option></option>
+                                                        @if (count($products) > 0)
+                                                            @foreach ($products as $product)
+                                                                <option
+                                                                    value="{{ $product->id }}"{{ $home->feature_product_three == $product->id ? 'selected' : '' }}>
+                                                                    {{ $product->product_name }}
+
+                                                                </option>
+                                                            @endforeach
+                                                        @endif
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                            {{-- Feature Product Four --}}
+                                            <div class="col-3 mb-2">
+                                                <div class="form-group">
+                                                    <label for="">Product Four</label>
+
+                                                    <select class="form-select form-select-solid form-select-sm"
+                                                        name="feature_product_four" data-control="select2"
+                                                        data-placeholder="Product Name" data-allow-clear="true" required>
+                                                        <option></option>
+                                                        @if (count($products) > 0)
+                                                            @foreach ($products as $product)
+                                                                <option
+                                                                    value="{{ $product->id }}"{{ $home->feature_product_four == $product->id ? 'selected' : '' }}>
+                                                                    {{ $product->product_name }}
+
+                                                                </option>
+                                                            @endforeach
+                                                        @endif
+                                                    </select>
+                                                </div>
+                                            </div>
+
 
                                         </div>
                                     </div>

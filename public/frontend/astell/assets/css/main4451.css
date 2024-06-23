@@ -1083,7 +1083,7 @@ main .video-js{width:100%;}
     .main .brand-story em{top:18px;right:18px;font-size:12px;}
 }
 
-.main .experience{position:relative;width:100%;height:1827px;}
+.main .experience{position:relative;width:100%;height:900px;}
 .main .experience h2{position:absolute;top:590px;left:50%;margin-left:-600px;width:900px;font-size:100px;letter-spacing:10px;line-height:100px;font-weight:700;color:#fff;z-index:100;}
 .main .experience .swiper-container{position:absolute;top:0;left:calc(50% - 965px);width:1762px;height:775px;}
 .main .experience .swiper-wrapper{height:720px;}
