@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Faq;
 use App\Models\Admin\HomePage;
 use App\Models\Admin\MultiImg;
 use App\Models\Admin\Product;
@@ -36,7 +37,8 @@ class TemplateTwoController extends Controller
     //Faq
     public function TemplateTwoFaq()
     {
-        return view('frontend.astell.pages.faq');
+        $faqs = Faq::where('status', '1')->orderBy('order', 'ASC')->latest()->get();
+        return view('frontend.astell.pages.faq',compact('faqs'));
     }
 
     //Contact
