@@ -21,10 +21,10 @@
 <script src="{{ asset('frontend/astell/assets/js/kimsoft/kimsoft.js') }}"></script>
 <script src="{{ asset('frontend/astell/assets/js/common.dev.js') }}"></script>
 
-{{-- <script type="text/javascript" src="js/jquery/jquery.alphanumeric.js"></script>
-<script type="text/javascript" src="js/jquery/jquery.form.js"></script>
-<script type="text/javascript" src="js/jquery/jquery.placeholder.js"></script>
-<script type="text/javascript" src="js/jquery/jquery.tmpl.js"></script>
-<script type="text/javascript" src="js/jquery/jquery.blockUI.js"></script>
-<script type="text/javascript" src="js/kimsoft/kimsoft.js"></script>
-<script type="text/javascript" src="js/common.dev.js"></script> --}}
+<script type="text/javascript" src="{{ asset('frontend/astell/assets/js/jquery/jquery.alphanumeric.js') }}"></script>
+<script type="text/javascript" src="{{ asset('frontend/astell/assets/js/jquery/jquery.form.js') }}"></script>
+<script type="text/javascript" src="{{ asset('frontend/astell/assets/js/jquery/jquery.placeholder.js') }}"></script>
+<script type="text/javascript" src="{{ asset('frontend/astell/assets/js/jquery/jquery.tmpl.js') }}"></script>
+<script type="text/javascript" src="{{ asset('frontend/astell/assets/js/jquery/jquery.blockUI.js') }}"></script>
+<script type="text/javascript" src="{{ asset('frontend/astell/assets/js/kimsoft/kimsoft.js') }}"></script>
+<script type="text/javascript" src="{{ asset('frontend/astell/assets/js/common.dev.js') }}"></script>

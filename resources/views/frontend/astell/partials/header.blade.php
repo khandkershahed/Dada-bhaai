@@ -1,5 +1,6 @@
 <header class="dark">
-    {{-- <div class="menu">
+
+    <div class="menu">
         <div class="overlay"></div>
         <a href="#" class="btn-menu">
             <span class="line"></span>
@@ -7,9 +8,9 @@
         <div class="menu-box scroll-y">
             <div class="wrap">
                 <div class="mo-title">
-                    <!--모바일에서만 사용하는 제목, back 버튼-->
+
                     <h2></h2>
-                    <!--모바일에서만 사용하는 제목, back 버튼-->
+
                     <a href="#" class="btn-menu-back"></a>
                 </div>
                 <ul class="depth1">
@@ -399,7 +400,8 @@
                 </ul>
             </div>
         </div>
-    </div> --}}
+    </div>
+
     <h1>
         <a href="{{ route('index') }}"></a>
     </h1>
@@ -408,82 +410,19 @@
         <ul class="depth1">
             <li>
                 <a href="{{ route('index') }}">Home</a>
-                {{-- <ul class="depth2">
-                    <li>
-                        <a href="story/story.html">All Story</a>
-                    </li>
-                    <li>
-                        <a href="story/storyef6c.html?categoryCode=Brand">Brand</a>
-                    </li>
-                    <li>
-                        <a href="story/story699a.html?categoryCode=Design">Design</a>
-                    </li>
-                    <li>
-                        <a href="story/story2b2b.html?categoryCode=Sound">Sound</a>
-                    </li>
-                    <li>
-                        <a href="story/story16fa.html?categoryCode=People">People</a>
-                    </li>
-                </ul> --}}
             </li>
             <li>
                 <a href="">PRODUCT</a>
-
-                
             </li>
-
-            {{-- <li>
-                <a href="#">MEDIA</a>
-                <ul class="depth2">
-                    <li>
-                        <a href="media/mediaCoverage.html">Media Coverage</a>
-                    </li>
-                    <li>
-                        <a href="media/video.html">Video</a>
-                    </li>
-                    <li>
-                        <a href="media/review.html">Review</a>
-                    </li>
-                    <li>
-                        <a href="media/awards.html">Awards</a>
-                    </li>
-                </ul>
-            </li> --}}
-
             <li>
                 <a href="">Category</a>
-                {{-- <ul class="depth2" style="display: none">
-                    <li>
-                        <a href="aknews/akNews.html">All View</a>
-                    </li>
-                    <li>
-                        <a href="aknews/akNews8537.html?newsCategoryNo=7">Notice</a>
-                    </li>
-                    <li>
-                        <a href="aknews/akNewsc6a5.html?newsCategoryNo=8">Exibition</a>
-                    </li>
-                </ul> --}}
             </li>
             <li>
                 <a href="">Brand</a>
-                {{-- <ul class="depth2">
-                    <li>
-                        <a href=""aq.html">FAQ</a>
-                    </li>
-                    <li>
-                        <a href=""ml">Download</a>
-                    </li>
-                    <li>
-                        <a href=""Where to Buy</a>
-                    </li>
-                    <li>
-                        <a href=""">Contact Us</a>
-                    </li>
-                </ul> --}}
             </li>
         </ul>
     </div>
-    
+
     <a href="#" class="btn-srch"></a>
     <div class="srch-box">
         <div class="overlay"></div>

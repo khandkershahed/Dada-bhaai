@@ -193,7 +193,7 @@
 
                     {{-- All Brands Menu --}}
 
-                    {{-- <li class="nav-item dropdown position-static">
+                    <li class="nav-item dropdown position-static">
                         <a class="nav-link main-menu-link dropdown-toggle" href="javascript:void(0)"
                             id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
@@ -201,108 +201,49 @@
                         </a>
 
                         @php
-                            $categoriesWithBrands = DB::table('categories')
-                                ->leftJoin('products', 'categories.id', '=', 'products.category_id')
-                                ->leftJoin('brands', 'products.brand_id', '=', 'brands.id')
-                                ->select(
-                                    'categories.id',
-                                    'categories.category_name as category_name',
-                                    'brands.id as brand_id',
-                                    'brands.brand_name as brand_name',
-                                )
-                                ->orderBy('categories.id')
-                                ->limit(8)
-                                ->get();
-
-                            // Filter unique categories
-                            $uniqueCategories = $categoriesWithBrands->unique('id');
+                            $categories = DB::table('categories')->inRandomOrder()->limit(4)->get();
                         @endphp
 
                         <div class="dropdown-menu w-100 mt-0 rounded-0 border-bottom-0 main-menu-drop"
                             style="border-top: 2px solid #cd3301" aria-labelledby="navbarDropdown">
                             <div class="container">
                                 <div class="row">
-                                    @foreach ($uniqueCategories as $category)
+                                    @foreach ($categories as $category)
                                         <div class="col-lg-3">
                                             <a href="javascript:;"
                                                 class="main-sub-menu">{{ $category->category_name }}</a>
                                             <div class="link-divider"></div>
                                             <ul class="submenu level-1">
-
-                                                @foreach ($categoriesWithBrands as $brand)
-
-                                                    @if ($brand->id == $category->id)
-                                                        <li>{{ $brand->brand_name }}</li>
+                                                @php
+                                                    $brands = DB::table('brands')
+                                                        ->join('products', 'brands.id', '=', 'products.brand_id')
+                                                        ->join(
+                                                            'categories',
+                                                            'products.category_id',
+                                                            '=',
+                                                            'categories.id',
+                                                        )
+                                                        ->where('categories.id', $category->id)
+                                                        ->pluck('brands.id')
+                                                        ->unique();
+                                                @endphp
+                                                @forelse ($brands as $brandId)
+                                                    @php
+                                                        $brand = App\Models\Brand::find($brandId);
+                                                    @endphp
+                                                    @if ($brand)
+                                                        <li><a href="javascript:;">{{ $brand->brand_name }}</a></li>
                                                     @endif
-
-                                                @endforeach
+                                                @empty
+                                                    <p>No brand available for this category.</p>
+                                                @endforelse
                                             </ul>
                                         </div>
                                     @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </li> --}}
-
-                    <li class="nav-item dropdown position-static">
-
-                        <a class="nav-link main-menu-link dropdown-toggle" href="javascript:void(0)"
-                            id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            Brands
-                        </a>
-
-                        @php
-                            $categoriesWithBrands = DB::table('categories')
-                                ->leftJoin('products', 'categories.id', '=', 'products.category_id')
-                                ->leftJoin('brands', 'products.brand_id', '=', 'brands.id')
-                                ->select(
-                                    'categories.id',
-                                    'categories.category_name as category_name',
-                                    'brands.id as brand_id',
-                                    'brands.brand_name as brand_name',
-                                    'brands.brand_slug as brand_slug', // assuming this is the slug field
-                                )
-                                ->orderBy('categories.id')
-                                ->limit(8)
-                                ->get();
-
-                            // Group brands by category and remove duplicates
-                            $brandsByCategory = [];
-                            foreach ($categoriesWithBrands as $category) {
-                                $brandsByCategory[$category->category_name][] = $category;
-                            }
-                            // Remove duplicates
-                            foreach ($brandsByCategory as &$brands) {
-                                $brands = array_unique($brands, SORT_REGULAR);
-                            }
-                            unset($brands); // unset reference variable
-                        @endphp
-
-                        <div class="dropdown-menu w-100 mt-0 rounded-0 border-bottom-0 main-menu-drop"
-                            style="border-top: 2px solid #cd3301" aria-labelledby="navbarDropdown">
-                            <div class="container">
-                                <div class="row">
-
-                                    @foreach ($brandsByCategory as $categoryName => $brands)
-                                        <div class="col-lg-3">
-                                            <a href="javascript:;" class="main-sub-menu">{{ $categoryName }}</a>
-                                            <div class="link-divider"></div>
-                                            <ul class="submenu level-1">
-                                                @foreach ($brands as $brand)
-                                                    <li><a
-                                                            href="{{ url('product/brand/' . $brand->brand_id . '/' . $brand->brand_slug) }}">{{ $brand->brand_name }}</a>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    @endforeach
-
                                 </div>
                             </div>
                         </div>
                     </li>
-
 
                     {{-- All Offer Menu --}}
                     <li class="nav-item dropdown position-static">
@@ -319,6 +260,7 @@
                                 ->latest()
                                 ->get();
                         @endphp
+
                         <div class="dropdown-menu w-100 mt-0 rounded-0 border-bottom-0 main-menu-drop"
                             style="border-top: 2px solid #cd3301" aria-labelledby="navbarDropdown">
                             <div class="container">
@@ -355,7 +297,7 @@
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link main-menu-link"
-                            href="{{ route('template.one.all_product') }}">Product<span
+                            href="{{ route('template.one.all_product') }}">Products<span
                                 class="sr-only">(current)</span></a>
                     </li>
                 </ul>
@@ -428,7 +370,8 @@
                                                         </a>
                                                         <hr class="mb-2 mt-3">
                                                         <a href="{{ route('template.one.login') }}"
-                                                            class="text-muted pl-3" style="font-size: 12px;">First time
+                                                            class="text-muted pl-3" style="font-size: 12px;">First
+                                                            time
                                                             here? <span class="text-danger">Sign Up</span></a>
                                                         <hr class="mb-2 mt-2">
                                                         <a class="dropdown-item pl-3" style="font-size: 12px;"

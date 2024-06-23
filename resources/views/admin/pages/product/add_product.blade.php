@@ -459,6 +459,7 @@
                                                 <div class="fv-row mb-3">
                                                     <label class="form-label required">Product
                                                         Colors</label>
+                                                        
                                                     <select class="form-select form-select-solid form-select-sm"
                                                         name="color_id[]" id="field2" multiple=""
                                                         multiselect-search="true" multiselect-select-all="true"

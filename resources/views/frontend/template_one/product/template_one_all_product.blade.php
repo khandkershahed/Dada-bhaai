@@ -91,7 +91,7 @@
 
                         {{-- Price --}}
 
-                        <div class="slider-range mt-50">
+                        {{-- <div class="slider-range mt-50">
 
                             <div class="side-title mb-30">
                                 <h6>Filter By Price</h6>
@@ -121,84 +121,7 @@
 
                             <button type="submit" class="lnk btn btn-primary">Filter</button>
 
-                        </div>
-
-                        {{-- Price --}}
-
-                        {{-- Color --}}
-
-                        {{-- @php
-                                $colors = App\Models\Admin\Color::latest()->get();
-                            @endphp
-
-                            <div class="side-color mt-45">
-                                <div class="side-title">
-                                    <h6>Color</h6>
-                                </div>
-                                <ul class="mt-15">
-                                    @foreach ($colors as $color)
-                                        @php
-                                            $colorProduct = App\Models\Admin\Product::where(
-                                                'color_id',
-                                                $color->id,
-                                            )->get();
-                                        @endphp
-
-                                        <li>
-                                            <a href="#">{{ $color->color_name }} ({{ count($colorProduct) }})</a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div> --}}
-
-                        {{-- Color --}}
-
-                        {{-- <div class="side-size mt-50">
-                            <div class="side-title">
-                                <h6>Size</h6>
-                            </div>
-                            <ul class="mt-15">
-                                <li>
-                                    <a href="#">Small (2)</a>
-                                    <a href="#">Large (53)</a>
-                                </li>
-                                <li>
-                                    <a href="#">Extra Large (16)</a>
-                                    <a href="#">Medium (20)</a>
-                                </li>
-                                <li><a href="#">Extra Small (2)</a></li>
-                                <li><a href="#">Huge (53)</a></li>
-                            </ul>
                         </div> --}}
-
-                        {{-- Popular Tag --}}
-
-                        {{-- <div class="common-tag mt-50">
-                                <div class="side-title">
-                                    <h6>Popular Tag</h6>
-                                </div>
-
-                                @php
-
-                                    $tags = App\Models\Admin\Product::where('status', '1')
-                                        ->orderBy('product_name', 'ASC')
-                                        ->latest()
-                                        ->limit(7)
-                                        ->get();
-
-                                @endphp
-
-                                <ul class="mt-25 mb-15">
-                                    @forelse ($tags as $tag)
-                                        <li><a href="javascript:;">{{ $tag->tags }}</a></li>
-                                    @empty
-                                        <p>No Tags Avaiable</p>
-                                    @endforelse
-                                </ul>
-
-                            </div> --}}
-
-                        {{-- Popular Tag --}}
 
                     </div>
                 </div>

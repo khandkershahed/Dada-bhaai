@@ -1,4 +1,4 @@
-<div class="row gx-1">
+{{-- <div class="row gx-1">
 
     @forelse ($products as $product)
         <div class="col-lg-3 col-md-6">
@@ -57,4 +57,4 @@
         <p>No Product Avaiable</p>
     @endforelse
 
-</div>
+</div> --}}
