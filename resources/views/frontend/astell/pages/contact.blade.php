@@ -6,9 +6,7 @@
                 <h2>Contact Us</h2>
                 <p>Have some question? We are here to help!</p>
             </div>
-            <a href="/support/faq.jsp" class="btn-ty2">
-                Looking for FAQ? <span>Find Here</span>
-            </a>
+            
             <div class="cont">
                 <strong>Get in touch with us</strong>
                 <ul>

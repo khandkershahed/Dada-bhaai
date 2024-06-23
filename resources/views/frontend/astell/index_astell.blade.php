@@ -1,6 +1,44 @@
 @extends('frontend.astell.frontend_dashboard_astell')
 @section('index_astell')
-    {{-- 
+    <style>
+        .swiper-slide-container {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            height: 100%;
+            max-width: 600px;
+            margin: auto;
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        .gallery-thumbs {
+            box-sizing: border-box;
+            padding: 10px 0;
+        }
+
+        .gallery-thumbs .swiper-slide {
+            width: 20%;
+            height: 100%;
+            opacity: 0.4;
+        }
+
+        .gallery-thumbs .swiper-slide-active {
+            opacity: 1;
+        }
+    </style>
+    {{--
 
     @include('frontend.astell.home_page.image_banner')
 
@@ -15,9 +53,46 @@
     {{-- Image Banner Section Start  --}}
     @include('frontend.astell.home_page.image_banner')
     {{-- Image Banner Section End  --}}
+    <section class="product">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <div id="main-slider" class="swiper-container">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="image1.jpg" alt="Slide 1">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="image2.jpg" alt="Slide 2">
+                  </div>
+                  </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-pagination"></div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="slider-thumbnails">
+                <ul class="thumbnails swiper-container">
+                  <li class="swiper-slide">
+                    <img src="image1-thumb.jpg" alt="Slide 1 Thumbnail">
+                  </li>
+                  <li class="swiper-slide">
+                    <img src="image2-thumb.jpg" alt="Slide 2 Thumbnail">
+                  </li>
+                  </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
 
 
     <section class="product">
+
         <div class="tab-ty">
             <ul>
                 @foreach ($categories as $key => $category)
@@ -60,12 +135,12 @@
                                 {{ $loop->first ? '' : 'style=display:none;' }}>{{ $product->product_name }}</strong>
 
                             <p class="tmpProductInfo tmpProductInfo_0" {{ $loop->first ? '' : 'style=display:none;' }}>
-                                {!! Str::words($product->short_desc, 10) !!}
+                                {!! $product->short_desc !!}
                             </p>
-
                             <div class="btn-group tmpProductInfo tmpProductInfo_0"
                                 {{ $loop->first ? '' : 'style=display:none;' }}>
                                 <a href="" class="lnk-ty1">Find store</a>
+
                             </div>
                         @empty
                         @endforelse
