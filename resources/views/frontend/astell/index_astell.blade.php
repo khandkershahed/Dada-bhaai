@@ -18,6 +18,7 @@
 
 
     <section class="product">
+
         <div class="tab-ty">
             <ul>
                 <li>
@@ -34,6 +35,7 @@
                 </li>
             </ul>
         </div>
+
         <div class="tab-cont n1 on" style="background-image: url('images/%40p_bg01.png')">
             <div class="wrap">
                 <div class="wl">
@@ -977,6 +979,7 @@
                 </div>
             </div>
         </div>
+
         <div class="tab-cont n2" style="background-image: url('images/%40p_bg01.png')">
             <div class="wrap">
                 <div class="wl">
@@ -1564,6 +1567,7 @@
                 </div>
             </div>
         </div>
+
         <div class="tab-cont n3" style="background-image: url('images/%40p_bg01.png')">
             <div class="wrap">
                 <div class="wl">
@@ -1740,6 +1744,7 @@
                 </div>
             </div>
         </div>
+
         <div class="tab-cont n4" style="background-image: url('images/%40p_bg01.png')">
             <div class="wrap">
                 <div class="wl">
@@ -3218,6 +3223,7 @@
                 </div>
             </div>
         </div>
+        
     </section>
 
     {{-- Product Image Section Start  --}}
@@ -3230,12 +3236,12 @@
             <li>
                 <a href="#">
                     <div class="bg"
-                        style=" background-image: url('{{ asset( $homepage->featureProductOne->product_image) }}');">
+                        style=" background-image: url('{{ asset($homepage->featureProductOne->product_image) }}');">
                     </div>
 
                     <div class="inner bg-shadow">
-                        <p class="font-white">{{$homepage->featureProductOne->product_name }}</p>
-                        <strong class="font-white">{{$homepage->featureProductOne->category->category_name }}</strong>
+                        <p class="font-white">{{ $homepage->featureProductOne->product_name }}</p>
+                        <strong class="font-white">{{ $homepage->featureProductOne->category->category_name }}</strong>
                     </div>
 
                 </a>
@@ -3245,11 +3251,11 @@
                 <a href="#">
                     <div class="bg"
                         style="
-                  background-image: url('{{ asset( $homepage->featureProductTwo->product_image) }}');">
+                  background-image: url('{{ asset($homepage->featureProductTwo->product_image) }}');">
                     </div>
                     <div class="inner bg-shadow">
-                        <p class="font-white">{{$homepage->featureProductTwo->product_name }}</p>
-                        <strong class="font-white">{{$homepage->featureProductTwo->category->category_name }}</strong>
+                        <p class="font-white">{{ $homepage->featureProductTwo->product_name }}</p>
+                        <strong class="font-white">{{ $homepage->featureProductTwo->category->category_name }}</strong>
                     </div>
                 </a>
             </li>
@@ -3257,11 +3263,11 @@
             <li>
                 <a href="#">
                     <div class="bg"
-                        style="background-image: url('{{ asset( $homepage->featureProductThree->product_image) }}');">
+                        style="background-image: url('{{ asset($homepage->featureProductThree->product_image) }}');">
                     </div>
                     <div class="inner bg-shadow">
-                        <p class="font-white">{{$homepage->featureProductThree->product_name }}</p>
-                        <strong class="font-white">{{$homepage->featureProductThree->category->category_name }}</strong>
+                        <p class="font-white">{{ $homepage->featureProductThree->product_name }}</p>
+                        <strong class="font-white">{{ $homepage->featureProductThree->category->category_name }}</strong>
                     </div>
                 </a>
             </li>
@@ -3269,11 +3275,11 @@
             <li>
                 <a href="#">
                     <div class="bg"
-                        style="background-image: url('{{ asset( $homepage->featureProductFour->product_image) }}');">
+                        style="background-image: url('{{ asset($homepage->featureProductFour->product_image) }}');">
                     </div>
                     <div class="inner bg-shadow">
-                        <p class="font-white">{{$homepage->featureProductFour->product_name }}</p>
-                        <strong class="font-white">{{$homepage->featureProductFour->category->category_name }}</strong>
+                        <p class="font-white">{{ $homepage->featureProductFour->product_name }}</p>
+                        <strong class="font-white">{{ $homepage->featureProductFour->category->category_name }}</strong>
                     </div>
                 </a>
             </li>
@@ -3285,5 +3291,4 @@
     {{-- Home Page Banner Section Start  --}}
     @include('frontend.astell.home_page.banner')
     {{-- Home Page Banner Section End  --}}
-
 @endsection

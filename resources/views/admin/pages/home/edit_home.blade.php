@@ -97,7 +97,7 @@
 
                                             {{-- Video One Section --}}
 
-                                            <div class="col-4 mb-2">
+                                            <div class="col-3 mb-2">
                                                 <div class="form-group">
                                                     <label for="">Video Slider One Title</label>
                                                     <input type="text" class="form-control form-control-sm mt-2"
@@ -106,7 +106,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-4 mb-2">
+                                            <div class="col-3 mb-2">
                                                 <div class="form-group">
                                                     <label for="">Video Slider One Sub Title</label>
                                                     <input type="text" class="form-control form-control-sm mt-2"
@@ -115,7 +115,22 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-4 mb-2">
+                                            <div class="col-3 mb-2">
+                                                <div class="form-group">
+                                                    <label for="">Video Slider One Image</label>
+
+                                                    <input type="file"
+                                                        class="form-control form-control-sm mt-2"
+                                                        name="video_slider_one_image">
+
+                                                    <img src="{{ asset('upload/home/' . $home->video_slider_one_image) }}"
+                                                        style="width: 50px;height:50px;" class="mt-2"
+                                                        alt="">
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-3 mb-2">
                                                 <div class="form-group">
                                                     <label for="">Video Slider One Video</label>
                                                     <input type="file"
@@ -130,7 +145,7 @@
 
                                             {{-- Video Slider Two --}}
 
-                                            <div class="col-4 mb-2">
+                                            <div class="col-3 mb-2">
                                                 <div class="form-group">
                                                     <label for="">Video Slider Two Title</label>
                                                     <input type="text" class="form-control form-control-sm mt-2"
@@ -139,7 +154,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-4 mb-2">
+                                            <div class="col-3 mb-2">
                                                 <div class="form-group">
                                                     <label for="">Video Slider Two Sub Title</label>
                                                     <input type="text" class="form-control form-control-sm mt-2"
@@ -148,7 +163,22 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-4 mb-2">
+                                            <div class="col-3 mb-2">
+                                                <div class="form-group">
+                                                    <label for="">Video Slider Two Image</label>
+
+                                                    <input type="file"
+                                                        class="form-control form-control-sm mt-2"
+                                                        name="video_slider_two_image">
+
+                                                    <img src="{{ asset('upload/home/' . $home->video_slider_two_image) }}"
+                                                        style="width: 50px;height:50px;" class="mt-2"
+                                                        alt="">
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-3 mb-2">
                                                 <div class="form-group">
                                                     <label for="">Video Slider Two Video</label>
                                                     <input type="file"
