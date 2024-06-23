@@ -60,12 +60,12 @@
                                 {{ $loop->first ? '' : 'style=display:none;' }}>{{ $product->product_name }}</strong>
 
                             <p class="tmpProductInfo tmpProductInfo_0" {{ $loop->first ? '' : 'style=display:none;' }}>
-                                {!! $product->short_desc !!}
+                                {!! Str::words($product->short_desc, 10) !!}
                             </p>
+
                             <div class="btn-group tmpProductInfo tmpProductInfo_0"
                                 {{ $loop->first ? '' : 'style=display:none;' }}>
                                 <a href="" class="lnk-ty1">Find store</a>
-
                             </div>
                         @empty
                         @endforelse
