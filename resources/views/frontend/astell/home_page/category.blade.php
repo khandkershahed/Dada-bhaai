@@ -37,6 +37,7 @@
 
                 <div class="wr">
                     @foreach ($category->products as $key => $product)
+                    
                         <strong class="tmpProductInfo tmpProductInfo_0"
                             {{ $loop->first ? '' : 'style=display:none;' }}>{{ $product->product_name }}</strong>
 
@@ -105,8 +106,9 @@
                 </div>
 
             </div>
+
         </div>
     @endforeach
-    
+
 
 </section>
