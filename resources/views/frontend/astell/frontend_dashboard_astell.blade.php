@@ -45,11 +45,11 @@
         <!--//Header-->
 
         <!--Content//-->
-        <main class="main">
+        
 
             @yield('index_astell')
 
-        </main>
+       
         <!--//content-->
 
         {{-- footer  --}}
