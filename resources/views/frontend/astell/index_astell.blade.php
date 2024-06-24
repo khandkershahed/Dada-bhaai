@@ -1,11 +1,5 @@
 @extends('frontend.astell.frontend_dashboard_astell')
 @section('index_astell')
-<<<<<<< HEAD
-    <main class="main">
-
-        {{--  @include('frontend.astell.home_page.category') --}}
-
-=======
     <style>
         .astel-product-tabs {
             display: block;
@@ -181,7 +175,6 @@
     </style>
 
     <main class="main">
->>>>>>> c1d92026f0dbf61c8b322ebc1c607d2e3e4b3397
         {{-- Home Video Section Start  --}}
         @include('frontend.astell.home_page.home_video')
         {{-- Home Video Section End  --}}
@@ -190,12 +183,6 @@
         @include('frontend.astell.home_page.image_banner')
         {{-- Image Banner Section End  --}}
 
-<<<<<<< HEAD
-        {{-- Category Section Start  --}}
-
-        {{-- Category Section End  --}}
-
-=======
         <section class="product">
             <div class="container">
                 <div class="row">
@@ -375,7 +362,6 @@
                                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                     Add content for Decor & Appliances tab here
                                 </div>
->>>>>>> c1d92026f0dbf61c8b322ebc1c607d2e3e4b3397
 
                                 <!-- Computer & Electronics -->
                                 <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
@@ -393,12 +379,6 @@
             </h2>
             <ul>
 
-<<<<<<< HEAD
-        {{-- Home Page Banner Section Start  --}}
-        @include('frontend.astell.home_page.banner')
-        {{-- Home Page Banner Section End  --}}
-
-=======
                 <li>
                     <a href="#">
                         <div class="bg"
@@ -495,6 +475,5 @@
                 </div>
             </div>
         </section>
->>>>>>> c1d92026f0dbf61c8b322ebc1c607d2e3e4b3397
     </main>
 @endsection
