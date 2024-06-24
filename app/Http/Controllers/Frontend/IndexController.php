@@ -36,16 +36,17 @@ class IndexController extends Controller
 
             $homepage = HomePage::with(['featureProductOne','featureProductTwo','featureProductThree','featureProductFour'])->where('status', 'tamplate_two')->latest('id')->first();
 
-            $categories = Category::orderBy('category_name','ASC')->latest()->limit(4)->get();
+            // $categories = Category::orderBy('category_name','ASC')->latest()->limit(4)->get();
 
-            // $categoryIds = [
-            //     $homepage->category_tab_one_id,
-            //     $homepage->category_tab_two_id,
-            //     $homepage->category_tab_three_id,
-            //     $homepage->category_tab_four_id,
-            // ];
+            $categoryIds = [
+                $homepage->category_tab_one_id,
+                $homepage->category_tab_two_id,
+                $homepage->category_tab_three_id,
+                $homepage->category_tab_four_id,
+            ];
 
-            // $categories = Category::with('products')->whereIn('id', $categoryIds)->get();
+            $categories = Category::with('products')->whereIn('id', $categoryIds)->get();
+            
             // dd($homepage);
 
 

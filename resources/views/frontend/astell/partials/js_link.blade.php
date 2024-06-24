@@ -48,6 +48,7 @@
 
         var galleryTop = new Swiper('.gallery-top', {
             spaceBetween: 10,
+            slidesPerView: 1,
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
