@@ -1,12 +1,12 @@
 @extends('frontend.astell.frontend_dashboard_astell')
 @section('index_astell')
-    {{-- 
-
+    {{--
     @include('frontend.astell.home_page.image_banner')
 
     @include('frontend.astell.home_page.category')
 
-    @include('frontend.astell.home_page.banner') --}}
+    @include('frontend.astell.home_page.banner')
+    --}}
 
     {{-- Home Video Section Start  --}}
     @include('frontend.astell.home_page.home_video')
@@ -15,7 +15,6 @@
     {{-- Image Banner Section Start  --}}
     @include('frontend.astell.home_page.image_banner')
     {{-- Image Banner Section End  --}}
-
 
     <section class="product">
         <div class="tab-ty">
@@ -28,7 +27,6 @@
                 @endforeach
             </ul>
         </div>
-
         @forelse ($categories as $key => $category)
             <div class="tab-cont n{{ $key }} {{ $loop->first ? 'on' : '' }}"
                 style="background-image: url('images/%40p_bg01.png')">
@@ -54,18 +52,17 @@
                     </div>
 
                     <div class="wr">
-
                         @forelse ($category->products as $key => $product)
                             <strong class="tmpProductInfo tmpProductInfo_0"
                                 {{ $loop->first ? '' : 'style=display:none;' }}>{{ $product->product_name }}</strong>
 
                             <p class="tmpProductInfo tmpProductInfo_0" {{ $loop->first ? '' : 'style=display:none;' }}>
-                                {!! Str::words($product->short_desc, 10) !!}
+                                {!! $product->short_desc !!}
                             </p>
-
                             <div class="btn-group tmpProductInfo tmpProductInfo_0"
                                 {{ $loop->first ? '' : 'style=display:none;' }}>
                                 <a href="" class="lnk-ty1">Find store</a>
+
                             </div>
                         @empty
                         @endforelse
