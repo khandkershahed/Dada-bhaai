@@ -1,3 +1,27 @@
+<style>
+    .product__slider-main {
+        margin-bottom: 15px;
+    }
+
+    .product__slider-main img {
+        margin: 0 auto;
+    }
+
+    .product__slider-thmb .slick-slide {
+        opacity: 0.5;
+        transition: all .3s ease;
+    }
+
+    .product__slider-thmb .slick-slide.slick-active,
+    .product__slider-thmb .slick-slide:hover {
+        opacity: 1;
+    }
+
+    .product__slider-main,
+    .product__slider-thmb {
+        display: none;
+    }
+</style>
 <section class="product">
     <div class="container">
         <div class="row">
@@ -27,34 +51,36 @@
                                 <div class="row align-items-center">
                                     <!-- Main Slider -->
                                     <div class="col-md-6">
-                                        <div class="swiper-container gallery-top">
+                                        <div class="swiper-container gallery-top-{{ $key }}">
                                             <div class="swiper-wrapper">
                                                 @foreach ($category->products as $product)
                                                     <div class="swiper-slide">
-                                                        <img src="{{ asset($product->product_image) }}" alt="Image 1">
+                                                        <img src="{{ asset($product->product_image) }}"
+                                                            alt="{{ $product->product_name }}">
                                                     </div>
                                                 @endforeach
                                             </div>
                                             <!-- Navigation Buttons -->
-                                            <div class="swiper-button-next"></div>
-                                            <div class="swiper-button-prev"></div>
+                                            <div class="swiper-button-next swiper-button-next-{{ $key }}">
+                                            </div>
+                                            <div class="swiper-button-prev swiper-button-prev-{{ $key }}">
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- Thumbnail Slider -->
                                     <div class="col-md-6">
                                         <!-- Thumbnail Text Slider -->
-                                        <div class="swiper-container thumbnail-text-slider">
+                                        <div class="swiper-container thumbnail-text-slider-{{ $key }}">
                                             <div class="swiper-wrapper">
                                                 @foreach ($category->products as $product)
                                                     <div class="swiper-slide">
                                                         <div class="thumb-text">
                                                             <div class="thumb-title wr">
-                                                                <strong class="tmpProductInfo tmpProductInfo_5"
-                                                                    style="">{{ $product->product_name }}</strong>
+                                                                <strong
+                                                                    class="tmpProductInfo tmpProductInfo_5">{{ $product->product_name }}</strong>
                                                             </div>
                                                             <div class="thumb-description wr">
-                                                                <p class="tmpProductInfo tmpProductInfo_5"
-                                                                    style="">
+                                                                <p class="tmpProductInfo tmpProductInfo_5">
                                                                     {!! $product->short_desc !!}</p>
                                                                 <a href="#" class="lnk-ty1 text-muted">Find
                                                                     store</a>
@@ -64,27 +90,76 @@
                                                 @endforeach
                                             </div>
                                         </div>
-                                        <div class="swiper-container gallery-thumbs">
+                                        <div class="swiper-container gallery-thumbs-{{ $key }}">
                                             <div class="swiper-wrapper">
                                                 @foreach ($category->products as $product)
                                                     <div class="swiper-slide">
                                                         <img class="img-fluid"
                                                             src="{{ asset($product->product_image) }}"
-                                                            alt="Thumbnail 1">
+                                                            alt="{{ $product->product_name }}">
                                                     </div>
                                                 @endforeach
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
                         @endforeach
-
-
                     </div>
                 </div>
             </div>
         </div>
 
 </section>
+
+@push('scripts')
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            @foreach ($categories as $key => $category)
+                var galleryThumbs{{ $key }} = new Swiper('.gallery-thumbs-{{ $key }}', {
+                    spaceBetween: 10,
+                    slidesPerView: 4,
+                    freeMode: true,
+                    watchSlidesVisibility: true,
+                    watchSlidesProgress: true,
+                    slideToClickedSlide: true,
+                    loop: true,
+                    loopedSlides: 4, // Must be same as slidesPerView
+                });
+
+                var galleryTop{{ $key }} = new Swiper('.gallery-top-{{ $key }}', {
+                    spaceBetween: 10,
+                    slidesPerView: 1,
+                    navigation: {
+                        nextEl: '.swiper-button-next-{{ $key }}',
+                        prevEl: '.swiper-button-prev-{{ $key }}',
+                    },
+                    thumbs: {
+                        swiper: galleryThumbs{{ $key }},
+                    },
+                    loop: true,
+                    loopedSlides: 1, // Must be same as slidesPerView
+                    slideToClickedSlide: true,
+                });
+
+                var thumbnailTextSlider{{ $key }} = new Swiper(
+                    '.thumbnail-text-slider-{{ $key }}', {
+                        spaceBetween: 10,
+                        slidesPerView: 1,
+                        loop: true,
+                        loopedSlides: 4, // Must be same as slidesPerView
+                        navigation: {
+                            nextEl: '.swiper-button-next-{{ $key }}',
+                            prevEl: '.swiper-button-prev-{{ $key }}',
+                        },
+                        thumbs: {
+                            swiper: galleryThumbs{{ $key }},
+                        },
+                        slideToClickedSlide: true,
+                    });
+            @endforeach
+        });
+
+        
+    </script>
+@endpush
