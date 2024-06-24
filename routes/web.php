@@ -262,4 +262,11 @@ Route::controller(TemplateTwoController::class)->group(function () {
     //Buying Guide
     Route::get('/buying-guide', 'TemplateTwoBuying')->name('template.two.buying');
 
+
+    //Category Page
+    Route::get('/product/category-dadabhaai/{id}/{category_slug}', 'CategoryWiseProductTemplateTwo');
+
+    //Product Single
+    Route::get('/product/dadabhaai/{id}/{product_slug}', 'ProductDetailsTemplateTwo');
+
 });
