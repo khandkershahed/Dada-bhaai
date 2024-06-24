@@ -75,16 +75,78 @@
                                                 @endforeach
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
                         @endforeach
-
-
                     </div>
                 </div>
             </div>
         </div>
-
 </section>
+@push('script')
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function initializeSwipers() {
+                if (window.galleryThumbs) {
+                    window.galleryThumbs.destroy(true, true);
+                }
+                if (window.galleryTop) {
+                    window.galleryTop.destroy(true, true);
+                }
+                if (window.thumbnailTextSlider) {
+                    window.thumbnailTextSlider.destroy(true, true);
+                }
+
+                window.galleryThumbs = new Swiper('.gallery-thumbs', {
+                    spaceBetween: 10,
+                    slidesPerView: 4,
+                    freeMode: true,
+                    watchSlidesVisibility: true,
+                    watchSlidesProgress: true,
+                    slideToClickedSlide: true, // Enable slide to clicked slide
+                    loop: true,
+                    loopedSlides: 4, // Must be same as slidesPerView
+                });
+
+                window.galleryTop = new Swiper('.gallery-top', {
+                    spaceBetween: 10,
+                    slidesPerView: 1,
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    thumbs: {
+                        swiper: window.galleryThumbs,
+                    },
+                    loop: true,
+                    loopedSlides: 4, // Must be same as slidesPerView
+                    slideToClickedSlide: true, // Enable slide to clicked slide
+                });
+
+                window.thumbnailTextSlider = new Swiper('.thumbnail-text-slider', {
+                    spaceBetween: 10,
+                    slidesPerView: 1,
+                    loop: true,
+                    loopedSlides: 4, // Must be same as slidesPerView
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    thumbs: {
+                        swiper: window.galleryThumbs,
+                    },
+                    slideToClickedSlide: true, // Enable slide to clicked slide
+                });
+            }
+
+            // Initial Swiper initialization
+            initializeSwipers();
+
+            // Reinitialize Swipers after content is dynamically loaded
+            document.addEventListener('contentUpdated', function() {
+                initializeSwipers();
+            });
+        });
+    </script>
+@endpush
