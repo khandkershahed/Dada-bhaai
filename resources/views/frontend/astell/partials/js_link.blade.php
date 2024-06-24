@@ -32,51 +32,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var galleryThumbs = new Swiper('.gallery-thumbs', {
-            spaceBetween: 10,
-            slidesPerView: 4,
-            freeMode: true,
-            watchSlidesVisibility: true,
-            watchSlidesProgress: true,
-            slideToClickedSlide: true, // Enable slide to clicked slide
-            loop: true,
-            loopedSlides: 4, // Must be same as slidesPerView
-        });
-
-        var galleryTop = new Swiper('.gallery-top', {
-            spaceBetween: 10,
-            slidesPerView: 1,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            thumbs: {
-                swiper: galleryThumbs,
-            },
-            loop: true,
-            loopedSlides: 4, // Must be same as slidesPerView
-            slideToClickedSlide: true, // Enable slide to clicked slide
-        });
-
-        var thumbnailTextSlider = new Swiper('.thumbnail-text-slider', {
-            spaceBetween: 10,
-            slidesPerView: 1,
-            loop: true,
-            loopedSlides: 4, // Must be same as slidesPerView
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            thumbs: {
-                swiper: galleryThumbs,
-            },
-            slideToClickedSlide: true, // Enable slide to clicked slide
-        });
-    });
+<script src="https://cdn.jsdelivr.net/jquery.slick/1.5.9/slick.min.js">
 </script>
+
+
 <script>
     $(document).ready(function() {
         // Swiper: Slider
@@ -108,3 +67,5 @@
         });
     });
 </script>
+
+@stack('scripts')
