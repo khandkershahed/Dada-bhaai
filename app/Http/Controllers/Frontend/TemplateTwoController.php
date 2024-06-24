@@ -10,7 +10,6 @@ use App\Models\Admin\HomePage;
 use App\Models\Admin\MultiImg;
 use App\Models\Admin\Product;
 use App\Models\Admin\ProductSinglePage;
-use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
 class TemplateTwoController extends Controller
@@ -104,43 +103,48 @@ class TemplateTwoController extends Controller
     public function ProductDetailsTemplateTwo($id, $product_slug)
     {
 
-        if (empty($sproducts)) {
+        // if (!empty($sproducts)) {
 
-            $product = Product::find($id);
+        //     $product = Product::find($id);
 
-            $color = $product->color_id;
-            $product_colors = explode(' ', $color);
+        //     $color = $product->color_id;
+        //     $product_colors = explode(' ', $color);
 
-            $multiImages = MultiImg::where('product_id', $product->id)->get();
+        //     $multiImages = MultiImg::where('product_id', $product->id)->get();
 
-            //Releted Category
-            $cat_id = $product->childcategory_id;
-            $relativeProduct = Product::where('childcategory_id', $cat_id)->where('id', '!=', $id)->orderBy('id', 'ASC')->limit(5)->get();
+        //     //Releted Category
+        //     $cat_id = $product->childcategory_id;
+        //     $relativeProduct = Product::where('childcategory_id', $cat_id)->where('id', '!=', $id)->orderBy('id', 'ASC')->limit(5)->get();
 
-            // $child_id = $product->child_id;
-            $child_ids = explode(',', $product->child_id);
+        //     // $child_id = $product->child_id;
+        //     $child_ids = explode(',', $product->child_id);
 
-            foreach ($child_ids as $key => $child_id) {
-                $relativeChild[] = Product::where('id', $child_id)
-                    ->orderBy('id', 'DESC')
-                    ->first();
-            }
+        //     foreach ($child_ids as $key => $child_id) {
+        //         $relativeChild[] = Product::where('id', $child_id)
+        //             ->orderBy('id', 'DESC')
+        //             ->first();
+        //     }
 
-            $carts = Cart::content();
-            $cartQty = Cart::count();
+        //     $carts = Cart::content();
+        //     $cartQty = Cart::count();
 
-            return view('frontend.template_one.product.single_product', compact('product', 'relativeProduct', 'multiImages', 'relativeChild', 'product_colors', 'carts', 'cartQty'));
+        //     return view('frontend.template_one.product.single_product', compact('product', 'relativeProduct', 'multiImages', 'relativeChild', 'product_colors', 'carts', 'cartQty'));
 
-        } else {
-            $product = Product::find($id);
+        // } else {
 
-            $sproducts = ProductSinglePage::where('status', 'active')->where('product_id', $product->id)->first();
+        //     $product = Product::find($id);
+        //     $sproducts = ProductSinglePage::where('status', 'active')->where('product_id', $product->id)->first();
+        //     $multiImages = MultiImg::where('product_id', $product->id)->get();
 
-            $multiImages = MultiImg::where('product_id', $product->id)->get();
-            //dd($sproducts);
+        //     return view('frontend.astell.pages.single_product', compact('product', 'sproducts', 'multiImages'));
+        // }
 
-            return view('frontend.astell.pages.single_product', compact('product', 'sproducts', 'multiImages'));
-        }
+        $product = Product::find($id);
+        $sproducts = ProductSinglePage::where('status', 'active')->where('product_id', $product->id)->first();
+        $multiImages = MultiImg::where('product_id', $product->id)->get();
+
+        return view('frontend.astell.pages.single_product', compact('product', 'sproducts', 'multiImages'));
 
     }
+
 }

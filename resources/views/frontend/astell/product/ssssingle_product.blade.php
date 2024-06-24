@@ -81,34 +81,7 @@
                 </ul>
             </section>
         @endif
-        {{-- <section class="img-group scrollAni n2">
-            <ul>
-                <li>
-                    <a href="#" data-type="popMediaOpenN1"
-                        style="
-                background-image: url('https://i.ibb.co/tZ9LGb7/20220831133937-7a1695ab-9bc5-4370-b25c-98fcb4bc8a7f.jpg');
-              "></a>
-                </li>
-                <li>
-                    <a href="#" data-type="popMediaOpenN2"
-                        style="
-                background-image: url('https://i.ibb.co/Tg4CQKC/20220831153619-4c1b7237-b1c3-4a3a-9600-11b9e405c544.jpg');
-              "></a>
-                </li>
-                <li>
-                    <a href="#" data-type="popMediaOpenN3"
-                        style="
-                background-image: url('https://i.ibb.co/fksBWwc/20220831133938-562d9738-99df-4d84-be79-8375599a06f7.jpg');
-              "></a>
-                </li>
-                <li>
-                    <a href="#" data-type="popMediaOpenN4"
-                        style="
-                background-image: url('https://i.ibb.co/zQtCFxM/20220831133938-b739bc31-c701-4ffc-a5d9-5d550a1dcdeb.jpg');
-              "></a>
-                </li>
-            </ul>
-        </section> --}}
+        
 
         @if (
             !empty($sproducts->row_two_image_one) &&
@@ -188,46 +161,7 @@
             </div>
         </section>
 
-        {{-- <section class="detail-group80 scrollAni n3" style="background-color: #e4f2ff">
-            <div class="wrap">
-                <div class="top-cont">
-                    <h3>SP1000 <strong style="color: #004c8e">M</strong></h3>
-                    <p>
-                        The <strong style="color: #004c8e">"M"</strong> in SP1000M does
-                        not stand for a specific word, <br />
-                        but rather encompasses directions that the product aims to
-                        pursue.
-                    </p>
-                </div>
-                <ul>
-                    <li>
-                        <strong> <span style="color: #004c8e">M</span>ini </strong>
-                        <p>Smaller than the SP1000</p>
-                    </li>
-                    <li>
-                        <strong> <span style="color: #004c8e">M</span>obility </strong>
-                        <p>More portable.</p>
-                    </li>
-                    <li>
-                        <strong> <span style="color: #004c8e">M</span>aximum </strong>
-                        <p>Produces the highest-quality audio.</p>
-                    </li>
-                    <li>
-                        <strong> <span style="color: #004c8e">M</span>ania </strong>
-                        <p>For users who have a mania for original sound.</p>
-                    </li>
-                    <li>
-                        <strong> <span style="color: #004c8e">M</span>ate </strong>
-                        <p>Perfect anytime and anywhere.</p>
-                    </li>
-                    <li>
-                        <strong> <span style="color: #004c8e">M</span>oment </strong>
-                        <p>Listeners are in the present with music.</p>
-                    </li>
-                </ul>
-            </div>
-        </section> --}}
-
+        
         <!-- 비교테이블 -->
 
         @if (!empty($sproducts->row_six_background_image))
@@ -256,89 +190,7 @@
             </section>
         @endif
 
-        {{-- <section class="detail-group9 v2 scrollAni n4">
-            <div class="wrap">
-                <h3>SP1000M vs. SP1000</h3>
-                <div class="dv3">
-                    <!-- &lt;strong&gt;Bluetooth version comparison&lt;/strong&gt; -->
-                    <div>
-                        <div class="n1"></div>
-                        <div class="n2">SP1000M</div>
-                        <div class="n3">SP1000</div>
-                    </div>
-                    <ul>
-                        <li>
-                            <span class="n1">CPU</span>
-                            <span class="n2"> Exynos 7420 Octa-Core </span>
-                            <span class="n3"> Exynos 7420 Octa-Core </span>
-                        </li>
-                        <li>
-                            <span class="n1">LCD</span>
-                            <span class="n2"> 4.1inch (720 x 1,280) Touchscreen </span>
-                            <span class="n3"> 5inch (720 x 1,280) Touchscreen </span>
-                        </li>
-                        <li>
-                            <span class="n1">DAC</span>
-                            <span class="n2">AKM AK4499EQ x2 (Dual DAC)</span>
-                            <span class="n3">AKM AK4497EQ x2 (Dual DAC)</span>
-                        </li>
-                        <li>
-                            <span class="n1">Material</span>
-                            <span class="n2"> Aluminum </span>
-                            <span class="n3"> Stainless Steel, Copper </span>
-                        </li>
-                        <li>
-                            <span class="n1">Memory</span>
-                            <span class="n2"> 128GB </span>
-                            <span class="n3"> 256GB </span>
-                        </li>
-                        <li>
-                            <span class="n1">Battery</span>
-                            <span class="n2"> 3,300mAh / 10hrs </span>
-                            <span class="n3"> 3,700mAh / 12hrs </span>
-                        </li>
-                        <li>
-                            <span class="n1">Output Level</span>
-                            <span class="n2">Unbalanced 3.0Vrms <br />
-                                Balanced 4.2Vrms (Condition No Load)
-                            </span>
-                            <span class="n3">Unbalanced 2.2Vrms <br />
-                                Balanced 3.9Vrms (Condition No Load)
-                            </span>
-                        </li>
-                        <li>
-                            <span class="n1">Signal to Noise Ratio</span>
-                            <span class="n2">Unbalance 120dB @ 1kHz <br />
-                                Balance 123dB @ 1kHz
-                            </span>
-                            <span class="n3">Unbalance 120dB @ 1kHz <br />
-                                Balance 122dB @ 1kHz
-                            </span>
-                        </li>
-                        <li>
-                            <span class="n1">THD+N</span>
-                            <span class="n2">Unbalance 0.0007% @ 1kHz <br />
-                                Balance 0.0006% @ 1kHz
-                            </span>
-                            <span class="n3">Unbalance 0.0005% @ 1kHz <br />
-                                Balance 0.0008% @ 1kHz
-                            </span>
-                        </li>
-                        <li>
-                            <span class="n1">Clock Jitter</span>
-                            <span class="n2">25ps(typ) </span>
-                            <span class="n3">30ps(typ) </span>
-                        </li>
-                    </ul>
-                </div>
-                <p>
-                    * SNR (Signal to Noise Ratio) As the signal-to-noise ratio
-                    increases, the clearer the sound becomes. <br />
-                    * THD+N (THD + Noise, Distortion) over the THD + Noise signal
-                    rate, less distortion is heard.
-                </p>
-            </div>
-        </section> --}}
+        
 
         <!-- 비교테이블 -->
         @if (!empty($sproducts->row_seven_background_image))
@@ -355,28 +207,7 @@
                 </div>
             </section>
         @endif
-        {{-- <section class="detail-group21 scrollAni n5" style="background-color: #f5f5f5">
-            <div class="bg"
-                style="
-            background-image: url('https://i.ibb.co/N9HG4Jg/20211018201649-6620b42e-1590-4c12-af55-9badfd4b4f1b.png');
-            background-color: #f5f5f5;
-          ">
-            </div>
-            <div class="wrap">
-                <div class="inner">
-                    <h3>Using Open APP Service</h3>
-                    <p>
-                        The Open APP Service enables the user to install specific APK
-                        music streaming apps to the device. <br />
-                        Copy the desired APK into the Open Service folder of the product
-                        and install the relevant App in the Menu-Service of the product.
-                        <br />
-                        <br />
-                        <a href="#" target="_blank" class="lnk-ty1">Open APP Service</a>
-                    </p>
-                </div>
-            </div>
-        </section> --}}
+        
         @if (!empty($sproducts->row_eight_image))
             <section class="detail-group10 scrollAni n6">
                 <div class="wrap">
@@ -428,42 +259,7 @@
             </section>
         @endif
 
-        {{-- <section class="detail-group3 scrollAni n7">
-            <div class="bg"></div>
-            <div class="wrap">
-                <h3>Great Performance for the Ultimate Experience</h3>
-                <p>
-                    The A&amp;ultima SP1000M is equipped with an octa-core CPU which
-                    allows the player to produce the exact musical detail present in
-                    the original recording without distortion and provides a quick,
-                    lag-free operation. The A&amp;ultima SP1000M features faster
-                    booting times, speedy file transfers, lag-free processing and a
-                    new intuitive user interface for the ultimate player experience.
-                </p>
-                <ul>
-                    <li>
-                        <img src="https://i.ibb.co/4FGRwzF/core5.png" alt="Octa-Core" />
-                        <p>Octa-Core</p>
-                    </li>
-                    <li>
-                        <img src="https://i.ibb.co/pvHcBVC/core4.png" alt="Hex-Core" />
-                        <p>Hex-Core</p>
-                    </li>
-                    <li>
-                        <img src="https://i.ibb.co/1mYv6yj/core3.png" alt="Quad-Core" />
-                        <p>Quad-Core</p>
-                    </li>
-                    <li>
-                        <img src="https://i.ibb.co/Syg078B/core2.png" alt="Dual-Core" />
-                        <p>Dual-Core</p>
-                    </li>
-                    <li>
-                        <img src="https://i.ibb.co/sqXxWgy/core1.png" alt="Single-Core" />
-                        <p>Single-Core</p>
-                    </li>
-                </ul>
-            </div>
-        </section> --}}
+        
 
         <!-- 다이어그램 -->
 
@@ -500,27 +296,7 @@
             </section>
         @endif
 
-        {{-- <section class="detail-group8 v1 scrollAni n8" style="background-color: #000000">
-            <div class="wrap">
-                <h3>Ultimate Sound Quality</h3>
-                <p>
-                    The latest AK4497EQ dual-DAC design and the upgraded CPU in the
-                    A&amp;ultima SP1000M allows for accurate playback of native
-                    32bit/384kHz audio with no compromise on sound quality. The music
-                    is played back, bit-for-bit, just as the artist and engineer
-                    intended for it to be heard. <br />
-                    <br />
-                    The A&amp;ultima SP1000M also supports native bit-to-bit DSD
-                    playback up to 11.2MHz for the best sound possible.
-                </p>
-                <p>32-bit bit-to-bit Playback by the SP1000M</p>
-                <img src="https://i.ibb.co/8XZcrpq/20211022135918-cf122857-6847-4aa7-9a56-d14fb2a6290d.png" alt="img"
-                    style="max-width: 720px" />
-                <p>32-bit Playback by Other Products</p>
-                <img src="https://i.ibb.co/tYpBGPW/20211022135941-47066dc1-7a48-4100-9adc-3217c80e684e.png" alt="img"
-                    style="max-width: 720px" />
-            </div>
-        </section> --}}
+        
 
         <!-- 다이어그램 -->
         <section class="detail-group9 v3 scrollAni n9">
@@ -595,42 +371,7 @@
             </section>
         @endif
 
-        {{-- <section class="detail-group7 scrollAni n10">
-            <ul>
-                <li>
-                    <img src="https://i.ibb.co/XW2PVLy/mqa-logo.png" alt="mqa_logo" />
-                    <p>
-                        MQA (Master Quality Authenticated) is an award-winning British
-                        technology that delivers the sound of the original master
-                        recording. <br />
-                        The master MQA file is fully authenticated and is small enough
-                        to stream or download. Visit mqa.co.uk for more information.
-                        <br />
-                        Astell&amp;Kern SP1000M includes MQA technology, which enables
-                        you to play back MQA audio files and streams, <br />
-                        delivering the sound of the original master recording. <br />
-                        <br />
-                        The MQA logo is a trade mark of MQA Limited. © MQA Limited 2018
-                        <br />
-                    </p>
-                    <a href="https://i.ibb.co/19dzt63/mqa-logo.png" target="_blank" class="lnk-ty1">Discover more</a>
-                </li>
-                <li>
-                    <img src="https://i.ibb.co/cxTrj3q/roonready-logo.png" alt="roon ready_logo" />
-                    <p>
-                        Roon Ready network players from our partners have Roon’s
-                        high-resolution streaming technology built right in. <br />
-                        They combine simple setup, daily reliability, and support for
-                        the highest level of digital audio performance in the industry.
-                        <br />
-                        Every Roon Ready player is certified by Roon to guarantee the
-                        same stellar experience, regardless of its manufacturer, its
-                        price, or its features.
-                    </p>
-                    <a href="#" target="_blank" class="lnk-ty1">Discover more</a>
-                </li>
-            </ul>
-        </section> --}}
+        
 
         @if (!empty($sproducts->row_fourteen_background_image))
             <section class="detail-group3 scrollAni n11">
@@ -647,153 +388,7 @@
             </section>
         @endif
 
-        {{-- <section class="design-group scrollAni n11">
-            <div class="wrap">
-                <h3>DESIGN</h3>
-                <p>
-                    Inspiration for the design of the SP1000M comes from Iirregularly
-                    patterned natural stones combined with Lapis Lazuli, one of the
-                    oldest of all gems, createsto create the SP1000M's color - Lapis
-                    Blue. <br />
-                    Lapis Lazuli, whose history stretches back to 5,000 BC, was a
-                    precious gem used in Mesopotamia and Egypt during ancient times.
-                    <br />
-                    <br />
-                    The SP1000M's vivid blue represents youth, enthusiasm and power.
-                    The darker blue highlights appear at different angles to add
-                    elegance to the A&amp;ultima product. <br />
-                    The dakota leather used in the SP1000M bundle leather case is a
-                    premium vegetable leather made from an Italian tanner named 'Ra
-                    Perla Azura'. <br />
-                    It's a manufacture of Italian and French origin. <br />
-                    'La Perla Azura' was founded in 1967 and has a long history over
-                    50 years. <br />
-                    It is located in 'Santa Croce sull´Arno' which is only high-end
-                    leather production district in Italy. <br />
-                    The SP1000M Onyx Black case uses Beta leather from NUOVA ALBORA.
-                    Beta leather is a high quality leather which contains a large
-                    amount of oil as a whole, strong resiliency of scratches, and can
-                    sense changes with the passage of time. <br />
-                </p>
-            </div>
-            <div class="slide-group">
-                <div class="list">
-                    <div class="swiper-container">
-                        <ul class="swiper-wrapper">
-                            <li class="swiper-slide">
-                                <div class="img"
-                                    style="
-                      background-image: url('https://i.ibb.co/qyxpLks/dap-list-img1.png');
-                    ">
-                                </div>
-                            </li>
-                            <li class="swiper-slide">
-                                <div class="img"
-                                    style="
-                      background-image: url('https://i.ibb.co/BcHb4kL/dap-list-img2.png');
-                    ">
-                                </div>
-                            </li>
-                            <li class="swiper-slide">
-                                <div class="img"
-                                    style="
-                      background-image: url('https://i.ibb.co/yStfK1k/dap-list-img3.png');
-                    ">
-                                </div>
-                            </li>
-                            <li class="swiper-slide">
-                                <div class="img"
-                                    style="
-                      background-image: url('https://i.ibb.co/yStfK1k/dap-list-img3.png');
-                    ">
-                                </div>
-                            </li>
-                            <li class="swiper-slide">
-                                <div class="img"
-                                    style="
-                      background-image: url('https://i.ibb.co/yStfK1k/dap-list-img3.png');
-                    ">
-                                </div>
-                            </li>
-                            <li class="swiper-slide">
-                                <div class="img"
-                                    style="
-                      background-image: url('https://i.ibb.co/W5rzv34/dap-list-img6.png');
-                    ">
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="thumb">
-                    <div class="swiper-container">
-                        <ul class="swiper-wrapper">
-                            <li class="swiper-slide">
-                                <a href="#" class="active">
-                                    <div class="img"
-                                        style="
-                        background-image: url('https://i.ibb.co/qyxpLks/dap-list-img1.png');
-                      ">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="swiper-slide">
-                                <a href="#">
-                                    <div class="img"
-                                        style="
-                        background-image: url('https://i.ibb.co/BcHb4kL/dap-list-img2.png');
-                      ">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="swiper-slide">
-                                <a href="#">
-                                    <div class="img"
-                                        style="
-                        background-image: url('https://i.ibb.co/yStfK1k/dap-list-img3.png');
-                      ">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="swiper-slide">
-                                <a href="#">
-                                    <div class="img"
-                                        style="
-                        background-image: url('https://i.ibb.co/yStfK1k/dap-list-img3.png');
-                      ">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="swiper-slide">
-                                <a href="#">
-                                    <div class="img"
-                                        style="
-                        background-image: url('https://i.ibb.co/yStfK1k/dap-list-img3.png');
-                      ">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="swiper-slide">
-                                <a href="#">
-                                    <div class="img"
-                                        style="
-                        background-image: url('https://i.ibb.co/W5rzv34/dap-list-img6.png');
-                      ">
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="swiper-pagination"></div>
-                    </div>
-                </div>
-            </div>
-        </section> --}}
-
-        {{-- <style>
-            .detail-group4.n12 .bg {
-                background: transparent url('{{ asset(' storage/single_product/' . $product->row_fifteen_image) }}') center bottom -20px no-repeat;
-            }
-        </style> --}}
+        
 
         @if (!empty($sproducts->row_fifteen_image))
             <section class="detail-group4 scrollAni n12">
