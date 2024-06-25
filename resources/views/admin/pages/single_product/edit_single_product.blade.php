@@ -180,6 +180,34 @@
                         </div>
                         <!-- Row Three End-->
 
+                        <!-- Row Four -->
+                        <div class="mt-1 mb-2">
+                            <p class="text-white bg-info text-center shadow-sm"
+                                style="position: relative;  top: 20px; width: 13%">Row Four Area</p>
+                            <div class="row border border-secondary pt-3">
+                                <div class="col-lg-6">
+                                    <div class="mb-2">
+                                        <label class="form-label">Row Four Title</label>
+                                        <input type="text" id="row_four_title" name="row_four_title"
+                                            class="form-control form-control-sm maxlength-options" maxlength="255"
+                                            placeholder="Enter Row Four Title"
+                                            value="{{ $single_product->row_four_title }}">
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-lg-6">
+                                    <div class="mb-2">
+                                        <label class="col-form-label pt-0">Row Four Image</label>
+                                        <input type="file" accept="image/*"
+                                            class="imageUpload form-control form-control-sm" name="row_four_image">
+
+                                        <img src="{{ asset('storage/single_product/' . $single_product->row_four_image) }}"
+                                            alt="" style="width: 50px; height:50px;" class="mt-3">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Row Four End-->
+
                         <!-- Row Five -->
                         <div class="mt-1 mb-2">
                             <p class="text-white bg-info text-center shadow-sm"
