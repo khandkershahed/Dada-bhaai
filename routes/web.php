@@ -18,15 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-// Route::get('/', function () {
-//     return view('frontend.frontend_dashboard');
-// });
-
 Route::get('/', [IndexController::class, 'Index'])->name('index');
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
@@ -262,11 +254,16 @@ Route::controller(TemplateTwoController::class)->group(function () {
     //Buying Guide
     Route::get('/buying-guide', 'TemplateTwoBuying')->name('template.two.buying');
 
-
     //Category Page
     Route::get('/product/category-dadabhaai/{id}/{category_slug}', 'CategoryWiseProductTemplateTwo');
 
     //Product Single
-    Route::get('/product/dadabhaai/{id}/{product_slug}', 'ProductDetailsTemplateTwo');
+    // Route::get('/product/dadabhaai/{id}/{product_slug}', 'ProductDetailsTemplateTwo');
+
+    // Route for handling the POST request (form submission)
+    Route::post('/product-search-dadabhaai', 'DadabhaaiProductSearch')->name('dadabhaai.product.search');
+
+    // Route for showing search results (GET request)
+    Route::get('/product-search-results', 'showSearchResults')->name('product.search.results');
 
 });

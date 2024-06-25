@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <section class="product">
     <div class="tab-ty">
         <ul class="ps-0">
@@ -46,3 +47,5 @@
         });
     </script>
 @endsection
+=======
+>>>>>>> db50f00cedf08e5da82015652cc616b69da4317c

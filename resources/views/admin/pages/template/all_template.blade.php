@@ -121,15 +121,15 @@
 
                                                                             <option value="template_one"
                                                                                 {{ $template->name == 'template_one' ? 'selected' : '' }}>
-                                                                                Template One</option>
+                                                                                Template One (Main Site)</option>
 
                                                                             <option value="template_two"
                                                                                 {{ $template->name == 'template_two' ? 'selected' : '' }}>
-                                                                                Template Two</option>
+                                                                                Template Two (Astell&Kern)</option>
 
-                                                                            <option value="template_three"
+                                                                            {{-- <option value="template_three"
                                                                                 {{ $template->name == 'template_three' ? 'selected' : '' }}>
-                                                                                Template Three</option>
+                                                                                Template Three</option> --}}
 
                                                                         </select>
                                                                     </div>
@@ -147,15 +147,15 @@
 
                                                                             <option value="template_one"
                                                                                 {{ $template->next_template == 'template_one' ? 'selected' : '' }}>
-                                                                                Template One</option>
+                                                                                Template One (Main Site)</option>
 
                                                                             <option value="template_two"
                                                                                 {{ $template->next_template == 'template_two' ? 'selected' : '' }}>
-                                                                                Template Two</option>
+                                                                                Template Two (Astell&Kern)</option>
 
-                                                                            <option value="template_three"
+                                                                            {{-- <option value="template_three"
                                                                                 {{ $template->next_template == 'template_three' ? 'selected' : '' }}>
-                                                                                Template Three</option>
+                                                                                Template Three</option> --}}
 
                                                                         </select>
                                                                     </div>

@@ -2,7 +2,7 @@
 @section('index_astell')
     <main class="sub">
 
-        <section class="lnb">
+        {{-- <section class="lnb">
             <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
                 <ul class="swiper-wrapper" style="transition-duration: 0ms;transform: translate3d(0.282px, 0px, 0px);">
 
@@ -28,7 +28,7 @@
                 </ul>
                 <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
             </div>
-        </section>
+        </section> --}}
 
         <section class="sub-visual scrollAniTop view">
 
@@ -41,13 +41,13 @@
 
             <ul>
 
-                @php
+                {{-- @php
 
                     $products = App\Models\Admin\Product::where('status', '1')
                         ->orderBy('product_name', 'ASC')
                         ->paginate(8);
 
-                @endphp
+                @endphp --}}
 
                 @forelse ($products as $product)
                     <li class="scrollAni n2 view">

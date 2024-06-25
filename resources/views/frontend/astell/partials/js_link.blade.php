@@ -29,8 +29,15 @@
 <script type="text/javascript" src="{{ asset('frontend/astell/assets/js/kimsoft/kimsoft.js') }}"></script>
 <script type="text/javascript" src="{{ asset('frontend/astell/assets/js/common.dev.js') }}"></script>
 
+<<<<<<< HEAD
+=======
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
 
-<script>
+>>>>>>> db50f00cedf08e5da82015652cc616b69da4317c
+
+{{-- <script>
     $(document).ready(function() {
         // Swiper: Slider
         new Swiper('.swiper-container', {
@@ -57,5 +64,9 @@
         });
     });
 </script>
+<<<<<<< HEAD
 
 @stack('scripts')
+=======
+@stack('scripts') --}}
+>>>>>>> db50f00cedf08e5da82015652cc616b69da4317c
