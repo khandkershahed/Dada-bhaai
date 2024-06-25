@@ -1,9 +1,9 @@
 @if (
-    !empty($homepage->featureProductOne) ||
-        !empty($homepage->featureProductTwo) ||
-        !empty($homepage->featureProductThree) ||
-        !empty($homepage->featureProductFour))
-        
+    !empty($homepage->featureProductOne->product_image) ||
+        !empty($homepage->featureProductTwo->product_image) ||
+        !empty($homepage->featureProductThree->product_image) ||
+        !empty($homepage->featureProductFour->product_image))
+
     <section class="brand-story scrollAni n2">
         <h2>
             We believe <strong>that</strong> is the center of music
