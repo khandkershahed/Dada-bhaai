@@ -1,6 +1,5 @@
 @extends('frontend.astell.frontend_dashboard_astell')
 @section('index_astell')
-
     <style>
         .astel-product-tabs {
             display: block;
@@ -193,65 +192,7 @@
         @include('frontend.astell.home_page.banner')
         {{-- Home Page Banner Section End  --}}
 
-        <section class="experience">
-            <h2>
-              IMAGINE<br />
-              YOUR OWN LIFE
-            </h2>
-            <div class="swiper-container">
-              <ul class="swiper-wrapper">
-                <li class="swiper-slide" data-slide-type="img">
-                  <div
-                    class="bg"
-                    style="
-                      background-image: url('https://i.ibb.co/5xtHZMF/20220322105041-923f9ad8-384d-46b5-a409-80ff96ed3ee2.jpg');
-                    "
-                  ></div>
-                </li>
-                <li class="swiper-slide" data-slide-type="img">
-                  <div
-                    class="bg"
-                    style="
-                      background-image: url('https://i.ibb.co/YT6g4y1/20230112110038-696b3f1e-c929-42a8-942f-76168164274e.jpg');
-                    "
-                  ></div>
-                </li>
-                <li class="swiper-slide" data-slide-type="img">
-                  <div
-                    class="bg"
-                    style="
-                      background-image: url('https://i.ibb.co/5xtHZMF/20220322105041-923f9ad8-384d-46b5-a409-80ff96ed3ee2.jpg');
-                    "
-                  ></div>
-                </li>
-                <li class="swiper-slide" data-slide-type="img">
-                  <div
-                    class="bg"
-                    style="
-                      background-image: url('https://i.ibb.co/YT6g4y1/20230112110038-696b3f1e-c929-42a8-942f-76168164274e.jpg');
-                    "
-                  ></div>
-                </li>
-                <li class="swiper-slide" data-slide-type="img">
-                  <div
-                    class="bg"
-                    style="
-                      background-image: url('https://i.ibb.co/5xtHZMF/20220322105041-923f9ad8-384d-46b5-a409-80ff96ed3ee2.jpg');
-                    "
-                  ></div>
-                </li>
-              </ul>
-              <div class="swiper-button-prev">
-                <div class="bg"></div>
-                <span>Prev</span>
-              </div>
-              <div class="swiper-button-next">
-                <div class="bg"></div>
-                <span>Next</span>
-              </div>
-            </div>
-          </section>
+        
 
     </main>
-    
 @endsection
