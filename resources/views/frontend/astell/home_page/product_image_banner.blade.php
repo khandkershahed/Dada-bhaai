@@ -13,7 +13,7 @@
 
                 <div class="inner bg-shadow">
                     <p class="font-white">{{ $homepage->featureProductOne->product_name }}</p>
-                    <strong class="font-white">{{ optional($homepage->featureProductOne)->category->category_name }}</strong>
+                    <strong class="font-white">{{ optional($homepage->featureProductOne->category)->category_name }}</strong>
                 </div>
 
             </a>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="inner bg-shadow">
                     <p class="font-white">{{ $homepage->featureProductTwo->product_name }}</p>
-                    <strong class="font-white">{{ optional($homepage->featureProductTwo)->category->category_name }}</strong>
+                    <strong class="font-white">{{ optional($homepage->featureProductTwo->category)->category_name }}</strong>
                 </div>
             </a>
         </li>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="inner bg-shadow">
                     <p class="font-white">{{ $homepage->featureProductThree->product_name }}</p>
-                    <strong class="font-white">{{ optional($homepage->featureProductThree)->category->category_name }}</strong>
+                    <strong class="font-white">{{ optional($homepage->featureProductThree->category)->category_name }}</strong>
                 </div>
             </a>
         </li>
@@ -56,7 +56,7 @@
                 </div>
                 <div class="inner bg-shadow">
                     <p class="font-white">{{ $homepage->featureProductFour->product_name }}</p>
-                    <strong class="font-white">{{ optional($homepage->featureProductFour)->category->category_name }}</strong>
+                    <strong class="font-white">{{ optional($homepage->featureProductFour->category)->category_name }}</strong>
                 </div>
             </a>
         </li>
