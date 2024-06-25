@@ -6,7 +6,7 @@
 
     <section class="brand-story scrollAni n2">
         <h2>
-            We believe <strong>that</strong> is the center of music
+            We believe <strong>that</strong> is the center of DadaBhaai
         </h2>
         <ul>
 

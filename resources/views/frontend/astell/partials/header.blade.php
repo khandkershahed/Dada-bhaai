@@ -1,9 +1,15 @@
+@php
+    $site = App\Models\Sites::find(1);
+@endphp
+
 <header>
     <div class="menu">
         <div class="overlay"></div>
+
         <a href="#" class="btn-menu">
             <span class="line"></span>
         </a>
+
         <div class="menu-box scroll-y">
             <div class="wrap">
                 <div class="mo-title">
@@ -18,7 +24,7 @@
                         <a href="{{ route('template.two.all.product') }}">PRODUCT</a>
                     </li>
                     <li>
-                        <a href="#">SUPPORT</a>
+                        <a href="javascript:;">SUPPORT</a>
                         <ul class="depth2">
                             <li>
                                 <a href="{{ route('template.two.faq') }}">FAQ</a>
@@ -35,9 +41,14 @@
             </div>
         </div>
     </div>
+
     <h1>
-        <a href="../index.html"></a>
+        <a href="{{ route('index') }}">
+            <img class="" style="width: 100px;" src="{{ asset('upload/logo_black/' . $site->logo_black) }}"
+                alt="">
+        </a>
     </h1>
+
     <div class="gnb">
         <ul class="depth1">
             <li>
@@ -67,12 +78,22 @@
         <div class="overlay"></div>
         <div class="inner">
             <div class="wrap">
-                <div class="top">
-                    <input type="text" name="searchContent" class="submitSearch" placeholder="Search" />
-                    <a href="" class="btn-srch2">
-                        <span class="blind">검색</span>
-                    </a>
-                </div>
+
+                <form action="{{ route('dadabhaai.product.search') }}" method="POST">
+                    @csrf
+
+                    <div class="top">
+
+                        <input type="text" name="search" required autocomplete="off" class="submitSearch" placeholder="Search Product" />
+    
+                        <button type="submit" class="btn-srch2">
+                           
+                        </button>
+    
+                    </div>
+
+                </form>
+
                 <!--search result//-->
                 <div id="searchNoResult" class="result-none" style="display: none">
                     <strong>Sorry. We cannot find the result you are searching
@@ -83,8 +104,9 @@
                     </p>
                 </div>
                 <!--//search result-->
+
                 <!--Keyword Suggestion//-->
-                <div class="keyword">
+                {{-- <div class="keyword">
                     <strong>Keyword Suggestion</strong>
                     <ul>
                         <li>
@@ -103,10 +125,12 @@
                             <a href="#">AK HC3</a>
                         </li>
                     </ul>
-                </div>
+                </div> --}}
                 <!--//Keyword Suggestion-->
+
                 <!--search result//-->
                 <div id="searchResult" class="result" style="display: none">
+
                     <div class="list">
                         <div class="total">
                             <strong>Product ( <span id="searchProductCnt"></span>)
@@ -115,6 +139,7 @@
                         </div>
                         <ul id="searchProductLayer"></ul>
                     </div>
+
                     <div class="list v1">
                         <div class="total">
                             <strong>Contents ( <span id="searchContentCnt"></span>)

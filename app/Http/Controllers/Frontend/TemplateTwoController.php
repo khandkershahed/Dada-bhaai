@@ -9,7 +9,6 @@ use App\Models\Admin\Faq;
 use App\Models\Admin\MultiImg;
 use App\Models\Admin\Product;
 use App\Models\Admin\ProductSinglePage;
-use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
 class TemplateTwoController extends Controller
@@ -110,6 +109,30 @@ class TemplateTwoController extends Controller
     //     return view('frontend.astell.pages.single_product', compact('product', 'sproducts', 'multiImages'));
 
     // }
-   
+
+    public function DadabhaaiProductSearch(Request $request)
+    {
+        $request->validate(['search' => 'required']);
+
+        $item = $request->search;
+
+        Product::where('product_name', 'LIKE', "%$item%")
+            ->orWhere('short_desc', 'LIKE', "%$item%")
+            ->paginate(16);
+
+        // Redirect to a GET route instead of returning view directly
+        return redirect()->route('product.search.results', ['item' => $item]);
+    }
+
+    public function showSearchResults(Request $request)
+    {
+        $item = $request->query('item');
+
+        $products = Product::where('product_name', 'LIKE', "%$item%")
+            ->orWhere('short_desc', 'LIKE', "%$item%")
+            ->paginate(16);
+
+        return view('frontend.astell.pages.dadabhaai_product_search', compact('products', 'item'));
+    }
 
 }

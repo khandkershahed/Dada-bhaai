@@ -1,7 +1,8 @@
 <section class="product-banner">
-    <p class="top-txt">
+    
+    {{-- <p class="top-txt">
         {{ $homepage->background_image_title }}
-    </p>
+    </p> --}}
 
     <div class="swiper-container">
 
