@@ -5,7 +5,7 @@
         !empty($homepage->video_slider_two_image))
     <section class="key-visual">
         <div class="swiper-container">
-            <ul class="swiper-wrapper ">
+            <ul class="swiper-wrapper ps-0 border-0 ms-0">
                 <li class="swiper-slide" data-slide-type="vdo">
                     @if (!empty($homepage->video_slider_one_video))
                         <video class="video-js" muted controls autoplay playsinline>
