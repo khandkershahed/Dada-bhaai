@@ -30,8 +30,9 @@
                     @foreach ($categories as $key => $category)
                         <li class="nav-item astel-product-tabs" role="presentation">
                             <button class="nav-link astel-product-tabs-link {{ $key == 0 ? 'active' : '' }}"
-                                id="home-tab" data-bs-toggle="tab" data-bs-target="#tab-{{ $category->id }}"
-                                type="button" role="tab" aria-controls="home"
+                                id="tab-{{ $category->id }}-tab" data-bs-toggle="tab"
+                                data-bs-target="#tab-{{ $category->id }}" type="button" role="tab"
+                                aria-controls="tab-{{ $category->id }}"
                                 aria-selected="true">{{ $category->category_name }}</button>
                         </li>
                     @endforeach
@@ -44,10 +45,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="tab-content" id="myTabContent">
-                        <!-- Foods & Supplements -->
                         @foreach ($categories as $key => $category)
                             <div class="tab-pane fade {{ $key == 0 ? 'show active' : '' }}" id="tab-{{ $category->id }}"
-                                role="tabpanel" aria-labelledby="home-tab">
+                                role="tabpanel" aria-labelledby="tab-{{ $category->id }}-tab">
                                 <div class="row align-items-center">
                                     <!-- Main Slider -->
                                     <div class="col-md-6">
@@ -115,8 +115,10 @@
 @push('scripts')
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            
             @foreach ($categories as $key => $category)
                 var galleryThumbs{{ $key }} = new Swiper('.gallery-thumbs-{{ $key }}', {
+                    alert(5);
                     spaceBetween: 10,
                     slidesPerView: 4,
                     freeMode: true,
@@ -124,7 +126,7 @@
                     watchSlidesProgress: true,
                     slideToClickedSlide: true,
                     loop: true,
-                    loopedSlides: 4, // Must be same as slidesPerView
+                    loopedSlides: {{ count($category->products) }},
                 });
 
                 var galleryTop{{ $key }} = new Swiper('.gallery-top-{{ $key }}', {
@@ -138,7 +140,7 @@
                         swiper: galleryThumbs{{ $key }},
                     },
                     loop: true,
-                    loopedSlides: 1, // Must be same as slidesPerView
+                    loopedSlides: {{ count($category->products) }},
                     slideToClickedSlide: true,
                 });
 
@@ -147,7 +149,7 @@
                         spaceBetween: 10,
                         slidesPerView: 1,
                         loop: true,
-                        loopedSlides: 4, // Must be same as slidesPerView
+                        loopedSlides: {{ count($category->products) }},
                         navigation: {
                             nextEl: '.swiper-button-next-{{ $key }}',
                             prevEl: '.swiper-button-prev-{{ $key }}',
@@ -159,7 +161,5 @@
                     });
             @endforeach
         });
-
-        
     </script>
 @endpush

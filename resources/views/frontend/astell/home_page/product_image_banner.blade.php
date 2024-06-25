@@ -6,7 +6,7 @@
 
         <li>
             <a
-                href="{{ url('product/dadabhaai' . '/' . $homepage->featureProductOne->id . '/' . $homepage->featureProductOne->product_slug) }}">
+                href="{{ url('product' . '/' . $homepage->featureProductOne->id . '/' . $homepage->featureProductFour->product_slug) }}">
                 <div class="bg"
                     style=" background-image: url('{{ asset($homepage->featureProductOne->product_image) }}');">
                 </div>
@@ -21,7 +21,7 @@
 
         <li>
             <a
-                href="{{ url('product/dadabhaai' . '/' . $homepage->featureProductTwo->id . '/' . $homepage->featureProductTwo->product_slug) }}">
+                href="{{ url('product' . '/' . $homepage->featureProductTwo->id . '/' . $homepage->featureProductFour->product_slug) }}">
                 <div class="bg"
                     style="background-image: url('{{ asset($homepage->featureProductTwo->product_image) }}');">
                 </div>
@@ -34,7 +34,7 @@
 
         <li>
             <a
-                href="{{ url('product/dadabhaai' . '/' . $homepage->featureProductThree->id . '/' . $homepage->featureProductThree->product_slug) }}">
+                href="{{ url('product' . '/' . $homepage->featureProductThree->id . '/' . $homepage->featureProductFour->product_slug) }}">
                 <div class="bg"
                     style="background-image: url('{{ asset($homepage->featureProductThree->product_image) }}');">
                 </div>
@@ -45,9 +45,12 @@
             </a>
         </li>
 
+        {{-- {{ url('product' . '/' . $homepage->featureProductFour->id . '/' . $$homepage->featureProductFour->product_slug->product_slug) }} --}}
+
         <li>
             <a
-                href="{{ url('product/dadabhaai' . '/' . $homepage->featureProductFour->id . '/' . $homepage->featureProductFour->product_slug) }}">
+                href="{{ url('product' . '/' . $homepage->featureProductFour->id . '/' . $homepage->featureProductFour->product_slug) }}">
+
                 <div class="bg"
                     style="background-image: url('{{ asset($homepage->featureProductFour->product_image) }}');">
                 </div>

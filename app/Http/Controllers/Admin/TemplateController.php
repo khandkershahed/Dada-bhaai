@@ -16,7 +16,7 @@ class TemplateController extends Controller
         return view('admin.pages.template.all_template', compact('templates'));
     }
 
-    // //Update Brand
+    //Update Brand
     public function UpdateTemplate(Request $request)
     {
 

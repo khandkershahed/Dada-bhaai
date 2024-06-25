@@ -65,7 +65,7 @@
                             <p>
                                 {!! $product->short_desc !!}
                             </p>
-                            <a href="{{ url('product/dadabhaai' . '/' . $product->id . '/' . $product->product_slug) }}"
+                            <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
                                 class="lnk-ty1">Discover Product</a>
                         </div>
                     </li>

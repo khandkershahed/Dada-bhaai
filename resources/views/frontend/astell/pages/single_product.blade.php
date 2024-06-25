@@ -1,6 +1,6 @@
 @extends('frontend.astell.frontend_dashboard_astell')
 @section('index_astell')
-    @if (!empty($sproducts))
+    {{-- @if (!empty($sproducts)) --}}
         <main class="sub">
 
             <section class="lnb">
@@ -819,7 +819,7 @@
                 </div>
             </section>
         </main>
-    @else
+    {{-- @else
         <p>No Content</p>
-    @endif
+    @endif --}}
 @endsection

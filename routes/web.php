@@ -18,15 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-// Route::get('/', function () {
-//     return view('frontend.frontend_dashboard');
-// });
-
 Route::get('/', [IndexController::class, 'Index'])->name('index');
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
@@ -267,6 +259,6 @@ Route::controller(TemplateTwoController::class)->group(function () {
     Route::get('/product/category-dadabhaai/{id}/{category_slug}', 'CategoryWiseProductTemplateTwo');
 
     //Product Single
-    Route::get('/product/dadabhaai/{id}/{product_slug}', 'ProductDetailsTemplateTwo');
+    // Route::get('/product/dadabhaai/{id}/{product_slug}', 'ProductDetailsTemplateTwo');
 
 });
