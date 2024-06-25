@@ -25,7 +25,6 @@
 
 
     <div class="body-wrap">
-
         <div class="side-group">
             <div class="quick">
                 <a href="#" class="btn-star"></a>

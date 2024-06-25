@@ -29,28 +29,27 @@
 <script type="text/javascript" src="{{ asset('frontend/astell/assets/js/kimsoft/kimsoft.js') }}"></script>
 <script type="text/javascript" src="{{ asset('frontend/astell/assets/js/common.dev.js') }}"></script>
 
+<<<<<<< HEAD
+=======
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>
 
+>>>>>>> db50f00cedf08e5da82015652cc616b69da4317c
 
 {{-- <script>
     $(document).ready(function() {
         // Swiper: Slider
-        new Swiper('.swiper-container-bottom', {
+        new Swiper('.swiper-container', {
             loop: true,
-            nextButton: '.swiper-button-next', // Selector for next button
-            prevButton: '.swiper-button-prev', // Selector for previous button
-            slidesPerView: 1,
+            prevButton: '.swiper-button-prev-main',
+            nextButton: '.swiper-button-next-main',
+            slidesPerView: 3,
             paginationClickable: true,
             spaceBetween: 20,
-            autoplay: {
-                delay: 10000,
-                disableOnInteraction: false
-            },
             breakpoints: {
                 1920: {
-                    slidesPerView: 1,
+                    slidesPerView: 3,
                     spaceBetween: 30
                 },
                 1028: {
@@ -65,4 +64,9 @@
         });
     });
 </script>
+<<<<<<< HEAD
+
+@stack('scripts')
+=======
 @stack('scripts') --}}
+>>>>>>> db50f00cedf08e5da82015652cc616b69da4317c
