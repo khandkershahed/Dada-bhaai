@@ -109,8 +109,24 @@
                 </div>
             </div>
         </div>
-
 </section>
+<<<<<<< HEAD
+@push('script')
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function initializeSwipers() {
+                if (window.galleryThumbs) {
+                    window.galleryThumbs.destroy(true, true);
+                }
+                if (window.galleryTop) {
+                    window.galleryTop.destroy(true, true);
+                }
+                if (window.thumbnailTextSlider) {
+                    window.thumbnailTextSlider.destroy(true, true);
+                }
+
+                window.galleryThumbs = new Swiper('.gallery-thumbs', {
+=======
 
 @push('scripts')
     <script>
@@ -118,17 +134,62 @@
             
             @foreach ($categories as $key => $category)
                 var galleryThumbs{{ $key }} = new Swiper('.gallery-thumbs-{{ $key }}', {
-                    alert(5);
+>>>>>>> d415e67190cae898f7bcbb5c43ec61b6776ef329
                     spaceBetween: 10,
                     slidesPerView: 4,
                     freeMode: true,
                     watchSlidesVisibility: true,
                     watchSlidesProgress: true,
+<<<<<<< HEAD
+                    slideToClickedSlide: true, // Enable slide to clicked slide
+=======
                     slideToClickedSlide: true,
+>>>>>>> d415e67190cae898f7bcbb5c43ec61b6776ef329
                     loop: true,
                     loopedSlides: {{ count($category->products) }},
                 });
 
+<<<<<<< HEAD
+                window.galleryTop = new Swiper('.gallery-top', {
+                    spaceBetween: 10,
+                    slidesPerView: 1,
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    thumbs: {
+                        swiper: window.galleryThumbs,
+                    },
+                    loop: true,
+                    loopedSlides: 4, // Must be same as slidesPerView
+                    slideToClickedSlide: true, // Enable slide to clicked slide
+                });
+
+                window.thumbnailTextSlider = new Swiper('.thumbnail-text-slider', {
+                    spaceBetween: 10,
+                    slidesPerView: 1,
+                    loop: true,
+                    loopedSlides: 4, // Must be same as slidesPerView
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    thumbs: {
+                        swiper: window.galleryThumbs,
+                    },
+                    slideToClickedSlide: true, // Enable slide to clicked slide
+                });
+            }
+
+            // Initial Swiper initialization
+            initializeSwipers();
+
+            // Reinitialize Swipers after content is dynamically loaded
+            document.addEventListener('contentUpdated', function() {
+                initializeSwipers();
+            });
+        });
+=======
                 var galleryTop{{ $key }} = new Swiper('.gallery-top-{{ $key }}', {
                     spaceBetween: 10,
                     slidesPerView: 1,
@@ -161,5 +222,7 @@
                     });
             @endforeach
         });
+
+        
     </script>
 @endpush
