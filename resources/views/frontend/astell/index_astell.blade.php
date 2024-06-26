@@ -1,6 +1,5 @@
 @extends('frontend.astell.frontend_dashboard_astell')
 @section('index_astell')
-
     <style>
         .astel-product-tabs {
             display: block;
@@ -190,9 +189,10 @@
         {{-- Product Image Section End  --}}
 
         {{-- Home Page Banner Section Start  --}}
-        @include('frontend.astell.home_page.banner')
+        @include('frontend.astell.home_page.fotter-top-slider')
         {{-- Home Page Banner Section End  --}}
 
+        
+
     </main>
-    
 @endsection

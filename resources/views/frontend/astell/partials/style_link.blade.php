@@ -14,9 +14,12 @@
     <link rel="stylesheet" href="{{ asset('frontend/astell/assets/css/video-js.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/astell/assets/css/jquery.mCustomScrollbar.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/astell/assets/css/main4451.css?v=1.0.11217') }}" />
+<<<<<<< HEAD
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css">
 
+=======
+>>>>>>> 4ba05348144dab1517d22965f31f7cd2a8af50b8
 </head>

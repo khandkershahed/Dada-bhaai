@@ -27,6 +27,9 @@ return new class extends Migration
             $table->string('row_three_title')->nullable();
             $table->mediumText('row_three_description')->nullable();
 
+            $table->string('row_four_image')->comment('Dimensions: 870 x 870 pixels')->nullable();
+            $table->string('row_four_title')->nullable();
+
             $table->text('row_five_image')->comment('Dimensions: 870 x 1200 pixels')->nullable();
             $table->string('row_five_title')->nullable();
             $table->mediumText('row_five_description')->nullable();
