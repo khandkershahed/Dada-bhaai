@@ -1259,7 +1259,7 @@ cart--header__middle.cart--header__two {
     font-size: 14px;
     line-height: 1;
     font-weight: 700;
-    padding: 22px 0;
+    padding: 15px 0;
     display: inline-block;
     text-transform: capitalize;
     position: relative;
@@ -1461,7 +1461,7 @@ ul.dept__menu--dropdown li:hover ul.sub__menu.sub__dept--menu {
     width: 100%;
     height: 100%;
     z-index: 11111;
-    background: url("https://kctvietnam.vn/wp-content/plugins/cart-popup/images/loading.gif")
+    background: url("https://i.ibb.co/ySLBdZg/loading-red.gif")
         50% 50% no-repeat white;
 }
 
@@ -4656,5 +4656,10 @@ html .ui-button.ui-state-disabled:active {
 
     .main-menu ul li.mega-menu ul.submenu.mega-full {
         width: 1319px;
+    }
+}
+@media only screen and (max-width: 400px) {
+    .fb-wrap{
+        display: none;
     }
 }

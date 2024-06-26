@@ -6617,3 +6617,9 @@ main .video-js{width:100%;}
               padding-top: 40px;
             }
           }
+
+@media only screen and (max-width: 400px) {
+    .top-info {
+        position: relative;
+        height: 240px;}
+}
