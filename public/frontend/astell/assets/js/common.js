@@ -323,50 +323,6 @@ $(function(){
                 }
             });
         },
-        //header > search
-        btnSearch : function (){
-            let scrollT = 0;
-            let contentH = 0;
-            $('header .btn-srch').off().click(function () {
-                scrollT = $(window).scrollTop();
-                contentH = $('.key-visual').height() / 3;
-                if($(this).hasClass('on')) {
-                    $('.srch-box .overlay').stop().fadeOut(200);
-                    $(this).removeClass('on');
-                    $('header .srch-box .inner').stop().slideUp(200);
-                    //메인 키비쥬얼영역이 있을경우 : 검색 닫을때 헤더 색상변경
-                    if($(".key-visual").length > 0  && scrollT < contentH ){
-                        $('header').addClass('dark');
-                    }else {
-                        $('header').removeClass('dark');
-                    }
-                } else{
-                    $('.srch-box .overlay').stop().fadeIn(200);
-                    $(this).addClass('on');
-                    $('header .srch-box .inner').stop().slideDown(200);
-                    $('header').removeClass('dark');
-                    //메인 키비쥬얼영역이 있을경우 : 검색 켜져있을때 헤더 색상변경 해제
-                    $('.gnb .depth1').off().hover(function () {
-                        $('header').removeClass('dark');
-                    }, function () {
-                        $('header').removeClass('dark');
-                    });
-                }
-            });
-            $('header .srch-box .overlay').off().click(function () {
-                scrollT = $(window).scrollTop();
-                contentH = $('.key-visual').height() / 3;
-                $('.srch-box .overlay').stop().fadeOut(200);
-                $('header .btn-srch').removeClass('on');
-                $('header .srch-box .inner').stop().slideUp(200);
-                //메인 키비쥬얼영역이 있을경우 : 검색 닫을때 헤더 색상변경
-                if($(".key-visual").length > 0  && scrollT < contentH ){
-                    $('header').addClass('dark');
-                }else {
-                    $('header').removeClass('dark');
-                }
-            });
-        },
         //main > key-visual > Swiper
         swiperKeyVisual : function () {
             let timeout = null;
@@ -1432,7 +1388,7 @@ $(function(){
                 } else if (selectedId[0].indexOf("familySite") > -1) {
             		var familySite = $(this).attr("value");
             		if (familySite != "") {
-            			window.open(familySite, '_blank'); 
+            			window.open(familySite, '_blank');
             		}
                 }
 // END : changed by kimsoft
