@@ -26,28 +26,29 @@
 
         {{-- Product Area Info  --}}
         <section class="sub-visual3 scrollAniTop view">
+
             <div class="bg">
-                <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
-                    <ul class="swiper-wrapper" style="transition-duration: 0ms;transform: translate3d(-900px, 0px, 0px);">
+                <div class="swiper-container">
+
+                    <ul class="swiper-wrapper">
                         <li class="swiper-slide"
                             style=" background-image: url('{{ isset($product->product_image) ? asset($product->product_image) : asset('upload/no_image.jpg') }}');">
                         </li>
                     </ul>
-                    <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
-                        <span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button"
-                            aria-label="Go to slide 1"></span>
-                    </div>
-                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
+
             <div class="wrap">
                 <p>{{ $product->brand->brand_name }}</p>
-                <strong> {{ $product->product_name }} </strong>
+                <h2> {{ $product->product_name }} </h2>
                 <div class="scroll-icon">
                     Scroll
                     <div class="line"></div>
                 </div>
             </div>
+
         </section>
         {{-- Product Area Info  --}}
 
