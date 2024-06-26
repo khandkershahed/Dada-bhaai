@@ -22,9 +22,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // if (Schema::hasTable('sites')) {
-        //     View::share('site', Sites::first());
-        // }
+        if (Schema::hasTable('sites')) {
+            View::share('site', Sites::first());
+        }
         
     }
 }
