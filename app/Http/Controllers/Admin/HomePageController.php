@@ -279,19 +279,19 @@ class HomePageController extends Controller
 
     }
 
-    public function DeleteVideo(Request $request)
-    {
-        // Get the filename from the request
-        $filename = $request->input('video_slider_one_video');
+    // public function DeleteVideo(Request $request)
+    // {
+    //     // Get the filename from the request
+    //     $filename = $request->input('video_slider_one_video');
 
-        // Delete the file from storage
-        Storage::delete('upload/home/' . $filename);
+    //     // Delete the file from storage
+    //     Storage::delete('upload/home/' . $filename);
 
-        // Update the model or database record if necessary
-        // Example: $home->update(['video_slider_one_video' => null]);
+    //     // Update the model or database record if necessary
+    //     // Example: $home->update(['video_slider_one_video' => null]);
 
-        // Redirect or return response as needed
-        return redirect()->back()->with('success', 'Video deleted successfully');
-    }
+    //     // Redirect or return response as needed
+    //     return redirect()->back()->with('success', 'Video deleted successfully');
+    // }
 
 }

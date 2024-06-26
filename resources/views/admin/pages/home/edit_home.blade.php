@@ -139,15 +139,10 @@
                                                         <div class="text-danger">{{ $message }}</div>
                                                     @enderror
 
-
-                                                    <form action="{{ route('deleteVideo') }}" method="POST">
-                                                        @csrf
-                                                        
-                                                        <input type="hidden" name="video_slider_one_video"
-                                                            value="{{ $home->video_slider_one_video }}">
-                                                        <button type="submit" class="btn btn-danger btn-sm mt-2">Delete
-                                                            Video</button>
-                                                    </form>
+                                                    {{-- <a href="{{ route('delete.video', $home->video_slider_one_video) }}" class="ms-1"
+                                                        id="delete" title="Delete"><i
+                                                            class="bi bi-trash3-fill fs-3 text-danger"></i>
+                                                    </a> --}}
 
                                                 </div>
                                             </div>
