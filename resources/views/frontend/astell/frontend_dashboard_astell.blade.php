@@ -25,15 +25,18 @@
 
 
     <div class="body-wrap">
+
         <div class="side-group">
-            <div class="quick">
+
+            {{-- <div class="quick">
                 <a href="#" class="btn-star"></a>
                 <div class="inner">
                     <a href="javascript:;" class="txt">Listen to Our New Product</a>
                     <a href="#" class="btn-close"></a>
                 </div>
-            </div>
-            <a href="#" class="btn-top">TOP</a>
+            </div> --}}
+
+            <a href="javascript:;" class="btn-top">TOP</a>
         </div>
 
         <!--Header//-->
@@ -44,11 +47,11 @@
         <!--//Header-->
 
         <!--Content//-->
-        
 
-            @yield('index_astell')
 
-       
+        @yield('index_astell')
+
+
         <!--//content-->
 
         {{-- footer  --}}

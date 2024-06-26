@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Models\Admin\Product;
+use App\Http\Controllers\Controller;
 use App\Models\Admin\Category;
 use App\Models\Admin\HomePage;
-use App\Http\Controllers\Controller;
+use App\Models\Admin\Product;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
 
 class HomePageController extends Controller
 {
@@ -279,19 +278,64 @@ class HomePageController extends Controller
 
     }
 
-    // public function DeleteVideo(Request $request)
-    // {
-    //     // Get the filename from the request
-    //     $filename = $request->input('video_slider_one_video');
+    //DeleteVideo
+    public function DeleteVideo($filename)
+    {
+        // Find the HomePage record by its primary key
+        $home = HomePage::find($filename);
+        // Check if a record was found
+        if ($home) {
+            // Construct the full file path
+            $filePath = public_path('upload/home/') . $home->video_slider_one_video;
 
-    //     // Delete the file from storage
-    //     Storage::delete('upload/home/' . $filename);
+            // Check if the file exists
+            if (File::exists($filePath)) {
+                // Delete the file
+                File::delete($filePath);
+                $home->update([
+                    'video_slider_one_video' => null,
+                ]);
+                toastr()->success('Video Delete Successfully');
+                return redirect()->route('all.home');
+            } else {
+                toastr()->error('Video File Not Found');
+                return redirect()->route('all.home');
+            }
 
-    //     // Update the model or database record if necessary
-    //     // Example: $home->update(['video_slider_one_video' => null]);
+        } else {
+            toastr()->success('Can Not Delete Video');
+            return redirect()->route('all.home');
+        }
+    }
 
-    //     // Redirect or return response as needed
-    //     return redirect()->back()->with('success', 'Video deleted successfully');
-    // }
+    //DeleteVideo2
+    public function DeleteVideo2($filename)
+    {
+        // Find the HomePage record by its primary key
+        $home = HomePage::find($filename);
+        // Check if a record was found
+        if ($home) {
+            // Construct the full file path
+            $filePath = public_path('upload/home/') . $home->video_slider_two_video;
+
+            // Check if the file exists
+            if (File::exists($filePath)) {
+                // Delete the file
+                File::delete($filePath);
+                $home->update([
+                    'video_slider_two_video' => null,
+                ]);
+                toastr()->success('Video Delete Successfully');
+                return redirect()->route('all.home');
+            } else {
+                toastr()->error('Video File Not Found');
+                return redirect()->route('all.home');
+            }
+
+        } else {
+            toastr()->success('Can Not Delete Video');
+            return redirect()->route('all.home');
+        }
+    }
 
 }

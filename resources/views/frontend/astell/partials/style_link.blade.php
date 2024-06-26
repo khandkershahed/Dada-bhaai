@@ -8,7 +8,9 @@
         content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=3, user-scalable=yes" />
 
     <title>DadaBhaai</title>
-    <link rel="shortcut icon" href="http://127.0.0.1:7000/backend/login/assets/logo/Favicon_Dadabhaai.png" />
+
+    <link rel="shortcut icon" href="{{ $site->favicon ? asset('upload/favicon/' . $site->favicon) : asset('upload/no_image.jpg') }}" />
+
 
     <link rel="stylesheet" href="{{ asset('frontend/astell/assets/css/jquery-ui.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/astell/assets/css/swiper.min.css') }}" />
