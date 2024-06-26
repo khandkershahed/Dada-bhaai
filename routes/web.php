@@ -225,13 +225,6 @@ Route::controller(TemplateOneCartController::class)->group(function () {
 
 });
 
-// /////////////////// Template Two //////////////////////
-// Route::controller(TemplateTwoController::class)->group(function () {
-
-//     //All Product
-//     Route::get('/all-product', 'TemplateOneAllProduct')->name('template.one.all_product');
-
-// });
 
 // Template Two Controller
 Route::controller(TemplateTwoController::class)->group(function () {
@@ -242,23 +235,18 @@ Route::controller(TemplateTwoController::class)->group(function () {
     //All Product
     Route::get('/all-product-dadabhaai', 'TemplateTwoAllProduct')->name('template.two.all.product');
 
-    // //Product Search
-    // Route::post('/search', 'ProductSearch')->name('product.search');
-    // // Route::post('/search-product', 'SearchProduct');
-
     //Faq
     Route::get('/faq-dadabhaai', 'TemplateTwoFaq')->name('template.two.faq');
+
     //contact us
     Route::get('/contact-dadabhaai', 'TemplateTwoContact')->name('template.two.contact');
     Route::post('/contact/store', 'TemplateTwoContactStore')->name('template.two.contact.store');
+
     //Buying Guide
     Route::get('/buying-guide', 'TemplateTwoBuying')->name('template.two.buying');
 
     //Category Page
     Route::get('/product/category-dadabhaai/{id}/{category_slug}', 'CategoryWiseProductTemplateTwo');
-
-    //Product Single
-    // Route::get('/product/dadabhaai/{id}/{product_slug}', 'ProductDetailsTemplateTwo');
 
     // Route for handling the POST request (form submission)
     Route::post('/product-search-dadabhaai', 'DadabhaaiProductSearch')->name('dadabhaai.product.search');

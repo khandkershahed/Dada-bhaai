@@ -24,7 +24,9 @@
                         <a href="{{ route('template.two.all.product') }}">PRODUCT</a>
                     </li>
                     <li>
+
                         <a href="javascript:;">SUPPORT</a>
+
                         <ul class="depth2">
                             <li>
                                 <a href="{{ route('template.two.faq') }}">FAQ</a>
@@ -36,6 +38,7 @@
                                 <a href="{{ route('template.two.contact') }}">Contact Us</a>
                             </li>
                         </ul>
+
                     </li>
                 </ul>
             </div>

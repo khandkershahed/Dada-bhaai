@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Admin\Product;
 use App\Models\Admin\Category;
 use App\Models\Admin\HomePage;
-use App\Models\Admin\Product;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class HomePageController extends Controller
 {
@@ -25,12 +26,15 @@ class HomePageController extends Controller
         $categorys = Category::orderBy('category_name', 'ASC')->latest()->get();
         $products = Product::orderBy('product_name', 'ASC')->latest()->get();
 
-        return view('admin.pages.home.edit_home', compact('home', 'categorys','products'));
+        return view('admin.pages.home.edit_home', compact('home', 'categorys', 'products'));
     }
 
     //Update Home
     public function UpdateHome(Request $request)
     {
+        ini_set('upload_max_filesize', '100M');
+        ini_set('post_max_size', '100M');
+        set_time_limit(240);
 
         $uid = $request->id;
         $home = HomePage::find($uid);
@@ -130,7 +134,6 @@ class HomePageController extends Controller
             $image_slider_three_image = $fileName;
         }
 
-
         //background_image_one_image
         if (!empty($request->file('background_image_one_image'))) {
 
@@ -189,7 +192,7 @@ class HomePageController extends Controller
             'image_slider_two_badge' => $request->image_slider_two_badge,
             'image_slider_two_title' => $request->image_slider_two_title,
             'image_slider_two_sub_title' => $request->image_slider_two_title,
-            'image_slider_two_description' => $request->image_slider_one_description,
+            'image_slider_two_description' => $request->image_slider_two_description,
             'image_slider_two_button_name' => $request->image_slider_two_button_name,
             'image_slider_two_button_link' => $request->image_slider_two_button_link,
 
@@ -275,5 +278,20 @@ class HomePageController extends Controller
         return redirect()->route('all.home');
 
     }
+
+    // public function DeleteVideo(Request $request)
+    // {
+    //     // Get the filename from the request
+    //     $filename = $request->input('video_slider_one_video');
+
+    //     // Delete the file from storage
+    //     Storage::delete('upload/home/' . $filename);
+
+    //     // Update the model or database record if necessary
+    //     // Example: $home->update(['video_slider_one_video' => null]);
+
+    //     // Redirect or return response as needed
+    //     return redirect()->back()->with('success', 'Video deleted successfully');
+    // }
 
 }

@@ -119,13 +119,11 @@
                                                 <div class="form-group">
                                                     <label for="">Video Slider One Image</label>
 
-                                                    <input type="file"
-                                                        class="form-control form-control-sm mt-2"
+                                                    <input type="file" class="form-control form-control-sm mt-2"
                                                         name="video_slider_one_image">
 
                                                     <img src="{{ asset('upload/home/' . $home->video_slider_one_image) }}"
-                                                        style="width: 50px;height:50px;" class="mt-2"
-                                                        alt="">
+                                                        style="width: 50px;height:50px;" class="mt-2" alt="">
 
                                                 </div>
                                             </div>
@@ -140,6 +138,12 @@
                                                     @error('video_slider_one_video')
                                                         <div class="text-danger">{{ $message }}</div>
                                                     @enderror
+
+                                                    {{-- <a href="{{ route('delete.video', $home->video_slider_one_video) }}" class="ms-1"
+                                                        id="delete" title="Delete"><i
+                                                            class="bi bi-trash3-fill fs-3 text-danger"></i>
+                                                    </a> --}}
+
                                                 </div>
                                             </div>
 
@@ -167,13 +171,11 @@
                                                 <div class="form-group">
                                                     <label for="">Video Slider Two Image</label>
 
-                                                    <input type="file"
-                                                        class="form-control form-control-sm mt-2"
+                                                    <input type="file" class="form-control form-control-sm mt-2"
                                                         name="video_slider_two_image">
 
                                                     <img src="{{ asset('upload/home/' . $home->video_slider_two_image) }}"
-                                                        style="width: 50px;height:50px;" class="mt-2"
-                                                        alt="">
+                                                        style="width: 50px;height:50px;" class="mt-2" alt="">
 
                                                 </div>
                                             </div>
