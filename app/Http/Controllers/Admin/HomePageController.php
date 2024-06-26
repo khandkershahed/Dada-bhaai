@@ -31,9 +31,9 @@ class HomePageController extends Controller
     //Update Home
     public function UpdateHome(Request $request)
     {
-        ini_set('upload_max_filesize', '100M');
-        ini_set('post_max_size', '100M');
-        set_time_limit(240);
+        // ini_set('upload_max_filesize', '100M');
+        // ini_set('post_max_size', '100M');
+        // set_time_limit(240);
 
         $uid = $request->id;
         $home = HomePage::find($uid);
@@ -41,9 +41,9 @@ class HomePageController extends Controller
         $validator = $request->validate(
 
             [
-                'video_slider_one_video' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi| max:500000',
+                'video_slider_one_video' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi| max:61440',
 
-                'video_slider_two_video' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi| max:500000',
+                'video_slider_two_video' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi| max:61440',
 
             ],
 

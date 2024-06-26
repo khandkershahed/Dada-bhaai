@@ -47,7 +47,7 @@
 
     <h1>
         <a href="{{ route('index') }}">
-            <img class="" style="width: 160px;" src="{{ asset('upload/logo_black/' . $site->logo_black) }}"
+            <img class="" style="width: 160px;" src="{{ asset('upload/logo_white/' . $site->logo_white) }}"
                 alt="">
         </a>
     </h1>
