@@ -8,7 +8,6 @@ use App\Models\Admin\HomePage;
 use App\Models\Admin\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
 
 class HomePageController extends Controller
 {
@@ -279,15 +278,64 @@ class HomePageController extends Controller
 
     }
 
-    // public function DeleteVideo(Request $request, $filename)
-    // {
-    //     $home = HomePage::find($id);
+    //DeleteVideo
+    public function DeleteVideo($filename)
+    {
+        // Find the HomePage record by its primary key
+        $home = HomePage::find($filename);
+        // Check if a record was found
+        if ($home) {
+            // Construct the full file path
+            $filePath = public_path('upload/home/') . $home->video_slider_one_video;
 
-    //     if (File::exists(public_path('upload/home/') . $home->video_slider_one_video)) {
-    //         File::delete(public_path('upload/home/') . $home->video_slider_one_video);
-    //     }
+            // Check if the file exists
+            if (File::exists($filePath)) {
+                // Delete the file
+                File::delete($filePath);
+                $home->update([
+                    'video_slider_one_video' => null,
+                ]);
+                toastr()->success('Video Delete Successfully');
+                return redirect()->route('all.home');
+            } else {
+                toastr()->error('Video File Not Found');
+                return redirect()->route('all.home');
+            }
 
-    //     return redirect()->route('all.home');
-    // }
+        } else {
+            toastr()->success('Can Not Delete Video');
+            return redirect()->route('all.home');
+        }
+    }
+
+    //DeleteVideo2
+    public function DeleteVideo2($filename)
+    {
+        // Find the HomePage record by its primary key
+        $home = HomePage::find($filename);
+        // Check if a record was found
+        if ($home) {
+            // Construct the full file path
+            $filePath = public_path('upload/home/') . $home->video_slider_two_video;
+
+            // Check if the file exists
+            if (File::exists($filePath)) {
+                // Delete the file
+                File::delete($filePath);
+                $home->update([
+                    'video_slider_two_video' => null,
+                ]);
+                toastr()->success('Video Delete Successfully');
+                return redirect()->route('all.home');
+            } else {
+                toastr()->error('Video File Not Found');
+                return redirect()->route('all.home');
+            }
+
+        } else {
+            toastr()->success('Can Not Delete Video');
+            return redirect()->route('all.home');
+        }
+    }
 
 }

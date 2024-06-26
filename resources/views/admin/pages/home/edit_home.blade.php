@@ -139,10 +139,10 @@
                                                         <div class="text-danger">{{ $message }}</div>
                                                     @enderror
 
-                                                    {{-- <a href="{{ route('delete.video', $home->video_slider_one_video) }}"
-                                                        class="ms-1" id="delete" title="Delete"><i
-                                                            class="bi bi-trash3-fill fs-3 text-danger"></i>
-                                                    </a> --}}
+                                                    <a href="{{ route('delete.video', $home->id) }}"
+                                                        class="ms-1 text-danger" id="delete" title="Delete">Delete
+                                                        Video</i>
+                                                    </a>
 
                                                 </div>
                                             </div>
@@ -190,6 +190,11 @@
                                                     @error('video_slider_two_video')
                                                         <div class="text-danger">{{ $message }}</div>
                                                     @enderror
+
+                                                    <a href="{{ route('delete.video2', $home->id) }}"
+                                                        class="ms-1 text-danger" id="delete" title="Delete">Delete
+                                                        Video</i>
+                                                    </a>
                                                 </div>
                                             </div>
 
