@@ -31,9 +31,13 @@
                 <div class="swiper-container">
 
                     <ul class="swiper-wrapper">
-                        <li class="swiper-slide"
-                            style=" background-image: url('{{ isset($product->product_image) ? asset($product->product_image) : asset('upload/no_image.jpg') }}');">
+                        
+
+                        <li class="swiper-slide">
+                            <img src="{{ isset($product->product_image) ? asset($product->product_image) : asset('upload/no_image.jpg') }}"
+                                alt="">
                         </li>
+
                     </ul>
 
                     <div class="swiper-pagination"></div>
@@ -41,12 +45,16 @@
             </div>
 
             <div class="wrap">
+
                 <p>{{ $product->brand->brand_name }}</p>
-                <h2> {{ $product->product_name }} </h2>
+
+                <h1 class="w-25" style="font-size: 50px;width: 31%;"> {{ $product->product_name }} </h1>
+
                 <div class="scroll-icon">
                     Scroll
                     <div class="line"></div>
                 </div>
+
             </div>
 
         </section>
