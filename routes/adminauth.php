@@ -258,6 +258,8 @@ Route::middleware(['auth:admin','verified'])->group(function () {
         Route::get('/edit/{id}', 'EditHome')->name('edit.home');
         Route::post('/update', 'UpdateHome')->name('update.home');
         Route::get('/delete/{id}', 'DeleteHome')->name('delete.home');
+
+        Route::get('/delete-video', 'DeleteVideo')->name('deleteVideo');
     });
 
     //Single Page Section
