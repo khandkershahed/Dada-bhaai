@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Models\Admin\Product;
+use App\Http\Controllers\Controller;
 use App\Models\Admin\Category;
 use App\Models\Admin\HomePage;
-use App\Http\Controllers\Controller;
+use App\Models\Admin\Product;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
@@ -279,19 +279,15 @@ class HomePageController extends Controller
 
     }
 
-    // public function DeleteVideo(Request $request)
+    // public function DeleteVideo(Request $request, $filename)
     // {
-    //     // Get the filename from the request
-    //     $filename = $request->input('video_slider_one_video');
+    //     $home = HomePage::find($id);
 
-    //     // Delete the file from storage
-    //     Storage::delete('upload/home/' . $filename);
+    //     if (File::exists(public_path('upload/home/') . $home->video_slider_one_video)) {
+    //         File::delete(public_path('upload/home/') . $home->video_slider_one_video);
+    //     }
 
-    //     // Update the model or database record if necessary
-    //     // Example: $home->update(['video_slider_one_video' => null]);
-
-    //     // Redirect or return response as needed
-    //     return redirect()->back()->with('success', 'Video deleted successfully');
+    //     return redirect()->route('all.home');
     // }
 
 }

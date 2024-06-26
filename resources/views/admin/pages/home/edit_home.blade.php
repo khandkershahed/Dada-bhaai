@@ -139,8 +139,8 @@
                                                         <div class="text-danger">{{ $message }}</div>
                                                     @enderror
 
-                                                    {{-- <a href="{{ route('delete.video', $home->video_slider_one_video) }}" class="ms-1"
-                                                        id="delete" title="Delete"><i
+                                                    {{-- <a href="{{ route('delete.video', $home->video_slider_one_video) }}"
+                                                        class="ms-1" id="delete" title="Delete"><i
                                                             class="bi bi-trash3-fill fs-3 text-danger"></i>
                                                     </a> --}}
 
