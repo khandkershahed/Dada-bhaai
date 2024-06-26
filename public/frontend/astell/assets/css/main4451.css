@@ -864,13 +864,13 @@ main .video-js{width:100%;}
 .main .key-visual .video-js .vjs-big-play-button,
 .main .key-visual .video-js .vjs-play-control{margin-left:464px}
 .main .key-visual .txt{position:absolute;top:50%;left:0;width:100%;text-align:center;transform: translateY(-50%)}
-.main .key-visual .txt strong{font-size:120px;font-weight:700;color:#fff;letter-spacing:48px;}
-.main .key-visual .txt p{margin-top:50px;font-size:28px;font-weight:400;color:#fff;letter-spacing:17px;}
+.main .key-visual .txt strong{font-size:120px;font-weight:700;color:#fff;letter-spacing:5px;}
+.main .key-visual .txt p{margin-top:50px;font-size:28px;font-weight:400;color:#fff;letter-spacing:6px;}
 
 
 @media (max-width: 1366px){/*tablet (ipad pro가로세로 ~ ipad가로)*/
-    .main .key-visual .txt strong{font-size:92px;letter-spacing:37px;}
-    .main .key-visual .txt p{margin-top:50px;font-size:28px;font-weight:400;color:#fff;letter-spacing:17px;}
+    .main .key-visual .txt strong{font-size:92px;letter-spacing:10px;}
+    .main .key-visual .txt p{margin-top:50px;font-size:28px;font-weight:400;color:#fff;letter-spacing:6px;}
     .main .key-visual .video-js .vjs-big-play-button,
     .main .key-visual .video-js .vjs-play-control{margin-left:0;left:auto;right:32px;}
     .main .key-visual .txt p{margin-top:30px;font-size:24px;letter-spacing:15px;}
