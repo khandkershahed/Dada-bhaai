@@ -225,7 +225,6 @@ Route::controller(TemplateOneCartController::class)->group(function () {
 
 });
 
-
 // Template Two Controller
 Route::controller(TemplateTwoController::class)->group(function () {
 

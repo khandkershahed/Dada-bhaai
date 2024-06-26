@@ -67,7 +67,7 @@
                                         $discount = ($amount / $product->price) * 100;
                                     @endphp
 
-                                    <span class="product-discount-label">{{round($discount)}} %</span>
+                                    <span class="product-discount-label">{{ round($discount) }} %</span>
 
                                     <ul class="product-links">
 
@@ -75,7 +75,7 @@
                                                 onclick="addToWishList(this.id)" data-tip="Wishlist"><i
                                                     class="far fa-heart"></i></a></li>
 
-                                        <li><a type="submit" style="cursor:pointer;"
+                                        <li><a type="submit" style="cursor:pointer;" class="add_to_compare"
                                                 data-product_id="{{ $product->id }}" data-tip="Compare"><i
                                                     class="fas fa-random"></i></a></li>
                                     </ul>

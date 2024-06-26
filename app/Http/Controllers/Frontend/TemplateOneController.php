@@ -550,7 +550,7 @@ class TemplateOneController extends Controller
 
                 'options' => [
                     'image' => $product->product_image,
-                    // 'color' => $request->color,
+                    
                 ],
 
             ]);
@@ -570,7 +570,6 @@ class TemplateOneController extends Controller
 
                 'options' => [
                     'image' => $product->product_image,
-                    // 'color' => $request->color,
                 ],
 
             ]);
@@ -589,7 +588,6 @@ class TemplateOneController extends Controller
 
                 'options' => [
                     'image' => $product->product_image,
-                    // 'color' => $request->color,
                 ],
 
             ]);
