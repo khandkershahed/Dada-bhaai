@@ -24,7 +24,9 @@
                         <a href="{{ route('template.two.all.product') }}">PRODUCT</a>
                     </li>
                     <li>
+
                         <a href="javascript:;">SUPPORT</a>
+
                         <ul class="depth2">
                             <li>
                                 <a href="{{ route('template.two.faq') }}">FAQ</a>
@@ -36,6 +38,7 @@
                                 <a href="{{ route('template.two.contact') }}">Contact Us</a>
                             </li>
                         </ul>
+                        
                     </li>
                 </ul>
             </div>
@@ -43,8 +46,8 @@
     </div>
 
     <h1>
-        <a href="{{ route('index') }}">
-            <img class="" style="width: 100px;" src="{{ asset('upload/logo_black/' . $site->logo_black) }}"
+        <a href="{{ route('index') }}" class="my-auto">
+            <img class="" style="width: 170px; height: 40px;" src="{{ asset('upload/logo_black/' . $site->logo_black) }}"
                 alt="">
         </a>
     </h1>
@@ -73,7 +76,9 @@
             </li>
         </ul>
     </div>
+
     <a href="#" class="btn-srch"></a>
+
     <div class="srch-box">
         <div class="overlay"></div>
         <div class="inner">
@@ -84,25 +89,24 @@
 
                     <div class="top">
 
-                        <input type="text" name="search" required autocomplete="off" class="submitSearch" placeholder="Search Product" />
-    
-                        <button type="submit" class="btn-srch2">
-                           
-                        </button>
-    
+                        <input type="text" name="search" required autocomplete="off" class="submitSearch"
+                            placeholder="Search Product" />
+
+                        <button type="submit" class="btn-srch2"></button>
+
                     </div>
 
                 </form>
 
                 <!--search result//-->
-                <div id="searchNoResult" class="result-none" style="display: none">
+                {{-- <div id="searchNoResult" class="result-none" style="display: none">
                     <strong>Sorry. We cannot find the result you are searching
                         for.</strong>
                     <p>
                         Maybe a little spelling mistake? <br />
                         if not, please use keyword suggestion
                     </p>
-                </div>
+                </div> --}}
                 <!--//search result-->
 
                 <!--Keyword Suggestion//-->
@@ -129,7 +133,7 @@
                 <!--//Keyword Suggestion-->
 
                 <!--search result//-->
-                <div id="searchResult" class="result" style="display: none">
+                {{-- <div id="searchResult" class="result" style="display: none">
 
                     <div class="list">
                         <div class="total">
@@ -148,7 +152,7 @@
                         </div>
                         <ul id="searchContentLayer"></ul>
                     </div>
-                </div>
+                </div> --}}
                 <!--//search result-->
             </div>
         </div>

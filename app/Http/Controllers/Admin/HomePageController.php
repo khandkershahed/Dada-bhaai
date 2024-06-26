@@ -25,12 +25,15 @@ class HomePageController extends Controller
         $categorys = Category::orderBy('category_name', 'ASC')->latest()->get();
         $products = Product::orderBy('product_name', 'ASC')->latest()->get();
 
-        return view('admin.pages.home.edit_home', compact('home', 'categorys','products'));
+        return view('admin.pages.home.edit_home', compact('home', 'categorys', 'products'));
     }
 
     //Update Home
     public function UpdateHome(Request $request)
     {
+        ini_set('upload_max_filesize', '100M');
+        ini_set('post_max_size', '100M');
+        set_time_limit(240);
 
         $uid = $request->id;
         $home = HomePage::find($uid);
@@ -129,7 +132,6 @@ class HomePageController extends Controller
             $file->move(public_path('upload/home/'), $fileName);
             $image_slider_three_image = $fileName;
         }
-
 
         //background_image_one_image
         if (!empty($request->file('background_image_one_image'))) {

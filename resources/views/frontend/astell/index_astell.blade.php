@@ -192,7 +192,7 @@
         @include('frontend.astell.home_page.fotter-top-slider')
         {{-- Home Page Banner Section End  --}}
 
-        
+
 
     </main>
 @endsection
