@@ -37,7 +37,7 @@
 
         </section>
 
-        <section class="list-ty1" style="padding-top: 100px;">
+        <section class="list-ty1">
 
             <ul>
 
@@ -53,7 +53,8 @@
                     <li class="scrollAni n2 view">
 
                         <ul class="img-area">
-                            <li class="on" data-num="n1">
+                            <li class="on" data-num="n1"
+                                style="background-color: white;display: flex;justify-content: center;align-items: center;">
                                 <img src="{{ asset($product->product_image) }}" alt="{{ $product->product_name }}" />
                             </li>
                         </ul>
@@ -62,8 +63,11 @@
                             <em>{{ $product->brand->brand_name }}</em>
                             <strong>{{ $product->product_name }}</strong>
                             <ul class="color-dot"></ul>
-                            <p>
+                            {{-- <p>
                                 {!! $product->short_desc !!}
+                            </p> --}}
+                            <p>
+                                Dadavaai Frontend is a lightweight e-commerce solution built with Bootstrap, jQuery, and other technologies. This project offers a responsive and visually appealing user interface for seamless online shopping.
                             </p>
                             <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
                                 class="lnk-ty1">Discover Product</a>

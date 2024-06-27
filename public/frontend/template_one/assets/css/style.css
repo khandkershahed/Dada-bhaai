@@ -675,6 +675,20 @@ label {
 .wishlist:hover{
     color: #cd3301 !important;
 }
+.cart__count-amount {
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    background: #cd3301;
+    color: #fff;
+    line-height: 16px;
+    font-size: 10px;
+    text-align: center;
+    font-weight: 700;
+    border-radius: 50%;
+    bottom: -5px;
+    right: -10px;
+}
 
 .search--header__form .nice-select {
     position: absolute;
@@ -1190,7 +1204,17 @@ cart--header__middle.cart--header__two {
     min-width: 215px;
     max-width: 100%;
 }
-
+.cart-icons-menu {
+    transform: translate3d(-275px, 15px, 0px) !important;
+    border: 0;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 0;
+    min-width: 300px;
+    max-width: 100%;
+}
+.dropdown-menu{
+    margin: 0;
+}
 .user-dashboard-menu {
     color: #797575 !important;
     margin-bottom: 10px;
@@ -1366,7 +1390,6 @@ cart--header__middle.cart--header__two {
     border-top: 4px solid #cd3301;
     width: 1430px !important;
     position: absolute;
-    left: 235px;
     padding: 35px;
 }
 
@@ -1925,7 +1948,7 @@ ul.sub__menu.sub__dept--menu li:hover ul.sub__menu.level2 {
     transition: all 0.4s ease 0s;
 }
 .product-grid:hover .product-content {
-    transform: translateY(-65px);
+    transform: translateY(-45px);
 }
 .product-grid .title {
     font-size: 17px;
@@ -1944,21 +1967,20 @@ ul.sub__menu.sub__dept--menu li:hover ul.sub__menu.level2 {
     color: #544842;
     font-size: 16px;
     font-weight: 600;
-    margin: 0 0 10px;
 }
 .product-grid .add-cart {
     color: #fff !important;
-    background: #3a3a43;
+    background: #ff5400;
     font-size: 16px;
     font-weight: 500;
     text-transform: uppercase;
     text-align: center;
-    width: 93%;
+    width: 100%;
     padding: 10px 12px;
     opacity: 0;
     position: absolute;
-    bottom: 12px !important;
-    left: 10px;
+    bottom: 0px !important;
+    left: 0px;
     transition: all 0.4s ease;
 }
 .product-grid:hover .add-cart {

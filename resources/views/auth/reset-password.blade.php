@@ -5,8 +5,7 @@
     DadaBhaai | Reset Password
 @endsection
 <!-- page banner area start -->
-<section class="page-banner-area" data-background="{{ asset('frontend/template_one/assets/img/bg/banner.jpeg') }}"
-    style="margin-top: 4.7rem;">
+<section class="page-banner-area" data-background="{{ asset('frontend/template_one/assets/img/bg/banner.jpeg') }}">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2 col-sm-12">

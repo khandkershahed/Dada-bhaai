@@ -426,7 +426,7 @@ select{display:inline-block;box-sizing:border-box;-webkit-appearance:none;-moz-a
 }
 
 /*other*/
-.body-wrap{min-height:100vh;position:relative;overflow:hidden;padding:100px 0 318px;}
+.body-wrap{min-height:100vh;position:relative;overflow:hidden;padding:100px 0 240px;}
 .body-wrap.v1{padding-top:169px;}
 .flex-center{position:relative;height:100%;display:flex;justify-content: center;align-items: center;}
 .wrap{position:relative;width:1200px;margin:0 auto;font-size:0;}

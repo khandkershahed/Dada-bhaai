@@ -167,7 +167,7 @@
 
 
     <section class="page-banner-area" data-background="http://127.0.0.1:7000/frontend/template_one/assets/img/bg/banner.jpg"
-        style="margin-top: 4.7rem; background-image: url(&quot;http://127.0.0.1:7000/frontend/template_one/assets/img/bg/banner.jpg&quot;);">
+        style="background-image: url(&quot;http://127.0.0.1:7000/frontend/template_one/assets/img/bg/banner.jpg&quot;);">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2 col-sm-12">

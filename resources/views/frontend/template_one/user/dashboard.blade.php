@@ -2,7 +2,7 @@
 @section('index_template_one')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
     <section class="page-banner-area" data-background="http://127.0.0.1:7000/frontend/template_one/assets/img/bg/banner.jpg"
-        style="margin-top: 4.7rem; background-image: url(&quot;http://127.0.0.1:7000/frontend/template_one/assets/img/bg/banner.jpg&quot;);">
+        style="background-image: url(&quot;http://127.0.0.1:7000/frontend/template_one/assets/img/bg/banner.jpg&quot;);">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2 col-sm-12">

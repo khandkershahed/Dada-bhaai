@@ -22,7 +22,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <ul class="nav nav-tabs flex-column" id="myTab" role="tablist">
                                         <li class="nav-item" role="presentation">
                                             <button class="nav-link active" id="home-tab" data-toggle="tab"
                                                 data-target="#home" type="button" role="tab" aria-controls="home"
@@ -71,9 +71,8 @@
                     {{-- All Brands Menu --}}
 
                     <li class="nav-item dropdown position-static">
-                        <a class="nav-link main-menu-link dropdown-toggle" href="javascript:void(0)"
-                            id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
+                        <a class="nav-link main-menu-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown"
+                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Brands
                         </a>
 
@@ -269,47 +268,61 @@
                                 </a>
                             </li>
                         @endif
-                        {{-- <li>
+                        <li>
                             <div class="dropdown">
-                                <a class="mini__cart--link dropdown-toggle" href="jaxascript:;"
-                                    style="font-size: 20px;" id="dropdownMenuButton" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa-solid fa-cart-plus text-muted">
-                                        <span class="cart__count" id="cartQty">0</span>
+                                <a href="javascript:void(0);" class="border-0 bg-none text-muted" type="button"
+                                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false" style="font-size: 20px;">
+                                    <i class="fa-solid fa-cart-plus userLogin wishlist">
+                                        <span class="cart__count-amount">0</span>
                                     </i>
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <div class="dropdown-menu p-3 cart-icons-menu" aria-labelledby="dropdownMenuButton"
+                                    style="">
+                                    <div class="row pb-2">
+                                        <div class="col-lg-12">
+                                            {{-- Cart Items --}}
+                                            <div class="row pb-3" style="border-bottom: 1px solid #eee;">
+                                                <div class="col-lg-4">
+                                                    <div>
+                                                        <img src="http://127.0.0.1:7000/upload/product/mainimage/1796926506479500.jpg"
+                                                            class="img-fluid" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div>
+                                                        <p class="mb-0">Barisieur™ Tea & Coffee Alarm Clock</p>
+                                                        <p class="mb-0" style="color: #000">
+                                                            <span class="pe-3">1 X TK 640</span>
+                                                            <span>
+                                                                <a href="javascript:void()">
+                                                                    <i class="fa-solid fa-trash text-muted"></i>
+                                                                </a>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- Cart Actions --}}
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <div id="miniCart" style="">
+                                            <div class="total-text d-flex justify-content-between pt-2">
+                                                <span class="f-800 cod__black-color">Total Price</span>
+                                                <span class="f-800 cod__black-color">Tk <span
+                                                        id="cartSubTotal"></span></span>
+                                            </div>
+                                            <div class="d-flex justify-content-between">
+                                                <a href="{{ route('template.one.view.cart') }}"
+                                                    class="checkout main-btn">Checkout</a>
+                                                <a href="{{ route('template.one.view.cart') }}"
+                                                    class="viewcart main-btn">View
+                                                    Cart</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li class="d-none">
-                            <a href="#"><i class="fal fa-sync text-muted" style="font-size: 20px;"></i></a>
-                        </li> --}}
-                    </ul>
-                </div>
-                <div class="mini__cart--box">
-                    <div id="miniCart" style="">
-                    </div>
-                    <ul>
-                        <li style="border: none">
-                            <div class="total-text d-flex justify-content-between">
-                                <span class="f-800 cod__black-color">Total Price</span>
-                                <span class="f-800 cod__black-color">Tk <span id="cartSubTotal"></span></span>
-
-                            </div>
-                        </li>
-                        <li style="border: none">
-                            <div class="d-flex justify-content-between">
-                                <a href="{{ route('template.one.view.cart') }}"
-                                    class="checkout main-btn">Checkout</a>
-                                <a href="{{ route('template.one.view.cart') }}" class="viewcart main-btn">View
-                                    Cart</a>
                             </div>
                         </li>
                     </ul>
@@ -318,3 +331,6 @@
         </nav>
     </div>
 </section>
+
+@push('scripts')
+@endpush

@@ -22,7 +22,7 @@
 
 @if (count($offer_cats) > 0)
     <div class="offer-deals">
-        <div class="offer--deals__main offer-deals--bg pt-75 pb-45"
+        <div class="offer--deals__main offer-deals--bg py-30"
             data-background="{{ asset('frontend/template_one/assets/img/bg/offer_banner.jpg') }}">
             <div class="container">
                 <div class="row">

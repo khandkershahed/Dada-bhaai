@@ -82,7 +82,7 @@
 
                 miniCart();
 
-                // Start Message 
+                // Start Message
 
                 const Toast = Swal.mixin({
                     toast: true,
@@ -106,7 +106,7 @@
                     })
                 }
 
-                // End Message 
+                // End Message
             }
 
         })
@@ -196,7 +196,7 @@
 
                 miniCart();
 
-                // Start Message 
+                // Start Message
 
                 const Toast = Swal.mixin({
                     toast: true,
@@ -220,7 +220,7 @@
                     })
                 }
 
-                // End Message  
+                // End Message
 
             }
 
@@ -244,8 +244,8 @@
 
                 $.each(response.carts, function(key, value) {
                     rows += `
-                    
-                    
+
+
                     <tr class="cart_item">
                                             <td class="product-thumbnail">
                                                 <a href="">
@@ -261,15 +261,15 @@
                                             <td class="product-price">
                                                 <p class="font-3 fsz-18 no-mrgn">
                                                     <b class="amount blk-clr">Tk ${value.price}</b>
-                                                    
+
                                                 </p>
-                                                
+
                                             </td>
 
                                             <td class="product-quantity">
                                                 <div class="quantity input-group">
 
-                                                    
+
 
                                                     <input type="submit" id="${value.rowId}" onclick="cartDecrement(this.id)" value="-" />
 
@@ -294,7 +294,7 @@
 
                                         </tr>
 
-                                        
+
 
 
                     `
@@ -332,7 +332,7 @@
     }
 
 
-    // Cart INCREMENT End 
+    // Cart INCREMENT End
 
     // Cart Decrement Start
 
@@ -365,7 +365,7 @@
                 cart();
                 miniCart();
                 // couponCalculation();
-                // Start Message 
+                // Start Message
 
                 const Toast = Swal.mixin({
                     toast: true,
@@ -391,11 +391,11 @@
                     })
                 }
 
-                // End Message  
+                // End Message
 
 
             }
         })
     }
-    // Cart Remove End 
+    // Cart Remove End
 </script>

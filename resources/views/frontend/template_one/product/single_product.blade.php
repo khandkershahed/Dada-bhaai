@@ -3,6 +3,7 @@
 @section('title', 'Dada Bhaai | Product Details')
 <!-- Main -->
 <main class="main--wrapper">
+
     <!-- Shop-details start -->
     <section class="shop-details-area">
         <div class="container">
@@ -52,8 +53,7 @@
                                         aria-selected="true">
                                         <img src="{{ asset($multiImage->multi_image) }}" class="img-fluid"
                                             alt=""
-                                            style="width: 75px;height: 75px; margin-bottom: 10px; background-size: cover;
-                                            object-fit: fill;" />
+                                            style="width: 100px;height: 100px;margin-bottom: 10px;background-size: cover;object-fit: contain;" />
                                     </a>
                                 </li>
                             @empty
@@ -66,7 +66,7 @@
 
                 <div class="col-lg-5">
                     <div class="row gx-0">
-                        <div class="col-lg-8 col-md-12 order-3 order-lg-2 px-0">
+                        <div class="col-lg-12 col-md-12 order-3 order-lg-2 px-0">
                             <div class="pro-content">
                                 <span>{{ $product->brand->brand_name }}</span>
 
@@ -104,7 +104,7 @@
 
                                             </div>
 
-                                            
+
                                             <div class="">
 
                                                 Qty:<input type="number" class="ml-2 mb-0 text-center" name=""
@@ -138,7 +138,7 @@
                     <div class="row">
                         <div class="row align-items-center">
                             <div class="col-xl-12 col-sm-12">
-                                <div class="product-section2 mt-40">
+                                <div class="product-section2 mt-20">
                                     <h6 class="product--section__title2 pb-30" id="releted-tab" data-toggle="tab"
                                         href="#releted" role="tab" aria-controls="releted" aria-selected="true">
                                         <span>Related </span> Accessories Of This Product
@@ -162,93 +162,63 @@
                                                 <div class="container">
                                                     <div class="row align-items-center p-1"
                                                         style="background-color: #eee">
-                                                        <div class="col-lg-6 px-0">
+                                                        <div class="col-lg-6 px-2">
                                                             <small id="drpname"
                                                                 class="text-black">{{ substr($childproduct->product_name, 0, 9) }}</small>
                                                         </div>
-                                                        <div class="col-lg-6 px-0">
+                                                        <div class="col-lg-6 px-3">
                                                             <div class="text-right">
-
-                                                                {{-- @if ($childproduct->price_status == 'rfq')
-                                                                    <small class="grenadier-color mb-0">
-                                                                        Tk {{ $childproduct->sas_price }}
-                                                                    </small>
-                                                                @elseif ($childproduct->price_status == 'offer_price')
-                                                                    <small class="grenadier-color mb-0">
-                                                                        Tk {{ $childproduct->discount_price }}</small>
-                                                                @else
-                                                                    <small class="grenadier-color mb-0">Tk
-                                                                        {{ $childproduct->price }}
-                                                                    </small>
-                                                                @endif --}}
-
                                                                 @if ($childproduct->price_status == 'rfq')
-                                                                    <h6 class="grenadier-color mb-0 fw-bold">
+                                                                    <small class="grenadier-color mb-0 fw-bold">
                                                                         Tk {{ $childproduct->sas_price }}
-                                                                    </h6>
+                                                                    </small>
                                                                 @elseif ($childproduct->price_status == 'offer_price')
                                                                     <del>Tk {{ $childproduct->price }}</del>
 
-                                                                    <h6 class="grenadier-color mb-0 fw-bold">Tk
+                                                                    <small class="grenadier-color mb-0 fw-bold">Tk
                                                                         {{ $childproduct->discount_price }}
-                                                                    </h6>
+                                                                    </small>
                                                                 @elseif ($childproduct->price_status == 'price')
-                                                                    <h6 class="grenadier-color mb-0 fw-bold">
+                                                                    <small class="grenadier-color mb-0 fw-bold">
                                                                         Tk {{ $childproduct->price }}
-                                                                    </h6>
+                                                                    </small>
                                                                 @endif
-
-
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-12 px-0"
+                                                        <div class="col-lg-12 px-2"
                                                             style="border-top: 1px solid white;padding-top: 5px;">
                                                             <div
                                                                 class="d-flex justify-content-between align-items-center">
                                                                 <div>
                                                                     <small>
-
-                                                                        {{-- <a type="submit"
-                                                                            onclick="addToCartOneRelated()"
-                                                                            class=""> <span
-                                                                                class="badge p-2 text-white"
-                                                                                style="background-color: #cd3301; cursor: pointer;">Add
-                                                                                Accessories</span>
-                                                                        </a> --}}
-
                                                                         <a type="submit"
                                                                             data-product_id="{{ $childproduct->id }}"
-                                                                            class="add_to_cart_btn_product"> <span
-                                                                                class="badge p-2 text-white"
-                                                                                style="background-color: #cd3301; cursor: pointer;">Add
-                                                                                Accessories</span>
+                                                                            class="add_to_cart_btn_product rounded-0">
+                                                                            <span class="badge p-2 text-white"
+                                                                                style="background-color: #cd3301; cursor: pointer;"><i
+                                                                                    class="fa-solid fa-plus"></i>
+                                                                                Add</span>
                                                                         </a>
 
                                                                     </small>
 
-                                                                    {{-- <input type="hidden" class="mb-0 border-1"
-                                                                        name="" value="1" min="1"
-                                                                        id="drqty" style="width: 50px" />
-
-                                                                    <input type="hidden" id="onerproduct_id"
-                                                                        value="{{ $childproduct->id }}"> --}}
-
                                                                 </div>
                                                                 {{-- Count Box --}}
 
-                                                                {{-- <div class="number d-flex align-items-center">
-                                                                    <button type="button" style="cursor: pointer"
+                                                                <div class="number d-flex align-items-center">
+                                                                    <button type="button"
+                                                                        style="cursor: pointer;height: 20px;"
                                                                         class="buttons-countAccesories border-0 bg-white"
                                                                         id="decreaseAccesories">-</button>
                                                                     <input type="text" disabled
-                                                                        class="mb-0 border-1 text-center"
+                                                                        class="mb-0 text-center border-0 bg-white"
                                                                         name="" value="1" min="1"
                                                                         id="dqtyAccesories" style="width: 30px" />
                                                                     <button type="button"
                                                                         class="buttons-countAccesories border-0 bg-white"
                                                                         id="increaseAccesories"
-                                                                        style="cursor: pointer">+</button>
-                                                                </div> --}}
+                                                                        style="cursor: pointer;height: 20px;">+</button>
+                                                                </div>
 
                                                             </div>
                                                         </div>
@@ -292,101 +262,90 @@
 
                         <div class="mb-4">
 
-                            <p class="mb-0 fw-bolder text-black" style="border-bottom: 1px solid #ccc;"><span
-                                    style="color: black;" class="fw-bold">Product</span></p>
-
-                            <div class="pro-code">
-                                <ul class="d-flex flex-column justify-content-between">
-
-
-                                    <li class="d-flex justify-content-between align-items-center">
-                                        <div class="d-flex">
-
-                                            <div class="text-end">
-
-                                                @if ($product->price_status == 'rfq')
-                                                    <h4 class="grenadier-color mb-0 fw-bold">
-                                                        Tk {{ $product->sas_price }}
-                                                    </h4>
-                                                @elseif ($product->price_status == 'offer_price')
-                                                    <h5><del>Tk {{ $product->price }}</del></h5>
-                                                    <h4 class="grenadier-color mb-0 fw-bold">Tk
-                                                        {{ $product->discount_price }}</h4>
-                                                @elseif ($product->price_status == 'price')
-                                                    <h4 class="grenadier-color mb-0 fw-bold">
-                                                        Tk {{ $product->price }}
-                                                    </h4>
-                                                @endif
-
-
+                            <div class="mb-0 fw-bolder text-black d-flex justify-content-between align-items-center"
+                                style="border-bottom: 1px solid #ccc;">
+                                <p style="color: black;" class="fw-bold mb-0">Availability</p>
+                                <p class="fw-bold text-success mb-0">In Stock</p>
+                            </div>
+                            <div class="price mt-15 mb-20">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="mr-3 w-50">
+                                        <del id="originalPrice">TK $3,200</del>
+                                        <div>
+                                            @if ($product->price_status == 'rfq')
+                                                <h5 class=" mb-0 fw-bold">
+                                                    <span id="productPrice"
+                                                        style="color: #CD3301; font-weight: bold; margin-bottom: 0;">{{ $product->sas_price }}</span>
+                                                </h5>
+                                            @elseif ($product->price_status == 'offer_price')
+                                                <h5><del>TK <span
+                                                            id="originalPrice">{{ $product->price }}</span></del>
+                                                </h5>
+                                                <h5 class=" mb-0 fw-bold">
+                                                    <span id="productPrice"
+                                                        style="color: #CD3301; font-weight: bold; margin-bottom: 0;">{{ $product->discount_price }}</span>
+                                                </h5>
+                                            @elseif ($product->price_status == 'price')
+                                                <h5 class=" mb-0 fw-bold">
+                                                    <span id="productPrice"
+                                                        style="color: #CD3301; font-weight: bold; margin-bottom: 0;">TK
+                                                        {{ $product->price }}</span>
+                                                </h5>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <form action="" class="mb-0">
+                                            <div class="field">
+                                                <label class="mb-0">Quantity:</label>
+                                                <div class="number d-flex align-items-center">
+                                                    <p class="minus mb-0 px-3">-</p>
+                                                    <input type="text" class="mb-0 w-50" name=""
+                                                        value="1" id="dqty">
+                                                    <p class="plus mb-0 px-3">+</p>
+                                                </div>
                                             </div>
-
-                                        </div>
-
-                                        {{-- <div class="number d-flex align-items-center">
-                                                <button type="button" class="buttons-count" id="decrease">-</button>
-                                                <input type="text" disabled class="mb-0 border-1 text-center"
-                                                    name="" value="1" min="1" id="dqty"
-                                                    style="width: 50px" />
-                                                <button type="button" class="buttons-count" id="increase">+</button>
-                                            </div> --}}
-
-                                        <div class="">
-
-                                            Qty:<input type="number" class="ml-2 mb-0 text-center" name=""
-                                                value="1" min="1" id="dqty" style="width: 50px" />
-                                        </div>
-
-
-                                    </li>
-                                </ul>
-
-                                <div class="d-flex align-items-center mt-3 product--footer__deals mb-4">
-
-                                    <input type="hidden" id="oneproduct_id" value="{{ $product->id }}">
-
-                                    <a type="submit" style="cursor: pointer" onclick="addToCartOne()"
-                                        class="mt-0 add-link f-700 grenadier-color">+ Add
-                                        Cart</a>
-
-                                    <a type="submit" style="cursor: pointer" onclick="buyToCartOne()"
-                                        class="ml-3 mt-0 add-link f-700 grenadier-color">+ Buy
-                                        Now</a>
+                                        </form>
+                                    </div>
                                 </div>
-
-                                {{-- <p>{!! $product->short_desc !!}</p> --}}
                             </div>
-
-
-                            <p class="mb-0 fw-bolder text-black" style="border-bottom: 1px solid #ccc;"><span
-                                    style="color: black;" class="fw-bold">Accessories</span></p>
-
-                            <div id="miniCartRelated" class="mt-3"></div>
-
+                            <hr class="m-0">
+                            <div class="mb-4 mt-0">
+                                <p class="mb-0">Accessories</p>
+                                <div>
+                                    <ul style="list-style-type: circle !important;">
+                                        <li class="d-flex mb-2 align-items-center">
+                                            <span class="pr-2">1.</span>
+                                            <input type="text" class="form-control form-control-sm w-100 rounded-0"
+                                                name="" id="" placeholder="Blue Color Headset">
+                                            <input type="number" class="form-control form-control-sm w-25 rounded-0"
+                                                name="" id="" placeholder="1">
+                                        </li>
+                                    </ul>
+                                    <li class="d-flex mb-2 align-items-center">
+                                        <span class="pr-2">2.</span>
+                                        <input type="text" class="form-control form-control-sm w-100 rounded-0"
+                                            name="" id="" placeholder="Blue Color Headset">
+                                        <input type="number" class="form-control form-control-sm w-25 rounded-0"
+                                            name="" id="" placeholder="1">
+                                    </li>
+                                </div>
+                            </div>
                         </div>
-
-                        {{-- @if (!empty($cartQty) && $cartQty > 0)
-                            <div class="d-flex align-items-center" id="cartButtons">
-                                <a href="{{ route('template.one.view.cart') }}" class="cart-button w-100 mt-0">View
-                                    Cart</a>
-                                <a href="{{ route('template.one.checkout') }}"
-                                    class="cart-button w-100 ml-3 mt-0">Checkout</a>
-                            </div>
-                        @endif --}}
-
-                        @if (!empty($cartQty) && $cartQty > 0)
-                            <div class="d-flex align-items-center" id="cartButtons" style="display: none;">
-                                <a href="{{ route('template.one.view.cart') }}" class="cart-button w-100 mt-0">View
-                                    Cart</a>
-                                <a href="{{ route('template.one.checkout') }}"
-                                    class="cart-button w-100 ml-3 mt-0">Checkout</a>
-                            </div>
-                        @endif
-
-
+                    </div>
+                    @if (!empty($cartQty) && $cartQty > 0)
+                        <div id="cartButtons" style="display: none;"
+                            class="d-flex align-items-center justify-content-between px-4">
+                            <a href="#" class="checkout main-btn">Add Cart</a>
+                            <a href="#" class="checkout main-btn text-end">Buy Now</a>
+                        </div>
+                    @endif
+                    <div class="last py-4 align-items-center d-flex justify-content-center">
+                        <a href="#" class="mr-2 text-muted">Add To Wishlist</a>
+                        <span>|</span>
+                        <a href="#" class="ml-2 text-muted">Compare</a>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -595,6 +554,40 @@
     });
 </script>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const minusButton = document.querySelector('.minus');
+        const plusButton = document.querySelector('.plus');
+        const quantityInput = document.getElementById('dqty');
+        const productPriceElement = document.getElementById('productPrice');
+
+        const unitPrice = parseFloat(productPriceElement.innerText.replace('Tk ', ''));
+
+        minusButton.addEventListener('click', function() {
+            let currentValue = parseInt(quantityInput.value);
+            if (!isNaN(currentValue) && currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+                updatePrice();
+            }
+        });
+
+        plusButton.addEventListener('click', function() {
+            let currentValue = parseInt(quantityInput.value);
+            if (!isNaN(currentValue)) {
+                quantityInput.value = currentValue + 1;
+                updatePrice();
+            }
+        });
+
+        function updatePrice() {
+            let quantity = parseInt(quantityInput.value);
+            if (!isNaN(quantity) && quantity > 0) {
+                let newPrice = unitPrice * quantity;
+                productPriceElement.innerText = 'Tk ' + newPrice.toFixed(2);
+            }
+        }
+    });
+</script>
 
 
 
