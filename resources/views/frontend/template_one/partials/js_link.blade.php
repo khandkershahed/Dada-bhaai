@@ -176,7 +176,12 @@
                 var tableHtml = "";
 
                 if (response.carts.length === 0) {
-                    tableHtml = '<p class="">Compare Cart is empty</p>';
+                    tableHtml = `
+                        <div>
+                            <img class="img-fluid" style="width: 50%;" src="https://i.ibb.co/xzzr9zs/f59ed80d5c527e2461d8ba49adc36160.gif" alt="">
+                        </div>
+                        <h3 class="">Compare List is Empty</h3>
+                    `;
                 } else {
                     $.each(response.carts, function(key, value) {
                         tableHtml += `

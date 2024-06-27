@@ -92,7 +92,6 @@
                     </ul>
                 </div>
             </div>
-
             <div class="col-lg-10">
                 <div class="row no-product-compare" id="compare">
 
