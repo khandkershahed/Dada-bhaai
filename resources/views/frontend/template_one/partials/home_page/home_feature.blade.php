@@ -37,7 +37,6 @@
             <div class="row gx-1">
 
                 @forelse ($products as $product)
-
                     <div class="col-lg-3 col-md-6">
                         <div class="product-grid mb-4">
                             <div class="product-image">
@@ -56,8 +55,9 @@
                                             onclick="addToWishList(this.id)" data-tip="Wishlist"><i
                                                 class="far fa-heart"></i></a></li>
 
-                                    <li><a type="submit" style="cursor:pointer;" data-product_id="{{ $product->id }}"
-                                            data-tip="Compare"><i class="fas fa-random"></i></a></li>
+                                    <li><a type="submit" style="cursor:pointer;" class="add_to_compare"
+                                            data-product_id="{{ $product->id }}" data-tip="Compare"><i
+                                                class="fas fa-random"></i></a></li>
                                 </ul>
                             </div>
                             <div class="product-content d-flex justify-content-between align-items-center">

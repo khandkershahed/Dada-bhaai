@@ -11,7 +11,8 @@
         border-bottom: 0;
         border-left: 0;
     }
-    .sidebar-text-compare{
+
+    .sidebar-text-compare {
         font-weight: bolder;
     }
 
@@ -83,118 +84,18 @@
                 {{-- Sidebar Column --}}
                 <div>
                     <ul class="cd-features-list border sidebar-text-compare" style="background: #e8e9eb;">
-                        <li style="height: 225px;align-items: center; display: flex;">MODELS</li>
-                        <li>Name</li>
-                        <li>PRICE</li>
-                        <li>CUSTOMER RATING</li>
-                        <li>RESOLUTION</li>
-                        <li>SCREEN TYPE</li>
-                        <li>DISPLAY SIZE</li>
-                        <li>REFRESH RATE</li>
-                        <li>MODEL YEAR</li>
-                        <li>TUNER TECHNOLOGY</li>
-                        <li>ETHERNET INPUT</li>
-                        <li>USB INPUT</li>
-                        <li>SCART INPUT</li>
+                        <li style="height: 225px;align-items: center; display: flex;">Product Image</li>
+                        <li>Product Name</li>
+                        <li>Price</li>
+                        <li>Add To Cart</li>
+                        <li>Remove</li>
                     </ul>
                 </div>
             </div>
+
             <div class="col-lg-10">
-                <div class="row">
-                    <div class="col-lg-3 px-0" style="border-top: 1px solid #dee2e6;border-bottom: 1px solid #dee2e6;">
-                        <div class="top-info">
-                            <img class="img-fluid compare-product-img" src="https://i.ibb.co/BGw4YX4/product.png"
-                                alt="product image">
+                <div class="row" id="compare">
 
-                        </div>
-                        <ul class="cd-features-list text-center">
-                            <li>
-                                <h3 class="compare-title">Samsung Series 6 J6300</h3>
-                            </li>
-                            <li>$600</li>
-                            <li class="rate"><span>5/5</span></li>
-                            <li>1080p</li>
-                            <li>LED</li>
-                            <li>47.6 inches</li>
-                            <li>800Hz</li>
-                            <li>2015</li>
-                            <li>mpeg4</li>
-                            <li>1 Side</li>
-                            <li>3 Port</li>
-                            <li>1 Rear</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 px-0" style="border-top: 1px solid #dee2e6;border-bottom: 1px solid #dee2e6;">
-                        <div class="top-info">
-                            <img class="img-fluid compare-product-img"
-                                src="https://i.ibb.co/LSmYM2b/Cudy-M1800-1-Pack-AX1800-Whole-Home-Mesh-Dual-Band-Wi-Fi-Router-2-320x320-removebg-preview.png"
-                                alt="product image">
-
-                        </div>
-                        <ul class="cd-features-list text-center">
-                            <li>
-                                <h3 class="compare-title">LG 55UM7300PUA</h3>
-                            </li>
-                            <li>$650</li>
-                            <li class="rate"><span>4.5/5</span></li>
-                            <li>4K</li>
-                            <li>LED</li>
-                            <li>55 inches</li>
-                            <li>120Hz</li>
-                            <li>2019</li>
-                            <li>ATSC</li>
-                            <li>1 Side</li>
-                            <li>3 Port</li>
-                            <li>1 Rear</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 px-0" style="border-top: 1px solid #dee2e6;border-bottom: 1px solid #dee2e6;">
-                        <div class="top-info">
-                            <img class="img-fluid compare-product-img" src="https://i.ibb.co/BGw4YX4/product.png"
-                                alt="product image">
-
-                        </div>
-                        <ul class="cd-features-list text-center">
-                            <li>
-                                <h3 class="compare-title">Sony X750H</h3>
-                            </li>
-                            <li>$700</li>
-                            <li class="rate"><span>4/5</span></li>
-                            <li>4K</li>
-                            <li>LED</li>
-                            <li>55 inches</li>
-                            <li>60Hz</li>
-                            <li>2020</li>
-                            <li>ATSC</li>
-                            <li>1 Side</li>
-                            <li>3 Port</li>
-                            <li>1 Rear</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 px-0" style="border-top: 1px solid #dee2e6;border-bottom: 1px solid #dee2e6;">
-                        <div class="top-info">
-                            <img class="img-fluid compare-product-img"
-                                src="https://i.ibb.co/DCypTwb/51l-Gm-F29-Jd-L-AC-UF350-350-QL80-removebg-preview.png"
-                                alt="product image">
-
-                        </div>
-                        <ul class="cd-features-list text-center">
-                            <li>
-                                <h3 class="compare-title">TCL 6-Series</h3>
-                            </li>
-                            <li>$750</li>
-                            <li class="rate"><span>4.8/5</span></li>
-                            <li>4K</li>
-                            <li>QLED</li>
-                            <li>65 inches</li>
-                            <li>120Hz</li>
-                            <li>2021</li>
-                            <li>ATSC</li>
-                            <li>1 Side</li>
-                            <li>3 Port</li>
-                            <li>1 Rear</li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>

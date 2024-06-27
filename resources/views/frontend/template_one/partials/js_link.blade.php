@@ -128,7 +128,7 @@
             url: '/add-to-compare',
 
             success: function(data) {
-
+                //compareRemove();
 
                 // Start Message
 
@@ -175,31 +175,26 @@
             success: function(response) {
                 var tableHtml = "";
 
-                $.each(response.carts, function(key, value) {
-                    tableHtml += `
-
-
-                <li class="product">
-                    <div class="top-info">
-                        <div class="check">
-                            </div>
-                        <img src="/${value.options.image}" style="width:400px; height:200px;" alt="product image">
-                    </div>
-
-                    <ul class="cd-features-list">
-                        <li>${value.name.length > 20 ? `${value.name.substring(0, 20)}...` : value.name}</li>
-                        <li>Tk ${value.price}</li>
-
-                        <li style="cursor:pointer;text-decoration: underline;" id="${value.id}" onclick="addToCartCompare(this.id)" >Add To Cart</li>
-
-                        <li style="cursor:pointer;text-decoration: underline;" id="${value.rowId}" onclick="compareRemove(this.id)">Delete</li>
-                    </ul>
-                </li>
-
-
-
-                `;
-                });
+                if (response.carts.length === 0) {
+                    tableHtml = '<p class="">Compare Cart is empty</p>';
+                } else {
+                    $.each(response.carts, function(key, value) {
+                        tableHtml += `
+                            <div class="col-lg-3 px-0" style="border-top: 1px solid #dee2e6;border-bottom: 1px solid #dee2e6;">
+                                <div class="top-info">
+                                    <img class="img-fluid compare-product-img" src="/${value.options.image}" alt="${value.name.length > 20 ? `${value.name.substring(0, 20)}...` : value.name}">
+                                </div>
+                                <ul class="cd-features-list text-center">
+                                    <li>
+                                        <h3 class="compare-title" title="${value.name}">${value.name.length > 15 ? `${value.name.substring(0, 15)}...` : value.name}</h3>
+                                    </li>
+                                    <li>Tk ${value.price}</li>
+                                    <li><a type="submit" style="cursor:pointer" id="${value.id}" onclick="addToCartCompare(this.id)"> Add To Cart</a></li>
+                                    <li><a type="submit" style="cursor:pointer" id="${value.rowId}" onclick="compareRemove(this.id)">Remove</a></li>
+                                </ul>
+                            </div>`;
+                    });
+                }
 
                 $('#compare').html(tableHtml);
             }
@@ -208,6 +203,7 @@
 
     compare();
 </script>
+
 
 {{-- Add Cart Compare --}}
 <script>
@@ -266,6 +262,7 @@
             dataType: 'json',
             success: function(data) {
                 miniCart();
+                compare();
                 // Start Message
 
                 const Toast = Swal.mixin({
@@ -1909,11 +1906,11 @@
     });
 </script> --}}
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         var lastScrollTop = 0;
         var navbar = $('.sticky-navbar');
 
-        $(window).scroll(function () {
+        $(window).scroll(function() {
             var currentScrollTop = $(this).scrollTop();
 
             if (currentScrollTop > lastScrollTop) {
@@ -1930,12 +1927,12 @@
         });
 
         // Prevent dropdown menu from closing when clicking inside
-        $('.dropdown-menu').click(function (e) {
+        $('.dropdown-menu').click(function(e) {
             e.stopPropagation();
         });
 
         // Close dropdown menu when clicking outside
-        $(document).click(function () {
+        $(document).click(function() {
             $('.dropdown-menu').removeClass('show');
         });
     });

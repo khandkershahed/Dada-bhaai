@@ -32,7 +32,7 @@
 
         <section class="sub-visual scrollAniTop view">
 
-            <div class="bg" style="background-image: url('https://www.astellnkern.com/images/whatsnew_visual.png');">
+            <div class="bg" style="background-image: url('{{ asset('upload/Dadabhaai-common-banner_NGen-IT.jpg') }}');">
             </div>
 
         </section>
