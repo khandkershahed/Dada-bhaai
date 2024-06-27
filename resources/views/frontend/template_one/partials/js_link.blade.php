@@ -607,6 +607,7 @@
     $('.add_to_cart_btn_product').click(function() {
 
         var product_id = $(this).data('product_id');
+        var qty = $(this).closest('.d-flex').find('.qty-input').val();
 
         $.ajax({
 
@@ -616,6 +617,7 @@
 
             data: {
                 product_id: product_id,
+                qty: qty,
             },
 
             success: function(data) {
@@ -793,55 +795,31 @@
                 $('span[id="cartSubTotal"]').text(response.cartTotal);
                 $('#cartQty').text(response.cartQty);
 
-                var miniCartRelated = ""
+                var miniCartRelated = "";
+                var serialNumber = 1;
 
                 $.each(response.carts, function(key, value) {
                     miniCartRelated +=
 
 
-                        `
+                        `<ul style="list-style-type: circle !important;">
+                                        
+                            <li class="d-flex mb-2 align-items-center">
 
-                    <ul style="list-style-type: circle !important;">
-                                                <li class="d-flex mb-2 align-items-center pt-2">
+                                <span class="pr-2">${serialNumber++}.</span>
 
-                                                    <div class="row">
+                                <input type="text" class="form-control form-control-sm w-100 rounded-0"
+                                                name="" value="${value.name.length > 20 ? value.name.substring(0, 20) + '.......' : value.name}" id="" placeholder="Blue Color Headset">
 
-                                                        <div class="col-lg-4">
-                                                            <span class="text-muted" href="javascript:;" style="margin-right: 10px;">${value.name}</span>${value.qty}*
-                                                                Tk ${value.price}
-                                                        </div>
+                                <input type="number" class="form-control form-control-sm w-25 rounded-0"
+                                                name="" value="${value.qty}" min="1">
 
-                                                        <div class="col-lg-4">
+                            </li>
 
-                                                            <div class="number d-flex align-items-center">
-
-                                                                <a type="submit" id="${value.rowId}" onclick="miniCartRelatedDecrease(this.id)" class="buttons-count" id="decrease">-</a>
-
-                                                                <input type="text" disabled class="mb-0 border-1 text-center"
-                                                                    name="" value="${value.qty}" min="1"
-                                                                    style="width: 20px" />
-
-                                                                <a type="submit" id="${value.rowId}" onclick="miniCartRelatedIncrease(this.id)" class="buttons-count" id="increase">+</a>
-
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="col-lg-4">
-                                                            <span class="">Tk ${value.subtotal}</span>
-
-                                                            <span id="${value.rowId}" onclick="miniCartRelatedRemove(this.id)" class="ml-4" style="color: #cd3301; cursor: pointer;"> x </span>
-
-                                                        </div>
+                        </ul>`
 
 
-                                                    </div>
 
-
-                                                </li>
-                                            </ul>
-
-                    <ul>  `
                 });
 
                 $('#miniCartRelated').html(miniCartRelated);
@@ -996,6 +974,7 @@
 
 
 {{-- MiniCart --}}
+
 {{-- <script>
     function miniCart() {
         $.ajax({
@@ -1048,6 +1027,7 @@
     }
     miniCart();
 </script> --}}
+
 <script>
     function miniCart() {
         $.ajax({
@@ -1072,20 +1052,37 @@
                     $('#cartQty').closest('li').show();
                     $.each(response.carts, function(key, value) {
                         miniCart +=
-                            `<ul>
-                                <li class="mb-20">
-                                    <div class="cart-image">
-                                        <img src="/${value.options.image}" alt="" style="width:100%;height:100%;" />
-                                    </div>
-                                    <div class="cart-text">
-                                        <p class="title f-400 cod__black-color">${value.name}</p>
-                                        <span class="cart-price f-400 dusty__gray-color">${value.qty} x <span class="price f-800 cod__black-color">Tk ${value.price}</span></span>
-                                    </div>
-                                    <div class="del-button">
-                                        <a type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"  style="cursor: pointer"><i class="fi-rs-cross-small"></i>x</a>
-                                    </div>
-                                </li>
-                            </ul>`;
+
+                            `<div class="row pb-3" style="border-bottom: 1px solid #eee;">
+
+                                                <div class="col-lg-4">
+
+                                                    <div>
+                                                        <img src="/${value.options.image}" class="img-fluid" alt="${value.name}">
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-lg-8">
+                                                    <div>
+
+                                                        <p class="mb-0">${value.name.length > 15 ? `${value.name.substring(0, 15)}...` : value.name}</p>
+
+                                                        <p class="mb-0" style="color: #000">
+
+                                                            <span class="pe-3">${value.qty} x TK ${value.price}</span>
+
+                                                            <span style="cursor:pointer">
+
+                                                                <a type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)">
+                                                                    <i class="fa-solid fa-trash text-muted"></i>
+                                                                </a>
+
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>`
                     });
                 }
 
@@ -1108,6 +1105,8 @@
             dataType: 'json',
             success: function(data) {
                 miniCart();
+                //miniCartRelated();
+                addToCartOneRelated();
                 // Start Message
 
                 const Toast = Swal.mixin({

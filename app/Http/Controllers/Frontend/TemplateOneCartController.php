@@ -309,7 +309,7 @@ class TemplateOneCartController extends Controller
                 'id' => $id,
 
                 'name' => $product->product_name,
-                'qty' => 1,
+                'qty' => $request->qty,
                 'price' => $product->sas_price,
                 'weight' => 1,
 
@@ -329,7 +329,7 @@ class TemplateOneCartController extends Controller
                 'id' => $id,
 
                 'name' => $product->product_name,
-                'qty' => 1,
+                'qty' => $request->qty,
                 'price' => $product->discount_price,
                 'weight' => 1,
 
@@ -348,7 +348,7 @@ class TemplateOneCartController extends Controller
                 'id' => $id,
 
                 'name' => $product->product_name,
-                'qty' => 1,
+                'qty' => $request->qty,
                 'price' => $product->price,
                 'weight' => 1,
 
@@ -777,7 +777,5 @@ class TemplateOneCartController extends Controller
             return response()->json(['success' => 'Successfully Added on Your Cart']);
         }
     }
-
-    
 
 }
