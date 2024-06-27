@@ -94,7 +94,7 @@
             </div>
 
             <div class="col-lg-10">
-                <div class="row" id="compare">
+                <div class="row no-product-compare" id="compare">
 
                 </div>
             </div>

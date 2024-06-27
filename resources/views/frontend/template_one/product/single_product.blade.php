@@ -116,7 +116,7 @@
 
                                     </ul>
 
-                                    {{-- <div class="d-flex align-items-center mt-3 product--footer__deals mb-4">
+                                    {{-- <div class="d-flex align-items-center mt-3 product--footer__deals mb-4 justify-content-center">
 
                                         <input type="hidden" id="oneproduct_id" value="{{ $product->id }}">
 
@@ -275,7 +275,7 @@
                                 <p class="fw-bold text-success mb-0">In Stock</p>
                             </div>
                             <div class="price mt-15 mb-20">
-                                <div class="row">
+                                <div class="row align-items-center">
 
                                     <div class="col-lg-6">
 
@@ -286,8 +286,8 @@
                                                     {{ $product->sas_price }}</span>
                                             </h5>
                                         @elseif ($product->price_status == 'offer_price')
-                                            <h5><del>TK <span id="originalPrice">{{ $product->price }}</span></del>
-                                            </h5>
+                                            <p class="mb-0"><del>TK <span id="originalPrice">{{ $product->price }}</span></del>
+                                            </p>
                                             <h5 class=" mb-0 fw-bold">Tk
                                                 <span id="productPrice"
                                                     style="color: #CD3301; font-weight: bold; margin-bottom: 0;">{{ $product->discount_price }}</span>
@@ -307,10 +307,10 @@
                                             <div class="field">
                                                 <label class="mb-0">Quantity:</label>
                                                 <div class="number d-flex align-items-center">
-                                                    <p class="minus mb-0 px-3">-</p>
+                                                    <p class="minus mb-0 px-2">-</p>
                                                     <input type="text" class="mb-0 w-50" name=""
                                                         value="1" min="1" id="dqty">
-                                                    <p class="plus mb-0 px-3">+</p>
+                                                    <p class="plus mb-0 px-2">+</p>
                                                 </div>
                                             </div>
                                         </form>
@@ -318,24 +318,20 @@
 
                                 </div>
 
-                                <div class="d-flex align-items-center mt-3 product--footer__deals mb-4">
-
+                                <div class="d-flex align-items-center mt-3 product--footer__deals mb-4 justify-content-center">
                                     <input type="hidden" id="oneproduct_id" value="{{ $product->id }}">
-
                                     <a type="submit" style="cursor: pointer" onclick="addToCartOne()"
                                         class="mt-0 add-link f-700 grenadier-color">+ Add
                                         Cart</a>
-
                                     <a type="submit" style="cursor: pointer" onclick="buyToCartOne()"
                                         class="ml-3 mt-0 add-link f-700 grenadier-color">+ Buy
                                         Now</a>
                                 </div>
-
                             </div>
 
                             <hr class="m-0">
 
-                            <div class="mb-4 mt-0">
+                            <div class="">
                                 <p class="mb-0">Accessories</p>
 
                                 <div id="miniCartRelated">
@@ -373,35 +369,25 @@
                                     </ul>` --}}
 
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
                     @if (!empty($cartQty) && $cartQty > 0)
-                        <div id="cartButtons" style="display: none;"
+                        <div id="cartButtons"
                             class="d-flex align-items-center justify-content-between px-4">
-
-                            <a href="{{ route('template.one.view.cart') }}" class="checkout main-btn text-end">View
+                            <a href="{{ route('template.one.view.cart') }}" class="checkout main-btn text-center w-50 mr-1">View
                                 Cart</a>
-
                             <a href="{{ route('template.one.checkout') }}"
-                                class="checkout main-btn text-end">CheckOut</a>
+                                class="checkout main-btn text-center w-50 ml-1">CheckOut</a>
                         </div>
                     @endif
-
                     <div class="last py-4 align-items-center d-flex justify-content-center">
-
                         <a style="cursor: pointer;" id="{{ $product->id }}" onclick="addToWishList(this.id)"
                             class="mr-2 text-muted">Add To Wishlist</a>
-
                         <span>|</span>
-
                         <a style="cursor: pointer;" type="submit" data-product_id="{{ $product->id }}"
                             class="ml-2 text-muted add_to_compare">Compare</a>
-
                     </div>
-
                 </div>
             </div>
         </div>

@@ -52,7 +52,7 @@
                                                         alt="" style="height: 280px; width: 300px;">
                                                 </div>
                                                 <div class="col-xl-4 col-lg-4">
-                                                    <div class="offer--deals__products mb-30">
+                                                    <div class="offer--deals__products mb-30 mt-30">
 
                                                         <div class="products--deals__content mb-35">
                                                             <h6 class="f-700 mb-20">
