@@ -58,10 +58,10 @@
                 <a href="{{ route('index') }}">Home</a>
             </li>
             <li>
-                <a href="{{ route('template.two.all.product') }}">PRODUCT</a>
+                <a href="{{ route('template.two.all.product') }}">Product</a>
             </li>
             <li>
-                <a href="javascript:;">SUPPORT</a>
+                <a href="javascript:;">Support</a>
                 <ul class="depth2">
                     <li>
                         <a href="{{ route('template.two.faq') }}">FAQ</a>

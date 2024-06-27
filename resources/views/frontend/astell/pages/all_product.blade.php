@@ -7,7 +7,7 @@
                 <ul class="swiper-wrapper" style="transition-duration: 0ms;transform: translate3d(0.282px, 0px, 0px);">
 
                     <li class="swiper-slide swiper-slide-active">
-                        <a href="/product/whatsNew.jsp" class="on">Latest Product</a>
+                        <a href="javascript:;" class="on">All Product</a>
                     </li>
 
                     @php
@@ -67,7 +67,9 @@
                                 {!! $product->short_desc !!}
                             </p> --}}
                             <p>
-                                Dadavaai Frontend is a lightweight e-commerce solution built with Bootstrap, jQuery, and other technologies. This project offers a responsive and visually appealing user interface for seamless online shopping.
+                                Dadavaai Frontend is a lightweight e-commerce solution built with Bootstrap, jQuery, and
+                                other technologies. This project offers a responsive and visually appealing user interface
+                                for seamless online shopping.
                             </p>
                             <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
                                 class="lnk-ty1">Discover Product</a>

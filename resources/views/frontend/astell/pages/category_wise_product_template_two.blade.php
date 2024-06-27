@@ -4,7 +4,33 @@
 
 <main class="sub">
 
+    <section class="lnb">
+        <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
+            <ul class="swiper-wrapper" style="transition-duration: 0ms;transform: translate3d(0.282px, 0px, 0px);">
 
+                <li class="swiper-slide">
+                    <a href="{{ route('template.two.all.product') }}" class="">All Product</a>
+                </li>
+
+                @php
+                    use App\Models\Admin\Category;
+                    $categories = Category::where('status', '1')->inRandomOrder()->limit(5)->get();
+                @endphp
+
+                
+                @forelse ($categories as $category)
+                    <li class="swiper-slide swiper-slide-next {{ ($category->category_slug == $catwiseproduct->category_slug) ? 'swiper-slide-active' : '' }}">
+                        <a class=" {{ ($category->category_slug == $catwiseproduct->category_slug) ? 'on' : '' }}""
+                            href="{{ url('product/category-dadabhaai/' . $category->id . '/' . $category->category_slug) }}">{{ $category->category_name }}</a>
+                    </li>
+                @empty
+                    <p>No Category Avaiable</p>
+                @endforelse
+
+            </ul>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        </div>
+    </section>
 
     <section class="sub-visual scrollAniTop view">
 
@@ -14,7 +40,7 @@
 
     </section>
 
-    <section class="list-ty1" style="padding-top: 100px;">
+    <section class="list-ty1">
 
         <ul>
 
