@@ -10,6 +10,13 @@
                     src="https://dadabhaai.com/upload/logo_black/202405200404Dadabhai%20Logo.png" alt="" />
             </a>
             <!-- Categories Dropdown -->
+            @php
+                $categorys = App\Models\Admin\Category::where('status', '1')
+                    ->orderBy('category_name', 'ASC')
+                    ->limit(9)
+                    ->latest()
+                    ->get();
+            @endphp
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown position-static">
                     <a class="nav-link dropdown-toggle card-title cod__gray-color mb-0 main-menu-link"
@@ -17,37 +24,85 @@
                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-th pr-2" aria-hidden="true"></i>Category
                     </a>
-                    <div class="dropdown-menu dropdown-menu-full main-menu-drop"
+                    <div class="dropdown-menu dropdown-menu-full main-menu-drop p-0"
                         aria-labelledby="navbarDropdownFeatures" style="border-top: 2px solid #cd3301">
                         <div class="container">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <ul class="nav nav-tabs flex-column" id="myTab" role="tablist">
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link active" id="home-tab" data-toggle="tab"
-                                                data-target="#home" type="button" role="tab" aria-controls="home"
-                                                aria-selected="true">Home</button>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="profile-tab" data-toggle="tab"
-                                                data-target="#profile" type="button" role="tab"
-                                                aria-controls="profile" aria-selected="false">Profile</button>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="contact-tab" data-toggle="tab"
-                                                data-target="#contact" type="button" role="tab"
-                                                aria-controls="contact" aria-selected="false">Contact</button>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-8">
-                                    <div class="tab-content" id="myTabContent">
-                                        <div class="tab-pane fade show active" id="home" role="tabpanel"
-                                            aria-labelledby="home-tab">...</div>
-                                        <div class="tab-pane fade" id="profile" role="tabpanel"
-                                            aria-labelledby="profile-tab">...</div>
-                                        <div class="tab-pane fade" id="contact" role="tabpanel"
-                                            aria-labelledby="contact-tab">...</div>
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <div class="col-lg-2 px-0">
+                                            <ul class="nav nav-tabs flex-column border-0" id="myTab" role="tablist">
+                                                @foreach ($categorys as $key => $category)
+                                                    <li class="nav-item">
+                                                        <a class="nav-link main_cat_triger w-100 pl-4 {{ $key == 0 ? 'active' : '' }}"
+                                                            id="tab-{{ $category->id }}" data-toggle="tab"
+                                                            href="#category{{ $category->id }}" role="tab"
+                                                            aria-controls="category{{ $category->id }}"
+                                                            aria-selected="{{ $key == 0 ? 'true' : 'false' }}">{{ $category->category_name }}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                        <div class="col-lg-10 px-0">
+                                            <div class="tab-content px-3 pt-2" id="myTabContent">
+                                                @foreach ($categorys as $key => $category)
+                                                    <div class="tab-pane fade show {{ $key == 0 ? 'active' : '' }}"
+                                                        id="category{{ $category->id }}" role="tabpanel"
+                                                        aria-labelledby="tab-{{ $category->id }}">
+                                                        @php
+                                                            $catwissubcat = App\Models\Admin\SubCategory::where(
+                                                                'status',
+                                                                '1',
+                                                            )
+                                                                ->where('category_id', $category->id)
+                                                                ->orderBy('subcategory_name', 'ASC')
+                                                                ->latest()
+                                                                ->get();
+                                                        @endphp
+                                                        <div class="row">
+                                                            @forelse ($catwissubcat as $subcat)
+                                                                <div class="col-lg-4">
+                                                                    <div>
+                                                                        <h5 class="" style="color: #ef4416;">
+                                                                            {{ $subcat->subcategory_name }}
+                                                                        </h5>
+                                                                        <div class="divider"></div>
+                                                                        @php
+                                                                            $childcats = App\Models\Admin\ChildCategory::where(
+                                                                                'status',
+                                                                                '1',
+                                                                            )
+                                                                                ->where('subcategory_id', $subcat->id)
+                                                                                ->orderBy('childcategory_name', 'ASC')
+                                                                                ->limit(7)
+                                                                                ->latest()
+                                                                                ->get();
+                                                                        @endphp
+                                                                        <ul class="main-link-cat">
+                                                                            @forelse ($childcats as $childcat)
+                                                                                <li>
+                                                                                    <a
+                                                                                        href="{{ url('product/childcategory/' . $childcat->id . '/' . $childcat->childcategory_slug) }}">{{ $childcat->childcategory_name }}</a>
+                                                                                </li>
+                                                                            @empty
+                                                                                <p>No ChildCategory Available</p>
+                                                                            @endforelse
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            @empty
+                                                                <div class="col-lg-12">
+                                                                    <div
+                                                                        class="d-flex justify-content-center align-items-center h-100">
+                                                                        <p>No Subcategory Available</p>
+                                                                    </div>
+                                                                </div>
+                                                            @endforelse
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -282,7 +337,8 @@
                                     <div class="row pb-2">
                                         <div class="col-lg-12">
                                             {{-- Cart Items --}}
-                                            <div class="row pb-3" style="border-bottom: 1px solid #eee;">
+                                            <div class="row pb-3 align-items-center"
+                                                style="border-bottom: 1px solid #eee;">
                                                 <div class="col-lg-4">
                                                     <div>
                                                         <img src="http://127.0.0.1:7000/upload/product/mainimage/1796926506479500.jpg"
@@ -292,11 +348,12 @@
                                                 <div class="col-lg-8">
                                                     <div>
                                                         <p class="mb-0">Barisieur™ Tea & Coffee Alarm Clock</p>
-                                                        <p class="mb-0" style="color: #000">
-                                                            <span class="pe-3">1 X TK 640</span>
+                                                        <p class="mb-0"
+                                                            style="padding: 5px;display: flex;justify-content: space-between;">
+                                                            <span class="pe-5">1 X TK 640</span>
                                                             <span>
                                                                 <a href="javascript:void()">
-                                                                    <i class="fa-solid fa-trash text-muted"></i>
+                                                                    <i class="fa-solid fa-trash text-danger"></i>
                                                                 </a>
                                                             </span>
                                                         </p>

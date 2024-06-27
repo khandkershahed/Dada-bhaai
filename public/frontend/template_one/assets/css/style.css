@@ -669,10 +669,10 @@ label {
 .searchbox-open {
     width: 20%;
 }
-.userLogin:hover{
+.userLogin:hover {
     color: #cd3301 !important;
 }
-.wishlist:hover{
+.wishlist:hover {
     color: #cd3301 !important;
 }
 .cart__count-amount {
@@ -1212,7 +1212,7 @@ cart--header__middle.cart--header__two {
     min-width: 300px;
     max-width: 100%;
 }
-.dropdown-menu{
+.dropdown-menu {
     margin: 0;
 }
 .user-dashboard-menu {
@@ -1327,7 +1327,33 @@ cart--header__middle.cart--header__two {
     content: "\eab2";
     transition: 0.4s;
 }
-
+.main_cat_triger {
+    color: #171616;
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 700;
+    padding: 15px 0;
+    display: inline-block;
+    text-transform: capitalize;
+}
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover {
+    border-color: transparent;
+}
+.divider {
+    background: red;
+    height: 2px;
+    width: 30%;
+    margin-top: 10px;
+}
+.main-link-cat li{
+    padding: 8px 0px;
+    color: #171616 !important;
+}
+.main-link-cat li a{
+    padding: 8px 0px;
+    color: #171616 !important;
+}
 .nav-tabs .nav-item.show .main_cat_triger,
 .nav-tabs .main_cat_triger.active {
     background-color: #cd3301;
@@ -1484,8 +1510,8 @@ ul.dept__menu--dropdown li:hover ul.sub__menu.sub__dept--menu {
     width: 100%;
     height: 100%;
     z-index: 11111;
-    background: url("https://i.ibb.co/ySLBdZg/loading-red.gif")
-        50% 50% no-repeat white;
+    background: url("https://i.ibb.co/j3ZzkPy/dadavi-loading-slow.gif") 50% 50%
+        no-repeat white;
 }
 
 ul.sub__menu.sub__dept--menu li ul.sub__menu.level2 {
@@ -4681,7 +4707,7 @@ html .ui-button.ui-state-disabled:active {
     }
 }
 @media only screen and (max-width: 400px) {
-    .fb-wrap{
+    .fb-wrap {
         display: none;
     }
 }
