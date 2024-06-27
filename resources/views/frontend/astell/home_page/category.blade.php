@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <style>
     .product__slider-main {
         margin-bottom: 15px;
@@ -25,14 +24,6 @@
 </style>
 <div class="container">
     <div class="row">
-        <div class="col-lg-6">
-            asdasd
-        </div>
-        <div class="col-lg-6">
-            asdasdas
-        </div>
-    </div>
-    <div class="row">
         <div class="col-lg-12">
             <div id="product__slider" class="row">
                 <div class="product__slider-main col-lg-6">
@@ -54,8 +45,6 @@
 @section('scripts')
 
 @endsection
-=======
-<<<<<<< HEAD
 <section class="product">
     <div class="tab-ty">
         <ul class="ps-0">
@@ -104,6 +93,3 @@
         });
     </script>
 @endsection
-=======
->>>>>>> db50f00cedf08e5da82015652cc616b69da4317c
->>>>>>> 4ba05348144dab1517d22965f31f7cd2a8af50b8
