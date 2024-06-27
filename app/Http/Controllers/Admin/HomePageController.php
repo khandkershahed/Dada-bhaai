@@ -169,6 +169,55 @@ class HomePageController extends Controller
             $background_image_three_image = $fileName;
         }
 
+        //product_one_image
+        if (!empty($request->file('feature_product_one_image'))) {
+
+            $file = $request->file('feature_product_one_image');
+
+            @unlink(public_path('upload/home/' . $home->feature_product_one_image));
+
+            $fileName = hexdec(uniqid()) . '.' . $file->getClientOriginalName();
+            $file->move(public_path('upload/home/'), $fileName);
+            $feature_product_one_image = $fileName;
+        }
+
+        //product_two_image
+        if (!empty($request->file('feature_product_two_image'))) {
+
+            $file = $request->file('feature_product_two_image');
+
+            @unlink(public_path('upload/home/' . $home->feature_product_two_image));
+
+            $fileName = hexdec(uniqid()) . '.' . $file->getClientOriginalName();
+            $file->move(public_path('upload/home/'), $fileName);
+            $feature_product_two_image = $fileName;
+        }  
+        
+        //product_three_image
+        if (!empty($request->file('feature_product_three_image'))) {
+
+            $file = $request->file('feature_product_three_image');
+
+            @unlink(public_path('upload/home/' . $home->feature_product_three_image));
+
+            $fileName = hexdec(uniqid()) . '.' . $file->getClientOriginalName();
+            $file->move(public_path('upload/home/'), $fileName);
+            $feature_product_three_image = $fileName;
+        } 
+
+        //product_four_image
+        if (!empty($request->file('feature_product_four_image'))) {
+
+            $file = $request->file('feature_product_four_image');
+
+            @unlink(public_path('upload/home/' . $home->feature_product_four_image));
+
+            $fileName = hexdec(uniqid()) . '.' . $file->getClientOriginalName();
+            $file->move(public_path('upload/home/'), $fileName);
+            $feature_product_four_image = $fileName;
+        } 
+
+
         $home->update([
 
             'status' => $request->status,
@@ -238,6 +287,14 @@ class HomePageController extends Controller
             'image_slider_two_image' => (!empty($image_slider_two_image) ? $image_slider_two_image : $home->image_slider_two_image),
 
             'image_slider_three_image' => (!empty($image_slider_three_image) ? $image_slider_three_image : $home->image_slider_three_image),
+
+            'feature_product_one_image' => (!empty($feature_product_one_image) ? $feature_product_one_image : $home->feature_product_one_image),
+
+            'feature_product_two_image' => (!empty($feature_product_two_image) ? $feature_product_two_image : $home->feature_product_two_image),
+
+            'feature_product_three_image' => (!empty($feature_product_three_image) ? $feature_product_three_image : $home->feature_product_three_image),
+
+            'feature_product_four_image' => (!empty($feature_product_four_image) ? $feature_product_four_image : $home->feature_product_four_image),
 
         ]);
 
