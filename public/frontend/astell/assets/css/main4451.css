@@ -961,8 +961,8 @@ main .video-js{width:100%;}
 .main .product .tab-cont .wl .swiper-button-next.swiper-button-disabled,
 .main .product .tab-cont .wl .swiper-button-prev.swiper-button-disabled{opacity:0}
 .main .product .tab-cont .wl .swiper-slide img{display:block;margin:0 auto;width:auto;height:100%;}
-.main .product .tab-cont .wr{display:inline-block;width:468px;padding-top:80px;padding-left:90px;vertical-align:top;}
-.main .product .tab-cont .wr strong{display:block;font-size:56px;font-weight:500;}
+.main .product .tab-cont .wr{display:inline-block;width:485px;padding-top:80px;padding-left:90px;vertical-align:top;}
+.main .product .tab-cont .wr strong{display:block;font-size:42px;font-weight:500;}
 .main .product .tab-cont .wr p{margin-top:30px;display:block;font-size:14px;font-weight:300;line-height:26px;letter-spacing:0.35px;color:#999;word-break: keep-all;}
 .main .product .tab-cont .wr .btn-group{position:relative;margin-top:32px;}
 .main .product .tab-cont .wr .mark-group{position:absolute;top:-6px;right:0;}

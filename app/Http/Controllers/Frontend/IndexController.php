@@ -39,18 +39,18 @@ class IndexController extends Controller
 
             // $categories = Category::orderBy('category_name','ASC')->latest()->limit(4)->get();
 
-            $categoryIds = [
-                $homepage->category_tab_one_id,
-                $homepage->category_tab_two_id,
-                $homepage->category_tab_three_id,
-                $homepage->category_tab_four_id,
-            ];
+            // $categoryIds = [
+            //     $homepage->category_tab_one_id,
+            //     $homepage->category_tab_two_id,
+            //     $homepage->category_tab_three_id,
+            //     $homepage->category_tab_four_id,
+            // ];
 
-            $categories = Category::with('products')->whereIn('id', $categoryIds)->get();
+            // $categories = Category::with('products')->whereIn('id', $categoryIds)->get();
 
             // dd($homepage);
 
-            return view('frontend.astell.index_astell', compact('homepage', 'categories'));
+            return view('frontend.astell.index_astell', compact('homepage'));
 
         } else if ($template->name == 'template_three') {
             $banners = Banner::where('status', '1')->orderBy('id', 'ASC')->latest()->get();
