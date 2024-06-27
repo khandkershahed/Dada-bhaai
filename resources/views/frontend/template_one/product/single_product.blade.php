@@ -185,12 +185,14 @@
                                                                 @endif
                                                             </div>
                                                         </div>
+
                                                         <div class="col-lg-12 px-2"
                                                             style="border-top: 1px solid white;padding-top: 5px;">
                                                             <div
                                                                 class="d-flex justify-content-between align-items-center">
                                                                 <div>
                                                                     <small>
+
                                                                         <a type="submit"
                                                                             data-product_id="{{ $childproduct->id }}"
                                                                             class="add_to_cart_btn_product rounded-0">
@@ -206,22 +208,27 @@
                                                                 {{-- Count Box --}}
 
                                                                 <div class="number d-flex align-items-center">
+
                                                                     <button type="button"
                                                                         style="cursor: pointer;height: 20px;"
                                                                         class="buttons-countAccesories border-0 bg-white"
                                                                         id="decreaseAccesories">-</button>
+
                                                                     <input type="text" disabled
-                                                                        class="mb-0 text-center border-0 bg-white"
-                                                                        name="" value="1" min="1"
+                                                                        class="mb-0 text-center border-0 bg-white qty-input"
+                                                                        name="qty" value="1" min="1"
                                                                         id="dqtyAccesories" style="width: 30px" />
+
                                                                     <button type="button"
                                                                         class="buttons-countAccesories border-0 bg-white"
                                                                         id="increaseAccesories"
                                                                         style="cursor: pointer;height: 20px;">+</button>
+
                                                                 </div>
 
                                                             </div>
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -268,83 +275,133 @@
                                 <p class="fw-bold text-success mb-0">In Stock</p>
                             </div>
                             <div class="price mt-15 mb-20">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="mr-3 w-50">
-                                        <del id="originalPrice">TK $3,200</del>
-                                        <div>
-                                            @if ($product->price_status == 'rfq')
-                                                <h5 class=" mb-0 fw-bold">
-                                                    <span id="productPrice"
-                                                        style="color: #CD3301; font-weight: bold; margin-bottom: 0;">{{ $product->sas_price }}</span>
-                                                </h5>
-                                            @elseif ($product->price_status == 'offer_price')
-                                                <h5><del>TK <span
-                                                            id="originalPrice">{{ $product->price }}</span></del>
-                                                </h5>
-                                                <h5 class=" mb-0 fw-bold">
-                                                    <span id="productPrice"
-                                                        style="color: #CD3301; font-weight: bold; margin-bottom: 0;">{{ $product->discount_price }}</span>
-                                                </h5>
-                                            @elseif ($product->price_status == 'price')
-                                                <h5 class=" mb-0 fw-bold">
-                                                    <span id="productPrice"
-                                                        style="color: #CD3301; font-weight: bold; margin-bottom: 0;">TK
-                                                        {{ $product->price }}</span>
-                                                </h5>
-                                            @endif
-                                        </div>
+                                <div class="row">
+
+                                    <div class="col-lg-6">
+
+                                        @if ($product->price_status == 'rfq')
+                                            <h5 class=" mb-0 fw-bold">
+                                                <span id="productPrice"
+                                                    style="color: #CD3301; font-weight: bold; margin-bottom: 0;">Tk
+                                                    {{ $product->sas_price }}</span>
+                                            </h5>
+                                        @elseif ($product->price_status == 'offer_price')
+                                            <h5><del>TK <span id="originalPrice">{{ $product->price }}</span></del>
+                                            </h5>
+                                            <h5 class=" mb-0 fw-bold">Tk
+                                                <span id="productPrice"
+                                                    style="color: #CD3301; font-weight: bold; margin-bottom: 0;">{{ $product->discount_price }}</span>
+                                            </h5>
+                                        @elseif ($product->price_status == 'price')
+                                            <h5 class=" mb-0 fw-bold">
+                                                <span id="productPrice"
+                                                    style="color: #CD3301; font-weight: bold; margin-bottom: 0;">TK
+                                                    {{ $product->price }}</span>
+                                            </h5>
+                                        @endif
+
                                     </div>
-                                    <div>
+
+                                    <div class="col-lg-6">
                                         <form action="" class="mb-0">
                                             <div class="field">
                                                 <label class="mb-0">Quantity:</label>
                                                 <div class="number d-flex align-items-center">
                                                     <p class="minus mb-0 px-3">-</p>
                                                     <input type="text" class="mb-0 w-50" name=""
-                                                        value="1" id="dqty">
+                                                        value="1" min="1" id="dqty">
                                                     <p class="plus mb-0 px-3">+</p>
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
+
                                 </div>
+
+                                <div class="d-flex align-items-center mt-3 product--footer__deals mb-4">
+
+                                    <input type="hidden" id="oneproduct_id" value="{{ $product->id }}">
+
+                                    <a type="submit" style="cursor: pointer" onclick="addToCartOne()"
+                                        class="mt-0 add-link f-700 grenadier-color">+ Add
+                                        Cart</a>
+
+                                    <a type="submit" style="cursor: pointer" onclick="buyToCartOne()"
+                                        class="ml-3 mt-0 add-link f-700 grenadier-color">+ Buy
+                                        Now</a>
+                                </div>
+
                             </div>
+
                             <hr class="m-0">
+
                             <div class="mb-4 mt-0">
                                 <p class="mb-0">Accessories</p>
-                                <div>
-                                    <ul style="list-style-type: circle !important;">
+
+                                <div id="miniCartRelated">
+
+                                    {{-- <ul style="list-style-type: circle !important;">
+                                        
                                         <li class="d-flex mb-2 align-items-center">
+
                                             <span class="pr-2">1.</span>
+
                                             <input type="text" class="form-control form-control-sm w-100 rounded-0"
-                                                name="" id="" placeholder="Blue Color Headset">
+                                                name="" value="${value.name}" id="" placeholder="Blue Color Headset">
+
                                             <input type="number" class="form-control form-control-sm w-25 rounded-0"
-                                                name="" id="" placeholder="1">
+                                                name="" value="${value.qty}" placeholder="1">
+
                                         </li>
-                                    </ul>
-                                    <li class="d-flex mb-2 align-items-center">
-                                        <span class="pr-2">2.</span>
-                                        <input type="text" class="form-control form-control-sm w-100 rounded-0"
-                                            name="" id="" placeholder="Blue Color Headset">
-                                        <input type="number" class="form-control form-control-sm w-25 rounded-0"
-                                            name="" id="" placeholder="1">
-                                    </li>
+
+                                    </ul> --}}
+
+                                    {{-- `<ul style="list-style-type: circle !important;">
+                                        
+                                        <li class="d-flex mb-2 align-items-center">
+            
+                                            <span class="pr-2">${serialNumber++}.</span>
+            
+                                            <input type="text" class="form-control form-control-sm w-100 rounded-0"
+                                                            name="" value="${value.name.length > 20 ? value.name.substring(0, 20) + '.......' : value.name}" id="" placeholder="Blue Color Headset">
+            
+                                            <input type="number" class="form-control form-control-sm w-25 rounded-0"
+                                                            name="" value="${value.qty}" placeholder="1">
+            
+                                        </li>
+            
+                                    </ul>` --}}
+
                                 </div>
+
                             </div>
                         </div>
                     </div>
+
                     @if (!empty($cartQty) && $cartQty > 0)
                         <div id="cartButtons" style="display: none;"
                             class="d-flex align-items-center justify-content-between px-4">
-                            <a href="#" class="checkout main-btn">Add Cart</a>
-                            <a href="#" class="checkout main-btn text-end">Buy Now</a>
+
+                            <a href="{{ route('template.one.view.cart') }}" class="checkout main-btn text-end">View
+                                Cart</a>
+
+                            <a href="{{ route('template.one.checkout') }}"
+                                class="checkout main-btn text-end">CheckOut</a>
                         </div>
                     @endif
+
                     <div class="last py-4 align-items-center d-flex justify-content-center">
-                        <a href="#" class="mr-2 text-muted">Add To Wishlist</a>
+
+                        <a style="cursor: pointer;" id="{{ $product->id }}" onclick="addToWishList(this.id)"
+                            class="mr-2 text-muted">Add To Wishlist</a>
+
                         <span>|</span>
-                        <a href="#" class="ml-2 text-muted">Compare</a>
+
+                        <a style="cursor: pointer;" type="submit" data-product_id="{{ $product->id }}"
+                            class="ml-2 text-muted add_to_compare">Compare</a>
+
                     </div>
+
                 </div>
             </div>
         </div>

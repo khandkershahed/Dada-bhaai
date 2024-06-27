@@ -9,6 +9,7 @@
                 <img class="" width="200px"
                     src="https://dadabhaai.com/upload/logo_black/202405200404Dadabhai%20Logo.png" alt="" />
             </a>
+
             <!-- Categories Dropdown -->
             @php
                 $categorys = App\Models\Admin\Category::where('status', '1')
@@ -22,7 +23,9 @@
                     <a class="nav-link dropdown-toggle card-title cod__gray-color mb-0 main-menu-link"
                         style="background: #f5f5f5; border-radius: 5px" href="#" id="navbarDropdownFeatures"
                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-th pr-2" aria-hidden="true"></i>Category
+                        <i class="fa fa-th pr-2" aria-hidden="true"></i>
+
+                        Category
                     </a>
                     <div class="dropdown-menu dropdown-menu-full main-menu-drop p-0"
                         aria-labelledby="navbarDropdownFeatures" style="border-top: 2px solid #cd3301">
@@ -111,10 +114,12 @@
                 </li>
             </ul>
             <!-- Navbar Toggler -->
+
             {{-- <button class="navbar-toggler bg-primary" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-th pr-2" aria-hidden="true"></i>
             </button> --}}
+
             <!-- Navbar Collapse -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
@@ -224,7 +229,7 @@
                         </div>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link main-menu-link" href="{{ route('template.one.all_product') }}">Product
+                        <a class="nav-link main-menu-link" href="{{ route('template.one.all_product') }}">Products
                             <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
@@ -237,6 +242,7 @@
                     <i class="fas fa-search"></i>
                 </button>
             </form> --}}
+
             <form class="searchbox ml-auto mr-3" action="{{ route('product.search') }}" method="POST">
                 @csrf
                 <input type="search" placeholder="Search......" name="search" class="searchbox-input"
@@ -296,7 +302,7 @@
                                                 class="fal fa-heart pr-2"></i>
                                             My Wishlist</a>
                                         <a class="dropdown-item pl-3" style="font-size: 12px;"
-                                            href="{{ route('template.one.dashboard') }}"><i
+                                            href="{{ route('compare.product') }}"><i
                                                 class="fal fa-random pr-2"></i>
                                             My Compare</a>
                                         <a class="dropdown-item pl-3" style="font-size: 12px;"
@@ -323,65 +329,63 @@
                                 </a>
                             </li>
                         @endif
+
                         <li>
                             <div class="dropdown">
+
                                 <a href="javascript:void(0);" class="border-0 bg-none text-muted" type="button"
                                     id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false" style="font-size: 20px;">
+
                                     <i class="fa-solid fa-cart-plus userLogin wishlist">
-                                        <span class="cart__count-amount">0</span>
+                                        <span class="cart__count-amount" id="cartQty">0</span>
                                     </i>
+
                                 </a>
+
                                 <div class="dropdown-menu p-3 cart-icons-menu" aria-labelledby="dropdownMenuButton"
                                     style="">
                                     <div class="row pb-2">
                                         <div class="col-lg-12">
+
                                             {{-- Cart Items --}}
-                                            <div class="row pb-3 align-items-center"
-                                                style="border-bottom: 1px solid #eee;">
-                                                <div class="col-lg-4">
-                                                    <div>
-                                                        <img src="http://127.0.0.1:7000/upload/product/mainimage/1796926506479500.jpg"
-                                                            class="img-fluid" alt="">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-8">
-                                                    <div>
-                                                        <p class="mb-0">Barisieur™ Tea & Coffee Alarm Clock</p>
-                                                        <p class="mb-0"
-                                                            style="padding: 5px;display: flex;justify-content: space-between;">
-                                                            <span class="pe-5">1 X TK 640</span>
-                                                            <span>
-                                                                <a href="javascript:void()">
-                                                                    <i class="fa-solid fa-trash text-danger"></i>
-                                                                </a>
-                                                            </span>
-                                                        </p>
-                                                    </div>
-                                                </div>
+
+                                            <div id="miniCart">
+
                                             </div>
-                                            {{-- Cart Actions --}}
+
+                                            {{-- Cart Items --}}
+
                                         </div>
                                     </div>
+
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <div class="total-text d-flex justify-content-between pt-2">
+
+                                            <div class="total-text d-flex justify-content-between pt-2 mb-3">
                                                 <span class="f-800 cod__black-color">Total Price</span>
                                                 <span class="f-800 cod__black-color">Tk <span
                                                         id="cartSubTotal"></span></span>
                                             </div>
+
                                             <div class="d-flex justify-content-between">
-                                                <a href="{{ route('template.one.view.cart') }}"
+
+                                                <a href="{{ route('template.one.checkout') }}"
                                                     class="checkout main-btn">Checkout</a>
+
                                                 <a href="{{ route('template.one.view.cart') }}"
                                                     class="viewcart main-btn">View
                                                     Cart</a>
+
                                             </div>
+
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </li>
+
                     </ul>
                 </div>
             </div>
