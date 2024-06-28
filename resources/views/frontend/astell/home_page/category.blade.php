@@ -52,6 +52,7 @@
             </div>
 
             <div class="wr">
+
                 @foreach ($homepage->categoryHomeTabOne->products as $key => $category_product_one)
                     <strong class="tmpProductInfo tmpProductInfo_{{ $key }}"
                         style="{{ $key == '0' ? '' : 'display:none;' }}">{{ $category_product_one->product_name }}</strong>
@@ -63,7 +64,9 @@
 
                     <div class="btn-group tmpProductInfo tmpProductInfo_{{ $key }}"
                         style="{{ $key == '0' ? '' : 'display:none;' }}">
-                        <a href="" class="lnk-ty1">Find store</a>
+
+                        <a href="{{ url('product' . '/' . $category_product_one->id . '/' . $category_product_one->product_slug) }}" class="lnk-ty1">Find store</a>
+
                     </div>
                 @endforeach
 
@@ -91,8 +94,7 @@
     @endif
     {{-- First Category End  --}}
 
-
-
+    {{-- 2nd Category Start  --}}
     @if (count($homepage->categoryHomeTabTwo->products) > 0)
     <div class="tab-cont n2" style="background-image: url('images/%40p_bg01.png')">
         <div class="wrap">
@@ -131,7 +133,7 @@
 
                     <div class="btn-group tmpProductInfo tmpProductInfo_{{ $key }}"
                         style="{{ $key == '0' ? '' : 'display:none;' }}">
-                        <a href="" class="lnk-ty1">Find store</a>
+                        <a href="{{ url('product' . '/' . $category_product_two->id . '/' . $category_product_two->product_slug) }}" class="lnk-ty1">Find store</a>
                     </div>
                 @endforeach
 
@@ -157,7 +159,9 @@
         </div>
     </div>
     @endif
+    {{-- 2nd Category End  --}}
 
+    {{-- 3rd Category Start  --}}
     @if (count($homepage->categoryHomeTabThree->products) > 0)
     <div class="tab-cont n3" style="background-image: url('images/%40p_bg01.png')">
         <div class="wrap">
@@ -196,7 +200,7 @@
 
                     <div class="btn-group tmpProductInfo tmpProductInfo_{{ $key }}"
                         style="{{ $key == '0' ? '' : 'display:none;' }}">
-                        <a href="" class="lnk-ty1">Find store</a>
+                        <a href="{{ url('product' . '/' . $category_product_three->id . '/' . $category_product_three->product_slug) }}" class="lnk-ty1">Find store</a>
                     </div>
                 @endforeach
 
@@ -222,7 +226,9 @@
         </div>
     </div>
     @endif
+    {{-- 3rd Category End  --}}
 
+    {{-- $th Category Start  --}}
     @if (count($homepage->categoryHomeTabFour->products) > 0)
     <div class="tab-cont n4" style="background-image: url('images/%40p_bg01.png')">
         <div class="wrap">
@@ -261,7 +267,7 @@
 
                     <div class="btn-group tmpProductInfo tmpProductInfo_{{ $key }}"
                         style="{{ $key == '0' ? '' : 'display:none;' }}">
-                        <a href="" class="lnk-ty1">Find store</a>
+                        <a href="{{ url('product' . '/' . $category_product_four->id . '/' . $category_product_four->product_slug) }}" class="lnk-ty1">Find store</a>
                     </div>
                 @endforeach
 
@@ -287,30 +293,7 @@
         </div>
     </div>
     @endif
+    {{-- $th Category End  --}}
 
 </section>
 
-{{-- @push('scripts')
-    <script>
-        $(document).ready(function() {
-            // Tab functionality
-            document.querySelectorAll('.tab-ty ul li a').forEach(function(tab, index) {
-                tab.addEventListener('click', function(event) {
-                    event.preventDefault();
-
-                    // Remove 'on' class from all tab links and tab contents
-                    document.querySelectorAll('.tab-ty ul li a').forEach(function(el) {
-                        el.classList.remove('on');
-                    });
-                    document.querySelectorAll('.tab-cont').forEach(function(el) {
-                        el.classList.remove('on');
-                    });
-
-                    // Add 'on' class to clicked tab link and corresponding tab content
-                    tab.classList.add('on');
-                    document.querySelector('.tab-cont.n' + (index + 1)).classList.add('on');
-                });
-            });
-        });
-    </script>
-@endpush --}}

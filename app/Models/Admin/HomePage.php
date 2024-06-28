@@ -10,6 +10,8 @@ class HomePage extends Model
     use HasFactory;
     protected $guarded = [];
 
+    
+
     public function categoryHomeTabOne()
     {
         return $this->belongsTo(Category::class,'category_tab_one_id','id');
