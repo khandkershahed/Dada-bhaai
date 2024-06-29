@@ -606,13 +606,13 @@ class TemplateOneController extends Controller
     //GetCompare
     public function GetCompare()
     {
-        $carts = Cart::instance('compare')->content()->take(4); // Limiting to 3 products
-        $cartQty = Cart::instance('compare')->count();
+        $cartCompare = Cart::instance('compare')->content()->take(4); // Limiting to 3 products
+        $cartCompareQty = Cart::instance('compare')->count();
         $cartTotal = Cart::instance('compare')->total();
 
         return response()->json(array(
-            'carts' => $carts,
-            'cartQty' => $cartQty,
+            'cartCompare' => $cartCompare,
+            'cartCompareQty' => $cartCompareQty,
             'cartTotal' => $cartTotal,
         ));
     }

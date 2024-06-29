@@ -272,7 +272,7 @@
                             <div class="mb-0 fw-bolder text-black d-flex justify-content-between align-items-center"
                                 style="border-bottom: 1px solid #ccc;">
                                 <p style="color: black;" class="fw-bold mb-0">Availability</p>
-                                <p class="fw-bold text-success mb-0">In Stock</p>
+                                {{-- <p class="fw-bold text-success mb-0">In Stock</p> --}}
                             </div>
                             <div class="price mt-15 mb-20">
 
@@ -361,7 +361,7 @@
 
                                 <div id="miniCartRelated">
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -381,9 +381,14 @@
                             class="mt-0 add-link f-700 grenadier-color checkout main-btn text-center w-50 mr-1">+ Add
                             Cart</a>
 
-                        <a type="submit" style="cursor: pointer" onclick="buyToCartOne()"
+                        <a href="{{ route('template.one.view.cart') }}"
+                            class="ml-3 mt-0 add-link f-700 grenadier-color checkout main-btn text-center w-50 ml-1">View
+                            Cart
+                        </a>
+
+                        {{-- <a type="submit" style="cursor: pointer" onclick="buyToCartOne()"
                             class="ml-3 mt-0 add-link f-700 grenadier-color checkout main-btn text-center w-50 ml-1">+ Buy
-                            Now</a>
+                            Now</a> --}}
 
                     </div>
 
