@@ -12,13 +12,28 @@
             border: 1px solid #c1c1c1;
         }
 
+        .page-link {
+            position: relative;
+            display: block;
+            padding: 0rem;
+            margin-left: -1px;
+            line-height: 1.25;
+            color: #000000;
+            background-color: transparent;
+            border: none;
+            font-size: 14px;
+        }
+        .page-item.disabled .page-link {
+            background-color: transparent;
+        }
+
         .page-item.active {
             background-color: #ef373e;
             border: 1px solid #ef373e;
         }
 
         .page-item.active a {
-            color: #ffff;
+            color: #000000;
         }
     </style>
     <nav aria-label="Page Navigation">

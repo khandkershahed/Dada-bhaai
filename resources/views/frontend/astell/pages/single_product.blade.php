@@ -1,7 +1,5 @@
 @extends('frontend.astell.frontend_dashboard_astell')
 @section('index_astell')
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
     {{-- @if (!empty($sproducts)) --}}
     <main class="sub">
@@ -54,7 +52,8 @@
                 <h1 class="w-25" style="font-size: 50px;width: 31%;"> {{ $product->product_name }} </h1>
 
                 <div class="btn-group tmpProductInfo tmpProductInfo_0 mt-5" style="">
-                    <a type="submit" style="cursor:pointer;" class="lnk-ty1 add_to_cart_btn_product_astell" data-product_id="{{ $product->id }}" style="margin-top: 4rem;">Add To Cart</a>
+                    <a type="submit" style="cursor:pointer;" class="lnk-ty1 add_to_cart_btn_product_astell"
+                        data-product_id="{{ $product->id }}" style="margin-top: 4rem;">Add To Cart</a>
                 </div>
 
                 <div class="scroll-icon">
@@ -266,7 +265,7 @@
         {{-- Row Nine Area End  --}}
 
 
-        
+
 
         {{-- Row Area Ten & Eleven Start --}}
         @if (
@@ -323,8 +322,7 @@
         {{-- Twelve Area Start  --}}
         <section class="detail-group9 v3 scrollAni n9">
             <div class="wrap">
-
-                <div class="box">
+                <div class="" style="font-size: 20px;">
                     <p>
                         {!! $sproducts->row_twelve_description !!}
                     </p>
@@ -761,4 +759,74 @@
 @endsection
 
 @push('scripts')
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
+    </script>
+
+    {{-- add_to_cart_btn_product --}}
+    <script>
+        $('.add_to_cart_btn_product_astell').click(function() {
+
+            var product_id = $(this).data('product_id');
+            //var qty = $(this).closest('.d-flex').find('.qty-input').val();
+
+
+            $.ajax({
+
+                type: "POST",
+                dataType: 'json',
+                url: '/product-store-cart-product',
+
+                data: {
+                    product_id: product_id,
+                    // qty: qty,
+                },
+
+                success: function(data) {
+
+                    $('.cart_icon').removeClass('d-none');
+
+                    miniCart();
+                    miniCartRelated();
+
+                    // Start Message
+
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                    if ($.isEmptyObject(data.error)) {
+
+                        Toast.fire({
+                            type: 'success',
+                            icon: 'success',
+                            title: data.success,
+                        })
+
+                        // window.location.href = '/template.one.view.cart';
+
+                    } else {
+
+                        Toast.fire({
+                            type: 'error',
+                            icon: 'error',
+                            title: data.error,
+                        })
+                    }
+
+                    // End Message
+                }
+
+            })
+
+        })
+    </script>
+    {{-- add_to_cart_btn_product --}}
 @endpush
