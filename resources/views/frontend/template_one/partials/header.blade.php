@@ -4,7 +4,7 @@
             $site = App\Models\Sites::find(1);
         @endphp
         <nav class="navbar navbar-expand-lg navbar-transparent">
-            <a class="navbar-brand" href="{{ route('index') }}">
+            <a class="navbar-brand py-3 pr-4" href="{{ route('index') }}">
                 {{-- <img class="" width="200px" src="{{ asset('upload/logo_black/' . $site->logo_black) }}" alt="" /> --}}
                 <img class="" width="200px"
                     src="{{ asset('upload/logo_black/' . $site->logo_black) }}" alt="" />
@@ -33,7 +33,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="row">
-                                        <div class="col-lg-2 px-0">
+                                        <div class="col-lg-3 px-0">
                                             <ul class="nav nav-tabs flex-column border-0" id="myTab" role="tablist">
                                                 @foreach ($categorys as $key => $category)
                                                     <li class="nav-item">
@@ -46,7 +46,7 @@
                                                 @endforeach
                                             </ul>
                                         </div>
-                                        <div class="col-lg-10 px-0">
+                                        <div class="col-lg-9 px-0">
                                             <div class="tab-content px-3 pt-2" id="myTabContent">
                                                 @foreach ($categorys as $key => $category)
                                                     <div class="tab-pane fade show {{ $key == 0 ? 'active' : '' }}"
