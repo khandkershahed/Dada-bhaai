@@ -11,6 +11,7 @@
     @endphp
 
     <div class="common-sidebar shop-banner-sidebar">
+        
         {{-- Category  --}}
         <div class="common-cat">
             <div class="side-title">
@@ -23,9 +24,9 @@
                     {{-- Multi Accordion End --}}
 
                     @foreach ($categorys as $category)
-                        <div class="card-header {{ optional($catwiseproduct)->id == $category->id ? 'mark-cat' : 'collapsed' }}  pl-0"
+                        <div class="card-header pl-0 {{ optional($catwiseproduct)->id == $category->id ? 'mark-cat' : 'collapsed' }}"
                             data-toggle="collapse" data-parent="#accordion"
-                            aria-expanded="{{ optional($catwiseproduct)->id == $category->id ? 'true' : 'false' }}"
+                            aria-expanded="{{ optional($catwiseproduct)->id == $category->id ? 'true' : '' }}"
                             href="#cat{{ $category->id }}">
                             <a
                                 class="card-title {{ optional($catwiseproduct)->id == $category->id ? 'mark-cat' : '' }}">

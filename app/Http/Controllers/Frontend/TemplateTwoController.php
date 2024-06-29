@@ -10,6 +10,7 @@ use App\Models\Admin\MultiImg;
 use App\Models\Admin\Product;
 use App\Models\Admin\ProductSinglePage;
 use Illuminate\Http\Request;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class TemplateTwoController extends Controller
 {
@@ -133,6 +134,84 @@ class TemplateTwoController extends Controller
             ->paginate(16);
 
         return view('frontend.astell.pages.dadabhaai_product_search', compact('products', 'item'));
+    }
+
+    //AddToCartProductHome
+    public function AddToCartProductHomeAstell(Request $request)
+    {
+        $id = $request->product_id;
+
+        $product = Product::findOrFail($id);
+
+        $cartItem = Cart::search(function ($cartItem, $rowId) use ($id) {
+            return $cartItem->id === $id;
+        });
+
+        if ($cartItem->isNotEmpty()) {
+
+            return response()->json(['error' => 'This Product Has Already Added']);
+        }
+
+        if ($product->price_status == 'rfq') {
+
+            Cart::add([
+
+                'id' => $id,
+
+                'name' => $product->product_name,
+                'qty' => 1,
+                'price' => $product->sas_price,
+                'weight' => 1,
+
+                'options' => [
+                    'image' => $product->product_image,
+                    // 'color' => $request->color,
+                ],
+
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+
+        } elseif ($product->price_status == 'offer_price') {
+
+            Cart::add([
+
+                'id' => $id,
+
+                'name' => $product->product_name,
+                'qty' => 1,
+                'price' => $product->discount_price,
+                'weight' => 1,
+
+                'options' => [
+                    'image' => $product->product_image,
+                    // 'color' => $request->color,
+                ],
+
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        } else {
+
+            Cart::add([
+
+                'id' => $id,
+
+                'name' => $product->product_name,
+                'qty' => 1,
+                'price' => $product->price,
+                'weight' => 1,
+
+                'options' => [
+                    'image' => $product->product_image,
+                    // 'color' => $request->color,
+                ],
+
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        }
+
     }
 
 }
