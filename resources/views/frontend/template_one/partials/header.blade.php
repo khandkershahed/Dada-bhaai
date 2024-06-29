@@ -7,7 +7,7 @@
             <a class="navbar-brand" href="{{ route('index') }}">
                 {{-- <img class="" width="200px" src="{{ asset('upload/logo_black/' . $site->logo_black) }}" alt="" /> --}}
                 <img class="" width="200px"
-                    src="https://dadabhaai.com/upload/logo_black/202405200404Dadabhai%20Logo.png" alt="" />
+                    src="{{ asset('upload/logo_black/' . $site->logo_black) }}" alt="" />
             </a>
 
             <!-- Categories Dropdown -->
@@ -167,8 +167,9 @@
                                                     @php
                                                         $brand = App\Models\Brand::find($brandId);
                                                     @endphp
+
                                                     @if ($brand)
-                                                        <li><a href="javascript:;">{{ $brand->brand_name }}</a></li>
+                                                        <li><a href="{{ url('product/brand/' . $brand->id . '/' . $brand->brand_slug) }}">{{ $brand->brand_name }}</a></li>
                                                     @endif
                                                 @empty
                                                     <p>No brand available for this category.</p>
@@ -274,10 +275,10 @@
                                             </a>
                                         </form>
                                         <hr class="mb-2 mt-3">
-                                        <p class="text-muted pl-3">First time here? <a
+                                        {{-- <p class="text-muted pl-3">First time here? <a
                                                 href="{{ route('template.one.login') }}" class="text-danger">Sign
                                                 Up</a>
-                                        </p>
+                                        </p> --}}
                                         <a class="dropdown-item" href="{{ route('template.one.dashboard') }}"><i
                                                 class="fal fa-user pr-2"></i>
                                             My Dashboard</a>

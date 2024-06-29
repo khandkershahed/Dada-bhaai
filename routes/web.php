@@ -1,11 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
-use App\Http\Controllers\Frontend\TemplateOneCartController;
 use App\Http\Controllers\Frontend\TemplateOneController;
 use App\Http\Controllers\Frontend\TemplateTwoController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Frontend\TemplateOneCartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,6 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', [IndexController::class, 'Index'])->name('index');
-
 Route::middleware(['auth', 'verified'])->group(function () {
 
     // //User Dashboard
@@ -233,6 +233,7 @@ Route::controller(TemplateTwoController::class)->group(function () {
 
     //All Product
     Route::get('/all-product-dadabhaai', 'TemplateTwoAllProduct')->name('template.two.all.product');
+    
 
     //Faq
     Route::get('/faq-dadabhaai', 'TemplateTwoFaq')->name('template.two.faq');

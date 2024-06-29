@@ -29,7 +29,14 @@
                                     <li><a href="{{ route('template.one.about') }}">About Us</a></li>
                                     <li><a href="{{ route('template_one.contact') }}">Contact Us</a></li>
                                     <li><a href="{{ route('template.one.term') }}">Terms</a></li>
-                                    <li><a href="{{ route('template.one.login') }}">Login</a></li>
+
+                                    @if (Auth::user())
+                                        <li><a href="{{ route('template.one.dashboard') }}">DashBoard</a></li>
+                                    @else
+                                        <li><a href="{{ route('template.one.login') }}">Login</a></li>
+                                    @endif
+
+
 
                                 </ul>
                             </div>

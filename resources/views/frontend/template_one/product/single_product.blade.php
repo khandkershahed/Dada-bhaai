@@ -279,6 +279,7 @@
 
                                     <div class="col-lg-6">
 
+
                                         @if ($product->price_status == 'rfq')
                                             <h5 class=" mb-0 fw-bold">
                                                 <span id="productPrice"
@@ -286,7 +287,8 @@
                                                     {{ $product->sas_price }}</span>
                                             </h5>
                                         @elseif ($product->price_status == 'offer_price')
-                                            <p class="mb-0"><del>TK <span id="originalPrice">{{ $product->price }}</span></del>
+                                            <p class="mb-0"><del>TK <span
+                                                        id="originalPrice">{{ $product->price }}</span></del>
                                             </p>
                                             <h5 class=" mb-0 fw-bold">Tk
                                                 <span id="productPrice"
@@ -305,24 +307,34 @@
                                     <div class="col-lg-6">
                                         <form action="" class="mb-0">
                                             <div class="field">
+
                                                 <label class="mb-0">Quantity:</label>
-                                                <div class="number d-flex align-items-center">
+
+                                                <div class="number d-flex align-items-center main_qty">
                                                     <p class="minus mb-0 px-2">-</p>
-                                                    <input type="text" class="mb-0 w-50" name=""
-                                                        value="1" min="1" id="dqty">
+
+                                                    <input type="text" class="mb-0 w-50 qty-input-product" name=""
+                                                        value="1" min="1" autocomplete="off"
+                                                        id="dqty">
+                                                        
                                                     <p class="plus mb-0 px-2">+</p>
                                                 </div>
+
                                             </div>
                                         </form>
                                     </div>
 
                                 </div>
 
-                                <div class="d-flex align-items-center mt-3 product--footer__deals mb-4 justify-content-center">
+                                <div
+                                    class="d-flex align-items-center mt-3 product--footer__deals mb-4 justify-content-center">
+
                                     <input type="hidden" id="oneproduct_id" value="{{ $product->id }}">
+
                                     <a type="submit" style="cursor: pointer" onclick="addToCartOne()"
                                         class="mt-0 add-link f-700 grenadier-color">+ Add
                                         Cart</a>
+
                                     <a type="submit" style="cursor: pointer" onclick="buyToCartOne()"
                                         class="ml-3 mt-0 add-link f-700 grenadier-color">+ Buy
                                         Now</a>
@@ -335,47 +347,14 @@
                                 <p class="mb-0">Accessories</p>
 
                                 <div id="miniCartRelated">
-
-                                    {{-- <ul style="list-style-type: circle !important;">
-                                        
-                                        <li class="d-flex mb-2 align-items-center">
-
-                                            <span class="pr-2">1.</span>
-
-                                            <input type="text" class="form-control form-control-sm w-100 rounded-0"
-                                                name="" value="${value.name}" id="" placeholder="Blue Color Headset">
-
-                                            <input type="number" class="form-control form-control-sm w-25 rounded-0"
-                                                name="" value="${value.qty}" placeholder="1">
-
-                                        </li>
-
-                                    </ul> --}}
-
-                                    {{-- `<ul style="list-style-type: circle !important;">
-                                        
-                                        <li class="d-flex mb-2 align-items-center">
-            
-                                            <span class="pr-2">${serialNumber++}.</span>
-            
-                                            <input type="text" class="form-control form-control-sm w-100 rounded-0"
-                                                            name="" value="${value.name.length > 20 ? value.name.substring(0, 20) + '.......' : value.name}" id="" placeholder="Blue Color Headset">
-            
-                                            <input type="number" class="form-control form-control-sm w-25 rounded-0"
-                                                            name="" value="${value.qty}" placeholder="1">
-            
-                                        </li>
-            
-                                    </ul>` --}}
-
                                 </div>
                             </div>
                         </div>
                     </div>
                     @if (!empty($cartQty) && $cartQty > 0)
-                        <div id="cartButtons"
-                            class="d-flex align-items-center justify-content-between px-4">
-                            <a href="{{ route('template.one.view.cart') }}" class="checkout main-btn text-center w-50 mr-1">View
+                        <div id="cartButtons" class="d-flex align-items-center justify-content-between px-4">
+                            <a href="{{ route('template.one.view.cart') }}"
+                                class="checkout main-btn text-center w-50 mr-1">View
                                 Cart</a>
                             <a href="{{ route('template.one.checkout') }}"
                                 class="checkout main-btn text-center w-50 ml-1">CheckOut</a>
@@ -501,7 +480,8 @@
                                     <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
                                         class="image">
 
-                                        <img src=" {{ asset($product->product_image) }}"
+                                        <img title="{{ $product->product_name }}"
+                                            src=" {{ asset($product->product_image) }}"
                                             data-tip="{{ $product->product_name }}"
                                             style="width:100%; height: 300px;">
                                     </a>
@@ -524,8 +504,8 @@
                                         <span><a class="text-muted"
                                                 href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ $product->brand->brand_name }}</a>
                                         </span>
-                                        <h3 class="title font-weight-bold"><a
-                                                href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ substr($product->product_name, 0, 18) }}</a>
+                                        <h3 title="{{ $product->product_name }}" class="title font-weight-bold"><a
+                                                href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ substr($product->product_name, 0, 25) }}</a>
                                         </h3>
                                     </div>
                                     <div class="price font-weight-bold pr-2">
@@ -597,7 +577,7 @@
     });
 </script>
 
-<script>
+{{-- <script>
     document.addEventListener("DOMContentLoaded", function() {
         const minusButton = document.querySelector('.minus');
         const plusButton = document.querySelector('.plus');
@@ -628,6 +608,57 @@
                 let newPrice = unitPrice * quantity;
                 productPriceElement.innerText = 'Tk ' + newPrice.toFixed(2);
             }
+        }
+    });
+</script> --}}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var productPriceElement = document.getElementById('productPrice');
+        var originalPriceElement = document.getElementById('originalPrice');
+        var priceStatus = '{{ $product->price_status }}';
+        var basePrice = '{{ $product->price }}';
+        var discountPrice = '{{ $product->discount_price }}';
+
+        // Initial price display based on price status
+        updatePrice();
+
+        // Event listener for plus button
+        document.querySelector('.plus').addEventListener('click', function() {
+            var quantityInput = document.getElementById('dqty');
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+            updatePrice();
+        });
+
+        // Event listener for minus button
+        document.querySelector('.minus').addEventListener('click', function() {
+            var quantityInput = document.getElementById('dqty');
+            if (parseInt(quantityInput.value) > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+                updatePrice();
+            }
+        });
+
+        // Function to update price based on quantity and price status
+        function updatePrice() {
+            var quantity = parseInt(document.getElementById('dqty').value);
+            var totalPrice = 0;
+
+            switch (priceStatus) {
+                case 'rfq':
+                    totalPrice = quantity * '{{ $product->sas_price }}';
+                    break;
+                case 'offer_price':
+                    totalPrice = quantity * '{{ $product->discount_price }}';
+                    break;
+                case 'price':
+                    totalPrice = quantity * '{{ $product->price }}';
+                    break;
+                default:
+                    break;
+            }
+
+            productPriceElement.innerText = 'Tk ' + totalPrice.toFixed(2);
         }
     });
 </script>

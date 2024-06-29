@@ -204,7 +204,7 @@ class TemplateOneCartController extends Controller
 
                 'id' => $id,
                 'name' => $request->product_name,
-                'qty' => $request->quantity,
+                'qty' => $request->qty,
                 'price' => $product->sas_price,
                 'weight' => 1,
                 'options' => [
@@ -221,7 +221,7 @@ class TemplateOneCartController extends Controller
 
                 'id' => $id,
                 'name' => $request->product_name,
-                'qty' => $request->quantity,
+                'qty' => $request->qty,
                 'price' => $product->discount_price,
                 'weight' => 1,
                 'options' => [
@@ -237,7 +237,7 @@ class TemplateOneCartController extends Controller
 
                 'id' => $id,
                 'name' => $request->product_name,
-                'qty' => $request->quantity,
+                'qty' => $request->qty,
                 'price' => $product->price,
                 'weight' => 1,
                 'options' => [
@@ -309,7 +309,7 @@ class TemplateOneCartController extends Controller
                 'id' => $id,
 
                 'name' => $product->product_name,
-                'qty' => $request->qty,
+                'qty' => 1,
                 'price' => $product->sas_price,
                 'weight' => 1,
 
@@ -329,7 +329,7 @@ class TemplateOneCartController extends Controller
                 'id' => $id,
 
                 'name' => $product->product_name,
-                'qty' => $request->qty,
+                'qty' => 1,
                 'price' => $product->discount_price,
                 'weight' => 1,
 
@@ -348,7 +348,7 @@ class TemplateOneCartController extends Controller
                 'id' => $id,
 
                 'name' => $product->product_name,
-                'qty' => $request->qty,
+                'qty' => 1,
                 'price' => $product->price,
                 'weight' => 1,
 

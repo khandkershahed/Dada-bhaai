@@ -60,6 +60,8 @@
 </script>
 
 {{-- Releted Accesories --}}
+
+
 <script>
     $(document).ready(function() {
         $(".releted_accessories").slick({
@@ -487,7 +489,11 @@
 
         var product_name = $('#dpname').text();
         var id = $('#oneproduct_id').val();
-        var quantity = $('#dqty').val();
+        // var quantity = $('#dqty').val();
+
+        var qty = $('.qty-input-product').val();
+
+        
 
         var color = $('#dcolor option:selected').text();
 
@@ -498,7 +504,7 @@
             url: '/product/store/' + id,
 
             data: {
-                quantity: quantity,
+                qty: qty,
                 product_name: product_name,
                 color: color,
             },
@@ -613,6 +619,7 @@
 
         var product_id = $(this).data('product_id');
         var qty = $(this).closest('.d-flex').find('.qty-input').val();
+        
 
         $.ajax({
 

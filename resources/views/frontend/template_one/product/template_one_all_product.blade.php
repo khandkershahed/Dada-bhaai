@@ -191,7 +191,7 @@
                                         <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
                                             class="image">
 
-                                            <img src=" {{ asset($product->product_image) }}"
+                                            <img title="{{ $product->product_name }}" src=" {{ asset($product->product_image) }}"
                                                 data-tip="{{ $product->product_name }}"
                                                 style="width:100%; height: 300px;">
                                         </a>
@@ -214,8 +214,8 @@
                                             <span><a class="text-muted"
                                                     href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ $product->brand->brand_name }}</a>
                                             </span>
-                                            <h3 class="title font-weight-bold"><a
-                                                    href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ substr($product->product_name, 0, 18) }}</a>
+                                            <h3 title="{{ $product->product_name }}" class="title font-weight-bold"><a
+                                                    href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ substr($product->product_name, 0, 25) }}</a>
                                             </h3>
                                         </div>
                                         <div class="price font-weight-bold pr-2">
