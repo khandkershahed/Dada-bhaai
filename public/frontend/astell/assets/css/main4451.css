@@ -99,8 +99,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,time,figure,article,
     vertical-align: baseline;
     font-family:'Roboto', 'NotoSansKR', sans-serif;
     box-sizing:border-box;
-    font-size:15px;
-    font-weight:400;
+    
     color:#000;
     word-break: keep-all;
 }

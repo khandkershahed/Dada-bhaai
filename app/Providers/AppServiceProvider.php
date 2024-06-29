@@ -25,6 +25,6 @@ class AppServiceProvider extends ServiceProvider
         if (Schema::hasTable('sites')) {
             View::share('site', Sites::first());
         }
-        
+
     }
 }
