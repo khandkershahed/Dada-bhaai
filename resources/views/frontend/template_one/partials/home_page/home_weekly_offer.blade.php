@@ -56,7 +56,7 @@
 
                                                         <div class="products--deals__content mb-35">
                                                             <h6 class="f-700 mb-20">
-                                                                <a href="javascript:;"
+                                                                <a href="javascript:void(0)"
                                                                     id="opname">{{ $offer_cat->offer->products->product_name }}</a>
                                                             </h6>
 

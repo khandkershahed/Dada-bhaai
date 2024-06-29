@@ -60,6 +60,8 @@
 </script>
 
 {{-- Releted Accesories --}}
+
+
 <script>
     $(document).ready(function() {
         $(".releted_accessories").slick({
@@ -128,7 +130,7 @@
             url: '/add-to-compare',
 
             success: function(data) {
-                //compareRemove();
+                compare();
 
                 // Start Message
 
@@ -147,7 +149,7 @@
                         title: data.success,
                     })
 
-                    window.location.href = '/compare-product';
+                    // window.location.href = '/compare-product';
 
                 } else {
 
@@ -165,6 +167,8 @@
     })
 </script>
 
+
+
 {{-- Load Compare --}}
 <script>
     function compare() {
@@ -172,18 +176,25 @@
             type: 'GET',
             dataType: 'json',
             url: '/get-compare',
+
             success: function(response) {
+
+                $('#cartCompareQty').text(response.cartCompareQty);
+
                 var tableHtml = "";
 
-                if (response.carts.length === 0) {
+                if (response.cartCompare.length === 0) {
+                    
                     tableHtml = `
                         <div>
                             <img class="img-fluid" style="width: 50%;" src="https://i.ibb.co/xzzr9zs/f59ed80d5c527e2461d8ba49adc36160.gif" alt="">
                         </div>
                         <h3 class="">Compare List is Empty</h3>
                     `;
+
+                    $('#compareLink').hide();
                 } else {
-                    $.each(response.carts, function(key, value) {
+                    $.each(response.cartCompare, function(key, value) {
                         tableHtml += `
                             <div class="col-lg-3 px-0" style="border-top: 1px solid #dee2e6;border-bottom: 1px solid #dee2e6;">
                                 <div class="top-info">
@@ -199,6 +210,8 @@
                                 </ul>
                             </div>`;
                     });
+
+                    $('#compareLink').show(); // Show the comparison link when list has items
                 }
 
                 $('#compare').html(tableHtml);
@@ -208,6 +221,8 @@
 
     compare();
 </script>
+
+
 
 
 {{-- Add Cart Compare --}}
@@ -428,7 +443,9 @@
 
         var product_name = $('#dpname').text();
         var id = $('#oneproduct_id').val();
-        var quantity = $('#dqty').val();
+        // var quantity = $('#dqty').val();
+
+        var qty = $('.qty-input-product').val();
 
         $.ajax({
 
@@ -437,7 +454,7 @@
             url: '/product/buy/store/' + id,
 
             data: {
-                quantity: quantity,
+                qty: qty,
                 product_name: product_name,
             },
 
@@ -487,7 +504,11 @@
 
         var product_name = $('#dpname').text();
         var id = $('#oneproduct_id').val();
-        var quantity = $('#dqty').val();
+        // var quantity = $('#dqty').val();
+
+        var qty = $('.qty-input-product').val();
+
+
 
         var color = $('#dcolor option:selected').text();
 
@@ -498,7 +519,7 @@
             url: '/product/store/' + id,
 
             data: {
-                quantity: quantity,
+                qty: qty,
                 product_name: product_name,
                 color: color,
             },
@@ -613,6 +634,7 @@
 
         var product_id = $(this).data('product_id');
         var qty = $(this).closest('.d-flex').find('.qty-input').val();
+
 
         $.ajax({
 
@@ -809,15 +831,25 @@
 
                         `<ul style="list-style-type: circle !important;">
                                         
-                            <li class="d-flex mb-2 align-items-center">
+                            <li class="d-flex mb-2 align-items-center ml-0 row text-center">
+                                <div class="col-lg-1 px-0"><span>${serialNumber++}.</span></div>
+                                <div class="col-lg-4 px-0">
+                                    <span class="" title="${value.name}">${value.name.length > 10 ? value.name.substring(0, 10) + '' : value.name}</span>
+                                </div>
+                                <div class="col-lg-2 px-0">
+                                    <span class="">X ${value.qty}</span>
+                                </div>
+                                <div class="col-lg-3 px-0">
+                                    <span class=""> = ${value.price}</span>
+                                </div>
+                                <div class="col-lg-2 px-0">
 
-                                <span class="pr-2">${serialNumber++}.</span>
+                                    <a type="submit" style="cursor:pointer" class="" id="${value.rowId}" onclick="miniCartRelatedRemove(this.id)">
 
-                                <input type="text" class="form-control form-control-sm w-100 rounded-0"
-                                                name="" value="${value.name.length > 20 ? value.name.substring(0, 20) + '.......' : value.name}" id="" placeholder="Blue Color Headset">
+                                    <i class="fa-solid fa-trash text-danger"></i>  
 
-                                <input type="number" class="form-control form-control-sm w-25 rounded-0"
-                                                name="" value="${value.qty}" min="1">
+                                    </a>
+                                </div>
 
                             </li>
 
@@ -1039,6 +1071,7 @@
             type: 'GET',
             url: '/product/mini-cart',
             dataType: 'json',
+
             success: function(response) {
                 // console.log(response)
 

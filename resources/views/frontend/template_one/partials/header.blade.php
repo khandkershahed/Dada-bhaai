@@ -4,10 +4,10 @@
             $site = App\Models\Sites::find(1);
         @endphp
         <nav class="navbar navbar-expand-lg navbar-transparent">
-            <a class="navbar-brand" href="{{ route('index') }}">
+            <a class="navbar-brand py-3 pr-4" href="{{ route('index') }}">
                 {{-- <img class="" width="200px" src="{{ asset('upload/logo_black/' . $site->logo_black) }}" alt="" /> --}}
                 <img class="" width="200px"
-                    src="https://dadabhaai.com/upload/logo_black/202405200404Dadabhai%20Logo.png" alt="" />
+                    src="{{ asset('upload/logo_black/' . $site->logo_black) }}" alt="" />
             </a>
 
             <!-- Categories Dropdown -->
@@ -33,7 +33,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="row">
-                                        <div class="col-lg-2 px-0">
+                                        <div class="col-lg-3 px-0">
                                             <ul class="nav nav-tabs flex-column border-0" id="myTab" role="tablist">
                                                 @foreach ($categorys as $key => $category)
                                                     <li class="nav-item">
@@ -46,7 +46,7 @@
                                                 @endforeach
                                             </ul>
                                         </div>
-                                        <div class="col-lg-10 px-0">
+                                        <div class="col-lg-9 px-0">
                                             <div class="tab-content px-3 pt-2" id="myTabContent">
                                                 @foreach ($categorys as $key => $category)
                                                     <div class="tab-pane fade show {{ $key == 0 ? 'active' : '' }}"
@@ -167,8 +167,9 @@
                                                     @php
                                                         $brand = App\Models\Brand::find($brandId);
                                                     @endphp
+
                                                     @if ($brand)
-                                                        <li><a href="javascript:;">{{ $brand->brand_name }}</a></li>
+                                                        <li><a href="{{ url('product/brand/' . $brand->id . '/' . $brand->brand_slug) }}">{{ $brand->brand_name }}</a></li>
                                                     @endif
                                                 @empty
                                                     <p>No brand available for this category.</p>
@@ -274,10 +275,10 @@
                                             </a>
                                         </form>
                                         <hr class="mb-2 mt-3">
-                                        <p class="text-muted pl-3">First time here? <a
+                                        {{-- <p class="text-muted pl-3">First time here? <a
                                                 href="{{ route('template.one.login') }}" class="text-danger">Sign
                                                 Up</a>
-                                        </p>
+                                        </p> --}}
                                         <a class="dropdown-item" href="{{ route('template.one.dashboard') }}"><i
                                                 class="fal fa-user pr-2"></i>
                                             My Dashboard</a>
@@ -329,6 +330,14 @@
                                 </a>
                             </li>
                         @endif
+
+                        <li class="" id="compareLink">
+                            <a class="wishlist" href="{{ route('compare.product') }}" style="font-size: 20px;">
+                                <i class="fas fa-random text-muted wishlist">
+                                    <span class="cart__count" id="cartCompareQty">0</span>
+                                </i>
+                            </a>
+                        </li>
 
                         <li>
                             <div class="dropdown">

@@ -77,7 +77,7 @@
 
                                         {{-- Edit Modal --}}
 
-                                        <a href="" data-bs-toggle="modal"
+                                        {{-- <a href="" data-bs-toggle="modal"
                                             data-bs-target="#editModal{{ $contact->id }}" class=""><i
                                                 class="bi bi-pencil-square fs-3 text-primary"></i></a>
 
@@ -208,7 +208,7 @@
                                                     </form>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                         <a href="{{ route('delete.contact', $contact->id) }}" class="ms-1"
                                             id="delete" title="Delete"><i
@@ -228,7 +228,7 @@
 
     <!-- Add Modal -->
 
-    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    {{-- <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
 
@@ -237,7 +237,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="{{ route('store.contact') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('send.message') }}" method="POST" enctype="multipart/form-data">
 
                     @csrf
 
@@ -337,7 +337,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     {{-- Data Table  --}}
     <script>

@@ -58,7 +58,7 @@
         @include('frontend.astell.partials.footer')
 
     </div>
-
+    
     @include('frontend.astell.partials.js_link')
 
 </body>

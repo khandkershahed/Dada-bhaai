@@ -29,7 +29,14 @@
                                     <li><a href="{{ route('template.one.about') }}">About Us</a></li>
                                     <li><a href="{{ route('template_one.contact') }}">Contact Us</a></li>
                                     <li><a href="{{ route('template.one.term') }}">Terms</a></li>
-                                    <li><a href="{{ route('template.one.login') }}">Login</a></li>
+
+                                    @if (Auth::user())
+                                        <li><a href="{{ route('template.one.dashboard') }}">DashBoard</a></li>
+                                    @else
+                                        <li><a href="{{ route('template.one.login') }}">Login</a></li>
+                                    @endif
+
+
 
                                 </ul>
                             </div>
@@ -62,7 +69,7 @@
                                 </script>
 
                                 <div class="fb-wrap">
-                                    <div class="fb-page" data-href="https://www.facebook.com/ngenitltd"
+                                    <div class="fb-page" data-href="https://www.facebook.com/dadavaai.shop"
                                         data-tabs="timeline" data-width="500" data-height="135"
                                         data-small-header="false" data-adapt-container-width="true"
                                         data-hide-cover="false" data-show-facepile="true"></div>
