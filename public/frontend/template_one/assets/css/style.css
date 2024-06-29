@@ -1353,6 +1353,7 @@ cart--header__middle.cart--header__two {
 .main-link-cat li a {
     padding: 8px 0px;
     color: #171616 !important;
+    font-size: 14px;
 }
 .nav-tabs .nav-item.show .main_cat_triger,
 .nav-tabs .main_cat_triger.active {
