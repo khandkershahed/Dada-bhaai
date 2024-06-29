@@ -34,3 +34,78 @@
 
 @stack('scripts')
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    })
+</script>
+
+{{-- add_to_cart_btn_product --}}
+<script>
+    $('.add_to_cart_btn_product_astell').click(function() {
+
+        var product_id = $(this).data('product_id');
+        //var qty = $(this).closest('.d-flex').find('.qty-input').val();
+
+
+        $.ajax({
+
+            type: "POST",
+            dataType: 'json',
+            url: '/product-store-cart-product',
+
+            data: {
+                product_id: product_id,
+                // qty: qty,
+            },
+
+            success: function(data) {
+
+                $('.cart_icon').removeClass('d-none');
+
+                miniCart();
+                miniCartRelated();
+
+                // Start Message
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success,
+                    })
+
+                    // window.location.href = '/template.one.view.cart';
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error,
+                    })
+                }
+
+                // End Message
+            }
+
+        })
+
+    })
+</script>
+{{-- add_to_cart_btn_product --}}

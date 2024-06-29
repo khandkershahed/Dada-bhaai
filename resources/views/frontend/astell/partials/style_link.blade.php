@@ -7,9 +7,12 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=3, user-scalable=yes" />
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>DadaBhaai</title>
 
-    <link rel="shortcut icon" href="{{ $site->favicon ? asset('upload/favicon/' . $site->favicon) : asset('upload/no_image.jpg') }}" />
+    <link rel="shortcut icon"
+        href="{{ $site->favicon ? asset('upload/favicon/' . $site->favicon) : asset('upload/no_image.jpg') }}" />
 
 
     <link rel="stylesheet" href="{{ asset('frontend/astell/assets/css/jquery-ui.css') }}" />

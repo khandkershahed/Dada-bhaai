@@ -254,4 +254,8 @@ Route::controller(TemplateTwoController::class)->group(function () {
     // Route for showing search results (GET request)
     Route::get('/product-search-results', 'showSearchResults')->name('product.search.results');
 
+    // Route for showing search results (GET request)
+    Route::post('/product-store-cart-product', 'AddToCartProductHomeAstell');
+
 });
+

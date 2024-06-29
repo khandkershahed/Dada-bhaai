@@ -53,8 +53,8 @@
 
                 <h1 class="w-25" style="font-size: 50px;width: 31%;"> {{ $product->product_name }} </h1>
 
-                <div class="btn-group tmpProductInfo tmpProductInfo_0" style="">
-                    <a href="#" class="lnk-ty1" style="margin-top: 4rem;">Add To Cart</a>
+                <div class="btn-group tmpProductInfo tmpProductInfo_0 mt-5" style="">
+                    <a type="submit" style="cursor:pointer;" class="lnk-ty1 add_to_cart_btn_product_astell" data-product_id="{{ $product->id }}" style="margin-top: 4rem;">Add To Cart</a>
                 </div>
 
                 <div class="scroll-icon">

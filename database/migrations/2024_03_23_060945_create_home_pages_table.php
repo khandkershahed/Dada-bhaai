@@ -79,6 +79,11 @@ return new class extends Migration
             $table->foreign('feature_product_three')->references('id')->on('products')->onDelete('set null');
             $table->foreign('feature_product_four')->references('id')->on('products')->onDelete('set null');
 
+            $table->string('feature_product_one_image')->nullable();
+            $table->string('feature_product_two_image')->nullable();
+            $table->string('feature_product_three_image')->nullable();
+            $table->string('feature_product_four_image')->nullable();
+
             
 
             $table->timestamps();

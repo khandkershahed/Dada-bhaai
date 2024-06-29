@@ -430,7 +430,9 @@
 
         var product_name = $('#dpname').text();
         var id = $('#oneproduct_id').val();
-        var quantity = $('#dqty').val();
+        // var quantity = $('#dqty').val();
+
+        var qty = $('.qty-input-product').val();
 
         $.ajax({
 
@@ -439,7 +441,7 @@
             url: '/product/buy/store/' + id,
 
             data: {
-                quantity: quantity,
+                qty: qty,
                 product_name: product_name,
             },
 
@@ -493,7 +495,7 @@
 
         var qty = $('.qty-input-product').val();
 
-        
+
 
         var color = $('#dcolor option:selected').text();
 
@@ -619,7 +621,7 @@
 
         var product_id = $(this).data('product_id');
         var qty = $(this).closest('.d-flex').find('.qty-input').val();
-        
+
 
         $.ajax({
 
@@ -816,15 +818,25 @@
 
                         `<ul style="list-style-type: circle !important;">
                                         
-                            <li class="d-flex mb-2 align-items-center">
+                            <li class="d-flex mb-2 align-items-center ml-0 row text-center">
+                                <div class="col-lg-1 px-0"><span>${serialNumber++}.</span></div>
+                                <div class="col-lg-4 px-0">
+                                    <span class="" title="${value.name}">${value.name.length > 10 ? value.name.substring(0, 10) + '' : value.name}</span>
+                                </div>
+                                <div class="col-lg-2 px-0">
+                                    <span class="">X ${value.qty}</span>
+                                </div>
+                                <div class="col-lg-3 px-0">
+                                    <span class=""> = ${value.price}</span>
+                                </div>
+                                <div class="col-lg-2 px-0">
 
-                                <span class="pr-2">${serialNumber++}.</span>
+                                    <a type="submit" style="cursor:pointer" class="" id="${value.rowId}" onclick="miniCartRelatedRemove(this.id)">
 
-                                <input type="text" class="form-control form-control-sm w-100 rounded-0"
-                                                name="" value="${value.name.length > 20 ? value.name.substring(0, 20) + '.......' : value.name}" id="" placeholder="Blue Color Headset">
+                                    <i class="fa-solid fa-trash text-danger"></i>  
 
-                                <input type="number" class="form-control form-control-sm w-25 rounded-0"
-                                                name="" value="${value.qty}" min="1">
+                                    </a>
+                                </div>
 
                             </li>
 

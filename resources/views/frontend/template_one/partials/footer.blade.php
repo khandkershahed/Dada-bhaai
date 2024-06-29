@@ -69,7 +69,7 @@
                                 </script>
 
                                 <div class="fb-wrap">
-                                    <div class="fb-page" data-href="https://www.facebook.com/ngenitltd"
+                                    <div class="fb-page" data-href="https://www.facebook.com/dadavaai.shop"
                                         data-tabs="timeline" data-width="500" data-height="135"
                                         data-small-header="false" data-adapt-container-width="true"
                                         data-hide-cover="false" data-show-facepile="true"></div>
