@@ -130,7 +130,7 @@
             url: '/add-to-compare',
 
             success: function(data) {
-                //compareRemove();
+                compare();
 
                 // Start Message
 
@@ -149,7 +149,7 @@
                         title: data.success,
                     })
 
-                    window.location.href = '/compare-product';
+                    // window.location.href = '/compare-product';
 
                 } else {
 
@@ -167,6 +167,8 @@
     })
 </script>
 
+
+
 {{-- Load Compare --}}
 <script>
     function compare() {
@@ -174,18 +176,25 @@
             type: 'GET',
             dataType: 'json',
             url: '/get-compare',
+
             success: function(response) {
+
+                $('#cartCompareQty').text(response.cartCompareQty);
+
                 var tableHtml = "";
 
-                if (response.carts.length === 0) {
+                if (response.cartCompare.length === 0) {
+                    
                     tableHtml = `
                         <div>
                             <img class="img-fluid" style="width: 50%;" src="https://i.ibb.co/xzzr9zs/f59ed80d5c527e2461d8ba49adc36160.gif" alt="">
                         </div>
                         <h3 class="">Compare List is Empty</h3>
                     `;
+
+                    $('#compareLink').hide();
                 } else {
-                    $.each(response.carts, function(key, value) {
+                    $.each(response.cartCompare, function(key, value) {
                         tableHtml += `
                             <div class="col-lg-3 px-0" style="border-top: 1px solid #dee2e6;border-bottom: 1px solid #dee2e6;">
                                 <div class="top-info">
@@ -201,6 +210,8 @@
                                 </ul>
                             </div>`;
                     });
+
+                    $('#compareLink').show(); // Show the comparison link when list has items
                 }
 
                 $('#compare').html(tableHtml);
@@ -210,6 +221,8 @@
 
     compare();
 </script>
+
+
 
 
 {{-- Add Cart Compare --}}
@@ -1058,6 +1071,7 @@
             type: 'GET',
             url: '/product/mini-cart',
             dataType: 'json',
+
             success: function(response) {
                 // console.log(response)
 

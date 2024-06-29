@@ -331,6 +331,14 @@
                             </li>
                         @endif
 
+                        <li class="" id="compareLink">
+                            <a class="wishlist" href="{{ route('compare.product') }}" style="font-size: 20px;">
+                                <i class="fas fa-random text-muted wishlist">
+                                    <span class="cart__count" id="cartCompareQty">0</span>
+                                </i>
+                            </a>
+                        </li>
+
                         <li>
                             <div class="dropdown">
 
