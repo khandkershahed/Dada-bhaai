@@ -1,6 +1,22 @@
 @php
     $site = App\Models\Sites::find(1);
 @endphp
+<style>
+    header.dark h1 a {
+        background-size: contain;
+        background-image: url("{{ asset('upload/logo_white/' . $site->logo_white) }}");
+        background-repeat: no-repeat;
+    }
+
+    header h1 a {
+        display: block;
+        width: 145px;
+        height: 145px;
+        background-size: contain;
+        background-image: url("{{ asset('upload/logo_black/' . $site->logo_black) }}");
+        background-repeat: no-repeat;
+    }
+</style>
 
 <header>
     <div class="menu">
@@ -46,10 +62,10 @@
     </div>
 
     <h1>
-        <a href="{{ route('index') }}">
-            <img class="" style="width: 160px;" src="{{ asset('upload/logo_white/' . $site->logo_white) }}"
-                alt="">
-        </a>
+        {{-- <a href="{{ route('index') }}" class="logo-white">
+            <img style="width: 160px;" src="{{ asset('upload/logo_black/' . $site->logo_black) }}" alt="Logo White">
+        </a> --}}
+        <a href="/"></a>
     </h1>
 
     <div class="gnb">

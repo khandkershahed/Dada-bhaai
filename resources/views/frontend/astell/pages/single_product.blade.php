@@ -1,5 +1,7 @@
 @extends('frontend.astell.frontend_dashboard_astell')
 @section('index_astell')
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
     {{-- @if (!empty($sproducts)) --}}
     <main class="sub">
 
@@ -31,7 +33,7 @@
                 <div class="swiper-container">
 
                     <ul class="swiper-wrapper">
-                        
+
 
                         <li class="swiper-slide">
                             <img src="{{ isset($product->product_image) ? asset($product->product_image) : asset('upload/no_image.jpg') }}"
@@ -49,6 +51,10 @@
                 <p>{{ $product->brand->brand_name }}</p>
 
                 <h1 class="w-25" style="font-size: 50px;width: 31%;"> {{ $product->product_name }} </h1>
+
+                <div class="btn-group tmpProductInfo tmpProductInfo_0" style="">
+                    <a href="#" class="lnk-ty1" style="margin-top: 4rem;">Add To Cart</a>
+                </div>
 
                 <div class="scroll-icon">
                     Scroll
@@ -844,3 +850,7 @@
         <p>No Content</p>
     @endif --}}
 @endsection
+
+@push('scripts')
+
+@endpush

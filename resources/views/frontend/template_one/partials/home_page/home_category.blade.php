@@ -37,9 +37,6 @@
                     @else
                         <p class="text-center text-danger">No Category Avaiable</p>
                     @endif
-
-
-
                 </div>
             </div>
         </div>

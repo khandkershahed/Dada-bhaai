@@ -167,8 +167,9 @@
                                                     @php
                                                         $brand = App\Models\Brand::find($brandId);
                                                     @endphp
+
                                                     @if ($brand)
-                                                        <li><a href="javascript:;">{{ $brand->brand_name }}</a></li>
+                                                        <li><a href="{{ url('product/brand/' . $brand->id . '/' . $brand->brand_slug) }}">{{ $brand->brand_name }}</a></li>
                                                     @endif
                                                 @empty
                                                     <p>No brand available for this category.</p>
