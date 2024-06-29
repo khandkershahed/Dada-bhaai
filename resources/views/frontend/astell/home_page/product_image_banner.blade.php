@@ -6,7 +6,7 @@
 
 <section class="brand-story scrollAni n2">
     <h2>
-        We believe <strong>that</strong> is the center of DadaBhaai
+        We believe <strong>DadaBhaai</strong> is the center of Asthenia Product
     </h2>
     <ul>
 
