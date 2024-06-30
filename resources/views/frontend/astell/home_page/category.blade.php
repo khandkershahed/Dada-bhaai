@@ -71,7 +71,7 @@
 
                             <p class="tmpProductInfo tmpProductInfo_{{ $key }}"
                                 style="{{ $key == '0' ? '' : 'display:none;' }}">
-                                {!! Str::limit(strip_tags($category_product_one->short_desc), 700) !!}
+                                {!! Str::limit(strip_tags($category_product_one->short_desc), 390) !!}
                             </p>
 
                             <div class="btn-group tmpProductInfo tmpProductInfo_{{ $key }}"
@@ -145,7 +145,7 @@
 
                             <p class="tmpProductInfo tmpProductInfo_{{ $key }}"
                                 style="{{ $key == '0' ? '' : 'display:none;' }}">
-                                {!! Str::limit(strip_tags($category_product_two->short_desc), 700) !!}
+                                {!! Str::limit(strip_tags($category_product_two->short_desc), 390) !!}
                             </p>
 
                             <div class="btn-group tmpProductInfo tmpProductInfo_{{ $key }}"
@@ -217,7 +217,7 @@
 
                             <p class="tmpProductInfo tmpProductInfo_{{ $key }}"
                                 style="{{ $key == '0' ? '' : 'display:none;' }}">
-                                {!! Str::limit(strip_tags($category_product_three->short_desc), 700) !!}
+                                {!! Str::limit(strip_tags($category_product_three->short_desc), 390) !!}
                             </p>
 
                             <div class="btn-group tmpProductInfo tmpProductInfo_{{ $key }}"
@@ -289,7 +289,7 @@
 
                             <p class="tmpProductInfo tmpProductInfo_{{ $key }}"
                                 style="{{ $key == '0' ? '' : 'display:none;' }}">
-                                {!! Str::limit(strip_tags($category_product_four->short_desc), 700) !!}
+                                {!! Str::limit(strip_tags($category_product_four->short_desc), 390) !!}
                             </p>
 
                             <div class="btn-group tmpProductInfo tmpProductInfo_{{ $key }}"
