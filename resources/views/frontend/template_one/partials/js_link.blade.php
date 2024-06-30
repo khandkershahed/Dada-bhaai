@@ -204,7 +204,7 @@
                                     <li>
                                         <h3 class="compare-title" title="${value.name}">${value.name.length > 15 ? `${value.name.substring(0, 15)}...` : value.name}</h3>
                                     </li>
-                                    <li>Tk ${value.price}</li>
+                                    <li>$ ${value.price}</li>
                                     <li><a type="submit" style="cursor:pointer" id="${value.id}" onclick="addToCartCompare(this.id)"> Add To Cart</a></li>
                                     <li><a type="submit" style="cursor:pointer" id="${value.rowId}" onclick="compareRemove(this.id)">Remove</a></li>
                                 </ul>
@@ -689,6 +689,67 @@
 </script>
 {{-- add_to_cart_btn_product --}}
 
+{{-- add_to_cart_btn_product_single --}}
+<script>
+    $('.add_to_cart_btn_product_single').click(function() {
+
+        var product_id = $(this).data('product_id');
+        var qty = $(this).closest('.d-flex').find('.qty-input').val();
+
+
+        $.ajax({
+
+            type: "POST",
+            dataType: 'json',
+            url: '/product-store-cart-single',
+
+            data: {
+                product_id: product_id,
+                qty: qty,
+            },
+
+            success: function(data) {
+
+                $('.cart_icon').removeClass('d-none');
+
+                miniCart();
+                miniCartRelated();
+
+                // Start Message
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success,
+                    })
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error,
+                    })
+                }
+
+                // End Message
+            }
+
+        })
+
+    })
+</script>
+{{-- add_to_cart_btn_product_single --}}
+
 {{-- ========================================== --}}
 {{-- addToCartDetails --}}
 <script>
@@ -1042,7 +1103,7 @@
                                         <div class="cart-text">
                                             <a href="javascript:;" class="title f-400 cod__black-color">${value.name}</a>
                                             <span class="cart-price f-400 dusty__gray-color">${value.qty} x
-                                                <span class="price f-800 cod__black-color">Tk ${value.price}</span></span>
+                                                <span class="price f-800 cod__black-color">$ ${value.price}</span></span>
                                         </div>
 
                                         <div class="del-button">
@@ -1108,7 +1169,7 @@
 
                                                         <p class="mb-0" style="color: #000">
 
-                                                            <span class="pe-3">${value.qty} x TK ${value.price}</span>
+                                                            <span class="pe-3">${value.qty} x $ ${value.price}</span>
 
                                                             <span style="cursor:pointer">
 
@@ -1210,7 +1271,7 @@
 
                                                     <td>${value.name}</td>
 
-                                                    <td>${value.price} TK</td>
+                                                    <td>${value.price} $</td>
 
                                                     <td>
                                                         <div>
@@ -1237,7 +1298,7 @@
                                                         </div>
                                                     </td>
 
-                                                    <td>${value.subtotal} Tk</td>
+                                                    <td>${value.subtotal} $</td>
 
                                                     <td class="text-center">
                                                         <div>
@@ -1297,7 +1358,7 @@
                                     </div>
                                 </td>
                                 <td>${value.name}</td>
-                                <td>${value.price} TK</td>
+                                <td>${value.price} $</td>
                                 <td>
                                     <div>
                                         <div class="input-group mb-3">
@@ -1318,7 +1379,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>${value.subtotal} Tk</td>
+                                <td>${value.subtotal} $</td>
                                 <td class="text-center">
                                     <div>
                                         <a type="submit" style="cursor: pointer" id="${value.rowId}" onclick="cartRemove(this.id)">
@@ -1545,13 +1606,13 @@
                                        ${
                                         value.product.price_status === 'rfq'
 
-                                        ? `<p class="text-brand">Tk ${value.product.sas_price}</p>`
+                                        ? `<p class="text-brand">$ ${value.product.sas_price}</p>`
 
                                         : (value.product.price_status === 'offer_price'
-                                            ? `<p class="text-brand">Tk ${value.product.discount_price}</p>`
+                                            ? `<p class="text-brand">$ ${value.product.discount_price}</p>`
 
                                             : (value.product.price_status === 'price'
-                                                ? `<p class="text-brand">Tk ${value.product.price}</p>`
+                                                ? `<p class="text-brand">$ ${value.product.price}</p>`
                                                 : ''
                                             )
                                         )
@@ -1622,11 +1683,11 @@
                                 <td>
                                     ${
                                         value.product.price_status === 'rfq'
-                                        ? `<p class="text-brand">Tk ${value.product.sas_price}</p>`
+                                        ? `<p class="text-brand">$ ${value.product.sas_price}</p>`
                                         : (value.product.price_status === 'offer_price'
-                                            ? `<p class="text-brand">Tk ${value.product.discount_price}</p>`
+                                            ? `<p class="text-brand">$ ${value.product.discount_price}</p>`
                                             : (value.product.price_status === 'price'
-                                                ? `<p class="text-brand">Tk ${value.product.price}</p>`
+                                                ? `<p class="text-brand">$ ${value.product.price}</p>`
                                                 : ''
                                             )
                                         )
