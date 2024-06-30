@@ -20,7 +20,7 @@
 </section>
 
 @push('scripts')
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             // Swiper: Slider
             new Swiper('.footer-swiper', {
@@ -51,5 +51,5 @@
                 }
             });
         });
-    </script>
+    </script> --}}
 @endpush
