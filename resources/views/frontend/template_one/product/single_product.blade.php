@@ -268,7 +268,9 @@
                             <hr class="m-0">
 
                             <div class="">
-                                <p class="mb-0">Accessories</p>
+
+                                
+                                {{-- <p class="mb-0 mb-3">Accessories</p> --}}
 
                                 <div id="miniCartRelated">
                                 </div>
