@@ -13626,7 +13626,7 @@ main .video-js {
 .detail-group8 {
     position: relative;
     overflow: hidden;
-    padding: 300px 0;
+    padding: 190px 0;
     font-size: 0;
     background-color: #151619;
     background-size: cover;
@@ -24759,9 +24759,7 @@ main .video-js {
     letter-spacing: inherit;
 }
 
-.design-group .slide-group {
-    margin-top: 30px;
-}
+
 
 .design-group .list .swiper-slide p {
     display: block;
@@ -24777,7 +24775,7 @@ main .video-js {
     height: 600px;
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: auto 600px;
+    background-size: auto 665px;
 }
 
 .design-group .thumb {
@@ -24852,9 +24850,10 @@ main .video-js {
 }
 
 .design-group.scrollAni .slide-group {
-    transform: translateY(160px);
+    transform: translateY(0px);
     transition: transform 1500ms 0.5s cubic-bezier(0.02, 0.63, 0.355, 1),
-        opacity 1s 0.5s ease-in-out;
+    opacity 1s 0.5s ease-in-out;
+    padding-top: 180px;
 }
 
 .design-group.scrollAni.view .wrap {
@@ -24967,7 +24966,7 @@ main .video-js {
     }
 
     .design-group .slide-group {
-        margin-top: 20px;
+        margin-top: 100px;
     }
 
     .design-group .list .swiper-slide p {
@@ -26701,7 +26700,7 @@ main .video-js {
 }
 
 .detail-group29.n4 .n4-wrapper {
-    margin-top: 590px;
+    margin-top: 845px;
 }
 
 .detail-group29.n4 .n4-item {
@@ -26783,9 +26782,9 @@ main .video-js {
     font-weight: bold;
 }
 
-/* .detail-group10.n5 .inner {
+.detail-group10.n5 .inner {
     padding-left: 580px;
-} */
+}
 
 @media (max-width: 1366px) {
     .detail-group10.n5 .inner {

@@ -5,8 +5,8 @@
         @endphp
         <nav class="navbar navbar-expand-lg navbar-transparent">
             <a class="navbar-brand py-3 pr-4" href="{{ route('index') }}">
-                {{-- <img class="" width="200px" src="{{ asset('upload/logo_black/' . $site->logo_black) }}" alt="" /> --}}
-                <img class="" width="200px"
+                {{-- <img class="" width="145px" src="{{ asset('upload/logo_black/' . $site->logo_black) }}" alt="" /> --}}
+                <img class="" width="145px"
                     src="{{ asset('upload/logo_black/' . $site->logo_black) }}" alt="" />
             </a>
 
@@ -321,7 +321,7 @@
                         </li>
 
 
-                        
+
 
                         <li class="" id="compareLink">
                             <a class="wishlist" href="{{ route('compare.product') }}" style="font-size: 20px;">

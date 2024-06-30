@@ -1,6 +1,227 @@
 @extends('frontend.astell.frontend_dashboard_astell')
 @section('index_astell')
+    <style>
+        /*USE CSS for Slider*/
 
+        .vehicle-detail-banner .car-slider-desc {
+            max-width: 180px;
+            margin: 0 auto;
+        }
+
+        .banner-slider .slider.slider-for {
+            max-width: 84%;
+            padding-right: 35px;
+        }
+
+        .banner-slider .slider.slider-nav {
+            max-width: 16%;
+        }
+
+        .banner-slider .slider.slider-for,
+        .banner-slider .slider.slider-nav {
+            width: 100%;
+            float: left;
+        }
+
+        .banner-slider .slider.slider-nav {
+            height: 610px;
+            overflow: hidden;
+
+        }
+
+        .slider-banner-image {
+            height: 610px;
+        }
+
+        .banner-slider .slider.slider-nav {
+            padding: 20px 0 0;
+        }
+
+        .slider-nav .slick-slide.thumbnail-image .thumbImg {
+            max-width: 178px;
+            height: 110px;
+            margin: 0 auto;
+            border: 1px solid #EBEBEB;
+        }
+
+        .slider-banner-image img,
+        .slider-nav .slick-slide.thumbnail-image .thumbImg img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .slick-vertical .slick-slide:active,
+        .slick-vertical .slick-slide:focus,
+        .slick-arrow:hover,
+        .slick-arrow:focus {
+            border: 0;
+            outline: 0;
+        }
+
+        .slider-nav .slick-slide.slick-current.thumbnail-image .thumbImg {
+            border: 2px solid #196DB6;
+        }
+
+        .slider-nav .slick-slide.slick-current span {
+            color: #196DB6;
+        }
+
+        .slider-nav .slick-slide {
+            text-align: center;
+        }
+
+        .slider-nav .slick-slide span {
+            font-size: 14px;
+            display: block;
+            padding: 5px 0 15px;
+        }
+
+        .slick-arrow {
+            width: 100%;
+            background-color: transparent;
+            border: 0;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-size: 0;
+            height: 18px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            z-index: 99;
+        }
+
+        .slick-prev {
+            top: 0;
+        }
+
+        .slick-next {
+            bottom: 0;
+            background-color: #fff;
+        }
+
+        .slick-prev.slick-arrow {
+            background-image: url(../images/black-up-arrow.png);
+        }
+
+        .slick-next.slick-arrow {
+            background-image: url(../images/black-down-arrow.png);
+        }
+
+        /*End USE CSS for Slider*/
+
+        @media screen and (max-width : 991px) {
+
+            .banner-slider .slider.slider-for,
+            .banner-slider .slider.slider-nav {
+                max-width: 100%;
+                float: none;
+            }
+
+            .banner-slider .slider.slider-for {
+                padding-right: 0;
+            }
+
+            .banner-slider .slider.slider-nav {
+                height: auto;
+            }
+
+            .slider-banner-image {
+                height: 500px;
+            }
+
+            .slider.slider-nav.thumb-image {
+                padding: 10px 30px 0;
+            }
+
+            .slider-nav .slick-slide span {
+                padding: 5px 0;
+            }
+
+            .slick-arrow {
+                padding: 0;
+                width: 30px;
+                height: 30px;
+                top: 50%;
+                bottom: 0;
+                -webkit-transform: translateY(-50%) rotate(-90deg);
+                -moz-transform: translateY(-50%) rotate(-90deg);
+                -ms-transform: translateY(-50%) rotate(-90deg);
+                transform: translateY(-50%) rotate(-90deg);
+            }
+
+            .slick-prev {
+                left: 0;
+                right: unset;
+            }
+
+            .slick-next {
+                left: unset;
+                right: 0;
+                background-color: transparent;
+            }
+
+            .vehicle-detail-banner .car-slider-desc {
+                max-width: 340px;
+            }
+
+            .bid-tag {
+                padding: 10px 0 15px;
+            }
+
+            .slider.slider-nav.thumb-image {
+                white-space: nowrap;
+            }
+
+            .thumbnail-image.slick-slide {
+                padding: 0px 5px;
+                min-width: 75px;
+                display: inline-block;
+                float: none;
+            }
+        }
+
+        @media screen and (max-width : 767px) {
+            .slider-banner-image {
+                height: 400px;
+            }
+
+            .slider.slider-nav.thumb-image {
+                padding: 0px 20px 0;
+                margin: 10px 0px 0;
+            }
+
+            .slider-nav .slick-slide.thumbnail-image .thumbImg {
+                max-width: 140px;
+                height: 80px;
+            }
+
+            .slick-prev.slick-arrow {
+                background-position: center 10px;
+            }
+
+            .slick-next.slick-arrow {
+                background-position: center 10px, center;
+            }
+
+            .slider-nav .slick-slide span {
+                font-size: 12px;
+                white-space: normal;
+            }
+        }
+
+        @media screen and (max-width: 580px) {
+            .slider-banner-image {
+                height: 340px;
+            }
+        }
+
+        @media screen and (max-width : 480px) {
+            .slider-banner-image {
+                height: 280px;
+            }
+        }
+    </style>
     {{-- @if (!empty($sproducts)) --}}
     <main class="sub">
 
@@ -107,7 +328,118 @@
         @endif
         {{-- Row Area Two End  --}}
 
+        <section class="banner-section">
+            <div class="container">
+                <div class="vehicle-detail-banner banner-content clearfix">
+                    <div class="banner-slider">
+                        <div class="slider slider-for">
+                            <div class="slider-banner-image">
+                                <img src="https://images.unsplash.com/photo-1570942872213-1242607a35eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                                    alt="Car-Image">
+                            </div>
+                            <div class="slider-banner-image">
+                                <img src="https://images.unsplash.com/photo-1570171278960-d6c2b316f3b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+                                    alt="Car-Image">
+                            </div>
+                            <div class="slider-banner-image">
+                                <img src="https://images.unsplash.com/photo-1564376130023-5360fbb7c91b?ixlib=rb-1.2.1&auto=format&fit=crop&w=724&q=80"
+                                    alt="Car-Image">
+                            </div>
+                            <div class="slider-banner-image">
+                                <img src="https://images.unsplash.com/photo-1570942872213-1242607a35eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                                    alt="Car-Image">
+                            </div>
+                            <div class="slider-banner-image">
+                                <img src="https://images.unsplash.com/photo-1570171278960-d6c2b316f3b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+                                    alt="Car-Image">
+                            </div>
+                            <div class="slider-banner-image">
+                                <img src="https://images.unsplash.com/photo-1564376130023-5360fbb7c91b?ixlib=rb-1.2.1&auto=format&fit=crop&w=724&q=80"
+                                    alt="Car-Image">
+                            </div>
+                            <div class="slider-banner-image">
+                                <img src="https://images.unsplash.com/photo-1570942872213-1242607a35eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                                    alt="Car-Image">
+                            </div>
+                            <div class="slider-banner-image">
+                                <img src="https://images.unsplash.com/photo-1570171278960-d6c2b316f3b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+                                    alt="Car-Image">
+                            </div>
+                            <div class="slider-banner-image">
+                                <img src="https://images.unsplash.com/photo-1564376130023-5360fbb7c91b?ixlib=rb-1.2.1&auto=format&fit=crop&w=724&q=80"
+                                    alt="Car-Image">
+                            </div>
+                        </div>
+                        <div class="slider slider-nav thumb-image">
+                            <div class="thumbnail-image">
+                                <div class="thumbImg">
+                                    <img src="https://images.unsplash.com/photo-1570942872213-1242607a35eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                                        alt="slider-img">
+                                </div>
+                                <span>White Pearl Crystal Shine1</span>
+                            </div>
+                            <div class="thumbnail-image">
+                                <div class="thumbImg">
+                                    <img src="https://images.unsplash.com/photo-1570171278960-d6c2b316f3b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+                                        alt="slider-img">
+                                </div>
+                                <span>White Pearl Crystal Shine2</span>
+                            </div>
+                            <div class="thumbnail-image">
+                                <div class="thumbImg">
+                                    <img src="https://images.unsplash.com/photo-1564376130023-5360fbb7c91b?ixlib=rb-1.2.1&auto=format&fit=crop&w=724&q=80"
+                                        alt="slider-img">
+                                </div>
+                                <span>White Pearl Crystal Shine3</span>
+                            </div>
+                            <div class="thumbnail-image">
+                                <div class="thumbImg">
+                                    <img src="https://images.unsplash.com/photo-1570942872213-1242607a35eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                                        alt="slider-img">
+                                </div>
+                                <span>White Pearl Crystal Shine1</span>
+                            </div>
+                            <div class="thumbnail-image">
+                                <div class="thumbImg">
+                                    <img src="https://images.unsplash.com/photo-1570171278960-d6c2b316f3b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+                                        alt="slider-img">
+                                </div>
+                                <span>White Pearl Crystal Shine2</span>
+                            </div>
+                            <div class="thumbnail-image">
+                                <div class="thumbImg">
+                                    <img src="https://images.unsplash.com/photo-1564376130023-5360fbb7c91b?ixlib=rb-1.2.1&auto=format&fit=crop&w=724&q=80"
+                                        alt="slider-img">
+                                </div>
+                                <span>White Pearl Crystal Shine3</span>
+                            </div>
+                            <div class="thumbnail-image">
+                                <div class="thumbImg">
+                                    <img src="https://images.unsplash.com/photo-1570942872213-1242607a35eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                                        alt="slider-img">
+                                </div>
+                                <span>White Pearl Crystal Shine1</span>
+                            </div>
+                            <div class="thumbnail-image">
+                                <div class="thumbImg">
+                                    <img src="https://images.unsplash.com/photo-1570171278960-d6c2b316f3b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+                                        alt="slider-img">
+                                </div>
+                                <span>White Pearl Crystal Shine2</span>
+                            </div>
+                            <div class="thumbnail-image">
+                                <div class="thumbImg">
+                                    <img src="https://images.unsplash.com/photo-1564376130023-5360fbb7c91b?ixlib=rb-1.2.1&auto=format&fit=crop&w=724&q=80"
+                                        alt="slider-img">
+                                </div>
+                                <span>White Pearl Crystal Shine3</span>
+                            </div>
 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         {{-- Row Area Three Start --}}
         <section class="detail-group1 scrollAni n3">
@@ -602,8 +934,6 @@
             </section>
         @endif
         {{-- Feature Area End  --}}
-
-        {{-- Design Area Start  --}}
         @if (
             !empty($sproducts->design_section_image_one) ||
                 !empty($sproducts->design_section_image_two) ||
@@ -615,108 +945,11 @@
                         <p>
                             {{ $sproducts->design_section_description }}
                         </p>
-                </div>
-                <div class="slide-group">
-                    <div class="list">
-                        <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
-                            <ul class="swiper-wrapper"
-                                style="transition-duration: 0ms;transform: translate3d(-1903px, 0px, 0px);">
-
-                                {{-- <li class="swiper-slide swiper-slide-duplicate swiper-slide-prev"
-                                    data-swiper-slide-index="4" style="width: 1903px">
-                                    <div class="img"
-                                        style="background-image: url('{{ asset('storage/single_product/' . $sproducts->design_section_image_one) }}');">
-                                    </div>
-                                </li> --}}
-
-                                <li class="swiper-slide swiper-slide-active" data-swiper-slide-index="0"
-                                    style="width: 1903px">
-                                    <div class="img"
-                                        style="background-image: url('{{ asset('storage/single_product/' . $sproducts->design_section_image_two) }}');">
-                                    </div>
-                                </li>
-
-                                <li class="swiper-slide swiper-slide-next" data-swiper-slide-index="1"
-                                    style="width: 1903px">
-                                    <div class="img"
-                                        style="background-image: url('{{ asset('storage/single_product/' . $sproducts->design_section_image_three) }}');">
-                                    </div>
-                                </li>
-
-                                <li class="swiper-slide" data-swiper-slide-index="2" style="width: 1903px">
-                                    <div class="img"
-                                        style="background-image: url('{{ asset('storage/single_product/' . $sproducts->design_section_image_four) }}');">
-                                    </div>
-                                </li>
-
-                                <li class="swiper-slide" data-swiper-slide-index="3" style="width: 1903px">
-                                    <div class="img"
-                                        style="background-image: url('{{ asset('storage/single_product/' . $sproducts->design_section_image_one) }}');">
-                                    </div>
-                                </li>
-
-                            </ul>
-                            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-                        </div>
-                    </div>
-                    <div class="thumb">
-                        <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
-                            <ul class="swiper-wrapper">
-
-                                {{-- <li class="swiper-slide swiper-slide-active">
-                                    <a href="javascript:void(0);" class="active">
-                                        <div class="img"
-                                            style="background-image: url('{{ asset('storage/single_product/' . $sproducts->design_section_image_one) }}');">
-                                        </div>
-                                    </a>
-                                </li> --}}
-
-                                <li class="swiper-slide swiper-slide-next">
-                                    <a href="javascript:void(0);">
-                                        <div class="img"
-                                            style="background-image: url('{{ asset('storage/single_product/' . $sproducts->design_section_image_two) }}');">
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li class="swiper-slide">
-                                    <a href="javascript:void(0);">
-                                        <div class="img"
-                                            style="background-image: url('{{ asset('storage/single_product/' . $sproducts->design_section_image_three) }}');">
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li class="swiper-slide">
-                                    <a href="javascript:void(0);">
-                                        <div class="img"
-                                            style="background-image: url('{{ asset('storage/single_product/' . $sproducts->design_section_image_four) }}');">
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li class="swiper-slide">
-                                    <a href="javascript:void(0);">
-                                        <div class="img"
-                                            style="background-image: url('{{ asset('storage/single_product/' . $sproducts->design_section_image_one) }}');">
-                                        </div>
-                                    </a>
-                                </li>
-
-
-                            </ul>
-                            <div class="swiper-pagination"></div>
-                            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-                        </div>
-                    </div>
+                    </h3>
                 </div>
             </section>
         @endif
         {{-- Design Area End  --}}
-
-
-
-
         <section class="dropdown-list">
             <div class="wrap">
                 <h3>Specification</h3>
@@ -750,7 +983,7 @@
                     </li>
 
                 </ul>
-                </div>
+            </div>
         </section>
     </main>
     {{-- @else
@@ -759,6 +992,7 @@
 @endsection
 
 @push('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
     <script type="text/javascript">
         $.ajaxSetup({
             headers: {
