@@ -339,6 +339,14 @@
                             </a>
                         </li>
 
+                        <li class="" id="wishlistLink">
+                            <a class="wishlist" href="{{ route('wishlist.product') }}" style="font-size: 20px;">
+                                <i class="fas fa-heart text-muted wishlist">
+                                    <span class="cart__count" id="cartWishlistQty">0</span>
+                                </i>
+                            </a>
+                        </li>
+
                         <li>
                             <div class="dropdown">
 

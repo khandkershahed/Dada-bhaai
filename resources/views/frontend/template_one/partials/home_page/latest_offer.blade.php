@@ -55,9 +55,9 @@
                                 <div class="product-image">
                                     <a href="javascript:;" class="image">
 
-                                        <img title="{{ $product->products->product_name }}" class="img product_id" src="{{ asset($product->products->product_image) }}"
-                                            alt="" data-id="{{ $product->products->id }}"
-                                            style="width:100%; height: 300px;" />
+                                        <img title="{{ $product->products->product_name }}" class="img product_id"
+                                            src="{{ asset($product->products->product_image) }}" alt=""
+                                            data-id="{{ $product->products->id }}" style="width:100%; height: 300px;" />
 
                                     </a>
 
@@ -71,12 +71,12 @@
 
                                     <ul class="product-links">
 
-                                        <li><a style="cursor: pointer;" id="{{ $product->id }}"
-                                                onclick="addToWishList(this.id)" data-tip="Wishlist"><i
+                                        <li><a type="submit" class="add_to_wishlist" style="cursor: pointer;"
+                                                data-product_id="{{ $product->products->id }}" data-tip="Wishlist"><i
                                                     class="far fa-heart"></i></a></li>
 
                                         <li><a type="submit" style="cursor:pointer;" class="add_to_compare"
-                                                data-product_id="{{ $product->id }}" data-tip="Compare"><i
+                                                data-product_id="{{ $product->products->id }}" data-tip="Compare"><i
                                                     class="fas fa-random"></i></a></li>
                                     </ul>
 
@@ -87,7 +87,8 @@
                                     <div class="col-lg-8">
                                         <span class="cate-name">{{ $offercats->offer_category_name }}</span>
 
-                                        <h6 title="{{ $product->products->product_name }}" class="product__title mine__shaft-color f-700 mb-0 text-start">
+                                        <h6 title="{{ $product->products->product_name }}"
+                                            class="product__title mine__shaft-color f-700 mb-0 text-start">
                                             <a href="javascript:;" title="{{ $product->products->product_name }}">
                                                 {{ substr($product->products->product_name, 0, 25) }}
                                             </a>

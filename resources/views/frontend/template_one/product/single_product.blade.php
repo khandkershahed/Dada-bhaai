@@ -329,8 +329,7 @@
 
                                 {{-- ======================== --}}
                                 <div class="last py-4 align-items-center d-flex justify-content-center">
-                                    <a style="cursor: pointer;" id="{{ $product->id }}"
-                                        onclick="addToWishList(this.id)" class="mr-2 text-muted">Add To Wishlist</a>
+                                    <a style="cursor: pointer;" data-product_id="{{ $product->id }}" class="mr-2 text-muted add_to_wishlist">Add To Wishlist</a>
 
                                     <a style="cursor: pointer;" type="submit" data-product_id="{{ $product->id }}"
                                         class="ml-2 text-muted add_to_compare">Compare</a>
@@ -523,9 +522,7 @@
 
                                     <ul class="product-links">
 
-                                        <li><a style="cursor: pointer;" id="{{ $relative_product->id }}"
-                                                onclick="addToWishList(this.id)" data-tip="Wishlist"><i
-                                                    class="far fa-heart"></i></a></li>
+                                        <li><a type="submit" class="add_to_wishlist" style="cursor: pointer;" data-product_id="{{ $product->id }}" data-tip="Wishlist"><i class="far fa-heart"></i></a></li>
 
                                         <li><a type="submit" style="cursor:pointer;" class="add_to_compare"
                                                 data-product_id="{{ $relative_product->id }}" data-tip="Compare"><i
@@ -567,7 +564,7 @@
                             </div>
 
                         @empty
-                            <span>No Product Avaiable</span>
+                            
                         @endforelse
 
                     </div>

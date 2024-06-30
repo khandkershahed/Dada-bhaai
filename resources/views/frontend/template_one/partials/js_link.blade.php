@@ -113,6 +113,223 @@
 @yield('brandscripts')
 @yield('pricescripts')
 
+{{-- =====================WishList Product All Code Start ============================ --}}
+
+{{-- Add Cart To Compare --}}
+<script>
+    $('.add_to_wishlist').click(function() {
+
+        var product_id = $(this).data('product_id');
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+
+            data: {
+                product_id: product_id,
+            },
+
+            url: '/add-to-wishlist',
+
+            success: function(data) {
+                wishlist();
+
+                // Start Message
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success,
+                    })
+
+                    // window.location.href = '/compare-product';
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error,
+                    })
+                }
+
+                // End Message
+            }
+        })
+
+    })
+</script>
+
+{{-- Load Compare --}}
+<script>
+    function wishlist() {
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: '/get-wishlist',
+
+            success: function(response) {
+
+                $('#cartWishlistQty').text(response.cartWishlistQty);
+
+                var tableHtml = "";
+
+                if (response.cartWishlist.length === 0) {
+                    
+                    tableHtml = `
+                        
+                        <h3 class="">Wishlist List is Empty</h3>
+                    `;
+
+                    $('#wishlistLink').hide();
+                } else {
+                    $.each(response.cartWishlist, function(key, value) {
+                        tableHtml += 
+
+                                    `<tr class="border-bottom">
+                                <td>
+                                    <img class="img-fluid"
+                                        src="/${value.options.image}" style="width:60px;height:60px;" alt="" />
+                                </td>
+                                <td>
+                                    <p>${value.name.length > 60 ? value.name.substring(0, 60) : value.name}</p>
+                                </td>
+
+                                <td>
+                                    $ ${value.price}
+                                </td>
+
+                                <td class="">
+                                    <a type="submit" style="cursor:pointer" id="${value.id}" onclick="addToCartCompare(this.id)"> Add To Cart</a>
+                                </td>
+
+                                <td class="">
+                                    <a type="submit" style="cursor:pointer" id="${value.rowId}" onclick="wishlistRemove(this.id)">Remove</a>
+                                </td>
+
+                            </tr>`;
+                            
+                    });
+
+                    $('#wishlistLink').show(); // Show the comparison link when list has items
+                }
+
+                $('#wishlist').html(tableHtml);
+            }
+        });
+    }
+
+    wishlist();
+</script>
+
+{{-- Add Cart Wishlist --}}
+<script>
+    function addToCartWishlist(id) {
+
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            url: "/add-to-cart-wishlist/" + id,
+
+            success: function(data) {
+
+                miniCart();
+                miniCartRelated();
+
+                // Start Message
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success,
+                    })
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error,
+                    })
+                }
+
+                // End Message
+
+
+            }
+        })
+    }
+</script>
+
+{{-- Wishlist Remove --}}
+<script>
+    function wishlistRemove(rowId) {
+       
+        $.ajax({
+            type: 'GET',
+            url: '/wishlist/product/remove/' + rowId,
+            dataType: 'json',
+            success: function(data) {
+                miniCart();
+                wishlist();
+
+                // Start Message
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        title: data.success,
+                    })
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        title: data.error,
+                    })
+                }
+
+                // End Message
+
+            }
+
+
+        })
+    }
+</script>
+
+{{-- =====================Wishlist Product All Code End ============================== --}}
+
+{{-- ======================================= Asss ================= --}}
+
+{{-- =====================Compare Product All Code Start ============================ --}}
+
 {{-- Add Cart To Compare --}}
 <script>
     $('.add_to_compare').click(function() {
@@ -167,8 +384,6 @@
     })
 </script>
 
-
-
 {{-- Load Compare --}}
 <script>
     function compare() {
@@ -205,8 +420,13 @@
                                         <h3 class="compare-title" title="${value.name}">${value.name.length > 15 ? `${value.name.substring(0, 15)}...` : value.name}</h3>
                                     </li>
                                     <li>$ ${value.price}</li>
-                                    <li><a type="submit" style="cursor:pointer" id="${value.id}" onclick="addToCartCompare(this.id)"> Add To Cart</a></li>
+
+                                    <li>
+                                        <a type="submit" style="cursor:pointer" id="${value.id}" onclick="addToCartCompare(this.id)"> Add To Cart</a>
+                                        </li>
+
                                     <li><a type="submit" style="cursor:pointer" id="${value.rowId}" onclick="compareRemove(this.id)">Remove</a></li>
+
                                 </ul>
                             </div>`;
                     });
@@ -221,9 +441,6 @@
 
     compare();
 </script>
-
-
-
 
 {{-- Add Cart Compare --}}
 <script>
@@ -315,6 +532,9 @@
         })
     }
 </script>
+
+{{-- =====================Compare Product All Code End ============================== --}}
+
 
 {{-- OfferToCartOne --}}
 <script>
@@ -1073,59 +1293,6 @@
 
 {{-- MiniCart --}}
 
-{{-- <script>
-    function miniCart() {
-        $.ajax({
-            type: 'GET',
-            url: '/product/mini-cart',
-            dataType: 'json',
-            success: function(response) {
-                // console.log(response)
-
-                $('span[id="cartSubTotal"]').text(response.cartTotal);
-                $('#cartQty').text(response.cartQty);
-
-
-                var miniCart = ""
-
-                $.each(response.carts, function(key, value) {
-                    miniCart +=
-
-                        `
-                    <ul>
-                                    <li class="mb-20">
-
-                                        <div class="cart-image">
-                                            <a href="javascript:;"><img src="/${value.options.image}"
-                                                    alt="" style="width:100%;height:100%;" /></a>
-                                        </div>
-
-                                        <div class="cart-text">
-                                            <a href="javascript:;" class="title f-400 cod__black-color">${value.name}</a>
-                                            <span class="cart-price f-400 dusty__gray-color">${value.qty} x
-                                                <span class="price f-800 cod__black-color">$ ${value.price}</span></span>
-                                        </div>
-
-                                        <div class="del-button">
-                                            <a type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"  style="cursor: pointer"><i class="fi-rs-cross-small"></i>x</a>
-                                        </div>
-
-                                    </li>
-                                </ul>
-
-                    `
-
-                });
-
-                $('#miniCart').html(miniCart);
-
-            }
-
-        })
-    }
-    miniCart();
-</script> --}}
-
 <script>
     function miniCart() {
         $.ajax({
@@ -1566,90 +1733,9 @@
 </script>
 <!--  /// End Wishlist Add -->
 
-{{-- Get Wishlist --}}
+
 
 {{-- <script type="text/javascript">
-    function wishlist() {
-        $.ajax({
-            type: "GET",
-            dataType: 'json',
-            url: "/get-wishlist-product/",
-
-            success: function(response) {
-
-                $('#wishQty').text(response.wishQty);
-
-                var rows = ""
-                $.each(response.wishlist, function(key, value) {
-
-                    rows +=
-
-                        `<tr class="border-bottom">
-
-
-
-                                    <td>
-                                        <img class="img-fluid"
-                                            src="/${value.product.product_image}" style="width:60px;height:60px;" alt="" />
-
-                                    </td>
-
-                                    <td>
-                                        <p>
-                                            ${value.product.product_name.length > 16 ? value.product.product_name.substring(0, 16) : value.product.product_name}
-
-                                        </p>
-
-                                    </td>
-
-                                    <td>
-                                       ${
-                                        value.product.price_status === 'rfq'
-
-                                        ? `<p class="text-brand">$ ${value.product.sas_price}</p>`
-
-                                        : (value.product.price_status === 'offer_price'
-                                            ? `<p class="text-brand">$ ${value.product.discount_price}</p>`
-
-                                            : (value.product.price_status === 'price'
-                                                ? `<p class="text-brand">$ ${value.product.price}</p>`
-                                                : ''
-                                            )
-                                        )
-                                    }
-
-                                    </td>
-
-                                    <td class="">
-
-
-                                        <a type="submit" class="add-link" style="cursor:pointer;text-decoration: underline;" id="${value.product.id}" onclick="addToCartWishlist(this.id)" >+Add To Cart</a>
-
-                                    </td>
-
-                                    <td class="">
-
-
-                                        <a type="submit" class="text-body" id="${value.id}" onclick="wishlistRemove(this.id)" ><i class="fa fa-trash text-danger"></i></a>
-
-                                        </td>
-
-                                    </tr>`
-
-
-                });
-
-                $('#wishlist').html(rows);
-
-            }
-        })
-    }
-
-    wishlist();
-</script> --}}
-
-
-<script type="text/javascript">
     function wishlist() {
         $.ajax({
             type: "GET",
@@ -1672,6 +1758,7 @@
 
                     $.each(response.wishlist, function(key, value) {
                         rows +=
+
                             `<tr class="border-bottom">
                                 <td>
                                     <img class="img-fluid"
@@ -1700,6 +1787,7 @@
                                     <a type="submit" style="cursor:pointer;" class="text-body" id="${value.id}" onclick="wishlistRemove(this.id)" ><i class="fa fa-trash text-danger"></i></a>
                                 </td>
                             </tr>`;
+
                     });
                 }
                 $('#wishlist').html(rows);
@@ -1708,55 +1796,13 @@
     }
 
     wishlist();
-</script>
+</script> --}}
 
 
 
 
 {{-- // Wishlist Remove Start  --}}
-<script>
-    function wishlistRemove(id) {
 
-        $.ajax({
-            type: "GET",
-            dataType: 'json',
-            url: "/wishlist-remove/" + id,
-
-            success: function(data) {
-                wishlist();
-                // Start Message
-
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-
-                    showConfirmButton: false,
-                    timer: 3000
-                })
-                if ($.isEmptyObject(data.error)) {
-
-                    Toast.fire({
-                        type: 'success',
-                        icon: 'success',
-                        title: data.success,
-                    })
-
-                } else {
-
-                    Toast.fire({
-                        type: 'error',
-                        icon: 'error',
-                        title: data.error,
-                    })
-                }
-
-                // End Message
-
-
-            }
-        })
-    }
-</script>
 
 <script>
     $(document).ready(function() {

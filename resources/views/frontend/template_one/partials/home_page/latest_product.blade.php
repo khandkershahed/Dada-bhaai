@@ -51,9 +51,7 @@
 
                                 <ul class="product-links">
 
-                                    <li><a style="cursor: pointer;" id="{{ $product->id }}"
-                                            onclick="addToWishList(this.id)" data-tip="Wishlist"><i
-                                                class="far fa-heart"></i></a></li>
+                                    <li><a type="submit" class="add_to_wishlist" style="cursor: pointer;" data-product_id="{{ $product->id }}" data-tip="Wishlist"><i class="far fa-heart"></i></a></li>
 
                                     <li><a type="submit" style="cursor:pointer;" class="add_to_compare"
                                             data-product_id="{{ $product->id }}" data-tip="Compare"><i
@@ -62,9 +60,11 @@
                             </div>
                             <div class="product-content d-flex justify-content-between align-items-center">
                                 <div>
+
                                     <span><a class="text-muted"
                                             href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ $product->brand->brand_name }}</a>
                                     </span>
+
                                     <h3 class="title font-weight-bold" title="{{ $product->product_name }}"><a
                                             href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ substr($product->product_name, 0, 25) }}</a>
                                     </h3>

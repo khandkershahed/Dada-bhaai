@@ -55,9 +55,9 @@
                                                         style="width:100%; height: 300px;">
                                                 </a>
                                                 <ul class="product-links">
-                                                    <li><a style="cursor: pointer;" id="{{ $cat_product->id }}"
-                                                            onclick="addToWishList(this.id)" data-tip="Wishlist"><i
-                                                                class="far fa-heart"></i></a></li>
+
+                                                    <li><a type="submit" class="add_to_wishlist" style="cursor: pointer;" data-product_id="{{ $cat_product->id }}" data-tip="Wishlist"><i class="far fa-heart"></i></a></li>
+
                                                     <li><a type="submit" style="cursor:pointer;" class="add_to_compare"
                                                             data-product_id="{{ $cat_product->id }}"
                                                             data-tip="Compare"><i class="fas fa-random"></i></a></li>
