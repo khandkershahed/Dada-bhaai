@@ -2,26 +2,18 @@
     <div class="swiper-container footer-swiper">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
-            @if (!empty($homepage->background_image_one_image))
-                <div class="swiper-slide">
-                    <img class="img-fluid" src="{{ asset('upload/home/' . $homepage->background_image_one_image) }}"
-                        alt="">
-                </div>
-            @endif
-
-            @if (!empty($homepage->background_image_two_image))
-                <div class="swiper-slide">
-                    <img class="img-fluid" src="{{ asset('upload/home/' . $homepage->background_image_two_image) }}"
-                        alt="">
-                </div>
-            @endif
-
-            @if (!empty($homepage->background_image_three_image))
-                <div class="swiper-slide">
-                    <img class="img-fluid" src="{{ asset('upload/home/' . $homepage->background_image_three_image) }}"
-                        alt="">
-                </div>
-            @endif
+            <div class="swiper-slide">
+                <img class="img-fluid" src="https://cdn.astellnkern.com/main_page_product/202305/20230510152756_711b599f-cb77-4ee6-b08c-3cd9fb8fe715.jpg"
+                    alt="">
+            </div>
+            <div class="swiper-slide">
+                <img class="img-fluid" src="https://cdn.astellnkern.com/main_page_product/202305/20230510152930_c48737cd-1f43-47e8-bc42-58735b2388e7.jpg"
+                    alt="">
+            </div>
+            <div class="swiper-slide">
+                <img class="img-fluid" src="https://cdn.astellnkern.com/main_page_exp/202301/20230112110038_696b3f1e-c929-42a8-942f-76168164274e.jpg"
+                    alt="">
+            </div>
         </div>
     </div>
     <h2>IMAGINE<br> YOUR OWN LIFE</h2>
@@ -35,7 +27,6 @@
                 loop: true,
                 autoplay: {
                     delay: 3000, // Adjust the delay as needed (3000ms = 3 seconds)
-                    disableOnInteraction: false, // Autoplay will not be disabled after user interactions
                 },
                 navigation: {
                     nextEl: '.swiper-button-next-main',

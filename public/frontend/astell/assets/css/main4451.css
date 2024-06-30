@@ -1685,7 +1685,7 @@ main .video-js{width:100%;}
 .article-cont2 .edit li{font-size:16px;font-style:initial}
 .article-cont2 .edit ul, .article-cont2 .edit ol{display: block;list-style-type: disc;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0;margin-inline-end: 0;padding-inline-start: 40px;}
 .cont{
-    height: 500px;
+    height: auto;
     overflow: scroll;
 }
 @media (max-width: 1366px){/*tablet (ipad pro가로세로 ~ ipad가로)*/
