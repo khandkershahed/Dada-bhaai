@@ -253,11 +253,11 @@
                     <h3>
                         {{ $sproducts->row_nine_title }}
                     </h3>
-                    <p>
+                    <p class="mt-3">
                         {{ $sproducts->row_nine_sub_title }}
                     </p>
-                    <a href="../story/story_detail.jsp?storyNo=9&amp;categoryCode=Sound" class="lnk-ty2">Discover more
-                    </a>
+                    {{-- <a href="../story/story_detail.jsp?storyNo=9&amp;categoryCode=Sound" class="lnk-ty2">Discover more
+                    </a> --}}
                     <img src="{{ asset('storage/single_product/' . $sproducts->row_nine_image) }}">
                 </div>
             </section>
@@ -438,7 +438,7 @@
                 </div>
 
                 <div class="wrap">
-                    <h2>{{ $sproducts->row_eighteen_title }}</h2>
+                    <h2 class="text-white">{{ $sproducts->row_eighteen_title }}</h2>
                     <h4 class="text-white">{{ $sproducts->row_eighteen_sub_title }}</h4>
                     <p>
                         {!! $sproducts->row_eighteen_description !!}
