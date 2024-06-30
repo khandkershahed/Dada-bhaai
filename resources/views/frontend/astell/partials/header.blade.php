@@ -80,7 +80,7 @@
             </li>
 
             <li>
-                <a href="javascript:;">Support</a>
+                <a href="javascript:void(0);">Support</a>
                 <ul class="depth2">
                     <li>
                         <a href="{{ route('template.two.faq') }}">FAQ</a>
@@ -94,30 +94,23 @@
                 </ul>
             </li>
 
-            <li>
+            {{-- <li>
                 <div class="dropdown">
-
                     <a href="javascript:void(0);" class="border-0 bg-none text-muted" type="button"
                         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                         style="font-size: 20px;">
-
                         <i class="fa-solid fa-cart-plus userLogin wishlist">
                             <span class="cart" id="cartQty">0</span>
                         </i>
-
                     </a>
 
                     <div class="dropdown-menu p-3 cart-icons-menu" aria-labelledby="dropdownMenuButton" style="">
                         <div class="row pb-2">
                             <div class="col-lg-12">
 
-                                {{-- Cart Items --}}
-
                                 <div id="miniCart">
 
                                 </div>
-
-                                {{-- Cart Items --}}
 
                             </div>
                         </div>
@@ -145,13 +138,57 @@
 
                     </div>
                 </div>
-            </li>
+            </li> --}}
 
         </ul>
     </div>
 
     <a href="javascript:void(0);" class="btn-srch"></a>
+    <div class="dropdown custom-cart">
+        <a href="javascript:void(0);" class="border-0 bg-none text-muted" type="button" id="dropdownMenuButton"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;">
+            <i class="fa-solid fa-cart-plus userLogin wishlist">
+                <span class="cart custom-cart-qty" id="cartQty">0</span>
+            </i>
+        </a>
 
+        <div class="dropdown-menu p-3 cart-icons-menu" aria-labelledby="dropdownMenuButton" style="">
+            <div class="row pb-2">
+                <div class="col-lg-12">
+
+                    {{-- Cart Items --}}
+
+                    <div id="miniCart">
+
+                    </div>
+
+                    {{-- Cart Items --}}
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="total-text d-flex justify-content-between pt-2 mb-3">
+                        <span class="f-800 cod__black-color">Total Price</span>
+                        <span class="f-800 cod__black-color">Tk <span id="cartSubTotal"></span></span>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+
+                        <a href="{{ route('template.one.checkout') }}" class="checkout main-btn">Checkout</a>
+
+                        <a href="{{ route('template.one.view.cart') }}" class="viewcart main-btn">View
+                            Cart</a>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
     <div class="srch-box">
         <div class="overlay" style="display: none;"></div>
         <div class="inner" style="display: none;">
