@@ -78,7 +78,7 @@
                                 style="{{ $key == '0' ? '' : 'display:none;' }}">
 
                                 <a href="{{ url('product' . '/' . $category_product_one->id . '/' . $category_product_one->product_slug) }}"
-                                    class="lnk-ty1">Find store</a>
+                                    class="lnk-ty1">Details</a>
 
                             </div>
                         @endforeach
@@ -151,7 +151,7 @@
                             <div class="btn-group tmpProductInfo tmpProductInfo_{{ $key }}"
                                 style="{{ $key == '0' ? '' : 'display:none;' }}">
                                 <a href="{{ url('product' . '/' . $category_product_two->id . '/' . $category_product_two->product_slug) }}"
-                                    class="lnk-ty1">Find store</a>
+                                    class="lnk-ty1">Details</a>
                             </div>
                         @endforeach
 
@@ -223,7 +223,7 @@
                             <div class="btn-group tmpProductInfo tmpProductInfo_{{ $key }}"
                                 style="{{ $key == '0' ? '' : 'display:none;' }}">
                                 <a href="{{ url('product' . '/' . $category_product_three->id . '/' . $category_product_three->product_slug) }}"
-                                    class="lnk-ty1">Find store</a>
+                                    class="lnk-ty1">Details</a>
                             </div>
                         @endforeach
 
@@ -295,7 +295,7 @@
                             <div class="btn-group tmpProductInfo tmpProductInfo_{{ $key }}"
                                 style="{{ $key == '0' ? '' : 'display:none;' }}">
                                 <a href="{{ url('product' . '/' . $category_product_four->id . '/' . $category_product_four->product_slug) }}"
-                                    class="lnk-ty1">Find store</a>
+                                    class="lnk-ty1">Details</a>
                             </div>
                         @endforeach
 
