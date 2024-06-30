@@ -298,14 +298,17 @@
                                             href="{{ route('template.one.dashboard') }}"><i
                                                 class="fal fa-user pr-2"></i>
                                             My Profile</a>
+
                                         <a class="dropdown-item userlogin-header pl-3" style="font-size: 12px;"
-                                            href="{{ route('template.one.dashboard') }}"><i
+                                            href="{{ route('wishlist.product') }}"><i
                                                 class="fal fa-heart pr-2"></i>
                                             My Wishlist</a>
+                                        
                                         <a class="dropdown-item userlogin-header pl-3" style="font-size: 12px;"
                                             href="{{ route('compare.product') }}"><i
                                                 class="fal fa-random pr-2"></i>
                                             My Compare</a>
+
                                         <a class="dropdown-item userlogin-header pl-3" style="font-size: 12px;"
                                             href="{{ route('template.one.dashboard') }}"><i
                                                 class="fal fa-box pr-2"></i>

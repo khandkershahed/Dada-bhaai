@@ -1108,7 +1108,11 @@
                     miniCartRelated +=
 
 
-                        `<ul style="list-style-type: circle !important;">
+                        `
+                        
+                        <ul style="list-style-type: circle !important;">
+
+
                                         
                             <li class="d-flex mb-2 align-items-center ml-0 row text-center">
 
