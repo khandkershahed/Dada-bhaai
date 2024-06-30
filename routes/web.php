@@ -199,9 +199,7 @@ Route::controller(TemplateOneCartController::class)->group(function () {
 
     //AddToCartOfferProductTemplateOne
     Route::post('/offer-product-store', 'AddToCartOfferProductTemplateOne');
-
     Route::post('/product-store-cart', 'AddToCartProductHome');
-
     Route::post('/product-store-cart-single', 'AddToCartProductHomeSingle');
 
     Route::post('/product/store/related/{id}', 'AddToCartTemplateOneRelated');

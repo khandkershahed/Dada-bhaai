@@ -144,7 +144,8 @@
     </div>
 
     <a href="javascript:void(0);" class="btn-srch"></a>
-    <div class="dropdown custom-cart">
+
+    {{-- <div class="dropdown custom-cart">
 
         <a href="javascript:void(0);" class="border-0 bg-none text-muted" type="button" id="dropdownMenuButton"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;">
@@ -159,13 +160,13 @@
             <div class="row pb-2">
                 <div class="col-lg-12">
 
-                    {{-- Cart Items --}}
+                    
 
                     <div id="miniCart">
 
                     </div>
 
-                    {{-- Cart Items --}}
+                   
 
                 </div>
             </div>
@@ -191,7 +192,8 @@
             </div>
 
         </div>
-    </div>
+    </div> --}}
+    
     <div class="srch-box">
         <div class="overlay" style="display: none;"></div>
         <div class="inner" style="display: none;">
