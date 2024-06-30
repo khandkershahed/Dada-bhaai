@@ -321,15 +321,7 @@
                         </li>
 
 
-                        @if (Auth::check())
-                            <li class="">
-                                <a class="wishlist" href="{{ route('wishlist') }}" style="font-size: 20px;">
-                                    <i class="fa-solid fa-heart text-muted wishlist">
-                                        <span class="cart__count" id="wishQty">0</span>
-                                    </i>
-                                </a>
-                            </li>
-                        @endif
+                        
 
                         <li class="" id="compareLink">
                             <a class="wishlist" href="{{ route('compare.product') }}" style="font-size: 20px;">
