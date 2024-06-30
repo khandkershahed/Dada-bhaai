@@ -718,7 +718,7 @@
 
 
         <section class="dropdown-list">
-            < <div class="wrap">
+            <div class="wrap">
                 <h3>Specification</h3>
                 <ul>
 

@@ -145,11 +145,14 @@
 
     <a href="javascript:void(0);" class="btn-srch"></a>
     <div class="dropdown custom-cart">
+
         <a href="javascript:void(0);" class="border-0 bg-none text-muted" type="button" id="dropdownMenuButton"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;">
+
             <i class="fa-solid fa-cart-plus userLogin wishlist">
                 <span class="cart custom-cart-qty" id="cartQty">0</span>
             </i>
+            
         </a>
 
         <div class="dropdown-menu p-3 cart-icons-menu" aria-labelledby="dropdownMenuButton" style="">

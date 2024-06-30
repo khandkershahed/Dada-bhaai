@@ -115,7 +115,7 @@
 
 {{-- =====================WishList Product All Code Start ============================ --}}
 
-{{-- Add Cart To Compare --}}
+{{-- Add Cart To WishList --}}
 <script>
     $('.add_to_wishlist').click(function() {
 
@@ -169,7 +169,7 @@
     })
 </script>
 
-{{-- Load Compare --}}
+{{-- Load Wishlist --}}
 <script>
     function wishlist() {
         $.ajax({
@@ -184,7 +184,7 @@
                 var tableHtml = "";
 
                 if (response.cartWishlist.length === 0) {
-                    
+
                     tableHtml = `
                         
                         <h3 class="">Wishlist List is Empty</h3>
@@ -193,9 +193,9 @@
                     $('#wishlistLink').hide();
                 } else {
                     $.each(response.cartWishlist, function(key, value) {
-                        tableHtml += 
+                        tableHtml +=
 
-                                    `<tr class="border-bottom">
+                            `<tr class="border-bottom">
                                 <td>
                                     <img class="img-fluid"
                                         src="/${value.options.image}" style="width:60px;height:60px;" alt="" />
@@ -217,7 +217,7 @@
                                 </td>
 
                             </tr>`;
-                            
+
                     });
 
                     $('#wishlistLink').show(); // Show the comparison link when list has items
@@ -282,7 +282,7 @@
 {{-- Wishlist Remove --}}
 <script>
     function wishlistRemove(rowId) {
-       
+
         $.ajax({
             type: 'GET',
             url: '/wishlist/product/remove/' + rowId,
@@ -325,8 +325,6 @@
 </script>
 
 {{-- =====================Wishlist Product All Code End ============================== --}}
-
-{{-- ======================================= Asss ================= --}}
 
 {{-- =====================Compare Product All Code Start ============================ --}}
 
@@ -399,7 +397,7 @@
                 var tableHtml = "";
 
                 if (response.cartCompare.length === 0) {
-                    
+
                     tableHtml = `
                         <div>
                             <img class="img-fluid" style="width: 50%;" src="https://i.ibb.co/xzzr9zs/f59ed80d5c527e2461d8ba49adc36160.gif" alt="">
@@ -1113,16 +1111,22 @@
                         `<ul style="list-style-type: circle !important;">
                                         
                             <li class="d-flex mb-2 align-items-center ml-0 row text-center">
+
                                 <div class="col-lg-1 px-0"><span>${serialNumber++}.</span></div>
-                                <div class="col-lg-4 px-0">
+
+                                <div class="col-lg-2 px-0">
                                     <span class="" title="${value.name}">${value.name.length > 10 ? value.name.substring(0, 10) + '' : value.name}</span>
                                 </div>
-                                <div class="col-lg-2 px-0">
-                                    <span class="">X ${value.qty}</span>
+
+                                <div class="col-lg-4 px-0">
+                                    <span class="">${value.qty} * </span>
+                                    <span class="">$ ${value.price}</span>
                                 </div>
+
                                 <div class="col-lg-3 px-0">
-                                    <span class=""> = ${value.price}</span>
+                                    <span class="">=$ ${value.price * value.qty}</span>
                                 </div>
+
                                 <div class="col-lg-2 px-0">
 
                                     <a type="submit" style="cursor:pointer" class="" id="${value.rowId}" onclick="miniCartRelatedRemove(this.id)">
@@ -1616,7 +1620,6 @@
 {{-- // Cart INCREMENT --}}
 <script>
     // Cart INCREMENT
-
     function cartIncrement(rowId) {
         $.ajax({
             type: 'GET',
@@ -1631,11 +1634,6 @@
         });
     }
 
-
-    // Cart INCREMENT End
-
-    // Cart Decrement Start
-
     function cartDecrement(rowId) {
         $.ajax({
             type: 'GET',
@@ -1649,8 +1647,6 @@
             }
         });
     }
-
-
     // Cart Decrement End
 </script>
 
@@ -1658,150 +1654,6 @@
 
 {{-- ============================================== --}}
 
-<!--  /// Start Wishlist Add -->
-<script type="text/javascript">
-    function addToWishList(product_id) {
-        $.ajax({
-            type: "POST",
-            dataType: 'json',
-            url: "/add-to-wishlist/" + product_id,
-
-            success: function(data) {
-                wishlist();
-
-
-
-                // Start Message
-
-                // const Toast = Swal.mixin({
-                //     toast: true,
-                //     position: 'top-end',
-
-                //     showConfirmButton: false,
-                //     timer: 3000
-                // })
-                // if ($.isEmptyObject(data.error)) {
-
-                //     Toast.fire({
-                //         type: 'success',
-                //         icon: 'success',
-                //         title: data.success,
-                //     })
-
-                // } else {
-
-                //     Toast.fire({
-                //         type: 'error',
-                //         icon: 'error',
-                //         title: data.error,
-                //     })
-                // }
-
-                // Start Message
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'bottom-end', // Position set to bottom-end
-                    showConfirmButton: false,
-                    timer: 3000,
-                    customClass: { // Custom class to make the toast smaller
-                        popup: 'swal2-toast',
-                        title: 'swal2-toast-title',
-                        content: 'swal2-toast-content'
-                    }
-                });
-
-                if ($.isEmptyObject(data.error)) {
-                    Toast.fire({
-                        icon: 'success',
-                        title: data.success
-                    });
-                } else {
-                    Toast.fire({
-                        icon: 'error',
-                        title: data.error
-                    });
-                }
-                // End Message update code
-
-
-                // End Message
-
-
-            }
-        })
-    }
-</script>
-<!--  /// End Wishlist Add -->
-
-
-
-{{-- <script type="text/javascript">
-    function wishlist() {
-        $.ajax({
-            type: "GET",
-            dataType: 'json',
-            url: "/get-wishlist-product",
-            success: function(response) {
-                $('#wishQty').text(response.wishQty);
-                var rows = "";
-
-                if (response.wishQty === 0) {
-                    // Wishlist is empty, hide the wishlist count
-                    $('#wishQty').closest('li').hide();
-
-                    rows += `<tr>
-                                <td style="text-align: center;">Wishlist is empty</td>
-                             </tr>`;
-                } else {
-                    // Wishlist is not empty, show the wishlist count
-                    $('#wishQty').closest('li').show();
-
-                    $.each(response.wishlist, function(key, value) {
-                        rows +=
-
-                            `<tr class="border-bottom">
-                                <td>
-                                    <img class="img-fluid"
-                                        src="/${value.product.product_image}" style="width:60px;height:60px;" alt="" />
-                                </td>
-                                <td>
-                                    <p>${value.product.product_name.length > 16 ? value.product.product_name.substring(0, 16) : value.product.product_name}</p>
-                                </td>
-                                <td>
-                                    ${
-                                        value.product.price_status === 'rfq'
-                                        ? `<p class="text-brand">$ ${value.product.sas_price}</p>`
-                                        : (value.product.price_status === 'offer_price'
-                                            ? `<p class="text-brand">$ ${value.product.discount_price}</p>`
-                                            : (value.product.price_status === 'price'
-                                                ? `<p class="text-brand">$ ${value.product.price}</p>`
-                                                : ''
-                                            )
-                                        )
-                                    }
-                                </td>
-                                <td class="">
-                                    <a type="submit" class="add-link" style="cursor:pointer;text-decoration: underline;" id="${value.product.id}" onclick="addToCartWishlist(this.id)" >+Add To Cart</a>
-                                </td>
-                                <td class="">
-                                    <a type="submit" style="cursor:pointer;" class="text-body" id="${value.id}" onclick="wishlistRemove(this.id)" ><i class="fa fa-trash text-danger"></i></a>
-                                </td>
-                            </tr>`;
-
-                    });
-                }
-                $('#wishlist').html(rows);
-            }
-        });
-    }
-
-    wishlist();
-</script> --}}
-
-
-
-
-{{-- // Wishlist Remove Start  --}}
 
 
 <script>
@@ -1847,53 +1699,7 @@
     }
 </script>
 
-{{-- Add Cart Wishlist --}}
-<script>
-    function addToCartWishlist(id) {
 
-        $.ajax({
-            type: "POST",
-            dataType: 'json',
-            url: "/add-to-cart-wishlist/" + id,
-
-            success: function(data) {
-
-                miniCart();
-                miniCartRelated();
-
-                // Start Message
-
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-
-                    showConfirmButton: false,
-                    timer: 3000
-                })
-                if ($.isEmptyObject(data.error)) {
-
-                    Toast.fire({
-                        type: 'success',
-                        icon: 'success',
-                        title: data.success,
-                    })
-
-                } else {
-
-                    Toast.fire({
-                        type: 'error',
-                        icon: 'error',
-                        title: data.error,
-                    })
-                }
-
-                // End Message
-
-
-            }
-        })
-    }
-</script>
 
 {{-- <script>
     // Close dropdown on outside click
@@ -2087,6 +1893,3 @@
         this.querySelector('i').classList.toggle('icon-red');
     });
 </script>
-{{-- ======================================================= --}}
-
-{{-- =========================== --}}
