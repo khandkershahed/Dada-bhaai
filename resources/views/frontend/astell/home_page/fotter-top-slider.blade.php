@@ -1,3 +1,21 @@
+<style>
+    .swiper-button-prev,
+    .swiper-container-rtl .swiper-button-next {
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'%3E%3Cpath d='M0,22L22,0l2.1,2.1L4.2,22l19.9,19.9L22,44L0,22L0,22L0,22z' fill='%23ffffff'%3E%3C/path%3E%3C/svg%3E");
+        background-color: #ff0000;
+        /* Set background color to white */
+        left: 10px;
+        right: auto;
+    }
+
+    .swiper-button-next {
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'%3E%3Cpath d='M27,22L5,44l-2.1-2.1L22.8,22L2.9,2.1L5,0L27,22L27,22L27,22z' fill='%23ffffff'%3E%3C/path%3E%3C/svg%3E");
+        background-color: #ff0000;
+        /* Set background color to white */
+        right: 10px;
+        left: auto;
+    }
+</style>
 <section class="experience">
     <div class="swiper-container footer-swiper">
         <!-- Additional required wrapper -->
@@ -23,6 +41,14 @@
                 </div>
             @endif
         </div>
+        <div class="swiper-page-group">
+            <div class="swiper-button-next">
+            </div>
+
+            <div class="swiper-button-prev">
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
     </div>
     <h2>IMAGINE<br> YOUR OWN LIFE</h2>
 </section>

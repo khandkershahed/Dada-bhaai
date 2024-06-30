@@ -114,7 +114,7 @@
             <div class="wrap">
                 <h3>{{ $sproducts->row_three_title }}</h3>
                 <p>
-                    {!! $sproducts->row_three_description !!}
+                    {{ $sproducts->row_three_description }}
                 </p>
             </div>
             <div class="gallery">
@@ -172,7 +172,7 @@
                             {{ $sproducts->row_five_title }}
                         </h3>
                         <p>
-                            {!! $sproducts->row_five_description !!}
+                            {{ $sproducts->row_five_description }}
                         </p>
                     </div>
                     <div class="img"
@@ -202,10 +202,10 @@
                         </h3>
                         <div class="n4-item">
                             <p>
-                                {!! $sproducts->row_six_short_description !!}
+                                {{ $sproducts->row_six_short_description }}
                             </p>
                             <p>
-                                {!! $sproducts->row_six_description !!}
+                                {{ $sproducts->row_six_description }}
                             </p>
                         </div>
                     </div>
@@ -293,7 +293,7 @@
                         </div>
                     </div>
                     <p>
-                        {!! $sproducts->row_ten_description !!}
+                        {{ $sproducts->row_ten_description }}
                     </p>
                     <div class="box">
 
@@ -303,7 +303,7 @@
                                     {{ $sproducts->row_eleven_title }}</h3>
                                 <p>
 
-                                    {!! $sproducts->row_eleven_description !!}
+                                    {{ $sproducts->row_eleven_description }}
                                 </p>
                             </div>
                             <div class="col-6">
@@ -380,7 +380,7 @@
                         {{ $sproducts->row_fifteen_title }}
                     </h3>
                     <p>
-                        {!! $sproducts->row_fifteen_description !!}
+                        {{ $sproducts->row_fifteen_description }}
                     </p>
                 </div>
             </section>
@@ -401,7 +401,7 @@
                         {{ $sproducts->row_sixteen_sub_title }}
                     </h3>
                     <p>
-                        {!! $sproducts->row_sixteen_description !!}
+                        {{ $sproducts->row_sixteen_description }}
                     </p>
                     <img style="width: 500px; height: auto;"
                         src="{{ asset('storage/single_product/' . $sproducts->row_sixteen_image) }}" alt="detail_5" />
@@ -441,7 +441,7 @@
                     <h2 class="text-white">{{ $sproducts->row_eighteen_title }}</h2>
                     <h4 class="text-white">{{ $sproducts->row_eighteen_sub_title }}</h4>
                     <p>
-                        {!! $sproducts->row_eighteen_description !!}
+                        {{ $sproducts->row_eighteen_description }}
                     </p>
                     <img class="text-center"
                         src="{{ asset('storage/single_product/' . $sproducts->row_eighteen_image) }}" />
@@ -461,7 +461,7 @@
                     <div class="inner">
                         <h3>{{ $sproducts->row_nineteen_title }}</h3>
                         <p>
-                            {!! $sproducts->row_nineteen_description !!}
+                            {{ $sproducts->row_nineteen_description }}
                         </p>
                     </div>
                     <div
@@ -532,7 +532,7 @@
 
                                     <h4>{{ $sproducts->feature_one_title }}</h4>
                                     <p>
-                                        {!! $sproducts->feature_one_description !!}
+                                        {{ $sproducts->feature_one_description }}
                                     </p>
                                 </div>
                             </div>
@@ -543,7 +543,7 @@
                                         src="{{ asset('storage/single_product/' . $sproducts->feature_two_image) }}" />
                                     <h4>{{ $sproducts->feature_two_title }}</h4>
                                     <p>
-                                        {!! $sproducts->feature_two_description !!}
+                                        {{ $sproducts->feature_two_description }}
                                     </p>
                                 </div>
                             </div>
@@ -554,7 +554,7 @@
                                         src="{{ asset('storage/single_product/' . $sproducts->feature_three_image) }}" />
                                     <h4>{{ $sproducts->feature_three_title }}</h4>
                                     <p>
-                                        {!! $sproducts->feature_three_description !!}
+                                        {{ $sproducts->feature_three_description }}
                                     </p>
                                 </div>
                             </div>
@@ -565,7 +565,7 @@
 
                                     <h4>{{ $sproducts->feature_four_title }}</h4>
                                     <p>
-                                        {!! $sproducts->feature_four_description !!}
+                                        {{ $sproducts->feature_four_description }}
                                     </p>
 
                                 </div>
@@ -577,7 +577,7 @@
 
                                     <h4>{{ $sproducts->feature_five_title }}</h4>
                                     <p>
-                                        {!! $sproducts->feature_five_description !!}
+                                        {{ $sproducts->feature_five_description }}
                                     </p>
 
                                 </div>
@@ -589,7 +589,7 @@
 
                                     <h4>{{ $sproducts->feature_six_title }}</h4>
                                     <p>
-                                        {!! $sproducts->feature_six_description !!}
+                                        {{ $sproducts->feature_six_description }}
                                     </p>
 
                                 </div>
@@ -611,9 +611,9 @@
                 !empty($sproducts->design_section_image_four))
             <section class="design-group scrollAni n12">
                 <div class="wrap">
-                    <h2>{{ $sproducts->design_section_title }}</h2>
+                    <h3>{{ $sproducts->design_section_title }}</>
                         <p>
-                            {!! $sproducts->design_section_description !!}
+                            {{ $sproducts->design_section_description }}
                         </p>
                 </div>
                 <div class="slide-group">
