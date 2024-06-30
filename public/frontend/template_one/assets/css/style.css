@@ -4405,6 +4405,7 @@ html .ui-button.ui-state-disabled:active {
     background-color: #eb2f06;
     border-color: #eeeeee;
 }
+
 .accordion .card-header:after {
     font-family: "Font Awesome 5 Free";
     content: "\f068";
