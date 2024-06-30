@@ -87,15 +87,15 @@
 
                                                     @if ($product->price_status == 'rfq')
                                                         <h4 class="grenadier-color mb-0 fw-bold">
-                                                            Tk {{ $product->sas_price }}
+                                                            $ {{ $product->sas_price }}
                                                         </h4>
                                                     @elseif ($product->price_status == 'offer_price')
-                                                        <h5><del>Tk {{ $product->price }}</del></h5>
-                                                        <h4 class="grenadier-color mb-0 fw-bold">Tk
+                                                        <h5><del>$ {{ $product->price }}</del></h5>
+                                                        <h4 class="grenadier-color mb-0 fw-bold">$
                                                             {{ $product->discount_price }}</h4>
                                                     @elseif ($product->price_status == 'price')
                                                         <h4 class="grenadier-color mb-0 fw-bold">
-                                                            Tk {{ $product->price }}
+                                                            $ {{ $product->price }}
                                                         </h4>
                                                     @endif
 
@@ -170,17 +170,17 @@
                                                             <div class="text-right">
                                                                 @if ($childproduct->price_status == 'rfq')
                                                                     <small class="grenadier-color mb-0 fw-bold">
-                                                                        Tk {{ $childproduct->sas_price }}
+                                                                        $ {{ $childproduct->sas_price }}
                                                                     </small>
                                                                 @elseif ($childproduct->price_status == 'offer_price')
-                                                                    <del>Tk {{ $childproduct->price }}</del>
+                                                                    <del>$ {{ $childproduct->price }}</del>
 
-                                                                    <small class="grenadier-color mb-0 fw-bold">Tk
+                                                                    <small class="grenadier-color mb-0 fw-bold">$
                                                                         {{ $childproduct->discount_price }}
                                                                     </small>
                                                                 @elseif ($childproduct->price_status == 'price')
                                                                     <small class="grenadier-color mb-0 fw-bold">
-                                                                        Tk {{ $childproduct->price }}
+                                                                        $ {{ $childproduct->price }}
                                                                     </small>
                                                                 @endif
                                                             </div>
@@ -195,7 +195,7 @@
 
                                                                         <a type="submit"
                                                                             data-product_id="{{ $childproduct->id }}"
-                                                                            class="add_to_cart_btn_product rounded-0">
+                                                                            class="add_to_cart_btn_product_single rounded-0">
                                                                             <span class="badge p-2 text-white"
                                                                                 style="background-color: #cd3301; cursor: pointer;"><i
                                                                                     class="fa-solid fa-plus"></i>
@@ -254,16 +254,16 @@
                             {{-- <div>
                                 @if ($product->price_status == 'rfq')
                                     <h5 class="grenadier-color f-600 mb-0">
-                                        Tk {{ $product->sas_price }}
+                                        $ {{ $product->sas_price }}
                                     </h5>
                                 @elseif ($product->price_status == 'offer_price')
                                     <h5 class="grenadier-color f-600 mb-0">
-                                        Tk {{ $product->discount_price }}</h5>
+                                        $ {{ $product->discount_price }}</h5>
                                 @else
-                                    <h5 class="grenadier-color f-600 mb-0">Tk {{ $product->price }}
+                                    <h5 class="grenadier-color f-600 mb-0">$ {{ $product->price }}
                                     </h5>
                                 @endif
-                                <del class="text-muted">Tk {{ $product->price }}</del>
+                                <del class="text-muted">$ {{ $product->price }}</del>
                             </div> --}}
                         </div>
 
@@ -284,11 +284,11 @@
                                         @if ($product->price_status == 'rfq')
                                             <h5 class=" mb-0 fw-bold">
                                                 <span id="productPrice"
-                                                    style="color: #CD3301; font-weight: bold; margin-bottom: 0;">Tk
+                                                    style="color: #CD3301; font-weight: bold; margin-bottom: 0;">$
                                                     {{ $product->sas_price }}</span>
                                             </h5>
                                         @elseif ($product->price_status == 'offer_price')
-                                            <p class="mb-0"><del>TK <span
+                                            <p class="mb-0"><del>$ <span
                                                         id="originalPrice">{{ $product->price }}</span></del>
                                             </p>
                                             <h5 class=" mb-0 fw-bold">
@@ -545,16 +545,16 @@
                                     <div class="price font-weight-bold pr-2">
                                         @if ($relative_product->price_status == 'rfq')
                                             <h6 class="grenadier-color mb-0 font-weight-bold">
-                                                Tk {{ $relative_product->sas_price }}
+                                                $ {{ $relative_product->sas_price }}
                                             </h6>
                                         @elseif ($relative_product->price_status == 'offer_price')
-                                            <del>Tk {{ $relative_product->price }}</del>
-                                            <h6 class="grenadier-color mb-0 font-weight-bold">Tk
+                                            <del>$ {{ $relative_product->price }}</del>
+                                            <h6 class="grenadier-color mb-0 font-weight-bold">$
                                                 {{ $relative_product->discount_price }}
                                             </h6>
                                         @elseif ($relative_product->price_status == 'price')
                                             <h6 class="grenadier-color mb-0 font-weight-bold">
-                                                Tk {{ $relative_product->price }}
+                                                $ {{ $relative_product->price }}
                                             </h6>
                                         @endif
                                     </div>
@@ -618,7 +618,7 @@
         const quantityInput = document.getElementById('dqty');
         const productPriceElement = document.getElementById('productPrice');
 
-        const unitPrice = parseFloat(productPriceElement.innerText.replace('Tk ', ''));
+        const unitPrice = parseFloat(productPriceElement.innerText.replace('$ ', ''));
 
         minusButton.addEventListener('click', function() {
             let currentValue = parseInt(quantityInput.value);
@@ -640,7 +640,7 @@
             let quantity = parseInt(quantityInput.value);
             if (!isNaN(quantity) && quantity > 0) {
                 let newPrice = unitPrice * quantity;
-                productPriceElement.innerText = 'Tk ' + newPrice.toFixed(2);
+                productPriceElement.innerText = '$ ' + newPrice.toFixed(2);
             }
         }
     });
@@ -692,7 +692,7 @@
                     break;
             }
 
-            productPriceElement.innerText = 'Tk ' + totalPrice.toFixed(2);
+            productPriceElement.innerText = '$ ' + totalPrice.toFixed(2);
         }
     });
 </script>

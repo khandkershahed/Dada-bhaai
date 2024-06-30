@@ -16,13 +16,6 @@
                         <div class="shop-banner-bg pt-120 pb-120 mb-50"
                             data-background="{{ asset('storage/brand/' . $brandwiseproduct->brand_image) }}">
                             <div class="collection-text">
-                                {{-- <h5 class="f-800"><a href="javascript:;">Brand</a></h5> --}}
-                                {{-- <span class="f-200 mb-40">{{ $brandwiseproduct->brand_name }}</span> --}}
-                                {{-- <div class="product-countdown-three">
-                                        <div class="time-count-deal">
-                                            <div class="countdown-list" data-countdown="2020/12/01"></div>
-                                        </div>
-                                    </div> --}}
                             </div>
                         </div>
                     </div>
@@ -120,16 +113,16 @@
                                     <div class="price font-weight-bold pr-2">
                                         @if ($product->price_status == 'rfq')
                                             <h6 class="grenadier-color mb-0 font-weight-bold">
-                                                Tk {{ $product->sas_price }}
+                                                $ {{ $product->sas_price }}
                                             </h6>
                                         @elseif ($product->price_status == 'offer_price')
-                                            <del>Tk {{ $product->price }}</del>
-                                            <h6 class="grenadier-color mb-0 font-weight-bold">Tk
+                                            <del>$ {{ $product->price }}</del>
+                                            <h6 class="grenadier-color mb-0 font-weight-bold">$
                                                 {{ $product->discount_price }}
                                             </h6>
                                         @elseif ($product->price_status == 'price')
                                             <h6 class="grenadier-color mb-0 font-weight-bold">
-                                                Tk {{ $product->price }}
+                                                $ {{ $product->price }}
                                             </h6>
                                         @endif
                                     </div>
