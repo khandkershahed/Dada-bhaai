@@ -103,8 +103,8 @@
                         <div class="col-lg-12 px-0">
                             <div class="releted_accessories">
 
-                                @forelse ($relativeChild as $childproduct)
 
+                                @forelse ($relativeChild as $childproduct)
                                     @if (!empty($childproduct->product_image))
                                         <div class="card border-0 shadow-sm releted-accessories-items mx-2">
                                             <div class="card-header p-0 border-0">
@@ -122,19 +122,15 @@
                                                         <div class="col-lg-6 px-3">
                                                             <div class="text-right">
                                                                 @if ($childproduct->price_status == 'rfq')
-                                                                    <small class="grenadier-color mb-0 fw-bold">
-                                                                        $ {{ $childproduct->sas_price }}
-                                                                    </small>
+                                                                    <small class="grenadier-color mb-0 fw-bold">$
+                                                                        {{ $childproduct->sas_price }}</small>
                                                                 @elseif ($childproduct->price_status == 'offer_price')
                                                                     <del>$ {{ $childproduct->price }}</del>
-
                                                                     <small class="grenadier-color mb-0 fw-bold">$
-                                                                        {{ $childproduct->discount_price }}
-                                                                    </small>
+                                                                        {{ $childproduct->discount_price }}</small>
                                                                 @elseif ($childproduct->price_status == 'price')
-                                                                    <small class="grenadier-color mb-0 fw-bold">
-                                                                        $ {{ $childproduct->price }}
-                                                                    </small>
+                                                                    <small class="grenadier-color mb-0 fw-bold">$
+                                                                        {{ $childproduct->price }}</small>
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -145,8 +141,7 @@
                                                                 class="d-flex justify-content-between align-items-center">
                                                                 <div>
                                                                     <small>
-
-                                                                        <a type="submit"
+                                                                        <a href="#"
                                                                             data-product_id="{{ $childproduct->id }}"
                                                                             class="add_to_cart_btn_product_single rounded-0">
                                                                             <span class="badge p-2 text-white"
@@ -154,51 +149,36 @@
                                                                                     class="fa-solid fa-plus"></i>
                                                                                 Add</span>
                                                                         </a>
-
                                                                     </small>
-
                                                                 </div>
-                                                                {{-- Count Box --}}
-
+                                                                {{-- Quantity Box --}}
                                                                 <div class="number d-flex align-items-center">
-
-                                                                    {{-- <button type="button"
+                                                                    <button type="button"
                                                                         style="cursor: pointer;height: 20px;"
-                                                                        class="buttons-countAccesories border-0 bg-white"
-                                                                        id="decreaseAccesories">-</button> --}}
+                                                                        class="buttons-countAccesories decrease-btn border-0 bg-white">-</button>
 
-                                                                    {{-- <input type="text" disabled
+                                                                    <input type="text"
                                                                         class="mb-0 text-center border-0 bg-white qty-input"
                                                                         name="qty" value="1" min="1"
-                                                                        id="dqtyAccesories" style="width: 30px" /> --}}
+                                                                        style="width: 40px" />
 
-
-                                                                    <input type="number"
-                                                                        class="mb-0 text-center border-0 bg-white qty-input"
-                                                                        name="qty" value="1" min="1"
-                                                                        id="dqtyAccesories" style="width: 40px" />
-
-                                                                    {{-- <button type="button"
-                                                                        class="buttons-countAccesories border-0 bg-white"
-                                                                        id="increaseAccesories"
-                                                                        style="cursor: pointer;height: 20px;">+</button> --}}
-
+                                                                    <button type="button"
+                                                                        class="buttons-countAccesories increase-btn border-0 bg-white"
+                                                                        style="cursor: pointer;height: 20px;">+</button>
                                                                 </div>
-
                                                             </div>
                                                         </div>
-
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     @else
-                                        <span>No Accessories Avaiable</span>
+                                        <span>No Accessories Available</span>
                                     @endif
-
                                 @empty
-                                    <P>No Product Avaiable</P>
+                                    <p>No Product Available</p>
                                 @endforelse
+
 
                             </div>
                         </div>
@@ -489,6 +469,7 @@
 <!-- Main End -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script>
     $(document).ready(function() {
         // Function to toggle cart buttons visibility
@@ -600,6 +581,33 @@
     });
 </script>
 
+{{-- Related Child Product  --}}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Select all product containers
+        const products = document.querySelectorAll('.releted-accessories-items');
 
+        // Iterate over each product container
+        products.forEach(function(product) {
+            // Get elements within each product container
+            const decreaseButton = product.querySelector('.decrease-btn');
+            const increaseButton = product.querySelector('.increase-btn');
+            const qtyInput = product.querySelector('.qty-input');
+
+            // Add click event listeners for increase and decrease buttons
+            decreaseButton.addEventListener('click', function() {
+                // Decrease the value only if it's greater than the minimum value (1 in this case)
+                if (parseInt(qtyInput.value) > 1) {
+                    qtyInput.value = parseInt(qtyInput.value) - 1;
+                }
+            });
+
+            increaseButton.addEventListener('click', function() {
+                // Increase the value
+                qtyInput.value = parseInt(qtyInput.value) + 1;
+            });
+        });
+    });
+</script>
 
 @endsection
