@@ -37,19 +37,6 @@ class IndexController extends Controller
 
             $homepage = HomePage::with(['featureProductOne', 'featureProductTwo', 'featureProductThree', 'featureProductFour'])->where('status', 'tamplate_two')->latest('id')->first();
 
-            // $categories = Category::orderBy('category_name','ASC')->latest()->limit(4)->get();
-
-            // $categoryIds = [
-            //     $homepage->category_tab_one_id,
-            //     $homepage->category_tab_two_id,
-            //     $homepage->category_tab_three_id,
-            //     $homepage->category_tab_four_id,
-            // ];
-
-            // $categories = Category::with('products')->whereIn('id', $categoryIds)->get();
-
-            // dd($homepage);
-
             return view('frontend.astell.index_astell', compact('homepage'));
 
         } else if ($template->name == 'template_three') {
@@ -81,14 +68,12 @@ class IndexController extends Controller
             $color = $product->color_id;
             $product_colors = explode(' ', $color);
 
-            $multiImages = MultiImg::where('product_id', $product->id)->get();
+            $multiImages = MultiImg::where('product_id', $product->id)->limit(3)->get();
 
             //Releted Category
             $cat_id = $product->childcategory_id;
             $relativeProduct = Product::where('childcategory_id', $cat_id)->where('id', '!=', $id)->orderBy('id', 'ASC')->limit(5)->get();
 
-            // $child_id = $product->child_id;
-            // $relativeChild = Product::where('child_id', $child_id)->where('id', '!=', '$id')->orderBy('id', 'DESC')->limit(6)->get();
 
             // $child_id = $product->child_id;
             $child_ids = explode(',', $product->child_id);
@@ -103,9 +88,6 @@ class IndexController extends Controller
             $carts = Cart::content();
             $cartQty = Cart::count();
 
-            // Retrieve related products based on the child_id, excluding the product with ID equal to $id
-
-            // dd($relativeChild);
 
             return view('frontend.template_one.product.single_product', compact('product', 'relativeProduct', 'multiImages', 'relativeChild', 'product_colors', 'carts', 'cartQty'));
 
@@ -149,24 +131,7 @@ class IndexController extends Controller
     //ContactUser
     public function SendMessage(Request $request)
     {
-        // $validator = $request->validate(
-
-        //     [
-        //         'name' => 'required|max:120',
-        //         'email' => 'required|email',
-        //         'phone' => 'required|min:11|numeric',
-        //         'message' => 'required',
-        //     ],
-
-        //     [
-        //         'name.required' => 'Name is required',
-        //         'email.required' => 'Email is required',
-        //         'phone.required' => 'Phone is required',
-        //         'message.required' => 'Message is required',
-        //     ],
-        // );
-
-        // MSG-240324-2
+        
 
         $typePrefix = 'MSG';
 

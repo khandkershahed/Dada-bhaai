@@ -80,54 +80,7 @@
                                             <span class="mr-2 ml-1">{{ $product->mf_code }}</span>
                                         </li>
 
-                                        {{-- <li class="d-flex justify-content-between align-items-center">
-                                            <div class="d-flex">
-
-                                                <div class="text-end">
-
-                                                    @if ($product->price_status == 'rfq')
-                                                        <h4 class="grenadier-color mb-0 fw-bold">
-                                                            $ {{ $product->sas_price }}
-                                                        </h4>
-                                                    @elseif ($product->price_status == 'offer_price')
-                                                        <h5><del>$ {{ $product->price }}</del></h5>
-                                                        <h4 class="grenadier-color mb-0 fw-bold">$
-                                                            {{ $product->discount_price }}</h4>
-                                                    @elseif ($product->price_status == 'price')
-                                                        <h4 class="grenadier-color mb-0 fw-bold">
-                                                            $ {{ $product->price }}
-                                                        </h4>
-                                                    @endif
-
-
-                                                </div>
-
-                                            </div>
-
-
-                                            <div class="">
-
-                                                Qty:<input type="number" class="ml-2 mb-0 text-center" name=""
-                                                    value="1" min="1" id="dqty" style="width: 50px" />
-                                            </div>
-
-
-                                        </li> --}}
-
                                     </ul>
-
-                                    {{-- <div class="d-flex align-items-center mt-3 product--footer__deals mb-4 justify-content-center">
-
-                                        <input type="hidden" id="oneproduct_id" value="{{ $product->id }}">
-
-                                        <a type="submit" style="cursor: pointer" onclick="addToCartOne()"
-                                            class="mt-0 add-link f-700 grenadier-color">+ Add
-                                            Cart</a>
-
-                                        <a type="submit" style="cursor: pointer" onclick="buyToCartOne()"
-                                            class="ml-3 mt-0 add-link f-700 grenadier-color">+ Buy
-                                            Now</a>
-                                    </div> --}}
 
                                     <p>{!! $product->short_desc !!}</p>
                                 </div>
@@ -209,20 +162,26 @@
 
                                                                 <div class="number d-flex align-items-center">
 
-                                                                    <button type="button"
+                                                                    {{-- <button type="button"
                                                                         style="cursor: pointer;height: 20px;"
                                                                         class="buttons-countAccesories border-0 bg-white"
-                                                                        id="decreaseAccesories">-</button>
+                                                                        id="decreaseAccesories">-</button> --}}
 
-                                                                    <input type="text" disabled
+                                                                    {{-- <input type="text" disabled
                                                                         class="mb-0 text-center border-0 bg-white qty-input"
                                                                         name="qty" value="1" min="1"
-                                                                        id="dqtyAccesories" style="width: 30px" />
+                                                                        id="dqtyAccesories" style="width: 30px" /> --}}
 
-                                                                    <button type="button"
+
+                                                                    <input type="number"
+                                                                        class="mb-0 text-center border-0 bg-white qty-input"
+                                                                        name="qty" value="1" min="1"
+                                                                        id="dqtyAccesories" style="width: 40px" />
+
+                                                                    {{-- <button type="button"
                                                                         class="buttons-countAccesories border-0 bg-white"
                                                                         id="increaseAccesories"
-                                                                        style="cursor: pointer;height: 20px;">+</button>
+                                                                        style="cursor: pointer;height: 20px;">+</button> --}}
 
                                                                 </div>
 
@@ -251,20 +210,7 @@
                 <div class="col-lg-3" style="border: 0px solid #f5f5f5;box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 2px;">
                     <div class="cart-wrapper">
                         <div class="mb-20 d-flex justify-content-between align-items-center">
-                            {{-- <div>
-                                @if ($product->price_status == 'rfq')
-                                    <h5 class="grenadier-color f-600 mb-0">
-                                        $ {{ $product->sas_price }}
-                                    </h5>
-                                @elseif ($product->price_status == 'offer_price')
-                                    <h5 class="grenadier-color f-600 mb-0">
-                                        $ {{ $product->discount_price }}</h5>
-                                @else
-                                    <h5 class="grenadier-color f-600 mb-0">$ {{ $product->price }}
-                                    </h5>
-                                @endif
-                                <del class="text-muted">$ {{ $product->price }}</del>
-                            </div> --}}
+
                         </div>
 
                         <div class="mb-4">
@@ -329,27 +275,13 @@
 
                                 {{-- ======================== --}}
                                 <div class="last py-4 align-items-center d-flex justify-content-center">
-                                    <a style="cursor: pointer;" data-product_id="{{ $product->id }}" class="mr-2 text-muted add_to_wishlist">Add To Wishlist</a>
+                                    <a style="cursor: pointer;" data-product_id="{{ $product->id }}"
+                                        class="mr-2 text-muted add_to_wishlist">Add To Wishlist</a>
 
                                     <a style="cursor: pointer;" type="submit" data-product_id="{{ $product->id }}"
                                         class="ml-2 text-muted add_to_compare">Compare</a>
                                 </div>
                                 {{-- ++++====================== --}}
-
-                                {{-- <div
-                                    class="d-flex align-items-center mt-3 product--footer__deals mb-4 justify-content-center">
-
-                                    <input type="hidden" id="oneproduct_id" value="{{ $product->id }}">
-
-                                    <a type="submit" style="cursor: pointer" onclick="addToCartOne()"
-                                        class="mt-0 add-link f-700 grenadier-color ">+ Add
-                                        Cart</a>
-
-                                    <a type="submit" style="cursor: pointer" onclick="buyToCartOne()"
-                                        class="ml-3 mt-0 add-link f-700 grenadier-color">+ Buy
-                                        Now</a>
-                                </div> --}}
-
 
                             </div>
 
@@ -366,13 +298,6 @@
                     </div>
 
                     <div id="cartButtons" class="d-flex align-items-center justify-content-between mt-5">
-
-                        {{-- <a href="{{ route('template.one.view.cart') }}"
-                            class="checkout main-btn text-center w-50 mr-1">View
-                            Cart</a> --}}
-
-                        {{-- <a href="{{ route('template.one.checkout') }}"
-                            class="checkout main-btn text-center w-50 ml-1">CheckOut</a> --}}
 
                         <input type="hidden" id="oneproduct_id" value="{{ $product->id }}">
 
@@ -391,14 +316,6 @@
 
                     </div>
 
-                    {{-- ========================= --}}
-                    {{-- <div class="last py-4 align-items-center d-flex justify-content-center">
-                        <a style="cursor: pointer;" id="{{ $product->id }}" onclick="addToWishList(this.id)"
-                            class="mr-2 text-muted">Add To Wishlist</a>
-                        <span>|</span>
-                        <a style="cursor: pointer;" type="submit" data-product_id="{{ $product->id }}"
-                            class="ml-2 text-muted add_to_compare">Compare</a>
-                    </div> --}}
                 </div>
             </div>
         </div>
@@ -413,10 +330,7 @@
                     <div class="desc-wrapper">
                         <ul class="nav custom-tabs" id="myTab" role="tablist">
 
-                            {{-- <li class="nav-item">
-                                <a class="nav-link" id="home-tab11" data-toggle="tab" href="#home11" role="tab"
-                                    aria-controls="home11" aria-selected="true">Accessories</a>
-                            </li> --}}
+
 
                             <li class="nav-item">
                                 <a class="nav-link active" id="profile-tab11" data-toggle="tab" href="#profile11"
@@ -434,17 +348,7 @@
 
                         <div class="tab-content" id="myTabContent1">
 
-                            {{-- <div class="tab-pane fade" id="home11" role="tabpanel" aria-labelledby="home-tab11">
-                                <div class="desc-content mt-60">
-                                    <div class="row">
-                                        <div class="col-md-12 mb-30">
-                                            <div class="spe-wrapper">
-                                                <p>{!! $product->accessories !!}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
+
 
                             <div class="tab-pane fade show active" id="profile11" role="tabpanel"
                                 aria-labelledby="profile-tab11">
@@ -489,7 +393,8 @@
                             <div class="col-xl-3 col-sm-6">
                                 <div class="product-section2">
                                     <h6 class="product--section__title2" id="releted-tab" data-toggle="tab"
-                                        href="#releted" role="tab" aria-controls="releted" aria-selected="true">
+                                        href="javascript:;" role="tab" aria-controls="releted"
+                                        aria-selected="true">
                                         <span>Related Product</span>
                                     </h6>
                                 </div>
@@ -522,7 +427,9 @@
 
                                     <ul class="product-links">
 
-                                        <li><a type="submit" class="add_to_wishlist" style="cursor: pointer;" data-product_id="{{ $product->id }}" data-tip="Wishlist"><i class="far fa-heart"></i></a></li>
+                                        <li><a type="submit" class="add_to_wishlist" style="cursor: pointer;"
+                                                data-product_id="{{ $product->id }}" data-tip="Wishlist"><i
+                                                    class="far fa-heart"></i></a></li>
 
                                         <li><a type="submit" style="cursor:pointer;" class="add_to_compare"
                                                 data-product_id="{{ $relative_product->id }}" data-tip="Compare"><i
@@ -564,7 +471,6 @@
                             </div>
 
                         @empty
-                            
                         @endforelse
 
                     </div>
