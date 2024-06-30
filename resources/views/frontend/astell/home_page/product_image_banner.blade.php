@@ -6,7 +6,11 @@
 
 <section class="brand-story scrollAni n2">
     <h2>
+<<<<<<< HEAD
+        We believe <strong>DadaBhaai</strong> is the center of Asthenia Product
+=======
         We believe <strong>DadaBhaai</strong> is the center of luxurious products.
+>>>>>>> 7d9af586d18abb798ea9f6367ca7bd3bb4860b60
     </h2>
     <ul>
 
