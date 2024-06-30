@@ -42,11 +42,11 @@
                         {{-- Login  --}}
                         <div class="tab-pane fade show active" id="home" role="tabpanel"
                             aria-labelledby="home-tab">
-                            <div class="mt-2 d-flex justify-content-between aligin-items-center">
+                            {{-- <div class="mt-2 d-flex justify-content-between aligin-items-center">
                                 <a href="{{ route('login.google') }}" class="cart-button w-100 mt-0">Google Login</a>
                                 <a href="{{ route('login.google') }}" class="cart-button w-100 mt-0 ml-2">Facebook
                                     Login</a>
-                            </div>
+                            </div> --}}
                             <x-auth-session-status class="mb-4" :status="session('status')" />
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
@@ -84,10 +84,10 @@
 
                         {{-- Register --}}
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <div class="mt-2 d-flex justify-content-between aligin-items-center">
+                            {{-- <div class="mt-2 d-flex justify-content-between aligin-items-center">
                                 <button class="w-100 mr-2">Google Login</button>
                                 <button class="w-100">Facebook Login</button>
-                            </div>
+                            </div> --}}
                             <!-- Session Status -->
                             <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -137,7 +137,7 @@
                                     <div class="col-lg-12">
                                         <div class="form-group form-check">
                                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                            <label class="form-check-label pt-0" for="exampleCheck1">I agree on Tech Focus Term & Condition.</label>
+                                            <label class="form-check-label pt-0" for="exampleCheck1">I agree on DadaBhaai Term & Condition.</label>
                                         </div>
                                     </div>
                                 </div>

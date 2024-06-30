@@ -80,13 +80,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //User Logout
     Route::get('/user-logout', [TemplateOneController::class, 'TemplateOneUserLogout'])->name('template.one.user.logout');
 
-    //Add To WishList
-    Route::get('/all-wishlist', [TemplateOneCartController::class, 'TemplateOneWishlist'])->name('wishlist');
-    Route::get('/get-wishlist-product', [TemplateOneCartController::class, 'GetWishlistProduct']);
-    Route::get('/wishlist-remove/{id}', [TemplateOneCartController::class, 'WishlistRemove']);
-
-    Route::post('/add-to-cart-wishlist/{id}', [TemplateOneCartController::class, 'AddToCartWishlist']);
-
 });
 
 //Add To WishList
@@ -147,6 +140,13 @@ Route::controller(TemplateOneController::class)->group(function () {
     Route::get('/get-compare', 'GetCompare');
     Route::post('/add-to-cart-compare/{id}', 'AddToCartCompare');
     Route::get('/compare/product/remove/{rowId}', 'RemoveCompareTemplateOne');
+
+    //Add To Wishlist
+    Route::post('/add-to-wishlist', 'AddToWishlist');
+    Route::get('/wishlist-product', 'WishlistProduct')->name('wishlist.product');
+    Route::get('/get-wishlist', 'GetWishlist');
+    Route::post('/add-to-cart-wishlist/{id}', 'AddToCartWishlist');
+    Route::get('/wishlist/product/remove/{rowId}', 'RemoveWishlistTemplateOne');
 
 });
 
@@ -256,8 +256,8 @@ Route::controller(TemplateTwoController::class)->group(function () {
     // Route for showing search results (GET request)
     Route::get('/product-search-results', 'showSearchResults')->name('product.search.results');
 
-    // // Route for showing search results (GET request)
-    // Route::post('/product-store-cart-product', 'AddToCartProductHome');
+    // Route for showing search results (GET request)
+    Route::post('/product-store-cart-product', 'AddToCartProductHomeAstell');
 
 });
 

@@ -48,13 +48,13 @@
     })
 </script>
 
-{{-- add_to_cart_btn_product --}}
+{{-- ================= Product Cart Start ======================== --}}
+
 <script>
     $('.add_to_cart_btn_product_astell').click(function() {
 
         var product_id = $(this).data('product_id');
         //var qty = $(this).closest('.d-flex').find('.qty-input').val();
-
 
         $.ajax({
 
@@ -91,7 +91,7 @@
                         title: data.success,
                     })
 
-                    // window.location.href = '/template.one.view.cart';
+                //window.location.href = '/template.one.view.cart';
 
                 } else {
 
@@ -109,6 +109,10 @@
 
     })
 </script>
+
+{{-- ================= Product Cart End ======================== --}}
+
+
 <script>
     $(document).ready(function() {
         function dropdownList() {

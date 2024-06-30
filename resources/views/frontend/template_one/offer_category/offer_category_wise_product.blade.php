@@ -17,8 +17,10 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="shop-banner-bg pt-120 pb-120 mb-50"
-                                data-background="{{ asset('storage/offer_category_image/' . $offercatwiseproduct->offer_category_image) }}">
-
+                                data-background="{{ asset('frontend/template_one/assets/img/bg/shop-banner-bg.jpg') }}">
+                                <div class="collection-text">
+                                    <h5 class="f-800"><a href="javascript:;"></a></h5>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -69,13 +71,11 @@
 
                                         <ul class="product-links">
 
-                                            <li><a style="cursor: pointer;" id="{{ $product->id }}"
-                                                    onclick="addToWishList(this.id)" data-tip="Wishlist"><i
-                                                        class="far fa-heart"></i></a></li>
+                                            <li><a type="submit" class="add_to_wishlist" style="cursor: pointer;" data-product_id="{{ $product->products->id }}" data-tip="Wishlist"><i class="far fa-heart"></i></a></li>
 
-                                            <li><a type="submit" style="cursor:pointer;"
-                                                    data-product_id="{{ $product->id }}" data-tip="Compare"><i
-                                                        class="fas fa-random"></i></a></li>
+                                            <li><a type="submit" style="cursor:pointer;" class="add_to_compare"
+                                                data-product_id="{{ $product->products->id }}" data-tip="Compare"><i
+                                                    class="fas fa-random"></i></a></li>
                                         </ul>
 
                                     </div>

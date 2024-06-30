@@ -68,15 +68,15 @@
                             <select name="status" id="" class="form-select form-select-sm" required>
                                 <option selected disabled>Choose Tamplate</option>
 
-                                <option value="tamplate_one" {{ $home->status == 'tamplate_one' ? 'selected' : '' }}>
-                                    Template One</option>
+                                {{-- <option value="tamplate_one" {{ $home->status == 'tamplate_one' ? 'selected' : '' }}>
+                                    Template One</option> --}}
 
                                 <option value="tamplate_two" {{ $home->status == 'tamplate_two' ? 'selected' : '' }}>
                                     Template Two</option>
 
-                                <option value="tamplate_three"
+                                {{-- <option value="tamplate_three"
                                     {{ $home->status == 'tamplate_three' ? 'selected' : '' }}>Template Three
-                                </option>
+                                </option> --}}
 
                             </select>
                         </div>

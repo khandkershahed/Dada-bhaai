@@ -331,9 +331,7 @@
 
                                         <ul class="product-links">
 
-                                            <li><a style="cursor: pointer;" id="{{ $product->id }}"
-                                                    onclick="addToWishList(this.id)" data-tip="Wishlist"><i
-                                                        class="far fa-heart"></i></a></li>
+                                            <li><a type="submit" class="add_to_wishlist" style="cursor: pointer;" data-product_id="{{ $product->id }}" data-tip="Wishlist"><i class="far fa-heart"></i></a></li>
 
                                             <li><a type="submit" style="cursor:pointer;" class="add_to_compare"
                                                     data-product_id="{{ $product->id }}" data-tip="Compare"><i
