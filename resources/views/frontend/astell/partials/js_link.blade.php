@@ -6,6 +6,7 @@
 <iframe name="iframe4dummy" src="#" width="0" height="0" frameborder="0" style="display: none"></iframe>
 
 <script src="{{ asset('frontend/astell/assets/js/jquery-3.5.1.js') }}"></script>
+<script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>
 
 <script src="{{ asset('frontend/astell/assets/js/jquery-ui.js') }}"></script>
 <script src="{{ asset('frontend/astell/assets/js/jquery.ui.touch-punch.min.js') }}"></script>
