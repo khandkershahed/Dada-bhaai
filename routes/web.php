@@ -202,6 +202,8 @@ Route::controller(TemplateOneCartController::class)->group(function () {
 
     Route::post('/product-store-cart', 'AddToCartProductHome');
 
+    Route::post('/product-store-cart-single', 'AddToCartProductHomeSingle');
+
     Route::post('/product/store/related/{id}', 'AddToCartTemplateOneRelated');
     Route::get('/product/mini/cart/related', 'AddMiniCartTemplateOneRelated');
     Route::get('/mini-cart/increase/{rowId}', 'IncreaseMiniCartTemplateOneRelated');

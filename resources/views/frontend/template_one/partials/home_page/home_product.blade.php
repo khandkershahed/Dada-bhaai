@@ -74,14 +74,14 @@
                                                 </div>
                                                 <div class="price font-weight-bold pr-2">
                                                     @if ($cat_product->price_status == 'rfq')
-                                                        <h6 class="grenadier-color mb-0 font-weight-bold">Tk
+                                                        <h6 class="grenadier-color mb-0 font-weight-bold">$
                                                             {{ $cat_product->sas_price }}</h6>
                                                     @elseif ($cat_product->price_status == 'offer_price')
-                                                        <del>Tk {{ $cat_product->price }}</del>
-                                                        <h6 class="grenadier-color mb-0 font-weight-bold">Tk
+                                                        <del>$ {{ $cat_product->price }}</del>
+                                                        <h6 class="grenadier-color mb-0 font-weight-bold">$
                                                             {{ $cat_product->discount_price }}</h6>
                                                     @elseif ($cat_product->price_status == 'price')
-                                                        <h6 class="grenadier-color mb-0 font-weight-bold">Tk
+                                                        <h6 class="grenadier-color mb-0 font-weight-bold">$
                                                             {{ $cat_product->price }}</h6>
                                                     @endif
                                                 </div>
