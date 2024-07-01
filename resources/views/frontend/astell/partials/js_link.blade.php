@@ -23,14 +23,6 @@
 <script src="{{ asset('frontend/astell/assets/js/kimsoft/kimsoft.js') }}"></script>
 <script src="{{ asset('frontend/astell/assets/js/common.dev.js') }}"></script>
 
-{{-- <script type="text/javascript" src="{{ asset('frontend/astell/assets/js/jquery/jquery.alphanumeric.js') }}"></script>
-<script type="text/javascript" src="{{ asset('frontend/astell/assets/js/jquery/jquery.form.js') }}"></script>
-<script type="text/javascript" src="{{ asset('frontend/astell/assets/js/jquery/jquery.placeholder.js') }}"></script>
-<script type="text/javascript" src="{{ asset('frontend/astell/assets/js/jquery/jquery.tmpl.js') }}"></script>
-<script type="text/javascript" src="{{ asset('frontend/astell/assets/js/jquery/jquery.blockUI.js') }}"></script>
-<script type="text/javascript" src="{{ asset('frontend/astell/assets/js/kimsoft/kimsoft.js') }}"></script>
-<script type="text/javascript" src="{{ asset('frontend/astell/assets/js/common.dev.js') }}"></script> --}}
-
 
 
 @stack('scripts')
@@ -91,7 +83,7 @@
                         title: data.success,
                     })
 
-                //window.location.href = '/template.one.view.cart';
+                    //window.location.href = '/template.one.view.cart';
 
                 } else {
 
