@@ -95,27 +95,6 @@
                         </div>
                         {{-- Category  --}}
 
-                        {{-- Brand  --}}
-                        {{-- <div class="common-cat mt-4">
-
-                            <div class="side-title">
-                                <h6>Brands</h6>
-                            </div>
-                            <ul>
-                                @forelse ($brands as $brand)
-                                    <li><a
-                                            href="{{ url('product/brand/' . $brand->id . '/' . $brand->brand_slug) }}">{{ $brand->brand_name }}</a>
-                                    </li>
-                                @empty
-                                    <p>No Brand Avaiable</p>
-                                @endforelse
-                            </ul>
-
-                        </div> --}}
-                        {{-- Brand  --}}
-
-
-
                     </div>
 
                 </div>
@@ -125,19 +104,13 @@
                         <div class="col-sm-12">
                             <div class="shop-banner-bg pt-120 pb-120 mb-50"
                                 data-background="{{ asset('frontend/template_one/assets/img/bg/shop-banner-bg.jpg') }}">
-                                {{-- <div class="collection-text">
-                                    <h5 class="f-800"><a href="javascript:;">Product</a></h5>
-                                    <span class="f-200 mb-40">{{ $brandwiseproduct->brand_name }}</span>
-                                    <div class="product-countdown-three">
-                                        <div class="time-count-deal">
-                                            <div class="countdown-list" data-countdown="2020/12/01"></div>
-                                        </div>
-                                    </div>
-                                </div> --}}
+                                
                             </div>
                         </div>
                     </div>
+
                     <div class="border-b">
+
                         <div class="row">
 
                             <div class="col-lg-5 col-md-4">
@@ -147,40 +120,19 @@
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">
-                                                Product</li>
+                                                {{ $item }}</li>
                                         </ol>
                                     </nav>
                                 </div>
                             </div>
 
-                            {{-- <div class="col-lg-4 col-md-2">
+                            <div class="col-lg-4 col-md-2">
                                 <div class="text-center" style="margin-top: 10px;">
-                                    <span>Showing {{ count($products) }} of {{ $products->total() }} Results</span>
-                                </div>
-                            </div> --}}
-
-                            {{-- <div class="col-lg-3 col-md-6">
-
-                                <div class="bar-wrapper">
-
-
-
-                                    <div class="shop-select">
-                                        <select name="select" id="sortBy">
-                                            <option selected disabled>Sort By Products</option>
-
-                                            <option value="nameAtoZ">Product Name:A to
-                                                Z
-                                            </option>
-                                            <option value="nameZtoA">Product Name:Z to
-                                                A
-                                            </option>
-
-                                        </select>
-                                    </div>
+                                    {{-- <span>Showing {{ count($products) }} of {{ $products->total() }} Results</span> --}}
+                                    {{-- <span>Search By Product Name </span> --}}
 
                                 </div>
-                            </div> --}}
+                            </div>
 
                         </div>
                     </div>
@@ -271,34 +223,5 @@
     </div>
     <!-- shop area end -->
 
-    <!-- Subscribe -->
-
-    {{-- <div class="subscribe subscribe--area grenadier-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="newsletter newsletter--box d-flex justify-content-between align-items-center pos-rel">
-                        <div class="left d-flex justify-content-between align-items-center">
-                            <div class="newsletter__title">
-                                <span class="notification--icon"><img src="img/icon/notification-icon.png"
-                                        alt="notification"></span>
-                                <span class="notification__title--heading f-800 white-color">Subscribe for Join Us!</span>
-                            </div>
-                            <div class="newsletter--message d-none d-xl-block">
-                                <p class="newsletter__message__title mb-0">.... & receive $20 coupne for first Shopping &
-                                    free delivery.</p>
-                            </div>
-                        </div>
-                        <form class="right newsletter--form pos-rel">
-                            <input class="newsletter--input" type="text" placeholder="Enter Your Email Address ...">
-                            <button class="btn newsletter--button" type="button"><img src="{{ asset('template') }}img/icon/plan-icon.png"
-                                    alt=""></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
-    <!-- Subscribe End -->
+    
 @endsection

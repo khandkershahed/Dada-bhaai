@@ -2,7 +2,7 @@
 @section('index_template_one')
     <!-- page banner area start -->
     <section class="page-banner-area blog-page"
-        data-background="{{ asset('frontend/template_one/assets/img/bg/banner.jpg') }}" style="margin-top: 60px;">
+        data-background="{{ asset('frontend/template_one/assets/img/bg/banner.jpg') }}">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -37,7 +37,7 @@
 
         @csrf
 
-        <div class="product shop-page pt-80 pb-80 fix">
+        <div class="product shop-page pt-40 pb-80 fix">
             <div class="container">
                 <div class="border-b">
                     <div class="row">
@@ -58,6 +58,7 @@
                     <div class="col-lg-12">
                         <div class="card border-0 shadow-lg">
                             <div class="card-body">
+
                                 <div class="row">
 
                                     <div class="col-lg-8">
@@ -127,8 +128,17 @@
                                                             </div>
 
                                                             <div class="form-group col-sm-4">
-                                                                <label for="country">Country
+                                                                <label for="city">Country
                                                                 </label>
+                                                                {{-- <select name="billing_country"
+                                                                    class="form-control form-control-sm w-100 border" id="">
+                                                                    <option disabled>Default select</option>
+                                                                    @foreach ($countries as $country)
+                                                                        <option value="{{ $country->name }}">
+                                                                            {{ $country->name }}</option>
+                                                                    @endforeach
+                                                                </select> --}}
+
 
                                                                 <input type="text" class="form-control"
                                                                     value="{{ Auth::user()->country }}"
@@ -271,20 +281,20 @@
 
                                                                 <tr class="">
                                                                     <td>Price:</td>
-                                                                    <td class="text-right">Tk {{ $cartTotal }}</td>
+                                                                    <td class="text-right">$ {{ $cartTotal }}</td>
                                                                 </tr>
 
 
                                                                 {{-- <tr class="">
                                                                     <td>Coupon Discount :</td>
-                                                                    <td class="text-right">Tk <b
+                                                                    <td class="text-right">$ <b
                                                                             class="drk-gry couponDiscount">0.00</b></td>
                                                                 </tr> --}}
 
                                                                 @if (count($coupons) > 0 ? 'd-none' : '')
                                                                     <tr class="coupon-discount">
                                                                         <td>Coupon Discount :</td>
-                                                                        <td class="text-right">Tk <b
+                                                                        <td class="text-right">$ <b
                                                                                 class="drk-gry couponDiscount">0.00</b>
                                                                         </td>
                                                                     </tr>
@@ -293,7 +303,7 @@
 
                                                                 <tr class="">
                                                                     <td>Delivery Charge :</td>
-                                                                    <td class="text-right">Tk <b
+                                                                    <td class="text-right">$ <b
                                                                             class="drk-gry shippingCharge">0.00</b></td>
 
                                                                 </tr>
@@ -304,7 +314,7 @@
                                                                     <th class="text-right">
                                                                         <input class="" type="hidden"
                                                                             name="total_amount" value="0">
-                                                                        Tk <b class="amount grandTotal">
+                                                                        $ <b class="amount grandTotal">
                                                                             {{ $cartTotal }}</b>
                                                                     </th>
 
@@ -363,7 +373,9 @@
                                             </div>
                                         </form>
                                     </div>
+
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -552,7 +564,7 @@
         });
     </script>
 
-
+    
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="container">

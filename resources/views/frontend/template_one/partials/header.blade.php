@@ -6,8 +6,8 @@
         <nav class="navbar navbar-expand-lg navbar-transparent">
             <a class="navbar-brand py-3 pr-4" href="{{ route('index') }}">
                 {{-- <img class="" width="200px" src="{{ asset('upload/logo_black/' . $site->logo_black) }}" alt="" /> --}}
-                <img class="" width="200px"
-                    src="{{ asset('upload/logo_black/' . $site->logo_black) }}" alt="" />
+                <img class="" width="200px" src="{{ asset('upload/logo_black/' . $site->logo_black) }}"
+                    alt="" />
             </a>
 
             <!-- Categories Dropdown -->
@@ -169,7 +169,9 @@
                                                     @endphp
 
                                                     @if ($brand)
-                                                        <li><a href="{{ url('product/brand/' . $brand->id . '/' . $brand->brand_slug) }}">{{ $brand->brand_name }}</a></li>
+                                                        <li><a
+                                                                href="{{ url('product/brand/' . $brand->id . '/' . $brand->brand_slug) }}">{{ $brand->brand_name }}</a>
+                                                        </li>
                                                     @endif
                                                 @empty
                                                     <p>No brand available for this category.</p>
@@ -257,15 +259,49 @@
                     <ul class="list-inline">
                         <li>
                             <div class="dropdown">
-                                <a href="javascript:void(0);" id="userIcon" class="border-0 bg-none text-muted"
-                                    type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false" style="font-size: 20px;">
-                                    <i class="fa-solid fa-user text-muted userLogin"></i>
-                                </a>
+
+                                @if (Auth::user())
+                                    <a href="javascript:void(0);" id="userIcon" class="border-0 bg-none text-muted"
+                                        type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false" style="font-size: 20px;">
+                                        <i class="fa-solid fa-user text-danger userLogin"></i>
+
+                                        {{-- <img src="{{  url('https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name)) }}"
+                                            style="width: 40px;height:40px;" alt="">
+                                            {{ Auth::user()->name }} --}}
+                                    </a>
+                                @else
+                                    <a href="javascript:void(0);" id="userIcon" class="border-0 bg-none text-muted"
+                                        type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false" style="font-size: 20px;">
+                                        <i class="fa-solid fa-user text-muted userLogin"></i>
+                                    </a>
+                                @endif
 
                                 <div class="dropdown-menu p-3 user-panel-login" aria-labelledby="dropdownMenuButton"
                                     style="">
+
                                     @if (Auth::user())
+                                        {{-- <p class="text-muted pl-3">First time here? <a
+                                                href="{{ route('template.one.login') }}" class="text-danger">Sign
+                                                Up</a>
+                                        </p> --}}
+                                        <a class="dropdown-item" href="{{ route('template.one.dashboard') }}">
+
+                                            <img src="{{  url('https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name)) }}"
+                                            style="width: 30px;height:30px;" alt="">
+
+                                            {{ Auth::user()->name }}</a>
+
+                                        <a class="dropdown-item" href="{{ route('template.one.dashboard') }}"><i
+                                                class="fal fa-star pr-2"></i>
+                                            My Dashboard</a>
+
+                                            <a class="dropdown-item" href="{{ route('template.one.dashboard') }}"><i
+                                                class="fal fa-key pr-2"></i>
+                                            Password Change</a>
+
+                                        <hr class="mb-2 mt-3">
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
                                             <a href="{{ route('logout') }}"
@@ -274,16 +310,6 @@
                                                 Logout
                                             </a>
                                         </form>
-                                        <hr class="mb-2 mt-3">
-                                        {{-- <p class="text-muted pl-3">First time here? <a
-                                                href="{{ route('template.one.login') }}" class="text-danger">Sign
-                                                Up</a>
-                                        </p> --}}
-                                        <a class="dropdown-item" href="{{ route('template.one.dashboard') }}"><i
-                                                class="fal fa-user pr-2"></i>
-                                            My Dashboard</a>
-                                        <a class="dropdown-item" href="{{ route('template.one.dashboard') }}"><i
-                                                class="fal fa-star pr-2" aria-hidden="true"></i>Password Change</a>
                                     @else
                                         <a href="{{ route('template.one.login') }}" class="cart-button w-100 mt-0">
                                             Login
@@ -300,13 +326,11 @@
                                             My Profile</a>
 
                                         <a class="dropdown-item userlogin-header pl-3" style="font-size: 12px;"
-                                            href="{{ route('wishlist.product') }}"><i
-                                                class="fal fa-heart pr-2"></i>
+                                            href="{{ route('wishlist.product') }}"><i class="fal fa-heart pr-2"></i>
                                             My Wishlist</a>
-                                        
+
                                         <a class="dropdown-item userlogin-header pl-3" style="font-size: 12px;"
-                                            href="{{ route('compare.product') }}"><i
-                                                class="fal fa-random pr-2"></i>
+                                            href="{{ route('compare.product') }}"><i class="fal fa-random pr-2"></i>
                                             My Compare</a>
 
                                         <a class="dropdown-item userlogin-header pl-3" style="font-size: 12px;"
@@ -324,7 +348,7 @@
                         </li>
 
 
-                        
+
 
                         <li class="" id="compareLink">
                             <a class="wishlist" href="{{ route('compare.product') }}" style="font-size: 20px;">

@@ -2,22 +2,24 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Mail\OrderMail;
+use Helper;
+use Carbon\Carbon;
 use App\Models\Admin;
+use App\Mail\OrderMail;
+use App\Models\User\Order;
 use App\Models\Admin\Coupon;
+use Illuminate\Http\Request;
 use App\Models\Admin\Product;
 use App\Models\Admin\Wishlist;
-use App\Models\User\Order;
 use App\Models\User\OrderItem;
+use Nnjeim\World\Models\Country;
+use App\Http\Controllers\Controller;
 use App\Notifications\OrderComplete;
-use Carbon\Carbon;
-use Gloudemans\Shoppingcart\Facades\Cart;
-use Helper;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Notification;
+
 
 class TemplateOneCartController extends Controller
 {
@@ -630,7 +632,9 @@ class TemplateOneCartController extends Controller
                 $cartQty = Cart::count();
                 $cartTotal = Cart::total();
 
-                return view('frontend.template_one.cart.checkout', compact('carts', 'cartQty', 'cartTotal'));
+                $countries = Country::all();
+
+                return view('frontend.template_one.cart.checkout', compact('carts', 'cartQty', 'cartTotal','countries'));
             } else {
 
                 toastr()->error('At least add to Cart One Product');

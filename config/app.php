@@ -161,6 +161,7 @@ return [
          */
         Intervention\Image\ImageServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        Nnjeim\World\WorldServiceProvider::class,
         /*
          * Application Service Providers...
          */

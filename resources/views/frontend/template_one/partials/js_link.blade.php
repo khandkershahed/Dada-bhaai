@@ -213,7 +213,7 @@
                                 </td>
 
                                 <td class="">
-                                    <a type="submit" style="cursor:pointer" id="${value.rowId}" onclick="wishlistRemove(this.id)">Remove</a>
+                                    <a type="submit" style="cursor:pointer" id="${value.rowId}" onclick="wishlistRemove(this.id)"><i class="fa-solid fa-trash text-danger"></i></a>
                                 </td>
 
                             </tr>`;
@@ -423,7 +423,7 @@
                                         <a type="submit" style="cursor:pointer" id="${value.id}" onclick="addToCartCompare(this.id)"> Add To Cart</a>
                                         </li>
 
-                                    <li><a type="submit" style="cursor:pointer" id="${value.rowId}" onclick="compareRemove(this.id)">Remove</a></li>
+                                    <li><a type="submit" style="cursor:pointer" id="${value.rowId}" onclick="compareRemove(this.id)"><i class="fa-solid fa-trash text-danger"></i></a></li>
 
                                 </ul>
                             </div>`;
@@ -1118,17 +1118,17 @@
 
                                 <div class="col-lg-1 px-0"><span>${serialNumber++}.</span></div>
 
-                                <div class="col-lg-2 px-0">
-                                    <span class="" title="${value.name}">${value.name.length > 10 ? value.name.substring(0, 10) + '' : value.name}</span>
+                                <div class="col-lg-5 px-0">
+                                    <span class="" title="${value.name}">${value.name.length > 16 ? value.name.substring(0, 16) + '' : value.name}</span>
                                 </div>
 
-                                <div class="col-lg-4 px-0">
-                                    <span class="">${value.qty} * </span>
-                                    <span class="">$ ${value.price}</span>
+                                <div class="col-lg-1 px-0">
+                                    <span class="">x ${value.qty}</span>
+                                    
                                 </div>
 
                                 <div class="col-lg-3 px-0">
-                                    <span class="">=$ ${value.price * value.qty}</span>
+                                    <span class="">$ ${value.price * value.qty}</span>
                                 </div>
 
                                 <div class="col-lg-2 px-0">
