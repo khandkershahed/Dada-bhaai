@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Admin\Product;
 use App\Models\Admin\Category;
 use App\Models\Admin\HomePage;
-use App\Models\Admin\Product;
-use Illuminate\Http\Request;
+use App\Models\Admin\SubCategory;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 
 class HomePageController extends Controller
@@ -22,10 +23,12 @@ class HomePageController extends Controller
     public function EditHome($id)
     {
         $home = HomePage::find($id);
+
         $categorys = Category::orderBy('category_name', 'ASC')->latest()->get();
+        $subcategorys = SubCategory::orderBy('subcategory_name', 'ASC')->latest()->get();
         $products = Product::orderBy('product_name', 'ASC')->latest()->get();
 
-        return view('admin.pages.home.edit_home', compact('home', 'categorys', 'products'));
+        return view('admin.pages.home.edit_home', compact('home', 'categorys', 'products','subcategorys'));
     }
 
     //Update Home

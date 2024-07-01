@@ -5,15 +5,9 @@
         @endphp
         <nav class="navbar navbar-expand-lg navbar-transparent">
             <a class="navbar-brand py-3 pr-4" href="{{ route('index') }}">
-<<<<<<< HEAD
-                {{-- <img class="" width="200px" src="{{ asset('upload/logo_black/' . $site->logo_black) }}" alt="" /> --}}
-                <img class="" width="200px" src="{{ asset('upload/logo_black/' . $site->logo_black) }}"
+
+                <img class="" width="145px" src="{{ asset('upload/logo_black/' . $site->logo_black) }}"
                     alt="" />
-=======
-                {{-- <img class="" width="145px" src="{{ asset('upload/logo_black/' . $site->logo_black) }}" alt="" /> --}}
-                <img class="" width="145px"
-                    src="{{ asset('upload/logo_black/' . $site->logo_black) }}" alt="" />
->>>>>>> dc7d3a61d0dc36adcc0930f9240c0686c32780d2
             </a>
 
             <!-- Categories Dropdown -->
@@ -294,8 +288,8 @@
                                         </p> --}}
                                         <a class="dropdown-item" href="{{ route('template.one.dashboard') }}">
 
-                                            <img src="{{  url('https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name)) }}"
-                                            style="width: 30px;height:30px;" alt="">
+                                            <img src="{{ url('https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name)) }}"
+                                                style="width: 30px;height:30px;" alt="">
 
                                             {{ Auth::user()->name }}</a>
 
@@ -303,7 +297,7 @@
                                                 class="fal fa-star pr-2"></i>
                                             My Dashboard</a>
 
-                                            <a class="dropdown-item" href="{{ route('template.one.dashboard') }}"><i
+                                        <a class="dropdown-item" href="{{ route('template.one.dashboard') }}"><i
                                                 class="fal fa-key pr-2"></i>
                                             Password Change</a>
 

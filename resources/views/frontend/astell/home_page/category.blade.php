@@ -1,13 +1,15 @@
 <section class="product">
     <div class="tab-ty">
         <ul>
+
             @if (!empty($homepage->categoryHomeTabOne))
-                @if (count(optional($homepage->categoryHomeTabOne)->products) > 0)
+                @if (count(optional($homepage->categoryHomeTabOne)->subproducts) > 0)
                     <li>
-                        <a href="javascript:void(0);" class="n1 on">{{ optional($homepage->categoryHomeTabOne)->category_name }}</a>
+                        <a href="javascript:void(0);" class="n1 on">{{ optional($homepage->categoryHomeTabOne)->subcategory_name }}</a>
                     </li>
                 @endif
             @endif
+
             @if (!empty($homepage->categoryHomeTabTwo))
                 @if (count(optional($homepage->categoryHomeTabTwo)->products) > 0)
                     <li>
@@ -34,7 +36,7 @@
 
     {{-- First Category Start  --}}
     @if (!empty($homepage->categoryHomeTabOne))
-        @if (count(optional($homepage->categoryHomeTabOne)->products) > 0)
+        @if (count(optional($homepage->categoryHomeTabOne)->subproducts) > 0)
             <div class="tab-cont n1 on" style="background-image: url('images/%40p_bg01.png')">
                 <div class="wrap">
 
@@ -43,7 +45,7 @@
                         <div class="swiper-container">
 
                             <ul class="swiper-wrapper">
-                                @foreach (optional($homepage->categoryHomeTabOne)->products as $category_product_one)
+                                @foreach (optional($homepage->categoryHomeTabOne)->subproducts as $category_product_one)
                                     <li class="swiper-slide">
 
                                         <a
@@ -65,7 +67,7 @@
 
                     <div class="wr">
 
-                        @foreach (optional($homepage->categoryHomeTabOne)->products as $key => $category_product_one)
+                        @foreach (optional($homepage->categoryHomeTabOne)->subproducts as $key => $category_product_one)
                             <strong class="tmpProductInfo tmpProductInfo_{{ $key }}"
                                 style="{{ $key == '0' ? '' : 'display:none;' }}">{{ $category_product_one->product_name }}</strong>
 
@@ -87,7 +89,7 @@
                         <div class="list">
                             <div class="swiper-container">
                                 <ul class="swiper-wrapper">
-                                    @foreach (optional($homepage->categoryHomeTabOne)->products as $key => $category_product_one)
+                                    @foreach (optional($homepage->categoryHomeTabOne)->subproducts as $key => $category_product_one)
                                         <li class="swiper-slide">
                                             <a href="javascript:void(0)" class="active">
                                                 <img src="{{ asset($category_product_one->product_image) }}"

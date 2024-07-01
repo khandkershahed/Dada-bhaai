@@ -48,6 +48,7 @@
                                     Login</a>
                             </div> --}}
                             <x-auth-session-status class="mb-4" :status="session('status')" />
+
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="field">
@@ -60,11 +61,21 @@
                                 </div>
                                 <div class="field">
                                     <label>Password</label>
+                                    <div class="input-group">
+                                        <input id="password" type="password" class="form-control form-control-sm"
+                                            name="password" placeholder="Password" required>
+
+                                        <div class="input-group-append">
+                                            <span class="input-group-text password-toggle-icon"
+                                                onclick="togglePasswordVisibility()">
+                                                <i class="fas fa-eye"></i>
+                                            </span>
+                                        </div>
+
+                                    </div>
                                     @error('password')
                                         <div class="text-danger" style="margin-top: 0px;">{{ $message }}</div>
                                     @enderror
-                                    <input type="password" class="form-control form-control-sm " name="password"
-                                        placeholder="Password" required>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="form-check">
@@ -78,6 +89,7 @@
                                 </div>
                                 <button type="submit" class="w-100 mt-4">Sign In</button>
                             </form>
+
                         </div>
                         {{-- Login  --}}
 
@@ -175,6 +187,23 @@
 <!-- reg area end -->
 
 <script>
+    function togglePasswordVisibility() {
+        const passwordInput = document.getElementById('password');
+        const icon = document.querySelector('.password-toggle-icon i');
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            passwordInput.type = 'password';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    }
+</script>
+
+<script>
     function validateForm() {
         var checkbox = document.getElementById('exampleCheck1');
         if (!checkbox.checked) {
@@ -185,7 +214,7 @@
     }
 </script>
 
-<script>
+{{-- <script>
     // Function to update validation icon based on input validity
     function updateValidationIcon(inputElement, isValid) {
         const validationSpan = inputElement.nextElementSibling; // Get the next sibling (span) for validation icon
@@ -224,7 +253,7 @@
         const isValid = passwordConfirmationInput.value === passwordInput.value;
         updateValidationIcon(passwordConfirmationInput, isValid);
     });
-</script>
+</script> --}}
 
 
 
