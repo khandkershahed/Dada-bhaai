@@ -69,7 +69,7 @@
                                 </script>
 
                                 <div class="fb-wrap">
-                                    <div class="fb-page" data-href="https://www.facebook.com/dadavaai.shop"
+                                    <div class="fb-page" data-href="{{ $site->facebook_url }}"
                                         data-tabs="timeline" data-width="500" data-height="135"
                                         data-small-header="false" data-adapt-container-width="true"
                                         data-hide-cover="false" data-show-facepile="true"></div>
