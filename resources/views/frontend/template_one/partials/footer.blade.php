@@ -5,7 +5,7 @@
 <footer class="footer--area">
     <div class="footer--top pt-70 pb-25">
         <div class="footer-topbar">
-            <p class="mb-0 text-center text-white p-3">Discover a wide range of products at Dadavhai, your one-stop
+            <p class="mb-0 text-center text-white p-3">Discover a wide range of products at {{ $site->site_name }}, your one-stop
                 e-commerce destination. Enjoy seamless shopping, great deals, and excellent customer service.</p>
         </div>
         <div class="contaner-fluid footer-bg">
@@ -88,7 +88,7 @@
                     <div class="footer-copyright text-center">
                         <a class="m-0 text-center text-muted" href="{{ route('index') }}">
                             Copyright 2024
-                            <span class="grenadier-color">Dada Bhaai</span> All Rights
+                            <span class="grenadier-color">{{ $site->company_name }}</span> All Rights
                             Reserved.
                         </a>
                     </div>
