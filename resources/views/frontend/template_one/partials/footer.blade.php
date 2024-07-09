@@ -88,7 +88,7 @@
                     <div class="footer-copyright text-center">
                         <a class="m-0 text-center text-muted" href="{{ route('index') }}">
                             Copyright 2024
-                            <span class="grenadier-color">Dada Bhaai</span> All Rights
+                            <span class="grenadier-color">CODER'S HAT</span> All Rights
                             Reserved.
                         </a>
                     </div>
