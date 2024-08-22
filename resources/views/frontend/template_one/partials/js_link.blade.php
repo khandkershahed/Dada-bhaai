@@ -1,4 +1,4 @@
-<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
 
 <script src="{{ asset('frontend/template_one/assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>
 
@@ -186,7 +186,7 @@
                 if (response.cartWishlist.length === 0) {
 
                     tableHtml = `
-                        
+
                         <h3 class="">Wishlist List is Empty</h3>
                     `;
 
@@ -1109,11 +1109,11 @@
 
 
                         `
-                        
+
                         <ul style="list-style-type: circle !important;">
 
 
-                                        
+
                             <li class="d-flex mb-2 align-items-center ml-0 row text-center">
 
                                 <div class="col-lg-1 px-0"><span>${serialNumber++}.</span></div>
@@ -1124,7 +1124,7 @@
 
                                 <div class="col-lg-1 px-0">
                                     <span class="">x ${value.qty}</span>
-                                    
+
                                 </div>
 
                                 <div class="col-lg-3 px-0">
@@ -1135,7 +1135,7 @@
 
                                     <a type="submit" style="cursor:pointer" class="" id="${value.rowId}" onclick="miniCartRelatedRemove(this.id)">
 
-                                    <i class="fa-solid fa-trash text-danger"></i>  
+                                    <i class="fa-solid fa-trash text-danger"></i>
 
                                     </a>
                                 </div>

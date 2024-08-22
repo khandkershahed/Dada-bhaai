@@ -6,16 +6,15 @@
 <head>
     <base href="">
 
-    <title>Admin Dashboard</title>
 
     <meta charset="utf-8" />
-    <meta name="description" content="The most advanced Bootstrap " />
-    <meta name="keywords" content="Metronic, bootstrap, boo" />
+    <meta name="description" content="{{ $site->site_slogan }} " />
+    <meta name="keywords" content="Admin, bootstrap, boo" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Metronic" />
-    <meta property="og:url" content="https://keenthemes.com/metronic" />
-    <meta property="og:site_name" content="Keenthemes | Metronic" />
+    <meta property="og:title" content="{{ $site->site_name }}" />
+    <meta property="og:site_name" content="{{ $site->site_name }}" />
+    <title>{{ $site->site_name }}</title>
 
     {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 
