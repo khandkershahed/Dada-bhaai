@@ -16,13 +16,13 @@
                                     <a href="{{ route('index') }}">Home</a>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a href="javascript:;">{{ $product->category->category_name }}</a>
+                                    <a href="javascript:;">{{ optional($product->category)->category_name }}</a>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a href="javascript:;">{{ $product->subcategory->subcategory_name }}</a>
+                                    <a href="javascript:;">{{ optional($product->subcategory)->subcategory_name }}</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    <a href="javascript:;">{{ $product->childcategory->childcategory_name }}</a>
+                                    <a href="javascript:;">{{ optional($product->childcategory)->childcategory_name }}</a>
                                 </li>
                             </ol>
                         </nav>
@@ -68,7 +68,7 @@
                     <div class="row gx-0">
                         <div class="col-lg-12 col-md-12 order-3 order-lg-2 px-0">
                             <div class="pro-content">
-                                <span>{{ $product->brand->brand_name }}</span>
+                                <span>{{ optional($product->brand)->brand_name }}</span>
 
                                 <h5 class="title" id="dpname">
                                     {{ $product->product_name }}
@@ -269,7 +269,7 @@
 
                             <div class="">
 
-                                
+
                                 {{-- <p class="mb-0 mb-3">Accessories</p> --}}
 
                                 <div id="miniCartRelated">
