@@ -138,7 +138,7 @@
                                             {{-- mf_code --}}
                                             <div class="col-3 mb-3">
                                                 <div class="fv-row mb-3">
-                                                    <label class="form-label required">MF
+                                                    <label class="form-label">MF
                                                         Code</label>
                                                     <input name="mf_code"
                                                         class="form-control form-control-sm form-control-solid"
@@ -221,7 +221,7 @@
                                             <div class="col-4 mb-3">
                                                 <div class="fv-row mb-3">
 
-                                                    <label class="form-label required">Brand Name</label>
+                                                    <label class="form-label">Brand Name</label>
 
                                                     <select class="form-select form-select-solid form-select-sm"
                                                         name="brand_id" data-control="select2"
@@ -333,7 +333,7 @@
                                             {{-- subcategory_id --}}
                                             <div class="col-4 mb-3">
                                                 <div class="fv-row mb-3">
-                                                    <label class="form-label required">SubCategory
+                                                    <label class="form-label">SubCategory
                                                         Name</label>
 
                                                     <select class="form-select form-select-solid form-select-sm"
@@ -353,7 +353,7 @@
                                             {{-- childcategory_id --}}
                                             <div class="col-4 mb-3">
                                                 <div class="fv-row mb-3">
-                                                    <label class="form-label required">ChildCategory
+                                                    <label class="form-label">ChildCategory
                                                         Name</label>
 
                                                     <select class="form-select form-select-solid form-select-sm"
