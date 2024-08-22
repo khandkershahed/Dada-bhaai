@@ -113,7 +113,7 @@ class CategoryController extends Controller
             $mainFile = $request->file('category_image');
             $uploadPath = storage_path('app/public/category');
 
-            $iconmainFile = $request->file('icon'); ///////
+            $iconmainFile = $request->file('course_banner_image'); ///////
             $iconimgPath = storage_path('app/public/category'); //////
 
             if (isset($mainFile)) {

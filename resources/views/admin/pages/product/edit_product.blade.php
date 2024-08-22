@@ -147,10 +147,10 @@
                                                     <input name="mf_code"
                                                         class="form-control form-control-sm form-control-solid"
                                                         placeholder="Eg: MF-2647374" type="text"
-                                                        value="{{ $editProduct->mf_code }}" required />
-                                                    <div class="invalid-feedback">
+                                                        value="{{ $editProduct->mf_code }}" />
+                                                    {{-- <div class="invalid-feedback">
                                                         Please Enter MF
-                                                        Code.</div>
+                                                        Code.</div> --}}
                                                 </div>
                                             </div>
 
@@ -250,7 +250,7 @@
                                                     <select class="form-select form-select-solid form-select-sm"
                                                         name="brand_id" data-control="select2"
                                                         data-placeholder="Select an Brand Name" data-allow-clear="true"
-                                                        required>
+                                                        >
                                                         <option></option>
 
                                                         @foreach ($brands as $brand)
@@ -262,7 +262,7 @@
 
                                                     </select>
 
-                                                    <div class="invalid-feedback"> Please Enter Brand Name.</div>
+                                                    {{-- <div class="invalid-feedback"> Please Enter Brand Name.</div> --}}
 
                                                 </div>
 
@@ -380,7 +380,7 @@
                                                     <select class="form-select form-select-solid form-select-sm"
                                                         name="subcategory_id" data-control="select2"
                                                         data-placeholder="SubCategory Name" data-allow-clear="true"
-                                                        required>
+                                                        >
                                                         <option></option>
 
                                                         @foreach ($subcategorys as $subcategory)
@@ -391,10 +391,10 @@
                                                         @endforeach
 
                                                     </select>
-                                                    <div class="invalid-feedback">
+                                                    {{-- <div class="invalid-feedback">
                                                         Please Enter
                                                         SubCategory Name.
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             </div>
 
@@ -407,7 +407,7 @@
                                                     <select class="form-select form-select-solid form-select-sm"
                                                         name="childcategory_id" data-control="select2"
                                                         data-placeholder="ChildCategory Name" data-allow-clear="true"
-                                                        required>
+                                                        >
                                                         <option></option>
 
                                                         @foreach ($childcategorys as $childcategory)
@@ -418,10 +418,10 @@
                                                         @endforeach
 
                                                     </select>
-                                                    <div class="invalid-feedback">
+                                                    {{-- <div class="invalid-feedback">
                                                         Please Enter
                                                         ChildCategory Name.
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             </div>
 

@@ -47,7 +47,7 @@
                         </div>
                         <!--end:Email content-->
                         <div style="padding-bottom: 10px">Kind regards</div>
-                            <br>The DadaBhaai Team.
+                        <br>The DadaBhaai Team.
             </tr>
             <tr>
                 <td align="center" valign="center"
@@ -66,5 +66,3 @@
 </tbody>
 </table>
 </div>
-
-
