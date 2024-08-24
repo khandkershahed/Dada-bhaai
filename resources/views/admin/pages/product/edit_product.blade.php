@@ -274,7 +274,7 @@
 
                                                     <label class="form-label">Discount Price(Main Price)</label>
 
-                                                    <input type="number" name="pdiscount_price" class="form-control form-control-sm form-control-solid" value="{{ $editProduct->pdiscount_price }}" placeholder="Discount Price">
+                                                    <input type="number" step="0.01" name="pdiscount_price" class="form-control form-control-sm form-control-solid" value="{{ $editProduct->pdiscount_price }}" placeholder="Discount Price">
 
                                                 </div>
 
@@ -318,7 +318,7 @@
                                                         <label class="ms-1 mb-2" for="price_status">SAS Price <span
                                                                 class="text-danger">*</span></label>
                                                         <input class="form-control form-control-sm form-control-solid"
-                                                            type="number" name="sas_price"
+                                                            type="number" step="0.01" name="sas_price"
                                                             value="{{ $editProduct->sas_price }}"
                                                             placeholder="RFQ Price for Sas">
                                                     </div>
@@ -327,7 +327,7 @@
                                                         <label class="ms-1 mb-2" for="price_status">Price <span
                                                                 class="text-danger">*</span></label>
                                                         <input class="form-control form-control-sm form-control-solid"
-                                                            type="number" name="price"
+                                                            type="number" step="0.01" name="price"
                                                             value="{{ $editProduct->price }}" placeholder="Price">
                                                     </div>
 
@@ -335,7 +335,7 @@
                                                         <label class="ms-1 mb-2" for="price_status">Discount Price <span
                                                                 class="text-danger">*</span></label>
                                                         <input class="form-control form-control-sm form-control-solid"
-                                                            type="number" name="discount_price"
+                                                            type="number" step="0.01" name="discount_price"
                                                             value="{{ $editProduct->discount_price }}"
                                                             placeholder="Discounted Price">
                                                     </div>
@@ -665,7 +665,7 @@
                                             <div class="col-lg-3 col-4 mb-3" id="">
                                                 <label class="form-label">Deal
                                                     Price</label>
-                                                <input type="number"
+                                                <input type="number" step="0.01"
                                                     class="form-control form-select-sm form-control-solid"
                                                     value="{{ $editProduct->deal }}"
                                                     {{ $editProduct->deal == '1' ? 'checked' : '' }} name="deal"
@@ -817,7 +817,7 @@
                                                                             value="{{ $editProduct->source_one_price }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter source one price"
-                                                                            type="number" />
+                                                                            type="number" step="0.01" />
                                                                     </div>
                                                                 </td>
                                                                 <td>
@@ -891,7 +891,7 @@
                                                                             value="{{ $editProduct->source_two_price }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter source two price"
-                                                                            type="number" />
+                                                                            type="number" step="0.01" />
                                                                     </div>
                                                                 </td>
                                                                 <td>
@@ -993,7 +993,7 @@
                                                                             value="{{ $editProduct->competitor_one_price }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter Product Name"
-                                                                            type="number" />
+                                                                            type="number" step="0.01" />
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -1022,7 +1022,7 @@
                                                                             value="{{ $editProduct->competitor_two_price }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter Product Name"
-                                                                            type="number" />
+                                                                            type="number" step="0.01" />
                                                                     </div>
                                                                 </td>
                                                             </tr>
