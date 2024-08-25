@@ -33,16 +33,17 @@
                             $catwiseproduct = [];
                             $childcatwiseproduct = [];
                         @endphp
+                        
                         {{-- Category  --}}
-                        <div class="common-cat">
+                        {{-- <div class="common-cat">
                             <div class="side-title">
                                 <h6>Category</h6>
                             </div>
-                            {{-- Brands Accordion --}}
+                            
                             <div id="accordionBrands" class="accordion">
                                 <div class="card border-0 shadow-none mb-0">
 
-                                    {{-- Multi Accordion End --}}
+                                    
 
                                     @foreach ($categorys as $category)
                                         <div class="card-header {{ optional($catwiseproduct)->id == $category->id ? 'mark-cat' : 'collapsed' }}  pl-0"
@@ -114,16 +115,16 @@
                                         </div>
                                     @endforeach
 
-                                    {{-- Multi Accordion End --}}
+                                    
 
                                 </div>
                             </div>
 
-                        </div>
+                        </div> --}}
                         {{-- Category  --}}
 
                         {{-- Brand  --}}
-                        <div class="common-cat" style="margin-top: 30px;margin-bottom: 30px;">
+                        {{-- <div class="common-cat" style="margin-top: 30px;margin-bottom: 30px;">
                             <div class="side-title">
                                 <h6>Brands</h6>
                             </div>
@@ -140,7 +141,7 @@
                                 @endforelse
 
                             </div>
-                        </div>
+                        </div> --}}
                         {{-- Brand  --}}
 
 
