@@ -121,7 +121,7 @@
                                             </div>
 
                                             {{-- sku_code --}}
-                                            <div class="col-3 mb-3">
+                                            {{-- <div class="col-3 mb-3">
                                                 <div class="fv-row mb-3">
                                                     <label class="form-label required">SKU
                                                         Code</label>
@@ -133,7 +133,7 @@
                                                         Please Enter SKU
                                                         Code.</div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             {{-- mf_code --}}
                                             <div class="col-3 mb-3">
