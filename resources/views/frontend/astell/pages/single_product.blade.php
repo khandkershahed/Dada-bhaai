@@ -328,7 +328,8 @@
         @endif
         {{-- Row Area Two End  --}}
 
-        <section class="banner-section">
+        {{-- Banner Section   --}}
+        {{-- <section class="banner-section">
             <div class="container">
                 <div class="vehicle-detail-banner banner-content clearfix">
                     <div class="banner-slider">
@@ -439,7 +440,8 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
+        {{-- Banner Section   --}}
 
         {{-- Row Area Three Start --}}
         <section class="detail-group1 scrollAni n3">
