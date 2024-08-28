@@ -10,6 +10,7 @@ use App\Models\Admin\Faq;
 use App\Models\Admin\HomePage;
 use App\Models\Admin\MultiImg;
 use App\Models\Admin\Product;
+use App\Models\Admin\ProductSinglePage;
 use App\Models\Admin\Template;
 use App\Models\Banner;
 use App\Models\Brand;
@@ -34,23 +35,9 @@ class IndexController extends Controller
 
         } else if ($template->name == 'template_two') {
 
-            $homepage = HomePage::with(['featureProductOne','featureProductTwo','featureProductThree','featureProductFour'])->where('status', 'tamplate_two')->latest('id')->first();
+            $homepage = HomePage::with(['featureProductOne', 'featureProductTwo', 'featureProductThree', 'featureProductFour'])->where('status', 'tamplate_two')->latest('id')->first();
 
-            $categories = Category::orderBy('category_name','ASC')->latest()->limit(4)->get();
-
-            // $categoryIds = [
-            //     $homepage->category_tab_one_id,
-            //     $homepage->category_tab_two_id,
-            //     $homepage->category_tab_three_id,
-            //     $homepage->category_tab_four_id,
-            // ];
-
-            // $categories = Category::with('products')->whereIn('id', $categoryIds)->get();
-            // dd($homepage);
-
-
-
-            return view('frontend.astell.index_astell', compact('homepage','categories'));
+            return view('frontend.astell.index_astell', compact('homepage'));
 
         } else if ($template->name == 'template_three') {
             $banners = Banner::where('status', '1')->orderBy('id', 'ASC')->latest()->get();
@@ -64,38 +51,48 @@ class IndexController extends Controller
     //Template OneProduct
     public function TemplateOneProduct($id, $product_slug)
     {
-        $product = Product::find($id);
+        // $product = Product::find($id);
 
-        $color = $product->color_id;
-        $product_colors = explode(' ', $color);
+        $product = Product::with('productSinglePage')->find($id);
 
-        $multiImages = MultiImg::where('product_id', $product->id)->get();
+        if (!empty($product->productSinglePage) && $product->productSinglePage->status === 'active') {
 
-        //Releted Category
-        $cat_id = $product->childcategory_id;
-        $relativeProduct = Product::where('childcategory_id', $cat_id)->where('id', '!=', $id)->orderBy('id', 'ASC')->limit(5)->get();
+            // $product = Product::find($id);
+            $sproducts = $product->productSinglePage;
+            $multiImages = MultiImg::where('product_id', $product->id)->get();
 
-        // $child_id = $product->child_id;
-        // $relativeChild = Product::where('child_id', $child_id)->where('id', '!=', '$id')->orderBy('id', 'DESC')->limit(6)->get();
+            return view('frontend.astell.pages.single_product', compact('product', 'sproducts', 'multiImages'));
 
-        // $child_id = $product->child_id;
-        $child_ids = explode(',', $product->child_id);
+        } else {
 
-        //dd(($child_id));
-        foreach ($child_ids as $key => $child_id) {
-            $relativeChild[] = Product::where('id', $child_id)
-                ->orderBy('id', 'DESC')
-                ->first();
+            $color = $product->color_id;
+            $product_colors = explode(' ', $color);
+
+            $multiImages = MultiImg::where('product_id', $product->id)->limit(3)->get();
+
+            //Releted Category
+            $cat_id = $product->childcategory_id;
+            $relativeProduct = Product::where('childcategory_id', $cat_id)->where('id', '!=', $id)->orderBy('id', 'ASC')->limit(5)->get();
+
+
+            // $child_id = $product->child_id;
+            $child_ids = explode(',', $product->child_id);
+
+            //dd(($child_id));
+            foreach ($child_ids as $key => $child_id) {
+                $relativeChild[] = Product::where('id', $child_id)
+                    ->orderBy('id', 'DESC')
+                    ->first();
+            }
+
+            $carts = Cart::content();
+            $cartQty = Cart::count();
+
+
+            return view('frontend.template_one.product.single_product', compact('product', 'relativeProduct', 'multiImages', 'relativeChild', 'product_colors', 'carts', 'cartQty'));
+
         }
 
-        $carts = Cart::content();
-        $cartQty = Cart::count();
-
-        // Retrieve related products based on the child_id, excluding the product with ID equal to $id
-
-        // dd($relativeChild);
-
-        return view('frontend.template_one.product.single_product', compact('product', 'relativeProduct', 'multiImages', 'relativeChild', 'product_colors', 'carts', 'cartQty'));
     }
 
     //Single Product
@@ -134,24 +131,7 @@ class IndexController extends Controller
     //ContactUser
     public function SendMessage(Request $request)
     {
-        // $validator = $request->validate(
-
-        //     [
-        //         'name' => 'required|max:120',
-        //         'email' => 'required|email',
-        //         'phone' => 'required|min:11|numeric',
-        //         'message' => 'required',
-        //     ],
-
-        //     [
-        //         'name.required' => 'Name is required',
-        //         'email.required' => 'Email is required',
-        //         'phone.required' => 'Phone is required',
-        //         'message.required' => 'Message is required',
-        //     ],
-        // );
-
-        // MSG-240324-2
+        
 
         $typePrefix = 'MSG';
 

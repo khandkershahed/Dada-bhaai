@@ -2,9 +2,20 @@
 <html lang="en">
 
 @include('frontend.astell.partials.style_link')
+<style>
+    .loader {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 11111;
+        background: url("https://i.ibb.co/5K59gm9/dadavi-loading-slow-small.gif") 50% 50% no-repeat white;
+    }
+</style>
 
 <body>
-
+    <div class="loader" id="loader"></div>
     <div class="overlay"></div>
 
     @if (Route::is('index'))
@@ -22,43 +33,28 @@
         </div>
     @endif
 
-
-
     <div class="body-wrap">
-
         <div class="side-group">
-            <div class="quick">
-                <a href="#" class="btn-star"></a>
-                <div class="inner">
-                    <a href="javascript:;" class="txt">Listen to Our New Product</a>
-                    <a href="#" class="btn-close"></a>
-                </div>
-            </div>
-            <a href="#" class="btn-top">TOP</a>
+            <a href="javascript:;" class="btn-top">TOP</a>
         </div>
 
-        <!--Header//-->
-        {{-- @if (Route::is('index')) --}}
         @include('frontend.astell.partials.header')
-        {{-- @endif --}}
 
-        <!--//Header-->
+        @yield('index_astell')
 
-        <!--Content//-->
-        <main class="main">
-
-            @yield('index_astell')
-
-        </main>
-        <!--//content-->
-
-        {{-- footer  --}}
         @include('frontend.astell.partials.footer')
-
     </div>
 
     @include('frontend.astell.partials.js_link')
 
+    <!-- JavaScript to hide loader when body content is loaded -->
+    <script>
+        window.onload = function() {
+            var loader = document.getElementById("loader");
+            loader.style.display = "none";
+        };
+    </script>
+    <!-- JavaScript End -->
 </body>
 
 </html>

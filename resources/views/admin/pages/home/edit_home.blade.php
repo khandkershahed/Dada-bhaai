@@ -68,15 +68,15 @@
                                 <select name="status" id="" class="form-select form-select-sm" required>
                                     <option selected disabled>Choose Tamplate</option>
 
-                                    <option value="tamplate_one" {{ $home->status == 'tamplate_one' ? 'selected' : '' }}>
-                                        Template One</option>
+                                    {{-- <option value="tamplate_one" {{ $home->status == 'tamplate_one' ? 'selected' : '' }}>
+                                    Template One</option> --}}
 
                                     <option value="tamplate_two" {{ $home->status == 'tamplate_two' ? 'selected' : '' }}>
                                         Template Two</option>
 
-                                    <option value="tamplate_three"
-                                        {{ $home->status == 'tamplate_three' ? 'selected' : '' }}>Template Three
-                                    </option>
+                                    {{-- <option value="tamplate_three"
+                                    {{ $home->status == 'tamplate_three' ? 'selected' : '' }}>Template Three
+                                </option> --}}
 
                                 </select>
                             </div>
@@ -119,13 +119,11 @@
                                                 <div class="form-group">
                                                     <label for="">Video Slider One Image</label>
 
-                                                    <input type="file"
-                                                        class="form-control form-control-sm mt-2"
+                                                    <input type="file" class="form-control form-control-sm mt-2"
                                                         name="video_slider_one_image">
 
                                                     <img src="{{ asset('upload/home/' . $home->video_slider_one_image) }}"
-                                                        style="width: 50px;height:50px;" class="mt-2"
-                                                        alt="">
+                                                        style="width: 50px;height:50px;" class="mt-2" alt="">
 
                                                 </div>
                                             </div>
@@ -140,6 +138,12 @@
                                                     @error('video_slider_one_video')
                                                         <div class="text-danger">{{ $message }}</div>
                                                     @enderror
+
+                                                    <a href="{{ route('delete.video', $home->id) }}"
+                                                        class="ms-1 text-danger" id="delete" title="Delete">Delete
+                                                        Video</i>
+                                                    </a>
+
                                                 </div>
                                             </div>
 
@@ -167,13 +171,11 @@
                                                 <div class="form-group">
                                                     <label for="">Video Slider Two Image</label>
 
-                                                    <input type="file"
-                                                        class="form-control form-control-sm mt-2"
+                                                    <input type="file" class="form-control form-control-sm mt-2"
                                                         name="video_slider_two_image">
 
                                                     <img src="{{ asset('upload/home/' . $home->video_slider_two_image) }}"
-                                                        style="width: 50px;height:50px;" class="mt-2"
-                                                        alt="">
+                                                        style="width: 50px;height:50px;" class="mt-2" alt="">
 
                                                 </div>
                                             </div>
@@ -188,6 +190,11 @@
                                                     @error('video_slider_two_video')
                                                         <div class="text-danger">{{ $message }}</div>
                                                     @enderror
+
+                                                    <a href="{{ route('delete.video2', $home->id) }}"
+                                                        class="ms-1 text-danger" id="delete" title="Delete">Delete
+                                                        Video</i>
+                                                    </a>
                                                 </div>
                                             </div>
 
@@ -211,17 +218,17 @@
 
                                             <div class="col-3 mb-2">
                                                 <div class="form-group">
-                                                    <label for="">Category One</label>
+                                                    <label for="">SubCategory One</label>
 
                                                     <select class="form-select form-select-solid form-select-sm"
                                                         name="category_tab_one_id" data-control="select2"
                                                         data-placeholder="Category One" data-allow-clear="true" required>
                                                         <option></option>
-                                                        @if (count($categorys) > 0)
-                                                            @foreach ($categorys as $category)
-                                                                <option
-                                                                    value="{{ $category->id }}"{{ $home->category_tab_one_id == $category->id ? 'selected' : '' }}>
-                                                                    {{ $category->category_name }}
+                                                        @if (count($subcategorys) > 0)
+                                                            @foreach ($subcategorys as $subcategory)
+                                                                <option value="{{ $subcategory->id }}"
+                                                                    {{ $home->category_tab_one_id == $subcategory->id ? 'selected' : '' }}>
+                                                                    {{ $subcategory->subcategory_name }}
 
                                                                 </option>
                                                             @endforeach
@@ -704,8 +711,8 @@
                                                         <option></option>
                                                         @if (count($products) > 0)
                                                             @foreach ($products as $product)
-                                                                <option
-                                                                    value="{{ $product->id }}"{{ $home->feature_product_one == $product->id ? 'selected' : '' }}>
+                                                                <option value="{{ $product->id }}"
+                                                                    {{ $home->feature_product_one == $product->id ? 'selected' : '' }}>
                                                                     {{ $product->product_name }}
 
                                                                 </option>
@@ -726,8 +733,8 @@
                                                         <option></option>
                                                         @if (count($products) > 0)
                                                             @foreach ($products as $product)
-                                                                <option
-                                                                    value="{{ $product->id }}"{{ $home->feature_product_two == $product->id ? 'selected' : '' }}>
+                                                                <option value="{{ $product->id }}"
+                                                                    {{ $home->feature_product_two == $product->id ? 'selected' : '' }}>
                                                                     {{ $product->product_name }}
 
                                                                 </option>
@@ -748,8 +755,8 @@
                                                         <option></option>
                                                         @if (count($products) > 0)
                                                             @foreach ($products as $product)
-                                                                <option
-                                                                    value="{{ $product->id }}"{{ $home->feature_product_three == $product->id ? 'selected' : '' }}>
+                                                                <option value="{{ $product->id }}"
+                                                                    {{ $home->feature_product_three == $product->id ? 'selected' : '' }}>
                                                                     {{ $product->product_name }}
 
                                                                 </option>
@@ -771,14 +778,66 @@
                                                         <option></option>
                                                         @if (count($products) > 0)
                                                             @foreach ($products as $product)
-                                                                <option
-                                                                    value="{{ $product->id }}"{{ $home->feature_product_four == $product->id ? 'selected' : '' }}>
+                                                                <option value="{{ $product->id }}"
+                                                                    {{ $home->feature_product_four == $product->id ? 'selected' : '' }}>
                                                                     {{ $product->product_name }}
 
                                                                 </option>
                                                             @endforeach
                                                         @endif
                                                     </select>
+                                                </div>
+                                            </div>
+
+                                            {{-- Feature Product One Image --}}
+                                            <div class="col-3 mb-2">
+                                                <div class="form-group">
+                                                    <label for="">Product One Image</label>
+
+                                                    <input type="file" name="feature_product_one_image"
+                                                        class="form-control form-control-sm">
+
+                                                    <img src="{{ asset('upload/home/' . $home->feature_product_one_image) }}"
+                                                        style="width: 50px;height:50px;" class="mt-2" alt="">
+                                                </div>
+                                            </div>
+
+                                            {{-- Feature Product Two Image --}}
+                                            <div class="col-3 mb-2">
+                                                <div class="form-group">
+                                                    <label for="">Product Two Image</label>
+
+                                                    <input type="file" name="feature_product_two_image"
+                                                        class="form-control form-control-sm">
+
+                                                    <img src="{{ asset('upload/home/' . $home->feature_product_two_image) }}"
+                                                        style="width: 50px;height:50px;" class="mt-2" alt="">
+                                                </div>
+                                            </div>
+
+                                            {{-- Feature Product Three Image --}}
+                                            <div class="col-3 mb-2">
+                                                <div class="form-group">
+                                                    <label for="">Product Three Image</label>
+
+                                                    <input type="file" name="feature_product_three_image"
+                                                        class="form-control form-control-sm">
+
+                                                    <img src="{{ asset('upload/home/' . $home->feature_product_three_image) }}"
+                                                        style="width: 50px;height:50px;" class="mt-2" alt="">
+                                                </div>
+                                            </div>
+
+                                            {{-- Feature Product Four Image --}}
+                                            <div class="col-3 mb-2">
+                                                <div class="form-group">
+                                                    <label for="">Product Four Image</label>
+
+                                                    <input type="file" name="feature_product_four_image"
+                                                        class="form-control form-control-sm">
+
+                                                    <img src="{{ asset('upload/home/' . $home->feature_product_four_image) }}"
+                                                        style="width: 50px;height:50px;" class="mt-2" alt="">
                                                 </div>
                                             </div>
 

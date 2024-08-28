@@ -1,11 +1,12 @@
 <section class="product-banner">
-    <p class="top-txt">
+    
+    {{-- <p class="top-txt">
         {{ $homepage->background_image_title }}
-    </p>
+    </p> --}}
 
     <div class="swiper-container">
 
-        <ul class="swiper-wrapper">
+        <ul class="swiper-wrapper pe-0">
 
             @if (!empty($homepage->image_slider_one_image))
                 <li class="swiper-slide">

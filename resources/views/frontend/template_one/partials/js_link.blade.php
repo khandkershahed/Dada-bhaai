@@ -1,4 +1,4 @@
-<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
 
 <script src="{{ asset('frontend/template_one/assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>
 
@@ -60,6 +60,8 @@
 </script>
 
 {{-- Releted Accesories --}}
+
+
 <script>
     $(document).ready(function() {
         $(".releted_accessories").slick({
@@ -111,9 +113,11 @@
 @yield('brandscripts')
 @yield('pricescripts')
 
-{{-- Add Cart To Compare --}}
+{{-- =====================WishList Product All Code Start ============================ --}}
+
+{{-- Add Cart To WishList --}}
 <script>
-    $('.add_to_compare').click(function() {
+    $('.add_to_wishlist').click(function() {
 
         var product_id = $(this).data('product_id');
 
@@ -125,10 +129,10 @@
                 product_id: product_id,
             },
 
-            url: '/add-to-compare',
+            url: '/add-to-wishlist',
 
             success: function(data) {
-
+                wishlist();
 
                 // Start Message
 
@@ -147,7 +151,220 @@
                         title: data.success,
                     })
 
-                    window.location.href = '/compare-product';
+                    // window.location.href = '/compare-product';
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error,
+                    })
+                }
+
+                // End Message
+            }
+        })
+
+    })
+</script>
+
+{{-- Load Wishlist --}}
+<script>
+    function wishlist() {
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: '/get-wishlist',
+
+            success: function(response) {
+
+                $('#cartWishlistQty').text(response.cartWishlistQty);
+
+                var tableHtml = "";
+
+                if (response.cartWishlist.length === 0) {
+
+                    tableHtml = `
+
+                        <h3 class="">Wishlist List is Empty</h3>
+                    `;
+
+                    $('#wishlistLink').hide();
+                } else {
+                    $.each(response.cartWishlist, function(key, value) {
+                        tableHtml +=
+
+                            `<tr class="border-bottom">
+                                <td>
+                                    <img class="img-fluid"
+                                        src="/${value.options.image}" style="width:60px;height:60px;" alt="" />
+                                </td>
+                                <td>
+                                    <p>${value.name.length > 60 ? value.name.substring(0, 60) : value.name}</p>
+                                </td>
+
+                                <td>
+                                    $ ${value.price}
+                                </td>
+
+                                <td class="">
+                                    <a type="submit" style="cursor:pointer" id="${value.id}" onclick="addToCartCompare(this.id)"> Add To Cart</a>
+                                </td>
+
+                                <td class="">
+                                    <a type="submit" style="cursor:pointer" id="${value.rowId}" onclick="wishlistRemove(this.id)"><i class="fa-solid fa-trash text-danger"></i></a>
+                                </td>
+
+                            </tr>`;
+
+                    });
+
+                    $('#wishlistLink').show(); // Show the comparison link when list has items
+                }
+
+                $('#wishlist').html(tableHtml);
+            }
+        });
+    }
+
+    wishlist();
+</script>
+
+{{-- Add Cart Wishlist --}}
+<script>
+    function addToCartWishlist(id) {
+
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            url: "/add-to-cart-wishlist/" + id,
+
+            success: function(data) {
+
+                miniCart();
+                miniCartRelated();
+
+                // Start Message
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success,
+                    })
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error,
+                    })
+                }
+
+                // End Message
+
+
+            }
+        })
+    }
+</script>
+
+{{-- Wishlist Remove --}}
+<script>
+    function wishlistRemove(rowId) {
+
+        $.ajax({
+            type: 'GET',
+            url: '/wishlist/product/remove/' + rowId,
+            dataType: 'json',
+            success: function(data) {
+                miniCart();
+                wishlist();
+
+                // Start Message
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        title: data.success,
+                    })
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        title: data.error,
+                    })
+                }
+
+                // End Message
+
+            }
+
+
+        })
+    }
+</script>
+
+{{-- =====================Wishlist Product All Code End ============================== --}}
+
+{{-- =====================Compare Product All Code Start ============================ --}}
+
+{{-- Add Cart To Compare --}}
+<script>
+    $('.add_to_compare').click(function() {
+
+        var product_id = $(this).data('product_id');
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+
+            data: {
+                product_id: product_id,
+            },
+
+            url: '/add-to-compare',
+
+            success: function(data) {
+                compare();
+
+                // Start Message
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success,
+                    })
+
+                    // window.location.href = '/compare-product';
 
                 } else {
 
@@ -172,34 +389,48 @@
             type: 'GET',
             dataType: 'json',
             url: '/get-compare',
+
             success: function(response) {
+
+                $('#cartCompareQty').text(response.cartCompareQty);
+
                 var tableHtml = "";
 
-                $.each(response.carts, function(key, value) {
-                    tableHtml += `
+                if (response.cartCompare.length === 0) {
 
+                    tableHtml = `
+                        <div>
+                            <img class="img-fluid" style="width: 50%;" src="https://i.ibb.co/xzzr9zs/f59ed80d5c527e2461d8ba49adc36160.gif" alt="">
+                        </div>
+                        <h3 class="">Compare List is Empty</h3>
+                    `;
 
-                <li class="product">
-                    <div class="top-info">
-                        <div class="check">
-                            </div>
-                        <img src="/${value.options.image}" style="width:400px; height:200px;" alt="product image">
-                    </div>
+                    $('#compareLink').hide();
+                } else {
+                    $.each(response.cartCompare, function(key, value) {
+                        tableHtml += `
+                            <div class="col-lg-3 px-0" style="border-top: 1px solid #dee2e6;border-bottom: 1px solid #dee2e6;">
+                                <div class="top-info">
+                                    <img class="img-fluid compare-product-img" src="/${value.options.image}" alt="${value.name.length > 20 ? `${value.name.substring(0, 20)}...` : value.name}">
+                                </div>
+                                <ul class="cd-features-list text-center">
+                                    <li>
+                                        <h3 class="compare-title" title="${value.name}">${value.name.length > 15 ? `${value.name.substring(0, 15)}...` : value.name}</h3>
+                                    </li>
+                                    <li>$ ${value.price}</li>
 
-                    <ul class="cd-features-list">
-                        <li>${value.name.length > 20 ? `${value.name.substring(0, 20)}...` : value.name}</li>
-                        <li>Tk ${value.price}</li>
+                                    <li>
+                                        <a type="submit" style="cursor:pointer" id="${value.id}" onclick="addToCartCompare(this.id)"> Add To Cart</a>
+                                        </li>
 
-                        <li style="cursor:pointer;text-decoration: underline;" id="${value.id}" onclick="addToCartCompare(this.id)" >Add To Cart</li>
+                                    <li><a type="submit" style="cursor:pointer" id="${value.rowId}" onclick="compareRemove(this.id)"><i class="fa-solid fa-trash text-danger"></i></a></li>
 
-                        <li style="cursor:pointer;text-decoration: underline;" id="${value.rowId}" onclick="compareRemove(this.id)">Delete</li>
-                    </ul>
-                </li>
+                                </ul>
+                            </div>`;
+                    });
 
-
-
-                `;
-                });
+                    $('#compareLink').show(); // Show the comparison link when list has items
+                }
 
                 $('#compare').html(tableHtml);
             }
@@ -266,6 +497,7 @@
             dataType: 'json',
             success: function(data) {
                 miniCart();
+                compare();
                 // Start Message
 
                 const Toast = Swal.mixin({
@@ -298,6 +530,9 @@
         })
     }
 </script>
+
+{{-- =====================Compare Product All Code End ============================== --}}
+
 
 {{-- OfferToCartOne --}}
 <script>
@@ -426,7 +661,9 @@
 
         var product_name = $('#dpname').text();
         var id = $('#oneproduct_id').val();
-        var quantity = $('#dqty').val();
+        // var quantity = $('#dqty').val();
+
+        var qty = $('.qty-input-product').val();
 
         $.ajax({
 
@@ -435,7 +672,7 @@
             url: '/product/buy/store/' + id,
 
             data: {
-                quantity: quantity,
+                qty: qty,
                 product_name: product_name,
             },
 
@@ -485,7 +722,11 @@
 
         var product_name = $('#dpname').text();
         var id = $('#oneproduct_id').val();
-        var quantity = $('#dqty').val();
+        // var quantity = $('#dqty').val();
+
+        var qty = $('.qty-input-product').val();
+
+
 
         var color = $('#dcolor option:selected').text();
 
@@ -496,7 +737,7 @@
             url: '/product/store/' + id,
 
             data: {
-                quantity: quantity,
+                qty: qty,
                 product_name: product_name,
                 color: color,
             },
@@ -610,6 +851,8 @@
     $('.add_to_cart_btn_product').click(function() {
 
         var product_id = $(this).data('product_id');
+        var qty = $(this).closest('.d-flex').find('.qty-input').val();
+
 
         $.ajax({
 
@@ -619,6 +862,7 @@
 
             data: {
                 product_id: product_id,
+                qty: qty,
             },
 
             success: function(data) {
@@ -662,6 +906,67 @@
     })
 </script>
 {{-- add_to_cart_btn_product --}}
+
+{{-- add_to_cart_btn_product_single --}}
+<script>
+    $('.add_to_cart_btn_product_single').click(function() {
+
+        var product_id = $(this).data('product_id');
+        var qty = $(this).closest('.d-flex').find('.qty-input').val();
+
+
+        $.ajax({
+
+            type: "POST",
+            dataType: 'json',
+            url: '/product-store-cart-single',
+
+            data: {
+                product_id: product_id,
+                qty: qty,
+            },
+
+            success: function(data) {
+
+                $('.cart_icon').removeClass('d-none');
+
+                miniCart();
+                miniCartRelated();
+
+                // Start Message
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success,
+                    })
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error,
+                    })
+                }
+
+                // End Message
+            }
+
+        })
+
+    })
+</script>
+{{-- add_to_cart_btn_product_single --}}
 
 {{-- ========================================== --}}
 {{-- addToCartDetails --}}
@@ -796,7 +1101,8 @@
                 $('span[id="cartSubTotal"]').text(response.cartTotal);
                 $('#cartQty').text(response.cartQty);
 
-                var miniCartRelated = ""
+                var miniCartRelated = "";
+                var serialNumber = 1;
 
                 $.each(response.carts, function(key, value) {
                     miniCartRelated +=
@@ -804,47 +1110,42 @@
 
                         `
 
-                    <ul style="list-style-type: circle !important;">
-                                                <li class="d-flex mb-2 align-items-center pt-2">
-
-                                                    <div class="row">
-
-                                                        <div class="col-lg-4">
-                                                            <span class="text-muted" href="javascript:;" style="margin-right: 10px;">${value.name}</span>${value.qty}*
-                                                                Tk ${value.price}
-                                                        </div>
-
-                                                        <div class="col-lg-4">
-
-                                                            <div class="number d-flex align-items-center">
-
-                                                                <a type="submit" id="${value.rowId}" onclick="miniCartRelatedDecrease(this.id)" class="buttons-count" id="decrease">-</a>
-
-                                                                <input type="text" disabled class="mb-0 border-1 text-center"
-                                                                    name="" value="${value.qty}" min="1"
-                                                                    style="width: 20px" />
-
-                                                                <a type="submit" id="${value.rowId}" onclick="miniCartRelatedIncrease(this.id)" class="buttons-count" id="increase">+</a>
-
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="col-lg-4">
-                                                            <span class="">Tk ${value.subtotal}</span>
-
-                                                            <span id="${value.rowId}" onclick="miniCartRelatedRemove(this.id)" class="ml-4" style="color: #cd3301; cursor: pointer;"> x </span>
-
-                                                        </div>
+                        <ul style="list-style-type: circle !important;">
 
 
-                                                    </div>
+
+                            <li class="d-flex mb-2 align-items-center ml-0 row text-center">
+
+                                <div class="col-lg-1 px-0"><span>${serialNumber++}.</span></div>
+
+                                <div class="col-lg-5 px-0">
+                                    <span class="" title="${value.name}">${value.name.length > 16 ? value.name.substring(0, 16) + '' : value.name}</span>
+                                </div>
+
+                                <div class="col-lg-1 px-0">
+                                    <span class="">x ${value.qty}</span>
+
+                                </div>
+
+                                <div class="col-lg-3 px-0">
+                                    <span class="">$ ${value.price * value.qty}</span>
+                                </div>
+
+                                <div class="col-lg-2 px-0">
+
+                                    <a type="submit" style="cursor:pointer" class="" id="${value.rowId}" onclick="miniCartRelatedRemove(this.id)">
+
+                                    <i class="fa-solid fa-trash text-danger"></i>
+
+                                    </a>
+                                </div>
+
+                            </li>
+
+                        </ul>`
 
 
-                                                </li>
-                                            </ul>
 
-                    <ul>  `
                 });
 
                 $('#miniCartRelated').html(miniCartRelated);
@@ -999,64 +1300,14 @@
 
 
 {{-- MiniCart --}}
-{{-- <script>
-    function miniCart() {
-        $.ajax({
-            type: 'GET',
-            url: '/product/mini-cart',
-            dataType: 'json',
-            success: function(response) {
-                // console.log(response)
 
-                $('span[id="cartSubTotal"]').text(response.cartTotal);
-                $('#cartQty').text(response.cartQty);
-
-
-                var miniCart = ""
-
-                $.each(response.carts, function(key, value) {
-                    miniCart +=
-
-                        `
-                    <ul>
-                                    <li class="mb-20">
-
-                                        <div class="cart-image">
-                                            <a href="javascript:;"><img src="/${value.options.image}"
-                                                    alt="" style="width:100%;height:100%;" /></a>
-                                        </div>
-
-                                        <div class="cart-text">
-                                            <a href="javascript:;" class="title f-400 cod__black-color">${value.name}</a>
-                                            <span class="cart-price f-400 dusty__gray-color">${value.qty} x
-                                                <span class="price f-800 cod__black-color">Tk ${value.price}</span></span>
-                                        </div>
-
-                                        <div class="del-button">
-                                            <a type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"  style="cursor: pointer"><i class="fi-rs-cross-small"></i>x</a>
-                                        </div>
-
-                                    </li>
-                                </ul>
-
-                    `
-
-                });
-
-                $('#miniCart').html(miniCart);
-
-            }
-
-        })
-    }
-    miniCart();
-</script> --}}
 <script>
     function miniCart() {
         $.ajax({
             type: 'GET',
             url: '/product/mini-cart',
             dataType: 'json',
+
             success: function(response) {
                 // console.log(response)
 
@@ -1075,20 +1326,37 @@
                     $('#cartQty').closest('li').show();
                     $.each(response.carts, function(key, value) {
                         miniCart +=
-                            `<ul>
-                                <li class="mb-20">
-                                    <div class="cart-image">
-                                        <img src="/${value.options.image}" alt="" style="width:100%;height:100%;" />
-                                    </div>
-                                    <div class="cart-text">
-                                        <p class="title f-400 cod__black-color">${value.name}</p>
-                                        <span class="cart-price f-400 dusty__gray-color">${value.qty} x <span class="price f-800 cod__black-color">Tk ${value.price}</span></span>
-                                    </div>
-                                    <div class="del-button">
-                                        <a type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"  style="cursor: pointer"><i class="fi-rs-cross-small"></i>x</a>
-                                    </div>
-                                </li>
-                            </ul>`;
+
+                            `<div class="row pb-3" style="border-bottom: 1px solid #eee;">
+
+                                                <div class="col-lg-4">
+
+                                                    <div>
+                                                        <img src="/${value.options.image}" class="img-fluid" alt="${value.name}">
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-lg-8">
+                                                    <div>
+
+                                                        <p class="mb-0">${value.name.length > 15 ? `${value.name.substring(0, 15)}...` : value.name}</p>
+
+                                                        <p class="mb-0" style="color: #000">
+
+                                                            <span class="pe-3">${value.qty} x $ ${value.price}</span>
+
+                                                            <span style="cursor:pointer">
+
+                                                                <a type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)">
+                                                                    <i class="fa-solid fa-trash text-muted"></i>
+                                                                </a>
+
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>`
                     });
                 }
 
@@ -1111,6 +1379,8 @@
             dataType: 'json',
             success: function(data) {
                 miniCart();
+                //miniCartRelated();
+                addToCartOneRelated();
                 // Start Message
 
                 const Toast = Swal.mixin({
@@ -1176,7 +1446,7 @@
 
                                                     <td>${value.name}</td>
 
-                                                    <td>${value.price} TK</td>
+                                                    <td>${value.price} $</td>
 
                                                     <td>
                                                         <div>
@@ -1203,7 +1473,7 @@
                                                         </div>
                                                     </td>
 
-                                                    <td>${value.subtotal} Tk</td>
+                                                    <td>${value.subtotal} $</td>
 
                                                     <td class="text-center">
                                                         <div>
@@ -1263,7 +1533,7 @@
                                     </div>
                                 </td>
                                 <td>${value.name}</td>
-                                <td>${value.price} TK</td>
+                                <td>${value.price} $</td>
                                 <td>
                                     <div>
                                         <div class="input-group mb-3">
@@ -1284,7 +1554,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>${value.subtotal} Tk</td>
+                                <td>${value.subtotal} $</td>
                                 <td class="text-center">
                                     <div>
                                         <a type="submit" style="cursor: pointer" id="${value.rowId}" onclick="cartRemove(this.id)">
@@ -1354,7 +1624,6 @@
 {{-- // Cart INCREMENT --}}
 <script>
     // Cart INCREMENT
-
     function cartIncrement(rowId) {
         $.ajax({
             type: 'GET',
@@ -1369,11 +1638,6 @@
         });
     }
 
-
-    // Cart INCREMENT End
-
-    // Cart Decrement Start
-
     function cartDecrement(rowId) {
         $.ajax({
             type: 'GET',
@@ -1387,8 +1651,6 @@
             }
         });
     }
-
-
     // Cart Decrement End
 </script>
 
@@ -1396,272 +1658,7 @@
 
 {{-- ============================================== --}}
 
-<!--  /// Start Wishlist Add -->
-<script type="text/javascript">
-    function addToWishList(product_id) {
-        $.ajax({
-            type: "POST",
-            dataType: 'json',
-            url: "/add-to-wishlist/" + product_id,
 
-            success: function(data) {
-                wishlist();
-
-
-
-                // Start Message
-
-                // const Toast = Swal.mixin({
-                //     toast: true,
-                //     position: 'top-end',
-
-                //     showConfirmButton: false,
-                //     timer: 3000
-                // })
-                // if ($.isEmptyObject(data.error)) {
-
-                //     Toast.fire({
-                //         type: 'success',
-                //         icon: 'success',
-                //         title: data.success,
-                //     })
-
-                // } else {
-
-                //     Toast.fire({
-                //         type: 'error',
-                //         icon: 'error',
-                //         title: data.error,
-                //     })
-                // }
-
-                // Start Message
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'bottom-end', // Position set to bottom-end
-                    showConfirmButton: false,
-                    timer: 3000,
-                    customClass: { // Custom class to make the toast smaller
-                        popup: 'swal2-toast',
-                        title: 'swal2-toast-title',
-                        content: 'swal2-toast-content'
-                    }
-                });
-
-                if ($.isEmptyObject(data.error)) {
-                    Toast.fire({
-                        icon: 'success',
-                        title: data.success
-                    });
-                } else {
-                    Toast.fire({
-                        icon: 'error',
-                        title: data.error
-                    });
-                }
-                // End Message update code
-
-
-                // End Message
-
-
-            }
-        })
-    }
-</script>
-<!--  /// End Wishlist Add -->
-
-{{-- Get Wishlist --}}
-
-{{-- <script type="text/javascript">
-    function wishlist() {
-        $.ajax({
-            type: "GET",
-            dataType: 'json',
-            url: "/get-wishlist-product/",
-
-            success: function(response) {
-
-                $('#wishQty').text(response.wishQty);
-
-                var rows = ""
-                $.each(response.wishlist, function(key, value) {
-
-                    rows +=
-
-                        `<tr class="border-bottom">
-
-
-
-                                    <td>
-                                        <img class="img-fluid"
-                                            src="/${value.product.product_image}" style="width:60px;height:60px;" alt="" />
-
-                                    </td>
-
-                                    <td>
-                                        <p>
-                                            ${value.product.product_name.length > 16 ? value.product.product_name.substring(0, 16) : value.product.product_name}
-
-                                        </p>
-
-                                    </td>
-
-                                    <td>
-                                       ${
-                                        value.product.price_status === 'rfq'
-
-                                        ? `<p class="text-brand">Tk ${value.product.sas_price}</p>`
-
-                                        : (value.product.price_status === 'offer_price'
-                                            ? `<p class="text-brand">Tk ${value.product.discount_price}</p>`
-
-                                            : (value.product.price_status === 'price'
-                                                ? `<p class="text-brand">Tk ${value.product.price}</p>`
-                                                : ''
-                                            )
-                                        )
-                                    }
-
-                                    </td>
-
-                                    <td class="">
-
-
-                                        <a type="submit" class="add-link" style="cursor:pointer;text-decoration: underline;" id="${value.product.id}" onclick="addToCartWishlist(this.id)" >+Add To Cart</a>
-
-                                    </td>
-
-                                    <td class="">
-
-
-                                        <a type="submit" class="text-body" id="${value.id}" onclick="wishlistRemove(this.id)" ><i class="fa fa-trash text-danger"></i></a>
-
-                                        </td>
-
-                                    </tr>`
-
-
-                });
-
-                $('#wishlist').html(rows);
-
-            }
-        })
-    }
-
-    wishlist();
-</script> --}}
-
-
-<script type="text/javascript">
-    function wishlist() {
-        $.ajax({
-            type: "GET",
-            dataType: 'json',
-            url: "/get-wishlist-product",
-            success: function(response) {
-                $('#wishQty').text(response.wishQty);
-                var rows = "";
-
-                if (response.wishQty === 0) {
-                    // Wishlist is empty, hide the wishlist count
-                    $('#wishQty').closest('li').hide();
-
-                    rows += `<tr>
-                                <td style="text-align: center;">Wishlist is empty</td>
-                             </tr>`;
-                } else {
-                    // Wishlist is not empty, show the wishlist count
-                    $('#wishQty').closest('li').show();
-
-                    $.each(response.wishlist, function(key, value) {
-                        rows +=
-                            `<tr class="border-bottom">
-                                <td>
-                                    <img class="img-fluid"
-                                        src="/${value.product.product_image}" style="width:60px;height:60px;" alt="" />
-                                </td>
-                                <td>
-                                    <p>${value.product.product_name.length > 16 ? value.product.product_name.substring(0, 16) : value.product.product_name}</p>
-                                </td>
-                                <td>
-                                    ${
-                                        value.product.price_status === 'rfq'
-                                        ? `<p class="text-brand">Tk ${value.product.sas_price}</p>`
-                                        : (value.product.price_status === 'offer_price'
-                                            ? `<p class="text-brand">Tk ${value.product.discount_price}</p>`
-                                            : (value.product.price_status === 'price'
-                                                ? `<p class="text-brand">Tk ${value.product.price}</p>`
-                                                : ''
-                                            )
-                                        )
-                                    }
-                                </td>
-                                <td class="">
-                                    <a type="submit" class="add-link" style="cursor:pointer;text-decoration: underline;" id="${value.product.id}" onclick="addToCartWishlist(this.id)" >+Add To Cart</a>
-                                </td>
-                                <td class="">
-                                    <a type="submit" style="cursor:pointer;" class="text-body" id="${value.id}" onclick="wishlistRemove(this.id)" ><i class="fa fa-trash text-danger"></i></a>
-                                </td>
-                            </tr>`;
-                    });
-                }
-                $('#wishlist').html(rows);
-            }
-        });
-    }
-
-    wishlist();
-</script>
-
-
-
-
-{{-- // Wishlist Remove Start  --}}
-<script>
-    function wishlistRemove(id) {
-
-        $.ajax({
-            type: "GET",
-            dataType: 'json',
-            url: "/wishlist-remove/" + id,
-
-            success: function(data) {
-                wishlist();
-                // Start Message
-
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-
-                    showConfirmButton: false,
-                    timer: 3000
-                })
-                if ($.isEmptyObject(data.error)) {
-
-                    Toast.fire({
-                        type: 'success',
-                        icon: 'success',
-                        title: data.success,
-                    })
-
-                } else {
-
-                    Toast.fire({
-                        type: 'error',
-                        icon: 'error',
-                        title: data.error,
-                    })
-                }
-
-                // End Message
-
-
-            }
-        })
-    }
-</script>
 
 <script>
     $(document).ready(function() {
@@ -1706,53 +1703,7 @@
     }
 </script>
 
-{{-- Add Cart Wishlist --}}
-<script>
-    function addToCartWishlist(id) {
 
-        $.ajax({
-            type: "POST",
-            dataType: 'json',
-            url: "/add-to-cart-wishlist/" + id,
-
-            success: function(data) {
-
-                miniCart();
-                miniCartRelated();
-
-                // Start Message
-
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-
-                    showConfirmButton: false,
-                    timer: 3000
-                })
-                if ($.isEmptyObject(data.error)) {
-
-                    Toast.fire({
-                        type: 'success',
-                        icon: 'success',
-                        title: data.success,
-                    })
-
-                } else {
-
-                    Toast.fire({
-                        type: 'error',
-                        icon: 'error',
-                        title: data.error,
-                    })
-                }
-
-                // End Message
-
-
-            }
-        })
-    }
-</script>
 
 {{-- <script>
     // Close dropdown on outside click
@@ -1909,11 +1860,11 @@
     });
 </script> --}}
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         var lastScrollTop = 0;
         var navbar = $('.sticky-navbar');
 
-        $(window).scroll(function () {
+        $(window).scroll(function() {
             var currentScrollTop = $(this).scrollTop();
 
             if (currentScrollTop > lastScrollTop) {
@@ -1930,12 +1881,12 @@
         });
 
         // Prevent dropdown menu from closing when clicking inside
-        $('.dropdown-menu').click(function (e) {
+        $('.dropdown-menu').click(function(e) {
             e.stopPropagation();
         });
 
         // Close dropdown menu when clicking outside
-        $(document).click(function () {
+        $(document).click(function() {
             $('.dropdown-menu').removeClass('show');
         });
     });
@@ -1946,6 +1897,3 @@
         this.querySelector('i').classList.toggle('icon-red');
     });
 </script>
-{{-- ======================================================= --}}
-
-{{-- =========================== --}}

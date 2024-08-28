@@ -1,5 +1,18 @@
 @extends('frontend.astell.frontend_dashboard_astell')
 @section('index_astell')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <style>
+        .accordion .card-header:after {
+            font-family: 'FontAwesome';
+            content: "\f068";
+            float: right;
+        }
+
+        .accordion .card-header.collapsed:after {
+            /* symbol for "collapsed" panels */
+            content: "\f067";
+        }
+    </style>
     <section>
         <div class="contact-group">
             <div class="visual">
@@ -9,38 +22,32 @@
 
         </div>
     </section>
-    <form id="tmpForm">
-        <section>
-            <div class="wrap">
-                <h2 class="sub-tit">FAQ</h2>
-                <div class="list-dropdown">
-
-                    <div class="cont">
-                        <ul>
-                            @foreach ($faqs as $key => $faq)
-                                <li>
-                                    <div value="312" class="cont-top">
-                                        <span class="num">{{ $key+1 }}</span>
-                                        <span class="t1">{{ $faq->category }}</span>
-                                        <div class="t2">
-                                            {{ $faq->question }}
-                                        </div>
-                                    </div>
-                                    <div class="inner">
-                                        <ul class="file-ty">
-                                        </ul>
-                                        <div class="edit">
-                                            {{ $faq->answer }}
-                                        </div>
-                                    </div>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-
-
+    <section>
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 class="sub-tit">FAQ</h2>
                 </div>
             </div>
-        </section>
-    </form>
+            <div class="row">
+                <div id="accordion" class="accordion w-100">
+                    <div class="card mb-0">
+                        @foreach ($faqs as $key => $faq)
+                            <div class="card-header {{ $key == 0 ? '' : 'collapsed' }}" data-toggle="collapse" href="#collapse{{ $key }}">
+                                <a class="card-title">
+                                    {{ $key + 1 }}. {{ $faq->question }}
+                                </a>
+                            </div>
+                            <div id="collapse{{ $key }}" class="card-body collapse {{ $key == 0 ? 'show' : '' }}" data-parent="#accordion">
+                                <p>
+                                    {{ $faq->answer }}
+                                </p>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 @endsection

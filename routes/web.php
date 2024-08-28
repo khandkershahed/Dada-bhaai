@@ -18,16 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-// Route::get('/', function () {
-//     return view('frontend.frontend_dashboard');
-// });
-
 Route::get('/', [IndexController::class, 'Index'])->name('index');
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware(['auth', 'verified'])->group(function () {
 
     // //User Dashboard
@@ -87,13 +78,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     //User Logout
     Route::get('/user-logout', [TemplateOneController::class, 'TemplateOneUserLogout'])->name('template.one.user.logout');
-
-    //Add To WishList
-    Route::get('/all-wishlist', [TemplateOneCartController::class, 'TemplateOneWishlist'])->name('wishlist');
-    Route::get('/get-wishlist-product', [TemplateOneCartController::class, 'GetWishlistProduct']);
-    Route::get('/wishlist-remove/{id}', [TemplateOneCartController::class, 'WishlistRemove']);
-
-    Route::post('/add-to-cart-wishlist/{id}', [TemplateOneCartController::class, 'AddToCartWishlist']);
 
 });
 
@@ -156,6 +140,13 @@ Route::controller(TemplateOneController::class)->group(function () {
     Route::post('/add-to-cart-compare/{id}', 'AddToCartCompare');
     Route::get('/compare/product/remove/{rowId}', 'RemoveCompareTemplateOne');
 
+    //Add To Wishlist
+    Route::post('/add-to-wishlist', 'AddToWishlist');
+    Route::get('/wishlist-product', 'WishlistProduct')->name('wishlist.product');
+    Route::get('/get-wishlist', 'GetWishlist');
+    Route::post('/add-to-cart-wishlist/{id}', 'AddToCartWishlist');
+    Route::get('/wishlist/product/remove/{rowId}', 'RemoveWishlistTemplateOne');
+
 });
 
 //Cart Controller
@@ -207,8 +198,8 @@ Route::controller(TemplateOneCartController::class)->group(function () {
 
     //AddToCartOfferProductTemplateOne
     Route::post('/offer-product-store', 'AddToCartOfferProductTemplateOne');
-
     Route::post('/product-store-cart', 'AddToCartProductHome');
+    Route::post('/product-store-cart-single', 'AddToCartProductHomeSingle');
 
     Route::post('/product/store/related/{id}', 'AddToCartTemplateOneRelated');
     Route::get('/product/mini/cart/related', 'AddMiniCartTemplateOneRelated');
@@ -233,37 +224,35 @@ Route::controller(TemplateOneCartController::class)->group(function () {
 
 });
 
-// /////////////////// Template Two //////////////////////
-// Route::controller(TemplateTwoController::class)->group(function () {
-
-//     //All Product
-//     Route::get('/all-product', 'TemplateOneAllProduct')->name('template.one.all_product');
-
-// });
-
 // Template Two Controller
 Route::controller(TemplateTwoController::class)->group(function () {
 
-    //Template
+    //Template Two
     Route::get('/product-single/{id}', 'SingleProductTemplateTwo');
 
-    // //All Product
-    // Route::get('/all-product', 'TemplateOneAllProduct')->name('template.one.all_product');
-    // Route::post('/shop-filter', 'shopFilter')->name('shop.filter');
-
-    // //Contact
-    // Route::get('/user-contact', 'TemplateOneContact')->name('template_one.contact');
-    // Route::post('/user-contact/send', 'TemplateOneContactStore')->name('template_one.contact.store');
-
-    // //Product Search
-    // Route::post('/search', 'ProductSearch')->name('product.search');
-    // // Route::post('/search-product', 'SearchProduct');
+    //All Product
+    Route::get('/all-product-dadabhaai', 'TemplateTwoAllProduct')->name('template.two.all.product');
 
     //Faq
-    Route::get('/faq/astell', 'TemplateTwoFaq')->name('template.two.faq');
+    Route::get('/faq-dadabhaai', 'TemplateTwoFaq')->name('template.two.faq');
+
     //contact us
-    Route::get('/contact/astell', 'TemplateTwoContact')->name('template.two.contact');
+    Route::get('/contact-dadabhaai', 'TemplateTwoContact')->name('template.two.contact');
+    Route::post('/contact/store', 'TemplateTwoContactStore')->name('template.two.contact.store');
+
     //Buying Guide
     Route::get('/buying-guide', 'TemplateTwoBuying')->name('template.two.buying');
+
+    //Category Page
+    Route::get('/product/category-dadabhaai/{id}/{category_slug}', 'CategoryWiseProductTemplateTwo');
+
+    // Route for handling the POST request (form submission)
+    Route::post('/product-search-dadabhaai', 'DadabhaaiProductSearch')->name('dadabhaai.product.search');
+
+    // Route for showing search results (GET request)
+    Route::get('/product-search-results', 'showSearchResults')->name('product.search.results');
+
+    // Route for showing search results (GET request)
+    Route::post('/product-store-cart-product', 'AddToCartProductHomeAstell');
 
 });

@@ -142,19 +142,44 @@
                                 <div class="col-lg-6">
                                     <div class="mb-2">
                                         <label class="form-label">Row Three Title</label>
-                                        <input type="text" id="row_three_title" name="row_three_title"
+                                        <input type="text" id="row_three_title" value="{{ old('row_three_title') }}" name="row_three_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Row Three Title">
                                     </div>
                                 </div>
                                 <div class="mb-3 col-lg-6">
                                     <label class="form-label">Row Three Description</label>
-                                    <textarea name="row_three_description" rows="0" cols="0" class="form-control"
-                                        placeholder="Enter Row Three Description"></textarea>
+                                    <textarea name="row_three_description"  rows="0" cols="0" class="form-control"
+                                        placeholder="Enter Row Three Description">{{ old('row_three_description') }}</textarea>
                                 </div>
                             </div>
                         </div>
                         <!-- Row Three End-->
+
+                        <!-- Row Four -->
+                        <div class="mt-1 mb-2">
+                            <p class="text-white bg-info text-center shadow-sm"
+                                style="position: relative;  top: 20px; width: 13%">Row Four Area</p>
+                            <div class="row border border-secondary pt-3">
+                                <div class="col-lg-4">
+                                    <div class="mb-2">
+                                        <label class="form-label">Row Four Title</label>
+                                        <input type="text" id="row_four_title" value="{{ old('row_four_title') }}" name="row_four_title"
+                                            class="form-control form-control-sm maxlength-options" maxlength="255"
+                                            placeholder="Enter Row Four Title">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-2">
+                                        <label class="col-form-label pt-0">Row Four Image</label>
+                                        <input type="file" accept="image/*"
+                                            class="imageUpload form-control form-control-sm" name="row_four_image">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Row Four End-->
 
                         <!-- Row Five -->
                         <div class="mt-1 mb-2">
@@ -164,7 +189,7 @@
                                 <div class="col-lg-4">
                                     <div class="mb-2">
                                         <label class="form-label">Row Five Title</label>
-                                        <input type="text" id="row_five_title" name="row_five_title"
+                                        <input type="text" id="row_five_title" value="{{ old('row_five_title') }}" name="row_five_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Row Five Title">
                                     </div>
@@ -180,7 +205,7 @@
                                     <div class="mb-2">
                                         <label class="form-label">Row Five Description</label>
                                         <textarea name="row_five_description" rows="0" cols="0" class="form-control"
-                                            placeholder="Enter Row Five Description"></textarea>
+                                            placeholder="Enter Row Five Description">{{ old('row_five_description') }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -195,7 +220,7 @@
                                 <div class="col-lg-4">
                                     <div class="mb-2">
                                         <label class="form-label">Row Six Title</label>
-                                        <input type="text" id="row_six_title" name="row_six_title"
+                                        <input type="text" id="row_six_title" value="{{ old('row_six_title') }}" name="row_six_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Row Six Title">
                                     </div>
@@ -203,7 +228,7 @@
                                 <div class="col-lg-4">
                                     <div class="mb-2">
                                         <label class="form-label">Row Six Sub Title</label>
-                                        <input type="text" id="row_six_sub_title" name="row_six_sub_title"
+                                        <input type="text" id="row_six_sub_title" value="{{ old('row_six_sub_title') }}" name="row_six_sub_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Row Six Sub Title">
                                     </div>
@@ -216,12 +241,12 @@
                                 <div class="mb-3 col-lg-5">
                                     <label class="form-label">Row Six Short Description</label>
                                     <textarea name="row_six_short_description" rows="0" cols="0" class="form-control"
-                                        placeholder="Enter Row Six Short Description"></textarea>
+                                        placeholder="Enter Row Six Short Description">{{ old('row_six_short_description') }}</textarea>
                                 </div>
                                 <div class="mb-3 col-lg-7">
                                     <label class="form-label">Row Six Description</label>
                                     <textarea name="row_six_description" rows="0" cols="0" class="form-control"
-                                        placeholder="Enter Row Six Description"></textarea>
+                                        placeholder="Enter Row Six Description">{{ old('row_six_description') }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -241,7 +266,7 @@
                                 <div class="col-lg-6">
                                     <div class="mb-2">
                                         <label class="form-label">Row Seven Title</label>
-                                        <input type="text" id="row_seven_title" name="row_seven_title"
+                                        <input type="text" id="row_seven_title" value="{{ old('row_seven_title') }}" name="row_seven_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Row Seven Title">
                                     </div>
@@ -274,7 +299,7 @@
                                 <div class="col-lg-3">
                                     <div class="mb-2">
                                         <label class="form-label">Row Nine Title</label>
-                                        <input type="text" id="row_nine_title" name="row_nine_title"
+                                        <input type="text" id="row_nine_title" value="{{ old('row_nine_title') }}" name="row_nine_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Row Nine Title">
                                     </div>
@@ -282,7 +307,7 @@
                                 <div class="col-lg-3">
                                     <div class="mb-2">
                                         <label class="form-label">Row Nine Sub Title</label>
-                                        <input type="text" id="row_nine_sub_title" name="row_nine_sub_title"
+                                        <input type="text" id="row_nine_sub_title" value="{{ old('row_nine_sub_title') }}" name="row_nine_sub_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Row Nine Sub Title">
                                     </div>
@@ -309,7 +334,7 @@
                                 <div class="col-lg-3">
                                     <div class="mb-2">
                                         <label class="form-label">Row Ten Title</label>
-                                        <input type="text" id="row_ten_title" name="row_ten_title"
+                                        <input type="text" id="row_ten_title" value="{{ old('row_ten_title') }}" name="row_ten_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Row Ten Title">
                                     </div>
@@ -329,7 +354,7 @@
                                 <div class="mb-3 col-lg-3">
                                     <label class="form-label">Row Ten Description</label>
                                     <textarea name="row_ten_description" rows="0" cols="0" class="form-control"
-                                        placeholder="Enter Row Ten Description"></textarea>
+                                        placeholder="Enter Row Ten Description">{{ old('row_ten_description') }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -343,7 +368,7 @@
                                 <div class="col-lg-4">
                                     <div class="mb-2">
                                         <label class="form-label">Row Eleven Title</label>
-                                        <input type="text" id="row_eleven_title" name="row_eleven_title"
+                                        <input type="text" id="row_eleven_title" value="{{ old('row_eleven_title') }}" name="row_eleven_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Row Eleven Title">
                                     </div>
@@ -356,7 +381,7 @@
                                 <div class="mb-3 col-lg-4">
                                     <label class="form-label">Row Eleven Description</label>
                                     <textarea name="row_eleven_description" rows="0" cols="0" class="form-control"
-                                        placeholder="Enter Row Eleven Description"></textarea>
+                                        placeholder="Enter Row Eleven Description">{{ old('row_eleven_description') }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -370,7 +395,7 @@
                                 <div class="mb-2">
                                     <label class="form-label">Row Twelve Description</label>
                                     <textarea class="form-control form-control-sm tinymce_metronic" id="" name="row_twelve_description"
-                                        placeholder="Enter Row Twelve Description"></textarea>
+                                        placeholder="Enter Row Twelve Description">{{ old('row_twelve_description') }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -387,13 +412,13 @@
                                 <div class="col-lg-4 mb-3">
                                     <label class="col-form-label pt-0">Row Thirteen Image One Title </label>
                                     <input type="text" class=" form-control form-control-sm"
-                                        placeholder="Row Thirteen Image One Title" name="row_thirteen_image_one_title">
+                                        placeholder="Row Thirteen Image One Title" value="{{ old('row_thirteen_image_one_title') }}" name="row_thirteen_image_one_title">
                                 </div>
 
                                 <div class="col-lg-4 mb-3">
                                     <label class="col-form-label pt-0">Row Thirteen Image Two Title </label>
                                     <input type="text" class=" form-control form-control-sm"
-                                        placeholder="Row Thirteen Image Two Title" name="row_thirteen_image_two_title">
+                                        placeholder="Row Thirteen Image Two Title" value="{{ old('row_thirteen_image_two_title') }}" name="row_thirteen_image_two_title">
                                 </div>
 
                                 <div class="col-lg-4 mb-3">
@@ -427,7 +452,7 @@
                                 <div class="col-lg-6">
                                     <div class="mb-2">
                                         <label class="form-label">Row Fourteen Title</label>
-                                        <input type="text" id="row_fourteen_title" name="row_fourteen_title"
+                                        <input type="text" id="row_fourteen_title" value="{{ old('row_fourteen_title') }}" name="row_fourteen_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Row Fourteen Title">
                                     </div>
@@ -452,7 +477,7 @@
                                 <div class="col-lg-4">
                                     <div class="mb-2">
                                         <label class="form-label">Row Fifteen Title</label>
-                                        <input type="text" id="row_fifteen_title" name="row_fifteen_title"
+                                        <input type="text" id="row_fifteen_title" value="{{ old('row_fifteen_title') }}" name="row_fifteen_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Row Fifteen Title">
                                     </div>
@@ -461,7 +486,7 @@
                                 <div class="col-lg-4">
                                     <div class="mb-2">
                                         <label class="form-label">Row Fifteen Sub Title</label>
-                                        <input type="text" id="row_fifteen_sub_title" name="row_fifteen_sub_title"
+                                        <input type="text" id="row_fifteen_sub_title" value="{{ old('row_fifteen_sub_title') }}" name="row_fifteen_sub_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Row Fifteen Sub Title">
                                     </div>
@@ -474,7 +499,7 @@
                                 <div class="mb-3 col-lg-12">
                                     <label class="form-label">Row Fifteen Description</label>
                                     <textarea name="row_fifteen_description" rows="0" cols="0" class="form-control"
-                                        placeholder="Enter Row Fifteen Description"></textarea>
+                                        placeholder="Enter Row Fifteen Description">{{ old('row_fifteen_description') }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -503,7 +528,7 @@
                                 <div class="col-lg-4">
                                     <div class="mb-2">
                                         <label class="form-label">Row Sixteen Title</label>
-                                        <input type="text" id="row_sixteen_title" name="row_sixteen_title"
+                                        <input type="text" id="row_sixteen_title" value="{{ old('row_sixteen_title') }}" name="row_sixteen_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Row Sixteen Title">
                                     </div>
@@ -545,7 +570,7 @@
                                 <div class="col-lg-6">
                                     <div class="mb-2">
                                         <label class="form-label">Row Seventeen Title</label>
-                                        <input type="text" id="row_seventeen_title" name="row_seventeen_title"
+                                        <input type="text" id="row_seventeen_title" value="{{ old('row_seventeen_title') }}" name="row_seventeen_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Row Seventeen Title">
                                     </div>
@@ -563,7 +588,7 @@
                                 <div class="col-lg-6">
                                     <div class="mb-2">
                                         <label class="form-label">Row Eighteen Title</label>
-                                        <input type="text" id="row_eighteen_title" name="row_eighteen_title"
+                                        <input type="text" id="row_eighteen_title" value="{{ old('row_eighteen_title') }}" name="row_eighteen_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Row Eight Title">
                                     </div>
@@ -572,7 +597,7 @@
                                 <div class="col-lg-6">
                                     <div class="mb-2">
                                         <label class="form-label">Row Eighteen Sub Title</label>
-                                        <input type="text" id="row_eighteen_sub_title" name="row_eighteen_sub_title"
+                                        <input type="text" id="row_eighteen_sub_title" value="{{ old('row_eighteen_sub_title') }}" name="row_eighteen_sub_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Row Eighteen Sub Title">
                                     </div>
@@ -581,7 +606,7 @@
                                 <div class="col-lg-6">
                                     <label class="form-label">Row Eighteen Description</label>
                                     <textarea name="row_eighteen_description" rows="0" cols="0" class="form-control"
-                                        placeholder="Enter Row Eighteen Description"></textarea>
+                                        placeholder="Enter Row Eighteen Description">{{ old('row_eighteen_description') }}</textarea>
                                 </div>
 
                                 <div class="col-lg-3">
@@ -611,7 +636,7 @@
                                 <div class="mb-3 col-lg-3">
                                     <label class="form-label">Row Nineteen Description</label>
                                     <textarea name="row_nineteen_description" rows="1" cols="1" class="form-control"
-                                        placeholder="Enter Nineteen Description"></textarea>
+                                        placeholder="Enter Nineteen Description">{{ old('row_nineteen_description') }}</textarea>
                                 </div>
 
                                 <div class="col-lg-3">
@@ -622,18 +647,20 @@
                                 <div class="col-lg-3">
                                     <label class="col-form-label pt-0">Row Nineteen Image One Title </label>
                                     <input type="text" class="imageUpload form-control form-control-sm"
-                                        name="row_nineteen_image_one_title" placeholder="Row Nineteen Image One Title">
+                                        name="row_nineteen_image_one_title" value="{{ old('row_nineteen_image_one_title') }}" placeholder="Row Nineteen Image One Title">
                                 </div>
                                 <div class="col-lg-3">
                                     <label class="col-form-label pt-0">Row Nineteen Image Two </label>
                                     <input type="file" accept="image/*"
                                         class="imageUpload form-control form-control-sm" name="row_nineteen_image_two">
                                 </div>
+
                                 <div class="col-lg-3">
                                     <label class="col-form-label pt-0">Row Nineteen Image Two Title </label>
                                     <input type="text" class="imageUpload form-control form-control-sm"
-                                        placeholder="Row Nineteen Image Two Title" name="row_nineteen_image_two_title">
+                                        placeholder="Row Nineteen Image Two Title" value="{{ old('row_nineteen_image_two_title') }}" name="row_nineteen_image_two_title">
                                 </div>
+
                                 <div class="col-lg-3">
                                     <label class="col-form-label pt-0">Row Nineteen Image Three </label>
                                     <input type="file" accept="image/*"
@@ -643,14 +670,14 @@
                                     <label class="col-form-label pt-0">Row Nineteen Image Three Title </label>
                                     <input type="text" class="imageUpload form-control form-control-sm"
                                         placeholder="Row Nineteen Image Three Title"
-                                        name="row_nineteen_image_three_title">
+                                        name="row_nineteen_image_three_title" value="{{ old('row_nineteen_image_three_title') }}">
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="mb-2">
                                         <label class="form-label">Row Nineteen Title</label>
                                         <input type="text" id="row_nineteen_title" name="row_nineteen_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
-                                            placeholder="Enter Row Nineteen Title">
+                                            placeholder="Enter Row Nineteen Title" value="{{ old('row_nineteen_title') }}">
                                     </div>
                                 </div>
                             </div>
@@ -665,7 +692,7 @@
                                 <div class="col-lg-12">
                                     <div class="mb-2">
                                         <label class="form-label">Design Section Title</label>
-                                        <input type="text" id="design_section_title" name="design_section_title"
+                                        <input type="text" id="design_section_title" value="{{ old('design_section_title') }}" name="design_section_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Design Section Title">
                                     </div>
@@ -699,7 +726,7 @@
                                 <div class="mt-3 col-lg-12">
                                     <label class="form-label">Design Section Description</label>
                                     <textarea name="design_section_description" rows="0" cols="0" class="form-control"
-                                        placeholder="Enter Design Section Description"></textarea>
+                                        placeholder="Enter Design Section Description">{{ old('design_section_description') }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -717,7 +744,7 @@
                                 <div class="col-lg-3">
                                     <div class="mb-2">
                                         <label class="form-label">Feature One Title</label>
-                                        <input type="text" id="feature_one_title" name="feature_one_title"
+                                        <input type="text" id="feature_one_title" value="{{ old('feature_one_title') }}" name="feature_one_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Feature One Title">
                                     </div>
@@ -726,7 +753,7 @@
                                 <div class="col-lg-3">
                                     <div class="mb-2">
                                         <label class="form-label">Feature Two Title</label>
-                                        <input type="text" id="feature_two_title" name="feature_two_title"
+                                        <input type="text" id="feature_two_title" value="{{ old('feature_two_title') }}" name="feature_two_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Feature Two Title">
                                     </div>
@@ -735,7 +762,7 @@
                                 <div class="col-lg-3">
                                     <div class="mb-2">
                                         <label class="form-label">Feature Three Title</label>
-                                        <input type="text" id="feature_three_title" name="feature_three_title"
+                                        <input type="text" id="feature_three_title" value="{{ old('feature_three_title') }}" name="feature_three_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Feature Three Title">
                                     </div>
@@ -744,7 +771,7 @@
                                 <div class="col-lg-3">
                                     <div class="mb-2">
                                         <label class="form-label">Feature Four Title</label>
-                                        <input type="text" id="feature_four_title" name="feature_four_title"
+                                        <input type="text" id="feature_four_title" value="{{ old('feature_four_title') }}" name="feature_four_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Feature Four Title">
                                     </div>
@@ -753,7 +780,7 @@
                                 <div class="col-lg-6">
                                     <div class="mb-2">
                                         <label class="form-label">Feature Five Title</label>
-                                        <input type="text" id="feature_five_title" name="feature_five_title"
+                                        <input type="text" id="feature_five_title" value="{{ old('feature_five_title') }}" name="feature_five_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Feature Five Title">
                                     </div>
@@ -762,7 +789,7 @@
                                 <div class="col-lg-6">
                                     <div class="mb-2">
                                         <label class="form-label">Feature Six Title</label>
-                                        <input type="text" id="feature_six_title" name="feature_six_title"
+                                        <input type="text" id="feature_six_title" value="{{ old('feature_six_title') }}" name="feature_six_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Feature Six Title">
                                     </div>
@@ -771,37 +798,37 @@
                                 <div class="mb-3 col-lg-4">
                                     <label class="form-label">Feature One Description</label>
                                     <textarea name="feature_one_description" rows="0" cols="0" class="form-control"
-                                        placeholder="Enter Feature One Description"></textarea>
+                                        placeholder="Enter Feature One Description">{{ old('feature_one_description') }}</textarea>
                                 </div>
 
                                 <div class="mb-3 col-lg-4">
                                     <label class="form-label">Feature Two Description</label>
                                     <textarea name="feature_two_description" rows="0" cols="0" class="form-control"
-                                        placeholder="Enter Feature Two Description"></textarea>
+                                        placeholder="Enter Feature Two Description">{{ old('feature_two_description') }}</textarea>
                                 </div>
 
                                 <div class="mb-3 col-lg-4">
                                     <label class="form-label">Feature Three Description</label>
                                     <textarea name="feature_three_description" rows="0" cols="0" class="form-control"
-                                        placeholder="Enter Three Description"></textarea>
+                                        placeholder="Enter Three Description">{{ old('feature_three_description') }}</textarea>
                                 </div>
 
                                 <div class="mb-3 col-lg-4">
                                     <label class="form-label">Feature Four Description</label>
                                     <textarea name="feature_four_description" rows="0" cols="0" class="form-control"
-                                        placeholder="Enter Feature Four Description"></textarea>
+                                        placeholder="Enter Feature Four Description">{{ old('feature_four_description') }}</textarea>
                                 </div>
 
                                 <div class="mb-3 col-lg-4">
                                     <label class="form-label">Feature Five Description</label>
                                     <textarea name="feature_five_description" rows="0" cols="0" class="form-control"
-                                        placeholder="Enter Feature Five Description"></textarea>
+                                        placeholder="Enter Feature Five Description">{{ old('feature_five_description') }}</textarea>
                                 </div>
 
                                 <div class="mb-3 col-lg-4">
                                     <label class="form-label">Feature Six Description</label>
                                     <textarea name="feature_six_description" rows="0" cols="0" class="form-control"
-                                        placeholder="Enter Feature Six Description"></textarea>
+                                        placeholder="Enter Feature Six Description">{{ old('feature_six_description') }}</textarea>
                                 </div>
 
                                 <div class="col-lg-4 mb-3">

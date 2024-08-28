@@ -16,6 +16,11 @@ class Offer extends Model
         return $this->belongsTo(OfferCategory::class,'offer_category_id','id');
     }
 
+    // public function offer_category()
+    // {
+    //     return $this->hasOne(OfferCategory::class);
+    // }
+
     public function products()
     {
         return $this->belongsTo(Product::class,'product_id','id');

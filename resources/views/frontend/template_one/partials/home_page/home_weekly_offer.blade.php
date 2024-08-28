@@ -22,7 +22,7 @@
 
 @if (count($offer_cats) > 0)
     <div class="offer-deals">
-        <div class="offer--deals__main offer-deals--bg pt-75 pb-45"
+        <div class="offer--deals__main offer-deals--bg py-30"
             data-background="{{ asset('frontend/template_one/assets/img/bg/offer_banner.jpg') }}">
             <div class="container">
                 <div class="row">
@@ -52,18 +52,18 @@
                                                         alt="" style="height: 280px; width: 300px;">
                                                 </div>
                                                 <div class="col-xl-4 col-lg-4">
-                                                    <div class="offer--deals__products mb-30">
+                                                    <div class="offer--deals__products mb-30 mt-30">
 
                                                         <div class="products--deals__content mb-35">
                                                             <h6 class="f-700 mb-20">
-                                                                <a href="javascript:;"
+                                                                <a href="javascript:void(0)"
                                                                     id="opname">{{ $offer_cat->offer->products->product_name }}</a>
                                                             </h6>
 
-                                                            <span>Tk </span><span
+                                                            <span>$ </span><span
                                                                 class="price-old">{{ $offer_cat->offer->price }}</span>
 
-                                                            <span class="f-600 grenadier-color">Tk<span
+                                                            <span class="f-600 grenadier-color">$<span
                                                                     class="price-new f-600 grenadier-color"
                                                                     id="">{{ $offer_cat->offer->discount_price }}</span></span>
 

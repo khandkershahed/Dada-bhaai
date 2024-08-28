@@ -109,7 +109,7 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     Route::get('/admin/user-active/{id}', [AdminController::class, 'ActiveUserAdmin'])->name('user.active.admin');
 });
 
-Route::middleware(['auth:admin','verified'])->group(function () {
+Route::middleware(['auth:admin', 'verified'])->group(function () {
 
     //Order Section
     Route::controller(AdminOrderController::class)->prefix('admin-order')->group(function () {
@@ -225,11 +225,10 @@ Route::middleware(['auth:admin','verified'])->group(function () {
     Route::controller(ContactController::class)->prefix('contact')->group(function () {
 
         Route::get('/all', 'AllContact')->name('all.contact')->middleware('permission:all.contact');
-        Route::post('/store', 'StoreContact')->name('store.contact');
-        Route::post('/update', 'UpdateContact')->name('update.contact');
+        // Route::post('/store', 'StoreContact')->name('contact.add');
+        // Route::post('/update', 'UpdateContact')->name('update.contact');
         Route::get('/delete/{id}', 'DeleteContact')->name('delete.contact');
     });
-
     //Offer Category Section
     Route::controller(OfferCategoryController::class)->prefix('offer')->group(function () {
 
@@ -258,6 +257,9 @@ Route::middleware(['auth:admin','verified'])->group(function () {
         Route::get('/edit/{id}', 'EditHome')->name('edit.home');
         Route::post('/update', 'UpdateHome')->name('update.home');
         Route::get('/delete/{id}', 'DeleteHome')->name('delete.home');
+
+        Route::get('/delete-video/{filename}', 'DeleteVideo')->name('delete.video');
+        Route::get('/delete-video2/{filename}', 'DeleteVideo2')->name('delete.video2');
     });
 
     //Single Page Section

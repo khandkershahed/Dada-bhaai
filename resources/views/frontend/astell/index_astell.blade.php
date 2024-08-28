@@ -1,13 +1,150 @@
 @extends('frontend.astell.frontend_dashboard_astell')
 @section('index_astell')
     <style>
-        .swiper-slide-container {
+        .astel-product-tabs {
+            display: block;
+            height: 86px;
+            line-height: 75px;
+            text-align: center;
+            color: #888;
+            font-size: 15px;
+            font-weight: 300;
+            letter-spacing: 0.75px;
+            border: 0;
+            background-color: #fff;
+        }
+
+        .tab-links li {
+            display: inline-block;
+            width: 25%;
+            border-right: 1px solid #e6e6e6;
+        }
+
+        .nav-tabs .astel-product-tabs.show .astel-product-tabs-link,
+        .nav-tabs .astel-product-tabs-link.active {
+            display: inline-block;
+            width: 100%;
+            height: 86px;
+            border: 0;
+            background-color: #f4ece8;
+        }
+
+        .astel-product-tabs-link {
+            display: inline-block;
+            width: 100%;
+            height: 86px;
+            color: #888;
+            border: 0;
+        }
+
+        .nav-tabs .astel-product-tabs-link:focus,
+        .nav-tabs .astel-product-tabs-link:hover {
+            border: 0px !important;
+            outline: none !important;
+        }
+
+        .tab-links .astel-product-tabs-link {
+            border: 0px !important;
+            outline: none !important;
+        }
+
+        .swiper-container {
+            overflow: hidden;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .swiper-container-wrapper {
+            height: 100vh;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #000;
+        }
+
+        .swiper-slide {
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .gallery-top {
+            position: relative;
+            width: 100%;
+            height: 75vh;
+        }
+
+        .gallery-thumbs {
+            width: 100%;
+            padding-top: 10px;
+        }
+
+        .gallery-thumbs .swiper-slide {
+            width: 25%;
+            flex-flow: row nowrap;
+            height: 100%;
+            opacity: 0.75;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .gallery-thumbs .swiper-slide img {
+            width: 100%;
+        }
+
+        .gallery-thumbs .swiper-slide .thumb-text {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+
+        .gallery-thumbs .swiper-slide .thumb-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .gallery-thumbs .swiper-slide .thumb-description {
+            font-size: 14px;
+        }
+
+        @media (min-width: 480px) {
+            .gallery-thumbs .swiper-slide {
+                flex-flow: column nowrap;
+                width: 100%;
+            }
+        }
+
+        .gallery-thumbs .swiper-slide-thumb-active {
+            opacity: 1;
+            background-color: #f4ece8;
+        }
+
+        .wr strong {
+            display: block;
+            font-size: 56px;
+            font-weight: 500;
+        }
+
+        .swiper-containerss {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-container-bottom {
             text-align: center;
             font-size: 18px;
-            background: #fff;
-            height: 100%;
-            max-width: 600px;
-            margin: auto;
+
             /* Center slide text vertically */
             display: -webkit-box;
             display: -ms-flexbox;
@@ -23,221 +160,39 @@
             align-items: center;
         }
 
-        .gallery-thumbs {
-            box-sizing: border-box;
-            padding: 10px 0;
+        .swiper-button-prev,
+        .swiper-container-rtl .swiper-button-next {
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'%3E%3Cpath d='M0,22L22,0l2.1,2.1L4.2,22l19.9,19.9L22,44L0,22L0,22L0,22z' fill='%23000000'%3E%3C/path%3E%3C/svg%3E");
+            left: 10px;
+            right: auto;
         }
 
-        .gallery-thumbs .swiper-slide {
-            width: 20%;
-            height: 100%;
-            opacity: 0.4;
-        }
-
-        .gallery-thumbs .swiper-slide-active {
-            opacity: 1;
+        .swiper-button-next {
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'%3E%3Cpath d='M27,22L5,44l-2.1-2.1L22.8,22L2.9,2.1L5,0L27,22L27,22L27,22z' fill='%23000000'%3E%3C/path%3E%3C/svg%3E");
+            right: 10px;
+            left: auto;
         }
     </style>
-    {{--
 
-    @include('frontend.astell.home_page.image_banner')
+    <main class="main">
+        {{-- Home Video Section Start  --}}
+        @include('frontend.astell.home_page.home_video')
+        {{-- Home Video Section End  --}}
+        {{-- Image Banner Section Start  --}}
+        @include('frontend.astell.home_page.image_banner')
+        {{-- Image Banner Section End  --}}
 
-    @include('frontend.astell.home_page.category')
+        @include('frontend.astell.home_page.category')
 
-    @include('frontend.astell.home_page.banner') --}}
+        {{-- Product Image Section Start  --}}
+        @include('frontend.astell.home_page.product_image_banner')
+        {{-- Product Image Section End  --}}
 
-    {{-- Home Video Section Start  --}}
-    @include('frontend.astell.home_page.home_video')
-    {{-- Home Video Section End  --}}
-
-    {{-- Image Banner Section Start  --}}
-    @include('frontend.astell.home_page.image_banner')
-    {{-- Image Banner Section End  --}}
-    <section class="product">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6">
-              <div id="main-slider" class="swiper-container">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <img src="image1.jpg" alt="Slide 1">
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="image2.jpg" alt="Slide 2">
-                  </div>
-                  </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-pagination"></div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="slider-thumbnails">
-                <ul class="thumbnails swiper-container">
-                  <li class="swiper-slide">
-                    <img src="image1-thumb.jpg" alt="Slide 1 Thumbnail">
-                  </li>
-                  <li class="swiper-slide">
-                    <img src="image2-thumb.jpg" alt="Slide 2 Thumbnail">
-                  </li>
-                  </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        {{-- Home Page Banner Section Start  --}}
+        @include('frontend.astell.home_page.fotter-top-slider')
+        {{-- Home Page Banner Section End  --}}
 
 
 
-
-
-    <section class="product">
-
-        <div class="tab-ty">
-            <ul>
-                @foreach ($categories as $key => $category)
-                    <li>
-                        <a href="javascript:void(0);"
-                            class="n{{ $key }} {{ $loop->first ? 'on' : '' }}">{{ $category->category_name }}</a>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-
-        @forelse ($categories as $key => $category)
-            <div class="tab-cont n{{ $key }} {{ $loop->first ? 'on' : '' }}"
-                style="background-image: url('images/%40p_bg01.png')">
-                <div class="wrap">
-
-                    <div class="wl">
-                        <div class="swiper-container">
-                            <ul class="swiper-wrapper">
-
-                                @foreach ($category->products as $image)
-                                    <li class="swiper-slide">
-                                        <a href="">
-                                            <img src="{{ asset($image->product_image) }}" alt="{{ $image->product_name }}"
-                                                style="width: 400px; height: 400px;" />
-                                        </a>
-                                    </li>
-                                @endforeach
-
-                            </ul>
-                        </div>
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
-                    </div>
-
-                    <div class="wr">
-
-                        @forelse ($category->products as $key => $product)
-                            <strong class="tmpProductInfo tmpProductInfo_0"
-                                {{ $loop->first ? '' : 'style=display:none;' }}>{{ $product->product_name }}</strong>
-
-                            <p class="tmpProductInfo tmpProductInfo_0" {{ $loop->first ? '' : 'style=display:none;' }}>
-                                {!! $product->short_desc !!}
-                            </p>
-                            <div class="btn-group tmpProductInfo tmpProductInfo_0"
-                                {{ $loop->first ? '' : 'style=display:none;' }}>
-                                <a href="" class="lnk-ty1">Find store</a>
-
-                            </div>
-                        @empty
-                        @endforelse
-
-                        <div class="list">
-                            <div class="swiper-container">
-                                <ul class="swiper-wrapper">
-
-                                    @foreach ($category->products as $key => $image)
-                                        <li class="swiper-slide">
-                                            <a href="javascript:;" class="{{ $key == 0 ? 'active' : '' }}">
-                                                <img src="{{ asset($image->product_image) }}" alt="sp3000_list_1.png" />
-                                                <span>{{ $image->product_name }}</span>
-                                            </a>
-                                        </li>
-                                    @endforeach
-
-                                </ul>
-                                <div class="swiper-pagination"></div>
-                            </div>
-                            <div class="swiper-slider"></div>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        @empty
-        @endforelse
-
-
-    </section>
-
-
-    {{-- Product Image Section Start  --}}
-    <section class="brand-story scrollAni n2">
-        <h2>
-            We believe <strong>Astell&Kern</strong> is the center of music
-        </h2>
-        <ul>
-
-            <li>
-                <a href="#">
-                    <div class="bg"
-                        style=" background-image: url('{{ asset($homepage->featureProductOne->product_image) }}');">
-                    </div>
-
-                    <div class="inner bg-shadow">
-                        <p class="font-white">{{ $homepage->featureProductOne->product_name }}</p>
-                        <strong class="font-white">{{ $homepage->featureProductOne->category->category_name }}</strong>
-                    </div>
-
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <div class="bg"
-                        style="
-                  background-image: url('{{ asset($homepage->featureProductTwo->product_image) }}');">
-                    </div>
-                    <div class="inner bg-shadow">
-                        <p class="font-white">{{ $homepage->featureProductTwo->product_name }}</p>
-                        <strong class="font-white">{{ $homepage->featureProductTwo->category->category_name }}</strong>
-                    </div>
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <div class="bg"
-                        style="background-image: url('{{ asset($homepage->featureProductThree->product_image) }}');">
-                    </div>
-                    <div class="inner bg-shadow">
-                        <p class="font-white">{{ $homepage->featureProductThree->product_name }}</p>
-                        <strong class="font-white">{{ $homepage->featureProductThree->category->category_name }}</strong>
-                    </div>
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <div class="bg"
-                        style="background-image: url('{{ asset($homepage->featureProductFour->product_image) }}');">
-                    </div>
-                    <div class="inner bg-shadow">
-                        <p class="font-white">{{ $homepage->featureProductFour->product_name }}</p>
-                        <strong class="font-white">{{ $homepage->featureProductFour->category->category_name }}</strong>
-                    </div>
-                </a>
-            </li>
-
-        </ul>
-    </section>
-    {{-- Product Image Section End  --}}
-
-    {{-- Home Page Banner Section Start  --}}
-    @include('frontend.astell.home_page.banner')
-    {{-- Home Page Banner Section End  --}}
+    </main>
 @endsection

@@ -30,7 +30,7 @@ class SinglePageController extends Controller
     {
         $files = [
             'row_two_image_one', 'row_two_image_two', 'row_two_image_three', 'row_two_image_four',
-            'row_five_image', 'row_six_background_image', 'row_seven_background_image',
+            'row_five_image', 'row_four_image', 'row_six_background_image', 'row_seven_background_image',
             'row_eight_image', 'row_nine_background_image', 'row_nine_image', 'row_ten_image_one', 'row_ten_image_two',
             'row_eleven_image', 'row_thirteen_background_image', 'row_thirteen_image_one',
             'row_thirteen_image_two', 'row_fourteen_background_image',
@@ -58,6 +58,9 @@ class SinglePageController extends Controller
 
             'row_three_title' => $request->row_three_title,
             'row_three_description' => $request->row_three_description,
+
+            'row_four_title' => $request->row_four_title,
+
             'row_five_title' => $request->row_five_title,
             'row_five_description' => $request->row_five_description,
             'row_six_title' => $request->row_six_title,
@@ -126,7 +129,7 @@ class SinglePageController extends Controller
 
         $files = [
             'row_two_image_one', 'row_two_image_two', 'row_two_image_three', 'row_two_image_four',
-            'row_five_image', 'row_six_background_image', 'row_seven_background_image',
+            'row_five_image', 'row_four_image', 'row_six_background_image', 'row_seven_background_image',
             'row_eight_image', 'row_nine_background_image', 'row_nine_image', 'row_ten_image_one', 'row_ten_image_two',
             'row_eleven_image', 'row_thirteen_background_image', 'row_thirteen_image_one',
             'row_thirteen_image_two', 'row_fourteen_background_image',
@@ -161,6 +164,7 @@ class SinglePageController extends Controller
             'status' => $request->status,
             'product_id' => $request->product_id,
             'row_three_title' => $request->row_three_title,
+            'row_four_title' => $request->row_four_title,
             'row_three_description' => $request->row_three_description,
             'row_five_title' => $request->row_five_title,
             'row_five_description' => $request->row_five_description,
@@ -220,16 +224,16 @@ class SinglePageController extends Controller
 
         $imageKeys = [
             'row_two_image_one', 'row_two_image_two', 'row_two_image_three', 'row_two_image_four',
-            'row_five_image', 'row_six_background_image', 'row_seven_background_image',
+            'row_five_image', 'row_four_image', 'row_six_background_image', 'row_seven_background_image',
             'row_eight_image', 'row_nine_background_image', 'row_nine_image', 'row_ten_image_one', 'row_ten_image_two',
-            'row_eleven_image', 'row_thirteen_background_image',  'row_thirteen_image_one',
+            'row_eleven_image', 'row_thirteen_background_image', 'row_thirteen_image_one',
             'row_thirteen_image_two', 'row_fourteen_background_image',
             'row_fifteen_image', 'row_sixteen_background_image', 'row_sixteen_image',
             'row_seventeen_image', 'row_eighteen_background_image', 'row_eighteen_image',
-            'row_nineteen_image_one',  'row_nineteen_image_two',
-            'row_nineteen_image_three',  'feature_section_background_image', 'feature_one_image',
+            'row_nineteen_image_one', 'row_nineteen_image_two',
+            'row_nineteen_image_three', 'feature_section_background_image', 'feature_one_image',
             'feature_two_image', 'feature_three_image', 'feature_four_image', 'feature_five_image', 'feature_six_image',
-            'design_section_image_one', 'design_section_image_two', 'design_section_image_three', 'design_section_image_four'
+            'design_section_image_one', 'design_section_image_two', 'design_section_image_three', 'design_section_image_four',
         ];
 
         foreach ($imageKeys as $imageKey) {

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Admin\Product;
 use App\Models\Admin\Category;
 use App\Models\Admin\HomePage;
-use App\Models\Admin\Product;
-use Illuminate\Http\Request;
+use App\Models\Admin\SubCategory;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 
 class HomePageController extends Controller
@@ -22,15 +23,20 @@ class HomePageController extends Controller
     public function EditHome($id)
     {
         $home = HomePage::find($id);
+
         $categorys = Category::orderBy('category_name', 'ASC')->latest()->get();
+        $subcategorys = SubCategory::orderBy('subcategory_name', 'ASC')->latest()->get();
         $products = Product::orderBy('product_name', 'ASC')->latest()->get();
 
-        return view('admin.pages.home.edit_home', compact('home', 'categorys','products'));
+        return view('admin.pages.home.edit_home', compact('home', 'categorys', 'products','subcategorys'));
     }
 
     //Update Home
     public function UpdateHome(Request $request)
     {
+        // ini_set('upload_max_filesize', '100M');
+        // ini_set('post_max_size', '100M');
+        // set_time_limit(240);
 
         $uid = $request->id;
         $home = HomePage::find($uid);
@@ -38,9 +44,9 @@ class HomePageController extends Controller
         $validator = $request->validate(
 
             [
-                'video_slider_one_video' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi| max:20000',
+                'video_slider_one_video' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi| max:61440',
 
-                'video_slider_two_video' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi| max:20000',
+                'video_slider_two_video' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi| max:61440',
 
             ],
 
@@ -130,7 +136,6 @@ class HomePageController extends Controller
             $image_slider_three_image = $fileName;
         }
 
-
         //background_image_one_image
         if (!empty($request->file('background_image_one_image'))) {
 
@@ -167,6 +172,55 @@ class HomePageController extends Controller
             $background_image_three_image = $fileName;
         }
 
+        //product_one_image
+        if (!empty($request->file('feature_product_one_image'))) {
+
+            $file = $request->file('feature_product_one_image');
+
+            @unlink(public_path('upload/home/' . $home->feature_product_one_image));
+
+            $fileName = hexdec(uniqid()) . '.' . $file->getClientOriginalName();
+            $file->move(public_path('upload/home/'), $fileName);
+            $feature_product_one_image = $fileName;
+        }
+
+        //product_two_image
+        if (!empty($request->file('feature_product_two_image'))) {
+
+            $file = $request->file('feature_product_two_image');
+
+            @unlink(public_path('upload/home/' . $home->feature_product_two_image));
+
+            $fileName = hexdec(uniqid()) . '.' . $file->getClientOriginalName();
+            $file->move(public_path('upload/home/'), $fileName);
+            $feature_product_two_image = $fileName;
+        }  
+        
+        //product_three_image
+        if (!empty($request->file('feature_product_three_image'))) {
+
+            $file = $request->file('feature_product_three_image');
+
+            @unlink(public_path('upload/home/' . $home->feature_product_three_image));
+
+            $fileName = hexdec(uniqid()) . '.' . $file->getClientOriginalName();
+            $file->move(public_path('upload/home/'), $fileName);
+            $feature_product_three_image = $fileName;
+        } 
+
+        //product_four_image
+        if (!empty($request->file('feature_product_four_image'))) {
+
+            $file = $request->file('feature_product_four_image');
+
+            @unlink(public_path('upload/home/' . $home->feature_product_four_image));
+
+            $fileName = hexdec(uniqid()) . '.' . $file->getClientOriginalName();
+            $file->move(public_path('upload/home/'), $fileName);
+            $feature_product_four_image = $fileName;
+        } 
+
+
         $home->update([
 
             'status' => $request->status,
@@ -189,7 +243,7 @@ class HomePageController extends Controller
             'image_slider_two_badge' => $request->image_slider_two_badge,
             'image_slider_two_title' => $request->image_slider_two_title,
             'image_slider_two_sub_title' => $request->image_slider_two_title,
-            'image_slider_two_description' => $request->image_slider_one_description,
+            'image_slider_two_description' => $request->image_slider_two_description,
             'image_slider_two_button_name' => $request->image_slider_two_button_name,
             'image_slider_two_button_link' => $request->image_slider_two_button_link,
 
@@ -237,6 +291,14 @@ class HomePageController extends Controller
 
             'image_slider_three_image' => (!empty($image_slider_three_image) ? $image_slider_three_image : $home->image_slider_three_image),
 
+            'feature_product_one_image' => (!empty($feature_product_one_image) ? $feature_product_one_image : $home->feature_product_one_image),
+
+            'feature_product_two_image' => (!empty($feature_product_two_image) ? $feature_product_two_image : $home->feature_product_two_image),
+
+            'feature_product_three_image' => (!empty($feature_product_three_image) ? $feature_product_three_image : $home->feature_product_three_image),
+
+            'feature_product_four_image' => (!empty($feature_product_four_image) ? $feature_product_four_image : $home->feature_product_four_image),
+
         ]);
 
         toastr()->success('HomePage Update Successfully');
@@ -274,6 +336,66 @@ class HomePageController extends Controller
         toastr()->success('HomePage Delete Successfully');
         return redirect()->route('all.home');
 
+    }
+
+    //DeleteVideo
+    public function DeleteVideo($filename)
+    {
+        // Find the HomePage record by its primary key
+        $home = HomePage::find($filename);
+        // Check if a record was found
+        if ($home) {
+            // Construct the full file path
+            $filePath = public_path('upload/home/') . $home->video_slider_one_video;
+
+            // Check if the file exists
+            if (File::exists($filePath)) {
+                // Delete the file
+                File::delete($filePath);
+                $home->update([
+                    'video_slider_one_video' => null,
+                ]);
+                toastr()->success('Video Delete Successfully');
+                return redirect()->route('all.home');
+            } else {
+                toastr()->error('Video File Not Found');
+                return redirect()->route('all.home');
+            }
+
+        } else {
+            toastr()->success('Can Not Delete Video');
+            return redirect()->route('all.home');
+        }
+    }
+
+    //DeleteVideo2
+    public function DeleteVideo2($filename)
+    {
+        // Find the HomePage record by its primary key
+        $home = HomePage::find($filename);
+        // Check if a record was found
+        if ($home) {
+            // Construct the full file path
+            $filePath = public_path('upload/home/') . $home->video_slider_two_video;
+
+            // Check if the file exists
+            if (File::exists($filePath)) {
+                // Delete the file
+                File::delete($filePath);
+                $home->update([
+                    'video_slider_two_video' => null,
+                ]);
+                toastr()->success('Video Delete Successfully');
+                return redirect()->route('all.home');
+            } else {
+                toastr()->error('Video File Not Found');
+                return redirect()->route('all.home');
+            }
+
+        } else {
+            toastr()->success('Can Not Delete Video');
+            return redirect()->route('all.home');
+        }
     }
 
 }

@@ -2,8 +2,7 @@
 @section('index_template_one')
 @section('title', 'Dada Bhaai | Contact Us')
 <!-- page banner area start -->
-<section class="page-banner-area" data-background="{{ asset('frontend/template_one/assets/img/bg/page-banner.jpg') }}"
-    style="margin-top: 4.7rem;">
+<section class="page-banner-area" data-background="{{ asset('frontend/template_one/assets/img/bg/page-banner.jpg') }}">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2 col-sm-12">
@@ -86,10 +85,11 @@
                 <div class="contact-text">
                     <div class="single-text mb-30">
                         <i class="icofont-telephone"></i>
+                        
                         <h5>Contact customer service</h5>
-                        <p>Need assistance? Our customer service is here to
-                            assist you Monday through Friday from
-                            9 am EST to 10 pm EST.</p>
+
+                        <p>Need assistance? Our customer service team is here to help you. For any support, you can contact us at for prompt assistance.</p>
+
                         <h5>{{ $sites->phone_two }}</h5>
                     </div>
                 </div>

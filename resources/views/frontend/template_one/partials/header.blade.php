@@ -4,50 +4,108 @@
             $site = App\Models\Sites::find(1);
         @endphp
         <nav class="navbar navbar-expand-lg navbar-transparent">
-            <a class="navbar-brand" href="{{ route('index') }}">
-                {{-- <img class="" width="200px" src="{{ asset('upload/logo_black/' . $site->logo_black) }}" alt="" /> --}}
-                <img class="" width="200px"
-                    src="https://dadabhaai.com/upload/logo_black/202405200404Dadabhai%20Logo.png" alt="" />
+            <a class="navbar-brand py-3 pr-4" href="{{ route('index') }}">
+
+                <img class="" width="145px" src="{{ asset('upload/logo_black/' . $site->logo_black) }}"
+                    alt="" />
             </a>
+
             <!-- Categories Dropdown -->
+            @php
+                $categorys = App\Models\Admin\Category::where('status', '1')
+                    ->orderBy('category_name', 'ASC')
+                    ->limit(9)
+                    ->latest()
+                    ->get();
+            @endphp
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown position-static">
                     <a class="nav-link dropdown-toggle card-title cod__gray-color mb-0 main-menu-link"
                         style="background: #f5f5f5; border-radius: 5px" href="#" id="navbarDropdownFeatures"
                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-th pr-2" aria-hidden="true"></i>Category
+                        <i class="fa fa-th pr-2" aria-hidden="true"></i>
+
+                        Category
                     </a>
-                    <div class="dropdown-menu dropdown-menu-full main-menu-drop"
+                    <div class="dropdown-menu dropdown-menu-full main-menu-drop p-0"
                         aria-labelledby="navbarDropdownFeatures" style="border-top: 2px solid #cd3301">
                         <div class="container">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link active" id="home-tab" data-toggle="tab"
-                                                data-target="#home" type="button" role="tab" aria-controls="home"
-                                                aria-selected="true">Home</button>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="profile-tab" data-toggle="tab"
-                                                data-target="#profile" type="button" role="tab"
-                                                aria-controls="profile" aria-selected="false">Profile</button>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="contact-tab" data-toggle="tab"
-                                                data-target="#contact" type="button" role="tab"
-                                                aria-controls="contact" aria-selected="false">Contact</button>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-8">
-                                    <div class="tab-content" id="myTabContent">
-                                        <div class="tab-pane fade show active" id="home" role="tabpanel"
-                                            aria-labelledby="home-tab">...</div>
-                                        <div class="tab-pane fade" id="profile" role="tabpanel"
-                                            aria-labelledby="profile-tab">...</div>
-                                        <div class="tab-pane fade" id="contact" role="tabpanel"
-                                            aria-labelledby="contact-tab">...</div>
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <div class="col-lg-3 px-0">
+                                            <ul class="nav nav-tabs flex-column border-0" id="myTab" role="tablist">
+                                                @foreach ($categorys as $key => $category)
+                                                    <li class="nav-item">
+                                                        <a class="nav-link main_cat_triger w-100 pl-4 {{ $key == 0 ? 'active' : '' }}"
+                                                            id="tab-{{ $category->id }}" data-toggle="tab"
+                                                            href="#category{{ $category->id }}" role="tab"
+                                                            aria-controls="category{{ $category->id }}"
+                                                            aria-selected="{{ $key == 0 ? 'true' : 'false' }}">{{ $category->category_name }}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                        <div class="col-lg-9 px-0">
+                                            <div class="tab-content px-3 pt-2" id="myTabContent">
+                                                @foreach ($categorys as $key => $category)
+                                                    <div class="tab-pane fade show {{ $key == 0 ? 'active' : '' }}"
+                                                        id="category{{ $category->id }}" role="tabpanel"
+                                                        aria-labelledby="tab-{{ $category->id }}">
+                                                        @php
+                                                            $catwissubcat = App\Models\Admin\SubCategory::where(
+                                                                'status',
+                                                                '1',
+                                                            )
+                                                                ->where('category_id', $category->id)
+                                                                ->orderBy('subcategory_name', 'ASC')
+                                                                ->latest()
+                                                                ->get();
+                                                        @endphp
+                                                        <div class="row">
+                                                            @forelse ($catwissubcat as $subcat)
+                                                                <div class="col-lg-4">
+                                                                    <div>
+                                                                        <h5 class="" style="color: #ef4416;">
+                                                                            {{ $subcat->subcategory_name }}
+                                                                        </h5>
+                                                                        <div class="divider"></div>
+                                                                        @php
+                                                                            $childcats = App\Models\Admin\ChildCategory::where(
+                                                                                'status',
+                                                                                '1',
+                                                                            )
+                                                                                ->where('subcategory_id', $subcat->id)
+                                                                                ->orderBy('childcategory_name', 'ASC')
+                                                                                ->limit(7)
+                                                                                ->latest()
+                                                                                ->get();
+                                                                        @endphp
+                                                                        <ul class="main-link-cat">
+                                                                            @forelse ($childcats as $childcat)
+                                                                                <li>
+                                                                                    <a
+                                                                                        href="{{ url('product/childcategory/' . $childcat->id . '/' . $childcat->childcategory_slug) }}">{{ $childcat->childcategory_name }}</a>
+                                                                                </li>
+                                                                            @empty
+                                                                                <p>No ChildCategory Available</p>
+                                                                            @endforelse
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            @empty
+                                                                <div class="col-lg-12">
+                                                                    <div
+                                                                        class="d-flex justify-content-center align-items-center h-100">
+                                                                        <p>No Subcategory Available</p>
+                                                                    </div>
+                                                                </div>
+                                                            @endforelse
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -56,10 +114,12 @@
                 </li>
             </ul>
             <!-- Navbar Toggler -->
+
             {{-- <button class="navbar-toggler bg-primary" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-th pr-2" aria-hidden="true"></i>
             </button> --}}
+
             <!-- Navbar Collapse -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
@@ -71,9 +131,8 @@
                     {{-- All Brands Menu --}}
 
                     <li class="nav-item dropdown position-static">
-                        <a class="nav-link main-menu-link dropdown-toggle" href="javascript:void(0)"
-                            id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
+                        <a class="nav-link main-menu-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown"
+                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Brands
                         </a>
 
@@ -108,8 +167,11 @@
                                                     @php
                                                         $brand = App\Models\Brand::find($brandId);
                                                     @endphp
+
                                                     @if ($brand)
-                                                        <li><a href="javascript:;">{{ $brand->brand_name }}</a></li>
+                                                        <li><a
+                                                                href="{{ url('product/brand/' . $brand->id . '/' . $brand->brand_slug) }}">{{ $brand->brand_name }}</a>
+                                                        </li>
                                                     @endif
                                                 @empty
                                                     <p>No brand available for this category.</p>
@@ -170,7 +232,7 @@
                         </div>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link main-menu-link" href="{{ route('template.one.all_product') }}">Product
+                        <a class="nav-link main-menu-link" href="{{ route('template.one.all_product') }}">Products
                             <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
@@ -183,6 +245,7 @@
                     <i class="fas fa-search"></i>
                 </button>
             </form> --}}
+
             <form class="searchbox ml-auto mr-3" action="{{ route('product.search') }}" method="POST">
                 @csrf
                 <input type="search" placeholder="Search......" name="search" class="searchbox-input"
@@ -196,15 +259,49 @@
                     <ul class="list-inline">
                         <li>
                             <div class="dropdown">
-                                <a href="javascript:void(0);" id="userIcon" class="border-0 bg-none text-muted"
-                                    type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false" style="font-size: 20px;">
-                                    <i class="fa-solid fa-user text-muted userLogin"></i>
-                                </a>
+
+                                @if (Auth::user())
+                                    <a href="javascript:void(0);" id="userIcon" class="border-0 bg-none text-muted"
+                                        type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false" style="font-size: 20px;">
+                                        <i class="fa-solid fa-user text-danger userLogin"></i>
+
+                                        {{-- <img src="{{  url('https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name)) }}"
+                                            style="width: 40px;height:40px;" alt="">
+                                            {{ Auth::user()->name }} --}}
+                                    </a>
+                                @else
+                                    <a href="javascript:void(0);" id="userIcon" class="border-0 bg-none text-muted"
+                                        type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false" style="font-size: 20px;">
+                                        <i class="fa-solid fa-user text-muted userLogin"></i>
+                                    </a>
+                                @endif
 
                                 <div class="dropdown-menu p-3 user-panel-login" aria-labelledby="dropdownMenuButton"
                                     style="">
+
                                     @if (Auth::user())
+                                        {{-- <p class="text-muted pl-3">First time here? <a
+                                                href="{{ route('template.one.login') }}" class="text-danger">Sign
+                                                Up</a>
+                                        </p> --}}
+                                        <a class="dropdown-item" href="{{ route('template.one.dashboard') }}">
+
+                                            <img src="{{ url('https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name)) }}"
+                                                style="width: 30px;height:30px;" alt="">
+
+                                            {{ Auth::user()->name }}</a>
+
+                                        <a class="dropdown-item" href="{{ route('template.one.dashboard') }}"><i
+                                                class="fal fa-star pr-2"></i>
+                                            My Dashboard</a>
+
+                                        <a class="dropdown-item" href="{{ route('template.one.dashboard') }}"><i
+                                                class="fal fa-key pr-2"></i>
+                                            Password Change</a>
+
+                                        <hr class="mb-2 mt-3">
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
                                             <a href="{{ route('logout') }}"
@@ -213,16 +310,6 @@
                                                 Logout
                                             </a>
                                         </form>
-                                        <hr class="mb-2 mt-3">
-                                        <p class="text-muted pl-3">First time here? <a
-                                                href="{{ route('template.one.login') }}" class="text-danger">Sign
-                                                Up</a>
-                                        </p>
-                                        <a class="dropdown-item" href="{{ route('template.one.dashboard') }}"><i
-                                                class="fal fa-user pr-2"></i>
-                                            My Dashboard</a>
-                                        <a class="dropdown-item" href="{{ route('template.one.dashboard') }}"><i
-                                                class="fal fa-star pr-2" aria-hidden="true"></i>Password Change</a>
                                     @else
                                         <a href="{{ route('template.one.login') }}" class="cart-button w-100 mt-0">
                                             Login
@@ -233,24 +320,25 @@
                                             time
                                             here? <span class="text-danger">Sign Up</span></a>
                                         <hr class="mb-2 mt-2">
-                                        <a class="dropdown-item pl-3" style="font-size: 12px;"
+                                        <a class="dropdown-item userlogin-header pl-3" style="font-size: 12px;"
                                             href="{{ route('template.one.dashboard') }}"><i
                                                 class="fal fa-user pr-2"></i>
                                             My Profile</a>
-                                        <a class="dropdown-item pl-3" style="font-size: 12px;"
-                                            href="{{ route('template.one.dashboard') }}"><i
-                                                class="fal fa-heart pr-2"></i>
+
+                                        <a class="dropdown-item userlogin-header pl-3" style="font-size: 12px;"
+                                            href="{{ route('wishlist.product') }}"><i class="fal fa-heart pr-2"></i>
                                             My Wishlist</a>
-                                        <a class="dropdown-item pl-3" style="font-size: 12px;"
-                                            href="{{ route('template.one.dashboard') }}"><i
-                                                class="fal fa-random pr-2"></i>
+
+                                        <a class="dropdown-item userlogin-header pl-3" style="font-size: 12px;"
+                                            href="{{ route('compare.product') }}"><i class="fal fa-random pr-2"></i>
                                             My Compare</a>
-                                        <a class="dropdown-item pl-3" style="font-size: 12px;"
+
+                                        <a class="dropdown-item userlogin-header pl-3" style="font-size: 12px;"
                                             href="{{ route('template.one.dashboard') }}"><i
                                                 class="fal fa-box pr-2"></i>
                                             My Order</a>
                                         <hr class="mb-2 mt-2">
-                                        <a class="dropdown-item pl-3" style="font-size: 12px;"
+                                        <a class="dropdown-item userlogin-header pl-3" style="font-size: 12px;"
                                             href="{{ route('template.one.dashboard') }}"><i
                                                 class="fal fa-shopping-cart pr-2"></i>
                                             My Cart</a>
@@ -260,61 +348,86 @@
                         </li>
 
 
-                        @if (Auth::check())
-                            <li class="">
-                                <a class="wishlist" href="{{ route('wishlist') }}" style="font-size: 20px;">
-                                    <i class="fa-solid fa-heart text-muted wishlist">
-                                        <span class="cart__count" id="wishQty">0</span>
-                                    </i>
-                                </a>
-                            </li>
-                        @endif
-                        {{-- <li>
+
+
+                        <li class="" id="compareLink">
+                            <a class="wishlist" href="{{ route('compare.product') }}" style="font-size: 20px;">
+                                <i class="fas fa-random text-muted wishlist">
+                                    <span class="cart__count" id="cartCompareQty">0</span>
+                                </i>
+                            </a>
+                        </li>
+
+                        <li class="" id="wishlistLink">
+                            <a class="wishlist" href="{{ route('wishlist.product') }}" style="font-size: 20px;">
+                                <i class="fas fa-heart text-muted wishlist">
+                                    <span class="cart__count" id="cartWishlistQty">0</span>
+                                </i>
+                            </a>
+                        </li>
+
+                        <li>
                             <div class="dropdown">
-                                <a class="mini__cart--link dropdown-toggle" href="jaxascript:;"
-                                    style="font-size: 20px;" id="dropdownMenuButton" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa-solid fa-cart-plus text-muted">
-                                        <span class="cart__count" id="cartQty">0</span>
+
+                                <a href="javascript:void(0);" class="border-0 bg-none text-muted" type="button"
+                                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false" style="font-size: 20px;">
+
+                                    <i class="fa-solid fa-cart-plus userLogin wishlist">
+                                        <span class="cart__count-amount" id="cartQty">0</span>
                                     </i>
+
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <div class="row">
+
+                                <div class="dropdown-menu p-3 cart-icons-menu" aria-labelledby="dropdownMenuButton"
+                                    style="">
+                                    <div class="row pb-2">
                                         <div class="col-lg-12">
-                                            <div id="miniCart" style="">
+
+                                            {{-- Cart Items --}}
+
+                                            <div id="miniCart">
+
                                             </div>
+
+                                            {{-- Cart Items --}}
+
                                         </div>
                                     </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-12">
+
+                                            <div class="total-text d-flex justify-content-between pt-2 mb-3">
+                                                <span class="f-800 cod__black-color">Total Price</span>
+                                                <span class="f-800 cod__black-color">$ <span
+                                                        id="cartSubTotal"></span></span>
+                                            </div>
+
+                                            <div class="d-flex justify-content-between">
+
+                                                <a href="{{ route('template.one.checkout') }}"
+                                                    class="checkout main-btn">Checkout</a>
+
+                                                <a href="{{ route('template.one.view.cart') }}"
+                                                    class="viewcart main-btn">View
+                                                    Cart</a>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </li>
-                        <li class="d-none">
-                            <a href="#"><i class="fal fa-sync text-muted" style="font-size: 20px;"></i></a>
-                        </li> --}}
-                    </ul>
-                </div>
-                <div class="mini__cart--box">
-                    <div id="miniCart" style="">
-                    </div>
-                    <ul>
-                        <li style="border: none">
-                            <div class="total-text d-flex justify-content-between">
-                                <span class="f-800 cod__black-color">Total Price</span>
-                                <span class="f-800 cod__black-color">Tk <span id="cartSubTotal"></span></span>
 
-                            </div>
-                        </li>
-                        <li style="border: none">
-                            <div class="d-flex justify-content-between">
-                                <a href="{{ route('template.one.view.cart') }}"
-                                    class="checkout main-btn">Checkout</a>
-                                <a href="{{ route('template.one.view.cart') }}" class="viewcart main-btn">View
-                                    Cart</a>
-                            </div>
-                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </div>
 </section>
+
+@push('scripts')
+@endpush

@@ -1,7 +1,7 @@
 @extends('frontend.template_one.frontend_dashboard_template_one')
 @section('index_template_one')
     <!-- shop area start -->
-    <div class="product shop-page pt-30 pb-80" style="margin-top: 60px;">
+    <div class="product shop-page pt-30 pb-80">
         <div class="container">
             <div class="row">
 
@@ -18,7 +18,9 @@
                         <div class="col-sm-12">
                             <div class="shop-banner-bg pt-120 pb-120 mb-50"
                                 data-background="{{ asset('storage/offer_category_image/' . $offercatwiseproduct->offer_category_image) }}">
-
+                                <div class="collection-text">
+                                    <h5 class="f-800"><a href="javascript:;"></a></h5>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -69,12 +71,12 @@
 
                                         <ul class="product-links">
 
-                                            <li><a style="cursor: pointer;" id="{{ $product->id }}"
-                                                    onclick="addToWishList(this.id)" data-tip="Wishlist"><i
+                                            <li><a type="submit" class="add_to_wishlist" style="cursor: pointer;"
+                                                    data-product_id="{{ $product->products->id }}" data-tip="Wishlist"><i
                                                         class="far fa-heart"></i></a></li>
 
-                                            <li><a type="submit" style="cursor:pointer;"
-                                                    data-product_id="{{ $product->id }}" data-tip="Compare"><i
+                                            <li><a type="submit" style="cursor:pointer;" class="add_to_compare"
+                                                    data-product_id="{{ $product->products->id }}" data-tip="Compare"><i
                                                         class="fas fa-random"></i></a></li>
                                         </ul>
 

@@ -326,8 +326,6 @@ class TemplateOneController extends Controller
 
         $item = $request->search;
 
-        // $categories = Category::orderBy('category_name', 'ASC')->get();
-
         $products = Product::where('product_name', 'LIKE', "%$item%")
             ->orWhere('short_desc', "LIKE", "%$item%")
             ->paginate(12);
@@ -522,81 +520,119 @@ class TemplateOneController extends Controller
     }
 
     //Compare
+    // public function AddToCompare(Request $request)
+    // {
+    //     $id = $request->product_id;
+
+    //     $product = Product::findOrFail($id);
+
+    //     $cartItem = Cart::instance('compare')->search(function ($cartItem, $rowId) use ($id) {
+    //         return $cartItem->id === $id;
+    //     });
+
+    //     if ($cartItem->isNotEmpty()) {
+
+    //         return response()->json(['error' => 'This Product Has Already Added On Compare']);
+    //     }
+
+    //     if ($product->price_status == 'rfq') {
+
+    //         Cart::instance('compare')->add([
+
+    //             'id' => $id,
+
+    //             'name' => $product->product_name,
+    //             'qty' => 1,
+    //             'price' => $product->sas_price,
+    //             'weight' => 1,
+
+    //             'options' => [
+    //                 'image' => $product->product_image,
+
+    //             ],
+
+    //         ]);
+
+    //         return response()->json(['success' => 'Successfully Added on Your Compare']);
+
+    //     } elseif ($product->price_status == 'offer_price') {
+
+    //         Cart::instance('compare')->add([
+
+    //             'id' => $id,
+
+    //             'name' => $product->product_name,
+    //             'qty' => 1,
+    //             'price' => $product->discount_price,
+    //             'weight' => 1,
+
+    //             'options' => [
+    //                 'image' => $product->product_image,
+    //             ],
+
+    //         ]);
+
+    //         return response()->json(['success' => 'Successfully Added on Your Compare']);
+    //     } else {
+
+    //         Cart::instance('compare')->add([
+
+    //             'id' => $id,
+
+    //             'name' => $product->product_name,
+    //             'qty' => 1,
+    //             'price' => $product->price,
+    //             'weight' => 1,
+
+    //             'options' => [
+    //                 'image' => $product->product_image,
+    //             ],
+
+    //         ]);
+
+    //         return response()->json(['success' => 'Successfully Added on Your Compare']);
+    //     }
+
+    // }
+
     public function AddToCompare(Request $request)
     {
         $id = $request->product_id;
 
         $product = Product::findOrFail($id);
 
-        $cartItem = Cart::instance('compare')->search(function ($cartItem, $rowId) use ($id) {
-            return $cartItem->id === $id;
-        });
+        $existingCompareItems = Cart::instance('compare')->content();
 
-        if ($cartItem->isNotEmpty()) {
+        // Check if there are items in compare
+        if (!$existingCompareItems->isEmpty()) {
+            // Get the category of the first item in compare (assuming all items are in the same category)
+            $firstCompareItem = $existingCompareItems->first();
+            $firstCompareProduct = Product::findOrFail($firstCompareItem->id);
+            $compareCategory = $firstCompareProduct->category_id;
 
-            return response()->json(['error' => 'This Product Has Already Added On Compare']);
+            // Check if the product being added is in the same category
+            if ($product->category_id != $compareCategory) {
+                return response()->json(['error' => 'You can only add products from the same category to compare.']);
+            }
         }
 
-        if ($product->price_status == 'rfq') {
+        // Determine which price to use based on the product's price_status
+        $price = $product->price_status == 'rfq' ? $product->sas_price :
+        ($product->price_status == 'offer_price' ? $product->discount_price : $product->price);
 
-            Cart::instance('compare')->add([
+        // Add the product to compare
+        Cart::instance('compare')->add([
+            'id' => $id,
+            'name' => $product->product_name,
+            'qty' => 1,
+            'price' => $price,
+            'weight' => 1,
+            'options' => [
+                'image' => $product->product_image,
+            ],
+        ]);
 
-                'id' => $id,
-
-                'name' => $product->product_name,
-                'qty' => 1,
-                'price' => $product->sas_price,
-                'weight' => 1,
-
-                'options' => [
-                    'image' => $product->product_image,
-                    // 'color' => $request->color,
-                ],
-
-            ]);
-
-            return response()->json(['success' => 'Successfully Added on Your Compare']);
-
-        } elseif ($product->price_status == 'offer_price') {
-
-            Cart::instance('compare')->add([
-
-                'id' => $id,
-
-                'name' => $product->product_name,
-                'qty' => 1,
-                'price' => $product->discount_price,
-                'weight' => 1,
-
-                'options' => [
-                    'image' => $product->product_image,
-                    // 'color' => $request->color,
-                ],
-
-            ]);
-
-            return response()->json(['success' => 'Successfully Added on Your Compare']);
-        } else {
-
-            Cart::instance('compare')->add([
-
-                'id' => $id,
-
-                'name' => $product->product_name,
-                'qty' => 1,
-                'price' => $product->price,
-                'weight' => 1,
-
-                'options' => [
-                    'image' => $product->product_image,
-                    // 'color' => $request->color,
-                ],
-
-            ]);
-
-            return response()->json(['success' => 'Successfully Added on Your Compare']);
-        }
-
+        return response()->json(['success' => 'Successfully Added on Your Compare']);
     }
 
     //Compare Product
@@ -608,13 +644,13 @@ class TemplateOneController extends Controller
     //GetCompare
     public function GetCompare()
     {
-        $carts = Cart::instance('compare')->content()->take(4); // Limiting to 3 products
-        $cartQty = Cart::instance('compare')->count();
+        $cartCompare = Cart::instance('compare')->content()->take(4); // Limiting to 3 products
+        $cartCompareQty = Cart::instance('compare')->count();
         $cartTotal = Cart::instance('compare')->total();
 
         return response()->json(array(
-            'carts' => $carts,
-            'cartQty' => $cartQty,
+            'cartCompare' => $cartCompare,
+            'cartCompareQty' => $cartCompareQty,
             'cartTotal' => $cartTotal,
         ));
     }
@@ -689,6 +725,175 @@ class TemplateOneController extends Controller
         Cart::instance('compare')->remove($rowId);
 
         return response()->json(['success' => 'Successfully Remove From Compare']);
+    }
+
+    // ========================================  WishList =========================
+
+    //Compare
+    public function AddToWishlist(Request $request)
+    {
+        $id = $request->product_id;
+
+        $product = Product::findOrFail($id);
+
+        $cartItem = Cart::instance('wishlist')->search(function ($cartItem, $rowId) use ($id) {
+            return $cartItem->id === $id;
+        });
+
+        if ($cartItem->isNotEmpty()) {
+
+            return response()->json(['error' => 'This Product Has Already Added On Wishlist']);
+        }
+
+        if ($product->price_status == 'rfq') {
+
+            Cart::instance('wishlist')->add([
+
+                'id' => $id,
+
+                'name' => $product->product_name,
+                'qty' => 1,
+                'price' => $product->sas_price,
+                'weight' => 1,
+
+                'options' => [
+                    'image' => $product->product_image,
+
+                ],
+
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Wishlist']);
+
+        } elseif ($product->price_status == 'offer_price') {
+
+            Cart::instance('wishlist')->add([
+
+                'id' => $id,
+
+                'name' => $product->product_name,
+                'qty' => 1,
+                'price' => $product->discount_price,
+                'weight' => 1,
+
+                'options' => [
+                    'image' => $product->product_image,
+                ],
+
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Wishlist']);
+        } else {
+
+            Cart::instance('wishlist')->add([
+
+                'id' => $id,
+
+                'name' => $product->product_name,
+                'qty' => 1,
+                'price' => $product->price,
+                'weight' => 1,
+
+                'options' => [
+                    'image' => $product->product_image,
+                ],
+
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Wishlist']);
+        }
+
+    }
+
+    //Compare Product
+    public function WishlistProduct()
+    {
+        return view('frontend.template_one.cart.wishlist');
+    }
+
+    //GetCompare
+    public function GetWishlist()
+    {
+        $cartWishlist = Cart::instance('wishlist')->content(); // Limiting to 3 products
+        $cartWishlistQty = Cart::instance('wishlist')->count();
+        $cartTotal = Cart::instance('wishlist')->total();
+
+        return response()->json(array(
+            'cartWishlist' => $cartWishlist,
+            'cartWishlistQty' => $cartWishlistQty,
+            'cartTotal' => $cartTotal,
+        ));
+    }
+
+    public function AddToCartWishlist(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+
+        $cartItem = Cart::search(function ($cartItem, $rowId) use ($id) {
+            return $cartItem->id === $id;
+        });
+
+        if ($cartItem->isNotEmpty()) {
+
+            return response()->json(['error' => 'This Product Has Already Added']);
+        }
+
+        if ($product->price_status == 'rfq') {
+
+            Cart::add([
+
+                'id' => $id,
+                'name' => $product->product_name,
+                'qty' => 1,
+                'price' => $product->sas_price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $product->product_image,
+
+                ],
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        } elseif ($product->price_status == 'offer_price') {
+
+            Cart::add([
+
+                'id' => $id,
+                'name' => $product->product_name,
+                'qty' => 1,
+                'price' => $product->discount_price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $product->product_image,
+
+                ],
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        } else {
+
+            Cart::add([
+
+                'id' => $id,
+                'name' => $product->product_name,
+                'qty' => 1,
+                'price' => $product->price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $product->product_image,
+
+                ],
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        }
+    }
+
+    //CartRemove
+    public function RemoveWishlistTemplateOne($rowId)
+    {
+        Cart::instance('wishlist')->remove($rowId);
+        return response()->json(['success' => 'Successfully Remove From Wishlist']);
     }
 
 }

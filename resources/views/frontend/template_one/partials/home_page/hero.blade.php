@@ -8,7 +8,7 @@
             @foreach ($heros as $hero)
                 <div class="single__hero single-slider hero__bg pt-140 pb-120 home-main-banner" style="height: 550px"
                     {{-- data-background="{{ asset($hero->banner_image) }}"> --}}
-                    data-background="https://i.ibb.co/5hh91jQ/1920x550.jpg">
+                    data-background="{{ asset($hero->banner_image) }}">
                 </div>
             @endforeach
         @else

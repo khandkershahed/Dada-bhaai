@@ -125,7 +125,7 @@
                                             </div>
 
                                             {{-- sku_code --}}
-                                            <div class="col-3 mb-3">
+                                            {{-- <div class="col-3 mb-3">
                                                 <div class="fv-row mb-3">
                                                     <label class="form-label required">SKU
                                                         Code</label>
@@ -137,20 +137,20 @@
                                                         Please Enter SKU
                                                         Code.</div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             {{-- mf_code --}}
                                             <div class="col-3 mb-3">
                                                 <div class="fv-row mb-3">
-                                                    <label class="form-label required">MF
+                                                    <label class="form-label">MF
                                                         Code</label>
                                                     <input name="mf_code"
                                                         class="form-control form-control-sm form-control-solid"
                                                         placeholder="Eg: MF-2647374" type="text"
-                                                        value="{{ $editProduct->mf_code }}" required />
-                                                    <div class="invalid-feedback">
+                                                        value="{{ $editProduct->mf_code }}" />
+                                                    {{-- <div class="invalid-feedback">
                                                         Please Enter MF
-                                                        Code.</div>
+                                                        Code.</div> --}}
                                                 </div>
                                             </div>
 
@@ -245,12 +245,12 @@
                                             <div class="col-4 mb-3">
                                                 <div class="fv-row mb-3">
 
-                                                    <label class="form-label required">Brand Name</label>
+                                                    <label class="form-label">Brand Name</label>
 
                                                     <select class="form-select form-select-solid form-select-sm"
                                                         name="brand_id" data-control="select2"
                                                         data-placeholder="Select an Brand Name" data-allow-clear="true"
-                                                        required>
+                                                        >
                                                         <option></option>
 
                                                         @foreach ($brands as $brand)
@@ -262,7 +262,7 @@
 
                                                     </select>
 
-                                                    <div class="invalid-feedback"> Please Enter Brand Name.</div>
+                                                    {{-- <div class="invalid-feedback"> Please Enter Brand Name.</div> --}}
 
                                                 </div>
 
@@ -274,7 +274,7 @@
 
                                                     <label class="form-label">Discount Price(Main Price)</label>
 
-                                                    <input type="number" name="pdiscount_price" class="form-control form-control-sm form-control-solid" value="{{ $editProduct->pdiscount_price }}" placeholder="Discount Price">
+                                                    <input type="number" step="0.01" name="pdiscount_price" class="form-control form-control-sm form-control-solid" value="{{ $editProduct->pdiscount_price }}" placeholder="Discount Price">
 
                                                 </div>
 
@@ -318,7 +318,7 @@
                                                         <label class="ms-1 mb-2" for="price_status">SAS Price <span
                                                                 class="text-danger">*</span></label>
                                                         <input class="form-control form-control-sm form-control-solid"
-                                                            type="number" name="sas_price"
+                                                            type="number" step="0.01" name="sas_price"
                                                             value="{{ $editProduct->sas_price }}"
                                                             placeholder="RFQ Price for Sas">
                                                     </div>
@@ -327,7 +327,7 @@
                                                         <label class="ms-1 mb-2" for="price_status">Price <span
                                                                 class="text-danger">*</span></label>
                                                         <input class="form-control form-control-sm form-control-solid"
-                                                            type="number" name="price"
+                                                            type="number" step="0.01" name="price"
                                                             value="{{ $editProduct->price }}" placeholder="Price">
                                                     </div>
 
@@ -335,7 +335,7 @@
                                                         <label class="ms-1 mb-2" for="price_status">Discount Price <span
                                                                 class="text-danger">*</span></label>
                                                         <input class="form-control form-control-sm form-control-solid"
-                                                            type="number" name="discount_price"
+                                                            type="number" step="0.01" name="discount_price"
                                                             value="{{ $editProduct->discount_price }}"
                                                             placeholder="Discounted Price">
                                                     </div>
@@ -374,13 +374,13 @@
                                             {{-- subcategory_id --}}
                                             <div class="col-4 mb-3">
                                                 <div class="fv-row mb-3">
-                                                    <label class="form-label required">SubCategory
+                                                    <label class="form-label">SubCategory
                                                         Name</label>
 
                                                     <select class="form-select form-select-solid form-select-sm"
                                                         name="subcategory_id" data-control="select2"
                                                         data-placeholder="SubCategory Name" data-allow-clear="true"
-                                                        required>
+                                                        >
                                                         <option></option>
 
                                                         @foreach ($subcategorys as $subcategory)
@@ -391,23 +391,23 @@
                                                         @endforeach
 
                                                     </select>
-                                                    <div class="invalid-feedback">
+                                                    {{-- <div class="invalid-feedback">
                                                         Please Enter
                                                         SubCategory Name.
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             </div>
 
                                             {{-- childcategory_id --}}
                                             <div class="col-4 mb-3">
                                                 <div class="fv-row mb-3">
-                                                    <label class="form-label required">ChildCategory
+                                                    <label class="form-label">ChildCategory
                                                         Name</label>
 
                                                     <select class="form-select form-select-solid form-select-sm"
                                                         name="childcategory_id" data-control="select2"
                                                         data-placeholder="ChildCategory Name" data-allow-clear="true"
-                                                        required>
+                                                        >
                                                         <option></option>
 
                                                         @foreach ($childcategorys as $childcategory)
@@ -418,10 +418,10 @@
                                                         @endforeach
 
                                                     </select>
-                                                    <div class="invalid-feedback">
+                                                    {{-- <div class="invalid-feedback">
                                                         Please Enter
                                                         ChildCategory Name.
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             </div>
 
@@ -665,7 +665,7 @@
                                             <div class="col-lg-3 col-4 mb-3" id="">
                                                 <label class="form-label">Deal
                                                     Price</label>
-                                                <input type="number"
+                                                <input type="number" step="0.01"
                                                     class="form-control form-select-sm form-control-solid"
                                                     value="{{ $editProduct->deal }}"
                                                     {{ $editProduct->deal == '1' ? 'checked' : '' }} name="deal"
@@ -817,7 +817,7 @@
                                                                             value="{{ $editProduct->source_one_price }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter source one price"
-                                                                            type="number" />
+                                                                            type="number" step="0.01" />
                                                                     </div>
                                                                 </td>
                                                                 <td>
@@ -891,7 +891,7 @@
                                                                             value="{{ $editProduct->source_two_price }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter source two price"
-                                                                            type="number" />
+                                                                            type="number" step="0.01" />
                                                                     </div>
                                                                 </td>
                                                                 <td>
@@ -993,7 +993,7 @@
                                                                             value="{{ $editProduct->competitor_one_price }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter Product Name"
-                                                                            type="number" />
+                                                                            type="number" step="0.01" />
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -1022,7 +1022,7 @@
                                                                             value="{{ $editProduct->competitor_two_price }}"
                                                                             class="form-control form-control-sm"
                                                                             placeholder="Enter Product Name"
-                                                                            type="number" />
+                                                                            type="number" step="0.01" />
                                                                     </div>
                                                                 </td>
                                                             </tr>
