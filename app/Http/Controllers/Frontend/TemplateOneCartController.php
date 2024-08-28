@@ -632,9 +632,9 @@ class TemplateOneCartController extends Controller
                 $cartQty = Cart::count();
                 $cartTotal = Cart::total();
 
-                $countries = Country::all();
+                // $countries = Country::all();
 
-                return view('frontend.template_one.cart.checkout', compact('carts', 'cartQty', 'cartTotal','countries'));
+                return view('frontend.template_one.cart.checkout', compact('carts', 'cartQty', 'cartTotal'));
             } else {
 
                 toastr()->error('At least add to Cart One Product');

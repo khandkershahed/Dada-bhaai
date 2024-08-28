@@ -185,7 +185,7 @@
                             <p class="text-white bg-info text-center shadow-sm"
                                 style="position: relative;  top: 20px; width: 13%">Row Four Area</p>
                             <div class="row border border-secondary pt-3">
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <div class="mb-2">
                                         <label class="form-label">Row Four Title</label>
                                         <input type="text" id="row_four_title" name="row_four_title"
@@ -194,7 +194,8 @@
                                             value="{{ $single_product->row_four_title }}">
                                     </div>
                                 </div>
-                                <div class="mb-3 col-lg-6">
+
+                                <div class="mb-3 col-lg-4">
                                     <div class="mb-2">
                                         <label class="col-form-label pt-0">Row Four Image</label>
                                         <input type="file" accept="image/*"
@@ -204,6 +205,28 @@
                                             alt="" style="width: 50px; height:50px;" class="mt-3">
                                     </div>
                                 </div>
+
+                                <div class="mb-3 col-lg-4">
+                                    <div class="mb-2">
+                                        <label class="col-form-label pt-0">Background Image</label>
+                                        <input type="file" accept="image/*"
+                                            class="imageUpload form-control form-control-sm"
+                                            name="row_four_background_image">
+
+                                        <img src="{{ asset('storage/single_product/' . $single_product->row_four_background_image) }}"
+                                            alt="" style="width: 50px; height:50px;" class="mt-3">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="mb-2">
+                                        <label class="col-form-label pt-0">Description</label>
+                                        <textarea name="row_four_description" class="form-control" id="" cols="2" rows="2"
+                                            placeholder="Enter Description">{!! $single_product->row_four_description !!}</textarea>
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
                         <!-- Row Four End-->
@@ -213,6 +236,7 @@
                             <p class="text-white bg-info text-center shadow-sm"
                                 style="position: relative;  top: 20px; width: 13%">Row Five Area</p>
                             <div class="row border border-secondary pt-3">
+
                                 <div class="col-lg-4">
                                     <div class="mb-2">
                                         <label class="form-label">Row Five Title</label>
@@ -222,7 +246,20 @@
                                             value="{{ $single_product->row_five_title }}">
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
+
+                                <div class="col-lg-4">
+                                    <div class="mb-2">
+                                        <label class="col-form-label pt-0">Background Image</label>
+                                        <input type="file" accept="image/*"
+                                            class="imageUpload form-control form-control-sm"
+                                            name="row_five_background_image">
+
+                                        <img src="{{ asset('storage/single_product/' . $single_product->row_five_background_image) }}"
+                                            alt="" style="width: 50px; height:50px;" class="mt-3">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
                                     <div class="mb-2">
                                         <label class="col-form-label pt-0">Row Five Image</label>
                                         <input type="file" accept="image/*"
@@ -232,7 +269,8 @@
                                             alt="" style="width: 50px; height:50px;" class="mt-3">
                                     </div>
                                 </div>
-                                <div class="col-lg-5">
+
+                                <div class="col-lg-12">
                                     <div class="mb-2">
                                         <label class="form-label">Row Five Description</label>
                                         <textarea name="row_five_description" rows="0" cols="0" class="form-control"
@@ -395,6 +433,16 @@
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Row Ten Title"
                                             value="{{ $single_product->row_ten_title }}">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <div class="mb-2">
+                                        <label class="form-label">Row Ten Short Title</label>
+                                        <input type="text" id="row_ten_short_title" name="row_ten_short_title"
+                                            class="form-control form-control-sm maxlength-options" maxlength="255"
+                                            placeholder="Enter Row Ten Short Title"
+                                            value="{{ $single_product->row_ten_short_title }}">
                                     </div>
                                 </div>
 
@@ -685,6 +733,24 @@
                                     </div>
                                 </div>
 
+                                <div class="col-lg-6">
+                                    <div class="mb-2">
+                                        <label class="form-label">Row Seventeen Short Title</label>
+                                        <input type="text" id="row_seventeen_short_title"
+                                            name="row_seventeen_short_title"
+                                            class="form-control form-control-sm maxlength-options" maxlength="255"
+                                            placeholder="Enter Row Seventeen Short Title"
+                                            value="{{ $single_product->row_seventeen_short_title }}">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="mb-2">
+                                        <label class="form-label">Description</label>
+                                        <textarea name="row_seventeen_description" class="form-control" id="" cols="3" rows="3">{!! $single_product->row_seventeen_description !!}</textarea>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <!-- Seventeen  -->
@@ -887,7 +953,6 @@
                         </div>
                         <!-- Design End-->
 
-
                         <!-- Feature -->
                         <div class="mt-1 mb-2">
 
@@ -1054,6 +1119,45 @@
                                     <img src="{{ asset('storage/single_product/' . $single_product->feature_six_image) }}"
                                         alt="" style="width: 50px; height:50px;" class="mt-3">
                                 </div>
+                            </div>
+                        </div>
+                        <!-- Feature End-->
+
+                        <!-- Feature Two -->
+                        <div class="mt-1 mb-2">
+
+                            <p class="text-white bg-info text-center shadow-sm"
+                                style="position: relative;  top: 20px; width: 13%">Feature Two Area</p>
+
+                            <div class="row border border-secondary pt-3 pb-3">
+
+                                <div class="col-lg-3">
+                                    <div class="mb-2">
+                                        <label class="form-label">Feature Area Two Title</label>
+                                        <input type="text" id="feature_area_two_title"
+                                            value="{{ old('feature_area_two_title') }}"
+                                            value="{{ $single_product->feature_area_two_title }}"
+                                            name="feature_area_two_title"
+                                            class="form-control form-control-sm maxlength-options" maxlength="255"
+                                            placeholder="Enter Feature Area Two Title">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 mb-3">
+                                    <label class="col-form-label pt-0">Feature Area Two Image </label>
+                                    <input type="file" accept="image/*"
+                                        class="imageUpload form-control form-control-sm" name="feature_area_two_image">
+
+                                    <img src="{{ asset('storage/single_product/' . $single_product->feature_area_two_image) }}"
+                                        alt="" style="width: 50px; height:50px;" class="mt-3">
+                                </div>
+
+                                <div class="mb-3 col-lg-12">
+                                    <label class="form-label">Feature Area Two Description</label>
+                                    <textarea name="feature_area_two_description" rows="0" cols="0" class="form-control"
+                                        placeholder="Enter Feature Area Two Description">{!! $single_product->feature_area_two_description !!}</textarea>
+                                </div>
+
                             </div>
                         </div>
                         <!-- Feature End-->

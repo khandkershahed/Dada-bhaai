@@ -256,11 +256,11 @@
 
                                                         @if (count($coupons) > 0)
                                                             <div class="form-group col-lg-12">
-                                                                <a>
+                                                                {{-- <a>
                                                                     Please Provide a coupon ? <span style="cursor:pointer"
                                                                         data-toggle="modal"
                                                                         data-target="#exampleModal">Click Here</span>
-                                                                </a>
+                                                                </a> --}}
                                                             </div>
                                                         @endif
 
@@ -291,14 +291,14 @@
                                                                             class="drk-gry couponDiscount">0.00</b></td>
                                                                 </tr> --}}
 
-                                                                @if (count($coupons) > 0 ? 'd-none' : '')
+                                                                {{-- @if (count($coupons) > 0 ? 'd-none' : '')
                                                                     <tr class="coupon-discount">
                                                                         <td>Coupon Discount :</td>
                                                                         <td class="text-right">$ <b
                                                                                 class="drk-gry couponDiscount">0.00</b>
                                                                         </td>
                                                                     </tr>
-                                                                @endif
+                                                                @endif --}}
 
 
                                                                 <tr class="">
@@ -564,7 +564,7 @@
         });
     </script>
 
-    
+
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="container">

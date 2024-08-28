@@ -329,6 +329,7 @@
         {{-- Row Area Two End  --}}
 
         {{-- Banner Section   --}}
+
         {{-- <section class="banner-section">
             <div class="container">
                 <div class="vehicle-detail-banner banner-content clearfix">
@@ -441,6 +442,7 @@
                 </div>
             </div>
         </section> --}}
+        
         {{-- Banner Section   --}}
 
         {{-- Row Area Three Start --}}
@@ -482,9 +484,11 @@
         {{-- Row Area Four Start  --}}
         @if (!empty($sproducts->row_four_image))
             <section class="detail-group10 scrollAni n5">
+
                 <div class="bg"
                     style=" background-image: url('{{ asset('storage/single_product/' . $sproducts->row_four_image) }}');">
                 </div>
+
                 <div class="wrap">
                     <div class="inner">
                         <h2>
@@ -492,6 +496,7 @@
                         </h2>
                     </div>
                 </div>
+                
             </section>
         @endif
         {{-- Row Area End Start  --}}

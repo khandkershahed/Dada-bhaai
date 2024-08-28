@@ -80,10 +80,10 @@
                             margin-bottom: 0;
                             color: #fff;
                           ">
-                                                NGEN IT PTE. LTD.
+                                                Ngenit Ltd.
                                             </p>
                                             <p style="font-size: 16px; margin-bottom: 3px">
-                                                <span style="color: #eee">REG-NO: 20437861K</span>
+                                                {{-- <span style="color: #eee">REG-NO: 20437861K</span> --}}
                                             </p>
                                         </td>
                                     </tr>

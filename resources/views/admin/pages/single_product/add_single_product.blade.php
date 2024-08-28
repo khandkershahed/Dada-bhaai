@@ -162,18 +162,36 @@
                                 style="position: relative;  top: 20px; width: 13%">Row Four Area</p>
                             <div class="row border border-secondary pt-3">
                                 <div class="col-lg-4">
+
                                     <div class="mb-2">
                                         <label class="form-label">Row Four Title</label>
                                         <input type="text" id="row_four_title" value="{{ old('row_four_title') }}" name="row_four_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"
                                             placeholder="Enter Row Four Title">
                                     </div>
+
                                 </div>
+
                                 <div class="col-lg-4">
                                     <div class="mb-2">
                                         <label class="col-form-label pt-0">Row Four Image</label>
                                         <input type="file" accept="image/*"
                                             class="imageUpload form-control form-control-sm" name="row_four_image">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="mb-2">
+                                        <label class="col-form-label pt-0">Background Image</label>
+                                        <input type="file" accept="image/*"
+                                            class="imageUpload form-control form-control-sm" name="row_four_background_image">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="mb-2">
+                                        <label class="col-form-label pt-0">Description</label>
+                                        <textarea name="row_four_description" class="form-control" id="" cols="2" rows="2" placeholder="Enter Description"></textarea>
                                     </div>
                                 </div>
 
@@ -194,6 +212,15 @@
                                             placeholder="Enter Row Five Title">
                                     </div>
                                 </div>
+
+                                <div class="col-lg-4">
+                                    <div class="mb-2">
+                                        <label class="col-form-label pt-0">Background Image</label>
+                                        <input type="file" accept="image/*"
+                                            class="imageUpload form-control form-control-sm" name="row_five_background_image">
+                                    </div>
+                                </div>
+
                                 <div class="col-lg-4">
                                     <div class="mb-2">
                                         <label class="col-form-label pt-0">Row Five Image</label>
@@ -201,7 +228,8 @@
                                             class="imageUpload form-control form-control-sm" name="row_five_image">
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+
+                                <div class="col-lg-12">
                                     <div class="mb-2">
                                         <label class="form-label">Row Five Description</label>
                                         <textarea name="row_five_description" rows="0" cols="0" class="form-control"
@@ -331,6 +359,7 @@
                             <p class="text-white bg-info text-center shadow-sm"
                                 style="position: relative;  top: 20px; width: 13%">Row Ten Area</p>
                             <div class="row border border-secondary pt-3">
+
                                 <div class="col-lg-3">
                                     <div class="mb-2">
                                         <label class="form-label">Row Ten Title</label>
@@ -339,6 +368,16 @@
                                             placeholder="Enter Row Ten Title">
                                     </div>
                                 </div>
+
+                                <div class="col-lg-3">
+                                    <div class="mb-2">
+                                        <label class="form-label">Row Ten Short Title</label>
+                                        <input type="text" id="row_ten_title" value="{{ old('row_ten_short_title') }}" name="row_ten_short_title"
+                                            class="form-control form-control-sm maxlength-options" maxlength="255"
+                                            placeholder="Enter Row Ten Title">
+                                    </div>
+                                </div>
+
                                 <div class="col-lg-3">
                                     <label class="col-form-label pt-0">Row Ten Image One</label>
                                     <input type="file" accept="image/*"
@@ -351,9 +390,9 @@
                                         class="imageUpload form-control form-control-sm" name="row_ten_image_two"
                                         placeholder="Row Ten Image Two">
                                 </div>
-                                <div class="mb-3 col-lg-3">
+                                <div class="mb-3 col-lg-12">
                                     <label class="form-label">Row Ten Description</label>
-                                    <textarea name="row_ten_description" rows="0" cols="0" class="form-control"
+                                    <textarea name="row_ten_description" rows="2" cols="2" class="form-control"
                                         placeholder="Enter Row Ten Description">{{ old('row_ten_description') }}</textarea>
                                 </div>
                             </div>
@@ -561,13 +600,14 @@
                             <p class="text-white bg-info text-center shadow-sm"
                                 style="position: relative;  top: 20px; width: 13%">Seventeen Area</p>
                             <div class="row border border-secondary pt-3">
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <label class="col-form-label pt-0">Row Seventeen Image </label>
                                     <input type="file" accept="image/*"
                                         class="imageUpload form-control form-control-sm" name="row_seventeen_image"
                                         placeholder="Row Seventeen Image">
                                 </div>
-                                <div class="col-lg-6">
+
+                                <div class="col-lg-4">
                                     <div class="mb-2">
                                         <label class="form-label">Row Seventeen Title</label>
                                         <input type="text" id="row_seventeen_title" value="{{ old('row_seventeen_title') }}" name="row_seventeen_title"
@@ -575,6 +615,23 @@
                                             placeholder="Enter Row Seventeen Title">
                                     </div>
                                 </div>
+
+                                <div class="col-lg-4">
+                                    <div class="mb-2">
+                                        <label class="form-label">Row Seventeen Short Title</label>
+                                        <input type="text" id="row_seventeen_short_title" value="{{ old('row_seventeen_short_title') }}" name="row_seventeen_short_title"
+                                            class="form-control form-control-sm maxlength-options" maxlength="255"
+                                            placeholder="Enter Row Seventeen Short Title">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="mb-2">
+                                        <label class="form-label">Description</label>
+                                        <textarea name="row_seventeen_description" class="form-control" id="" cols="3" rows="3"></textarea>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <!-- Seventeen  -->
@@ -872,6 +929,39 @@
                                     <input type="file" accept="image/*"
                                         class="imageUpload form-control form-control-sm" name="feature_six_image">
                                 </div>
+                            </div>
+                        </div>
+                        <!-- Feature End-->
+                        
+                        <!-- Feature Two -->
+                        <div class="mt-1 mb-2">
+
+                            <p class="text-white bg-info text-center shadow-sm"
+                                style="position: relative;  top: 20px; width: 13%">Feature Two Area</p>
+
+                            <div class="row border border-secondary pt-3 pb-3">
+
+                                <div class="col-lg-3">
+                                    <div class="mb-2">
+                                        <label class="form-label">Feature Area Two Title</label>
+                                        <input type="text" id="feature_area_two_title" value="{{ old('feature_area_two_title') }}" name="feature_area_two_title"
+                                            class="form-control form-control-sm maxlength-options" maxlength="255"
+                                            placeholder="Enter Feature Area Two Title">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 mb-3">
+                                    <label class="col-form-label pt-0">Feature Area Two Image </label>
+                                    <input type="file" accept="image/*"
+                                        class="imageUpload form-control form-control-sm" name="feature_area_two_image">
+                                </div>
+
+                                <div class="mb-3 col-lg-12">
+                                    <label class="form-label">Feature Area Two Description</label>
+                                    <textarea name="feature_area_two_description" rows="0" cols="0" class="form-control"
+                                        placeholder="Enter Feature Area Two Description">{{ old('feature_area_two_description') }}</textarea>
+                                </div>
+                               
                             </div>
                         </div>
                         <!-- Feature End-->
