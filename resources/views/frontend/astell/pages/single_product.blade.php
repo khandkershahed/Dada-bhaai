@@ -762,10 +762,13 @@
         {{-- 15 Area Start  --}}
         @if (!empty($sproducts->row_fifteen_image))
             <section class="detail-group4 scrollAni n12">
-                <div class="bg"></div>
+                <div class="bg"
+                    style="background: transparent url('{{ asset('storage/single_product/' . $sproducts->row_fifteen_image) }}') center bottom -20px no-repeat;">
+                </div>
                 <div class="wrap">
                     <h3>
-                        {{ $sproducts->row_fifteen_title }}
+                        <span>{{ $sproducts->row_fifteen_title }}</span>
+                        {{ $sproducts->row_fifteen_sub_title }}
                     </h3>
                     <p>
                         {{ $sproducts->row_fifteen_description }}
@@ -791,8 +794,7 @@
                     <p>
                         {{ $sproducts->row_sixteen_description }}
                     </p>
-                    <img style="width: 500px; height: auto;"
-                        src="{{ asset('storage/single_product/' . $sproducts->row_sixteen_image) }}" alt="detail_5" />
+                    <img src="{{ asset('storage/single_product/' . $sproducts->row_sixteen_image) }}" alt="detail_5" />
                 </div>
             </section>
         @endif
@@ -816,74 +818,52 @@
             </section>
         @endif
         {{-- 17 Area End  --}}
+        <section class="detail-group9 v3 scrollAni n15 view">
+            <div class="wrap">
+                <h3>Sound Design With DAC Filters</h3>
+                <p>
+                    With the SP3000, you can have fun creating your own sound style by
+                    selecting various DAC filters provided by the DAC manufacturer.<br>
+                    Design your own sound with 6 different DAC filters.
+                </p>
+            </div>
+        </section>
 
         {{-- 18 Area Start  --}}
         @if (!empty($sproducts->row_eighteen_background_image) || !empty($sproducts->row_eighteen_image))
-            <section class="detail-group29 scrollAni n17">
+            <section class="detail-group29 scrollAni n17 view">
 
                 <div class="bg"
                     style="background-image: url('{{ asset('storage/single_product/' . $sproducts->row_eighteen_background_image) }}'); background-size: cover;">
                 </div>
 
                 <div class="wrap">
-                    <h2 class="text-white">{{ $sproducts->row_eighteen_title }}</h2>
-                    <h4 class="text-white">{{ $sproducts->row_eighteen_sub_title }}</h4>
+                    <h3>
+                        <span>{{ $sproducts->row_eighteen_title }}</span>
+                        {{ $sproducts->row_eighteen_sub_title }}
+                    </h3>
                     <p>
                         {{ $sproducts->row_eighteen_description }}
                     </p>
-                    <img class="text-center"
-                        src="{{ asset('storage/single_product/' . $sproducts->row_eighteen_image) }}" />
+                    {{-- <img class="text-center"
+                        src="{{ asset('storage/single_product/' . $sproducts->row_eighteen_image) }}" /> --}}
                 </div>
             </section>
         @endif
         {{-- 18 Area Start  --}}
 
         {{-- 19 Area Start  --}}
-
         @if (
             !empty($sproducts->row_nineteen_image_one) ||
                 !empty($sproducts->row_nineteen_image_two) ||
                 !empty($sproducts->row_nineteen_image_three))
             <section class="detail-group15 scrollAni n18 view">
-                <div class="wrap">
+                <div class="wrap text-center">
                     <div class="inner">
                         <h3>{{ $sproducts->row_nineteen_title }}</h3>
-                        <p>
+                        <p style="text-align: center;padding-right: 0px;">
                             {{ $sproducts->row_nineteen_description }}
                         </p>
-                    </div>
-                    <div
-                        class="swiper-container swiper-container-fade swiper-container-initialized swiper-container-horizontal">
-                        <ul class="swiper-wrapper" style="transition-duration: 0ms">
-                            <li class="swiper-slide swiper-slide-duplicate swiper-slide-prev" data-swiper-slide-index="3"
-                                style="width: 450px; transition-duration: 0ms; opacity: 1; transform: translate3d(0px, 0px, 0px);">
-                                <img src="{{ asset('storage/single_product/' . $sproducts->row_nineteen_image_one) }}">
-                                <strong>{{ $sproducts->row_nineteen_image_one_title }}</strong>
-                            </li>
-
-                            <li class="swiper-slide swiper-slide-active" data-swiper-slide-index="0"
-                                style="width: 450px; transition-duration: 0ms; opacity: 1; transform: translate3d(-450px, 0px, 0px);">
-                                <img src="{{ asset('storage/single_product/' . $sproducts->row_nineteen_image_two) }}">
-                                <strong>{{ $sproducts->row_nineteen_image_two_title }}</strong>
-                            </li>
-                            <li class="swiper-slide swiper-slide-next" data-swiper-slide-index="1"
-                                style="width: 450px;transition-duration: 0ms;opacity: 0;transform: translate3d(-900px, 0px, 0px);">
-                                <img src="{{ asset('storage/single_product/' . $sproducts->row_nineteen_image_three) }}">
-                                <strong>{{ $sproducts->row_nineteen_image_three_title }}</strong>
-                            </li>
-                        </ul>
-                        <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
-                        <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>
-                        <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span
-                                class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0"
-                                role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet"
-                                tabindex="0" role="button" aria-label="Go to slide 2"></span><span
-                                class="swiper-pagination-bullet" tabindex="0" role="button"
-                                aria-label="Go to slide 3"></span>
-                        </div>
-
-                        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-                        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                     </div>
                 </div>
             </section>
@@ -915,7 +895,7 @@
                             <div class="col-6">
                                 <div class="item">
 
-                                    <img style="width: 80px; height: 80px;"
+                                    <img style="width: 80px; height: 80px;display: flex;"
                                         src="{{ asset('storage/single_product/' . $sproducts->feature_one_image) }}" />
 
                                     <h4>{{ $sproducts->feature_one_title }}</h4>
@@ -927,7 +907,7 @@
 
                             <div class="col-6">
                                 <div class="item">
-                                    <img style="width: 80px; height: 80px;"
+                                    <img style="width: 80px; height: 80px;display: flex;"
                                         src="{{ asset('storage/single_product/' . $sproducts->feature_two_image) }}" />
                                     <h4>{{ $sproducts->feature_two_title }}</h4>
                                     <p>
@@ -938,7 +918,7 @@
 
                             <div class="col-6">
                                 <div class="item">
-                                    <img style="width: 80px; height: 80px;"
+                                    <img style="width: 80px; height: 80px;display: flex;"
                                         src="{{ asset('storage/single_product/' . $sproducts->feature_three_image) }}" />
                                     <h4>{{ $sproducts->feature_three_title }}</h4>
                                     <p>
@@ -948,7 +928,7 @@
                             </div>
                             <div class="col-6">
                                 <div class="item">
-                                    <img style="width: 80px; height: 80px;"
+                                    <img style="width: 80px; height: 80px;display: flex;"
                                         src="{{ asset('storage/single_product/' . $sproducts->feature_four_image) }}" />
 
                                     <h4>{{ $sproducts->feature_four_title }}</h4>
@@ -960,7 +940,7 @@
                             </div>
                             <div class="col-6">
                                 <div class="item">
-                                    <img style="width: 80px; height: 80px;"
+                                    <img style="width: 80px; height: 80px;display: flex;"
                                         src="{{ asset('storage/single_product/' . $sproducts->feature_five_image) }}" />
 
                                     <h4>{{ $sproducts->feature_five_title }}</h4>
@@ -972,7 +952,7 @@
                             </div>
                             <div class="col-6">
                                 <div class="item">
-                                    <img style="width: 80px; height: 80px;"
+                                    <img style="width: 80px; height: 80px;display: flex;"
                                         src="{{ asset('storage/single_product/' . $sproducts->feature_six_image) }}" />
 
                                     <h4>{{ $sproducts->feature_six_title }}</h4>
@@ -990,13 +970,43 @@
             </section>
         @endif
         {{-- Feature Area End  --}}
+        <section class="detail-group63 scrollAni n21" style="background-color: #f0f0f0">
+            <div class="wrap">
+              <div class="img">
+                <img src="https://cdn.astellnkern.com/editor/img/202208/20220831141927_e0b9b935-f491-4d4c-a256-19cf639e9a18.png" alt="img" style="max-width: 320px">
+              </div>
+              <div class="inner">
+                <h3 style="color: #000000">Premium Goat Leather Case</h3>
+                <p style="color: #000000">
+                  The SP3000 comes with a French goatskin leather case to protect
+                  and highlight the beauty of the 904L stainless steel body.
+                  <br><br>
+                  The case is made by ALRAN, located in Tarn in southern France, a
+                  historical tannery that was established in 1903 and has been
+                  manufacturing leather for over 100 years. It is one of the
+                  world’s leading tanneries, well-known for their natural leather
+                  manufacturing technology since the 1980’s. ALRAN is recognized
+                  as the best goatskin manufacturer and supplies other leading
+                  luxury brands such as H and L.
+                  <br><br>
+                  The leather case included with the SP3000 is developed with
+                  ALRAN Tannery's unique Hand-Boarding technology. This is a
+                  technology that processes the leather by rubbing it in various
+                  directions using wooden planks, so you can feel the texture of
+                  the surface. This process is unique compared to how other
+                  goatskin cases are produced.
+                </p>
+              </div>
+            </div>
+          </section>
+        {{-- Feature Area End  --}}
         @if (
             !empty($sproducts->design_section_image_one) ||
                 !empty($sproducts->design_section_image_two) ||
                 !empty($sproducts->design_section_image_three) ||
                 !empty($sproducts->design_section_image_four))
             <section class="design-group scrollAni n12">
-                <div class="wrap">
+                <div class="wrap" style="padding: 75px 0px 75px;">
                     <h3>{{ $sproducts->design_section_title }}</>
                         <p>
                             {{ $sproducts->design_section_description }}
