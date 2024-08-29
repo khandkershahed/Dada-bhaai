@@ -221,6 +221,16 @@
                 height: 280px;
             }
         }
+
+        .detail-group63.n20 img {
+            width: inherit;
+            height: 100%;
+            top: 0;
+            right: inherit;
+            left: 59%;
+            background: url("{{ asset('storage/single_product/' . $sproducts->row_four_image) }}") no-repeat left center;
+            background-size: auto;
+        }
     </style>
     {{-- @if (!empty($sproducts)) --}}
     <main class="sub">
@@ -248,42 +258,29 @@
 
         {{-- Product Area Info  --}}
         <section class="sub-visual3 scrollAniTop view">
-
             <div class="bg">
                 <div class="swiper-container">
-
                     <ul class="swiper-wrapper">
-
-
                         <li class="swiper-slide">
                             <img src="{{ isset($product->product_image) ? asset($product->product_image) : asset('upload/no_image.jpg') }}"
                                 alt="">
                         </li>
-
                     </ul>
-
                     <div class="swiper-pagination"></div>
                 </div>
             </div>
-
             <div class="wrap">
-
                 <p>{{ $product->brand->brand_name }}</p>
-
                 <h1 class="w-25" style="font-size: 50px;width: 31%;"> {{ $product->product_name }} </h1>
-
                 <div class="btn-group tmpProductInfo tmpProductInfo_0 mt-5" style="">
                     <a type="submit" style="cursor:pointer;" class="lnk-ty1 add_to_cart_btn_product_astell"
                         data-product_id="{{ $product->id }}" style="margin-top: 4rem;">Add To Cart</a>
                 </div>
-
                 <div class="scroll-icon">
                     Scroll
                     <div class="line"></div>
                 </div>
-
             </div>
-
         </section>
         {{-- Product Area Info  --}}
 
@@ -328,121 +325,6 @@
         @endif
         {{-- Row Area Two End  --}}
 
-        {{-- Banner Section   --}}
-        {{-- <section class="banner-section">
-            <div class="container">
-                <div class="vehicle-detail-banner banner-content clearfix">
-                    <div class="banner-slider">
-                        <div class="slider slider-for">
-                            <div class="slider-banner-image">
-                                <img src="https://images.unsplash.com/photo-1570942872213-1242607a35eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                                    alt="Car-Image">
-                            </div>
-                            <div class="slider-banner-image">
-                                <img src="https://images.unsplash.com/photo-1570171278960-d6c2b316f3b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
-                                    alt="Car-Image">
-                            </div>
-                            <div class="slider-banner-image">
-                                <img src="https://images.unsplash.com/photo-1564376130023-5360fbb7c91b?ixlib=rb-1.2.1&auto=format&fit=crop&w=724&q=80"
-                                    alt="Car-Image">
-                            </div>
-                            <div class="slider-banner-image">
-                                <img src="https://images.unsplash.com/photo-1570942872213-1242607a35eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                                    alt="Car-Image">
-                            </div>
-                            <div class="slider-banner-image">
-                                <img src="https://images.unsplash.com/photo-1570171278960-d6c2b316f3b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
-                                    alt="Car-Image">
-                            </div>
-                            <div class="slider-banner-image">
-                                <img src="https://images.unsplash.com/photo-1564376130023-5360fbb7c91b?ixlib=rb-1.2.1&auto=format&fit=crop&w=724&q=80"
-                                    alt="Car-Image">
-                            </div>
-                            <div class="slider-banner-image">
-                                <img src="https://images.unsplash.com/photo-1570942872213-1242607a35eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                                    alt="Car-Image">
-                            </div>
-                            <div class="slider-banner-image">
-                                <img src="https://images.unsplash.com/photo-1570171278960-d6c2b316f3b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
-                                    alt="Car-Image">
-                            </div>
-                            <div class="slider-banner-image">
-                                <img src="https://images.unsplash.com/photo-1564376130023-5360fbb7c91b?ixlib=rb-1.2.1&auto=format&fit=crop&w=724&q=80"
-                                    alt="Car-Image">
-                            </div>
-                        </div>
-                        <div class="slider slider-nav thumb-image">
-                            <div class="thumbnail-image">
-                                <div class="thumbImg">
-                                    <img src="https://images.unsplash.com/photo-1570942872213-1242607a35eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                                        alt="slider-img">
-                                </div>
-                                <span>White Pearl Crystal Shine1</span>
-                            </div>
-                            <div class="thumbnail-image">
-                                <div class="thumbImg">
-                                    <img src="https://images.unsplash.com/photo-1570171278960-d6c2b316f3b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
-                                        alt="slider-img">
-                                </div>
-                                <span>White Pearl Crystal Shine2</span>
-                            </div>
-                            <div class="thumbnail-image">
-                                <div class="thumbImg">
-                                    <img src="https://images.unsplash.com/photo-1564376130023-5360fbb7c91b?ixlib=rb-1.2.1&auto=format&fit=crop&w=724&q=80"
-                                        alt="slider-img">
-                                </div>
-                                <span>White Pearl Crystal Shine3</span>
-                            </div>
-                            <div class="thumbnail-image">
-                                <div class="thumbImg">
-                                    <img src="https://images.unsplash.com/photo-1570942872213-1242607a35eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                                        alt="slider-img">
-                                </div>
-                                <span>White Pearl Crystal Shine1</span>
-                            </div>
-                            <div class="thumbnail-image">
-                                <div class="thumbImg">
-                                    <img src="https://images.unsplash.com/photo-1570171278960-d6c2b316f3b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
-                                        alt="slider-img">
-                                </div>
-                                <span>White Pearl Crystal Shine2</span>
-                            </div>
-                            <div class="thumbnail-image">
-                                <div class="thumbImg">
-                                    <img src="https://images.unsplash.com/photo-1564376130023-5360fbb7c91b?ixlib=rb-1.2.1&auto=format&fit=crop&w=724&q=80"
-                                        alt="slider-img">
-                                </div>
-                                <span>White Pearl Crystal Shine3</span>
-                            </div>
-                            <div class="thumbnail-image">
-                                <div class="thumbImg">
-                                    <img src="https://images.unsplash.com/photo-1570942872213-1242607a35eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                                        alt="slider-img">
-                                </div>
-                                <span>White Pearl Crystal Shine1</span>
-                            </div>
-                            <div class="thumbnail-image">
-                                <div class="thumbImg">
-                                    <img src="https://images.unsplash.com/photo-1570171278960-d6c2b316f3b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
-                                        alt="slider-img">
-                                </div>
-                                <span>White Pearl Crystal Shine2</span>
-                            </div>
-                            <div class="thumbnail-image">
-                                <div class="thumbImg">
-                                    <img src="https://images.unsplash.com/photo-1564376130023-5360fbb7c91b?ixlib=rb-1.2.1&auto=format&fit=crop&w=724&q=80"
-                                        alt="slider-img">
-                                </div>
-                                <span>White Pearl Crystal Shine3</span>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> --}}
-        {{-- Banner Section   --}}
-
         {{-- Row Area Three Start --}}
         <section class="detail-group1 scrollAni n3">
             <div class="wrap">
@@ -478,9 +360,59 @@
             </div>
         </section>
         {{-- Row Area Three End  --}}
-
-        {{-- Row Area Four Start  --}}
         @if (!empty($sproducts->row_four_image))
+            <section class="detail-group63 scrollAni n20 view">
+                <div class="wrap">
+                    <div class="inner">
+                        <h3>
+                            {{ $sproducts->row_four_title }}
+                        </h3>
+                        <p>
+                            Based on its innovative technology and perfect design, the
+                            A&amp;ultima SP3000 received the highest praise from audiophiles
+                            and media outlets worldwide, for ‘opening a new horizon with
+                            overwhelming sound that reaches the pinnacle of digital audio
+                            players.’ Astell&amp;Kern sought to commemorate the monumental
+                            success of the SP3000 by introducing the SP3000 24K Gold Limited
+                            Edition crafted with gold, the most valuable metal in human
+                            history.
+                            <br><br>
+                            Astell&amp;Kern started with the innovative Stainless Steel 904L
+                            material used for the first time in the SP3000 and plated it
+                            with 24K pure gold to capture the pinnacle sound of the SP3000
+                            in a metal of extreme luxury and value.<br>
+                            Gold has a beautiful luster, does not rust, and has excellent
+                            electrical conductivity, so it is used not only in jewelry, but
+                            also as a top-quality component for semiconductors and high-end
+                            audio, and is highly valued due to its rarity. However, the
+                            highest purity 24K gold is difficult to handle due to its low
+                            hardness, so extremely meticulous processes and work were
+                            required to complete the SP3000 24K Gold Limited Edition, which
+                            has a much larger area than jewelry, into a flawless product.<br>
+                            To deliver the highest quality product without compromise,
+                            Astell&amp;Kern used a wet process for pure gold plating
+                            (plating thickness of 0.5um+/- 20%) rather than simply a surface
+                            treatment. To fully highlight the SUS 904L material and gold
+                            plating, nickel plating was first applied, followed by the 24K
+                            gold plating, and then an AF coating was applied to harden the
+                            surface and prevent fingerprints.
+                            <br><br>
+                            The SP3000 24K Gold Limited Edition is a monumental design that
+                            fully expresses Astell&amp;Kern's brand philosophy.<br>
+                            Discover a new horizon for premium audio players with the unique
+                            beauty of timeless metals, and the amazing sound of the SP3000.
+                            The SP3000 24K Gold Limited Edition includes a special leather
+                            case and package exclusive to this limited edition.
+                        </p>
+                    </div>
+                    <div class="">
+                        <img src="{{ asset('storage/single_product/' . $sproducts->row_four_image) }}" alt="">
+                    </div>
+                </div>
+            </section>
+        @endif
+        {{-- Row Area Four Start  --}}
+        {{-- @if (!empty($sproducts->row_four_image))
             <section class="detail-group10 scrollAni n5">
                 <div class="bg"
                     style=" background-image: url('{{ asset('storage/single_product/' . $sproducts->row_four_image) }}');">
@@ -493,13 +425,18 @@
                     </div>
                 </div>
             </section>
-        @endif
+        @endif --}}
         {{-- Row Area End Start  --}}
 
         {{-- Row Area Five Start  --}}
 
         @if (!empty($sproducts->row_five_image))
-            <section class="detail-group63 scrollAni n20 view" style="background:#f8f3ea;margin-top:0px;">
+            <section class="detail-group17 scrollAni n19 view">
+                <div class="bg"
+                    style="
+                background-image: url('{{ asset('storage/single_product/' . $sproducts->row_five_image) }}');
+              ">
+                </div>
                 <div class="wrap">
                     <div class="inner">
                         <h3>
@@ -509,9 +446,6 @@
                             {{ $sproducts->row_five_description }}
                         </p>
                     </div>
-                    <div class="img"
-                        style="background:url({{ asset('storage/single_product/' . $sproducts->row_five_image) }}) no-repeat left center">
-                    </div>
                 </div>
             </section>
         @endif
@@ -520,18 +454,19 @@
 
         {{-- Row Six Area Start  --}}
         @if (!empty($sproducts->row_six_background_image))
-            <section class="detail-group29 scrollAni n4">
-
+            <section class="detail-group29 scrollAni n4 view">
                 <div class="bg"
-                    style="background-image: url('{{ asset('storage/single_product/' . $sproducts->row_six_background_image) }}');">
+                    style="
+                background-image: url('{{ asset('storage/single_product/' . $sproducts->row_six_background_image) }}');
+              ">
                 </div>
-
                 <div class="wrap">
                     <h2>
                         {{ $sproducts->row_six_title }}
                     </h2>
                     <div class="n4-wrapper">
                         <h3>
+                            <span>Material Innovations,</span>
                             {{ $sproducts->row_six_sub_title }}
                         </h3>
                         <div class="n4-item">
@@ -581,26 +516,36 @@
         {{-- Row Nine Area Start --}}
 
         @if (!empty($sproducts->row_nine_background_image) || !empty($sproducts->row_nine_image))
-            <section class="detail-group10 scrollAni n7 view"
-                style="background: #111420 url({{ asset('storage/single_product/' . $sproducts->row_nine_background_image) }}) no-repeat right bottom;">
+            <section class="detail-group10 scrollAni n7 view">
                 <div class="wrap">
                     <h3>
-                        {{ $sproducts->row_nine_title }}
-                    </h3>
-                    <p class="mt-3">
+                        <span>{{ $sproducts->row_nine_title }}</span>
                         {{ $sproducts->row_nine_sub_title }}
+                    </h3>
+                    <p>
+                        In order to develop the ultimate audio player that has never been
+                        experienced before, not only do we use the latest DAC and
+                        technology available, but we use the innovative audio technology
+                        of TERATON ALPHA, AK's Ultimate Sound Solution, which has been
+                        refined for the SP3000.
+                        <br><br>
+                        TERATON ALPHA, engineered through endless research, is
+                        Astell&amp;Kern's unique technology that has been designed to
+                        produce audio playback that is close to the original sound through
+                        effective power noise removal, efficient power management and
+                        unwavering amplification, and a fully converted audio output
+                        interface. HEXA-Audio Circuitry structure and independent dual
+                        audio circuit, implemented for the first time in the SP3000, are
+                        paired together with TERATON ALPHA's sound solution to create the
+                        purest original sound.
                     </p>
-                    {{-- <a href="../story/story_detail.jsp?storyNo=9&amp;categoryCode=Sound" class="lnk-ty2">Discover more
-                    </a> --}}
+                    <a href="../story/story_detail.jsp?storyNo=9&amp;categoryCode=Sound" class="lnk-ty2">Discover more
+                    </a>
                     <img src="{{ asset('storage/single_product/' . $sproducts->row_nine_image) }}">
                 </div>
             </section>
         @endif
         {{-- Row Nine Area End  --}}
-
-
-
-
         {{-- Row Area Ten & Eleven Start --}}
         @if (
             !empty($sproducts->row_ten_image_one) ||
@@ -611,20 +556,9 @@
                     <h3>
                         <span class="text-light">{{ $sproducts->row_ten_title }}</span>
                     </h3>
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="thumbnail">
-                                <img style="width: 500px; height: auto;"
-                                    src="{{ asset('storage/single_product/' . $sproducts->row_ten_image_one) }}" />
-                            </div>
-                        </div>
-
-                        <div class="col-6">
-                            <div class="thumbnail">
-                                <img style="width: 500px; height: auto;"
-                                    src="{{ asset('storage/single_product/' . $sproducts->row_ten_image_two) }}" />
-                            </div>
-                        </div>
+                    <div class="thumbnail">
+                        <img src="{{ asset('storage/single_product/' . $sproducts->row_ten_image_one) }}">
+                        <img src="{{ asset('storage/single_product/' . $sproducts->row_ten_image_two) }}">
                     </div>
                     <p>
                         {{ $sproducts->row_ten_description }}
@@ -994,7 +928,7 @@
 @endsection
 
 @push('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
     <script type="text/javascript">
         $.ajaxSetup({
             headers: {

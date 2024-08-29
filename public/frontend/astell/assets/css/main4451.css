@@ -21840,11 +21840,11 @@ main .video-js {
     color: #fff;
 }
 
-.detail-group63 .img {
-    width: 443px;
+.detail-group63 img {
+    width: 100%;
     position: absolute;
     top: 0;
-    right: 75px;
+    right: 0px;
 }
 
 .detail-group63.scrollAni .img {
@@ -21877,7 +21877,7 @@ main .video-js {
         padding-right: 448px;
     }
 
-    .detail-group63 .img {
+    .detail-group63 img {
         width: 355px;
         right: 20px;
         top: 20px;
@@ -21905,7 +21905,7 @@ main .video-js {
         line-height: 22px;
     }
 
-    .detail-group63 .img {
+    .detail-group63 img {
         width: 310px;
         position: absolute;
         top: auto;
@@ -26385,17 +26385,6 @@ main .video-js {
     transform: translateX(0) translateY(0);
 }
 
-.detail-group63.n20 .img {
-    width: inherit;
-    height: 100%;
-    top: 0;
-    right: inherit;
-    left: 59%;
-    background: url("https://cdn.astellnkern.com/editor/img/202311/20231122175848_5fa919ef-e7c0-4ed3-a0a5-3c8069d15b3b.png")
-        no-repeat left center;
-    background-size: auto;
-}
-
 .detail-group63.n20 .wrap {
     padding-right: 504px;
     padding-left: 0;
@@ -26700,7 +26689,7 @@ main .video-js {
 }
 
 .detail-group29.n4 .n4-wrapper {
-    margin-top: 845px;
+    margin-top: 560px;
 }
 
 .detail-group29.n4 .n4-item {
@@ -26762,7 +26751,7 @@ main .video-js {
     }
 
     .detail-group29.n4 .n4-wrapper {
-        margin-top: 305px;
+        margin-top: 545px;
     }
 }
 
