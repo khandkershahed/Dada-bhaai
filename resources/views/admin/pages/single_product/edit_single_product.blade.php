@@ -398,6 +398,23 @@
                                     </div>
                                 </div>
 
+                                <div class="col-lg-6">
+                                    <div class="mb-2">
+                                        <label class="form-label">Row Nine Description</label>
+                                        <textarea name="row_nine_description" id="row_nine_description" cols="3" rows="3"
+                                            placeholder="Description" class="form-control">{!! $single_product->row_nine_description !!}</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 mb-3">
+                                    <div class="mb-2">
+                                        <label class="form-label">Button Link</label>
+                                        <input type="text" name="row_nine_button"
+                                            value="{{ $single_product->row_nine_button }}" placeholder="Row Nine Button Link"
+                                            class="form-control form-control-sm">
+                                    </div>
+                                </div>
+
                                 <div class="col-lg-3">
                                     <label class="col-form-label pt-0">Row Nine Background Image</label>
                                     <input type="file" accept="image/*"
@@ -466,7 +483,7 @@
                                         alt="" style="width: 50px; height:50px;" class="mt-3">
                                 </div>
 
-                                <div class="mb-3 col-lg-3">
+                                <div class="mb-3 col-lg-12">
                                     <label class="form-label">Row Ten Description</label>
                                     <textarea name="row_ten_description" rows="0" cols="0" class="form-control"
                                         placeholder="Enter Row Ten Description">{!! $single_product->row_ten_description !!}</textarea>
@@ -1135,7 +1152,6 @@
                                     <div class="mb-2">
                                         <label class="form-label">Feature Area Two Title</label>
                                         <input type="text" id="feature_area_two_title"
-                                            value="{{ old('feature_area_two_title') }}"
                                             value="{{ $single_product->feature_area_two_title }}"
                                             name="feature_area_two_title"
                                             class="form-control form-control-sm maxlength-options" maxlength="255"

@@ -96,11 +96,11 @@
                                     <td>{{ $sproduct['products']['product_name'] }}</td>
                                     <td>
                                         @if ($sproduct['products']['price'])
-                                            <span>{{ $sproduct['products']['price'] }} Tk</span>
+                                            <span>{{ $sproduct['products']['price'] }} $</span>
                                         @elseif ($sproduct['products']['sas_price'])
-                                            <span>{{ $sproduct['products']['sas_price'] }} Tk</span>
+                                            <span>{{ $sproduct['products']['sas_price'] }} $</span>
                                         @else
-                                            <span>{{ $sproduct['products']['discount_price'] }} Tk</span>
+                                            <span>{{ $sproduct['products']['discount_price'] }} $</span>
                                         @endif
                                     </td>
                                     <td>{{ $sproduct['products']['qty'] }}</td>

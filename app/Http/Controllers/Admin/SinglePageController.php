@@ -28,6 +28,13 @@ class SinglePageController extends Controller
     //Store Single Page
     public function StoreSinglePage(Request $request)
     {
+        $normalTimeLimit = ini_get('max_execution_time');
+        // Set new limit
+        ini_set('max_execution_time', 800);
+        // Restore default limit
+        ini_set('max_execution_time', $normalTimeLimit);
+
+
         $files = [
             'row_two_image_one', 'row_two_image_two', 'row_two_image_three', 'row_two_image_four',
             'row_five_image', 'row_four_image', 'row_six_background_image', 'row_seven_background_image',
@@ -39,7 +46,7 @@ class SinglePageController extends Controller
             'row_nineteen_image_one', 'row_nineteen_image_two',
             'row_nineteen_image_three', 'feature_section_background_image', 'feature_one_image',
             'feature_two_image', 'feature_three_image', 'feature_four_image', 'feature_five_image', 'feature_six_image',
-            'design_section_image_one', 'design_section_image_two', 'design_section_image_three', 'design_section_image_four','row_five_background_image','row_four_background_image','feature_area_two_image'
+            'design_section_image_one', 'design_section_image_two', 'design_section_image_three', 'design_section_image_four', 'row_five_background_image', 'row_four_background_image', 'feature_area_two_image',
         ];
 
         $filePath = storage_path('app/public/single_product/');
@@ -114,6 +121,8 @@ class SinglePageController extends Controller
             'row_seventeen_description' => $request->row_seventeen_description,
             'feature_area_two_title' => $request->feature_area_two_title,
             'feature_area_two_description' => $request->feature_area_two_description,
+            'row_nine_description' => $request->row_nine_description,
+            'row_nine_button' => $request->row_nine_button,
 
         ] + $filePaths);
 
@@ -133,6 +142,12 @@ class SinglePageController extends Controller
     //Update Single Page
     public function UpdateSinglePage(Request $request)
     {
+        $normalTimeLimit = ini_get('max_execution_time');
+        // Set new limit
+        ini_set('max_execution_time', 800);
+        // Restore default limit
+        ini_set('max_execution_time', $normalTimeLimit);
+
         $productSinglePage = ProductSinglePage::find($request->id);
 
         $files = [
@@ -146,7 +161,7 @@ class SinglePageController extends Controller
             'row_nineteen_image_one', 'row_nineteen_image_two',
             'row_nineteen_image_three', 'feature_section_background_image', 'feature_one_image',
             'feature_two_image', 'feature_three_image', 'feature_four_image', 'feature_five_image', 'feature_six_image',
-            'design_section_image_one', 'design_section_image_two', 'design_section_image_three', 'design_section_image_four','row_five_background_image','row_four_background_image','feature_area_two_image'
+            'design_section_image_one', 'design_section_image_two', 'design_section_image_three', 'design_section_image_four', 'row_five_background_image', 'row_four_background_image', 'feature_area_two_image',
         ];
 
         $filePath = storage_path('app/public/single_product/');
@@ -227,6 +242,9 @@ class SinglePageController extends Controller
             'row_seventeen_description' => $request->row_seventeen_description,
             'feature_area_two_title' => $request->feature_area_two_title,
             'feature_area_two_description' => $request->feature_area_two_description,
+
+            'row_nine_description' => $request->row_nine_description,
+            'row_nine_button' => $request->row_nine_button,
 
         ] + $filePaths);
 
