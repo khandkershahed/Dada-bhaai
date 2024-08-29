@@ -34,7 +34,7 @@
     </section>
     <!-- page banner area end -->
     <!-- shop area start -->
-    <div class="product shop-page pt-150 pb-120 fix">
+    <div class="product shop-page pt-50 pb-120 fix">
         <div class="container">
 
             <div class="border-b">
@@ -99,12 +99,12 @@
                                                         <tbody>
                                                             <tr class="">
                                                                 <td>Sub Total:</td>
-                                                                <td class="text-right">Tk <span id="cartSubTotal"></span></td>
+                                                                <td class="text-right">$ <span id="cartSubTotal"></span></td>
                                                             </tr>
 
                                                             <tr>
                                                                 <th scope="col">ORDER TOTAL</th>
-                                                                <th class="text-right">Tk <span id="cartTotal"></span></th>
+                                                                <th class="text-right">$ <span id="cartTotal"></span></th>
                                                             </tr>
                                                         </tbody>
 

@@ -1,6 +1,8 @@
 @extends('frontend.template_one.frontend_dashboard_template_one')
 @section('index_template_one')
 @section('title', 'Dada Bhaai | Login')
+
+</style>
 <!-- page banner area start -->
 <section class="page-banner-area" data-background="{{ asset('frontend/template_one/assets/img/bg/banner.jpg') }}">
     <div class="container">
@@ -59,24 +61,18 @@
                                     <input type="email" class="form-control form-control-sm "
                                         placeholder="Email Address" value="{{ old('email') }}" required name="email">
                                 </div>
+
                                 <div class="field">
                                     <label>Password</label>
                                     <div class="input-group">
                                         <input id="password" type="password" class="form-control form-control-sm"
                                             name="password" placeholder="Password" required>
-
-                                        <div class="input-group-append">
-                                            <span class="input-group-text password-toggle-icon"
-                                                onclick="togglePasswordVisibility()">
-                                                <i class="fas fa-eye"></i>
-                                            </span>
-                                        </div>
-
                                     </div>
                                     @error('password')
                                         <div class="text-danger" style="margin-top: 0px;">{{ $message }}</div>
                                     @enderror
                                 </div>
+
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="form-check">
                                         <input class="form-check-input check" type="checkbox" name="remember"
@@ -186,22 +182,7 @@
 </section>
 <!-- reg area end -->
 
-<script>
-    function togglePasswordVisibility() {
-        const passwordInput = document.getElementById('password');
-        const icon = document.querySelector('.password-toggle-icon i');
 
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-            icon.classList.remove('fa-eye');
-            icon.classList.add('fa-eye-slash');
-        } else {
-            passwordInput.type = 'password';
-            icon.classList.remove('fa-eye-slash');
-            icon.classList.add('fa-eye');
-        }
-    }
-</script>
 
 <script>
     function validateForm() {

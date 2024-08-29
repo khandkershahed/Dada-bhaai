@@ -39,7 +39,7 @@ class SinglePageController extends Controller
             'row_nineteen_image_one', 'row_nineteen_image_two',
             'row_nineteen_image_three', 'feature_section_background_image', 'feature_one_image',
             'feature_two_image', 'feature_three_image', 'feature_four_image', 'feature_five_image', 'feature_six_image',
-            'design_section_image_one', 'design_section_image_two', 'design_section_image_three', 'design_section_image_four',
+            'design_section_image_one', 'design_section_image_two', 'design_section_image_three', 'design_section_image_four','row_five_background_image','row_four_background_image','feature_area_two_image'
         ];
 
         $filePath = storage_path('app/public/single_product/');
@@ -107,6 +107,14 @@ class SinglePageController extends Controller
             'feature_six_description' => $request->feature_six_description,
             'design_section_title' => $request->design_section_title,
             'design_section_description' => $request->design_section_description,
+
+            'row_four_description' => $request->row_four_description,
+            'row_ten_short_title' => $request->row_ten_short_title,
+            'row_seventeen_short_title' => $request->row_seventeen_short_title,
+            'row_seventeen_description' => $request->row_seventeen_description,
+            'feature_area_two_title' => $request->feature_area_two_title,
+            'feature_area_two_description' => $request->feature_area_two_description,
+
         ] + $filePaths);
 
         toastr()->success('Single Product Created Successfully');
@@ -138,7 +146,7 @@ class SinglePageController extends Controller
             'row_nineteen_image_one', 'row_nineteen_image_two',
             'row_nineteen_image_three', 'feature_section_background_image', 'feature_one_image',
             'feature_two_image', 'feature_three_image', 'feature_four_image', 'feature_five_image', 'feature_six_image',
-            'design_section_image_one', 'design_section_image_two', 'design_section_image_three', 'design_section_image_four',
+            'design_section_image_one', 'design_section_image_two', 'design_section_image_three', 'design_section_image_four','row_five_background_image','row_four_background_image','feature_area_two_image'
         ];
 
         $filePath = storage_path('app/public/single_product/');
@@ -212,6 +220,14 @@ class SinglePageController extends Controller
             'feature_six_description' => $request->feature_six_description,
             'design_section_title' => $request->design_section_title,
             'design_section_description' => $request->design_section_description,
+
+            'row_four_description' => $request->row_four_description,
+            'row_ten_short_title' => $request->row_ten_short_title,
+            'row_seventeen_short_title' => $request->row_seventeen_short_title,
+            'row_seventeen_description' => $request->row_seventeen_description,
+            'feature_area_two_title' => $request->feature_area_two_title,
+            'feature_area_two_description' => $request->feature_area_two_description,
+
         ] + $filePaths);
 
         toastr()->success('Single Product Update Successfully');
