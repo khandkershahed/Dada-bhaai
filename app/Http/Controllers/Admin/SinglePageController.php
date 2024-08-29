@@ -34,7 +34,6 @@ class SinglePageController extends Controller
         // Restore default limit
         ini_set('max_execution_time', $normalTimeLimit);
 
-
         $files = [
             'row_two_image_one', 'row_two_image_two', 'row_two_image_three', 'row_two_image_four',
             'row_five_image', 'row_four_image', 'row_six_background_image', 'row_seven_background_image',
@@ -130,10 +129,12 @@ class SinglePageController extends Controller
         return redirect()->route('all.single.page');
     }
 
+    
+
     //Edit Single Page
     public function EditSinglePage($id)
     {
-        $single_product = ProductSinglePage::find($id);
+        $single_product = ProductSinglePage::findOrFail($id);
         $products = Product::latest()->get();
 
         return view('admin.pages.single_product.edit_single_product', compact('products', 'single_product'));
