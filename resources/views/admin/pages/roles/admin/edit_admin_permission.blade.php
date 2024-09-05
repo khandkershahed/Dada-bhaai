@@ -68,7 +68,8 @@
                                         <div class="form-group mb-3">
                                             <label for="">Name</label>
                                             <input type="text" name="name" value="{{ $users->name }}"
-                                                autocomplete="off" placeholder="Name" required class="form-control form-control-sm">
+                                                autocomplete="off" placeholder="Name" required
+                                                class="form-control form-control-sm">
                                         </div>
                                     </div>
 
@@ -76,7 +77,8 @@
                                         <div class="form-group mb-3">
                                             <label for="">UserName</label>
                                             <input type="text" value="{{ $users->username }}" name="username"
-                                                autocomplete="off" placeholder="Username" required class="form-control form-control-sm">
+                                                autocomplete="off" placeholder="Username" required
+                                                class="form-control form-control-sm">
                                         </div>
                                     </div>
 
@@ -84,7 +86,8 @@
                                         <div class="form-group mb-3">
                                             <label for="">Company Name</label>
                                             <input type="text" value="{{ $users->company_name }}" name="company_name"
-                                                autocomplete="off" placeholder="Compnay Name" class="form-control form-control-sm">
+                                                autocomplete="off" placeholder="Compnay Name"
+                                                class="form-control form-control-sm">
                                         </div>
                                     </div>
 
@@ -92,7 +95,8 @@
                                         <div class="form-group mb-3">
                                             <label for="">Designation</label>
                                             <input type="text" value="{{ $users->designation }}" name="designation"
-                                                autocomplete="off" placeholder="Designation" class="form-control form-control-sm">
+                                                autocomplete="off" placeholder="Designation"
+                                                class="form-control form-control-sm">
                                         </div>
                                     </div>
 
@@ -100,7 +104,8 @@
                                         <div class="form-group mb-3">
                                             <label for="">Email</label>
                                             <input type="email" value="{{ $users->email }}" name="email"
-                                                autocomplete="off" placeholder="Email" required class="form-control form-control-sm">
+                                                autocomplete="off" placeholder="Email" required
+                                                class="form-control form-control-sm">
                                         </div>
                                     </div>
 
@@ -116,29 +121,31 @@
                                         <div class="form-group mb-3">
                                             <label for="">Address</label>
                                             <input type="text" value="{{ $users->address }}" name="address"
-                                                autocomplete="off" placeholder="Address" class="form-control form-control-sm">
+                                                autocomplete="off" placeholder="Address"
+                                                class="form-control form-control-sm">
                                         </div>
                                     </div>
 
                                     <div class="col-6">
                                         <div class="form-group mb-3">
                                             <label for="">Role</label>
-        
+
                                             <select class="form-select form-select-sm" name="roles">
                                                 <option selected disabled>Select Role</option>
                                                 @foreach ($roles as $role)
                                                     <option value="{{ $role->id }}"
-                                                        {{ $users->hasRole($role->name) ? 'selected' : '' }}>{{ $role->name }}
+                                                        {{ $users->hasRole($role->name) ? 'selected' : '' }}>
+                                                        {{ $role->name }}
                                                     </option>
                                                 @endforeach
                                             </select>
-        
+
                                         </div>
                                     </div>
 
                                 </div>
 
-                                
+
 
                             </div>
 
