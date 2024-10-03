@@ -12,11 +12,17 @@ class SubCategory extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class,'category_id','id');
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
+
+    // public function subproducts()
+    // {
+    //     return $this->hasMany(Product::class,'subcategory_id','id');
+    // }
 
     public function subproducts()
     {
-        return $this->hasMany(Product::class,'subcategory_id','id');
+        return $this->hasMany(Product::class, 'subcategory_id', 'id')
+            ->where('status', 1); // Assuming 'active' is the column indicating whether the product is active
     }
 }
