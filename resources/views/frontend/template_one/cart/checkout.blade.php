@@ -181,7 +181,8 @@
                                         {{-- Billing Info --}}
 
                                         {{-- Payment Info  --}}
-                                        <div class="card-header">
+
+                                        {{-- <div class="card-header">
                                             <a class=""> Payment Info </a>
                                         </div>
                                         <div class="" style="background-color: #f5f5f5">
@@ -229,7 +230,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
+                                        
                                         {{-- Payment Info  --}}
 
                                     </div>
@@ -301,12 +303,12 @@
                                                                 @endif --}}
 
 
-                                                                <tr class="">
+                                                                {{-- <tr class="">
                                                                     <td>Delivery Charge :</td>
                                                                     <td class="text-right">$ <b
                                                                             class="drk-gry shippingCharge">0.00</b></td>
 
-                                                                </tr>
+                                                                </tr> --}}
 
                                                                 <tr>
                                                                     <th scope="col">Order Total</th>
@@ -327,11 +329,10 @@
 
                                                         {{-- Delivery System  --}}
                                                         <div class="mt-5">
-                                                            <h5 class="cart-title-highlight title-3">Payment Method</h5>
-                                                            <ul
-                                                                class="payment_methods methods list-unstyled mt-3 form-group">
+                                                            {{-- <h5 class="cart-title-highlight title-3">Payment Method</h5>
+                                                            <ul class="payment_methods methods list-unstyled mt-3 form-group"> --}}
 
-                                                                <li class="payment_method_bacs">
+                                                                {{-- <li class="payment_method_bacs">
 
                                                                     <div class="">
                                                                         <label class="radio-inline">
@@ -341,7 +342,7 @@
                                                                         </label>
                                                                     </div>
 
-                                                                </li>
+                                                                </li> --}}
 
                                                                 {{-- <li class="payment_method_cod">
 
@@ -354,7 +355,7 @@
                                                                     </div>
 
                                                                 </li> --}}
-                                                            </ul>
+                                                            {{-- </ul> --}}
 
                                                         </div>
                                                         {{-- Delivery System  --}}

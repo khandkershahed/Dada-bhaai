@@ -156,6 +156,7 @@
                         <span class="menu-title">Product Supply</span>
                         <span class="menu-arrow"></span>
                     </span>
+                    
                     <div class="menu-sub menu-sub-accordion menu-active-bg {{ Request::routeIs('all.product','all.banner','all.brand','all.category','all.offer','all.offer.category','all.color') ? 'here show' : '' }}">
 
                         {{-- Product  --}}

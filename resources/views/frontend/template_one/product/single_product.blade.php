@@ -22,7 +22,8 @@
                                     <a href="javascript:;">{{ optional($product->subcategory)->subcategory_name }}</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    <a href="javascript:;">{{ optional($product->childcategory)->childcategory_name }}</a>
+                                    <a
+                                        href="javascript:;">{{ optional($product->childcategory)->childcategory_name }}</a>
                                 </li>
                             </ol>
                         </nav>
@@ -254,14 +255,19 @@
                                 </div>
 
                                 {{-- ======================== --}}
-                                <div class="last py-4 align-items-center d-flex justify-content-center">
+                                <div class="py-4 align-items-center d-flex justify-content-center">
+
+                                    <a style="cursor: pointer" onclick="addToCartOne()"
+                                        class="mr-2 mt-0 add-link f-700 grenadier-color">+Cart</a>|
+
                                     <a style="cursor: pointer;" data-product_id="{{ $product->id }}"
-                                        class="mr-2 text-muted add_to_wishlist">Add To Wishlist</a>
+                                        class="ml-2 mr-2 f-700 grenadier-color add_to_wishlist">Add To Wishlist</a>|
 
                                     <a style="cursor: pointer;" type="submit" data-product_id="{{ $product->id }}"
-                                        class="ml-2 text-muted add_to_compare">Compare</a>
+                                        class="ml-2  f-700 grenadier-color add_to_compare">Compare</a>
                                 </div>
                                 {{-- ++++====================== --}}
+
 
                             </div>
 
@@ -283,14 +289,14 @@
 
                         <input type="hidden" id="oneproduct_id" value="{{ $product->id }}">
 
-                        <a type="submit" style="cursor: pointer" onclick="addToCartOne()"
+                        {{-- <a type="submit" style="cursor: pointer" onclick="addToCartOne()"
                             class="mt-0 add-link f-700 grenadier-color checkout main-btn text-center w-50 mr-1">+ Add
-                            Cart</a>
+                            Cart</a> --}}
 
-                        <a href="{{ route('template.one.view.cart') }}"
-                            class="ml-3 mt-0 add-link f-700 grenadier-color checkout main-btn text-center w-50 ml-1">View
+                        {{-- <a href="{{ route('template.one.view.cart') }}"
+                            class="ml-3 mt-0 add-link f-700 grenadier-color checkout main-btn text-center  w-100 ml-1">View
                             Cart
-                        </a>
+                        </a> --}}
 
                         {{-- <a type="submit" style="cursor: pointer" onclick="buyToCartOne()"
                             class="ml-3 mt-0 add-link f-700 grenadier-color checkout main-btn text-center w-50 ml-1">+ Buy

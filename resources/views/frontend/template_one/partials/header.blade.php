@@ -137,7 +137,8 @@
                         </a>
 
                         @php
-                            $categories = DB::table('categories')->inRandomOrder()->limit(4)->get();
+                            // $categories = DB::table('categories')->inRandomOrder()->limit(4)->get();
+                            $categories = DB::table('categories')->where('status','1')->limit(4)->get();
                         @endphp
 
                         <div class="dropdown-menu w-100 mt-0 rounded-0 border-bottom-0 main-menu-drop"
@@ -165,7 +166,7 @@
                                                 @endphp
                                                 @forelse ($brands as $brandId)
                                                     @php
-                                                        $brand = App\Models\Brand::find($brandId);
+                                                        $brand = App\Models\Brand::where('status','1')->find($brandId);
                                                     @endphp
 
                                                     @if ($brand)
