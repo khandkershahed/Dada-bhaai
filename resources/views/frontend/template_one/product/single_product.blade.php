@@ -30,44 +30,47 @@
                     </div>
                 </div>
             </div>
-            <div class="row my-5">
-
+            <div class="row">
                 <div class="col-lg-4">
-                    <div class="pro-img">
-                        <div class="tab-content" id="myTabContent">
-                            @forelse ($multiImages as $key => $multiImage)
-                                <div class="tab-pane fade show {{ $key == 0 ? 'active' : '' }}"
-                                    id="multiImg{{ $multiImage->id }}" role="tabpanel" aria-labelledby="home-tab5">
-                                    <img src="{{ asset($multiImage->multi_image) }}" class="img-fluid mb-2"
-                                        alt="" style="width:100%; height: 100%;" />
+                    <div class="row">
+                        <div class="col-lg-12 col-md-6 order-1 order-lg-1">
+                            <div class="pro-img">
+                                <div class="tab-content" id="myTabContent">
+                                    @forelse ($multiImages as $key => $multiImage)
+                                        <div class="tab-pane fade show {{ $key == 0 ? 'active' : '' }}"
+                                            id="multiImg{{ $multiImage->id }}" role="tabpanel"
+                                            aria-labelledby="home-tab5">
+                                            <img src="{{ asset($multiImage->multi_image) }}" class="img-fluid mb-2"
+                                                alt="" style="width:100%; height: 100%;" />
+                                        </div>
+                                    @empty
+                                        <img src="{{ asset('upload/no_image.jpg') }}" class="img-fluid mb-2"
+                                            alt="" style="width:100%; height: 400px;" />
+                                    @endforelse
                                 </div>
-                            @empty
-                                <img src="{{ asset('upload/no_image.jpg') }}" class="img-fluid mb-2" alt=""
-                                    style="width:100%; height: 400px;" />
-                            @endforelse
+                                <ul class="nav" id="myTab1" role="tablist">
+                                    @forelse ($multiImages as $key => $multiImage)
+                                        <li class="nav-item">
+                                            <a class="nav-link {{ $key == 0 ? 'active' : '' }}" id="home-tab5"
+                                                data-toggle="tab" href="#multiImg{{ $multiImage->id }}" role="tab"
+                                                aria-controls="home5" aria-selected="true">
+                                                <img src="{{ asset($multiImage->multi_image) }}" class="img-fluid"
+                                                    alt=""
+                                                    style="width: 100px;height: 100px;margin-bottom: 10px;background-size: cover;object-fit: contain;" />
+                                            </a>
+                                        </li>
+                                    @empty
+                                        <img src="{{ asset('upload/no_image.jpg') }}" class="img-fluid" alt=""
+                                            style="width: 75px;height: 75px; margin-bottom: 10px;" />
+                                    @endforelse
+                                </ul>
+                            </div>
                         </div>
-                        <ul class="nav" id="myTab1" role="tablist">
-                            @forelse ($multiImages as $key => $multiImage)
-                                <li class="nav-item">
-                                    <a class="nav-link {{ $key == 0 ? 'active' : '' }}" id="home-tab5" data-toggle="tab"
-                                        href="#multiImg{{ $multiImage->id }}" role="tab" aria-controls="home5"
-                                        aria-selected="true">
-                                        <img src="{{ asset($multiImage->multi_image) }}" class="img-fluid"
-                                            alt=""
-                                            style="width: 100px;height: 100px;margin-bottom: 10px;background-size: cover;object-fit: contain;" />
-                                    </a>
-                                </li>
-                            @empty
-                                <img src="{{ asset('upload/no_image.jpg') }}" class="img-fluid" alt=""
-                                    style="width: 75px;height: 75px; margin-bottom: 10px;" />
-                            @endforelse
-                        </ul>
                     </div>
                 </div>
-
-                <div class="col-lg-5">
+                <div class="col-lg-8">
                     <div class="row gx-0">
-                        <div class="col-lg-12 col-md-12 order-3 order-lg-2 px-0">
+                        <div class="col-lg-7 col-md-12 order-3 order-lg-2">
                             <div class="pro-content">
                                 <span>{{ optional($product->brand)->brand_name }}</span>
 
@@ -88,29 +91,111 @@
 
                             </div>
                         </div>
+                        <div class="col-lg-5 col-md-6 order-2 order-lg-3">
+                            <div class="cart-wrapper">
+                                <div class="cart-title">
+                                    <h6>
+                                        Availability: <span class="text-danger">Pre Order</span>
+                                    </h6>
+                                </div>
+                                <div class="price mt-15 mb-20 d-flex align-items-center">
+                                    <div class="mr-3 w-50">
+                                        @if ($product->price_status == 'rfq')
+                                            <h5 class="text-danger mb-0">
+                                                <span id="productPrice"
+                                                    style="color: #CD3301; font-weight: bold; margin-bottom: 0;">$
+                                                    {{ $product->sas_price }}</span>
+                                            </h5>
+                                        @elseif ($product->price_status == 'offer_price')
+                                            <p class="mb-0"><del>$ <span
+                                                        id="originalPrice">{{ $product->price }}</span></del>
+                                            </p>
+                                            <h5 class="text-danger mb-0">
+                                                <span id="productPrice"
+                                                    style="color: #CD3301; font-weight: bold; margin-bottom: 0;">{{ $product->discount_price }}</span>
+                                            </h5>
+                                        @elseif ($product->price_status == 'price')
+                                            <h5 class="text-danger mb-0">
+                                                <span id="productPrice"
+                                                    style="color: #CD3301; font-weight: bold; margin-bottom: 0;">
+                                                    {{ $product->price }}</span>
+                                            </h5>
+                                        @endif
+
+                                    </div>
+                                    <form action="" class="mb-0">
+                                        <div class="field">
+                                            <label class="mb-0">Quantity:</label>
+                                            <div class="number d-flex align-items-center main_qty">
+                                                <p class="minus mb-0 px-2">-</p>
+                                                <input type="text" class="mb-0 w-50 qty-input-product" name=""
+                                                    value="1" min="1" autocomplete="off" id="dqty">
+                                                <p class="plus mb-0 px-2">+</p>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="mb-4">
+                                    <p class="mb-0">Accessories</p>
+                                    <div>
+                                        {{-- <ul style="list-style-type: circle !important;">
+                                            <li class="d-flex mb-2 align-items-center">
+                                                <span class="pr-2">1.</span>
+                                                <input type="text" class="form-control form-control-sm w-100 mr-2"
+                                                    name="" id="" placeholder="Blue Color Headset" />
+                                                <input type="number" class="form-control form-control-sm w-25"
+                                                    name="" id="" placeholder="1" />
+                                            </li>
+                                        </ul>
+                                        <li class="d-flex mb-2 align-items-center">
+                                            <span class="pr-2">2.</span>
+                                            <input type="text" class="form-control form-control-sm w-100 mr-2"
+                                                name="" id="" placeholder="Blue Color Headset" />
+                                            <input type="number" class="form-control form-control-sm w-25"
+                                                name="" id="" placeholder="1" />
+                                        </li> --}}
+                                        <div id="miniCartRelated">
+                                        </div>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    {{-- <a href="#" class="cart-button w-100 mt-0" onclick="addToCartOne()">Add Cart</a>
+                                    <a href="#" class="cart-button w-100 ml-3 mt-0">Booking</a> --}}
+                                    <a onclick="addToCartOne()" class="cart-button w-100">Add Cart</a>
+
+                                    <a class="cart-button w-100 ml-3 mt-0">Booking</a>
+                                </div>
+                                <div class="last pt-15 align-items-center d-flex justify-content-center">
+                                    <a style="cursor: pointer;" data-product_id="{{ $product->id }}"
+                                        class="ml-2 mr-2 f-700 grenadier-color add_to_wishlist">Add To Wishlist</a>
+
+                                    <a style="cursor: pointer;" type="submit" data-product_id="{{ $product->id }}"
+                                        class="ml-2  f-700 grenadier-color add_to_compare">Compare</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="row align-items-center">
                             <div class="col-xl-12 col-sm-12">
-                                <div class="product-section2 mt-20">
+                                <div class="product-section2 mt-40">
                                     <h6 class="product--section__title2 pb-30" id="releted-tab" data-toggle="tab"
                                         href="#releted" role="tab" aria-controls="releted" aria-selected="true">
-                                        <span>Related </span> Accessories Of This Product
+                                        <span>Releted </span> Accessories Of This Product
                                     </h6>
                                 </div>
                             </div>
                         </div>
-                        {{-- Child Product  --}}
                         <div class="col-lg-12 px-0">
                             <div class="releted_accessories">
-
-
                                 @forelse ($relativeChild as $childproduct)
                                     @if (!empty($childproduct->product_image))
                                         <div class="card border-0 shadow-sm releted-accessories-items mx-2">
-                                            <div class="card-header p-0 border-0">
-                                                <img src="{{ asset($childproduct->product_image) }}" class="img-fluid"
-                                                    style="width: 100%; height: 140px;" alt="" />
+                                            <div class="card-header p-0 border-0 bg-white">
+                                                <img src="{{ asset($childproduct->product_image) }}"
+                                                    class="img-fluid accesories-img" style="width: 100%; height: 140px;"
+                                                    alt="" />
                                             </div>
                                             <div class="card-body p-0">
                                                 <div class="container">
@@ -183,127 +268,7 @@
 
                             </div>
                         </div>
-                        {{-- Child Product  --}}
-
                     </div>
-                </div>
-
-                <div class="col-lg-3" style="border: 0px solid #f5f5f5;box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 2px;">
-                    <div class="cart-wrapper">
-                        <div class="mb-20 d-flex justify-content-between align-items-center">
-
-                        </div>
-
-                        <div class="mb-4">
-
-                            <div class="mb-0 fw-bolder text-black d-flex justify-content-between align-items-center"
-                                style="border-bottom: 1px solid #ccc;">
-                                <p style="color: black;" class="fw-bold mb-0">Availability</p>
-                                {{-- <p class="fw-bold text-success mb-0">In Stock</p> --}}
-                            </div>
-                            <div class="price mt-15 mb-20">
-
-                                <div class="row align-items-center">
-
-                                    <div class="col-lg-6">
-
-
-                                        @if ($product->price_status == 'rfq')
-                                            <h5 class=" mb-0 fw-bold">
-                                                <span id="productPrice"
-                                                    style="color: #CD3301; font-weight: bold; margin-bottom: 0;">$
-                                                    {{ $product->sas_price }}</span>
-                                            </h5>
-                                        @elseif ($product->price_status == 'offer_price')
-                                            <p class="mb-0"><del>$ <span
-                                                        id="originalPrice">{{ $product->price }}</span></del>
-                                            </p>
-                                            <h5 class=" mb-0 fw-bold">
-                                                <span id="productPrice"
-                                                    style="color: #CD3301; font-weight: bold; margin-bottom: 0;">{{ $product->discount_price }}</span>
-                                            </h5>
-                                        @elseif ($product->price_status == 'price')
-                                            <h5 class=" mb-0 fw-bold">
-                                                <span id="productPrice"
-                                                    style="color: #CD3301; font-weight: bold; margin-bottom: 0;">
-                                                    {{ $product->price }}</span>
-                                            </h5>
-                                        @endif
-
-                                    </div>
-
-                                    <div class="col-lg-6">
-                                        <form action="" class="mb-0">
-                                            <div class="field">
-
-                                                <label class="mb-0">Quantity:</label>
-
-                                                <div class="number d-flex align-items-center main_qty">
-                                                    <p class="minus mb-0 px-2">-</p>
-
-                                                    <input type="text" class="mb-0 w-50 qty-input-product"
-                                                        name="" value="1" min="1"
-                                                        autocomplete="off" id="dqty">
-
-                                                    <p class="plus mb-0 px-2">+</p>
-                                                </div>
-
-                                            </div>
-                                        </form>
-                                    </div>
-
-                                </div>
-
-                                {{-- ======================== --}}
-                                <div class="py-4 align-items-center d-flex justify-content-center">
-
-                                    <a style="cursor: pointer" onclick="addToCartOne()"
-                                        class="mr-2 mt-0 add-link f-700 grenadier-color">+Cart</a>|
-
-                                    <a style="cursor: pointer;" data-product_id="{{ $product->id }}"
-                                        class="ml-2 mr-2 f-700 grenadier-color add_to_wishlist">Add To Wishlist</a>|
-
-                                    <a style="cursor: pointer;" type="submit" data-product_id="{{ $product->id }}"
-                                        class="ml-2  f-700 grenadier-color add_to_compare">Compare</a>
-                                </div>
-                                {{-- ++++====================== --}}
-
-
-                            </div>
-
-                            <hr class="m-0">
-
-                            <div class="">
-
-
-                                {{-- <p class="mb-0 mb-3">Accessories</p> --}}
-
-                                <div id="miniCartRelated">
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="cartButtons" class="d-flex align-items-center justify-content-between mt-5">
-
-                        <input type="hidden" id="oneproduct_id" value="{{ $product->id }}">
-
-                        {{-- <a type="submit" style="cursor: pointer" onclick="addToCartOne()"
-                            class="mt-0 add-link f-700 grenadier-color checkout main-btn text-center w-50 mr-1">+ Add
-                            Cart</a> --}}
-
-                        {{-- <a href="{{ route('template.one.view.cart') }}"
-                            class="ml-3 mt-0 add-link f-700 grenadier-color checkout main-btn text-center  w-100 ml-1">View
-                            Cart
-                        </a> --}}
-
-                        {{-- <a type="submit" style="cursor: pointer" onclick="buyToCartOne()"
-                            class="ml-3 mt-0 add-link f-700 grenadier-color checkout main-btn text-center w-50 ml-1">+ Buy
-                            Now</a> --}}
-
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -317,27 +282,18 @@
                 <div class="col-sm-12">
                     <div class="desc-wrapper">
                         <ul class="nav custom-tabs" id="myTab" role="tablist">
-
-
-
                             <li class="nav-item">
                                 <a class="nav-link active" id="profile-tab11" data-toggle="tab" href="#profile11"
                                     role="tab" aria-controls="profile11" aria-selected="false">Overview
                                 </a>
                             </li>
-
                             <li class="nav-item">
                                 <a class="nav-link" id="contact-tab11" data-toggle="tab" href="#product-blogs"
                                     role="tab" aria-controls="product-blogs"
                                     aria-selected="false">Specification</a>
                             </li>
-
                         </ul>
-
                         <div class="tab-content" id="myTabContent1">
-
-
-
                             <div class="tab-pane fade show active" id="profile11" role="tabpanel"
                                 aria-labelledby="profile-tab11">
                                 <div class="desc-content mt-60">
@@ -351,7 +307,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="tab-pane fade" id="product-blogs" role="tabpanel"
                                 aria-labelledby="contact-tab11">
                                 <div class="desc-content mt-60">
@@ -362,7 +317,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>

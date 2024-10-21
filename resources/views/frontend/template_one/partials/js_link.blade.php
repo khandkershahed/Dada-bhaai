@@ -1,5 +1,3 @@
-
-
 <script src="{{ asset('frontend/template_one/assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>
 
 <script src="{{ asset('frontend/template_one/assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
@@ -58,19 +56,17 @@
         }
     })
 </script>
-
-{{-- Releted Accesories --}}
-
-
 <script>
     $(document).ready(function() {
         $(".releted_accessories").slick({
-            slidesToShow: 3,
+            slidesToShow: 4,
             slidesToScroll: 1,
             autoplay: true,
             autoplaySpeed: 6000,
-            arrows: false, // Hide next and previous buttons
-            spacing: 50, // Add a gap of 20px between slides
+            arrows: true,
+            spacing: 50,
+            draggable: true, // Enable dragging
+            infinite: true, // Enable infinite loop
             // Add more settings/options as needed
         });
     });
@@ -1109,40 +1105,22 @@
 
 
                         `
+<ul style="list-style-type: circle !important;">
+                          <li class="d-flex mb-2 align-items-center">
+                            <span class="pr-2">${serialNumber++}.</span>
+                            <input type="text" class="form-control form-control-sm accesories-title" placeholder="${value.name.length > 16 ? value.name.substring(0, 16) + '' : value.name}">
+                            <input type="text" class="form-control form-control-sm accesories-qty" placeholder="x ${value.qty}">
+                            <input type="number" class="form-control form-control-sm accesories-amount" placeholder="$ ${value.price * value.qty}">
+                            <div class="accesories-remove">
+                                <a type="submit" style="cursor:pointer" class="" id="${value.rowId}" onclick="miniCartRelatedRemove(this.id)">
 
-                        <ul style="list-style-type: circle !important;">
+                                   <i class="fa-solid fa-trash text-danger"></i>
 
-
-
-                            <li class="d-flex mb-2 align-items-center ml-0 row text-center">
-
-                                <div class="col-lg-1 px-0"><span>${serialNumber++}.</span></div>
-
-                                <div class="col-lg-5 px-0">
-                                    <span class="" title="${value.name}">${value.name.length > 16 ? value.name.substring(0, 16) + '' : value.name}</span>
-                                </div>
-
-                                <div class="col-lg-1 px-0">
-                                    <span class="">x ${value.qty}</span>
-
-                                </div>
-
-                                <div class="col-lg-3 px-0">
-                                    <span class="">$ ${value.price * value.qty}</span>
-                                </div>
-
-                                <div class="col-lg-2 px-0">
-
-                                    <a type="submit" style="cursor:pointer" class="" id="${value.rowId}" onclick="miniCartRelatedRemove(this.id)">
-
-                                    <i class="fa-solid fa-trash text-danger"></i>
-
-                                    </a>
-                                </div>
-
-                            </li>
-
-                        </ul>`
+                                  </a>
+                        </div>
+                          </li>
+                        </ul>
+                        `
 
 
 

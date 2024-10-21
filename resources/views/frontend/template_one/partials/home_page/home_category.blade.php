@@ -5,14 +5,13 @@
 <div class="top__featured--area pt-80 pb-80">
     <div class="container">
         <div class="row">
-            <div class="col-xl-2">
+            <div class="col-xl-2 slider-category">
                 <div class="top__featured--title">
                     <span class="dusty__gray-color text-uppercase">Top Featured</span>
                     <h3 class="pure__black-color mb-120">
                         <span class="f-300">Discover Top</span>
                         <span class="f-800">Categories</span>
                     </h3>
-                    {{-- <a class="grenadier-color" href="{{ route('home.all.category.page') }}">View All Category</a> --}}
                 </div>
             </div>
             <div class="col-xl-10">

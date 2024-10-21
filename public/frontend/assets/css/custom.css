@@ -36,19 +36,19 @@
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     position: relative;
-    font-family: montserrat,sans-serif 
+    font-family: montserrat,sans-serif
 }
 .form-v10-content .form-detail {
     position: relative;
     width: 100%;
     display: flex;
-    display: -webkit-flex 
+    display: -webkit-flex
 }
 .form-v10-content .form-detail h2 {
     font-weight: 500;
     font-size: 25px;
     margin-bottom: 34px;
-    padding: 33px 50px 0 60px 
+    padding: 33px 50px 0 60px
 }
 .form-v10-content .form-detail .form-left {
     border-top-left-radius: 10px;
@@ -63,45 +63,45 @@
     width: 100%;
     background: #ef4416;
     border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px 
+    border-bottom-right-radius: 10px
         height: 46.5rem;
 }
 .form-v10-content .form-detail .form-right h2 {
-    color: #fff 
+    color: #fff
 }
 .form-v10-content .form-detail .form-group {
     display: flex;
-    display: -webkit-flex 
+    display: -webkit-flex
 }
 .form-v10-content .form-detail .form-row {
     position: relative;
     margin-bottom: 24px;
     padding-left: 60px;
-    padding-right: 50px 
+    padding-right: 50px
 }
 .form-v10-content .form-detail .form-left .form-group .form-row.form-row-1 {
     width: 50%;
-    padding: 0 12px 0 60px 
+    padding: 0 12px 0 60px
 }
 .form-v10-content .form-detail .form-left .form-group .form-row.form-row-2 {
     width: 50%;
-    padding: 0 50px 0 12px 
+    padding: 0 50px 0 12px
 }
 .form-v10-content .form-detail .form-left .form-group .form-row.form-row-3 {
     width: 73%;
-    padding: 0 12px 0 60px 
+    padding: 0 12px 0 60px
 }
 .form-v10-content .form-detail .form-left .form-group .form-row.form-row-4 {
     width: 50%;
-    padding: 0 50px 0 12px 
+    padding: 0 50px 0 12px
 }
 .form-v10-content .form-detail .form-right .form-group .form-row.form-row-1 {
     width: 50%;
-    padding: 0 12px 0 60px 
+    padding: 0 12px 0 60px
 }
 .form-v10-content .form-detail .form-right .form-group .form-row.form-row-2 {
     width: 100%;
-    padding: 0 50px 0 12px 
+    padding: 0 50px 0 12px
 }
 .form-v10-content .form-detail select,.form-v10-content .form-detail input {
     width: 100%;
@@ -124,62 +124,62 @@
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -o-box-sizing: border-box;
-    -ms-box-sizing: border-box 
+    -ms-box-sizing: border-box
 }
 .form-v10-content .form-detail select {
     background: 0 0;
     position: relative;
     z-index: 9;
-    cursor: pointer 
+    cursor: pointer
 }
 .form-v10-content .form-detail .form-left select {
-    color: #666 
+    color: #666
 }
 .form-v10-content .form-detail .form-right select {
-    color: #f2f2f2 
+    color: #f2f2f2
 }
 .form-v10-content .form-detail .select-btn {
     z-index: 0;
     position: absolute;
     top: 30%;
     right: 11.5%;
-    font-size: 18px 
+    font-size: 18px
 }
 .form-v10-content .form-detail .form-left .select-btn {
-    color: #666 
+    color: #666
 }
 .form-v10-content .form-detail .form-right .select-btn {
-    color: #f2f2f2 
+    color: #f2f2f2
 }
 .form-v10-content .form-detail .form-group .form-row.form-row-4 .select-btn {
     top: 20%;
-    right: 26% 
+    right: 26%
 }
 .form-v10-content .form-detail .form-right .form-group .form-row.form-row-2 .select-btn {
     top: 20%;
-    right: 19% 
+    right: 19%
 }
 .form-v10-content .form-detail .form-left input {
-    color: #000 
+    color: #000
 }
 .form-v10-content .form-detail .form-right input {
-    color: #fff 
+    color: #fff
 }
 .form-v10-content .form-detail .form-left input,.form-v10-content .form-detail .form-left select {
-    border-bottom: 1px solid #ccc 
+    border-bottom: 1px solid #ccc
 }
 .form-v10-content .form-detail .form-left input:focus,.form-v10-content .form-detail .form-left select:focus {
-    border-bottom: 1px solid #999 
+    border-bottom: 1px solid #999
 }
 .form-v10-content .form-detail .form-right input,.form-v10-content .form-detail .form-right select {
     border-bottom: 1px solid;
-    border-bottom-color: rgba(255,255,255,.3) 
+    border-bottom-color: rgba(255,255,255,.3)
 }
 .form-v10-content .form-detail .form-right input:focus,.form-v10-content .form-detail .form-right select:focus {
-    border-bottom: 1px solid #ccc 
+    border-bottom: 1px solid #ccc
 }
 .form-v10-content .form-detail .form-right select option {
-    background: #4835d4 
+    background: #4835d4
 }
 .form-v10-content .form-detail .form-checkbox {
     margin-top: 5.5rem;
@@ -188,7 +188,7 @@
 }
 .form-v10-content .form-detail .form-checkbox input {
     position: absolute;
-    opacity: 0 
+    opacity: 0
 }
 .form-v10-content .form-detail .form-checkbox .checkmark {
     position: absolute;
@@ -215,30 +215,30 @@
     -o-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     transform: rotate(45deg);
-    display: none 
+    display: none
 }
 .form-v10-content .form-detail .form-checkbox input:checked~.checkmark::after {
-    display: block 
+    display: block
 }
 .form-v10-content .form-detail .form-checkbox p {
     margin-left: 34px;
     color: white;
     font-size: 14px;
-    font-weight: 400 
+    font-weight: 400
 }
 .form-v10-content .form-detail .form-checkbox .text {
     font-weight: 400;
     color: #000;
-    text-decoration: underline 
+    text-decoration: underline
 }
 .form-v10-content .form-detail .form-right .form-row-last {
-    margin: 44px 0 10px 
+    margin: 44px 0 10px
 }
 /* CSS */
 .register_button_area{
     margin-top: 6rem !important;
     margin-bottom: 6rem !important;
-    width: 25% 
+    width: 25%
 }
 .register_button{
     background-color: #ef4416;
@@ -272,39 +272,39 @@
     opacity: .75;
 }
 .form-v10-content .form-detail .form-right .form-row-last input {
-    padding: 12.5px 
+    padding: 12.5px
 }
 .form-v10-content .form-detail .form-left input::-webkit-input-placeholder {
     color: #666;
-    font-size: 16px 
+    font-size: 16px
 }
 .form-v10-content .form-detail .form-left input::-moz-placeholder {
     color: #666;
-    font-size: 16px 
+    font-size: 16px
 }
 .form-v10-content .form-detail .form-left input:-ms-input-placeholder {
     color: #666;
-    font-size: 16px 
+    font-size: 16px
 }
 .form-v10-content .form-detail .form-left input:-moz-placeholder {
     color: #666;
-    font-size: 16px 
+    font-size: 16px
 }
 .form-v10-content .form-detail .form-right input::-webkit-input-placeholder {
     color: #f2f2f2;
-    font-size: 16px 
+    font-size: 16px
 }
 .form-v10-content .form-detail .form-right input::-moz-placeholder {
     color: #f2f2f2;
-    font-size: 16px 
+    font-size: 16px
 }
 .form-v10-content .form-detail .form-right input:-ms-input-placeholder {
     color: #f2f2f2;
-    font-size: 16px 
+    font-size: 16px
 }
 .form-v10-content .form-detail .form-right input:-moz-placeholder {
     color: #f2f2f2;
-    font-size: 16px 
+    font-size: 16px
 }
 .gx-0{
     padding-right: 0px;
@@ -321,7 +321,7 @@
     padding-left: 0px;
 }
 .ps-0{
-   padding-left: 0rem; 
+   padding-left: 0rem;
 }
 .ps-1{
     padding-right: 24px;
@@ -463,7 +463,7 @@
 }
 @media screen and (max-width: 1199px) {
     .form-v10-content {
-        margin:95px 20px 
+        margin:95px 20px
    }
 }
 @media screen and (max-width: 991px) and (min-width:768px) {
@@ -472,14 +472,14 @@
         -o-flex-direction: column;
         -ms-flex-direction: column;
         -moz-flex-direction: column;
-        -webkit-flex-direction: column 
+        -webkit-flex-direction: column
    }
     .form-v10-content .form-detail .form-left .form-group .form-row.form-row-1,.form-v10-content .form-detail .form-left .form-group .form-row.form-row-2,.form-v10-content .form-detail .form-left .form-group .form-row.form-row-3,.form-v10-content .form-detail .form-left .form-group .form-row.form-row-4,.form-v10-content .form-detail .form-right .form-group .form-row.form-row-1,.form-v10-content .form-detail .form-right .form-group .form-row.form-row-2 {
         width: auto;
-        padding: 0 50px 0 60px 
+        padding: 0 50px 0 60px
    }
     .form-v10-content .form-detail .select-btn,.form-v10-content .form-detail .form-left .form-group .form-row.form-row-4 .select-btn,.form-v10-content .form-detail .form-right .form-group .form-row.form-row-2 .select-btn {
-        right: 15% 
+        right: 15%
    }
 }
 @media screen and (max-width: 767px) {
@@ -488,14 +488,14 @@
         -o-flex-direction: column;
         -ms-flex-direction: column;
         -moz-flex-direction: column;
-        -webkit-flex-direction: column 
+        -webkit-flex-direction: column
    }
     .form-v10-content .form-detail .form-right {
         border-top-right-radius: 0;
         border-bottom-left-radius: 10px ;
             }
     .form-v10-content .form-detail .form-left {
-        padding-bottom: 50px 
+        padding-bottom: 50px
    }
 }
 @media screen and (max-width: 575px) {
@@ -504,28 +504,28 @@
         -o-flex-direction: column;
         -ms-flex-direction: column;
         -moz-flex-direction: column;
-        -webkit-flex-direction: column 
+        -webkit-flex-direction: column
    }
     .form-v10-content .form-detail .form-row,.form-v10-content .form-detail .form-left .form-group .form-row.form-row-1,.form-v10-content .form-detail .form-left .form-group .form-row.form-row-2,.form-v10-content .form-detail .form-left .form-group .form-row.form-row-3,.form-v10-content .form-detail .form-left .form-group .form-row.form-row-4,.form-v10-content .form-detail .form-right .form-group .form-row.form-row-1,.form-v10-content .form-detail .form-right .form-group .form-row.form-row-2 {
         width: auto;
-        padding: 0 30px 
+        padding: 0 30px
    }
     .form-v10-content .form-detail .select-btn,.form-v10-content .form-detail .form-left .form-group .form-row.form-row-4 .select-btn,.form-v10-content .form-detail .form-right .form-group .form-row.form-row-2 .select-btn {
-        right: 15% 
+        right: 15%
    }
     .form-v10-content .form-detail h2 {
-        padding: 33px 30px 0 
+        padding: 33px 30px 0
    }
     .form-v10-content .form-detail .form-checkbox {
-        padding: 0 30px 
+        padding: 0 30px
    }
     .form-v10-content .form-detail .form-checkbox .checkmark {
-        left: 30px 
+        left: 30px
    }
     .form-v10-content .form-detail .form-right .form-row-last {
         padding-left: 0;
         text-align: center;
-        margin: 44px 0 30px 
+        margin: 44px 0 30px
    }
 }
 
@@ -577,7 +577,7 @@ h2.company-tab-title {
     display: flex;
     justify-content: center;
   }
-  
+
 .map-container {
 padding: 3.2rem 0.8rem;
 position: relative;

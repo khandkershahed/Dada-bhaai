@@ -12,7 +12,7 @@
                     <div class="all__product--menu mb-30">
 
                         <nav>
-                            <hr class="m-0 p-0" style="margin-bottom: -25px !important" />
+                            {{-- <hr class="m-0 p-0" style="margin-bottom: -25px !important" /> --}}
                             <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
 
                                 <a class="nav-item nav-link btn orange-bg-btn pure__black-color active"
@@ -39,7 +39,7 @@
         </div>
     </div>
 
-    <div class="all__product--body">
+    <div class="all__product--body pb-20">
         <div class="container">
 
             <div class="row">
