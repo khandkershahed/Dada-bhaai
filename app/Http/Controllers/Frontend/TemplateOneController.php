@@ -334,19 +334,7 @@ class TemplateOneController extends Controller
 
     }
 
-    // //Advance Search
-    // public function SearchProduct(Request $request)
-    // {
-
-    //     $request->validate(['search' => "required"]);
-
-    //     $item = $request->search;
-
-    //     $products = Product::where('product_name', 'LIKE', "%$item%")->select('product_name', 'product_slug', 'product_image', 'id')->limit(8)->get();
-
-    //     return view('frontend.template_one.search.advanced_search', compact('products'));
-
-    // }
+    
 
     //Template One Faq
     public function TemplateOneFaq()

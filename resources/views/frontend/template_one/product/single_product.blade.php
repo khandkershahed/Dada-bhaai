@@ -159,13 +159,25 @@
                                         </ul>
                                     </div>
                                 </div>
+
                                 <div class="d-flex align-items-center">
+
                                     {{-- <a href="#" class="cart-button w-100 mt-0" onclick="addToCartOne()">Add Cart</a>
                                     <a href="#" class="cart-button w-100 ml-3 mt-0">Booking</a> --}}
-                                    <a onclick="addToCartOne()" class="cart-button w-100">Add Cart</a>
+
+                                    <input type="hidden" id="oneproduct_id" value="{{ $product->id }}">
+
+                                    <a onclick="buyToCartOne()" class="cart-button w-100">Add Cart</a>
 
                                     <a class="cart-button w-100 ml-3 mt-0">Booking</a>
+
+                                    {{-- <a type="submit" style="cursor: pointer" onclick="buyToCartOne()"
+                                        class="ml-3 mt-0 add-link f-700 grenadier-color checkout main-btn text-center w-50 ml-1">+
+                                        Buy
+                                        Now</a> --}}
+
                                 </div>
+
                                 <div class="last pt-15 align-items-center d-flex justify-content-center">
                                     <a style="cursor: pointer;" data-product_id="{{ $product->id }}"
                                         class="ml-2 mr-2 f-700 grenadier-color add_to_wishlist">Add To Wishlist</a>
@@ -194,8 +206,8 @@
                                         <div class="card border-0 shadow-sm releted-accessories-items mx-2">
                                             <div class="card-header p-0 border-0 bg-white">
                                                 <img src="{{ asset($childproduct->product_image) }}"
-                                                    class="img-fluid accesories-img" style="width: 100%; height: 140px;"
-                                                    alt="" />
+                                                    class="img-fluid accesories-img"
+                                                    style="width: 100%; height: 140px;" alt="" />
                                             </div>
                                             <div class="card-body p-0">
                                                 <div class="container">

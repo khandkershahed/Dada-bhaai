@@ -18,7 +18,7 @@
                 <div class="col-lg-9 col-sm-6">
                     <div class="product-section mb-20">
                         <h6 class="product--section__title f-800 white-color grenadier-bg">
-                            Lastest Offer
+                            Offer
                         </h6>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 @php
-    $categorys = App\Models\Admin\Category::where('status', '1')->latest()->get();
+    $products = App\Models\Admin\Product::where('status', 1)->latest()->get();
 @endphp
 
 <div class="top__featured--area pt-80 pb-80">
@@ -16,25 +16,41 @@
             </div>
             <div class="col-xl-10">
                 <div class="categories-active row position-relative">
+                    @if (count($products) > 0)
+                        @foreach ($products->groupBy('category_id') as $categoryId => $categoryProducts)
+                            @php
+                                // Fetch the category by category_id
+                                $category = App\Models\Admin\Category::find($categoryId);
+                            @endphp
 
-                    @if (count($categorys) > 0)
-                        @foreach ($categorys as $category)
-                            <div class="single-categories col-sm-12">
-                                <div class="categories-box position-relative">
-                                    <div class="categories-thumb">
-                                        <a
-                                            href="{{ url('product/category/' . $category->id . '/' . $category->category_slug) }}"><img
-                                                class="img" src="{{ asset('storage/category/' . $category->icon) }}"
-                                                style="width: 255px; height: 255px;" alt="" /></a>
-                                        <h6 class="f-800 pure__black-color cate-title">
-                                            <a href="{{ url('product/category/' . $category->id . '/' . $category->category_slug) }}">{{ $category->category_name }}</a>
-                                        </h6>
+                            @if ($category)
+                                <div class="single-categories col-sm-12">
+                                    <div class="categories-box position-relative">
+                                        <div class="categories-thumb">
+                                            <a
+                                                href="{{ url('product/category/' . $category->id . '/' . $category->category_slug) }}">
+                                                <img class="img"
+                                                    src="{{ asset('storage/category/' . $category->icon) }}"
+                                                    style="width: 255px; height: 255px;" alt="" />
+                                            </a>
+                                            <h6 class="f-800 pure__black-color cate-title">
+                                                <a
+                                                    href="{{ url('product/category/' . $category->id . '/' . $category->category_slug) }}">
+                                                    {{ $category->category_name }}
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div class="category-products">
+                                            @foreach ($categoryProducts as $product)
+                                                <p>{{ $product->name }}</p>
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endif
                         @endforeach
                     @else
-                        <p class="text-center text-danger">No Category Avaiable</p>
+                        <p class="text-center text-danger">No Category Available</p>
                     @endif
                 </div>
             </div>

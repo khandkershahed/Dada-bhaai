@@ -692,7 +692,7 @@
                         title: data.success,
                     })
 
-                    window.location.href = '/cart-checkout';
+                    window.location.href = '/view-cart';
 
                 } else {
 
