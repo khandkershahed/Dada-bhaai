@@ -78,7 +78,7 @@
                                                 </h3>
                                             </div>
 
-                                            {{-- <div class="price font-weight-bold pr-2">
+                                            <div class="price font-weight-bold pr-2">
                                                 @if ($cat_product->price_status == 'rfq')
                                                     <h6 class="grenadier-color mb-0 font-weight-bold">
                                                         ${{ $cat_product->sas_price }}</h6>
@@ -90,26 +90,8 @@
                                                     <h6 class="grenadier-color mb-0 font-weight-bold">
                                                         ${{ $cat_product->price }}</h6>
                                                 @endif
-                                            </div> --}}
-
-                                            <div class="price font-weight-bold pr-2">
-                                                @if ($cat_product->price_status == 'rfq' && $cat_product->sas_price)
-                                                    <h6 class="grenadier-color mb-0 font-weight-bold">
-                                                        ${{ $cat_product->sas_price }}
-                                                    </h6>
-                                                @elseif ($cat_product->price_status == 'offer_price' && $cat_product->discount_price)
-                                                    <del>${{ $cat_product->price }}</del>
-                                                    <h6 class="grenadier-color mb-0 font-weight-bold">
-                                                        ${{ $cat_product->discount_price }}
-                                                    </h6>
-                                                @elseif ($cat_product->price_status == 'price' && $cat_product->price)
-                                                    <h6 class="grenadier-color mb-0 font-weight-bold">
-                                                        ${{ $cat_product->price }}
-                                                    </h6>
-                                                @endif
                                             </div>
                                             
-
                                         </div>
                                         <div>
                                             <a type="submit" style="cursor:pointer;"
@@ -157,8 +139,7 @@
                                                             href="{{ url('product' . '/' . $cat_product->id . '/' . $cat_product->product_slug) }}">{{ substr($cat_product->product_name, 0, 25) }}</a>
                                                     </h3>
                                                 </div>
-
-                                                {{-- <div class="price font-weight-bold pr-2">
+                                                <div class="price font-weight-bold pr-2">
                                                     @if ($cat_product->price_status == 'rfq')
                                                         <h6 class="grenadier-color mb-0 font-weight-bold">
                                                             ${{ $cat_product->sas_price }}</h6>
@@ -170,26 +151,7 @@
                                                         <h6 class="grenadier-color mb-0 font-weight-bold">
                                                             ${{ $cat_product->price }}</h6>
                                                     @endif
-                                                </div> --}}
-
-                                                <div class="price font-weight-bold pr-2">
-                                                    @if ($cat_product->price_status == 'rfq' && $cat_product->sas_price)
-                                                        <h6 class="grenadier-color mb-0 font-weight-bold">
-                                                            ${{ $cat_product->sas_price }}
-                                                        </h6>
-                                                    @elseif ($cat_product->price_status == 'offer_price' && $cat_product->discount_price)
-                                                        <del>${{ $cat_product->price }}</del>
-                                                        <h6 class="grenadier-color mb-0 font-weight-bold">
-                                                            ${{ $cat_product->discount_price }}
-                                                        </h6>
-                                                    @elseif ($cat_product->price_status == 'price' && $cat_product->price)
-                                                        <h6 class="grenadier-color mb-0 font-weight-bold">
-                                                            ${{ $cat_product->price }}
-                                                        </h6>
-                                                    @endif
                                                 </div>
-                                                
-
                                             </div>
                                             <div>
                                                 <a type="submit" style="cursor:pointer;"
