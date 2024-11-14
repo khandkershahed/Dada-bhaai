@@ -104,7 +104,7 @@
                                                         </h6>
                                                     @else
                                                         <!-- Optional: Show a default message if no price is available -->
-                                                        <h6 class="grenadier-color mb-0 font-weight-bold">Price Unavailable</h6>
+                                                        <h6 class="grenadier-color mb-0 font-weight-bold"></h6>
                                                     @endif
                                                 </div>
                                                 
@@ -185,7 +185,7 @@
                                                         </h6>
                                                     @else
                                                         <!-- Optional: Display something else if all prices are null -->
-                                                        <h6 class="grenadier-color mb-0 font-weight-bold">Price Unavailable</h6>
+                                                        <h6 class="grenadier-color mb-0 font-weight-bold"></h6>
                                                     @endif
                                                 </div>
                                                 
