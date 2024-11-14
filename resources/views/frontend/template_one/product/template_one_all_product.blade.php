@@ -348,7 +348,8 @@
                                                     href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ substr($product->product_name, 0, 25) }}</a>
                                             </h3>
                                         </div>
-                                        <div class="price font-weight-bold pr-2">
+
+                                        {{-- <div class="price font-weight-bold pr-2">
                                             @if ($product->price_status == 'rfq')
                                                 <h6 class="grenadier-color mb-0 font-weight-bold">
                                                     $ {{ $product->sas_price }}
@@ -363,7 +364,29 @@
                                                     $ {{ $product->price }}
                                                 </h6>
                                             @endif
+                                        </div> --}}
+
+                                        <div class="price font-weight-bold pr-2">
+                                            @if ($product->price_status == 'rfq' && !is_null($product->sas_price))
+                                                <h6 class="grenadier-color mb-0 font-weight-bold">
+                                                    ${{ $product->sas_price }}
+                                                </h6>
+                                            @elseif ($product->price_status == 'offer_price' && !is_null($product->price) && !is_null($product->discount_price))
+                                                <del>$ {{ $product->price }}</del>
+                                                <h6 class="grenadier-color mb-0 font-weight-bold">
+                                                    ${{ $product->discount_price }}
+                                                </h6>
+                                            @elseif ($product->price_status == 'price' && !is_null($product->price))
+                                                <h6 class="grenadier-color mb-0 font-weight-bold">
+                                                    ${{ $product->price }}
+                                                </h6>
+                                            @else
+                                                <!-- Optional: Fallback message when price is unavailable -->
+                                                <h6 class="grenadier-color mb-0 font-weight-bold"></h6>
+                                            @endif
                                         </div>
+                                        
+                                        
                                     </div>
                                     <div>
                                         <a type="submit" style="cursor:pointer;"
