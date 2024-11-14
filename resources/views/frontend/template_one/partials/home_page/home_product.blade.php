@@ -15,11 +15,11 @@
                             {{-- <hr class="m-0 p-0" style="margin-bottom: -25px !important" /> --}}
                             <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
 
-                                <a class="nav-item nav-link btn orange-bg-btn pure__black-color active"
-                                    data-toggle="tab" href="#categorys" role="tab" aria-controls="nav-home"
+                                <a class="nav-item nav-link btn orange-bg-btn pure__black-color active" data-toggle="tab"
+                                    href="#categorys" role="tab" aria-controls="nav-home"
                                     aria-selected="true">All</a>
 
-                                @forelse ($categorys as $key=>$category)
+                                {{-- @forelse ($categorys as $key=>$category)
                                     @if (count($category->products) > 0)
                                         <a class="nav-item nav-link btn orange-bg-btn pure__black-color"
                                             data-toggle="tab" href="#categorys{{ $category->id }}" role="tab"
@@ -28,7 +28,23 @@
                                     @endif
                                 @empty
                                     <p>No Category Avaiable</p>
-                                @endforelse
+                                @endforelse --}}
+
+                                @foreach ($categorys as $category)
+                                    @if (count($category->products) > 0)
+                                        <a class="nav-item nav-link btn orange-bg-btn pure__black-color"
+                                            data-toggle="tab" href="#categorys{{ $category->id }}" role="tab"
+                                            aria-controls="nav-home"
+                                            aria-selected="true">{{ $category->category_name }}</a>
+
+                                        <div class="tab-pane" id="categorys{{ $category->id }}" role="tabpanel">
+                                            @foreach ($category->products->unique('id') as $product)
+                                                <!-- Ensures uniqueness -->
+                                                <div>{{ $product->name }}</div> <!-- Display product -->
+                                            @endforeach
+                                        </div>
+                                    @endif
+                                @endforeach
 
 
                             </div>

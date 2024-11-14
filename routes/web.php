@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', [IndexController::class, 'Index'])->name('index');
+
 Route::middleware(['auth', 'verified'])->group(function () {
 
     // //User Dashboard
