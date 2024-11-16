@@ -101,9 +101,12 @@
                                     <div class="col-lg-4">
                                         <div class="price text-end">
 
-                                            <h6 class="grenadier-color mb-0 fw-bold">
-                                                $ {{ $product->discount_price }}
+                                            @if ($product->discount_price !== null)
+                                                <h5 class="grenadier-color mb-0 fw-bold">
+                                                    $ {{ $product->discount_price }}
                                                 </h5>
+                                            @endif
+
 
                                         </div>
                                     </div>

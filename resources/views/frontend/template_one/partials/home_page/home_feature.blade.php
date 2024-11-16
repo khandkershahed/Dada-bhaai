@@ -44,14 +44,17 @@
                                     class="image">
 
                                     <img src=" {{ asset($product->product_image) }}"
-                                        data-tip="{{ $product->product_name }}" title="{{ $product->product_name }}" style="width:100%; height: 300px;">
+                                        data-tip="{{ $product->product_name }}" title="{{ $product->product_name }}"
+                                        style="width:100%; height: 300px;">
                                 </a>
 
                                 {{-- <span class="product-discount-label">New</span> --}}
 
                                 <ul class="product-links">
 
-                                    <li><a type="submit" class="add_to_wishlist" style="cursor: pointer;" data-product_id="{{ $product->id }}" data-tip="Wishlist"><i class="far fa-heart"></i></a></li>
+                                    <li><a type="submit" class="add_to_wishlist" style="cursor: pointer;"
+                                            data-product_id="{{ $product->id }}" data-tip="Wishlist"><i
+                                                class="far fa-heart"></i></a></li>
 
                                     <li><a type="submit" style="cursor:pointer;" class="add_to_compare"
                                             data-product_id="{{ $product->id }}" data-tip="Compare"><i
@@ -67,7 +70,8 @@
                                             href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}">{{ substr($product->product_name, 0, 25) }}</a>
                                     </h3>
                                 </div>
-                                <div class="price font-weight-bold pr-2">
+
+                                {{-- <div class="price font-weight-bold pr-2">
                                     @if ($product->price_status == 'rfq')
                                         <h6 class="grenadier-color mb-0 font-weight-bold">
                                             $ {{ $product->sas_price }}
@@ -82,7 +86,27 @@
                                             $ {{ $product->price }}
                                         </h6>
                                     @endif
+                                </div> --}}
+
+                                <div class="price font-weight-bold pr-2">
+                                    @if ($product->sas_price !== null || $product->price !== null || $product->discount_price !== null)
+                                        @if ($product->price_status == 'rfq' && $product->sas_price !== null)
+                                            <h6 class="grenadier-color mb-0 font-weight-bold">
+                                                $ {{ $product->sas_price }}
+                                            </h6>
+                                        @elseif ($product->price_status == 'offer_price' && $product->price !== null && $product->discount_price !== null)
+                                            <del>$ {{ $product->price }}</del>
+                                            <h6 class="grenadier-color mb-0 font-weight-bold">$
+                                                {{ $product->discount_price }}</h6>
+                                        @elseif ($product->price_status == 'price' && $product->price !== null)
+                                            <h6 class="grenadier-color mb-0 font-weight-bold">
+                                                $ {{ $product->price }}
+                                            </h6>
+                                        @endif
+                                    @endif
                                 </div>
+
+
                             </div>
                             <div>
                                 <a type="submit" style="cursor:pointer;" class="add-cart add_to_cart_btn_product"
