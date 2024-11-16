@@ -33,7 +33,7 @@
                                 <th scope="row" class="text-center">{{ $key + 1 }}</th>
                                 <td>{{ $order->invoice_number }}</td>
                                 <td>{{ $order->order_number }}</td>
-                                <td>Tk {{ $order->total_amount }}</td>
+                                <td>$ {{ $order->total_amount }}</td>
                                 <td>{{ $order->order_date }}</td>
                                 <td>{{ $order->payment_method }}</td>
 

@@ -724,7 +724,7 @@ class TemplateOneCartController extends Controller
 
         Cart::destroy();
 
-        toastr()->success('Payment Successfully');
+        toastr()->success('Order Successfully');
 
         return redirect()->route('index');
 

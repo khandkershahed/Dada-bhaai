@@ -165,7 +165,7 @@
 
                                 <tr>
                                     <th class="fw-bold">Total Amount</th>
-                                    <td>Tk {{ $order->total_amount }}</td>
+                                    <td>$ {{ $order->total_amount }}</td>
                                 </tr>
 
                                 <tr>
@@ -212,9 +212,9 @@
                                         style="width: 40px;">
                                 </td>
                                 <td>{{ $item->product->product_name }}</td>
-                                <td>Tk {{ $item->price }}</td>
+                                <td>$ {{ $item->price }}</td>
                                 <td>{{ $item->qty }}</td>
-                                <td>Tk {{ $item->qty * $item->price }}</td>
+                                <td>$ {{ $item->qty * $item->price }}</td>
                             </tr>
                         @endforeach
 

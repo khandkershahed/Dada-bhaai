@@ -291,19 +291,19 @@
                                                                     <td>Coupon Discount :</td>
                                                                     <td class="text-right">$ <b
                                                                             class="drk-gry couponDiscount">0.00</b></td>
-                                                                </tr> --}}
+                                                                </tr>
 
-                                                                {{-- @if (count($coupons) > 0 ? 'd-none' : '')
+                                                                @if (count($coupons) > 0 ? 'd-none' : '')
                                                                     <tr class="coupon-discount">
                                                                         <td>Coupon Discount :</td>
                                                                         <td class="text-right">$ <b
                                                                                 class="drk-gry couponDiscount">0.00</b>
                                                                         </td>
                                                                     </tr>
-                                                                @endif --}}
+                                                                @endif
 
 
-                                                                {{-- <tr class="">
+                                                                <tr class="">
                                                                     <td>Delivery Charge :</td>
                                                                     <td class="text-right">$ <b
                                                                             class="drk-gry shippingCharge">0.00</b></td>
@@ -311,11 +311,11 @@
                                                                 </tr> --}}
 
                                                                 <tr>
-                                                                    <th scope="col">Order Total</th>
+                                                                    <th scope="col">Grand Total</th>
 
                                                                     <th class="text-right">
                                                                         <input class="" type="hidden"
-                                                                            name="total_amount" value="0">
+                                                                            name="total_amount" value="{{ $cartTotal }}">
                                                                         $ <b class="amount grandTotal">
                                                                             {{ $cartTotal }}</b>
                                                                     </th>
@@ -329,10 +329,10 @@
 
                                                         {{-- Delivery System  --}}
                                                         <div class="mt-5">
-                                                            {{-- <h5 class="cart-title-highlight title-3">Payment Method</h5>
-                                                            <ul class="payment_methods methods list-unstyled mt-3 form-group"> --}}
+                                                            <h5 class="cart-title-highlight title-3">Payment Method</h5>
+                                                            <ul class="payment_methods methods list-unstyled mt-3 form-group">
 
-                                                                {{-- <li class="payment_method_bacs">
+                                                                <li class="payment_method_bacs">
 
                                                                     <div class="">
                                                                         <label class="radio-inline">
@@ -342,7 +342,7 @@
                                                                         </label>
                                                                     </div>
 
-                                                                </li> --}}
+                                                                </li>
 
                                                                 {{-- <li class="payment_method_cod">
 
@@ -355,7 +355,7 @@
                                                                     </div>
 
                                                                 </li> --}}
-                                                            {{-- </ul> --}}
+                                                            </ul>
 
                                                         </div>
                                                         {{-- Delivery System  --}}
