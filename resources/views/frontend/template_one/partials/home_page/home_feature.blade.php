@@ -108,10 +108,20 @@
 
 
                             </div>
-                            <div>
+
+                            {{-- <div>
                                 <a type="submit" style="cursor:pointer;" class="add-cart add_to_cart_btn_product"
                                     data-product_id="{{ $product->id }}">Add to cart</a>
-                            </div>
+                            </div> --}}
+
+                            @if ($product->sas_price !== null || $product->price !== null || $product->discount_price !== null)
+                                <div>
+                                    <a type="submit" style="cursor:pointer;" class="add-cart add_to_cart_btn_product"
+                                        data-product_id="{{ $product->id }}">Add to cart</a>
+                                </div>
+                            @endif
+
+
                         </div>
                     </div>
                 @empty
