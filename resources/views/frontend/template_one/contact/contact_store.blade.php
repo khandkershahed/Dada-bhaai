@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2 col-sm-12">
-                <div class="banner-text text-center pt-90 pb-90">
+                <div class="banner-text text-center mt-5 pb-90">
                     <h2 class="f-800 cod__black-color">Contact Us</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
@@ -25,7 +25,7 @@
 </section>
 <!-- page banner area end -->
 <!-- contact area start -->
-<section class="contact-area pt-80">
+<section class="contact-area">
     <div class="container">
         <div class="row">
             <div class="col-xl-7 col-lg-7">

@@ -33,7 +33,7 @@
                             $catwiseproduct = [];
                             $childcatwiseproduct = [];
                         @endphp
-                        
+
                         {{-- Category  --}}
                         {{-- <div class="common-cat">
                             <div class="side-title">
@@ -332,7 +332,9 @@
 
                                         <ul class="product-links">
 
-                                            <li><a type="submit" class="add_to_wishlist" style="cursor: pointer;" data-product_id="{{ $product->id }}" data-tip="Wishlist"><i class="far fa-heart"></i></a></li>
+                                            <li><a type="submit" class="add_to_wishlist" style="cursor: pointer;"
+                                                    data-product_id="{{ $product->id }}" data-tip="Wishlist"><i
+                                                        class="far fa-heart"></i></a></li>
 
                                             <li><a type="submit" style="cursor:pointer;" class="add_to_compare"
                                                     data-product_id="{{ $product->id }}" data-tip="Compare"><i
@@ -385,14 +387,20 @@
                                                 <h6 class="grenadier-color mb-0 font-weight-bold"></h6>
                                             @endif
                                         </div>
-                                        
-                                        
+
+
                                     </div>
-                                    <div>
+
+                                    @if ($product->sas_price !== null || $product->price !== null || $product->discount_price !== null)
                                         <a type="submit" style="cursor:pointer;"
                                             class="add-cart add_to_cart_btn_product"
                                             data-product_id="{{ $product->id }}">Add to cart</a>
-                                    </div>
+                                    @else
+                                        <a href="{{ route('template_one.contact') }}" class="add-cart">Contact Us</a>
+                                    @endif
+
+
+
                                 </div>
                             </div>
                         @empty

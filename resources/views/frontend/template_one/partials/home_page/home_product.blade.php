@@ -38,7 +38,6 @@
 
                         <!-- Category-specific Products -->
                         @foreach ($categorys as $key => $category)
-
                             <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="categoryAll"
                                 role="tabpanel" aria-labelledby="nav-all-tab">
                                 <div class="product__active product_slider owl-carousel mr-2">
@@ -93,7 +92,10 @@
                                                         <h6 class="grenadier-color mb-0 font-weight-bold">
                                                             ${{ $cat_product->sas_price }}
                                                         </h6>
-                                                    @elseif ($cat_product->price_status == 'offer_price' && !is_null($cat_product->discount_price) && !is_null($cat_product->price))
+                                                    @elseif (
+                                                        $cat_product->price_status == 'offer_price' &&
+                                                            !is_null($cat_product->discount_price) &&
+                                                            !is_null($cat_product->price))
                                                         <del>${{ $cat_product->price }}</del>
                                                         <h6 class="grenadier-color mb-0 font-weight-bold">
                                                             ${{ $cat_product->discount_price }}
@@ -107,14 +109,32 @@
                                                         <h6 class="grenadier-color mb-0 font-weight-bold"></h6>
                                                     @endif
                                                 </div>
-                                                
+
 
                                             </div>
-                                            <div>
+
+                                            {{-- <a type="submit" style="cursor:pointer;"
+                                                class="add-cart add_to_cart_btn_product"
+                                                data-product_id="{{ $cat_product->id }}">Add to cart</a> --}}
+
+                                            @if ($cat_product->sas_price !== null || $cat_product->price !== null || $cat_product->discount_price !== null)
                                                 <a type="submit" style="cursor:pointer;"
                                                     class="add-cart add_to_cart_btn_product"
                                                     data-product_id="{{ $cat_product->id }}">Add to cart</a>
-                                            </div>
+                                            @else
+                                                <a href="{{ route('template_one.contact') }}" class="add-cart">Contact
+                                                    Us</a>
+                                            @endif
+
+                                            {{-- @if ($product->sas_price !== null || $product->price !== null || $product->discount_price !== null)
+                                                <a type="submit" style="cursor:pointer;"
+                                                    class="add-cart add_to_cart_btn_product"
+                                                    data-product_id="{{ $product->id }}">Add to cart</a>
+                                            @else
+                                                <a href="{{ route('template_one.contact') }}" class="add-cart">Contact
+                                                    Us</a>
+                                            @endif --}}
+
                                         </div>
                                     @endforeach
                                 </div>
@@ -154,7 +174,7 @@
                                                             href="{{ url('product/' . $cat_product->id . '/' . $cat_product->product_slug) }}">{{ substr($cat_product->product_name, 0, 25) }}</a>
                                                     </h3>
                                                 </div>
-                                                
+
                                                 {{-- <div class="price font-weight-bold pr-2">
                                                     @if ($cat_product->price_status == 'rfq')
                                                         <h6 class="grenadier-color mb-0 font-weight-bold">
@@ -174,7 +194,10 @@
                                                         <h6 class="grenadier-color mb-0 font-weight-bold">
                                                             ${{ $cat_product->sas_price }}
                                                         </h6>
-                                                    @elseif ($cat_product->price_status == 'offer_price' && !is_null($cat_product->discount_price) && !is_null($cat_product->price))
+                                                    @elseif (
+                                                        $cat_product->price_status == 'offer_price' &&
+                                                            !is_null($cat_product->discount_price) &&
+                                                            !is_null($cat_product->price))
                                                         <del>${{ $cat_product->price }}</del>
                                                         <h6 class="grenadier-color mb-0 font-weight-bold">
                                                             ${{ $cat_product->discount_price }}
@@ -188,14 +211,34 @@
                                                         <h6 class="grenadier-color mb-0 font-weight-bold"></h6>
                                                     @endif
                                                 </div>
-                                                
+
 
                                             </div>
-                                            <div>
+
+
+                                            {{-- <a type="submit" style="cursor:pointer;"
+                                                class="add-cart add_to_cart_btn_product"
+                                                data-product_id="{{ $cat_product->id }}">Add to cart</a> --}}
+
+                                            @if ($cat_product->sas_price !== null || $cat_product->price !== null || $cat_product->discount_price !== null)
                                                 <a type="submit" style="cursor:pointer;"
                                                     class="add-cart add_to_cart_btn_product"
                                                     data-product_id="{{ $cat_product->id }}">Add to cart</a>
-                                            </div>
+                                            @else
+                                                <a href="{{ route('template_one.contact') }}"
+                                                    class="add-cart">Contact Us</a>
+                                            @endif
+
+
+                                            {{-- @if ($product->sas_price !== null || $product->price !== null || $product->discount_price !== null)
+                                                <a type="submit" style="cursor:pointer;"
+                                                    class="add-cart add_to_cart_btn_product"
+                                                    data-product_id="{{ $product->id }}">Add to cart</a>
+                                            @else
+                                                <a href="{{ route('template_one.contact') }}"
+                                                    class="add-cart">Contact Us</a>
+                                            @endif --}}
+
                                         </div>
                                     @endforeach
                                 </div>
