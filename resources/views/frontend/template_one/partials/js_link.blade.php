@@ -742,7 +742,7 @@
 
                 $('.cart_icon').removeClass('d-none');
 
-                miniCart();
+                // miniCart();
                 miniCartRelated();
 
                 // Start Message
@@ -926,7 +926,7 @@
 
                 $('.cart_icon').removeClass('d-none');
 
-                miniCart();
+                // miniCart();
                 miniCartRelated();
 
                 // Start Message
@@ -1499,10 +1499,12 @@
 
                     $('#cartQty').closest('li').show();
 
-                    $.each(response.carts, function(key, value) {
+                    var serialNumber = 1;
+
+                    $.each(response.carts, function($, value) {
                         rows +=
                             `<tr class="border-bottom">
-                                <td>1</td>
+                                <td>${serialNumber++}</td>
                                 <td>
                                     <div>
                                         <img class="img-fluid"
@@ -1511,7 +1513,7 @@
                                     </div>
                                 </td>
                                 <td>${value.name}</td>
-                                <td>${value.price} $</td>
+                                <td>$${value.price}</td>
                                 <td>
                                     <div>
                                         <div class="input-group mb-3">
@@ -1532,7 +1534,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>${value.subtotal} $</td>
+                                <td>$${value.subtotal}</td>
                                 <td class="text-center">
                                     <div>
                                         <a type="submit" style="cursor: pointer" id="${value.rowId}" onclick="cartRemove(this.id)">
@@ -1875,6 +1877,3 @@
         this.querySelector('i').classList.toggle('icon-red');
     });
 </script>
-
-
-
