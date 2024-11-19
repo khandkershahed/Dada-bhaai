@@ -136,7 +136,7 @@
                                     </form>
                                 </div>
                                 <div class="mb-4">
-                                    <p class="mb-0">Accessories</p>
+                                    {{-- <p class="mb-0">Accessories</p> --}}
                                     <div>
                                         {{-- <ul style="list-style-type: circle !important;">
                                             <li class="d-flex mb-2 align-items-center">

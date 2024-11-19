@@ -1083,6 +1083,7 @@
 {{-- AddToCartOneRelated --}}
 
 {{-- Mini Cart Related --}}
+
 <script type="text/javascript">
     function miniCartRelated() {
         $.ajax({
@@ -1110,7 +1111,7 @@
                             <span class="pr-2">${serialNumber++}.</span>
                             <input type="text" class="form-control form-control-sm accesories-title" placeholder="${value.name.length > 16 ? value.name.substring(0, 16) + '' : value.name}">
                             <input type="text" class="form-control form-control-sm accesories-qty" placeholder="x ${value.qty}">
-                            <input type="number" class="form-control form-control-sm accesories-amount" placeholder="$ ${value.price * value.qty}">
+                            <input type="text" class="form-control form-control-sm accesories-amount" placeholder="$ ${value.price * value.qty}">
                             <div class="accesories-remove">
                                 <a type="submit" style="cursor:pointer" class="" id="${value.rowId}" onclick="miniCartRelatedRemove(this.id)">
 
@@ -1134,6 +1135,7 @@
     }
     miniCartRelated();
 </script>
+
 {{-- Mini Cart Related --}}
 
 {{-- MiNi Cart Related Increase --}}
