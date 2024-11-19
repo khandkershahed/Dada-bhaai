@@ -32,20 +32,17 @@ class IndexController extends Controller
         if ($template->name == 'template_one') {
 
             return view('frontend.template_one.index_template_one');
-
         } else if ($template->name == 'template_two') {
 
             $homepage = HomePage::with(['featureProductOne', 'featureProductTwo', 'featureProductThree', 'featureProductFour'])->where('status', 'tamplate_two')->latest('id')->first();
 
             return view('frontend.astell.index_astell', compact('homepage'));
-
         } else if ($template->name == 'template_three') {
             $banners = Banner::where('status', '1')->orderBy('id', 'ASC')->latest()->get();
             $categorys = Category::where('status', '1')->orderBy('category_name', 'ASC')->latest()->get();
 
             return view('frontend.index', compact('banners', 'categorys'));
         }
-
     }
 
     //Template OneProduct
@@ -62,7 +59,6 @@ class IndexController extends Controller
             $multiImages = MultiImg::where('product_id', $product->id)->get();
 
             return view('frontend.astell.pages.single_product', compact('product', 'sproducts', 'multiImages'));
-
         } else {
 
             $color = $product->color_id;
@@ -90,9 +86,7 @@ class IndexController extends Controller
 
 
             return view('frontend.template_one.product.single_product', compact('product', 'relativeProduct', 'multiImages', 'relativeChild', 'product_colors', 'carts', 'cartQty'));
-
         }
-
     }
 
     //Single Product
@@ -131,7 +125,7 @@ class IndexController extends Controller
     //ContactUser
     public function SendMessage(Request $request)
     {
-        
+
 
         $typePrefix = 'MSG';
 
@@ -216,7 +210,5 @@ class IndexController extends Controller
 
         // Log in the user
         Auth::login($user);
-
     }
-
 }

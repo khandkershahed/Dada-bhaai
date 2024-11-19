@@ -53,7 +53,6 @@ class TemplateOneCartController extends Controller
         ]);
 
         return response()->json(['success' => 'Successfully Add on Your Cart']);
-
     }
 
     //Buy To Cart
@@ -216,7 +215,6 @@ class TemplateOneCartController extends Controller
             ]);
 
             return response()->json(['success' => 'Successfully Added on Your Cart']);
-
         } elseif ($product->price_status == 'offer_price') {
 
             Cart::add([
@@ -285,7 +283,6 @@ class TemplateOneCartController extends Controller
         ]);
 
         return response()->json(['success' => 'Successfully Added on Your Cart']);
-
     }
 
     //AddToCartProductHome
@@ -323,7 +320,6 @@ class TemplateOneCartController extends Controller
             ]);
 
             return response()->json(['success' => 'Successfully Added on Your Cart']);
-
         } elseif ($product->price_status == 'offer_price') {
 
             Cart::add([
@@ -363,7 +359,6 @@ class TemplateOneCartController extends Controller
 
             return response()->json(['success' => 'Successfully Added on Your Cart']);
         }
-
     }
 
     //AddToCartProductHomeSingle
@@ -401,7 +396,6 @@ class TemplateOneCartController extends Controller
             ]);
 
             return response()->json(['success' => 'Successfully Added on Your Cart']);
-
         } elseif ($product->price_status == 'offer_price') {
 
             Cart::add([
@@ -441,7 +435,6 @@ class TemplateOneCartController extends Controller
 
             return response()->json(['success' => 'Successfully Added on Your Cart']);
         }
-
     }
 
     //Add To Cart Related
@@ -546,7 +539,6 @@ class TemplateOneCartController extends Controller
     {
         Cart::remove($rowId);
         return response()->json(['success' => 'Product Remove From Cart']);
-
     }
 
     //Remove MiniCart Related TemplateOne
@@ -554,7 +546,6 @@ class TemplateOneCartController extends Controller
     {
         Cart::remove($rowId);
         return response()->json(['success' => 'Product Remove From Cart']);
-
     }
 
     //Increase MiniCart Related TemplateOne
@@ -647,7 +638,6 @@ class TemplateOneCartController extends Controller
 
             return redirect()->route('template.one.login');
         }
-
     }
 
     public function CheckoutStoreTemplateOne(Request $request)
@@ -670,6 +660,15 @@ class TemplateOneCartController extends Controller
             'billing_phone' => $request->billing_phone,
             'billing_email' => $request->billing_email,
             'notes' => $request->notes,
+
+            'shipping_name' => $request->shipping_name,
+            'shipping_phone' => $request->shipping_phone,
+            'shipping_city' => $request->shipping_city,
+            'shipping_state' => $request->shipping_state,
+            'shipping_postal_code' => $request->shipping_postal_code,
+            'shipping_country' => $request->shipping_country,
+            'shipping_address_line1' => $request->shipping_address_line1,
+            'shipping_address_line2' => $request->shipping_address_line2,
 
             'shipping_charge' => $request->shipping_charge,
             'payment_method' => 'Cash On Delivery',
@@ -727,7 +726,6 @@ class TemplateOneCartController extends Controller
         toastr()->success('Order Successfully');
 
         return redirect()->route('index');
-
     }
 
     //Add To WishList
@@ -751,7 +749,6 @@ class TemplateOneCartController extends Controller
         } else {
             return response()->json(['error' => 'At First Login Your Account']);
         }
-
     }
 
     //AllWishlist
@@ -768,7 +765,6 @@ class TemplateOneCartController extends Controller
         $wishQty = wishlist::count();
 
         return response()->json(['wishlist' => $wishlist, 'wishQty' => $wishQty]);
-
     }
 
     //WishlistRemove
@@ -860,7 +856,4 @@ class TemplateOneCartController extends Controller
             return response()->json(['success' => 'Successfully Added on Your Cart']);
         }
     }
-
-    
-
 }

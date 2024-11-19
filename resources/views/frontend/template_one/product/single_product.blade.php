@@ -21,9 +21,9 @@
                                 <li class="breadcrumb-item">
                                     <a href="javascript:;">{{ optional($product->subcategory)->subcategory_name }}</a>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page">
-                                    <a
-                                        href="javascript:;">{{ optional($product->childcategory)->childcategory_name }}</a>
+                                <li class="breadcrumb-item" aria-current="page">
+                                    <a href="javascript:;" class="active"
+                                        style="color: #CD3301">{{ optional($product->childcategory)->childcategory_name }}</a>
                                 </li>
                             </ol>
                         </nav>
