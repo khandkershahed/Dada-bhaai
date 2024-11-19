@@ -2,7 +2,7 @@
     $products = App\Models\Admin\Product::where('status', 1)->latest()->get();
 @endphp
 
-<div class="top__featured--area pt-80 pb-80">
+<div class="top__featured--area pt-50 pb-50">
     <div class="container">
         <div class="row">
             <div class="col-xl-2 slider-category">
@@ -31,7 +31,7 @@
                                                 href="{{ url('product/category/' . $category->id . '/' . $category->category_slug) }}">
                                                 <img class="img"
                                                     src="{{ asset('storage/category/' . $category->icon) }}"
-                                                    style="width: 255px; height: 255px;" alt="" />
+                                                    style="width: 255px; height: 275px;" alt="" />
                                             </a>
                                             <h6 class="f-800 pure__black-color cate-title">
                                                 <a

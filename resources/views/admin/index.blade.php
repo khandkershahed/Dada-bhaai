@@ -281,7 +281,7 @@
                     </div>
                     <!--end::Charts Widget 1-->
                 </div> --}}
-                
+
                 {{-- Order Statistics --}}
             </div>
             <!--end::Row-->
@@ -565,7 +565,7 @@
                                                                     class="fa fa fa-eye text-muted pr-2"></i></a>
 
                                                             <a href="{{ route('admin.order.delete', $order->id) }}"
-                                                                id="delete"><i class="fa fa-trash text-danger"></i></a>
+                                                                id="delete"><i class="fa fa-close text-danger"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -635,7 +635,7 @@
                                                                     class="fa fa fa-eye text-muted pr-2"></i></a>
 
                                                             <a href="{{ route('admin.order.delete', $order->id) }}"
-                                                                id="delete"><i class="fa fa-trash text-danger"></i></a>
+                                                                id="delete"><i class="fa fa-close text-danger"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -705,7 +705,7 @@
                                                                     class="fa fa fa-eye text-muted pr-2"></i></a>
 
                                                             <a href="{{ route('admin.order.delete', $order->id) }}"
-                                                                id="delete"><i class="fa fa-trash text-danger"></i></a>
+                                                                id="delete"><i class="fa fa-close text-danger"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

@@ -10,7 +10,7 @@
 @endphp
 
 @if (count($products) > 0)
-    <div class="product pt-50 feature-h-one">
+    <div class="product feature-h-one">
 
         <div class="container">
 

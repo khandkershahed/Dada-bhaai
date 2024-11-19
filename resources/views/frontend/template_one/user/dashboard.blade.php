@@ -8,7 +8,7 @@
                 <div class="col-lg-8 offset-lg-2 col-sm-12">
                     <div class="banner-text text-center pt-90 pb-90">
                         <h2 class="f-800 cod__black-color">My Dashboard</h2>
-    
+
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
@@ -147,7 +147,7 @@
                                                         <td class="text-center">
                                                             <a href=""><i
                                                                     class="fa fa fa-pencil text-muted pr-2"></i></a>
-                                                            <a href=""><i class="fa fa-trash text-danger"></i></a>
+                                                            <a href=""><i class="fa fa-close text-danger"></i></a>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -190,7 +190,7 @@
                                                         <td class="text-center">
                                                             <a href=""><i
                                                                     class="fa fa fa-pencil text-muted pr-2"></i></a>
-                                                            <a href=""><i class="fa fa-trash text-danger"></i></a>
+                                                            <a href=""><i class="fa fa-close text-danger"></i></a>
                                                         </td>
                                                     </tr>
                                                 </tbody>

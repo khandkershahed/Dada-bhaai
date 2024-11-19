@@ -3,7 +3,7 @@
     $allproducts = App\Models\Admin\Product::where('status', '1')->latest()->get();
 @endphp
 
-<section class="pt-80 pb-20">
+<section class="pb-20">
     <div class="container">
         <div class="row all__product--row align-items-center justify-content-between">
             <div class="col-xl-12 col-md-12">

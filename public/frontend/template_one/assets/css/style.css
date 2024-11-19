@@ -593,7 +593,7 @@ label {
     text-align: center;
     cursor: pointer;
     color: #ed2129;
-    background: #f5f5f5;
+    background: #f9f9f9;
     top: 5px;
 }
 
@@ -815,7 +815,6 @@ cart--header__middle.cart--header__two {
 
 #miniCart {
     height: 100%;
-    overflow: auto;
     max-height: 300px;
 }
 
@@ -4407,7 +4406,7 @@ html .ui-button.ui-state-disabled:active {
 }
 
 .shop-details-area .cart-wrapper .price span {
-    font-size: 15px;
+    font-size: 22px;
     color: #ababab;
     font-weight: 400;
     /* display: block; */
@@ -4441,6 +4440,7 @@ html .ui-button.ui-state-disabled:active {
     border: none;
     outline: none;
     text-align: center;
+    width: 45px !important;
 }
 
 .shop-details-area .cart-wrapper form .nice-select {
@@ -4809,6 +4809,7 @@ html .ui-button.ui-state-disabled:active {
     background-repeat: no-repeat;
     background-size: cover;
     border: 1px solid #eee;
+    height: 275px;
 }
 
 .slider-category::before {
@@ -4834,19 +4835,23 @@ html .ui-button.ui-state-disabled:active {
 
 .accesories-title {
     width: 45%;
+    border: 0;
 
 }
 .accesories-qty {
     width: 15%;
     margin-left: 5px;
     margin-right: 5px;
+    border: 0;
 }
 .accesories-amount {
     width: 25%;
     margin-right: 5px;
+    border: 0;
 }
 .accesories-remove{
     width: 10%;
+    border: 0;
 }
 
 .accesories-img{
