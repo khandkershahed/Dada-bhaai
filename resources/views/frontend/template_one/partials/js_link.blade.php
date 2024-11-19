@@ -1105,7 +1105,7 @@
 
 
                         `
-<ul style="list-style-type: circle !important;">
+                            <ul style="list-style-type: circle !important;">
                           <li class="d-flex mb-2 align-items-center">
                             <span class="pr-2">${serialNumber++}.</span>
                             <input type="text" class="form-control form-control-sm accesories-title" placeholder="${value.name.length > 16 ? value.name.substring(0, 16) + '' : value.name}">
@@ -1394,87 +1394,6 @@
 
 <!--  Start Load MY Cart // -->
 
-{{-- <script type="text/javascript">
-    function cart() {
-        $.ajax({
-            type: 'GET',
-            url: '/get-cart-product',
-            dataType: 'json',
-            success: function(response) {
-                // console.log(response)
-
-                $('span[id="cartSubTotal"]').text(response.cartTotal);
-                $('#cartTotal').text(response.cartTotal);
-
-                var rows = ""
-
-                $.each(response.carts, function(key, value) {
-                    rows +=
-
-                        `<tr class="border-bottom">
-                                                    <td>1</td>
-
-                                                    <td>
-                                                        <div>
-                                                            <img class="img-fluid"
-                                                                src="/${value.options.image}"
-                                                                alt="" style="width:100%;height:60px;" />
-                                                        </div>
-                                                    </td>
-
-                                                    <td>${value.name}</td>
-
-                                                    <td>${value.price} $</td>
-
-                                                    <td>
-                                                        <div>
-                                                            <div class="input-group mb-3">
-
-                                                                <a type="submit" id="${value.rowId}" onclick="cartDecrement(this.id)"
-                                                                    class="input-group-append decrementBtn p-0 border-0 shadow-none"
-                                                                    style="cursor: pointer">
-                                                                    <span class="input-group-text">-</span>
-                                                                </a>
-
-                                                                <input  type="text"
-                                                                    class="form-control text-center amountInput"
-                                                                    aria-label="Amount (to the nearest dollar)"
-                                                                    value="${value.qty}" min="1" />
-
-                                                                <a type="submit" id="${value.rowId}" onclick="cartIncrement(this.id)"
-                                                                    class="input-group-prepend p-0 border-0 shadow-none incrementBtn"
-                                                                    style="cursor: pointer">
-                                                                    <span class="input-group-text">+</span>
-                                                                </a>
-
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    <td>${value.subtotal} $</td>
-
-                                                    <td class="text-center">
-                                                        <div>
-                                                            <a type="submit" style="cursor: pointer" id="${value.rowId}" onclick="cartRemove(this.id)">
-                                                                <i class="fa fa-trash text-danger delet-icons"></i>
-                                                            </a>
-                                                        </div>
-                                                    </td>
-
-                                                </tr>`
-
-
-                });
-
-                $('#cartPage').html(rows);
-
-            }
-
-        })
-    }
-    cart();
-</script> --}}
-
 <script type="text/javascript">
     function cart() {
         $.ajax({
@@ -1685,26 +1604,6 @@
 
 
 
-{{-- <script>
-    // Close dropdown on outside click
-    $(document).on('click', function(event) {
-        var $trigger = $("#navbarDropdown").closest('.dropdown');
-        if ($trigger.length && !$trigger.has(event.target).length) {
-            $('.dropdown-menu').removeClass('show');
-        }
-    });
-
-    // Prevent dropdown menu from closing on click inside
-    $('.dropdown-menu').on('click', function(event) {
-        event.stopPropagation();
-    });
-
-    // Ensure the dropdown menu opens correctly
-    $('#navbarDropdown').on('click', function(event) {
-        event.stopPropagation();
-        $(this).next('.dropdown-menu').toggleClass('show');
-    });
-</script> --}}
 
 <script>
     const header = document.querySelector(".page-header");
