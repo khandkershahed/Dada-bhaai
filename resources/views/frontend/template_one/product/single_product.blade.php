@@ -123,7 +123,7 @@
                                         @endif
 
                                     </div>
-                                    <form action="" class="mb-0">
+                                    <form action="" class="mb-0 w-50 text-end">
                                         <div class="field">
                                             <label class="mb-0">Quantity:</label>
                                             <div class="number d-flex align-items-center main_qty">
@@ -264,6 +264,14 @@
                                                                         class="buttons-countAccesories increase-btn border-0 bg-white"
                                                                         style="cursor: pointer;height: 20px;">+</button>
                                                                 </div>
+                                                            </div>
+                                                            <div>
+                                                                <a href="">
+                                                                    <small style="border-bottom: 1px solid #eee;">Compare</small>
+                                                                </a>
+                                                                <a href="">
+                                                                    <small style="border-bottom: 1px solid #eee;">Wishlist</small>
+                                                                </a>
                                                             </div>
                                                         </div>
                                                     </div>

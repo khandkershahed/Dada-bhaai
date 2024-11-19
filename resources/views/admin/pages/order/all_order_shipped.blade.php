@@ -122,7 +122,7 @@
                                                 class="fa fa-download text-success"></i></a>
 
                                         <a href="{{ route('admin.order.delete', $order->id) }}" id="delete"><i
-                                                class="fa fa-trash text-danger"></i></a>
+                                                class="fa fa-close text-danger"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -20,8 +20,7 @@
             @endphp
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown position-static">
-                    <a class="nav-link dropdown-toggle card-title cod__gray-color mb-0 main-menu-link"
-                        style="background: #f5f5f5; border-radius: 5px" href="#" id="navbarDropdownFeatures"
+                    <a class="nav-link dropdown-toggle card-title cod__gray-color mb-0 main-menu-link" href="#" id="navbarDropdownFeatures"
                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa-solid fa-bars pr-2"></i>
 
@@ -33,7 +32,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="row">
-                                        <div class="col-lg-3 px-0">
+                                        <div class="col-lg-2 px-0">
                                             <ul class="nav nav-tabs flex-column border-0" id="myTab" role="tablist">
                                                 @foreach ($categorys as $key => $category)
                                                     <li class="nav-item">
@@ -46,7 +45,7 @@
                                                 @endforeach
                                             </ul>
                                         </div>
-                                        <div class="col-lg-9 px-0">
+                                        <div class="col-lg-10 px-0">
                                             <div class="tab-content px-3 pt-2" id="myTabContent">
                                                 @foreach ($categorys as $key => $category)
                                                     <div class="tab-pane fade show {{ $key == 0 ? 'active' : '' }}"
@@ -142,7 +141,7 @@
                         @endphp
 
                         <div class="dropdown-menu w-100 mt-0 rounded-0 border-bottom-0 main-menu-drop"
-                            style="border-top: 2px solid #cd3301" aria-labelledby="navbarDropdown">
+                            style="border-top: 2px solid #cd3301;border-bottom: 1px solid #d9d9d9 !important" aria-labelledby="navbarDropdown">
                             <div class="container">
                                 <div class="row">
                                     @foreach ($categories as $category)
@@ -275,7 +274,7 @@
                                     <a href="javascript:void(0);" id="userIcon" class="border-0 bg-none text-muted"
                                         type="button" id="dropdownMenuButton" data-toggle="dropdown"
                                         aria-haspopup="true" aria-expanded="false" style="font-size: 20px;">
-                                        <i class="fa-solid fa-user text-muted userLogin"></i>
+                                        <i class="fa-solid fa-user text-muted userLogin pr-2"></i>
                                     </a>
                                 @endif
 
@@ -408,10 +407,10 @@
                                             <div class="d-flex justify-content-between">
 
                                                 <a href="{{ route('template.one.checkout') }}"
-                                                    class="checkout main-btn">Checkout</a>
+                                                    class="checkout bg-transparent p-0 text-black" style="text-decoration: underline">Checkout</a>
 
                                                 <a href="{{ route('template.one.view.cart') }}"
-                                                    class="viewcart main-btn">View
+                                                    class="viewcart bg-transparent p-0 text-black" style="text-decoration: underline">View
                                                     Cart</a>
 
                                             </div>

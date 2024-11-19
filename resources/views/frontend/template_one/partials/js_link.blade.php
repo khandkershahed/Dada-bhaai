@@ -1106,7 +1106,7 @@
 
                         `
                             <ul style="list-style-type: circle !important;">
-                          <li class="d-flex mb-2 align-items-center">
+                          <li class="d-flex mb-2 align-items-center" style="border-bottom: 1px solid #eee;border-top: 1px solid #eee;">
                             <span class="pr-2">${serialNumber++}.</span>
                             <input type="text" class="form-control form-control-sm accesories-title" placeholder="${value.name.length > 16 ? value.name.substring(0, 16) + '' : value.name}">
                             <input type="text" class="form-control form-control-sm accesories-qty" placeholder="x ${value.qty}">
@@ -1114,7 +1114,7 @@
                             <div class="accesories-remove">
                                 <a type="submit" style="cursor:pointer" class="" id="${value.rowId}" onclick="miniCartRelatedRemove(this.id)">
 
-                                   <i class="fa-solid fa-trash text-danger"></i>
+                                   <i class="fa-solid fa-close text-danger"></i>
 
                                   </a>
                         </div>
@@ -1457,7 +1457,7 @@
                                 <td class="text-center">
                                     <div>
                                         <a type="submit" style="cursor: pointer" id="${value.rowId}" onclick="cartRemove(this.id)">
-                                            <i class="fa fa-trash text-danger delet-icons"></i>
+                                            <i class="fa fa-close text-danger delet-icons"></i>
                                         </a>
                                     </div>
                                 </td>

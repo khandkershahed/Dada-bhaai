@@ -3,7 +3,7 @@
 @endphp
 
 <footer class="footer--area">
-    <div class="footer--top pt-70 pb-25">
+    <div class="footer--top pt-50 pb-25">
         <div class="footer-topbar">
             <p class="mb-0 text-center text-white p-3">Discover a wide range of products at {{ $site->site_name }}, your one-stop
                 e-commerce destination. Enjoy seamless shopping, great deals, and excellent customer service.</p>
