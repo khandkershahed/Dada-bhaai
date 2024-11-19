@@ -25,108 +25,98 @@ use Illuminate\Validation\Rules;
 
 class TemplateOneController extends Controller
 {
-    //Template One All Product
-    public function TemplateOneAllProduct()
+    public function TemplateOneAllProduct(Request $request)
     {
-
+        // Initialize the products query
         $products = Product::query();
 
-        //category filter
-        if (!empty($_GET['category'])) {
-            $slugs = explode(',', $_GET['category']);
-            $catIds = Category::select('id')->whereIn('category_slug', $slugs)->pluck('id')->toArray();
-
-            $products = $products->whereIn('category_id', $catIds);
+        // Apply category filter
+        if (!empty($request->get('category'))) {
+            $categorySlugs = explode(',', $request->get('category'));
+            $categoryIds = Category::whereIn('category_slug', $categorySlugs)->pluck('id')->toArray();
+            $products = $products->whereIn('category_id', $categoryIds);
         }
 
-        //brand filter
-        if (!empty($_GET['brand'])) {
-            $slugs = explode(',', $_GET['brand']);
-            $brandIds = Brand::select('id')->whereIn('brand_slug', $slugs)->pluck('id')->toArray();
+        // Apply brand filter
+        if (!empty($request->get('brand'))) {
+            $brandSlugs = explode(',', $request->get('brand'));
+            $brandIds = Brand::whereIn('brand_slug', $brandSlugs)->pluck('id')->toArray();
             $products = $products->whereIn('brand_id', $brandIds);
         }
 
-        //price range product
-        if (!empty($_GET['price'])) {
-            $price = explode('-', $_GET['price']);
-            $products = $products->whereBetween('price', $price);
+        // Apply search filter
+        if (!empty($request->get('product_search'))) {
+            $products = $products->where('product_name', 'like', '%' . $request->get('product_search') . '%');
         }
 
-        //sortByProduct
-        if (!empty($_GET['sortBy'])) {
-            $perPage = (int) $_GET['sortBy']; // Cast to integer for safety
-
-            if ($perPage == 10) {
-                $products = $products->where('status', 1)->orderBy('product_name', 'ASC')->paginate($perPage);
-            } elseif ($perPage == 20) {
-                $products = $products->where('status', 1)->orderBy('product_name', 'ASC')->paginate($perPage);
-            } elseif ($perPage == 30) {
-                $products = $products->where('status', 1)->orderBy('product_name', 'ASC')->paginate($perPage);
-            } elseif ($perPage == 40) {
-                $products = $products->where('status', 1)->orderBy('product_name', 'ASC')->paginate($perPage);
-            } elseif ($perPage == 50) {
-                $products = $products->where('status', 1)->orderBy('product_name', 'ASC')->paginate($perPage);
-            } elseif ($perPage == 60) {
-                $products = $products->where('status', 1)->orderBy('product_name', 'ASC')->paginate($perPage);
-            } else {
-                // Default case, if sortBy doesn't match any defined value
-                $products = $products->where('status', 1)->orderBy('id', 'DESC')->paginate(20);
-            }
+        // Apply sorting
+        if (!empty($request->get('sortBy'))) {
+            $perPage = (int) $request->get('sortBy');
+            $products = $products->orderBy('product_name', 'ASC')->paginate($perPage);
         } else {
-            $products = $products->where('status', 1)->orderBy('id', 'DESC')->paginate(18);
+            $products = $products->orderBy('id', 'DESC')->paginate(18);
         }
 
-        $brands = Brand::where('status', '1')->orderBy('brand_name', 'ASC')->latest()->get();
-        $categorys = Category::where('status', '1')->orderBy('category_name', 'ASC')->latest()->get();
+        // Fetch the brands and categories for filters
+        $brands = Brand::where('status', 1)->orderBy('brand_name', 'ASC')->get();
+        $categorys = Category::where('status', 1)->orderBy('category_name', 'ASC')->get();
 
         return view('frontend.template_one.product.template_one_all_product', compact('products', 'brands', 'categorys'));
     }
 
-    //shopFilter
     public function shopFilter(Request $request)
     {
-        //dd($request->all());
-
         $data = $request->all();
 
-        //filter category
-        $catUrl = "";
+        // Initialize the products query
+        $products = Product::query();
+
+        // Apply category filter
         if (!empty($data['category'])) {
-            foreach ($data['category'] as $category) {
-                if (empty($catUrl)) {
-                    $catUrl .= '&category=' . $category;
-                } else {
-                    $catUrl .= ',' . $category;
-                }
-            }
+            $categorySlugs = $data['category'];
+            $categoryIds = Category::whereIn('category_slug', $categorySlugs)->pluck('id')->toArray();
+            $products = $products->whereIn('category_id', $categoryIds);
         }
 
-        //filter brand
-        $brandUrl = "";
+        // Apply brand filter
         if (!empty($data['brand'])) {
-            foreach ($data['brand'] as $brand) {
-                if (empty($brandUrl)) {
-                    $brandUrl .= '&brand=' . $brand;
-                } else {
-                    $brandUrl .= ',' . $brand;
-                }
-            }
+            $brandSlugs = $data['brand'];
+            $brandIds = Brand::whereIn('brand_slug', $brandSlugs)->pluck('id')->toArray();
+            $products = $products->whereIn('brand_id', $brandIds);
         }
 
-        //filter sortBy
-        $sortByUrl = "";
+        // Apply search filter
+        if (!empty($data['product_search'])) {
+            $products = $products->where('product_name', 'like', '%' . $data['product_search'] . '%');
+        }
+
+        // Apply sorting
         if (!empty($data['sortBy'])) {
-            $sortByUrl .= '&sortBy=' . $data['sortBy'];
+            $perPage = (int) $data['sortBy'];
+            $products = $products->orderBy('product_name', 'ASC')->paginate($perPage);
+        } else {
+            $products = $products->orderBy('id', 'DESC')->paginate(18);
         }
 
-        //filter sortBy
-        $priceRangeUrl = "";
-        if (!empty($data['price_range'])) {
-            $priceRangeUrl .= '&price=' . $data['price_range'];
+        // Prepare the response for AJAX
+        if ($request->ajax()) {
+            $productsHtml = view('frontend.template_one.product.product_grid', compact('products'))->render();
+            $pagination = $products->appends($data)->links('vendor.pagination.template_one')->render();
+
+            return response()->json([
+                'productsHtml' => $productsHtml,
+                'pagination' => $pagination,
+            ]);
         }
 
-        return redirect()->route('template.one.all_product', $catUrl . $brandUrl . $sortByUrl . $priceRangeUrl);
+        // Fetch brands and categories for non-AJAX response
+        $brands = Brand::where('status', 1)->orderBy('brand_name', 'ASC')->get();
+        $categorys = Category::where('status', 1)->orderBy('category_name', 'ASC')->get();
+
+        return view('frontend.template_one.product.template_one_all_product', compact('products', 'brands', 'categorys'));
     }
+
+
 
     //Brand Wise Product One
     public function BrandRelatedProductOne(Request $request, $id, $brand_slug)
@@ -147,7 +137,6 @@ class TemplateOneController extends Controller
                 $products = Product::where(['status' => 1, 'brand_id' => $id])->orderBy('product_name', 'DESC')->paginate(12);
             } else {
                 $products = Product::where('status', '1')->where('brand_id', $id)->paginate(12);
-
             }
         }
 
@@ -189,7 +178,6 @@ class TemplateOneController extends Controller
                 $products = Product::where(['status' => 1, 'category_id' => $id])->orderBy('product_name', 'DESC')->paginate(12);
             } else {
                 $products = Product::where('status', '1')->where('category_id', $id)->paginate(12);
-
             }
         }
 
@@ -311,11 +299,9 @@ class TemplateOneController extends Controller
                 // 'ip_address' => $request->ip_address,
 
             ]);
-
         }
 
         return back()->with("status", "Message Send Successfully");
-
     }
 
     //ProductSearch
@@ -331,10 +317,9 @@ class TemplateOneController extends Controller
             ->paginate(12);
 
         return view('frontend.template_one.search.product_search', compact('products', 'item'));
-
     }
 
-    
+
 
     //Template One Faq
     public function TemplateOneFaq()
@@ -354,7 +339,6 @@ class TemplateOneController extends Controller
     public function TemplateOneLogin()
     {
         return view('frontend.template_one.user.login');
-
     }
 
     //TemplateOneDashboard
@@ -398,7 +382,9 @@ class TemplateOneController extends Controller
             'old_password' => 'required',
             'new_password' => [
 
-                'required', 'confirmed', Rules\Password::min(8)->mixedCase()->symbols()->letters()->numbers(),
+                'required',
+                'confirmed',
+                Rules\Password::min(8)->mixedCase()->symbols()->letters()->numbers(),
 
             ],
         ]);
@@ -476,12 +462,10 @@ class TemplateOneController extends Controller
         if ($track) {
 
             return redirect()->route('track.order.product', $track->id);
-
         } else {
             toastr()->error('Invalid Invoice Or Phone Number');
             return redirect()->back();
         }
-
     }
 
     //Template One TackOrder Search
@@ -497,7 +481,6 @@ class TemplateOneController extends Controller
             toastr()->error('Invalid Invoice Or Phone Number');
             return redirect()->back();
         }
-
     }
 
     //Template One Term
@@ -605,8 +588,7 @@ class TemplateOneController extends Controller
         }
 
         // Determine which price to use based on the product's price_status
-        $price = $product->price_status == 'rfq' ? $product->sas_price :
-        ($product->price_status == 'offer_price' ? $product->discount_price : $product->price);
+        $price = $product->price_status == 'rfq' ? $product->sas_price : ($product->price_status == 'offer_price' ? $product->discount_price : $product->price);
 
         // Add the product to compare
         Cart::instance('compare')->add([
@@ -752,7 +734,6 @@ class TemplateOneController extends Controller
             ]);
 
             return response()->json(['success' => 'Successfully Added on Your Wishlist']);
-
         } elseif ($product->price_status == 'offer_price') {
 
             Cart::instance('wishlist')->add([
@@ -790,7 +771,6 @@ class TemplateOneController extends Controller
 
             return response()->json(['success' => 'Successfully Added on Your Wishlist']);
         }
-
     }
 
     //Compare Product
@@ -883,5 +863,4 @@ class TemplateOneController extends Controller
         Cart::instance('wishlist')->remove($rowId);
         return response()->json(['success' => 'Successfully Remove From Wishlist']);
     }
-
 }

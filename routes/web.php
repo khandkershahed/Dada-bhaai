@@ -59,7 +59,6 @@ Route::controller(IndexController::class)->group(function () {
     // lOGIN wITH gOOGLE
     Route::get('login/google', 'redirectToGoogle')->name('login.google');
     Route::get('login/google/callback', 'googleCallback');
-
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -79,11 +78,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     //User Logout
     Route::get('/user-logout', [TemplateOneController::class, 'TemplateOneUserLogout'])->name('template.one.user.logout');
-
 });
 
 //Add To WishList
 Route::post('/add-to-wishlist/{product_id}', [TemplateOneCartController::class, 'AddToWishList']);
+
 
 // Template One Controller
 Route::controller(TemplateOneController::class)->group(function () {
@@ -147,7 +146,6 @@ Route::controller(TemplateOneController::class)->group(function () {
     Route::get('/get-wishlist', 'GetWishlist');
     Route::post('/add-to-cart-wishlist/{id}', 'AddToCartWishlist');
     Route::get('/wishlist/product/remove/{rowId}', 'RemoveWishlistTemplateOne');
-
 });
 
 //Cart Controller
@@ -222,7 +220,6 @@ Route::controller(TemplateOneCartController::class)->group(function () {
 
     // ==================================
     Route::post('/apply-coupon', 'applyCoupon')->name('apply.coupon');
-
 });
 
 // Template Two Controller
@@ -255,5 +252,4 @@ Route::controller(TemplateTwoController::class)->group(function () {
 
     // Route for showing search results (GET request)
     Route::post('/product-store-cart-product', 'AddToCartProductHomeAstell');
-
 });
