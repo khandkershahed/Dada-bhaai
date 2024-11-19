@@ -23,7 +23,7 @@
                     <a class="nav-link dropdown-toggle card-title cod__gray-color mb-0 main-menu-link"
                         style="background: #f5f5f5; border-radius: 5px" href="#" id="navbarDropdownFeatures"
                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-th pr-2" aria-hidden="true"></i>
+                        <i class="fa-solid fa-bars pr-2"></i>
 
                         Category
                     </a>
