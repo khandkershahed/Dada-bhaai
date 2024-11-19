@@ -39,11 +39,11 @@
                             <div class="side-title">
                                 <h6>Category</h6>
                             </div>
-                            
+
                             <div id="accordionBrands" class="accordion">
                                 <div class="card border-0 shadow-none mb-0">
 
-                                    
+
 
                                     @foreach ($categorys as $category)
                                         <div class="card-header {{ optional($catwiseproduct)->id == $category->id ? 'mark-cat' : 'collapsed' }}  pl-0"
@@ -115,7 +115,7 @@
                                         </div>
                                     @endforeach
 
-                                    
+
 
                                 </div>
                             </div>
@@ -257,10 +257,10 @@
 
                 </div>
 
-                <div class="col-lg-9 order-1 order-lg-2">
+                <div class="col-lg-9 order-1 order-lg-2 px-0">
                     <div class="row">
-                        <div class="col-sm-12">
-                            <div class="shop-banner-bg pt-120 pb-120 mb-50"
+                        <div class="col-sm-12 pe-0">
+                            <div class="shop-banner-bg pt-120 pb-120 mb-4"
                                 data-background="{{ asset('frontend/template_one/assets/img/bg/shop-banner-bg.jpg') }}">
                                 <div class="collection-text">
                                     <h5 class="f-800"><a href="javascript:;"></a></h5>
@@ -269,11 +269,10 @@
                         </div>
                     </div>
                     <div class="border-b">
-                        <div class="row">
-
-                            <div class="col-lg-5 col-md-4">
+                        <div class="row align-items-center mx-0" style="background: #f5f5f5;">
+                            <div class="col-lg-4">
                                 <div class="shop-bar d-flex align-items-center">
-                                    <h4 class="f-800 cod__black-color">Product</h4>
+                                    <h4 class="f-800 cod__black-color mb-0">Product</h4>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
@@ -285,27 +284,34 @@
                             </div>
 
                             {{-- New Section  --}}
-                            <div class="col-lg-4 col-md-2">
-                                <div class="text-center" style="margin-top: 10px;">
-                                    <span>Showing {{ count($products) }} of {{ $products->total() }} Results</span>
+                            <div class="col-lg-7">
+                                <!-- Actual search box -->
+                                <div class="form-group has-search mb-0">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <span class="fa fa-search form-control-feedback"></span>
                                 </div>
+
                             </div>
 
-                            <div class="col-lg-3 col-md-6">
+                            <div class="col-lg-1">
 
-                                <select name="sortBy" onchange="this.form.submit();">
-                                    <option selected disabled>Show</option>
-                                    <option value="10" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == '10') selected @endif>10</option>
-                                    <option value="20" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == '20') selected @endif>20</option>
-                                    <option value="30" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == '30') selected @endif>30
-                                    </option>
-                                    <option value="40" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == '40') selected @endif>40
-                                    </option>
-                                    <option value="50" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == '50') selected @endif>50
-                                    </option>
-                                    <option value="60" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == '60') selected @endif>60
-                                    </option>
-                                </select>
+                                <div class="d-flex justify-content-end">
+                                    <select name="sortBy" onchange="this.form.submit();">
+                                        <option selected disabled>Show</option>
+                                        <option value="10" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == '10') selected @endif>10
+                                        </option>
+                                        <option value="20" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == '20') selected @endif>20
+                                        </option>
+                                        <option value="30" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == '30') selected @endif>30
+                                        </option>
+                                        <option value="40" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == '40') selected @endif>40
+                                        </option>
+                                        <option value="50" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == '50') selected @endif>50
+                                        </option>
+                                        <option value="60" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == '60') selected @endif>60
+                                        </option>
+                                    </select>
+                                </div>
 
                             </div>
 
@@ -313,7 +319,7 @@
                     </div>
 
 
-                    <div class="row mt-30">
+                    <div class="row mt-4">
 
                         @forelse ($products as $product)
                             <div class="col-lg-4 col-md-6">

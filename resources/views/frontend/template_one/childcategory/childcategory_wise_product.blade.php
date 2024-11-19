@@ -26,12 +26,10 @@
                     </div>
                 </div>
                 <div class="border-b">
-                    <div class="row">
-
-
-                        <div class="col-lg-5 col-md-4">
-                            <div class="shop-bar">
-                                <h6 class="f-800 cod__black-color">SubCategory</h6>
+                    <div class="row align-items-center mx-0" style="background: #f5f5f5;">
+                        <div class="col-lg-4">
+                            <div class="shop-bar d-flex align-items-center">
+                                <h4 class="f-800 cod__black-color mb-0">Product</h4>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
@@ -43,37 +41,30 @@
                         </div>
 
                         {{-- New Section  --}}
-                        <div class="col-lg-4 col-md-2">
-                            <div class="text-center" style="margin-top: 10px;">
-                                <span>Showing {{ count($products) }} of {{ $products->total() }} Results</span>
+                        <div class="col-lg-6">
+                            <!-- Actual search box -->
+                            <div class="form-group has-search mb-0">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <span class="fa fa-search form-control-feedback"></span>
                             </div>
                         </div>
-
-                        <div class="col-lg-3 col-md-6">
-                            <div class="float-right">
+                        <div class="col-lg-2">
+                            <div class="d-flex justify-content-end">
                                 <select name="" id="sortBy">
-                                    <option selected disabled>SortBy Product</option>
-
+                                    <option selected disabled>Sort By Product</option>
                                     <option value="nameAtoZ" {{ $sort == 'nameAtoZ' ? 'selected' : '' }}>Product
                                         Name: A to Z
                                     </option>
-
                                     <option value="nameZtoA" {{ $sort == 'nameZtoA' ? 'selected' : '' }}>Product
                                         Name: Z to A
                                     </option>
-
                                 </select>
                             </div>
                         </div>
                         {{-- New Setion  --}}
-
                     </div>
                 </div>
-
-
-
                 <div class="row mt-30">
-
                     @forelse ($products as $product)
                         <div class="col-lg-4 col-md-6">
                             <div class="product-grid mb-4">
@@ -81,7 +72,8 @@
                                     <a href="{{ url('product' . '/' . $product->id . '/' . $product->product_slug) }}"
                                         class="image">
 
-                                        <img title="{{ $product->product_name }}" src=" {{ asset($product->product_image) }}"
+                                        <img title="{{ $product->product_name }}"
+                                            src=" {{ asset($product->product_image) }}"
                                             data-tip="{{ $product->product_name }}" style="width:100%; height: 300px;">
                                     </a>
 
@@ -89,7 +81,9 @@
 
                                     <ul class="product-links">
 
-                                        <li><a type="submit" class="add_to_wishlist" style="cursor: pointer;" data-product_id="{{ $product->id }}" data-tip="Wishlist"><i class="far fa-heart"></i></a></li>
+                                        <li><a type="submit" class="add_to_wishlist" style="cursor: pointer;"
+                                                data-product_id="{{ $product->id }}" data-tip="Wishlist"><i
+                                                    class="far fa-heart"></i></a></li>
 
                                         <li><a type="submit" style="cursor:pointer;"
                                                 data-product_id="{{ $product->id }}" data-tip="Compare"><i
