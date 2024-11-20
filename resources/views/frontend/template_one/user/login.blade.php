@@ -112,7 +112,7 @@
 
                             <x-auth-session-status class="mb-4" :status="session('status')" />
 
-                            <form method="POST" action="{{ route('login') }}">
+                            <form method="POST" action="{{ route('user.login') }}">
                                 @csrf
                                 <div class="field">
                                     <label>Email Address</label>
@@ -152,86 +152,6 @@
 
 
                         {{-- Register --}}
-
-                        {{-- <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            
-                            <!-- Session Status -->
-                            <x-auth-session-status class="mb-4" :status="session('status')" />
-
-                            <form method="POST" action="{{ route('register') }}">
-                                @csrf
-
-                                <div class="field">
-                                    <label for="name">Name</label>
-                                    <input type="text"
-                                        class="form-control form-control-sm @error('name') is-invalid @enderror"
-                                        id="name" placeholder="Full Name" value="{{ old('name') }}"
-                                        name="name" required>
-                                    <span id="nameValidation"></span> <!-- Span to show validation icon -->
-
-                                    @error('name')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <div class="field">
-                                    <label for="email">Email Address</label>
-                                    <input type="email"
-                                        class="form-control form-control-sm @error('email') is-invalid @enderror"
-                                        id="email" placeholder="Email Address" value="{{ old('email') }}"
-                                        name="email" required>
-                                    <span id="emailValidation"></span> <!-- Span to show validation icon -->
-
-                                    @error('email')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="field">
-                                            <label for="password">Password</label>
-                                            <input type="password"
-                                                class="form-control form-control-sm @error('password') is-invalid @enderror"
-                                                name="password" id="password" placeholder="Password" required>
-                                            <span id="passwordValidation"></span> <!-- Span to show validation icon -->
-
-                                            @error('password')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="field">
-                                            <label for="password_confirmation">Confirm Password</label>
-                                            <input type="password"
-                                                class="form-control form-control-sm @error('password_confirmation') is-invalid @enderror"
-                                                name="password_confirmation" id="password_confirmation"
-                                                placeholder="Confirm Password" required>
-                                            <span id="passwordConfirmationValidation"></span>
-                                            <!-- Span to show validation icon -->
-
-                                            @error('password_confirmation')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-12">
-                                    <div class="form-group form-check">
-                                        <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-                                        <label class="form-check-label pt-0" for="exampleCheck1">I agree on DadaBhaai
-                                            Term & Condition.</label>
-                                    </div>
-                                </div>
-
-                                <button type="submit" class="w-100" id="submitBtn">Register Here</button>
-                            </form>
-
-
-                        </div> --}}
-
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
                             <!-- Session Status -->
@@ -293,35 +213,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Sidebar for Password Strength -->
-                                {{-- <div class="password-strength-sidebar">
-                                    <h5>Password Strength</h5>
-                                    <div id="password-strength-meter" class="password-strength-meter"></div>
-                                    <div id="password-strength-text" class="password-strength-text"></div>
-
-                                    <!-- Password Criteria List -->
-                                    <ul id="password-criteria-list">
-                                        <li id="length-criteria" class="criteria">
-                                            <i class="fas fa-arrow-right text-danger"></i>
-                                            <span>At least 8 characters</span>
-                                        </li>
-                                        <li id="letter-criteria" class="criteria">
-                                            <i class="fas fa-arrow-right text-danger"></i>
-                                            <span>At least one letter</span>
-                                        </li>
-                                        <li id="number-criteria" class="criteria">
-                                            <i class="fas fa-arrow-right text-danger"></i>
-                                            <span>At least one number</span>
-                                        </li>
-                                        <li id="special-criteria" class="criteria">
-                                            <i class="fas fa-arrow-right text-danger"></i>
-                                            <span>At least one special character</span>
-                                        </li>
-                                    </ul>
-                                </div> --}}
-
-
-
 
 
                                 <div class="col-lg-12">
@@ -336,7 +227,6 @@
                             </form>
 
                         </div>
-
                         {{-- Register --}}
 
 

@@ -91,6 +91,9 @@ Route::controller(TemplateOneController::class)->group(function () {
     Route::get('/all-product', 'TemplateOneAllProduct')->name('template.one.all_product');
     Route::post('/shop-filter', 'shopFilter')->name('shop.filter');
 
+    //user login
+    Route::post('/user-login', 'userLogin')->name('user.login');
+
     //Brand Wise
     Route::get('/product/brand/{id}/{brand_slug}', 'BrandRelatedProductOne');
 

@@ -361,7 +361,7 @@ class TemplateOneCartController extends Controller
         }
     }
 
-    //AddToCartProductHomeSingle
+    //AddToCart Product HomeSingle
     public function AddToCartProductHomeSingle(Request $request)
     {
         $id = $request->product_id;

@@ -863,4 +863,25 @@ class TemplateOneController extends Controller
         Cart::instance('wishlist')->remove($rowId);
         return response()->json(['success' => 'Successfully Remove From Wishlist']);
     }
+
+    //user Login
+    public function userLogin(Request $request)
+    {
+        // Validate the form input
+        $request->validate([
+            'email' => 'required|email|exists:users,email', // Ensure the email exists in the 'users' table
+            'password' => 'required|string|min:8', // Password validation
+        ]);
+
+        // Attempt to log the user in
+        if (Auth::attempt($request->only('email', 'password'), $request->has('remember'))) {
+            // If successful, redirect to the cart or dashboard
+            return redirect()->route('template.one.checkout'); // Adjust this as needed
+        }
+
+        // If login attempt fails, redirect back with an error message
+        return back()->withErrors([
+            'email' => 'These credentials do not match our records.',
+        ]);
+    }
 }

@@ -69,7 +69,9 @@
                     </div>
                 </div>
                 <div class="col-lg-8">
+
                     <div class="row gx-0">
+
                         <div class="col-lg-7 col-md-12 order-3 order-lg-2">
                             <div class="pro-content">
                                 <span>{{ optional($product->brand)->brand_name }}</span>
@@ -91,11 +93,16 @@
 
                             </div>
                         </div>
+
+                        {{-- ================================ --}}
+
+
                         <div class="col-lg-5 col-md-6 order-2 order-lg-3">
+
                             <div class="cart-wrapper">
                                 <div class="cart-title">
                                     <h6>
-                                        Availability: <span class="text-danger">Pre Order</span>
+                                        Availability: <span class="text-danger"></span>
                                     </h6>
                                 </div>
                                 <div class="price mt-15 mb-20 d-flex align-items-center">
@@ -123,71 +130,50 @@
                                         @endif
 
                                     </div>
-                                    <form action="" class="mb-0 w-50 text-end">
-                                        <div class="field">
-                                            <label class="mb-0">Quantity:</label>
-                                            <div class="number d-flex align-items-center main_qty">
-                                                <p class="minus mb-0 px-2">-</p>
-                                                <input type="text" class="mb-0 w-50 qty-input-product" name=""
-                                                    value="1" min="1" autocomplete="off" id="dqty">
-                                                <p class="plus mb-0 px-2">+</p>
-                                            </div>
+
+
+                                    <div class="field mb-0 w-50 text-end">
+                                        <label class="mb-0">Quantity:</label>
+                                        <div class="number d-flex align-items-center main_qty">
+                                            <p class="minus mb-0 px-2">-</p>
+                                            <input type="text" class="mb-0 w-50 qty-input-product" name=""
+                                                value="1" min="1" autocomplete="off" id="dqty">
+                                            <p class="plus mb-0 px-2">+</p>
                                         </div>
-                                    </form>
-                                </div>
-                                <div class="mb-4">
-                                    {{-- <p class="mb-0">Accessories</p> --}}
-                                    <div>
-                                        {{-- <ul style="list-style-type: circle !important;">
-                                            <li class="d-flex mb-2 align-items-center">
-                                                <span class="pr-2">1.</span>
-                                                <input type="text" class="form-control form-control-sm w-100 mr-2"
-                                                    name="" id="" placeholder="Blue Color Headset" />
-                                                <input type="number" class="form-control form-control-sm w-25"
-                                                    name="" id="" placeholder="1" />
-                                            </li>
-                                        </ul>
-                                        <li class="d-flex mb-2 align-items-center">
-                                            <span class="pr-2">2.</span>
-                                            <input type="text" class="form-control form-control-sm w-100 mr-2"
-                                                name="" id="" placeholder="Blue Color Headset" />
-                                            <input type="number" class="form-control form-control-sm w-25"
-                                                name="" id="" placeholder="1" />
-                                        </li> --}}
-                                        <div id="miniCartRelated">
-                                        </div>
-                                        </ul>
                                     </div>
+
+
+                                </div>
+
+                                <div class="mb-4">
+                                    <ul id="productList" style="list-style-type: circle !important;"></ul>
                                 </div>
 
                                 <div class="d-flex align-items-center">
 
-                                    {{-- <a href="#" class="cart-button w-100 mt-0" onclick="addToCartOne()">Add Cart</a>
-                                    <a href="#" class="cart-button w-100 ml-3 mt-0">Booking</a> --}}
-
-                                    <input type="hidden" id="oneproduct_id" value="{{ $product->id }}">
+                                    <input type="hidden" name="parent_id" id="oneproduct_id"
+                                        value="{{ $product->id }}">
 
                                     <a onclick="buyToCartOne()" class="cart-button w-100">Add Cart</a>
 
-                                    <a class="cart-button w-100 ml-3 mt-0">Booking</a>
-
-                                    {{-- <a type="submit" style="cursor: pointer" onclick="buyToCartOne()"
-                                        class="ml-3 mt-0 add-link f-700 grenadier-color checkout main-btn text-center w-50 ml-1">+
-                                        Buy
-                                        Now</a> --}}
+                                    <a class="cart-button w-100 ml-3 mt-0">Buy</a>
 
                                 </div>
 
                                 <div class="last pt-15 align-items-center d-flex justify-content-center">
                                     <a style="cursor: pointer;" data-product_id="{{ $product->id }}"
                                         class="ml-2 mr-2 f-700 grenadier-color add_to_wishlist">Add To Wishlist</a>
-
+                                    |
                                     <a style="cursor: pointer;" type="submit" data-product_id="{{ $product->id }}"
                                         class="ml-2  f-700 grenadier-color add_to_compare">Compare</a>
                                 </div>
                             </div>
+
                         </div>
+
+
                     </div>
+
                     <div class="row mb-3">
                         <div class="row align-items-center">
                             <div class="col-xl-12 col-sm-12">
@@ -201,6 +187,7 @@
                         </div>
                         <div class="col-lg-12 px-0">
                             <div class="releted_accessories">
+
                                 @forelse ($relativeChild as $childproduct)
                                     @if (!empty($childproduct->product_image))
                                         <div class="card border-0 shadow-sm releted-accessories-items mx-2">
@@ -239,17 +226,20 @@
                                                                 class="d-flex justify-content-between align-items-center">
                                                                 <div>
                                                                     <small>
-                                                                        <a href="#"
+                                                                        <a style="cursor: pointer"
                                                                             data-product_id="{{ $childproduct->id }}"
-                                                                            class="add_to_cart_btn_product_single rounded-0">
+                                                                            data-product_name="{{ $childproduct->product_name }}"
+                                                                            data-product_price="{{ $childproduct->price }}"
+                                                                            class="add_to_cart_btn_product_single_add rounded-0">
                                                                             <span class="badge p-2 text-white"
-                                                                                style="background-color: #cd3301; cursor: pointer;"><i
-                                                                                    class="fa-solid fa-plus"></i>
-                                                                                Add</span>
+                                                                                style="background-color: #cd3301;">
+                                                                                <i class="fa-solid fa-plus"></i> Add
+                                                                            </span>
                                                                         </a>
                                                                     </small>
                                                                 </div>
-                                                                {{-- Quantity Box --}}
+
+                                                                <!-- Quantity Box -->
                                                                 <div class="number d-flex align-items-center">
                                                                     <button type="button"
                                                                         style="cursor: pointer;height: 20px;"
@@ -264,13 +254,16 @@
                                                                         class="buttons-countAccesories increase-btn border-0 bg-white"
                                                                         style="cursor: pointer;height: 20px;">+</button>
                                                                 </div>
+
                                                             </div>
                                                             <div>
                                                                 <a href="">
-                                                                    <small style="border-bottom: 1px solid #eee;">Compare</small>
+                                                                    <small
+                                                                        style="border-bottom: 1px solid #eee;">Compare</small>
                                                                 </a>
                                                                 <a href="">
-                                                                    <small style="border-bottom: 1px solid #eee;">Wishlist</small>
+                                                                    <small
+                                                                        style="border-bottom: 1px solid #eee;">Wishlist</small>
                                                                 </a>
                                                             </div>
                                                         </div>

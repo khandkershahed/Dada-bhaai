@@ -48,7 +48,6 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
-
 <script type="text/javascript">
     $.ajaxSetup({
         headers: {
@@ -56,6 +55,8 @@
         }
     })
 </script>
+
+
 <script>
     $(document).ready(function() {
         $(".releted_accessories").slick({
@@ -651,7 +652,76 @@
 </script>
 {{-- OfferToCartOne --}}
 
+{{-- MiniCart --}}
+<script>
+    function miniCart() {
+        $.ajax({
+            type: 'GET',
+            url: '/product/mini-cart',
+            dataType: 'json',
+
+            success: function(response) {
+                // console.log(response)
+
+                $('span[id="cartSubTotal"]').text(response.cartTotal);
+                $('#cartQty').text(response.cartQty);
+
+                var miniCart = "";
+
+                if (response.carts.length === 0) {
+
+                    $('#cartQty').closest('li').hide();
+                    // Mini cart is empty
+                    miniCart += `<ul><li class="mb-20 text-center">Mini cart is empty</li></ul>`;
+                } else {
+
+                    $('#cartQty').closest('li').show();
+                    $.each(response.carts, function(key, value) {
+                        miniCart +=
+
+                            `<div class="row pb-3" style="border-bottom: 1px solid #eee;">
+
+                                                <div class="col-lg-4">
+
+                                                    <div>
+                                                        <img src="/${value.options.image}" class="img-fluid" alt="${value.name}">
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-lg-8">
+                                                    <div>
+
+                                                        <p class="mb-0">${value.name.length > 15 ? `${value.name.substring(0, 15)}...` : value.name}</p>
+
+                                                        <p class="mb-0" style="color: #000">
+
+                                                            <span class="pe-3">${value.qty} x $ ${value.price}</span>
+
+                                                            <span style="cursor:pointer">
+
+                                                                <a type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)">
+                                                                    <i class="fa-solid fa-trash text-muted"></i>
+                                                                </a>
+
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>`
+                    });
+                }
+
+                $('#miniCart').html(miniCart);
+            }
+        });
+    }
+    miniCart();
+</script>
+{{-- MiniCart --}}
+
 {{-- BuyToCartOne --}}
+
 <script>
     function buyToCartOne() {
 
@@ -709,7 +779,122 @@
 
     }
 </script>
+
 {{-- BuyToCartOne --}}
+
+
+{{-- add_to_cart_btn_product_single --}}
+
+{{-- <script>
+    $('.add_to_cart_btn_product_single').click(function() {
+
+        var product_id = $(this).data('product_id');
+        var qty = $(this).closest('.d-flex').find('.qty-input').val();
+
+
+        $.ajax({
+
+            type: "POST",
+            dataType: 'json',
+            url: '/product-store-cart-single',
+
+            data: {
+                product_id: product_id,
+                qty: qty,
+            },
+
+            success: function(data) {
+
+                $('.cart_icon').removeClass('d-none');
+
+                // miniCart();
+                miniCartRelated();
+
+                // Start Message
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success,
+                    })
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error,
+                    })
+                }
+
+                // End Message
+            }
+
+        })
+
+    })
+</script> --}}
+
+<script>
+    $(document).ready(function() {
+        // Handle adding product to the list when the "Add" button is clicked
+        $('.add_to_cart_btn_product_single_add').on('click', function() {
+            var productId = $(this).data('product_id'); // Get the product ID
+            var productName = $(this).data('product_name'); // Get the product name
+            var productPrice = $(this).data('product_price'); // Get the product price
+            var quantity = $(this).closest('.card-body').find('.qty-input').val(); // Get the quantity
+
+            // Create a new list item with the product details
+            var newItem = `
+                <li class="d-flex mb-2 align-items-center" style="border-bottom: 1px solid #eee;border-top: 1px solid #eee;">
+                    <span class="pr-2">${$('#productList li').length + 1}.</span>
+                    <input type="text" class="form-control form-control-sm accesories-title" value="${productName}" readonly>
+                    <input type="text" class="form-control form-control-sm accesories-qty" value="x ${quantity}" readonly>
+                    <input type="text" class="form-control form-control-sm accesories-amount" value="$ ${productPrice * quantity}" readonly>
+                    <div class="accesories-remove">
+                        <a type="submit" style="cursor:pointer" class="" id="${productId}" onclick="removeProduct(this.id)">
+                            <i class="fa-solid fa-close text-danger"></i>
+                        </a>
+                    </div>
+                </li>
+            `;
+
+            // Append the new item to the list
+            $('#productList').append(newItem);
+        });
+
+        // Handle quantity changes
+        $(document).on('click', '.increase-btn', function() {
+            var qtyInput = $(this).closest('.number').find('.qty-input');
+            var currentQty = parseInt(qtyInput.val());
+            qtyInput.val(currentQty + 1);
+        });
+
+        $(document).on('click', '.decrease-btn', function() {
+            var qtyInput = $(this).closest('.number').find('.qty-input');
+            var currentQty = parseInt(qtyInput.val());
+            if (currentQty > 1) {
+                qtyInput.val(currentQty - 1);
+            }
+        });
+    });
+
+    // Remove a product from the list
+    function removeProduct(productId) {
+        $('#' + productId).closest('li').remove();
+    }
+</script>
+
+{{-- add_to_cart_btn_product_single --}}
 
 
 {{-- AddToCartOne --}}
@@ -903,68 +1088,7 @@
 </script>
 {{-- add_to_cart_btn_product --}}
 
-{{-- add_to_cart_btn_product_single --}}
-<script>
-    $('.add_to_cart_btn_product_single').click(function() {
 
-        var product_id = $(this).data('product_id');
-        var qty = $(this).closest('.d-flex').find('.qty-input').val();
-
-
-        $.ajax({
-
-            type: "POST",
-            dataType: 'json',
-            url: '/product-store-cart-single',
-
-            data: {
-                product_id: product_id,
-                qty: qty,
-            },
-
-            success: function(data) {
-
-                $('.cart_icon').removeClass('d-none');
-
-                // miniCart();
-                miniCartRelated();
-
-                // Start Message
-
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-
-                    showConfirmButton: false,
-                    timer: 3000
-                })
-                if ($.isEmptyObject(data.error)) {
-
-                    Toast.fire({
-                        type: 'success',
-                        icon: 'success',
-                        title: data.success,
-                    })
-
-                } else {
-
-                    Toast.fire({
-                        type: 'error',
-                        icon: 'error',
-                        title: data.error,
-                    })
-                }
-
-                // End Message
-            }
-
-        })
-
-    })
-</script>
-{{-- add_to_cart_btn_product_single --}}
-
-{{-- ========================================== --}}
 {{-- addToCartDetails --}}
 <script>
     function addToCartDetailsF() {
@@ -1018,7 +1142,6 @@
 
     }
 </script>
-
 
 {{-- AddToCartOneRelated --}}
 <script>
@@ -1082,8 +1205,9 @@
 </script>
 {{-- AddToCartOneRelated --}}
 
-{{-- Mini Cart Related --}}
 
+
+{{-- Mini Cart Related --}}
 <script type="text/javascript">
     function miniCartRelated() {
         $.ajax({
@@ -1105,8 +1229,7 @@
                     miniCartRelated +=
 
 
-                        `
-                            <ul style="list-style-type: circle !important;">
+                        `<ul style="list-style-type: circle !important;">
                           <li class="d-flex mb-2 align-items-center" style="border-bottom: 1px solid #eee;border-top: 1px solid #eee;">
                             <span class="pr-2">${serialNumber++}.</span>
                             <input type="text" class="form-control form-control-sm accesories-title" placeholder="${value.name.length > 16 ? value.name.substring(0, 16) + '' : value.name}">
@@ -1122,9 +1245,6 @@
                           </li>
                         </ul>
                         `
-
-
-
                 });
 
                 $('#miniCartRelated').html(miniCartRelated);
@@ -1135,7 +1255,6 @@
     }
     miniCartRelated();
 </script>
-
 {{-- Mini Cart Related --}}
 
 {{-- MiNi Cart Related Increase --}}
@@ -1279,77 +1398,6 @@
 {{-- MinI Cart Related remove --}}
 
 
-{{-- MiniCart --}}
-
-<script>
-    function miniCart() {
-        $.ajax({
-            type: 'GET',
-            url: '/product/mini-cart',
-            dataType: 'json',
-
-            success: function(response) {
-                // console.log(response)
-
-                $('span[id="cartSubTotal"]').text(response.cartTotal);
-                $('#cartQty').text(response.cartQty);
-
-                var miniCart = "";
-
-                if (response.carts.length === 0) {
-
-                    $('#cartQty').closest('li').hide();
-                    // Mini cart is empty
-                    miniCart += `<ul><li class="mb-20 text-center">Mini cart is empty</li></ul>`;
-                } else {
-
-                    $('#cartQty').closest('li').show();
-                    $.each(response.carts, function(key, value) {
-                        miniCart +=
-
-                            `<div class="row pb-3" style="border-bottom: 1px solid #eee;">
-
-                                                <div class="col-lg-4">
-
-                                                    <div>
-                                                        <img src="/${value.options.image}" class="img-fluid" alt="${value.name}">
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="col-lg-8">
-                                                    <div>
-
-                                                        <p class="mb-0">${value.name.length > 15 ? `${value.name.substring(0, 15)}...` : value.name}</p>
-
-                                                        <p class="mb-0" style="color: #000">
-
-                                                            <span class="pe-3">${value.qty} x $ ${value.price}</span>
-
-                                                            <span style="cursor:pointer">
-
-                                                                <a type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)">
-                                                                    <i class="fa-solid fa-trash text-muted"></i>
-                                                                </a>
-
-                                                            </span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>`
-                    });
-                }
-
-                $('#miniCart').html(miniCart);
-            }
-        });
-    }
-    miniCart();
-</script>
-
-
-{{-- MiniCart --}}
-
 {{-- MiNi Cart Remove --}}
 <script>
     function miniCartRemove(rowId) {
@@ -1395,7 +1443,6 @@
 </script>
 
 <!--  Start Load MY Cart // -->
-
 <script type="text/javascript">
     function cart() {
         $.ajax({
@@ -1521,7 +1568,6 @@
     }
 </script>
 
-
 {{-- // Cart INCREMENT --}}
 <script>
     // Cart INCREMENT
@@ -1554,11 +1600,6 @@
     }
     // Cart Decrement End
 </script>
-
-{{-- ============================================== --}}
-
-{{-- ============================================== --}}
-
 
 
 <script>
