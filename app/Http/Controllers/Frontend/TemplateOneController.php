@@ -151,6 +151,36 @@ class TemplateOneController extends Controller
         return view('frontend.template_one.brand.brand_wise_product', compact('products', 'brandwiseproduct', 'route', 'brandId', 'brandSlug', 'sort', 'catwiseproduct', 'childcatwiseproduct'));
     }
 
+
+
+
+
+
+    public function BrandRelatedProductSearch(Request $request)
+    {
+        $searchQuery = $request->query('query');
+        $brandId = $request->query('brand_id');
+        $sort = $request->query('sort');
+
+        $query = Product::where('status', 1)->where('brand_id', $brandId);
+
+        if ($sort == 'nameAtoZ') {
+            $query->orderBy('product_name', 'ASC');
+        } elseif ($sort == 'nameZtoA') {
+            $query->orderBy('product_name', 'DESC');
+        }
+
+        if ($searchQuery) {
+            $query->where('product_name', 'like', '%' . $searchQuery . '%');
+        }
+
+        $products = $query->paginate(12);
+
+        // Return the updated product grid view
+        return view('frontend.template_one.partials.product_grid', compact('products'));
+    }
+
+
     //Home All Category
     public function HomeAllCategory()
     {

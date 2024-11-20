@@ -2,7 +2,6 @@
 
     @php
         $brands = App\Models\Brand::where('status', '1')->orderBy('brand_name', 'ASC')->latest()->limit(7)->get();
-
         $categorys = App\Models\Admin\Category::where('status', '1')
             ->orderBy('category_name', 'ASC')
             ->latest()
@@ -11,20 +10,18 @@
     @endphp
 
     <div class="common-sidebar shop-banner-sidebar">
-        
+
         {{-- Category  --}}
+
         <div class="common-cat">
             <div class="side-title">
                 <h6>Category</h6>
             </div>
-            {{-- Brands Accordion --}}
             <div id="accordionBrands" class="accordion">
                 <div class="card border-0 shadow-none mb-0">
 
-                    {{-- Multi Accordion End --}}
-
                     @foreach ($categorys as $category)
-                        <div class="card-header pl-0 {{ optional($catwiseproduct)->id == $category->id ? 'mark-cat' : 'collapsed' }}"
+                        <div class="card-header pl-0 {{ optional($catwiseproduct)->id == $category->id ? 'collapsed':'mark-cat' }}"
                             data-toggle="collapse" data-parent="#accordion"
                             aria-expanded="{{ optional($catwiseproduct)->id == $category->id ? 'true' : '' }}"
                             href="#cat{{ $category->id }}">
@@ -45,10 +42,8 @@
                             @endphp
 
                             <div id="accordion2" class="accordion pl-3">
-
-                                @forelse ($subcategorys as $subcategory)
+                                @foreach ($subcategorys as $subcategory)
                                     <div class="card border-0 shadow-none mb-0">
-
                                         <div class="card-header category-filter {{ optional($childcatwiseproduct)->subcategory_id == $subcategory->id ? 'mark-sub-cat' : 'collapsed' }} pl-0"
                                             data-toggle="collapse" data-target="#sub{{ $subcategory->id }}">
                                             <a class="card-title">
@@ -58,90 +53,52 @@
 
                                         <div id="sub{{ $subcategory->id }}" class="collapse" data-parent="#accordion2"
                                             style="background-color: #f5f5f5;">
-
                                             @php
                                                 $childcategorys = App\Models\Admin\ChildCategory::where('status', '1')
                                                     ->where('subcategory_id', $subcategory->id)
                                                     ->latest()
                                                     ->get();
                                             @endphp
-                                            @forelse ($childcategorys as $childcategory)
+                                            @foreach ($childcategorys as $childcategory)
                                                 <div class="card-body p-2 {{ optional($childcatwiseproduct)->id == $childcategory->id ? 'marks' : '' }}"
                                                     aria-expanded="{{ optional($childcatwiseproduct)->id == $childcategory->id ? 'true' : 'false' }}">
                                                     <a href="{{ url('product/childcategory/' . $childcategory->id . '/' . $childcategory->childcategory_slug) }}"
                                                         class="pl-3 text-muted childcategory-link {{ optional($childcatwiseproduct)->id == $childcategory->id ? 'marks' : 'collapsed' }}">{{ $childcategory->childcategory_name }}</a>
-
                                                 </div>
-
-                                            @empty
-                                                <p>No ChildCategory Avaiable</p>
-                                            @endforelse
-
+                                            @endforeach
                                         </div>
                                     </div>
-                                @empty
-                                    <p>No SubCategory Avaiable</p>
-                                @endforelse
-
-
+                                @endforeach
                             </div>
                         </div>
                     @endforeach
 
-                    {{-- Multi Accordion End --}}
-
                 </div>
             </div>
-
         </div>
-        {{-- Category  --}}
 
+        
+        
+        
+        
 
-    </div>
-
-    <div class="common-sidebar shop-banner-sidebar">
         {{-- Brand  --}}
-        <div class="common-cat">
+        <div class="common-cat mt-5">
             <div class="side-title">
                 <h6>Brands</h6>
             </div>
             <div>
-                @forelse ($brands as $brand)
+                @foreach ($brands as $brand)
                     <div class="card brand-filter pl-0">
-                        <a class="card-title mb-0" style="color: #170000 ; padding: .75rem 0rem;"
+                        <a class="card-title mb-0 {{ request()->route('brand_slug') == $brand->brand_slug ? 'active-brand' : '' }}"
+                            style="color: #170000; padding: .75rem 0rem; color: {{ request()->route('brand_slug') == $brand->brand_slug ? 'red' : '#170000' }};"
                             href="{{ url('product/brand/' . $brand->id . '/' . $brand->brand_slug) }}">
                             {{ $brand->brand_name }}
                         </a>
                     </div>
-                @empty
-                    <p>No Brand Avaiable</p>
-                @endforelse
-
+                @endforeach
             </div>
         </div>
-        {{-- Brand  --}}
-
-        {{-- Tags --}}
-
-        {{-- <div class="common-tag mt-30">
-            <div class="side-title">
-                <h6>Popular Tag</h6>
-            </div>
-            @php
-                $tags = App\Models\Admin\Product::where('status', '1')
-                    ->orderBy('product_name', 'ASC')
-                    ->latest()
-                    ->limit(7)
-                    ->get();
-            @endphp
-            <ul class="mt-25 mb-15">
-                @forelse ($tags as $tag)
-                    <li><a href="javascript:;">{{ $tag->tags }}</a></li>
-                @empty
-                    <p class="mb-0 text-dark">No Tags Avaiable</p>
-                @endforelse
-            </ul>
-        </div> --}}
 
     </div>
 
