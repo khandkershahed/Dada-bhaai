@@ -151,10 +151,7 @@ class TemplateOneController extends Controller
         return view('frontend.template_one.brand.brand_wise_product', compact('products', 'brandwiseproduct', 'route', 'brandId', 'brandSlug', 'sort', 'catwiseproduct', 'childcatwiseproduct'));
     }
 
-
-
-
-
+    //BrandRelatedProductSearch
 
     public function BrandRelatedProductSearch(Request $request)
     {

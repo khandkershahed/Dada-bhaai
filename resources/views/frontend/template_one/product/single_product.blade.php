@@ -151,7 +151,8 @@
 
                                 <div class="d-flex align-items-center">
 
-                                    <input type="hidden" id="oneproduct_id" value="{{ $product->id }}">
+                                    <input type="hidden" name="parent_id" id="oneproduct_id"
+                                        value="{{ $product->id }}">
 
                                     <a onclick="buyToCartOne()" class="cart-button w-100">Add Cart</a>
 
