@@ -96,6 +96,7 @@
 
                         {{-- ================================ --}}
 
+
                         <div class="col-lg-5 col-md-6 order-2 order-lg-3">
 
                             <div class="cart-wrapper">
@@ -145,7 +146,7 @@
                                 </div>
 
                                 <div class="mb-4">
-                                    <ul id="productList" value="{{ $product->id }}" style="list-style-type: circle !important;"></ul>
+                                    <ul id="productList" style="list-style-type: circle !important;"></ul>
                                 </div>
 
                                 <div class="d-flex align-items-center">
