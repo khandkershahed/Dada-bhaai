@@ -32,11 +32,8 @@
     <!-- page banner area end -->
 
     <!-- shop area start -->
-
     <form action="{{ route('template.checkout.store') }}" id="myForm" method="POST">
-
         @csrf
-
         <div class="product shop-page pt-40 pb-80 fix">
             <div class="container">
                 <div class="border-b">
@@ -48,7 +45,7 @@
                                 </p>
                                 <a href="{{ route('index') }}" class="f-800 cod__black-color">
                                     <span class="grenadier-color">Continue Shopping<i
-                                            class="fa fa-long-arrow-right"></i></span>
+                                            class="fa fa-long-arrow-right pl-2"></i></span>
                                 </a>
                             </div>
                         </div>
@@ -56,28 +53,20 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-lg-12">
-                        <div class="card border-0 shadow-lg">
-                            <div class="card-body">
-
+                        <div class="card border-0 shadow-lg p-0">
+                            <div class="card-body p-0">
                                 <div class="row">
-
                                     <div class="col-lg-8">
-
                                         {{-- Billing Info --}}
                                         <div class="card border-0 shadow-none mb-5">
-
-                                            <div class="card-header checkout-page-form">
+                                            <div class="card-header checkout-page-form" style="background: #dfdddd;">
                                                 <a class="card-title">Billing Info</a>
                                             </div>
-
                                             <div id="" class="" data-parent=""
                                                 style="background-color: #f5f5f5">
                                                 <div class="card-body p-0">
-                                                    <div class="mb-3 bg-light p-3">
-
-
+                                                    <div class="bg-light p-3">
                                                         <div class="row">
-
                                                             <div class="form-group col-sm-4">
                                                                 <label for="user_id">User Name
                                                                 </label>
@@ -85,7 +74,6 @@
                                                                     placeholder="Billing Name"
                                                                     value="{{ Auth::user()->name }}" name="billing_name" />
                                                             </div>
-
                                                             <div class="form-group col-sm-4">
                                                                 <label for="phone">Phone
                                                                 </label>
@@ -94,7 +82,6 @@
                                                                     value="{{ Auth::user()->phone }}"
                                                                     name="billing_phone" />
                                                             </div>
-
                                                             <div class="form-group col-sm-4">
                                                                 <label for="email">Email
                                                                 </label>
@@ -102,7 +89,6 @@
                                                                     value="{{ Auth::user()->email }}"
                                                                     placeholder="example@gmail.com" name="billing_email" />
                                                             </div>
-
                                                             <div class="form-group col-sm-4">
                                                                 <label for="city">City
                                                                 </label>
@@ -110,7 +96,6 @@
                                                                     value="{{ Auth::user()->city }}" name="billing_city"
                                                                     placeholder="City Name" />
                                                             </div>
-
                                                             <div class="form-group col-sm-4">
                                                                 <label for="state">State
                                                                 </label>
@@ -118,7 +103,6 @@
                                                                     value="{{ old('billing_state') }}" name="billing_state"
                                                                     placeholder="State Name" />
                                                             </div>
-
                                                             <div class="form-group col-sm-4">
                                                                 <label for="postal_code">Postal Code
                                                                 </label>
@@ -126,7 +110,6 @@
                                                                     value="{{ Auth::user()->postal_code }}"
                                                                     name="billing_postal_code" placeholder="Postal Code" />
                                                             </div>
-
                                                             <div class="form-group col-sm-4">
                                                                 <label for="city">Country
                                                                 </label>
@@ -138,14 +121,10 @@
                                                                             {{ $country->name }}</option>
                                                                     @endforeach
                                                                 </select> --}}
-
-
                                                                 <input type="text" class="form-control"
                                                                     value="{{ Auth::user()->country }}"
                                                                     name="billing_country" placeholder="Country Name" />
                                                             </div>
-
-
                                                             <div class="form-group col-sm-4">
                                                                 <label for="address_line1">Address 1
                                                                 </label>
@@ -154,7 +133,6 @@
                                                                     name="billing_address_line1"
                                                                     placeholder="Address One" />
                                                             </div>
-
                                                             <div class="form-group col-sm-4">
                                                                 <label for="address_line2">Address 2
                                                                 </label>
@@ -163,38 +141,29 @@
                                                                     name="billing_address_line2"
                                                                     placeholder="Address Two" />
                                                             </div>
-
                                                             <div class="form-group col-sm-12">
                                                                 <label for="address_line2">Note
                                                                 </label>
                                                                 <textarea class="form-control" placeholder="Write Something" name="notes" id="" cols="1"
                                                                     rows="1"></textarea>
                                                             </div>
-
                                                         </div>
-
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                         {{-- Billing Info --}}
 
                                         {{-- Shipping Info --}}
                                         <div class="card border-0 shadow-none mb-0">
-
-                                            <div class="card-header checkout-page-form">
+                                            <div class="card-header checkout-page-form" style="background: #dfdddd;">
                                                 <a class="card-title">Shipping Info</a>
                                             </div>
-
                                             <div id="" class="" data-parent=""
                                                 style="background-color: #f5f5f5">
                                                 <div class="card-body p-0">
-                                                    <div class="mb-3 bg-light p-3">
-
-
+                                                    <div class="bg-light p-3">
                                                         <div class="row">
-
                                                             <div class="form-group col-sm-4">
                                                                 <label for="user_id">Shipping Name
                                                                 </label>
@@ -202,7 +171,6 @@
                                                                     placeholder="Shipping Name" value=""
                                                                     name="shipping_name" />
                                                             </div>
-
                                                             <div class="form-group col-sm-4">
                                                                 <label for="phone">Shipping Phone
                                                                 </label>
@@ -210,14 +178,12 @@
                                                                     placeholder="Shipping Phone" value=""
                                                                     name="shipping_phone" />
                                                             </div>
-
                                                             <div class="form-group col-sm-4">
                                                                 <label for="city">Shipping City
                                                                 </label>
                                                                 <input type="text" class="form-control" value=""
                                                                     name="shipping_city" placeholder="Shipping City" />
                                                             </div>
-
                                                             <div class="form-group col-sm-4">
                                                                 <label for="state">Shipping State
                                                                 </label>
@@ -225,7 +191,6 @@
                                                                     value="{{ old('shipping_state') }}"
                                                                     name="shipping_state" placeholder="Shipping State" />
                                                             </div>
-
                                                             <div class="form-group col-sm-4">
                                                                 <label for="postal_code">Postal Code
                                                                 </label>
@@ -233,7 +198,6 @@
                                                                     name="shipping_postal_code"
                                                                     placeholder="Postal Code" />
                                                             </div>
-
                                                             <div class="form-group col-sm-4">
                                                                 <label for="city">Country
                                                                 </label>
@@ -241,8 +205,6 @@
                                                                 <input type="text" class="form-control" value=""
                                                                     name="shipping_country" placeholder="Country Name" />
                                                             </div>
-
-
                                                             <div class="form-group col-sm-4">
                                                                 <label for="address_line1">Address 1
                                                                 </label>
@@ -250,7 +212,6 @@
                                                                     name="shipping_address_line1"
                                                                     placeholder="Address One" />
                                                             </div>
-
                                                             <div class="form-group col-sm-4">
                                                                 <label for="address_line2">Address 2
                                                                 </label>
@@ -258,69 +219,69 @@
                                                                     name="shipping_address_line2"
                                                                     placeholder="Address Two" />
                                                             </div>
-
-
                                                         </div>
-
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                         {{-- Shipping Info --}}
-
                                     </div>
-
-
                                     <!-- Check Out Content -->
-
                                     <div class="col-lg-4">
                                         <form action="">
                                             <div class="card rounded-0">
-
                                                 <div class="card-header font-weight-bold">
                                                     ORDER SUMMERY
                                                 </div>
-
                                                 <div class="card-body border-0">
-
                                                     <div class="row mb-5">
-
                                                         @foreach ($carts as $item)
-                                                            <div class="col-6">
-                                                                <img src="{{ asset($item->options->image) }}"
-                                                                    style="width:80px" alt="">
-                                                            </div>
-
-                                                            <div class="col-6">
-                                                                <p><span>Qty:{{ $item->qty }}</span><span>Price:${{ $item->price }}</span>{{ $item->name }}
-                                                                </p>
+                                                            <div class="col-12">
+                                                                <table>
+                                                                    <tr style="background: #dfdddd; padding: 10px;">
+                                                                        <th class="py-3 pl-2 text-start" width="30%">Image</th>
+                                                                        <th class="py-3 text-start" width="45%">Name</th>
+                                                                        <th class="py-3 text-start" width="15$">Qty</th>
+                                                                        <th class="py-3 pr-2 text-start" width="10%">Price</th>
+                                                                    </tr>
+                                                                    <tr style="border-bottom: 1px solid #dfdddd;">
+                                                                        <td>
+                                                                            <img src="{{ asset($item->options->image) }}"
+                                                                                style="width:80px" alt="">
+                                                                        </td>
+                                                                        <td>
+                                                                            <div>
+                                                                                {{ $item->name }}
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div>
+                                                                                {{ $item->qty }}
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div>
+                                                                                ${{ $item->price }}
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
                                                             </div>
                                                         @endforeach
-
                                                     </div>
-
                                                     <div class="table-responsive border-0">
-
                                                         <table class="table border-0">
-
                                                             <thead style="background: #dfdddd">
                                                                 <tr>
                                                                     <th scope="col">Details</th>
                                                                     <th class="text-right">Price Info</th>
                                                                 </tr>
                                                             </thead>
-
                                                             <tbody>
-
-
                                                                 <tr class="">
                                                                     <td>Price:</td>
                                                                     <td class="text-right">$ {{ $cartTotal }}</td>
                                                                 </tr>
-
-
-
                                                                 <tr>
                                                                     <th scope="col">Grand Total</th>
 
@@ -331,22 +292,15 @@
                                                                         $ <b class="amount grandTotal">
                                                                             {{ $cartTotal }}</b>
                                                                     </th>
-
                                                                 </tr>
-
                                                             </tbody>
-
                                                         </table>
-
-
                                                         {{-- Delivery System  --}}
                                                         <div class="mt-5">
                                                             <h5 class="cart-title-highlight title-3">Payment Method</h5>
                                                             <ul
                                                                 class="payment_methods methods list-unstyled mt-3 form-group">
-
                                                                 <li class="payment_method_bacs">
-
                                                                     <div class="">
                                                                         <label class="radio-inline">
                                                                             <input type="radio" value="cod"
@@ -354,39 +308,27 @@
                                                                             <span>Cash On Delivery</span>
                                                                         </label>
                                                                     </div>
-
                                                                 </li>
-
-
                                                             </ul>
-
                                                         </div>
                                                         {{-- Delivery System  --}}
-
-
                                                         <div class="d-flex justify-content-end mt-3">
-
                                                             <button type="submit" class="cart-button w-100">
                                                                 Proceed to Checkout
                                                             </button>
-
                                                         </div>
-
                                                     </div>
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
-
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </form>
 
 

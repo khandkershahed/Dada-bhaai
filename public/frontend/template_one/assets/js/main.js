@@ -104,9 +104,9 @@
         );
 
         BasicSlider.slick({
-            autoplay: false,
+            autoplay: true,
 
-            autoplaySpeed: 10000,
+            autoplaySpeed: 6000,
 
             dots: true,
 
@@ -159,20 +159,17 @@
 
     $(".product__active").owlCarousel({
         loop: true,
-
+        autoplay: true,
+        autoplayTimeout: 6000, // Time between slides in milliseconds
+        autoplayHoverPause: true, // Pause on hover
         margin: 0,
-
         items: 1,
-
         navText: [
             '<i class="fa fa-angle-left"></i>',
             '<i class="fa fa-angle-right"></i>',
         ],
-
         nav: false,
-
         dots: false,
-
         responsive: {
             0: {
                 items: 1,
@@ -270,29 +267,24 @@
 
     $(".product__active--small").owlCarousel({
         loop: true,
-
+        autoplay: true,
+        autoplayTimeout: 3000, // Time between slides in milliseconds
+        autoplayHoverPause: true, // Pause on hover
         margin: 0,
-
         items: 1,
-
         navText: [
             '<i class="fa fa-angle-left"></i>',
             '<i class="fa fa-angle-right"></i>',
         ],
-
-        nav: false,
-
+        nav: true,
         dots: false,
-
         responsive: {
             0: {
                 items: 1,
             },
-
             767: {
                 items: 3,
             },
-
             992: {
                 items: 3,
             },
