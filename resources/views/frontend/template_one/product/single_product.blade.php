@@ -96,7 +96,6 @@
 
                         {{-- ================================ --}}
 
-
                         <div class="col-lg-5 col-md-6 order-2 order-lg-3">
 
                             <div class="cart-wrapper">
@@ -146,13 +145,12 @@
                                 </div>
 
                                 <div class="mb-4">
-                                    <ul id="productList" style="list-style-type: circle !important;"></ul>
+                                    <ul id="productList" value="{{ $product->id }}" style="list-style-type: circle !important;"></ul>
                                 </div>
 
                                 <div class="d-flex align-items-center">
 
-                                    <input type="hidden" name="parent_id" id="oneproduct_id"
-                                        value="{{ $product->id }}">
+                                    <input type="hidden" id="oneproduct_id" value="{{ $product->id }}">
 
                                     <a onclick="buyToCartOne()" class="cart-button w-100">Add Cart</a>
 

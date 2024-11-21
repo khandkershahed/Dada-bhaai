@@ -721,7 +721,6 @@
 {{-- MiniCart --}}
 
 {{-- BuyToCartOne --}}
-
 <script>
     function buyToCartOne() {
 
@@ -779,7 +778,6 @@
 
     }
 </script>
-
 {{-- BuyToCartOne --}}
 
 
