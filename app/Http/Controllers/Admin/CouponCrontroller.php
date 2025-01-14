@@ -16,16 +16,22 @@ class CouponCrontroller extends Controller
     }
 
     //Store ShippingCharge
+
     public function StoreCoupon(Request $request)
     {
+        // Validate the incoming request
+        $validated = $request->validate([
+            'coupon_name' => 'required|unique:coupons,coupon_name|max:255',
+        ]);
 
+        // If validation fails, it will automatically redirect the user back with errors
+
+        // Create the coupon if validation passes
         Coupon::create([
-
             'coupon_name' => $request->coupon_name,
             'coupon_discount' => $request->coupon_discount,
             'coupon_validity' => $request->coupon_validity,
             'created_at' => now(),
-
         ]);
 
         toastr()->success('Coupon Created Successfully');

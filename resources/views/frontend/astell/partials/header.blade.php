@@ -47,9 +47,9 @@
                             <li>
                                 <a href="{{ route('template.two.faq') }}">FAQ</a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="">Buying Guide</a>
-                            </li>
+                            </li> --}}
                             <li>
                                 <a href="{{ route('template.two.contact') }}">Contact Us</a>
                             </li>
@@ -153,20 +153,20 @@
             <i class="fa-solid fa-cart-plus userLogin wishlist">
                 <span class="cart custom-cart-qty" id="cartQty">0</span>
             </i>
-            
+
         </a>
 
         <div class="dropdown-menu p-3 cart-icons-menu" aria-labelledby="dropdownMenuButton" style="">
             <div class="row pb-2">
                 <div class="col-lg-12">
 
-                    
+
 
                     <div id="miniCart">
 
                     </div>
 
-                   
+
 
                 </div>
             </div>
@@ -193,7 +193,7 @@
 
         </div>
     </div> --}}
-    
+
     <div class="srch-box">
         <div class="overlay" style="display: none;"></div>
         <div class="inner" style="display: none;">

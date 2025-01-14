@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProductRequest;
 use App\Models\Admin\Category;
 use App\Models\Admin\ChildCategory;
 use App\Models\Admin\Color;
@@ -12,6 +11,7 @@ use App\Models\Admin\Product;
 use App\Models\Admin\SubCategory;
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
@@ -53,8 +53,13 @@ class ProductController extends Controller
     }
 
     //Store Product
-    public function StoreProduct(ProductRequest $request)
+    public function StoreProduct(Request $request)
     {
+
+        $validator = Validator::make($request->all(), [
+            'product_name' => 'required|unique:products,product_name',
+        ]);
+
         $image = $request->file('product_image');
         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
         Image::make($image)->save('upload/product/mainimage/' . $name_gen);
