@@ -1,3 +1,15 @@
+<style>
+    .single__hero {
+        height: 720px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .single__hero {
+            height: 225px;
+            width: 100%;
+        }
+    }
+</style>
 @php
     $heros = App\Models\Banner::where('status', '1')->orderBy('id', 'ASC')->get();
 @endphp
@@ -6,8 +18,7 @@
 
         @if (count($heros) > 0)
             @foreach ($heros as $hero)
-                <div class="single__hero single-slider hero__bg pt-140 pb-120 home-main-banner" style="height: 550px"
-                    {{-- data-background="{{ asset($hero->banner_image) }}"> --}}
+                <div class="single__hero single-slider hero__bg pt-140 pb-120 home-main-banner" {{-- data-background="{{ asset($hero->banner_image) }}"> --}}
                     data-background="{{ asset($hero->banner_image) }}">
                 </div>
             @endforeach

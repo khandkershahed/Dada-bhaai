@@ -2,6 +2,17 @@
 <html class="no-js" lang="en">
 
 @include('frontend.template_one.partials.style_link')
+<style>
+    .loader {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 11111;
+        background: url("{{ asset('img/giphy.webp') }}") 50% 50% no-repeat white;
+    }
+</style>
 
 <body>
     <!-- Loader -->

@@ -21,28 +21,16 @@
                 </div>
                 <div class="border-b">
                     <div class="row align-items-center mx-0" style="background: #f5f5f5;">
-                        <div class="col-lg-4">
+                        <div class="col-lg-10">
                             <div class="shop-bar d-flex align-items-center">
                                 <h4 class="f-800 cod__black-color mb-0">Product</h4>
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">
-                                            {{ $brandwiseproduct->brand_name }}</li>
-                                    </ol>
-                                </nav>
+                                <div class="form-group has-search mb-0 w-100">
+                                    <input type="text" class="form-control w-00" id="category_product_search"
+                                        placeholder="Search">
+                                    <span class="fa fa-search form-control-feedback pr-4"></span>
+                                </div>
                             </div>
                         </div>
-
-                        <!-- Search Box -->
-                        <div class="col-lg-6">
-                            <div class="form-group has-search mb-0">
-                                <input type="text" class="form-control" id="category_product_search"
-                                    placeholder="Search">
-                                <span class="fa fa-search form-control-feedback"></span>
-                            </div>
-                        </div>
-
                         <!-- Sorting Dropdown -->
                         <div class="col-lg-2">
                             <div class="d-flex justify-content-end">

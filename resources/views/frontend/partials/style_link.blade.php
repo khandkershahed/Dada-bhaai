@@ -6,7 +6,7 @@
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<title>Goshop HTML Theme || Home</title>
+<title>Dadabhai || Home</title>
 
 <!-- Favicon -->
 <link rel="apple-touch-icon-precomposed" sizes="144x144"

@@ -30,33 +30,20 @@
                 </div>
                 <div class="border-b">
                     <div class="row align-items-center mx-0" style="background: #f5f5f5;">
-                        <div class="col-lg-4">
+                        <div class="col-lg-10">
                             <div class="shop-bar d-flex align-items-center">
                                 <h4 class="f-800 cod__black-color mb-0">Product</h4>
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">
-                                            {{ $catwiseproduct->category_name }}</li>
-                                    </ol>
-                                </nav>
+                                <div class="form-group has-search mb-0 w-100">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <span class="fa fa-search form-control-feedback"></span>
+                                </div>
                             </div>
                         </div>
 
-                        {{-- New Section  --}}
-                        <div class="col-lg-7">
-                            <!-- Actual search box -->
-                            <div class="form-group has-search mb-0">
-                                <input type="text" class="form-control" placeholder="Search">
-                                <span class="fa fa-search form-control-feedback"></span>
-                            </div>
-
-                        </div>
-
-                        <div class="col-lg-1">
+                        <div class="col-lg-2">
                             <div class="d-flex justify-content-end">
                                 <select name="" class="text-end" id="sortBy">
-                                    <option selected disabled>SortBy Product</option>
+                                    <option selected disabled>Sort By Product</option>
                                     <option value="nameAtoZ" {{ $sort == 'nameAtoZ' ? 'selected' : '' }}>Product
                                         Name: A to Z
                                     </option>
