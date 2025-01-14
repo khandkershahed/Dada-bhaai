@@ -163,18 +163,18 @@
 
                         {{-- Product  --}}
                         {{-- @if (Auth::guard('admin')->user()->can('product.menu')) --}}
-                            <div class="menu-item">
-                                {{-- @if (Auth::guard('admin')->user()->can('all.product')) --}}
-                                    <a class="menu-link {{ Request::routeIs('all.product') ? 'active' : '' }}"
-                                        href="{{ route('all.product') }}">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title">Product</span>
-                                    </a>
-                                {{-- @endif --}}
+                        <div class="menu-item">
+                            {{-- @if (Auth::guard('admin')->user()->can('all.product')) --}}
+                            <a class="menu-link {{ Request::routeIs('all.product') ? 'active' : '' }}"
+                                href="{{ route('all.product') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Product</span>
+                            </a>
+                            {{-- @endif --}}
 
-                            </div>
+                        </div>
                         {{-- @endif --}}
 
 
@@ -452,16 +452,14 @@
 
                         {{-- Faq  --}}
                         {{-- @if (Auth::guard('admin')->user()->can('faq.menu')) --}}
-                            <div class="menu-item">
-                                <a class="menu-link"
-                                {{-- <a class="menu-link {{ Request::routeIs('all.faq') ? 'active' : '' }}" --}}
-                                    href="{{ route('all.faq') }}">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span>
-                                    <span class="menu-title">Faq</span>
-                                </a>
-                            </div>
+                        <div class="menu-item">
+                            <a class="menu-link" {{-- <a class="menu-link {{ Request::routeIs('all.faq') ? 'active' : '' }}" --}} href="{{ route('all.faq') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Faq</span>
+                            </a>
+                        </div>
                         {{-- @endif --}}
 
                         {{-- Term  --}}

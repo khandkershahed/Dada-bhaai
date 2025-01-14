@@ -221,8 +221,9 @@
                             <div class="col-6">
                                 <div class="form-group mb-3">
                                     <label for="" class="mb-2">Coupon Name</label>
-                                    <input type="text" name="coupon_name" class="form-control form-control-sm @error('coupon_name') is-invalid @enderror"
-                                           placeholder="Coupon Name" autocomplete="off">
+                                    <input type="text" name="coupon_name"
+                                        class="form-control form-control-sm @error('coupon_name') is-invalid @enderror"
+                                        placeholder="Coupon Name" autocomplete="off">
 
                                     <!-- Display validation error message -->
                                     @error('coupon_name')

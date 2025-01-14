@@ -27,10 +27,10 @@
     </div>
     <!--end::Toolbar-->
 
-    <!--begin::Post-->
-    <div class="post d-flex flex-column-fluid" id="kt_post">
-        <!--begin::Container-->
-        <div id="kt_content_container" class="container-xxl">
+
+    <div class="row">
+
+        <div class="col-12">
             <!--begin::Row-->
             <div class="row gy-5 g-xl-8">
                 <!--begin::Col-->
@@ -126,7 +126,8 @@
                                         </span>
                                         <!--end::Svg Icon-->
                                         <a href="{{ route('all.admin.permission') }}"
-                                            class="text-info fw-bold fs-6 mt-2">Total Employee</a>
+                                            class="text-info fw-bold fs-6 mt-2">Total
+                                            Employee</a>
                                         <span class="float-end fw-bolder badge bg-info">{{ count($totalEmployee) }}</span>
                                     </div>
                                     <!--end::Col-->
@@ -175,7 +176,8 @@
                 {{-- Order Statistics --}}
             </div>
             <!--end::Row-->
-
+        </div>
+        <div class="col-12">
             {{-- Order Status --}}
             @php
                 $totalOrder = App\Models\User\Order::latest()->get();
@@ -615,9 +617,9 @@
                 </div>
                 <!--end::Col-->
             </div>
-            {{-- Order Status --}}
+        </div>
 
-
+        <div class="col-12">
             {{-- Employee Section  --}}
             <div class="row gy-5 g-xl-8">
                 <!--begin::Col-->
@@ -784,12 +786,9 @@
                 <!--end::Col-->
             </div>
             {{-- Employee Section  --}}
-
-
         </div>
-        <!--end::Container-->
+
     </div>
-    <!--end::Post-->
 @endsection
 
 @section('barChart')

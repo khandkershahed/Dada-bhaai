@@ -47,8 +47,7 @@
     <!--end::Toolbar-->
 
     <!--begin::Post-->
-    <div class="row">
-        <div class="col-12">
+
             <div class="card">
                 <div class="card-body">
                     <div class="card-body pt-0">
@@ -117,8 +116,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+       
     <!--end::Post-->
 
     <!-- Button trigger modal -->
