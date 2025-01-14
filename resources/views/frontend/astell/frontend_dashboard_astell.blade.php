@@ -10,7 +10,7 @@
         width: 100%;
         height: 100%;
         z-index: 11111;
-        background: url("https://i.ibb.co/5K59gm9/dadavi-loading-slow-small.gif") 50% 50% no-repeat white;
+        background: url("{{ asset('img/preloader.gif') }}") 50% 50% no-repeat white;
     }
 </style>
 

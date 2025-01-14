@@ -56,7 +56,7 @@
                                                 class="fas fa-random"></i></a></li>
                                 </ul>
                             </div>
-                            
+
                             <div class="product-content d-flex justify-content-between align-items-center">
                                 <div>
 
