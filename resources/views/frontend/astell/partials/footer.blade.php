@@ -19,7 +19,9 @@
             </a>
             <a class="footer-link" href="{{ route('template.two.contact') }}">Contact Us</a>
             <a class="footer-link" href="{{ route('template.two.faq') }}">Faq</a>
-            <a class="footer-link" href="javascript:;">Buying Guide</a>
+
+            {{-- <a class="footer-link" href="javascript:;">Buying Guide</a> --}}
+
             <p style="width: 30%;">
                 {{ $site->address }}
             </p>

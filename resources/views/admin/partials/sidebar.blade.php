@@ -6,7 +6,7 @@
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         <!--begin::Logo-->
         <a href="{{ route('admin.dashboard') }}">
-            <img alt="Logo" src="{{ asset('upload/logo_white/' . $site->logo_white) }}"
+            <img alt="Logo" src="{{ asset('upload/logo_white/' . optional($site)->logo_white) }}"
                 class="h-25px logo text-white" />
         </a>
         <!--end::Logo-->
@@ -130,7 +130,8 @@
 
 
                 {{-- Product Supply Section --}}
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ Request::routeIs('all.product') ? 'here show' : '' }}">
+                <div data-kt-menu-trigger="click"
+                    class="menu-item menu-accordion {{ Request::routeIs('all.product') ? 'here show' : '' }}">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen022.svg-->
@@ -156,13 +157,14 @@
                         <span class="menu-title">Product Supply</span>
                         <span class="menu-arrow"></span>
                     </span>
-                    
-                    <div class="menu-sub menu-sub-accordion menu-active-bg {{ Request::routeIs('all.product','all.banner','all.brand','all.category','all.offer','all.offer.category','all.color') ? 'here show' : '' }}">
+
+                    <div
+                        class="menu-sub menu-sub-accordion menu-active-bg {{ Request::routeIs('all.product', 'all.banner', 'all.brand', 'all.category', 'all.offer', 'all.offer.category', 'all.color') ? 'here show' : '' }}">
 
                         {{-- Product  --}}
-                        @if (Auth::guard('admin')->user()->can('product.menu'))
+                        {{-- @if (Auth::guard('admin')->user()->can('product.menu')) --}}
                             <div class="menu-item">
-                                @if (Auth::guard('admin')->user()->can('all.product'))
+                                {{-- @if (Auth::guard('admin')->user()->can('all.product')) --}}
                                     <a class="menu-link {{ Request::routeIs('all.product') ? 'active' : '' }}"
                                         href="{{ route('all.product') }}">
                                         <span class="menu-bullet">
@@ -170,10 +172,10 @@
                                         </span>
                                         <span class="menu-title">Product</span>
                                     </a>
-                                @endif
+                                {{-- @endif --}}
 
                             </div>
-                        @endif
+                        {{-- @endif --}}
 
 
                         {{-- Banner --}}
@@ -181,7 +183,8 @@
                             <div class="menu-item">
 
                                 @if (Auth::guard('admin')->user()->can('all.banner'))
-                                    <a class="menu-link {{ Request::routeIs('all.banner') ? 'active' : '' }}" href="{{ route('all.banner') }}">
+                                    <a class="menu-link {{ Request::routeIs('all.banner') ? 'active' : '' }}"
+                                        href="{{ route('all.banner') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -198,7 +201,8 @@
                             <div class="menu-item">
 
                                 @if (Auth::guard('admin')->user()->can('all.brand'))
-                                    <a class="menu-link {{ Request::routeIs('all.brand') ? 'active' : '' }}" href="{{ route('all.brand') }}">
+                                    <a class="menu-link {{ Request::routeIs('all.brand') ? 'active' : '' }}"
+                                        href="{{ route('all.brand') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -214,7 +218,8 @@
                         @if (Auth::guard('admin')->user()->can('category.menu'))
                             <div class="menu-item">
                                 @if (Auth::guard('admin')->user()->can('all.category'))
-                                    <a class="menu-link {{ Request::routeIs('all.category') ? 'active' : '' }}" href="{{ route('all.category') }}">
+                                    <a class="menu-link {{ Request::routeIs('all.category') ? 'active' : '' }}"
+                                        href="{{ route('all.category') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -230,7 +235,8 @@
                         @if (Auth::guard('admin')->user()->can('offer.menu'))
                             <div class="menu-item">
                                 @if (Auth::guard('admin')->user()->can('all.offer'))
-                                    <a class="menu-link {{ Request::routeIs('all.offer') ? 'active' : '' }}" href="{{ route('all.offer') }}">
+                                    <a class="menu-link {{ Request::routeIs('all.offer') ? 'active' : '' }}"
+                                        href="{{ route('all.offer') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -245,7 +251,8 @@
                         @if (Auth::guard('admin')->user()->can('offer.menu'))
                             <div class="menu-item">
                                 @if (Auth::guard('admin')->user()->can('all.offer'))
-                                    <a class="menu-link {{ Request::routeIs('all.offer.category') ? 'active' : '' }}" href="{{ route('all.offer.category') }}">
+                                    <a class="menu-link {{ Request::routeIs('all.offer.category') ? 'active' : '' }}"
+                                        href="{{ route('all.offer.category') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -261,7 +268,8 @@
                         @if (Auth::guard('admin')->user()->can('color.menu'))
                             <div class="menu-item">
                                 @if (Auth::guard('admin')->user()->can('all.color'))
-                                    <a class="menu-link {{ Request::routeIs('all.color') ? 'active' : '' }}" href="{{ route('all.color') }}">
+                                    <a class="menu-link {{ Request::routeIs('all.color') ? 'active' : '' }}"
+                                        href="{{ route('all.color') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -276,7 +284,8 @@
                 {{-- Product Supply Section --}}
 
                 {{-- Ecommerce Section --}}
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ Request::routeIs('admin.all.order','all.shipping.charge','all.coupon') ? 'here show' : '' }}">
+                <div data-kt-menu-trigger="click"
+                    class="menu-item menu-accordion {{ Request::routeIs('admin.all.order', 'all.shipping.charge', 'all.coupon') ? 'here show' : '' }}">
 
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -309,7 +318,8 @@
                         {{-- Order Section  --}}
                         @if (Auth::guard('admin')->user()->can('order.menu'))
                             <div class="menu-item">
-                                <a class="menu-link {{ Request::routeIs('admin.all.order') ? 'active' : '' }}" href="{{ route('admin.all.order') }}">
+                                <a class="menu-link {{ Request::routeIs('admin.all.order') ? 'active' : '' }}"
+                                    href="{{ route('admin.all.order') }}">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
@@ -319,21 +329,23 @@
                         @endif
 
                         {{-- Shipping Charge  --}}
-                        @if (Auth::guard('admin')->user()->can('shipping.menu'))
+                        {{-- @if (Auth::guard('admin')->user()->can('shipping.menu'))
                             <div class="menu-item">
-                                <a class="menu-link {{ Request::routeIs('all.shipping.charge') ? 'active' : '' }}" href="{{ route('all.shipping.charge') }}">
+                                <a class="menu-link {{ Request::routeIs('all.shipping.charge') ? 'active' : '' }}"
+                                    href="{{ route('all.shipping.charge') }}">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
                                     <span class="menu-title">Shipping Charge</span>
                                 </a>
                             </div>
-                        @endif
+                        @endif --}}
 
                         {{-- Coupon --}}
                         @if (Auth::guard('admin')->user()->can('coupon.menu'))
                             <div class="menu-item">
-                                <a class="menu-link {{ Request::routeIs('all.coupon') ? 'active' : '' }}" href="{{ route('all.coupon') }}">
+                                <a class="menu-link {{ Request::routeIs('all.coupon') ? 'active' : '' }}"
+                                    href="{{ route('all.coupon') }}">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
@@ -349,7 +361,8 @@
                 {{-- Ecommerce Section --}}
 
                 {{-- Home Page Section --}}
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ Request::routeIs('all.home','all.single.page','all.contact','all.about','all.faq','all.term') ? 'here show' : '' }}">
+                <div data-kt-menu-trigger="click"
+                    class="menu-item menu-accordion {{ Request::routeIs('all.home', 'all.single.page', 'all.contact', 'all.about', 'all.faqs', 'all.term') ? 'here show' : '' }}">
 
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -383,7 +396,8 @@
                         @if (Auth::guard('admin')->user()->can('home.menu'))
                             <div class="menu-item">
                                 @if (Auth::guard('admin')->user()->can('all.home'))
-                                    <a class="menu-link {{ Request::routeIs('all.home') ? 'active' : '' }}" href="{{ route('all.home') }}">
+                                    <a class="menu-link {{ Request::routeIs('all.home') ? 'active' : '' }}"
+                                        href="{{ route('all.home') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -397,7 +411,8 @@
                         @if (Auth::guard('admin')->user()->can('sproduct.menu'))
                             <div class="menu-item">
                                 @if (Auth::guard('admin')->user()->can('all.sproduct'))
-                                    <a class="menu-link {{ Request::routeIs('all.single.page') ? 'active' : '' }}" href="{{ route('all.single.page') }}">
+                                    <a class="menu-link {{ Request::routeIs('all.single.page') ? 'active' : '' }}"
+                                        href="{{ route('all.single.page') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -410,7 +425,8 @@
                         {{-- Contact --}}
                         @if (Auth::guard('admin')->user()->can('contact.menu'))
                             <div class="menu-item">
-                                <a class="menu-link {{ Request::routeIs('all.contact') ? 'active' : '' }}" href="{{ route('all.contact') }}">
+                                <a class="menu-link {{ Request::routeIs('all.contact') ? 'active' : '' }}"
+                                    href="{{ route('all.contact') }}">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
@@ -423,7 +439,8 @@
                         @if (Auth::guard('admin')->user()->can('about.menu'))
                             <div class="menu-item">
                                 @if (Auth::guard('admin')->user()->can('all.about'))
-                                    <a class="menu-link {{ Request::routeIs('all.about') ? 'active' : '' }}" href="{{ route('all.about') }}">
+                                    <a class="menu-link {{ Request::routeIs('all.about') ? 'active' : '' }}"
+                                        href="{{ route('all.about') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -434,21 +451,24 @@
                         @endif
 
                         {{-- Faq  --}}
-                        @if (Auth::guard('admin')->user()->can('faq.menu'))
+                        {{-- @if (Auth::guard('admin')->user()->can('faq.menu')) --}}
                             <div class="menu-item">
-                                <a class="menu-link {{ Request::routeIs('all.faq') ? 'active' : '' }}" href="{{ route('all.faq') }}">
+                                <a class="menu-link"
+                                {{-- <a class="menu-link {{ Request::routeIs('all.faq') ? 'active' : '' }}" --}}
+                                    href="{{ route('all.faq') }}">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
                                     <span class="menu-title">Faq</span>
                                 </a>
                             </div>
-                        @endif
+                        {{-- @endif --}}
 
                         {{-- Term  --}}
                         @if (Auth::guard('admin')->user()->can('term.menu'))
                             <div class="menu-item">
-                                <a class="menu-link {{ Request::routeIs('all.term') ? 'active' : '' }}" href="{{ route('all.term') }}">
+                                <a class="menu-link {{ Request::routeIs('all.term') ? 'active' : '' }}"
+                                    href="{{ route('all.term') }}">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
@@ -462,7 +482,8 @@
                 {{-- Home Page Section --}}
 
                 {{-- Employee Section --}}
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ Request::routeIs('all.admin.permission','all.employcat','all.dept') ? 'here show' : '' }}">
+                <div data-kt-menu-trigger="click"
+                    class="menu-item menu-accordion {{ Request::routeIs('all.admin.permission', 'all.employcat', 'all.dept') ? 'here show' : '' }}">
 
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -496,7 +517,8 @@
                         @if (Auth::guard('admin')->user()->can('admin.menu'))
                             <div class="menu-item">
                                 @if (Auth::guard('admin')->user()->can('all.admin'))
-                                    <a class="menu-link {{ Request::routeIs('all.admin.permission') ? 'active' : '' }}" href="{{ route('all.admin.permission') }}">
+                                    <a class="menu-link {{ Request::routeIs('all.admin.permission') ? 'active' : '' }}"
+                                        href="{{ route('all.admin.permission') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -509,7 +531,8 @@
                         {{-- Department --}}
                         @if (Auth::guard('admin')->user()->can('dept.menu'))
                             <div class="menu-item">
-                                <a class="menu-link {{ Request::routeIs('all.dept') ? 'active' : '' }}" href="{{ route('all.dept') }}">
+                                <a class="menu-link {{ Request::routeIs('all.dept') ? 'active' : '' }}"
+                                    href="{{ route('all.dept') }}">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
@@ -521,7 +544,8 @@
                         {{-- Employee Category --}}
                         @if (Auth::guard('admin')->user()->can('dept.menu'))
                             <div class="menu-item">
-                                <a class="menu-link {{ Request::routeIs('all.employcat') ? 'active' : '' }}" href="{{ route('all.employcat') }}">
+                                <a class="menu-link {{ Request::routeIs('all.employcat') ? 'active' : '' }}"
+                                    href="{{ route('all.employcat') }}">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
