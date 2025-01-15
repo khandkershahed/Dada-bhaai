@@ -162,20 +162,20 @@
                         class="menu-sub menu-sub-accordion menu-active-bg {{ Request::routeIs('all.product', 'all.banner', 'all.brand', 'all.category', 'all.offer', 'all.offer.category', 'all.color') ? 'here show' : '' }}">
 
                         {{-- Product  --}}
-                        {{-- @if (Auth::guard('admin')->user()->can('product.menu')) --}}
-                        <div class="menu-item">
-                            {{-- @if (Auth::guard('admin')->user()->can('all.product')) --}}
-                            <a class="menu-link {{ Request::routeIs('all.product') ? 'active' : '' }}"
-                                href="{{ route('all.product') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Product</span>
-                            </a>
-                            {{-- @endif --}}
+                        @if (Auth::guard('admin')->user()->can('product.menu'))
+                            <div class="menu-item">
+                                @if (Auth::guard('admin')->user()->can('all.product'))
+                                    <a class="menu-link {{ Request::routeIs('all.product') ? 'active' : '' }}"
+                                        href="{{ route('all.product') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Product</span>
+                                    </a>
+                                @endif
 
-                        </div>
-                        {{-- @endif --}}
+                            </div>
+                        @endif
 
 
                         {{-- Banner --}}

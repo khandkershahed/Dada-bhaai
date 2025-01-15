@@ -25,18 +25,18 @@ class AdminController extends Controller
     //Admin Dashboard
     public function AdminDashboard()
     {
-        $profileDatas = Admin::latest()->get();
+        $profileDatas = Admin::latest()->limit(5)->get();
 
         $totalUser = User::latest()->get();
         $totalProduct = Product::where('status','1')->latest()->get();
         $daliyRevenue = Order::where('order_date',Carbon::now()->format('d F Y'))->sum('total_amount');
         $totalEmployee = Admin::latest()->get();
 
-        $orders = Order::where('order_date',Carbon::now()->format('d F Y'))->latest()->get(); 
-        $monthOrders = Order::where('order_month',Carbon::now()->format('F'))->limit(10)->latest()->get(); 
-        $yearOrders = Order::where('order_year',Carbon::now()->format('Y'))->limit(9)->latest()->get(); 
+        $orders = Order::where('order_date',Carbon::now()->format('d F Y'))->latest()->get();
+        $monthOrders = Order::where('order_month',Carbon::now()->format('F'))->limit(10)->latest()->get();
+        $yearOrders = Order::where('order_year',Carbon::now()->format('Y'))->limit(9)->latest()->get();
 
-        $offers = Offer::latest()->get();
+        $offers = Offer::latest()->limit(5)->get();
 
         return view('admin.index',compact('orders','monthOrders','yearOrders','profileDatas','totalUser','totalProduct','daliyRevenue','totalEmployee','offers'));
     }
