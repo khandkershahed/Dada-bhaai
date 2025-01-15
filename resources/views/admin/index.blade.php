@@ -1,7 +1,5 @@
 @extends('admin.admin_dashboard')
 @section('admin')
-    
-
     <!--begin::Toolbar-->
     <div class="toolbar" id="kt_toolbar">
         <!--begin::Container-->
@@ -763,5 +761,4 @@
         </div>
 
     </div>
-
 @endsection
