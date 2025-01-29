@@ -67,19 +67,20 @@
                 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 
                     <!--begin::Post-->
-                    <div class="post d-flex flex-column-fluid" id="kt_post">
-                        <!--begin::Container-->
-                        <div id="kt_content_container" class="container-xxl">
+                    {{-- <div class="post d-flex flex-column-fluid" id="kt_post"> --}}
 
 
-                            <!--begin::Row-->
-                            @yield('admin')
-                            <!--end::Row-->
+                    <!--begin::Container-->
+                    {{-- <div id="kt_content_container" class="container-xxl"> --}}
+                    <div id="" class="mx-5">
 
+                        <!--begin::Row-->
+                        @yield('admin')
+                        <!--end::Row-->
 
-                        </div>
-                        <!--end::Container-->
                     </div>
+                    <!--end::Container-->
+                    {{-- </div> --}}
                     <!--end::Post-->
 
                 </div>

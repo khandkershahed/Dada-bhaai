@@ -162,9 +162,9 @@
                         class="menu-sub menu-sub-accordion menu-active-bg {{ Request::routeIs('all.product', 'all.banner', 'all.brand', 'all.category', 'all.offer', 'all.offer.category', 'all.color') ? 'here show' : '' }}">
 
                         {{-- Product  --}}
-                        {{-- @if (Auth::guard('admin')->user()->can('product.menu')) --}}
+                        @if (Auth::guard('admin')->user()->can('product.menu'))
                             <div class="menu-item">
-                                {{-- @if (Auth::guard('admin')->user()->can('all.product')) --}}
+                                @if (Auth::guard('admin')->user()->can('all.product'))
                                     <a class="menu-link {{ Request::routeIs('all.product') ? 'active' : '' }}"
                                         href="{{ route('all.product') }}">
                                         <span class="menu-bullet">
@@ -172,10 +172,10 @@
                                         </span>
                                         <span class="menu-title">Product</span>
                                     </a>
-                                {{-- @endif --}}
+                                @endif
 
                             </div>
-                        {{-- @endif --}}
+                        @endif
 
 
                         {{-- Banner --}}
@@ -452,16 +452,14 @@
 
                         {{-- Faq  --}}
                         {{-- @if (Auth::guard('admin')->user()->can('faq.menu')) --}}
-                            <div class="menu-item">
-                                <a class="menu-link"
-                                {{-- <a class="menu-link {{ Request::routeIs('all.faq') ? 'active' : '' }}" --}}
-                                    href="{{ route('all.faq') }}">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span>
-                                    <span class="menu-title">Faq</span>
-                                </a>
-                            </div>
+                        <div class="menu-item">
+                            <a class="menu-link" {{-- <a class="menu-link {{ Request::routeIs('all.faq') ? 'active' : '' }}" --}} href="{{ route('all.faq') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Faq</span>
+                            </a>
+                        </div>
                         {{-- @endif --}}
 
                         {{-- Term  --}}
@@ -559,7 +557,7 @@
                 {{-- Employee Section --}}
 
                 {{-- Role & Permission Section --}}
-                @if (Auth::guard('admin')->user()->can('role.menu'))
+                {{-- @if (Auth::guard('admin')->user()->can('role.menu'))
                     <div class="menu-item">
                         <a class="menu-link" href="{{ route('all.roles.permission') }}" title="Role In Permission"
                             data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click"
@@ -590,11 +588,43 @@
                             <span class="menu-title">Role In Permission</span>
                         </a>
                     </div>
+                @endif --}}
+
+                @if (Auth::guard('admin')->user()->can('role.menu'))
+                    <div class="menu-item">
+                        <a class="menu-link {{ request()->routeIs('all.roles.permission') ? 'active' : '' }}"
+                            href="{{ route('all.roles.permission') }}" title="Role In Permission"
+                            data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click"
+                            data-bs-placement="right">
+                            <span class="menu-icon">
+                                <!--begin::Svg Icon | path: icons/duotune/general/gen022.svg-->
+                                <span class="svg-icon svg-icon-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none">
+                                        <path
+                                            d="M11.2929 2.70711C11.6834 2.31658 12.3166 2.31658 12.7071 2.70711L15.2929 5.29289C15.6834 5.68342 15.6834 6.31658 15.2929 6.70711L12.7071 9.29289C12.3166 9.68342 11.6834 9.68342 11.2929 9.29289L8.70711 6.70711C8.31658 6.31658 8.31658 5.68342 8.70711 5.29289L11.2929 2.70711Z"
+                                            fill="currentColor" />
+                                        <path
+                                            d="M11.2929 14.7071C11.6834 14.3166 12.3166 14.3166 12.7071 14.7071L15.2929 17.2929C15.6834 17.6834 15.6834 18.3166 15.2929 18.7071L12.7071 21.2929C12.3166 21.6834 11.6834 21.6834 11.2929 21.2929L8.70711 18.7071C8.31658 18.3166 8.31658 17.6834 8.70711 17.2929L11.2929 14.7071Z"
+                                            fill="currentColor" />
+                                        <path opacity="0.3"
+                                            d="M5.29289 8.70711C5.68342 8.31658 6.31658 8.31658 6.70711 8.70711L9.29289 11.2929C9.68342 11.6834 9.68342 12.3166 9.29289 12.7071L6.70711 15.2929C6.31658 15.6834 5.68342 15.6834 5.29289 15.2929L2.70711 12.7071C2.31658 12.3166 2.31658 11.6834 2.70711 11.2929L5.29289 8.70711Z"
+                                            fill="currentColor" />
+                                        <path opacity="0.3"
+                                            d="M17.2929 8.70711C17.6834 8.31658 18.3166 8.31658 18.7071 8.70711L21.2929 11.2929C21.6834 11.6834 21.6834 12.3166 21.2929 12.7071L18.7071 15.2929C18.3166 15.6834 17.6834 15.6834 17.2929 15.2929L14.7071 12.7071C14.3166 12.3166 14.3166 11.6834 14.7071 11.2929L17.2929 8.70711Z"
+                                            fill="currentColor" />
+                                    </svg>
+                                </span>
+                                <!--end::Svg Icon-->
+                            </span>
+                            <span class="menu-title">Role In Permission</span>
+                        </a>
+                    </div>
                 @endif
 
-
                 {{-- User Section --}}
-                @if (Auth::guard('admin')->user()->can('user.menu'))
+
+                {{-- @if (Auth::guard('admin')->user()->can('user.menu'))
                     <div class="menu-item">
                         <a class="menu-link" href="{{ route('all.user') }}" title="All User"
                             data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click"
@@ -625,11 +655,42 @@
                             <span class="menu-title">User Manage</span>
                         </a>
                     </div>
+                @endif --}}
+                @if (Auth::guard('admin')->user()->can('user.menu'))
+                    <div class="menu-item">
+                        <a class="menu-link {{ request()->routeIs('all.user') ? 'active' : '' }}"
+                            href="{{ route('all.user') }}" title="All User" data-bs-toggle="tooltip"
+                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                            <span class="menu-icon">
+                                <!--begin::Svg Icon | path: icons/duotune/general/gen022.svg-->
+                                <span class="svg-icon svg-icon-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none">
+                                        <path
+                                            d="M11.2929 2.70711C11.6834 2.31658 12.3166 2.31658 12.7071 2.70711L15.2929 5.29289C15.6834 5.68342 15.6834 6.31658 15.2929 6.70711L12.7071 9.29289C12.3166 9.68342 11.6834 9.68342 11.2929 9.29289L8.70711 6.70711C8.31658 6.31658 8.31658 5.68342 8.70711 5.29289L11.2929 2.70711Z"
+                                            fill="currentColor" />
+                                        <path
+                                            d="M11.2929 14.7071C11.6834 14.3166 12.3166 14.3166 12.7071 14.7071L15.2929 17.2929C15.6834 17.6834 15.6834 18.3166 15.2929 18.7071L12.7071 21.2929C12.3166 21.6834 11.6834 21.6834 11.2929 21.2929L8.70711 18.7071C8.31658 18.3166 8.31658 17.6834 8.70711 17.2929L11.2929 14.7071Z"
+                                            fill="currentColor" />
+                                        <path opacity="0.3"
+                                            d="M5.29289 8.70711C5.68342 8.31658 6.31658 8.31658 6.70711 8.70711L9.29289 11.2929C9.68342 11.6834 9.68342 12.3166 9.29289 12.7071L6.70711 15.2929C6.31658 15.6834 5.68342 15.6834 5.29289 15.2929L2.70711 12.7071C2.31658 12.3166 2.31658 11.6834 2.70711 11.2929L5.29289 8.70711Z"
+                                            fill="currentColor" />
+                                        <path opacity="0.3"
+                                            d="M17.2929 8.70711C17.6834 8.31658 18.3166 8.31658 18.7071 8.70711L21.2929 11.2929C21.6834 11.6834 21.6834 12.3166 21.2929 12.7071L18.7071 15.2929C18.3166 15.6834 17.6834 15.6834 17.2929 15.2929L14.7071 12.7071C14.3166 12.3166 14.3166 11.6834 14.7071 11.2929L17.2929 8.70711Z"
+                                            fill="currentColor" />
+                                    </svg>
+                                </span>
+                                <!--end::Svg Icon-->
+                            </span>
+                            <span class="menu-title">User Manage</span>
+                        </a>
+                    </div>
                 @endif
+
                 {{-- User Section --}}
 
                 {{-- Setting Section --}}
-                @if (Auth::guard('admin')->user()->can('setting.menu'))
+                {{-- @if (Auth::guard('admin')->user()->can('setting.menu'))
                     <div class="menu-item">
                         @if (Auth::guard('admin')->user()->can('all.setting'))
                             <a class="menu-link" href="{{ route('all.sites') }}" title="Setting Page"
@@ -662,7 +723,40 @@
                             </a>
                         @endif
                     </div>
+                @endif --}}
+                @if (Auth::guard('admin')->user()->can('setting.menu'))
+                    <div class="menu-item">
+                        @if (Auth::guard('admin')->user()->can('all.setting'))
+                            <a class="menu-link {{ request()->routeIs('all.sites') ? 'active' : '' }}"
+                                href="{{ route('all.sites') }}" title="Setting Page" data-bs-toggle="tooltip"
+                                data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                                <span class="menu-icon">
+                                    <!--begin::Svg Icon | path: icons/duotune/general/gen022.svg-->
+                                    <span class="svg-icon svg-icon-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="M11.2929 2.70711C11.6834 2.31658 12.3166 2.31658 12.7071 2.70711L15.2929 5.29289C15.6834 5.68342 15.6834 6.31658 15.2929 6.70711L12.7071 9.29289C12.3166 9.68342 11.6834 9.68342 11.2929 9.29289L8.70711 6.70711C8.31658 6.31658 8.31658 5.68342 8.70711 5.29289L11.2929 2.70711Z"
+                                                fill="currentColor" />
+                                            <path
+                                                d="M11.2929 14.7071C11.6834 14.3166 12.3166 14.3166 12.7071 14.7071L15.2929 17.2929C15.6834 17.6834 15.6834 18.3166 15.2929 18.7071L12.7071 21.2929C12.3166 21.6834 11.6834 21.6834 11.2929 21.2929L8.70711 18.7071C8.31658 18.3166 8.31658 17.6834 8.70711 17.2929L11.2929 14.7071Z"
+                                                fill="currentColor" />
+                                            <path opacity="0.3"
+                                                d="M5.29289 8.70711C5.68342 8.31658 6.31658 8.31658 6.70711 8.70711L9.29289 11.2929C9.68342 11.6834 9.68342 12.3166 9.29289 12.7071L6.70711 15.2929C6.31658 15.6834 5.68342 15.6834 5.29289 15.2929L2.70711 12.7071C2.31658 12.3166 2.31658 11.6834 2.70711 11.2929L5.29289 8.70711Z"
+                                                fill="currentColor" />
+                                            <path opacity="0.3"
+                                                d="M17.2929 8.70711C17.6834 8.31658 18.3166 8.31658 18.7071 8.70711L21.2929 11.2929C21.6834 11.6834 21.6834 12.3166 21.2929 12.7071L18.7071 15.2929C18.3166 15.6834 17.6834 15.6834 17.2929 15.2929L14.7071 12.7071C14.3166 12.3166 14.3166 11.6834 14.7071 11.2929L17.2929 8.70711Z"
+                                                fill="currentColor" />
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </span>
+                                <span class="menu-title">Setting</span>
+                            </a>
+                        @endif
+                    </div>
                 @endif
+
                 {{-- Setting Section --}}
 
 

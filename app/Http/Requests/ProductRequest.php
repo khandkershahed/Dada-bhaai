@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\Validator;
@@ -21,15 +20,29 @@ class ProductRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
+    // public function rules(): array
+    // {
+    //     $productId = $this->route('store.product');
+
+    //     return [
+
+    //         'product_name' => 'required|string',
+    //         'short_desc' => 'nullable|string',
+
+    //     ];
+    // }
+
     public function rules(): array
     {
         $productId = $this->route('store.product');
 
         return [
-
-            'product_name' => 'required|string',
-            'short_desc' => 'nullable|string',
-            
+            'product_name' => [
+                'required',
+                'string',
+                Rule::unique('products')->ignore($productId), // Ensures uniqueness, but ignores the current product being updated
+            ],
+            'short_desc'   => 'nullable|string',
         ];
     }
 

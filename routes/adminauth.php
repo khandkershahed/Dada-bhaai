@@ -141,8 +141,8 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     //Product Section
     Route::controller(ProductController::class)->group(function () {
 
-        Route::get('/all/product', 'AllProduct')->name('all.product');
-        // Route::get('/all/product', 'AllProduct')->name('all.product')->middleware('permission:all.product');
+        // Route::get('/all/product', 'AllProduct')->name('all.product');
+        Route::get('/all/product', 'AllProduct')->name('all.product')->middleware('permission:all.product');
         Route::get('/add/product', 'AddProduct')->name('add.product');
         Route::post('/store/product', 'StoreProduct')->name('store.product');
         Route::get('/edit/product/{id}', 'EditProduct')->name('edit.product');
@@ -230,6 +230,7 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
         // Route::post('/update', 'UpdateContact')->name('update.contact');
         Route::get('/delete/{id}', 'DeleteContact')->name('delete.contact');
     });
+    
     //Offer Category Section
     Route::controller(OfferCategoryController::class)->prefix('offer')->group(function () {
 

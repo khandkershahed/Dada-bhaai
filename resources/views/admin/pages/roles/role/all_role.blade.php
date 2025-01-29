@@ -47,9 +47,9 @@
     <!--end::Toolbar-->
 
     <!--begin::Post-->
-    <div class="post d-flex flex-column-fluid" id="kt_post">
+    {{-- <div class="post d-flex flex-column-fluid" id="kt_post">
         <!--begin::Container-->
-        <div id="kt_content_container" class="container">
+        <div id="kt_content_container" class="container"> --}}
             <!--begin::Products-->
             <div class="card">
                 <!--begin::Card header-->
@@ -157,10 +157,10 @@
                 <!--end::Card body-->
             </div>
             <!--end::Products-->
-        </div>
+        {{-- </div>
         <!--end::Container-->
     </div>
-    <!--end::Post-->
+    <!--end::Post--> --}}
 
 
 

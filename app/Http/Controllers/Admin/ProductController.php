@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Admin\Category;
-use App\Models\Admin\ChildCategory;
-use App\Models\Admin\Color;
-use App\Models\Admin\MultiImg;
-use App\Models\Admin\Product;
-use App\Models\Admin\SubCategory;
 use App\Models\Brand;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Admin\Color;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Models\Admin\Product;
+use App\Models\Admin\Category;
+use App\Models\Admin\MultiImg;
+use App\Models\Admin\SubCategory;
+use App\Models\Admin\ChildCategory;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -53,12 +54,9 @@ class ProductController extends Controller
     }
 
     //Store Product
-    public function StoreProduct(Request $request)
+    public function StoreProduct(ProductRequest $request)
     {
 
-        $validator = Validator::make($request->all(), [
-            'product_name' => 'required|unique:products,product_name',
-        ]);
 
         $image = $request->file('product_image');
         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
