@@ -47,9 +47,11 @@
 
                                                 </div>
                                                 <div class="col-xl-4 col-lg-4">
-                                                    <img class="img-fluid"
+                                                    <img class="img-fluid w-100"
                                                         src="{{ asset('storage/offer_image/' . $offer_cat->offer->offer_image) }}"
-                                                        alt="" style="height: 280px; width: 300px;">
+                                                        onerror="this.onerror=null; this.src='{{ asset('img/no-img.jpg') }}';"
+                                                        alt="Offer Image" >
+
                                                 </div>
                                                 <div class="col-xl-4 col-lg-4">
                                                     <div class="offer--deals__products mb-30 mt-30">

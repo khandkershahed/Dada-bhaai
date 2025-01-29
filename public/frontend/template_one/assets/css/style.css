@@ -1450,7 +1450,7 @@ cart--header__middle.cart--header__two {
 
 .main-menu-drop {
     border-top: 4px solid #ed2129;
-    width: 1430px !important;
+    width: 100% !important;
     position: absolute;
     padding: 35px;
 }
@@ -1541,7 +1541,6 @@ ul.dept__menu--dropdown li:hover ul.sub__menu.sub__dept--menu {
     visibility: visible;
     left: 100%;
 }
-
 
 .userlogin-header.active,
 .userlogin-header:active {
@@ -4536,7 +4535,6 @@ html .ui-button.ui-state-disabled:active {
     right: -17px;
 } */
 
-
 .shop-details-desc {
     background: #f7f7f7;
     padding: 75px 105px 20px 105px;
@@ -4826,7 +4824,6 @@ html .ui-button.ui-state-disabled:active {
 .accesories-title {
     width: 45%;
     border: 0;
-
 }
 .accesories-qty {
     width: 15%;
@@ -4839,17 +4836,16 @@ html .ui-button.ui-state-disabled:active {
     margin-right: 5px;
     border: 0;
 }
-.accesories-remove{
+.accesories-remove {
     width: 10%;
     border: 0;
 }
 
-.accesories-img{
+.accesories-img {
     width: 100%;
     height: 220px;
     object-fit: contain;
 }
-
 
 .has-search .form-control {
     padding-right: 2.375rem;
@@ -4872,3 +4868,4 @@ html .ui-button.ui-state-disabled:active {
 .nice-select .option {
     min-width: 140px;
 }
+
