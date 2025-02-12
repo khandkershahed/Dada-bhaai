@@ -9,7 +9,7 @@
 
             <div class="container">
                 <div class="row cont" style="overflow: hidden; height:auto; width:100%;">
-                    <div class="col-12 mb-4 text-center">
+                    <div class="mb-4 text-center col-12">
                         <h2 class="fw-bold">Get in touch with us</h2>
                     </div>
 
@@ -17,11 +17,11 @@
                         $site = App\Models\Sites::find(1);
                     @endphp
 
-                    <div class="col-lg-4 mb-2">
-                        <div class="d-flex align-items-center justify-content-center bg-white p-2">
+                    <div class="mb-2 col-lg-4">
+                        <div class="p-2 bg-white d-flex align-items-center justify-content-center">
                             <div style="width: 35%">
                                 <img style="width: 100px;"
-                                    src="https://www.astellnkern.com/system/download.jsp?type=contact_us&subType=&filename=20211012210345_e1580537-86b0-46f2-b331-d40ebf2eda65.png&name=i_contact1.png"
+                                    src="{{ asset('img/location-icons.png') }}"
                                     alt="i_contact1.png">
                             </div>
                             <div style="width: 65%;">
@@ -29,11 +29,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 mb-2">
-                        <div class="d-flex align-items-center justify-content-center bg-white p-2">
+                    <div class="mb-2 col-lg-4">
+                        <div class="p-2 bg-white d-flex align-items-center justify-content-center">
                             <div style="width: 35%">
                                 <img style="width: 100px;"
-                                    src="https://www.astellnkern.com/system/download.jsp?type=contact_us&subType=&filename=20211012210345_526a13bd-5f85-44de-82d4-59bb85cbd7ce.png&name=i_contact3.png"
+                                    src="{{ asset('img/contact-email.png') }}"
                                     alt="i_contact3.png">
                             </div>
                             <div style="width: 65%;">
@@ -41,20 +41,21 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 mb-2">
-                        <div class="d-flex align-items-center justify-content-center bg-white p-2">
+                    <div class="mb-2 col-lg-4">
+                        <div class="p-2 bg-white d-flex align-items-center justify-content-center">
                             <div style="width: 35%">
-                                <img style="width: 100px;"
-                                    src="https://www.astellnkern.com/system/download.jsp?type=contact_us&subType=&filename=20211012210345_526a13bd-5f85-44de-82d4-59bb85cbd7ce.png&name=i_contact3.png"
+                                <img style="width: 62px;"
+                                    src="{{ asset('img/contact-phone.png') }}"
                                     alt="i_contact3.png">
+                                    {{-- <i class="fa-solid fa-phone"></i> --}}
                             </div>
                             <div style="width: 65%;">
                                 {{ $site->phone_one }}
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 mt-4" style="padding-left:2rem; padding-right:2rem;">
-                        <div class="row bg-white">
+                    <div class="mt-4 col-12" style="padding-left:2rem; padding-right:2rem;">
+                        <div class="bg-white row">
                             <form action="{{ route('template.two.contact.store') }}" method="POST">
                                 @csrf
                                 @if (session('status'))
@@ -68,7 +69,7 @@
                                     </div>
                                 @endif
 
-                                <div class="row px-4 py-5">
+                                <div class="px-4 py-5 row">
                                     <div class="col-lg-4">
                                         <div class="mb-3">
                                             <label for="exampleInputEmail1" class="form-label">Name</label>
@@ -131,7 +132,7 @@
                                     </div>
                                     <div class="col-lg-12 d-flex justify-content-center">
                                         <div class="pt-3">
-                                            <button class="btn btn-outline-success py-3 px-5" type="submit">Submit</button>
+                                            <button class="px-5 py-3 btn btn-outline-success" type="submit">Submit</button>
                                         </div>
                                     </div>
                                 </div>

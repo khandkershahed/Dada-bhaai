@@ -45,7 +45,7 @@
 
                         <ul class="depth2">
                             <li>
-                                <a href="{{ route('template.two.faq') }}">FAQ</a>
+                                <a style="padding-left: 40px;" href="{{ route('template.two.faq') }}">FAQ</a>
                             </li>
                             {{-- <li>
                                 <a href="">Buying Guide</a>
@@ -104,8 +104,8 @@
                         </i>
                     </a>
 
-                    <div class="dropdown-menu p-3 cart-icons-menu" aria-labelledby="dropdownMenuButton" style="">
-                        <div class="row pb-2">
+                    <div class="p-3 dropdown-menu cart-icons-menu" aria-labelledby="dropdownMenuButton" style="">
+                        <div class="pb-2 row">
                             <div class="col-lg-12">
 
                                 <div id="miniCart">
@@ -118,7 +118,7 @@
                         <div class="row">
                             <div class="col-lg-12">
 
-                                <div class="total-text d-flex justify-content-between pt-2 mb-3">
+                                <div class="pt-2 mb-3 total-text d-flex justify-content-between">
                                     <span class="f-800 cod__black-color">Total Price</span>
                                     <span class="f-800 cod__black-color">Tk <span id="cartSubTotal"></span></span>
                                 </div>
@@ -156,8 +156,8 @@
 
         </a>
 
-        <div class="dropdown-menu p-3 cart-icons-menu" aria-labelledby="dropdownMenuButton" style="">
-            <div class="row pb-2">
+        <div class="p-3 dropdown-menu cart-icons-menu" aria-labelledby="dropdownMenuButton" style="">
+            <div class="pb-2 row">
                 <div class="col-lg-12">
 
 
@@ -174,7 +174,7 @@
             <div class="row">
                 <div class="col-lg-12">
 
-                    <div class="total-text d-flex justify-content-between pt-2 mb-3">
+                    <div class="pt-2 mb-3 total-text d-flex justify-content-between">
                         <span class="f-800 cod__black-color">Total Price</span>
                         <span class="f-800 cod__black-color">Tk <span id="cartSubTotal"></span></span>
                     </div>

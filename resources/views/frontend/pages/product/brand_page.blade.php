@@ -1,14 +1,14 @@
 @extends('frontend.frontend_dashboard')
 @section('frontend')
     <!-- CONTENT + SIDEBAR -->
-    <div class="main-wrapper clearfix">
+    <div class="clearfix main-wrapper">
         <div class="site-pagetitle jumbotron">
             <div class="container text-center">
                 <h3>Dada <span class="thm-clr">Vaai</span>
                 </h3>
                 <!-- Breadcrumbs -->
                 <div class="breadcrumbs">
-                    <div class="breadcrumbs text-center">
+                    <div class="text-center breadcrumbs">
                         <i class="fa fa-home"></i>
                         <span>
                             <a href="{{ route('index') }}">Home</a>
@@ -19,7 +19,7 @@
                 </div>
             </div>
         </div>
-        <div class="theme-container container">
+        <div class="container theme-container">
 
             <div class="main-container row">
 
@@ -34,11 +34,14 @@
                         </div> --}}
 
                         <div class="text-box" style="margin-bottom: 10px;">
-                            <h2 class="title-3 fsz-14 blklt-clr">
-                                <a href="{{ route('brand.wise.product',$brand->id) }}"><img src="{{ asset('storage/brand/' . $brand->brand_image) }}"
-                                        style="width:350px;height: 40px;" alt=""></a>
-                            </h2>
-                            <p>{{ $brand->brand_name }}</p>
+                            <div class=" title-3 fsz-14 blklt-clr">
+                                <a href="{{ route('brand.wise.product', $brand->id) }}">
+                                    <img src="{{ asset('storage/brand/' . $brand->brand_image) }}"
+                                        style="width: 350px;height: 120px;object-fit: cover;padding: 8px;background: #eee;"
+                                        onerror="this.onerror=null; this.src='{{ asset('img/no-img.jpg') }}';"
+                                        alt=""></a>
+                            </div>
+                            <p class="mb-0" style="padding-top: 8px; padding-bottom: 8px;">{{ $brand->brand_name }}</p>
                         </div>
                     </div>
                 @empty

@@ -5,7 +5,7 @@
 
     @media only screen and (max-width: 600px) {
         .single__hero {
-            height: 225px;
+            height: 160px;
             width: 100%;
         }
     }

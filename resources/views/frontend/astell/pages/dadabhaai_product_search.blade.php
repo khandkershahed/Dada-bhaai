@@ -2,7 +2,7 @@
 @section('index_astell')
     <main class="sub">
         <section class="sub-visual scrollAniTop view">
-            <div class="bg" style="background-image: url('{{ asset('upload/Dadabhaai-common-banner_NGen-IT.jpg') }}');">
+            <div class="bg" style="background-image: url('{{ asset('img/search.jpg') }}');">
             </div>
         </section>
         <section class="list-ty1" style="padding-top: 100px;">
@@ -30,7 +30,7 @@
                 @empty
                     <p>No Product Avaiable</p>
                 @endforelse
-                <div class="row mt-5 mb-5">
+                <div class="mt-5 mb-5 row">
                     <div class="col-12 d-flex justify-content-center">
                         <div class="common-pagination">
                             {{ $products->links('vendor.pagination.template_one') }}

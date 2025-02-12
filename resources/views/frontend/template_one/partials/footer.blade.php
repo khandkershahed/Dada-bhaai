@@ -5,12 +5,12 @@
 <footer class="footer--area">
     <div class="footer--top pt-50 pb-25">
         <div class="footer-topbar">
-            <p class="mb-0 text-center text-white p-3">Discover a wide range of products at {{ $site->site_name }}, your one-stop
+            <p class="p-3 mb-0 text-center text-white">Discover a wide range of products at {{ $site->site_name }}, your one-stop
                 e-commerce destination. Enjoy seamless shopping, great deals, and excellent customer service.</p>
         </div>
         <div class="contaner-fluid footer-bg">
             <div class="container">
-                <div class="row gx-0 pt-5">
+                <div class="pt-5 row gx-0">
                     <div class="col-xl-4 col-lg-6 col-md-8 mb-30 order-md-3 order-lg-2">
                         <div>
                             <a class="logo__link" href="{{ route('index') }}"><img class="" width="250px"
@@ -49,7 +49,7 @@
                             </div>
                             <div class="footer-menu h1foote-menu2">
                                 <ul>
-                                    <li><a href="{{ $site->facebook_url }}">Facebook</a></li>
+                                    {{-- <li><a href="{{ $site->facebook_url }}">Facebook</a></li> --}}
                                     <li><a href="{{ $site->skype_url }}">Skype</a></li>
                                     <li><a href="{{ $site->youtube_url }}">Youtube</a></li>
                                     <li><a href="{{ $site->linkedin_url }}">Linkdin</a></li>
@@ -81,11 +81,11 @@
             </div>
         </div>
     </div>
-    <div class="footer-bottom gray-bg pt-20 pb-20">
+    <div class="pt-20 pb-20 footer-bottom gray-bg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="footer-copyright text-center">
+                    <div class="text-center footer-copyright">
                         <a class="m-0 text-center text-muted" href="{{ route('index') }}">
                             Copyright 2024
                             <span class="grenadier-color">{{ $site->site_name }}</span> All Rights
