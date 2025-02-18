@@ -369,7 +369,7 @@
                                         <a href="{{ route('template.one.login') }}" class="text-muted pl-3"
                                             style="font-size: 12px;">First
                                             time
-                                            here? <span class="text-danger">Sign Up</span></a>
+                                            here? <span class="text-danger">Register</span></a>
                                         <hr class="mb-2 mt-2">
                                         <a class="dropdown-item userlogin-header pl-3" style="font-size: 12px;"
                                             href="{{ route('template.one.dashboard') }}"><i
