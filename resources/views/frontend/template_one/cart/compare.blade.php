@@ -92,11 +92,59 @@
                     </ul>
                 </div>
             </div>
+
             <div class="col-lg-10">
-                <div class="row no-product-compare" id="compare">
+
+                {{-- <div class="row no-product-compare" id="compare"></div> --}}
+
+                <div class="row no-product-compare">
+
+                    @forelse ($cartCompares as $cartCompare)
+                        <div class="px-0 col-lg-3"
+                            style="border-top: 1px solid #dee2e6;border-bottom: 1px solid #dee2e6;">
+
+                            <div class="top-info">
+                                <img class="img-fluid compare-product-img"
+                                    src="{{ asset($cartCompare->options->image) }}" alt="">
+                            </div>
+
+                            <ul class="text-center cd-features-list">
+                                <li>
+                                    <h3 class="compare-title" title="{{ $cartCompare->name }}">{{ $cartCompare->name }}
+                                    </h3>
+                                </li>
+                                <li>$ {{ $cartCompare->price }}</li>
+
+                                <li>
+                                    @if ($cartCompare->price > 0)
+                                        <a type="submit" style="cursor:pointer" id="{{ $cartCompare->id }}"
+                                            onclick="addToCartCompare(this.id)"> Add To Cart</a>
+                                    @else
+                                        <a class="text-danger">Product Price is empty</a>
+                                    @endif
+                                </li>
+
+                                <li><a type="submit" style="cursor:pointer" id="{{ $cartCompare->rowId }}"
+                                        onclick="compareRemove(this.id)"><i
+                                            class="fa-solid fa-trash text-danger"></i></a>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                    @empty
+                        <div class="text-center"
+                            style="width: 100%; position: absolute; top: 50%; transform: translateY(-50%);">
+                            <p class="text-danger">Compare list is empty</p>
+                        </div>
+                    @endforelse
 
                 </div>
+
+
             </div>
+
+
         </div>
     </div>
 </section>

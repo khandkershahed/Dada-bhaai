@@ -551,6 +551,9 @@
                         title: data.success,
                     })
 
+                    // Redirect to wishlist page after success
+                    window.location.href = '/compare-product'; // Redirect to the wishlist route
+
                 } else {
 
                     Toast.fire({
