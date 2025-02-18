@@ -48,12 +48,12 @@
 
 <!-- page banner area start -->
 <section class="page-banner-area blog-page"
-    data-background="{{ asset('frontend/template_one/assets/img/bg/banner.jpg') }}">
+    data-background="{{ asset('frontend/template_one/assets/img/bg/banner.jpg') }}" style="height: 200px">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <div>
-                    <div class="banner-text text-center pt-180 pb-120">
+                    <div class="banner-text text-center pt-50 pb-50">
                         <h2 class="f-800 cod__black-color">
                             Compare <span class="grenadier-color">Product</span>
                         </h2>

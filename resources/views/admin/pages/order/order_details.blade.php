@@ -43,14 +43,14 @@
 
 
     <!--begin::Post-->
-    <div class="container mt-5 mb-5">
+    <div class="mt-5 mb-5">
         <div class="row">
 
             {{-- Billing Address  --}}
             <div class="col-lg-6">
 
                 <div class="card">
-                    <div class="pt-3 ps-5" style="height: 50px; text-align: start; background-color: #2d8fc7">
+                    <div class="pt-3 ps-5" style="height: 50px; text-align: start; background-color: #111213">
                         <h5 class="text-light">Billing Address</h5>
                     </div>
                     <div class="card-body">
@@ -114,7 +114,7 @@
             <div class="col-lg-6">
 
                 <div class="card">
-                    <div class="pt-3 ps-5" style="height: 50px; text-align: start; background-color: #2d8fc7">
+                    <div class="pt-3 ps-5" style="height: 50px; text-align: start; background-color: #111213">
                         <h5 class="text-light">Shipping Address</h5>
                     </div>
                     <div class="card-body">
@@ -210,7 +210,7 @@
 
                 <table id="" class="table table-striped" style="width:100%">
                     <thead class="">
-                        <tr style="background-color: #2d8fc7;color:white">
+                        <tr style="background-color: #111213;color:white">
                             <th scope="col" class="text-center">No</th>
                             <th scope="col">Image</th>
                             <th scope="col">Product Name</th>

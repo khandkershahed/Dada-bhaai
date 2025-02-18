@@ -111,7 +111,7 @@
 
                         <div class="menu-item menu-lg-down-accordion me-lg-1">
                             <span class="py-3 menu-link">
-                                <a href="{{ route('index') }}"> <span class="menu-title"><span
+                                <a href="{{ route('index') }}" target="blank"> <span class="menu-title"><span
                                             class="rotate-360 svg-icon svg-icon-1">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" fill="none">
@@ -122,7 +122,8 @@
                                                     d="M8.2657 11.4343L12.45 7.25C12.8642 6.83579 12.8642 6.16421 12.45 5.75C12.0358 5.33579 11.3642 5.33579 10.95 5.75L5.40712 11.2929C5.01659 11.6834 5.01659 12.3166 5.40712 12.7071L10.95 18.25C11.3642 18.6642 12.0358 18.6642 12.45 18.25C12.8642 17.8358 12.8642 17.1642 12.45 16.75L8.2657 12.5657C7.95328 12.2533 7.95328 11.7467 8.2657 11.4343Z"
                                                     fill="currentColor"></path>
                                             </svg>
-                                        </span>Go To Front Page </a>
+                                        </span>Go To Front Page
+                                </a>
 
                                 <span class="menu-arrow d-lg-none"></span>
                             </span>
