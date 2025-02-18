@@ -370,8 +370,8 @@
                                             style="font-size: 12px;">First
                                             time
                                             here? <span class="text-danger">Sign Up</span></a>
-                                        <hr class="mt-2 mb-2">
-                                        <a class="pl-3 dropdown-item userlogin-header" style="font-size: 12px;"
+                                        <hr class="mb-2 mt-2">
+                                        <a class="dropdown-item userlogin-header pl-3" style="font-size: 12px;"
                                             href="{{ route('template.one.dashboard') }}"><i
                                                 class="pr-2 fal fa-user"></i>
                                             My Profile</a>

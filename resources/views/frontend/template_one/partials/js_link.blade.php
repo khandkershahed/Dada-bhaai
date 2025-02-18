@@ -278,7 +278,6 @@
 
 {{-- Wishlist Remove --}}
 <script>
-
     // function wishlistRemove(rowId) {
 
     //     $.ajax({
@@ -323,46 +322,45 @@
 
     function wishlistRemove(rowId) {
 
-$.ajax({
-    type: 'GET',
-    url: '/wishlist/product/remove/' + rowId,
-    dataType: 'json',
-    success: function(data) {
-        miniCart();
-        wishlist();
+        $.ajax({
+            type: 'GET',
+            url: '/wishlist/product/remove/' + rowId,
+            dataType: 'json',
+            success: function(data) {
+                miniCart();
+                wishlist();
 
-        // Start Message
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            icon: 'success',
-            showConfirmButton: false,
-            timer: 3000
+                // Start Message
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+
+                if ($.isEmptyObject(data.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        title: data.success,
+                    });
+
+                    // Redirect to wishlist page after success
+                    window.location.href = '/wishlist-product'; // Redirect to the wishlist route
+
+                } else {
+                    Toast.fire({
+                        type: 'error',
+                        title: data.error,
+                    });
+                }
+                // End Message
+            }
         });
-
-        if ($.isEmptyObject(data.error)) {
-            Toast.fire({
-                type: 'success',
-                title: data.success,
-            });
-
-            // Redirect to wishlist page after success
-            window.location.href = '/wishlist-product'; // Redirect to the wishlist route
-
-        } else {
-            Toast.fire({
-                type: 'error',
-                title: data.error,
-            });
-        }
-        // End Message
     }
-});
-}
-
 </script>
 
-{{-- =====================Wishlist Product All Code End ============================== --}}
+{{-- ===================== Wishlist Product All Code End ============================== --}}
 
 {{-- =====================Compare Product All Code Start ============================ --}}
 
@@ -437,10 +435,11 @@ $.ajax({
                 if (response.cartCompare.length === 0) {
 
                     tableHtml = `
-                        <div style="text-align: center;">
-                            <img class="img-fluid" style="width: 20%;" src="{{ asset('img/compare.png') }}" alt="">
-                            <h3 class="">Compare List is Empty</h3>
-                        </div>
+
+
+                        <ul class="text-center">
+                            <li>Compare List is Empty</li>
+                        </ul>
                     `;
 
                     $('#compareLink').hide();

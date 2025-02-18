@@ -373,7 +373,7 @@
                         </div>
                         <!--end::Account Setting-->
 
-                        <!--begin::Menu item-->
+                        {{-- <!--begin::Menu item-->
                         <div class="px-5 menu-item" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
 
                             <a href="#" class="px-5 menu-link">
@@ -426,7 +426,7 @@
                             </div>
                             <!--end::Menu sub-->
                         </div>
-                        <!--end::Menu item-->
+                        <!--end::Menu item--> --}}
 
                         <!--begin::Menu separator-->
                         <div class="my-1 separator"></div>
