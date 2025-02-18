@@ -184,7 +184,7 @@
 
                     tableHtml = `
 
-                        <h3 class="">Wishlist List is Empty</h3>
+                        <p style="padding-top: 80px;">Wishlist List is Empty</p>
                     `;
 
                     $('#wishlistLink').hide();
@@ -437,21 +437,21 @@ $.ajax({
                 if (response.cartCompare.length === 0) {
 
                     tableHtml = `
-                        <div>
-                            <img class="img-fluid" style="width: 50%;" src="https://i.ibb.co/xzzr9zs/f59ed80d5c527e2461d8ba49adc36160.gif" alt="">
+                        <div style="text-align: center;">
+                            <img class="img-fluid" style="width: 20%;" src="{{ asset('img/compare.png') }}" alt="">
+                            <h3 class="">Compare List is Empty</h3>
                         </div>
-                        <h3 class="">Compare List is Empty</h3>
                     `;
 
                     $('#compareLink').hide();
                 } else {
                     $.each(response.cartCompare, function(key, value) {
                         tableHtml += `
-                            <div class="col-lg-3 px-0" style="border-top: 1px solid #dee2e6;border-bottom: 1px solid #dee2e6;">
+                            <div class="px-0 col-lg-3" style="border-top: 1px solid #dee2e6;border-bottom: 1px solid #dee2e6;">
                                 <div class="top-info">
                                     <img class="img-fluid compare-product-img" src="/${value.options.image}" alt="${value.name.length > 20 ? `${value.name.substring(0, 20)}...` : value.name}">
                                 </div>
-                                <ul class="cd-features-list text-center">
+                                <ul class="text-center cd-features-list">
                                     <li>
                                         <h3 class="compare-title" title="${value.name}">${value.name.length > 15 ? `${value.name.substring(0, 15)}...` : value.name}</h3>
                                     </li>
@@ -720,7 +720,7 @@ $.ajax({
                     $.each(response.carts, function(key, value) {
                         miniCart +=
 
-                            `<div class="row pb-3" style="border-bottom: 1px solid #eee;">
+                            `<div class="pb-3 row" style="border-bottom: 1px solid #eee;">
 
                                                 <div class="col-lg-4">
 
@@ -896,7 +896,7 @@ $.ajax({
 
             // Create a new list item with the product details
             var newItem = `
-                <li class="d-flex mb-2 align-items-center" style="border-bottom: 1px solid #eee;border-top: 1px solid #eee;">
+                <li class="mb-2 d-flex align-items-center" style="border-bottom: 1px solid #eee;border-top: 1px solid #eee;">
                     <span class="pr-2">${$('#productList li').length + 1}.</span>
                     <input type="text" class="form-control form-control-sm accesories-title" value="${productName}" readonly>
                     <input type="text" class="form-control form-control-sm accesories-qty" value="x ${quantity}" readonly>
@@ -1271,7 +1271,7 @@ $.ajax({
 
 
                         `<ul style="list-style-type: circle !important;">
-                          <li class="d-flex mb-2 align-items-center" style="border-bottom: 1px solid #eee;border-top: 1px solid #eee;">
+                          <li class="mb-2 d-flex align-items-center" style="border-bottom: 1px solid #eee;border-top: 1px solid #eee;">
                             <span class="pr-2">${serialNumber++}.</span>
                             <input type="text" class="form-control form-control-sm accesories-title" placeholder="${value.name.length > 16 ? value.name.substring(0, 16) + '' : value.name}">
                             <input type="text" class="form-control form-control-sm accesories-qty" placeholder="x ${value.qty}">
@@ -1525,18 +1525,18 @@ $.ajax({
                                 <td>$${value.price}</td>
                                 <td>
                                     <div>
-                                        <div class="input-group mb-3">
+                                        <div class="mb-3 input-group">
                                             <a type="submit" id="${value.rowId}" onclick="cartDecrement(this.id)"
-                                                class="input-group-append decrementBtn p-0 border-0 shadow-none"
+                                                class="p-0 border-0 shadow-none input-group-append decrementBtn"
                                                 style="cursor: pointer">
                                                 <span class="input-group-text">-</span>
                                             </a>
                                             <input  type="text"
-                                                class="form-control text-center amountInput"
+                                                class="text-center form-control amountInput"
                                                 aria-label="Amount (to the nearest dollar)"
                                                 value="${value.qty}" min="1" />
                                             <a type="submit" id="${value.rowId}" onclick="cartIncrement(this.id)"
-                                                class="input-group-prepend p-0 border-0 shadow-none incrementBtn"
+                                                class="p-0 border-0 shadow-none input-group-prepend incrementBtn"
                                                 style="cursor: pointer">
                                                 <span class="input-group-text">+</span>
                                             </a>

@@ -44,13 +44,13 @@
                     data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_body', lg: '#kt_header_nav'}">
 
                     <!--begin::Menu-->
-                    <div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold my-5 my-lg-0 align-items-stretch"
+                    <div class="my-5 menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold my-lg-0 align-items-stretch"
                         id="#kt_header_menu" data-kt-menu="true">
 
-                        <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
+                        {{-- <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
                             class="menu-item here show menu-lg-down-accordion me-lg-1">
 
-                            <span class="menu-link py-3">
+                            <span class="py-3 menu-link">
                                 <span class="menu-title">Dashboard</span>
                                 <span class="menu-arrow d-lg-none"></span>
                             </span>
@@ -58,7 +58,7 @@
                             <div
                                 class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
                                 <div class="menu-item">
-                                    <a class="menu-link active py-3" href="{{ route('all.template') }}">
+                                    <a class="py-3 menu-link active" href="{{ route('all.template') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -66,7 +66,7 @@
                                     </a>
                                 </div>
                                 <div class="menu-item">
-                                    <a class="menu-link py-3" href="{{ route('all.sites') }}">
+                                    <a class="py-3 menu-link" href="{{ route('all.sites') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -74,7 +74,7 @@
                                     </a>
                                 </div>
                                 <div class="menu-item">
-                                    <a class="menu-link py-3" href="{{ route('all.product') }}">
+                                    <a class="py-3 menu-link" href="{{ route('all.product') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -82,7 +82,7 @@
                                     </a>
                                 </div>
                                 <div class="menu-item">
-                                    <a class="menu-link py-3" href="{{ route('admin.all.order') }}">
+                                    <a class="py-3 menu-link" href="{{ route('admin.all.order') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -90,7 +90,7 @@
                                     </a>
                                 </div>
                                 <div class="menu-item">
-                                    <a class="menu-link py-3" href="{{ route('all.roles.permission') }}">
+                                    <a class="py-3 menu-link" href="{{ route('all.roles.permission') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -98,27 +98,35 @@
                                     </a>
                                 </div>
                                 <div class="menu-item">
-                                    <a class="menu-link py-3" href="{{ route('all.about') }}">
+                                    <a class="py-3 menu-link" href="{{ route('all.about') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
                                         <span class="menu-title">About</span>
                                     </a>
                                 </div>
-
                             </div>
 
-                        </div>
+                        </div> --}}
 
                         <div class="menu-item menu-lg-down-accordion me-lg-1">
-                            <span class="menu-link py-3">
-                                <a href="{{ route('index') }}"> <span class="menu-title">Frontend</span></a>
+                            <span class="py-3 menu-link">
+                                <a href="{{ route('index') }}"> <span class="menu-title"><span
+                                            class="rotate-360 svg-icon svg-icon-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none">
+                                                <path opacity="0.5"
+                                                    d="M14.2657 11.4343L18.45 7.25C18.8642 6.83579 18.8642 6.16421 18.45 5.75C18.0358 5.33579 17.3642 5.33579 16.95 5.75L11.4071 11.2929C11.0166 11.6834 11.0166 12.3166 11.4071 12.7071L16.95 18.25C17.3642 18.6642 18.0358 18.6642 18.45 18.25C18.8642 17.8358 18.8642 17.1642 18.45 16.75L14.2657 12.5657C13.9533 12.2533 13.9533 11.7467 14.2657 11.4343Z"
+                                                    fill="currentColor"></path>
+                                                <path
+                                                    d="M8.2657 11.4343L12.45 7.25C12.8642 6.83579 12.8642 6.16421 12.45 5.75C12.0358 5.33579 11.3642 5.33579 10.95 5.75L5.40712 11.2929C5.01659 11.6834 5.01659 12.3166 5.40712 12.7071L10.95 18.25C11.3642 18.6642 12.0358 18.6642 12.45 18.25C12.8642 17.8358 12.8642 17.1642 12.45 16.75L8.2657 12.5657C7.95328 12.2533 7.95328 11.7467 8.2657 11.4343Z"
+                                                    fill="currentColor"></path>
+                                            </svg>
+                                        </span>Go To Front Page </a>
 
                                 <span class="menu-arrow d-lg-none"></span>
                             </span>
-
                         </div>
-
 
                     </div>
                     <!--end::Menu-->
@@ -128,7 +136,7 @@
             <!--end::Navbar-->
 
             <!--begin::Toolbar wrapper-->
-            <div class="d-flex align-items-stretch flex-shrink-0">
+            <div class="flex-shrink-0 d-flex align-items-stretch">
 
 
 
@@ -169,19 +177,26 @@
                         <div class="d-flex flex-column bgi-no-repeat rounded-top"
                             style="background-image:url('{{ asset('backend/assets/media/misc/pattern-1.jpg') }}')">
                             <!--begin::Title-->
-                            <h3 class="text-white fw-bold px-9 mt-10 mb-6">Notifications
-                                <span class="fs-8 opacity-75 ps-3">{{ $ncount }} reports</span>
+                            <h3 class="mt-10 mb-6 text-white fw-bold px-9">Notifications
+                                <span class="opacity-75 fs-8 ps-3">{{ $ncount }} reports</span>
                             </h3>
                             <!--end::Title-->
                             <!--begin::Tabs-->
                             <ul class="nav nav-line-tabs nav-line-tabs-2x nav-stretch fw-bold px-9">
 
                                 <li class="nav-item">
-                                    <a class="nav-link text-white opacity-75 opacity-state-100 pb-4 active"
+                                    <a class="pb-4 text-white opacity-75 nav-link opacity-state-100 active"
                                         data-bs-toggle="tab" href="#kt_topbar_notifications_1">Alerts</a>
                                 </li>
 
-
+                                {{-- <li class="nav-item">
+                                    <a class="pb-4 text-white opacity-75 nav-link opacity-state-100"
+                                        data-bs-toggle="tab" href="#kt_topbar_notifications_2">Updates</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="pb-4 text-white opacity-75 nav-link opacity-state-100"
+                                        data-bs-toggle="tab" href="#kt_topbar_notifications_3">Logs</a>
+                                </li> --}}
                             </ul>
                             <!--end::Tabs-->
                         </div>
@@ -197,11 +212,11 @@
                                     $admin = Auth::guard('admin')->user();
                                 @endphp
 
-                                <div class="scroll-y mh-325px my-5 px-8">
+                                <div class="px-8 my-5 scroll-y mh-325px">
 
                                     <!--begin::Item-->
                                     @foreach ($admin->notifications as $notification)
-                                        <div class="d-flex flex-stack py-4">
+                                        <div class="py-4 d-flex flex-stack">
                                             <!--begin::Section-->
                                             <div class="d-flex align-items-center">
 
@@ -229,7 +244,7 @@
                                                 <div class="mb-0 me-2">
                                                     @if (!empty($notification->data['name']))
                                                         <a href="javascript:;"
-                                                            class="fs-6 text-gray-800 text-hover-primary fw-bolder">{{ $notification->data['name'] }}</a>
+                                                            class="text-gray-800 fs-6 text-hover-primary fw-bolder">{{ $notification->data['name'] }}</a>
                                                     @endif
                                                     <div class="text-gray-400 fs-7">
                                                         <a
@@ -271,8 +286,6 @@
                                 </div>
                                 <!--end::View more-->
                             </div>
-                            <!--end::Tab panel-->
-
                         </div>
                         <!--end::Tab content-->
                     </div>
@@ -280,7 +293,6 @@
                     <!--end::Menu wrapper-->
                 </div>
                 <!--end::Notifications-->
-
 
                 @php
 
@@ -300,12 +312,12 @@
                             alt="admin" />
                     </div>
                     <!--begin::User account menu-->
-                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px"
+                    <div class="py-4 menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold fs-6 w-275px"
                         data-kt-menu="true">
 
                         <!--begin::Menu item-->
-                        <div class="menu-item px-3">
-                            <div class="menu-content d-flex align-items-center px-3">
+                        <div class="px-3 menu-item">
+                            <div class="px-3 menu-content d-flex align-items-center">
                                 <!--begin::Avatar-->
                                 <div class="symbol symbol-50px me-5">
                                     <img alt="Logo"
@@ -319,7 +331,7 @@
 
                                     <div class="fw-bolder d-flex align-items-center fs-5">{{ $profileData->name }}
 
-                                        {{-- <span class="badge badge-light-danger fw-bolder fs-8 px-2 py-1 ms-2">
+                                        {{-- <span class="px-2 py-1 badge badge-light-danger fw-bolder fs-8 ms-2">
                                             @foreach ($profileData->roles as $role)
                                                 <span class="">{{ $role->name }}</span>
                                             @endforeach
@@ -336,40 +348,50 @@
                         <!--end::Menu item-->
 
                         <!--begin::Menu separator-->
-                        <div class="separator my-1"></div>
+                        <div class="my-1 separator"></div>
                         <!--end::Menu separator-->
 
                         <!--begin::Menu item-->
-                        <div class="menu-item px-3">
-                            <a href="{{ route('admin.profile') }}" class="menu-link px-5">My Profile</a>
+                        <div class="px-3 menu-item">
+                            <a href="{{ route('admin.profile') }}" class="px-5 menu-link">My Profile</a>
                         </div>
                         <!--end::Menu item-->
 
                         <!--begin::Menu item-->
-                        <div class="menu-item px-3">
-                            <a href="{{ route('admin.password.page') }}" class="menu-link px-5">
+                        <div class="px-3 menu-item">
+                            <a href="{{ route('admin.password.page') }}" class="px-5 menu-link">
                                 <span class="menu-text">Password</span>
                             </a>
                         </div>
                         <!--end::Menu item-->
 
                         <!--begin::Account Setting-->
-                        <div class="menu-item px-3">
-                            <a href="{{ route('all.employee.details') }}" class="menu-link px-5">
+                        <div class="px-3 menu-item">
+                            <a href="{{ route('all.employee.details') }}" class="px-5 menu-link">
                                 <span class="menu-text">Employee Information</span>
                             </a>
                         </div>
                         <!--end::Account Setting-->
 
                         <!--begin::Menu item-->
-                        <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
+                        <div class="px-5 menu-item" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
 
-                            <div class="menu-sub menu-sub-dropdown w-175px py-4">
+                            <a href="#" class="px-5 menu-link">
+                                <span class="menu-title position-relative">Language
+                                    <span
+                                        class="px-3 py-2 rounded fs-8 bg-light position-absolute translate-middle-y top-50 end-0">English
+                                        <img class="w-15px h-15px rounded-1 ms-2"
+                                            src="{{ asset('backend/assets/media/flags/united-states.svg') }}"
+                                            alt="" /></span></span>
+                            </a>
+                            <!--begin::Menu sub-->
+
+                            <div class="py-4 menu-sub menu-sub-dropdown w-175px">
 
                                 <!--begin::Menu item-->
-                                <div class="menu-item px-3">
+                                <div class="px-3 menu-item">
                                     <a href="../../demo1/dist/account/settings.html"
-                                        class="menu-link d-flex px-5 active">
+                                        class="px-5 menu-link d-flex active">
                                         <span class="symbol symbol-20px me-4">
                                             <img class="rounded-1"
                                                 src="{{ asset('backend/assets/media/flags/united-states.svg') }}"
@@ -379,8 +401,8 @@
                                 <!--end::Menu item-->
 
                                 <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
+                                <div class="px-3 menu-item">
+                                    <a href="../../demo1/dist/account/settings.html" class="px-5 menu-link d-flex">
                                         <span class="symbol symbol-20px me-4">
                                             <img class="rounded-1"
                                                 src="{{ asset('backend/assets/media/flags/spain.svg') }}"
@@ -390,8 +412,8 @@
                                 <!--end::Menu item-->
 
                                 <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
+                                <div class="px-3 menu-item">
+                                    <a href="../../demo1/dist/account/settings.html" class="px-5 menu-link d-flex">
                                         <span class="symbol symbol-20px me-4">
                                             <img class="rounded-1"
                                                 src="{{ asset('backend/assets/media/flags/germany.svg') }}"
@@ -407,19 +429,19 @@
                         <!--end::Menu item-->
 
                         <!--begin::Menu separator-->
-                        <div class="separator my-1"></div>
+                        <div class="my-1 separator"></div>
                         <!--end::Menu separator-->
 
 
                         <!--begin::Menu item-->
-                        <div class="menu-item px-3">
+                        <div class="px-3 menu-item">
 
                             <form method="POST" action="{{ route('admin.logout') }}">
                                 @csrf
 
                                 <a href="{{ route('admin.logout') }}"
                                     onclick="event.preventDefault();this.closest('form').submit();"
-                                    class="menu-link px-5">Sign Out</a>
+                                    class="px-5 menu-link">Sign Out</a>
 
                             </form>
 

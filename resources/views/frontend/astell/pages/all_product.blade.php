@@ -32,7 +32,7 @@
 
         <section class="sub-visual scrollAniTop view">
 
-            <div class="bg" style="background-image: url('{{ asset('upload/Dadabhaai-common-banner_NGen-IT.jpg') }}');">
+            <div class="bg" style="background-image: url('{{ asset('img/all-product.png') }}');">
             </div>
 
         </section>

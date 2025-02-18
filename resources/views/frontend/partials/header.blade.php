@@ -18,7 +18,7 @@
                         <span class="thm-clr">Compare Product</span>
                         <ul id="minicartHeader" class="product_list_widget list-unstyled">
                             <li>
-                                <div class="media clearfix">
+                                <div class="clearfix media">
                                     <div class="media-lefta">
                                         <a href="single-product.html">
                                             <img src="assets/img/products/cart-popup-1.jpg" alt="hoodie_5_front" />
@@ -41,7 +41,7 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="media clearfix">
+                                <div class="clearfix media">
                                     <div class="media-lefta">
                                         <a href="single-product.html">
                                             <img src="assets/img/products/cart-popup-2.jpg" alt="T_2_front" />
@@ -64,7 +64,7 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="media clearfix">
+                                <div class="clearfix media">
                                     <div class="media-lefta">
                                         <a href="single-product.html">
                                             <img src="assets/img/products/cart-popup-3.jpg" alt="cd_6_angle" />
@@ -90,7 +90,7 @@
                         <div class="cartActions">
                             <div class="minicart-buttons" style="border-top: none">
                                 <div class="col-lg-12">
-                                    <a href="compare.html" class="minicart-checkout text-center">Comapre</a>
+                                    <a href="compare.html" class="text-center minicart-checkout">Comapre</a>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -109,7 +109,7 @@
                         <span class="thm-clr">Your Wishlist</span>
                         <ul id="minicartHeader" class="product_list_widget list-unstyled">
                             <li>
-                                <div class="media clearfix">
+                                <div class="clearfix media">
                                     <div class="media-lefta">
                                         <a href="single-product.html">
                                             <img src="assets/img/products/cart-popup-1.jpg" alt="hoodie_5_front" />
@@ -132,7 +132,7 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="media clearfix">
+                                <div class="clearfix media">
                                     <div class="media-lefta">
                                         <a href="single-product.html">
                                             <img src="assets/img/products/cart-popup-2.jpg" alt="T_2_front" />
@@ -155,7 +155,7 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="media clearfix">
+                                <div class="clearfix media">
                                     <div class="media-lefta">
                                         <a href="single-product.html">
                                             <img src="assets/img/products/cart-popup-3.jpg" alt="cd_6_angle" />
@@ -181,7 +181,7 @@
                         <div class="cartActions">
                             <div class="minicart-buttons" style="border-top: none;">
                                 <div class="col-lg-12">
-                                    <a href="wishlist.html" class="minicart-checkout text-center">Wishlist</a>
+                                    <a href="wishlist.html" class="text-center minicart-checkout">Wishlist</a>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -223,14 +223,13 @@
                 <div class="col-md-2 col-sm-3">
                     <div class="top-header pull-left">
                         <div class="logo-area">
-                            <a href="index.html" class="thm-logo fsz-35">
-                                <img src="https://i.ibb.co/BzqxBRh/dadavaai.png" alt="Goshop HTML Theme" />
+                            <a href="{{ route('index') }}" class="thm-logo fsz-35">
+                                <img src="https://www.dadabhaai.com/upload/logo_black/202405200404Dadabhai%20Logo.png" alt="Goshop HTML Theme" />
                                 <!-- <b class="bold-font-3 blk-clr">Dada</b><span class="thm-clr funky-font">Vaai</span> -->
                             </a>
                         </div>
                     </div>
                 </div>
-
                 <!-- Navigation -->
                 <div class="col-md-10 col-sm-10 static-div">
                     <div class="navigation pull-left">
@@ -262,35 +261,35 @@
 
 
                                                 <!-- Tab Trigger Area -->
-                                                <div class="sub-list pt-1">
+                                                <div class="pt-1 sub-list">
                                                     <ul class="navss">
 
                                                         @foreach ($categorys as $category)
-                                                            <li class="text-center mb-5 active"
+                                                            <li class="mb-5 text-center active"
                                                                 style="margin-bottom: 5px;border: #999 1px solid;border-radius: 5px;">
                                                                 <a href="#category{{ $category->id }}"
                                                                     data-toggle="tab">{{ $category->category_name }}</a>
                                                             </li>
                                                         @endforeach
 
-                                                        {{-- <li class="text-center mb-5"
+                                                        {{-- <li class="mb-5 text-center"
                                                             style="margin-bottom: 5px; border: #999 1px solid;border-radius: 5px;">
                                                             <a href="#menu1" data-toggle="tab">Menu 1</a>
                                                         </li>
 
-                                                        <li class="text-center mb-5"
+                                                        <li class="mb-5 text-center"
                                                             style="margin-bottom: 5px;border: #999 1px solid;border-radius: 5px;">
                                                             <a href="#menu2" data-toggle="tab">Menu 2</a>
                                                         </li> --}}
 
                                                     </ul>
 
-                                                    <div class="gst-promo-text text-center"
+                                                    <div class="text-center gst-promo-text"
                                                         style="margin-bottom: 5px;position: relative;left: 27%;margin-top: -20px;">
                                                         <div>
                                                             <div class="vertical-align-text">
                                                                 <a href="{{ route('brand.page') }}"
-                                                                    class="fancy-btn fancy-btn-small mb-1">All
+                                                                    class="mb-1 fancy-btn fancy-btn-small">All
                                                                     Brands</a>
                                                             </div>
                                                         </div>
@@ -303,8 +302,6 @@
                                             <!-- Tab Content Area -->
                                             <div class="col-lg-9 col-md-9 col-sm-12 menu-block">
                                                 <div class="tab-content">
-
-
 
                                                     @foreach ($categorys as $category)
                                                         <div id="#category{{ $category->id }}" class="tab-pane fade">
@@ -322,9 +319,9 @@
 
                                                             @forelse ($catwiseBrand as $brand)
                                                                 <a href="javascript:;">
-                                                                    <div class="col-lg-2 col-md-3 col-sm-3 menu-block mb-3"
+                                                                    <div class="mb-3 col-lg-2 col-md-3 col-sm-3 menu-block"
                                                                         style="padding: 5px">
-                                                                        <div class="sub-list text-center"
+                                                                        <div class="text-center sub-list"
                                                                             style="height: 120px">
                                                                             <div class="menu-card"
                                                                                 style="border: #999 1px solid;border-radius: 5px;">
@@ -334,7 +331,7 @@
                                                                                     style="padding: 10px" />
                                                                             </div>
                                                                             <div>
-                                                                                <h5 class="fsz-10 mt-20">
+                                                                                <h5 class="mt-20 fsz-10">
                                                                                     {{ $brand->brand_name }}</h5>
                                                                             </div>
                                                                             <br />
@@ -350,9 +347,9 @@
 
                                                     {{-- <div id="menu1" class="tab-pane fade">
                                                         <a href="">
-                                                            <div class="col-lg-2 col-md-3 col-sm-3 menu-block mb-3"
+                                                            <div class="mb-3 col-lg-2 col-md-3 col-sm-3 menu-block"
                                                                 style="padding: 5px">
-                                                                <div class="sub-list text-center"
+                                                                <div class="text-center sub-list"
                                                                     style="height: 120px">
                                                                     <div class="menu-card"
                                                                         style="border: #999 1px solid;border-radius: 5px;">
@@ -361,7 +358,7 @@
                                                                             alt="5Star" style="padding: 10px" />
                                                                     </div>
                                                                     <div>
-                                                                        <h5 class="fsz-10 mt-20">2</h5>
+                                                                        <h5 class="mt-20 fsz-10">2</h5>
                                                                     </div>
                                                                     <br />
                                                                 </div>
@@ -371,9 +368,9 @@
 
                                                     <div id="menu2" class="tab-pane fade">
                                                         <a href="">
-                                                            <div class="col-lg-2 col-md-3 col-sm-3 menu-block mb-3"
+                                                            <div class="mb-3 col-lg-2 col-md-3 col-sm-3 menu-block"
                                                                 style="padding: 5px">
-                                                                <div class="sub-list text-center"
+                                                                <div class="text-center sub-list"
                                                                     style="height: 120px">
                                                                     <div class="menu-card"
                                                                         style="border: #999 1px solid;border-radius: 5px;">
@@ -382,7 +379,7 @@
                                                                             alt="5Star" style="padding: 10px" />
                                                                     </div>
                                                                     <div>
-                                                                        <h5 class="fsz-10 mt-20">3</h5>
+                                                                        <h5 class="mt-20 fsz-10">3</h5>
                                                                     </div>
                                                                     <br />
                                                                 </div>
@@ -403,7 +400,7 @@
                                             <div class="col-lg-3 col-md-3 col-sm-12 menu-block"
                                                 style="background: #f7f5f5; border-radius: 5px">
                                                 <!-- Tab Trigger Area -->
-                                                <div class="sub-list pt-1">
+                                                <div class="pt-1 sub-list">
                                                     <ul class="navsss">
                                                         <li class="mb-5 active">
                                                             <a data-toggle="tab" href="#home2">Arts, Crafts &amp;
@@ -417,17 +414,17 @@
                                                             <a data-toggle="tab" href="#offer-menu2">Menu 2</a>
                                                         </li>
                                                         <!-- extra -->
-                                                        <li class=" mb-5"><a data-toggle="tab"
+                                                        <li class="mb-5 "><a data-toggle="tab"
                                                                 href="#offer-menu2">Menu 2</a></li>
-                                                        <li class=" mb-5"><a data-toggle="tab"
+                                                        <li class="mb-5 "><a data-toggle="tab"
                                                                 href="#offer-menu2">Menu 2</a></li>
-                                                        <li class=" mb-5"><a data-toggle="tab"
+                                                        <li class="mb-5 "><a data-toggle="tab"
                                                                 href="#offer-menu2">Menu 2</a></li>
-                                                        <li class=" mb-5"><a data-toggle="tab"
+                                                        <li class="mb-5 "><a data-toggle="tab"
                                                                 href="#offer-menu2">Menu 2</a></li>
-                                                        <li class=" mb-5"><a data-toggle="tab"
+                                                        <li class="mb-5 "><a data-toggle="tab"
                                                                 href="#offer-menu2">Menu 2</a></li>
-                                                        <li class=" mb-5"><a data-toggle="tab"
+                                                        <li class="mb-5 "><a data-toggle="tab"
                                                                 href="#offer-menu2">Menu 2</a></li>
                                                     </ul>
                                                     <div class="gst-promo-text"
@@ -440,7 +437,7 @@
                                                         <div>
                                                             <div class="vertical-align-text">
                                                                 <a href="offers-all.html"
-                                                                    class="fancy-btn fancy-btn-small mb-1">All
+                                                                    class="mb-1 fancy-btn fancy-btn-small">All
                                                                     Offers</a>
                                                             </div>
                                                         </div>
@@ -452,16 +449,16 @@
                                                 <div class="tab-content">
                                                     <div id="home2" class="tab-pane fade in active">
                                                         <a href="">
-                                                            <div class="col-lg-12 col-md-3 col-sm-3 menu-block mb-3"
+                                                            <div class="mb-3 col-lg-12 col-md-3 col-sm-3 menu-block"
                                                                 style="padding: 5px">
-                                                                <div class="sub-list text-center"
+                                                                <div class="text-center sub-list"
                                                                     style="height: 120px">
                                                                     <div id="deals-show">
                                                                         <div class="row">
                                                                             <div
-                                                                                class="col-lg-3 col-md-3 col-sm-3 mb-6">
+                                                                                class="mb-6 col-lg-3 col-md-3 col-sm-3">
                                                                                 <ul>
-                                                                                    <li class="blk-clr text-center">
+                                                                                    <li class="text-center blk-clr">
                                                                                         Arts, Crafts &amp; Gifts
                                                                                     </li>
                                                                                     <li role="separator"
@@ -482,9 +479,9 @@
                                                                                 </ul>
                                                                             </div>
                                                                             <div
-                                                                                class="col-lg-3 col-md-3 col-sm-3 mb-6">
+                                                                                class="mb-6 col-lg-3 col-md-3 col-sm-3">
                                                                                 <ul>
-                                                                                    <li class="blk-clr text-center">
+                                                                                    <li class="text-center blk-clr">
                                                                                         Books &amp; Stationery
                                                                                     </li>
                                                                                     <li role="separator"
@@ -518,9 +515,9 @@
                                                                                 </ul>
                                                                             </div>
                                                                             <div
-                                                                                class="col-lg-3 col-md-3 col-sm-3 mb-6">
+                                                                                class="mb-6 col-lg-3 col-md-3 col-sm-3">
                                                                                 <ul>
-                                                                                    <li class="blk-clr text-center">
+                                                                                    <li class="text-center blk-clr">
                                                                                         Electronics &amp;
                                                                                         Accessories
                                                                                     </li>
@@ -542,9 +539,9 @@
                                                                                 </ul>
                                                                             </div>
                                                                             <div
-                                                                                class="col-lg-3 col-md-3 col-sm-3 mb-6">
+                                                                                class="mb-6 col-lg-3 col-md-3 col-sm-3">
                                                                                 <ul>
-                                                                                    <li class="blk-clr text-center">
+                                                                                    <li class="text-center blk-clr">
                                                                                         Health &amp; Beauties
                                                                                     </li>
                                                                                     <li role="separator"
@@ -624,9 +621,9 @@
                                                     </div>
                                                     <div id="offer-menu1" class="tab-pane fade">
                                                         <a href="">
-                                                            <div class="col-lg-2 col-md-3 col-sm-3 menu-block mb-3"
+                                                            <div class="mb-3 col-lg-2 col-md-3 col-sm-3 menu-block"
                                                                 style="padding: 5px">
-                                                                <div class="sub-list text-center"
+                                                                <div class="text-center sub-list"
                                                                     style="height: 120px">
                                                                     dafasdasd
                                                                 </div>
@@ -635,9 +632,9 @@
                                                     </div>
                                                     <div id="offer-menu2" class="tab-pane fade">
                                                         <a href="">
-                                                            <div class="col-lg-2 col-md-3 col-sm-3 menu-block mb-3"
+                                                            <div class="mb-3 col-lg-2 col-md-3 col-sm-3 menu-block"
                                                                 style="padding: 5px">
-                                                                <div class="sub-list text-center"
+                                                                <div class="text-center sub-list"
                                                                     style="height: 120px">
                                                                     dafasd
                                                                 </div>
@@ -669,7 +666,7 @@
                                                                 Pakisthan </a>
                                                         </li>
                                                         <a href="all-country.html"
-                                                            class="btn btn-sm btn-danger text-center">All
+                                                            class="text-center btn btn-sm btn-danger">All
                                                             countries</a>
                                                     </ul>
                                                 </div>

@@ -1,33 +1,3 @@
-/*
-  Theme Name: Shupmax - Multipurpose eCommerce HTML Template
-  Author: Basictheme
-  Support: basictheme400@gmail.com
-  Version: 1.0
-*/
-
-/* CSS Index
------------------------------------
-1. External CSS Import
-2. Theme default css
-2. Theme default css
-3. Header
-4. Hero
-5. Offer
-6. Products
-7. Featured
-9. Brand
-10. Newsletter
-11. Blog
-12. Footer
-13. About
-14. Shop
-15. Banner
-16. Registration
-17. Shop details
-18. Contact
-
-*/
-
 /* 1. External CSS Import */
 @import url(animate.min.css);
 @import url(bootstrap.min.css);
@@ -1450,7 +1420,7 @@ cart--header__middle.cart--header__two {
 
 .main-menu-drop {
     border-top: 4px solid #ed2129;
-    width: 1430px !important;
+    width: 100% !important;
     position: absolute;
     padding: 35px;
 }
@@ -1542,7 +1512,6 @@ ul.dept__menu--dropdown li:hover ul.sub__menu.sub__dept--menu {
     left: 100%;
 }
 
-
 .userlogin-header.active,
 .userlogin-header:active {
     color: #ed2129;
@@ -1623,6 +1592,27 @@ ul.sub__menu.sub__dept--menu li:hover ul.sub__menu.level2 {
     background-position: center center;
 }
 
+@media screen and (max-width: 768px) {
+    .hero__bg {
+        background-size: contain !important;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    .home-main-banner{
+        padding: 0;
+    }
+    .top__featured--area{
+        padding-top: 0;
+    }
+    .products--deals__content h6 {
+        line-height: 1.7;
+        text-align: center;
+        padding-right: 0px !important;
+    }
+    .has-search .form-control-feedback {
+        right: 0px !important;
+    }
+}
 .hero-area-three .hero__bg {
     background-size: cover;
     background-repeat: no-repeat;
@@ -2091,6 +2081,7 @@ ul.sub__menu.sub__dept--menu li:hover ul.sub__menu.level2 {
         margin-bottom: 30px;
     }
 }
+
 
 /* Product Design End */
 
@@ -4536,7 +4527,6 @@ html .ui-button.ui-state-disabled:active {
     right: -17px;
 } */
 
-
 .shop-details-desc {
     background: #f7f7f7;
     padding: 75px 105px 20px 105px;
@@ -4826,7 +4816,6 @@ html .ui-button.ui-state-disabled:active {
 .accesories-title {
     width: 45%;
     border: 0;
-
 }
 .accesories-qty {
     width: 15%;
@@ -4839,17 +4828,16 @@ html .ui-button.ui-state-disabled:active {
     margin-right: 5px;
     border: 0;
 }
-.accesories-remove{
+.accesories-remove {
     width: 10%;
     border: 0;
 }
 
-.accesories-img{
+.accesories-img {
     width: 100%;
     height: 220px;
     object-fit: contain;
 }
-
 
 .has-search .form-control {
     padding-right: 2.375rem;
@@ -4872,3 +4860,4 @@ html .ui-button.ui-state-disabled:active {
 .nice-select .option {
     min-width: 140px;
 }
+

@@ -17,14 +17,13 @@
                 <img class="" style="width: 160px;" src="{{ asset('upload/logo_white/' . $site->logo_white) }}"
                     alt="">
             </a>
-            <a class="footer-link" href="{{ route('template.two.contact') }}">Contact Us</a>
-            <a class="footer-link" href="{{ route('template.two.faq') }}">Faq</a>
-
-            {{-- <a class="footer-link" href="javascript:;">Buying Guide</a> --}}
-
             <p style="width: 30%;">
                 {{ $site->address }}
             </p>
+            <div class="pt-3">
+                <a class="footer-link" href="{{ route('template.two.contact') }}">Contact Us</a>
+                <a class="footer-link" href="{{ route('template.two.faq') }}">Faq</a>
+            </div>
             <p class="pt-3" style="font-size: 11px;">
                 @COPYRIGHT Dada Bhaai, ALL RIGHT RESERVED.
             </p>
