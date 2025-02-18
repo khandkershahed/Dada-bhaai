@@ -77,7 +77,7 @@
 
                     <table id="kt_datatable_example_5" class="table table-striped" style="width:100%">
 
-                        <thead>
+                        <thead class="bg-dark text-light">
 
                             <tr>
                                 <th style="width: 60px;">

@@ -82,15 +82,19 @@
             <li>
                 <a href="javascript:void(0);">Support</a>
                 <ul class="depth2">
+
                     <li>
                         <a href="{{ route('template.two.faq') }}">FAQ</a>
                     </li>
-                    <li>
+
+                    {{-- <li>
                         <a href="">Buying Guide</a>
-                    </li>
+                    </li> --}}
+
                     <li>
                         <a href="{{ route('template.two.contact') }}">Contact Us</a>
                     </li>
+                    
                 </ul>
             </li>
 

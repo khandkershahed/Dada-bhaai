@@ -80,11 +80,9 @@
                             margin-bottom: 0;
                             color: #fff;
                           ">
-                                                NGEN IT PTE. LTD.
+                                                NGEN IT LTD.
                                             </p>
-                                            <p style="font-size: 16px; margin-bottom: 3px">
-                                                <span style="color: #eee">REG-NO: 20437861K</span>
-                                            </p>
+
                                         </td>
                                     </tr>
                                 </tbody>
@@ -119,20 +117,26 @@
                                 font-family: 'Poppins', sans-serif;
                                 color: #ae0a46;
                               ">
-                                                        Kawsar Khan
+                                                        {{ $order->billing_name }}
                                                     </h3>
-                                                    <p style="font-size: 13px; color: #3d3d3d">
-                                                        Samsung
-                                                    </p>
+
                                                     <div>
                                                         <p
                                                             style="
                                   padding-bottom: 0.3125rem;
                                   font-size: 13px;
                                 ">
-                                                            <a href="mailto:khandkershahed23@gmail.com"
+                                                                <span>{{ $order->billing_email }}</span>
+
+                                                        </p>
+                                                        <p
+                                                            style="
+                                  padding-bottom: 0.3125rem;
+                                  font-size: 13px;
+                                ">
+                                                            <a href=""
                                                                 style="color: #3d3d3d; text-decoration: none">
-                                                                <span>khandker@gmail.com</span>
+                                                                <span> {{ $order->billing_phone }}</span>
                                                             </a>
                                                         </p>
                                                         <p
@@ -140,20 +144,8 @@
                                   padding-bottom: 0.3125rem;
                                   font-size: 13px;
                                 ">
-                                                            <a href="tel:01754348949"
-                                                                style="color: #3d3d3d; text-decoration: none">
-                                                                <span> 01754348949</span>
-                                                            </a>
-                                                        </p>
-                                                        <p
-                                                            style="
-                                  padding-bottom: 0.3125rem;
-                                  font-size: 13px;
-                                ">
-                                                            <a href="tel:01754348949"
-                                                                style="color: #3d3d3d; text-decoration: none">
-                                                                <span>Dhaka, Bangladesh</span>
-                                                            </a>
+                                                                <span>{{ $order->billing_address_line1 }} {{ $order->billing_address_line2 }}</span>
+
                                                         </p>
                                                     </div>
                                                 </div>
@@ -315,7 +307,7 @@
                    padding: 0.5rem;
                    text-align: center;
                  ">
-                                            Tk {{ $item->price }}
+                                            $ {{ $item->price }}
                                         </td>
                                         <td
                                             style="
@@ -323,7 +315,7 @@
                    padding: 0.5rem;
                    text-align: center;
                  ">
-                                            Tk {{ $item->qty * $item->price }}
+                                            {{-- Tk {{ $item->qty * $item->price }} --}}0
                                         </td>
                                     </tr>
                                 @endforeach
@@ -367,7 +359,7 @@
                           text-align: end;
                           font-weight: 400;
                         ">
-                                            Tk {{ $order->total_amount - $order->shipping_charge }}.00
+                                            $ {{ $order->total_amount - $order->shipping_charge }}.00
                                         </th>
                                     </tr>
                                 </table>
@@ -406,7 +398,7 @@
                             border-left: 1px solid #eee;
                             color: #3d3d3d;
                           ">
-                                                Tk {{ $order->shipping_charge }}
+                                                {{-- Tk {{ $order->shipping_charge }} --}} 0
                                             </td>
                                         </tr>
                                     </table>
@@ -450,7 +442,7 @@
                           text-align: end;
                           border-left: 1px solid #eee;
                         ">
-                                            Tk {{ $order->total_amount }}
+                                            $ {{ $order->total_amount }}
                                         </th>
                                     </tr>
                                 </table>
@@ -661,54 +653,11 @@
                                                                                 Thank You
                                                                             </p>
                                                                             <p style="color: #ae0a46; margin: 0">
-                                                                                Kawsar Khan
+                                                                                Dadahaai Team
                                                                             </p>
-                                                                            <p
-                                                                                style="
-                                            color: #ae0a46;
-                                            font-size: 13px;
-                                            margin: 0;
-                                          ">
-                                                                                Manager, Business
-                                                                            </p>
+
                                                                         </td>
-                                                                        <td style="text-align: end; color: #ffffff">
-                                                                            <div
-                                                                                style="
-                                            font-size: 13px;
-                                            margin-bottom: 0.5rem;
-                                          ">
-                                                                                <p style="margin: 0; color: #ae0a46">
-                                                                                    sales@ngenitltd.com
-                                                                                    <i
-                                                                                        class="fa-solid fa-paper-plane"></i>
-                                                                                </p>
-                                                                            </div>
-                                                                            <div
-                                                                                style="
-                                            font-size: 13px;
-                                            margin-bottom: 0.5rem;
-                                          ">
-                                                                                <p
-                                                                                    style="
-                                              margin: 0;
-                                              padding: 0;
-                                              color: #ae0a46;
-                                            ">
-                                                                                    +880 156845 986
-                                                                                </p>
-                                                                            </div>
-                                                                            <div style="font-size: 0.9375rem">
-                                                                                <p
-                                                                                    style="
-                                              margin: 0;
-                                              padding: 0;
-                                              color: #ae0a46;
-                                            ">
-                                                                                    +880 156845 987
-                                                                                </p>
-                                                                            </div>
-                                                                        </td>
+                                                                        
                                                                     </tr>
                                                                 </tbody>
                                                             </table>

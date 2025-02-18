@@ -112,7 +112,7 @@
                               ">
                             {{ $order->billing_name }}
                           </h3>
-                        
+
                           <div>
                             <p style="
                                   padding-bottom: 0.3125rem;
@@ -363,7 +363,7 @@
                             border-left: 1px solid #eee;
                             color: #3d3d3d;
                           ">
-                        $ {{ $order->shipping_charge }}
+                        {{-- $ {{ $order->shipping_charge }} --}} 0
                       </td>
                     </tr>
                   </table>
@@ -596,9 +596,9 @@
                                       <p style="color: #ae0a46; margin: 0">
                                         DadaBhaai Team
                                       </p>
-                                      
+
                                     </td>
-                                    
+
                                   </tr>
                                 </tbody>
                               </table>

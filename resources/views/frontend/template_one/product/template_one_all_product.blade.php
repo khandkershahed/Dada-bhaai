@@ -11,7 +11,7 @@
 <form id="shop-filter-form" method="POST">
     @csrf
 
-    <div class="product shop-page pt-30 pb-80">
+    <div class="product shop-page pt-30">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 order-2 order-lg-1">
@@ -78,18 +78,25 @@
                 <div class="col-lg-9 order-1 order-lg-2 px-0">
                     <!-- Filter bar -->
                     <div class="border-b">
-                        <div class="row align-items-center mx-0" style="background: #f5f5f5;">
+                        <div class="row align-items-end mx-0 p-3" style="background: #f5f5f5;">
+
                             <div class="col-lg-4">
-                                <h4 class="f-800 cod__black-color mb-0">Product/</h4>
+                                <h4 class="f-800 cod__black-color mb-0">Product</h4>
                             </div>
-                            <div class="col-lg-7">
+
+                            <div class="col-lg-3">
+
+                            </div>
+
+                            <div class="col-lg-5">
                                 <div class="form-group has-search mb-0">
                                     <input type="text" class="form-control product-search" name="product_search"
                                         placeholder="Search" value="{{ request()->get('product_search') }}">
                                     <span class="fa fa-search form-control-feedback"></span>
                                 </div>
                             </div>
-                            <div class="col-lg-1">
+
+                            {{-- <div class="col-lg-1">
                                 <div class="d-flex justify-content-end">
                                     <select name="sortBy" class="sort-by" onchange="this.form.submit();">
                                         <option selected disabled>Show</option>
@@ -107,7 +114,8 @@
                                         </option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
+
                         </div>
                     </div>
 
