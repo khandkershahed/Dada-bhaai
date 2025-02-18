@@ -230,7 +230,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Navigation -->
                 <div class="col-md-10 col-sm-10 static-div">
                     <div class="navigation pull-left">
@@ -303,8 +302,6 @@
                                             <!-- Tab Content Area -->
                                             <div class="col-lg-9 col-md-9 col-sm-12 menu-block">
                                                 <div class="tab-content">
-
-
 
                                                     @foreach ($categorys as $category)
                                                         <div id="#category{{ $category->id }}" class="tab-pane fade">
