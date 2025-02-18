@@ -80,7 +80,7 @@
                 @endforelse
 
 
-                <div class="row mt-5 mb-5">
+                <div class="row mt-5 mb-5 mobile-row">
                     <div class="col-12 d-flex justify-content-center">
                         <div class="common-pagination">
                             {{ $products->links('vendor.pagination.template_one') }}
