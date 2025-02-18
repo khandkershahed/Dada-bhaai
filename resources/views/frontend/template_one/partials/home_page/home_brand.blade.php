@@ -2,30 +2,21 @@
     $brands = App\Models\Brand::where('status', '1')->latest()->get();
 @endphp
 
+
 @if (count($brands) > 0)
-    <div class="brand">
+    <div class="brand bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="brand-active">
-
                         @foreach ($brands as $brand)
-                            <div class="single-brand">
+                            <div class="p-3 single-brand">
                                 <a href="{{ url('product/brand/' . $brand->id . '/' . $brand->brand_slug) }}">
-
-                                    @if ($brand->icon)
-                                        <img src="{{ asset('storage/brand/' . $brand->icon) }}"
-                                            style="width: 157px; height: 56px;" alt="" />
-                                    @else
-                                        <img src="{{ url('https://ui-avatars.com/api/?size=80&color=fff&rounded=false&name=' . urlencode($brand->brand_name) . '&font-size=0.3') }}"
-                                            alt="" style="width: 157px; height: 56px;" />
-                                    @endif
-
-
+                                    <img class="img-fluid" src="{{ asset('storage/brand/' . $brand->icon) }}" alt="{{ $brand->brand_name }}"
+                                        onerror="this.onerror=null; this.src='{{ asset('https://dadabhaai.com/upload/logo_white/202406290352Dadabhaai%20Logo%20White%20Variant.png') }}';" />
                                 </a>
                             </div>
                         @endforeach
-
                     </div>
                 </div>
             </div>

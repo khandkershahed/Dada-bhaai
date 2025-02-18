@@ -12,16 +12,23 @@
 
                 @include('frontend.template_one.partials.frontend_sidebar')
 
-                <div class="col-lg-9 order-1 order-lg-2">
+                <div class="order-1 col-lg-9 order-lg-2">
 
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="shop-banner-bg pt-120 pb-120 mb-50"
-                                data-background="{{ asset('storage/offer_category_image/' . $offerwiseproduct->category->offer_category_image) }}">
-                                <div class="collection-text">
-                                    <h5 class="f-800"><a href="javascript:;"></a></h5>
-                                </div>
-                            </div>
+                            @php
+    $offerImage = !empty($offerwiseproduct->category->offer_category_image)
+        ? asset('storage/offer_category_image/' . $offerwiseproduct->category->offer_category_image)
+        : asset('img/search.jpg');
+@endphp
+
+<div class="shop-banner-bg main-shop-page-banner pt-120 pb-120 mb-50"
+     style="background-image: url('{{ $offerImage }}') !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important;">
+    <div class="collection-text">
+        <h5 class="f-800"><a href="javascript:;"></a></h5>
+    </div>
+</div>
+
                         </div>
                     </div>
                     <div class="border-b">
@@ -48,7 +55,7 @@
                         @forelse ($products as $product)
                             <div class="col-lg-4">
 
-                                <div class="product-grid mr-4">
+                                <div class="mr-4 product-grid">
 
                                     <div class="product-image">
 
@@ -85,7 +92,7 @@
 
                                             <span class="cate-name">{{ $product->category->offer_category_name }}</span>
 
-                                            <h6 class="product__title mine__shaft-color f-700 mb-0" id="offerProductName">
+                                            <h6 class="mb-0 product__title mine__shaft-color f-700" id="offerProductName">
                                                 {{ $product->products->product_name }}
                                             </h6>
 
@@ -121,7 +128,7 @@
 
                     </div>
 
-                    <div class="row mt-10">
+                    <div class="mt-10 row">
                         <div class="col-sm-12">
                             <div class="common-pagination">
                                 {{ $products->links('vendor.pagination.template_one') }}

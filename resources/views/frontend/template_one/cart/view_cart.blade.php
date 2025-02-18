@@ -10,12 +10,12 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div>
-                        <div class="banner-text text-center pt-150 pb-120">
+                        <div class="text-center banner-text pt-150 pb-120">
                             <h2 class="f-800 cod__black-color">
                                 DadaBhaai <span class="grenadier-color">Product</span>
                             </h2>
                             <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb pt-3">
+                                <ol class="pt-3 breadcrumb">
                                     <li class="breadcrumb-item">
                                         <a href="{{ route('index') }}">Home</a>
                                     </li>
@@ -34,7 +34,7 @@
     </section>
     <!-- page banner area end -->
     <!-- shop area start -->
-    <div class="product shop-page pt-50 pb-120 fix">
+    <div class="product shop-page view-cart-page pt-50 pb-120 fix">
         <div class="container">
 
             <div class="border-b">
@@ -44,33 +44,32 @@
                             <h6 class="f-800 cod__black-color">
                                 <span class="grenadier-color">YOUR CART</span>
                             </h6>
-                            <a href="{{ route('index') }}" class="f-800 cod__black-color">
-                                <span class="grenadier-color">CONTINUE SHOPPING <i
-                                        class="fa fa-long-arrow-right"></i></span>
+                            <a href="{{ route('index') }}" class="px-3 py-3 border f-800 cod__black-color rounded-pill">
+                                <span class="">Continue Shopping<i class="pl-2 fa-solid fa-arrow-right-long"></i></span>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="row mt-3">
+            <div class="mt-3 row">
                 <div class="col-lg-12">
-                    <div class="card border-0 shadow-lg">
+                    <div class="border-0 shadow-lg card">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-8">
                                     <div class="table-responsive">
                                         <table class="table table-striped table-hover">
                                             <!-- Cart Header -->
-                                            <thead class="bg-light border-none">
+                                            <thead class="border-none bg-light">
                                                 <tr>
                                                     <th style="width: 5%">SL</th>
                                                     <th style="width: 10%">Image</th>
-                                                    <th style="width: 35%">Product Name</th>
+                                                    <th style="width: 35%">Name</th>
                                                     <th style="width: 10%">Price</th>
                                                     <th style="width: 15%">Quantity</th>
                                                     <th style="width: 12%">Total</th>
-                                                    <th style="width: 13%">Empty Cart</th>
+                                                    <th style="width: 13%">Remove</th>
                                                 </tr>
                                             </thead>
                                             <!-- Cart Content -->
@@ -85,8 +84,8 @@
                                     <form action="">
                                         <div class="card rounded-0">
                                             <div class="card-header">CART TOTAL</div>
-                                            <div class="card-body border-0">
-                                                <div class="table-responsive border-0">
+                                            <div class="border-0 card-body">
+                                                <div class="border-0 table-responsive">
                                                     <table class="table border-0">
 
                                                         <thead style="background: #dfdddd">
@@ -130,7 +129,7 @@
         </div>
     </div>
 
-    
+
 
     <script>
         // Get the necessary elements

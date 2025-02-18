@@ -14,12 +14,12 @@
         }
 
         .searchbox-input {
-            top: 5px;
-            right: 0;
-            border: 0;
-            outline: 0;
-            width: 207px;
-        }
+        top: 5px;
+        right: -24px;
+        border: 0;
+        outline: 0;
+        width: 320px;
+    }
 
         .searchbox-icon,
         .searchbox-submit {
@@ -837,7 +837,7 @@
                     </div>
                 </li>
             </ul>
-            <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center justify-content-between mobile-search">
                 <div>
                     <form class="ml-auto mr-3 searchbox" action="{{ route('product.search') }}" method="POST">
                         @csrf

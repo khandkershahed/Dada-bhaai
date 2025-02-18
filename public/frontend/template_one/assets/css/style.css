@@ -1598,10 +1598,10 @@ ul.sub__menu.sub__dept--menu li:hover ul.sub__menu.level2 {
         background-repeat: no-repeat;
         background-position: center center;
     }
-    .home-main-banner{
+    .home-main-banner {
         padding: 0;
     }
-    .top__featured--area{
+    .top__featured--area {
         padding-top: 0;
     }
     .products--deals__content h6 {
@@ -2081,7 +2081,6 @@ ul.sub__menu.sub__dept--menu li:hover ul.sub__menu.level2 {
         margin-bottom: 30px;
     }
 }
-
 
 /* Product Design End */
 
@@ -2771,9 +2770,9 @@ ul.sub__menu.sub__dept--menu li:hover ul.sub__menu.level2 {
 
 /* 9. Brand */
 .brand-active {
-    padding-top: 55px;
+    padding-top: 35px;
     border-top: 1px solid #e0e0e0;
-    /* padding-bottom: 30px; */
+    padding-bottom: 35px;
 }
 
 .brand-two .brand-active {
@@ -4861,3 +4860,30 @@ html .ui-button.ui-state-disabled:active {
     min-width: 140px;
 }
 
+@media only screen and (max-width: 768px) {
+    .offer--banner__bg {
+        height: auto;
+    }
+    .category-banner-product {
+        padding-top: 10px;
+    }
+    .main-shop-page-banner {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-bottom: 0;
+        height: 140px;
+        object-fit: contain;
+        width: 100%;
+    }
+    .main-shop-page-banner {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-bottom: 0;
+        height: 110px;
+        object-fit: contain;
+        width: 100%;
+    }
+    .view-cart-page{
+        padding-bottom: 30px;
+    }
+}

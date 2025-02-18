@@ -29,9 +29,10 @@
                                         <div class="categories-thumb">
                                             <a
                                                 href="{{ url('product/category/' . $category->id . '/' . $category->category_slug) }}">
-                                                <img class="img"
+                                                <img class="border img-fluid"
                                                     src="{{ asset('storage/category/' . $category->icon) }}"
-                                                    style="width: 255px; height: 275px;" alt="" />
+                                                    style="width: 100%; height: 275px; object-fit: cover;" alt=""
+                                                    onerror="this.onerror=null; this.src='{{ asset('img/category-not-found.jpg') }}';"/>
                                             </a>
                                             <h6 class="f-800 pure__black-color cate-title">
                                                 <a

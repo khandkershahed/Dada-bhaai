@@ -484,10 +484,12 @@
         min-width: 460px;
     }
 
-    .shop-bar h4 {
+    /* .shop-bar h4 {
         margin-right: 10px;
+    } */
+    .view-cart-page {
+        padding-bottom: 10px;
     }
-
     .page-banner-area.mt-25 {
         margin-top: 0px;
     }
@@ -799,7 +801,7 @@
 
         margin-bottom: 0px;
 
-        margin-top: 50px;
+        margin-top: 0px;
     }
 
     .shop-banner-bg .collection-text {
@@ -945,6 +947,7 @@
 
     .shop-bar {
         justify-content: center;
+        flex-direction: column;
     }
 
     .shop-page .nice-select > span.current {
@@ -1012,7 +1015,10 @@
     }
 
     .reg-area .nav-link {
-        padding: 12px 30px;
+        padding: 12px 20px;
+    }
+    .reg-area {
+        padding-bottom: 60px;
     }
 
     .page-banner-area .banner-text h2 {

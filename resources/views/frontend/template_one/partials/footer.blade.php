@@ -1,11 +1,34 @@
 @php
     $site = App\Models\Sites::find(1);
 @endphp
+<style>
+    .fb-wrap {
+        max-width: 100%;
+        overflow: hidden;
+    }
 
+    .fb-page {
+        width: 100% !important;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .footer--area {
+            text-align: center;
+        }
+        .footer-newsletter{
+            display: flex;
+            justify-content: center;
+        }
+        .footer-newsletter .input-group{
+            width: 100% !important;
+        }
+    }
+</style>
 <footer class="footer--area">
-    <div class="footer--top pt-50 pb-25">
+    <div class="footer--top pb-25">
         <div class="footer-topbar">
-            <p class="p-3 mb-0 text-center text-white">Discover a wide range of products at {{ $site->site_name }}, your one-stop
+            <p class="p-3 mb-0 text-center text-white">Discover a wide range of products at {{ $site->site_name }}, your
+                one-stop
                 e-commerce destination. Enjoy seamless shopping, great deals, and excellent customer service.</p>
         </div>
         <div class="contaner-fluid footer-bg">
@@ -15,8 +38,24 @@
                         <div>
                             <a class="logo__link" href="{{ route('index') }}"><img class="" width="250px"
                                     src="{{ asset('upload/logo_black/' . $site->logo_black) }}" alt=""></a>
-
                             <p class="pt-3">{{ $site->site_slogan }}</p>
+                            <p class="mb-0">Subscribe to get
+                                updates!
+                            </p>
+                            <div class="footer-newsletter">
+                                <form action="">
+                                    <div class="mb-3 input-group w-75">
+                                        <input type="text" class="form-control"
+                                            placeholder="support.dadabhaai@gmail.com"
+                                            aria-label="support.dadabhaai@gmail.com" aria-describedby="button-addon2">
+                                        <div class="input-group-append">
+                                            <button class="px-3 btn btn-outline-secondary" style="background: #ed2129;"
+                                                type="button" id="button-addon2"><i
+                                                    class="fa-regular fa-paper-plane"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                     <div class="col-xl-2 col-lg-6 col-md-8 mb-30 order-md-3 order-lg-2">
@@ -60,19 +99,18 @@
                     <div class="col-xl-4 col-lg-6 col-md-8 mb-30 order-md-3 order-lg-2">
                         <div class="footer-widget">
                             <div class="footer-title">
-                                <h6 class="f-800">Connect With Us</h6>
+                                <h6 class="f-800">Join Us</h6>
                             </div>
                             <div>
                                 <div id="fb-root"></div>
                                 <script async defer crossorigin="anonymous"
                                     src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0&appId=1071946983902795" nonce="2wAZemwC">
                                 </script>
-
                                 <div class="fb-wrap">
-                                    <div class="fb-page" data-href="{{ $site->facebook_url }}"
-                                        data-tabs="timeline" data-width="500" data-height="135"
-                                        data-small-header="false" data-adapt-container-width="true"
-                                        data-hide-cover="false" data-show-facepile="true"></div>
+                                    <div class="fb-page" data-href="{{ $site->facebook_url }}" data-tabs="timeline"
+                                        data-width="500" data-height="135" data-small-header="false"
+                                        data-adapt-container-width="true" data-hide-cover="false"
+                                        data-show-facepile="true"></div>
                                 </div>
                             </div>
                         </div>
