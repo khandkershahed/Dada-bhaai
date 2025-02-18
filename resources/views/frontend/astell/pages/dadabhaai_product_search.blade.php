@@ -30,7 +30,7 @@
                 @empty
                     <p>No Product Avaiable</p>
                 @endforelse
-                <div class="mt-5 mb-5 row">
+                <div class="mt-5 mb-5 row mobile-row">
                     <div class="col-12 d-flex justify-content-center">
                         <div class="common-pagination">
                             {{ $products->links('vendor.pagination.template_one') }}

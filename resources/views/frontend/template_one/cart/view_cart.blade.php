@@ -3,6 +3,13 @@
 @section('title')
     DadaBhaai | View Cart
 @endsection
+<style>
+    @media only screen and (max-width: 768px) {
+        .input-group{
+            width: 130px;
+        }
+    }
+</style>
     <!-- page banner area start -->
     <section class="page-banner-area blog-page"
         data-background="{{ asset('frontend/template_one/assets/img/bg/banner.jpg') }}">
@@ -73,7 +80,7 @@
                                                 </tr>
                                             </thead>
                                             <!-- Cart Content -->
-                                            <tbody id="cartPage">
+                                            <tbody id="cartPage" valign="middle">
 
                                             </tbody>
                                         </table>

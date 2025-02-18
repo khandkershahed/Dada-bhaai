@@ -43,13 +43,13 @@
             @if ($paginator->onFirstPage())
                 <li class="disabled page-item" aria-disabled="true" aria-label="@lang('pagination.previous')">
                     <a class="page-link" href="javascript:void();">
-                        <i class="fas fa-angle-left"></i> <span class="fw-bold">Prev</span></a>
+                        <i class="fas fa-angle-left"></i> </a>
                     {{-- <a class="page-link" href="#"><i class="fas fa-angle-left"></i> Prev</a> --}}
                 </li>
             @else
                 <li class="page-item">
                     <a href="{{ $paginator->previousPageUrl() }}" class="page-link" rel="prev"
-                        aria-label="@lang('pagination.previous')"><i class="fas fa-angle-left"></i> Prev</a>
+                        aria-label="@lang('pagination.previous')"><i class="fas fa-angle-left"></i></a>
                 </li>
             @endif
 
@@ -82,11 +82,11 @@
             @if ($paginator->hasMorePages())
                 <li class="page-item">
                     <a href="{{ $paginator->nextPageUrl() }}" class="page-link fw-bold" rel="next"
-                        aria-label="@lang('pagination.next')">Next <i class="fas fa-angle-right"></i></a>
+                        aria-label="@lang('pagination.next')"> <i class="fas fa-angle-right"></i></a>
                 </li>
             @else
                 <li class="disabled page-item" aria-disabled="true" aria-label="@lang('pagination.next')">
-                    <a class="page-link fw-bold" href="javascript:void();">Next <i class="fas fa-angle-right"></i></a>
+                    <a class="page-link fw-bold" href="javascript:void();"> <i class="fas fa-angle-right"></i></a>
                 </li>
             @endif
 
@@ -100,7 +100,7 @@
 {{-- <nav aria-label="Page navigation example">
     <ul class="pagination">
         <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-left"></i> Prev</a></li>
-        <li class="page-item  active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
         <li class="page-item"><a class="page-link" href="#">2</a></li>
         <li class="page-item"><a class="page-link" href="#">3</a></li>
         <li class="page-item"><a class="page-link" href="#">4</a></li>

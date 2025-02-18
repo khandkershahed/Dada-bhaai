@@ -602,6 +602,8 @@ label {
     text-align: center;
     margin: 0 5px;
     font-size: 12px;
+    height: 40px;
+    border-radius: 0px;
 }
 
 .buttons-count {
@@ -4885,5 +4887,8 @@ html .ui-button.ui-state-disabled:active {
     }
     .view-cart-page{
         padding-bottom: 30px;
+    }
+    .product-grid{
+        margin-right: 0 !important;
     }
 }

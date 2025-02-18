@@ -2,6 +2,14 @@
 @section('index_astell')
 @section('title', 'Dada Bhaai | ' . $catwiseproduct->category_name)
 
+<style>
+    @media (max-width: 1023px) {
+        .mobile-row {
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+        }
+    }
+</style>
 <main class="sub">
 
     <section class="lnb">
@@ -17,10 +25,11 @@
                     $categories = Category::where('status', '1')->inRandomOrder()->limit(5)->get();
                 @endphp
 
-                
+
                 @forelse ($categories as $category)
-                    <li class="swiper-slide swiper-slide-next {{ ($category->category_slug == $catwiseproduct->category_slug) ? 'swiper-slide-active' : '' }}">
-                        <a class=" {{ ($category->category_slug == $catwiseproduct->category_slug) ? 'on' : '' }}""
+                    <li
+                        class="swiper-slide swiper-slide-next {{ $category->category_slug == $catwiseproduct->category_slug ? 'swiper-slide-active' : '' }}">
+                        <a class=" {{ $category->category_slug == $catwiseproduct->category_slug ? 'on' : '' }}""
                             href="{{ url('product/category-dadabhaai/' . $category->id . '/' . $category->category_slug) }}">{{ $category->category_name }}</a>
                     </li>
                 @empty
@@ -68,7 +77,7 @@
                 <p>No Product Avaiable</p>
             @endforelse
 
-            <div class="row mt-5 mb-5">
+            <div class="mt-5 mb-5 row mobile-row">
                 <div class="col-12 d-flex justify-content-center">
                     <div class="common-pagination">
                         {{ $products->links('vendor.pagination.template_one') }}

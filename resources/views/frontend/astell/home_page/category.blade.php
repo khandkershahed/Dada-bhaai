@@ -46,7 +46,7 @@
 
                             <ul class="swiper-wrapper">
                                 @foreach (optional($homepage->categoryHomeTabOne)->subproducts as $category_product_one)
-                                    <li class="swiper-slide">
+                                    <li class="swiper-slide main-img-ctg">
 
                                         <a
                                             href="{{ url('product' . '/' . $category_product_one->id . '/' . $category_product_one->product_slug) }}">

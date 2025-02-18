@@ -3142,8 +3142,12 @@ footer .inner2 .youtube {
     /*mobile(ipad 세로 ~ 모바일)*/
     footer {
         height: 382px;
+        text-align: center;
     }
 
+    footer .wrap {
+        position: static;
+    }
     footer .wrap {
         position: static;
     }
@@ -3157,7 +3161,6 @@ footer .inner2 .youtube {
 
     footer .inner {
         padding: 46px 20px 0;
-        text-align: right;
     }
 
     footer .inner a {
@@ -3172,14 +3175,15 @@ footer .inner2 .youtube {
         font-size: 12px;
         line-height: 20px;
         letter-spacing: 0.3px;
-        text-align: left;
+        text-align: center;
+        width: 100% !important;
     }
 
     footer .inner2 {
         position: absolute;
         top: auto;
         right: 0;
-        bottom: 40px;
+        bottom: 38px;
         padding: 0 20px;
         width: 100%;
     }
@@ -3222,6 +3226,11 @@ footer .inner2 .youtube {
 
     footer .inner2 .youtube {
         margin-left: 29px;
+    }
+    .main-img-ctg img {
+        height: 190px !important;
+        width: 100% !important;
+        object-fit: contain;
     }
 }
 
@@ -5251,12 +5260,20 @@ main .video-js {
     }
 }
 
+.detail-group1.scrollAni.view{
+    display: none;
+}
 @media (max-width: 1023px) {
     /*mobile(ipad 세로 ~ 모바일)*/
     .main .experience {
-        height: 750px;
+        height: 330px;
     }
-
+    .faq-head{
+        margin: 30px 0 30px !important;
+    }
+    .faq-options{
+        margin-bottom: 0 !important;
+    }
     .main .experience h2 {
         top: 130px;
         left: 20px;
@@ -5809,11 +5826,23 @@ main .video-js {
 
 @media (max-width: 1023px) {
     /*mobile(ipad 세로 ~ 모바일)*/
+    .mobile-row{
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    .pagination li{
+        padding: 6px !important;
+    }
+    .swiper-container{
+        overflow: auto;
+    }
     .sub .lnb {
         top: 59px;
         width: 100%;
         height: 40px;
         padding: 0;
+        overflow: auto;
+        z-index: 9999;
     }
 
     .sub .lnb .swiper-slide {
@@ -21888,7 +21917,7 @@ main .video-js {
 @media (max-width: 1023px) {
     /*mobile(ipad 세로 ~ 모바일)*/
     .detail-group63 {
-        padding: 55px 20px 350px;
+        padding: 5px 20px 350px;
     }
 
     .detail-group63 .wrap {
@@ -24939,7 +24968,7 @@ main .video-js {
 @media (max-width: 1023px) {
     /*mobile(ipad 세로 ~ 모바일)*/
     .design-group {
-        padding: 50px 0;
+        padding: 0px 0;
     }
 
     .design-group:before {
@@ -26490,14 +26519,16 @@ main .video-js {
     }
 
     .detail-group63.n20 .inner {
-        margin-top: 250px;
+        margin-top: 0px;
     }
 
     .detail-group63.n20 .img {
         height: 300px;
     }
+    .detail-group29.n4 .n4-wrapper {
+        margin-top: 310px !important;
+    }
 }
-
 .detail-group17.n19 {
     transition: background-image 3500ms ease-in-out;
 }
@@ -26973,6 +27004,7 @@ main .video-js {
 
     .detail-group29.n8 h3 span {
         font-size: 35px;
+        padding-top: 90px;
     }
 
     .detail-group29.n8 .thumbnail img:first-child {
@@ -27011,8 +27043,8 @@ main .video-js {
     }
 
     .detail-group29.n8 .box img {
-        width: 70%;
-        margin-top: 18px;
+        width: 100% !important;
+        margin-top: 80px;
     }
 }
 
@@ -27309,7 +27341,7 @@ main .video-js {
     }
 
     .detail-group4.n12 {
-        padding: 410px 20px 280px;
+        padding: 410px 20px 110px;
         margin-top: -400px;
     }
 
@@ -28032,7 +28064,7 @@ input.form-field:not([type=submit]):not([type=checkbox]):not([type=radio]):not([
   }
 
   .accordion-single-item.is-open .accordion-single-content  {
-    max-height: 150px;
+    max-height: 100%;
   }
 
   .accordion-single-item.is-open .accordion-single-title::after  {
