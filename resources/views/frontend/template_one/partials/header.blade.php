@@ -113,7 +113,7 @@
                                                         @endphp
                                                         <div class="row">
                                                             @forelse ($catwissubcat as $subcat)
-                                                                <div class="col-lg-4">
+                                                                <div class="col-lg-3">
                                                                     <div>
                                                                         <h5 class="" style="color: #ef4416;">
                                                                             {{ $subcat->subcategory_name }}

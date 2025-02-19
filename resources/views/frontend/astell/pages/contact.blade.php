@@ -25,7 +25,7 @@
                                     alt="i_contact1.png">
                             </div>
                             <div style="width: 65%;">
-                                {{ $site->address }}
+                                {{ optional($site)->address }}
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                                     alt="i_contact3.png">
                             </div>
                             <div style="width: 65%;">
-                                {{ $site->contact_email }}
+                                {{ optional($site)->contact_email }}
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                                     {{-- <i class="fa-solid fa-phone"></i> --}}
                             </div>
                             <div style="width: 65%;">
-                                {{ $site->phone_one }}
+                                {{ optional($site)->phone_one }}
                             </div>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                                     <div class="col-lg-4">
                                         <div class="mb-3">
                                             <label for="exampleInputEmail1" class="form-label">Name</label>
-                                            <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                            <input type="text" required class="form-control @error('name') is-invalid @enderror"
                                                 style="padding: 0.875rem .75rem;" name="name"
                                                 placeholder="Enter Your Name">
                                             @error('name')
@@ -84,7 +84,7 @@
                                     <div class="col-lg-4">
                                         <div class="mb-3">
                                             <label for="exampleInputEmail1" class="form-label">Email</label>
-                                            <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                            <input type="email" required class="form-control @error('email') is-invalid @enderror"
                                                 style="padding: 0.875rem .75rem;" name="email"
                                                 placeholder="Enter Your Email">
 
@@ -96,7 +96,7 @@
                                     <div class="col-lg-4">
                                         <div class="mb-3">
                                             <label for="exampleInputEmail1" class="form-label">Phone</label>
-                                            <input type="text" class="form-control @error('phone') is-invalid @enderror"
+                                            <input type="text" required class="form-control @error('phone') is-invalid @enderror"
                                                 style="padding: 0.875rem .75rem;" name="phone"
                                                 placeholder="Enter Your Phone">
 
@@ -111,7 +111,7 @@
                                             <label for="exampleInputEmail1" class="form-label">Subject</label>
                                             <input type="text"
                                                 class="form-control @error('subject') is-invalid @enderror"
-                                                style="padding: 0.875rem .75rem;" name="subject"
+                                                style="padding: 0.875rem .75rem;" required name="subject"
                                                 placeholder="Enter Your Subject">
 
                                             @error('subject')
@@ -123,7 +123,7 @@
                                     <div class="col-lg-12">
                                         <div class="mb-3">
                                             <label for="exampleInputEmail1" class="form-label">Message</label>
-                                            <textarea class="form-control @error('subject') is-invalid @enderror" style="padding: 0.875rem .75rem;" rows="5"
+                                            <textarea required class="form-control @error('subject') is-invalid @enderror" style="padding: 0.875rem .75rem;" rows="5"
                                                 placeholder="Leave a comment here" id="floatingTextarea2" name="message"></textarea>
                                             @error('subject')
                                                 <div class="text-danger" style="padding-top: -10px;">{{ $message }}</div>

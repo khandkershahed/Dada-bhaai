@@ -33,7 +33,8 @@ return new class extends Migration
             $table->text('row_five_image')->comment('Dimensions: 870 x 1200 pixels')->nullable();
             $table->string('row_five_title')->nullable();
             $table->mediumText('row_five_description')->nullable();
-            
+            $table->string('row_five_background_image')->nullable();
+
             $table->string('row_six_title')->nullable();
             $table->text('row_six_background_image')->comment('Dimensions: 1920 x 1542 pixels')->nullable();
             $table->string('row_six_sub_title')->nullable();
@@ -120,7 +121,7 @@ return new class extends Migration
             $table->text('feature_five_image')->comment('Dimensions: 70 x 70 pixels')->nullable();
             $table->string('feature_five_title')->nullable();
             $table->mediumText('feature_five_description')->nullable();
-            
+
             $table->text('feature_six_image')->comment('Dimensions: 70 x 70 pixels')->nullable();
             $table->string('feature_six_title')->nullable();
             $table->mediumText('feature_six_description')->nullable();

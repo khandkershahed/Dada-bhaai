@@ -894,6 +894,7 @@
     })
 </script> --}}
 
+{{-- add_to_cart_btn_product_single_add --}}
 <script>
     $(document).ready(function() {
         // Handle adding product to the list when the "Add" button is clicked
@@ -943,8 +944,7 @@
         $('#' + productId).closest('li').remove();
     }
 </script>
-
-{{-- add_to_cart_btn_product_single --}}
+{{-- add_to_cart_btn_product_single_add --}}
 
 
 {{-- AddToCartOne --}}

@@ -1,5 +1,6 @@
 @extends('frontend.astell.frontend_dashboard_astell')
 @section('index_astell')
+
     <style>
         /*USE CSS for Slider*/
 
@@ -232,7 +233,9 @@
             background-size: auto;
         }
     </style>
+
     {{-- @if (!empty($sproducts)) --}}
+
     <main class="sub">
 
         <section class="lnb">
@@ -273,8 +276,9 @@
                 <p>{{ $product->brand->brand_name }}</p>
                 <h1 class="w-25" style="font-size: 50px;width: 31%;"> {{ $product->product_name }} </h1>
                 <div class="btn-group tmpProductInfo tmpProductInfo_0 mt-5" style="">
-                    <a type="submit" style="cursor:pointer;" class="lnk-ty1 add_to_cart_btn_product_astell"
-                        data-product_id="{{ $product->id }}" style="margin-top: 4rem;">Add To Cart</a>
+                    <a href="{{ route('template.two.contact') }}" style="cursor:pointer;"
+                        class="lnk-ty1 add_to_cart_btn_product_astell" data-product_id="" style="margin-top: 4rem;">Contact
+                        To Us</a>
                 </div>
                 <div class="scroll-icon">
                     Scroll
@@ -477,7 +481,8 @@
             </div>
         </section>
         {{-- Row Area Three End  --}}
-        @if (!empty($sproducts->row_four_image))
+
+        {{-- @if (!empty($sproducts->row_four_image))
             <section class="detail-group63 scrollAni n20 view">
                 <div class="wrap">
                     <div class="inner">
@@ -527,9 +532,10 @@
                     </div>
                 </div>
             </section>
-        @endif
+        @endif --}}
         {{-- Row Area Four Start  --}}
-        {{-- @if (!empty($sproducts->row_four_image))
+
+        @if (!empty($sproducts->row_four_image))
             <section class="detail-group10 scrollAni n5">
 
                 <div class="bg"
@@ -545,13 +551,14 @@
                 </div>
 
             </section>
-        @endif --}}
+        @endif
         {{-- Row Area End Start  --}}
 
         {{-- Row Area Five Start  --}}
-
-        @if (!empty($sproducts->row_five_image))
-            <section class="detail-group17 scrollAni n19 view">
+        @if (!empty($sproducts->row_five_image && $sproducts->row_five_background_image))
+            <section class="detail-group17 scrollAni n19 view" style="
+            background-image: url('{{ asset('storage/single_product/' . $sproducts->row_five_background_image) }}');
+          ">
                 <div class="bg"
                     style="
                 background-image: url('{{ asset('storage/single_product/' . $sproducts->row_five_image) }}');
@@ -972,33 +979,34 @@
         {{-- Feature Area End  --}}
         <section class="detail-group63 scrollAni n21" style="background-color: #f0f0f0">
             <div class="wrap">
-              <div class="img">
-                <img src="https://cdn.astellnkern.com/editor/img/202208/20220831141927_e0b9b935-f491-4d4c-a256-19cf639e9a18.png" alt="img" style="max-width: 320px">
-              </div>
-              <div class="inner">
-                <h3 style="color: #000000">Premium Goat Leather Case</h3>
-                <p style="color: #000000">
-                  The SP3000 comes with a French goatskin leather case to protect
-                  and highlight the beauty of the 904L stainless steel body.
-                  <br><br>
-                  The case is made by ALRAN, located in Tarn in southern France, a
-                  historical tannery that was established in 1903 and has been
-                  manufacturing leather for over 100 years. It is one of the
-                  world’s leading tanneries, well-known for their natural leather
-                  manufacturing technology since the 1980’s. ALRAN is recognized
-                  as the best goatskin manufacturer and supplies other leading
-                  luxury brands such as H and L.
-                  <br><br>
-                  The leather case included with the SP3000 is developed with
-                  ALRAN Tannery's unique Hand-Boarding technology. This is a
-                  technology that processes the leather by rubbing it in various
-                  directions using wooden planks, so you can feel the texture of
-                  the surface. This process is unique compared to how other
-                  goatskin cases are produced.
-                </p>
-              </div>
+                <div class="img">
+                    <img src="https://cdn.astellnkern.com/editor/img/202208/20220831141927_e0b9b935-f491-4d4c-a256-19cf639e9a18.png"
+                        alt="img" style="max-width: 320px">
+                </div>
+                <div class="inner">
+                    <h3 style="color: #000000">Premium Goat Leather Case</h3>
+                    <p style="color: #000000">
+                        The SP3000 comes with a French goatskin leather case to protect
+                        and highlight the beauty of the 904L stainless steel body.
+                        <br><br>
+                        The case is made by ALRAN, located in Tarn in southern France, a
+                        historical tannery that was established in 1903 and has been
+                        manufacturing leather for over 100 years. It is one of the
+                        world’s leading tanneries, well-known for their natural leather
+                        manufacturing technology since the 1980’s. ALRAN is recognized
+                        as the best goatskin manufacturer and supplies other leading
+                        luxury brands such as H and L.
+                        <br><br>
+                        The leather case included with the SP3000 is developed with
+                        ALRAN Tannery's unique Hand-Boarding technology. This is a
+                        technology that processes the leather by rubbing it in various
+                        directions using wooden planks, so you can feel the texture of
+                        the surface. This process is unique compared to how other
+                        goatskin cases are produced.
+                    </p>
+                </div>
             </div>
-          </section>
+        </section>
         {{-- Feature Area End  --}}
         @if (
             !empty($sproducts->design_section_image_one) ||

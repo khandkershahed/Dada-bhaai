@@ -142,7 +142,6 @@
                                             </div>
                                         </div>
 
-
                                     </div>
 
                                     <div class="mb-4">
@@ -269,7 +268,9 @@
                                                                     <small
                                                                         style="color: #ed2129;">Wishlist</small>
                                                                 </a>
+
                                                             </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
