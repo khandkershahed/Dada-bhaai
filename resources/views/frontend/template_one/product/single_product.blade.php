@@ -96,81 +96,86 @@
 
                         {{-- ================================ --}}
 
+                        @if ($product->price_status == 'price' && $product->price > 0)
+                            <div class="col-lg-5 col-md-6 order-2 order-lg-3">
 
-                        <div class="col-lg-5 col-md-6 order-2 order-lg-3">
-
-                            <div class="cart-wrapper">
-                                <div class="cart-title">
-                                    <h6>
-                                        Availability: <span class="text-danger"></span>
-                                    </h6>
-                                </div>
-                                <div class="price mt-15 mb-20 d-flex align-items-center">
-                                    <div class="mr-3 w-50">
-                                        @if ($product->price_status == 'rfq')
-                                            <h5 class="text-danger mb-0">
-                                                <span id="productPrice"
-                                                    style="color: #CD3301; font-weight: bold; margin-bottom: 0;">$
-                                                    {{ $product->sas_price }}</span>
-                                            </h5>
-                                        @elseif ($product->price_status == 'offer_price')
-                                            <p class="mb-0"><del>$ <span
-                                                        id="originalPrice">{{ $product->price }}</span></del>
-                                            </p>
-                                            <h5 class="text-danger mb-0">
-                                                <span id="productPrice"
-                                                    style="color: #CD3301; font-weight: bold; margin-bottom: 0;">{{ $product->discount_price }}</span>
-                                            </h5>
-                                        @elseif ($product->price_status == 'price')
-                                            <h5 class="text-danger mb-0">
-                                                <span id="productPrice"
-                                                    style="color: #CD3301; font-weight: bold; margin-bottom: 0;">
-                                                    {{ $product->price }}</span>
-                                            </h5>
-                                        @endif
-
+                                <div class="cart-wrapper">
+                                    <div class="cart-title">
+                                        <h6>
+                                            Availability: <span class="text-danger"></span>
+                                        </h6>
                                     </div>
+                                    <div class="price mt-15 mb-20 d-flex align-items-center">
+                                        <div class="mr-3 w-50">
+                                            @if ($product->price_status == 'rfq')
+                                                <h5 class="text-danger mb-0">
+                                                    <span id="productPrice"
+                                                        style="color: #CD3301; font-weight: bold; margin-bottom: 0;">$
+                                                        {{ $product->sas_price }}</span>
+                                                </h5>
+                                            @elseif ($product->price_status == 'offer_price')
+                                                <p class="mb-0"><del>$ <span
+                                                            id="originalPrice">{{ $product->price }}</span></del>
+                                                </p>
+                                                <h5 class="text-danger mb-0">
+                                                    <span id="productPrice"
+                                                        style="color: #CD3301; font-weight: bold; margin-bottom: 0;">{{ $product->discount_price }}</span>
+                                                </h5>
+                                            @elseif ($product->price_status == 'price')
+                                                <h5 class="text-danger mb-0">
+                                                    <span id="productPrice"
+                                                        style="color: #CD3301; font-weight: bold; margin-bottom: 0;">
+                                                        {{ $product->price }}</span>
+                                                </h5>
+                                            @endif
 
-
-                                    <div class="field mb-0 w-50 text-end">
-                                        <label class="mb-0">Quantity:</label>
-                                        <div class="number d-flex align-items-center main_qty">
-                                            <p class="minus mb-0 px-2">-</p>
-                                            <input type="text" class="mb-0 w-50 qty-input-product" name=""
-                                                value="1" min="1" autocomplete="off" id="dqty">
-                                            <p class="plus mb-0 px-2">+</p>
                                         </div>
+
+
+                                        <div class="field mb-0 w-50 text-end">
+                                            <label class="mb-0">Quantity:</label>
+                                            <div class="number d-flex align-items-center main_qty">
+                                                <p class="minus mb-0 px-2">-</p>
+                                                <input type="text" class="mb-0 w-50 qty-input-product" name=""
+                                                    value="1" min="1" autocomplete="off" id="dqty">
+                                                <p class="plus mb-0 px-2">+</p>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <ul id="productList" style="list-style-type: circle !important;"></ul>
                                     </div>
 
 
+                                    <div class="d-flex align-items-center">
+
+                                        <input type="hidden" name="parent_id" id="oneproduct_id"
+                                            value="{{ $product->id }}">
+
+                                        <a onclick="buyToCartOne()" class="cart-button w-100">Add Cart</a>
+
+                                        {{-- <a class="cart-button w-100 ml-3 mt-0">Buy</a> --}}
+
+                                    </div>
+
+
+
+                                    <div class="last pt-15 align-items-center d-flex justify-content-center">
+                                        <a style="cursor: pointer;" data-product_id="{{ $product->id }}"
+                                            class="ml-2 mr-2 f-700 grenadier-color add_to_wishlist">Add To Wishlist</a>
+                                        |
+                                        <a style="cursor: pointer;" type="submit"
+                                            data-product_id="{{ $product->id }}"
+                                            class="ml-2  f-700 grenadier-color add_to_compare">Compare</a>
+                                    </div>
+
                                 </div>
 
-                                <div class="mb-4">
-                                    <ul id="productList" style="list-style-type: circle !important;"></ul>
-                                </div>
-
-                                <div class="d-flex align-items-center">
-
-                                    <input type="hidden" name="parent_id" id="oneproduct_id"
-                                        value="{{ $product->id }}">
-
-                                    <a onclick="buyToCartOne()" class="cart-button w-100">Add Cart</a>
-
-                                    <a class="cart-button w-100 ml-3 mt-0">Buy</a>
-
-                                </div>
-
-                                <div class="last pt-15 align-items-center d-flex justify-content-center">
-                                    <a style="cursor: pointer;" data-product_id="{{ $product->id }}"
-                                        class="ml-2 mr-2 f-700 grenadier-color add_to_wishlist">Add To Wishlist</a>
-                                    |
-                                    <a style="cursor: pointer;" type="submit" data-product_id="{{ $product->id }}"
-                                        class="ml-2  f-700 grenadier-color add_to_compare">Compare</a>
-                                </div>
                             </div>
-
-                        </div>
-
+                        @endif
 
                     </div>
 
