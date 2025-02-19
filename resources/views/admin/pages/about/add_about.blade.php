@@ -12,15 +12,15 @@
             <!--begin::Page title-->
             <div data-kt-swapper="true" data-kt-swapper-mode="prepend"
                 data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
-                class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
+                class="flex-wrap mb-5 page-title d-flex align-items-center me-3 mb-lg-0">
                 <!--begin::Title-->
-                <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Contact</h1>
+                <h1 class="my-1 d-flex text-dark fw-bolder fs-3 align-items-center">Contact</h1>
                 <!--end::Title-->
                 <!--begin::Separator-->
-                <span class="h-20px border-gray-300 border-start mx-4"></span>
+                <span class="mx-4 border-gray-300 h-20px border-start"></span>
                 <!--end::Separator-->
                 <!--begin::Breadcrumb-->
-                <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
+                <ul class="my-1 breadcrumb breadcrumb-separatorless fw-bold fs-7">
 
                     <!--begin::Item-->
                     <li class="breadcrumb-item text-muted">Total Contact<span
@@ -32,7 +32,7 @@
             </div>
             <!--end::Page title-->
             <!--begin::Actions-->
-            <div class="d-flex align-items-center gap-2 gap-lg-3">
+            <div class="gap-2 d-flex align-items-center gap-lg-3">
 
                 <a href="" data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-light-primary btn-sm">Add
                     Contact</a>
@@ -54,7 +54,7 @@
                     <table id="kt_datatable_example_5" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Sl No</th>
+                                <th class="ps-2">Sl No</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
@@ -65,8 +65,7 @@
                         <tbody>
                             @foreach ($contacts as $key => $contact)
                                 <tr>
-
-                                    <td>{{ $key + 1 }}</td>
+                                    <td class="ps-3">{{ $key + 1 }}</td>
                                     <td>{{ $contact->name }}</td>
                                     <td>{{ $contact->email }}</td>
                                     <td>{{ $contact->phone }}</td>
@@ -110,7 +109,7 @@
 
                             <div class="col-4">
 
-                                <div class="form-group mb-3">
+                                <div class="mb-3 form-group">
                                     <label for="" class="mb-2">Name</label>
                                     <input type="text" name="name"
                                         class="form-control @error('name') is-invalid @enderror" placeholder="Name"
@@ -125,7 +124,7 @@
 
                             <div class="col-4">
 
-                                <div class="form-group mb-3">
+                                <div class="mb-3 form-group">
                                     <label for="" class="mb-2">Email</label>
                                     <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email"
                                         autocomplete="off">
@@ -139,7 +138,7 @@
 
                             <div class="col-4">
 
-                                <div class="form-group mb-3">
+                                <div class="mb-3 form-group">
                                     <label for="" class="mb-2">Phone</label>
                                     <input type="tel" name="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="Phone"
                                         autocomplete="off">
@@ -153,7 +152,7 @@
 
                             <div class="col-4">
 
-                                <div class="form-group mb-3">
+                                <div class="mb-3 form-group">
                                     <label for="" class="mb-2">Address</label>
                                     <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" placeholder="Address"
                                         autocomplete="off">
@@ -167,7 +166,7 @@
 
                             <div class="col-4">
 
-                                <div class="form-group mb-3">
+                                <div class="mb-3 form-group">
                                     <label for="" class="mb-2">Ip Address</label>
                                     <input type="text" name="ip_address" class="form-control" placeholder="Ip Address"
                                         autocomplete="off">
@@ -177,7 +176,7 @@
                             </div>
 
                             <div class="col-12">
-                                <div class="form-group mb-3">
+                                <div class="mb-3 form-group">
                                     <label for="" class="mb-2">Message</label>
                                     <textarea class="form-control @error('message') is-invalid @enderror" placeholder="Write Message Here...." name="message"></textarea>
                                     @error('message')
@@ -205,8 +204,8 @@
                 "lengthMenu": "Show _MENU_",
             },
             "dom": "<'row'" +
-                "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
-                "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                "<'col-lg-6 col-12 -'l>" +
+                "<'col-lg-6 col-12'f>" +
                 ">" +
 
                 "<'table-responsive'tr>" +

@@ -1301,7 +1301,7 @@
 
                                 @foreach ($multiImages as $key => $img)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
+                                        <td class="ps-3">{{ $key + 1 }}</td>
                                         <td>
                                             <img src="{{ asset($img->multi_image) }}" style="width: 50px; height: 50p;;"
                                                 alt="">

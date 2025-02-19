@@ -2854,7 +2854,9 @@ header.dark .btn-srch.on {
     }
 
     header .menu .depth1 > li > a.mark:before {
-        top: 21px;
+        top: 30px;
+        margin-right: 19px;
+        left: 300px;
     }
 
     header .menu .depth2 {
@@ -3228,8 +3230,12 @@ footer .inner2 .youtube {
         margin-left: 29px;
     }
     .main-img-ctg img {
-        height: 190px !important;
+        height: 200px !important;
         width: 100% !important;
+        object-fit: contain;
+    }
+    .thumbnail-img-ctg img{
+        height: 100px !important;
         object-fit: contain;
     }
 }
@@ -4571,7 +4577,7 @@ main .video-js {
     }
 
     .main .product .tab-cont .wr .list {
-        bottom: 60px;
+        bottom: 30px;
         left: 50%;
         width: 50%;
     }
@@ -4594,15 +4600,24 @@ main .video-js {
 }
 
 @media (max-width: 1023px) {
-    /*mobile(ipad 세로 ~ 모바일)*/
     .main .product {
-        height: 670px;
+        height: 820px;
     }
-
-    .main .product .tab-ty ul {
+    .main .product .tab-cont{
+        height: 820px;
+    }
+    .main .product .tab-ty{
         width: 100%;
         height: 50px;
+        overflow-x: scroll;
     }
+
+
+    .main .product .tab-ty ul {
+        width: 600px;
+        height: 50px;
+    }
+
 
     .main .product .tab-ty a {
         width: 100%;
@@ -4613,7 +4628,7 @@ main .video-js {
     }
 
     .main .product .tab-cont {
-        padding-top: 50px;
+        padding-top: 25px;
     }
 
     .main .product .tab-cont .wl {
@@ -4626,7 +4641,7 @@ main .video-js {
 
     .main .product .tab-cont .wl .swiper-container {
         width: 100%;
-        height: 204px;
+        height: 320px;
         margin: 0 auto;
     }
 
@@ -4670,7 +4685,7 @@ main .video-js {
     }
 
     .main .product .tab-cont .wr .list {
-        bottom: 60px;
+        bottom: 30px;
         left: 0;
         width: 100%;
     }
@@ -4681,9 +4696,7 @@ main .video-js {
     }
 
     .main .product .tab-cont .wr .swiper-slide {
-        width: 104px;
-        padding-right: 24px;
-        height: 120px;
+        height: 158px;
     }
 
     .main .product .tab-cont .wr .swiper-slide a span {
@@ -5304,14 +5317,18 @@ main .video-js {
     }
 
     .main .experience .swiper-button-prev {
-        right: 129px;
-        width: 102px;
+        right: 90px;
+        width: 70px;
         height: 54px;
     }
-
+    .contact-mobile-icons{
+        width: 60px;
+        position: relative;
+        left: 20px;
+    }
     .main .experience .swiper-button-next {
         right: 20px;
-        width: 102px;
+        width: 70px;
         height: 54px;
     }
 
@@ -5899,7 +5916,7 @@ main .video-js {
 
     .sub .lnb .swiper-container.v1 {
         width: calc(100% - 100px);
-        margin-left: 100px;
+        margin-left: 40px;
     }
 }
 
@@ -26752,8 +26769,11 @@ main .video-js {
     }
 
     .detail-group29.n4 h2 {
-        font-size: 38px;
-        line-height: 45px;
+        font-size: 36px;
+        line-height: 40px;
+    }
+    header .menu-box.on{
+        width: 100%;
     }
 
     .detail-group29.n4 .n4-item {

@@ -56,7 +56,7 @@
                     <table id="kt_datatable_example_5" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Sl No</th>
+                                <th class="ps-2">Sl No</th>
                                 <th>Image</th>
                                 <th>Name</th>
                                 <th>Category</th>
@@ -72,7 +72,7 @@
                             @foreach ($offers as $key => $offer)
                                 <tr>
 
-                                    <td>{{ $key + 1 }}</td>
+                                    <td class="ps-3">{{ $key + 1 }}</td>
                                     <td>
                                         <img src="{{ asset('storage/offer_image/' . $offer->offer_image) }}"
                                             style="width: 40px;height:40px;" alt="">
@@ -506,8 +506,8 @@
                 "lengthMenu": "Show _MENU_",
             },
             "dom": "<'row'" +
-                "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
-                "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                "<'col-lg-6 col-12 -'l>" +
+                "<'col-lg-6 col-12'f>" +
                 ">" +
 
                 "<'table-responsive'tr>" +

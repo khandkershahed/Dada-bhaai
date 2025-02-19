@@ -64,14 +64,21 @@
             slidesToScroll: 1,
             autoplay: true,
             autoplaySpeed: 6000,
-            arrows: true,
-            spacing: 50,
+            arrows: false,
             draggable: true, // Enable dragging
             infinite: true, // Enable infinite loop
-            // Add more settings/options as needed
+            responsive: [
+                {
+                    breakpoint: 768, // Adjust for mobile screens
+                    settings: {
+                        slidesToShow: 2
+                    }
+                }
+            ]
         });
     });
 </script>
+
 {{-- Releted Accesories End --}}
 
 <script>

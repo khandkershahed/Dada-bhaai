@@ -3,7 +3,20 @@
 @section('title')
     DadaBhaai | WishList
 @endsection
+<style>
+    .table-responsive {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch !important;
+        -ms-overflow-style: none !important;
+    }
 
+    .table-responsive table {
+        min-width: 600px;
+        /* Adjust based on content */
+    }
+</style>
 <!-- page banner area start -->
 <section class="page-banner-area blog-page"
     data-background="{{ asset('frontend/template_one/assets/img/bg/banner.jpg') }}" style="height: 200px">
@@ -11,12 +24,12 @@
         <div class="row">
             <div class="col-sm-12">
 
-                <div class="banner-text text-center pt-50 pb-50">
+                <div class="text-center banner-text pt-50 pb-50">
                     <h2 class="f-800 cod__black-color">
                         WishList <span class="grenadier-color">Product</span>
                     </h2>
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb pt-3">
+                        <ol class="pt-3 breadcrumb">
                             <li class="breadcrumb-item">
                                 <a href="{{ route('index') }}">Home</a>
                             </li>
@@ -36,40 +49,45 @@
 <!-- page banner area end -->
 
 <!-- shop area start -->
-<div class="product shop-page pt-90 pb-90 fix">
+<div class="product shop-page pt-90 pb-90 fix wishlist-box">
     <div class="container">
-        <div class="border-b">
+        <div class="pb-4 border-b">
             <div class="row">
-                <div class="col-lg-12 col-md-4">
+                <div class="px-0 col-lg-12 col-md-4">
                     <div class="shop-bar d-flex align-items-center justify-content-between">
                         <h5 class="f-800 cod__black-color">
-                            <span class="grenadier-color">WishList</span>
+                            <span class="grenadier-color">Your Wishlist Selection</span>
                         </h5>
-                        <a href="{{ route('index') }}" class="f-800 cod__black-color">
-                            <span class="grenadier-color">Continue Shopping<i class="fa fa-long-arrow-right"></i></span>
-                        </a>
+                        <h5 class="mt-4 f-800 cod__black-color mt-lg-0">
+                            <a href="{{ route('index') }}" class="p-2 add-to-card-btns" style="border-radius: 20px">
+                                <span class="grenadier-color">Continue Shopping<i
+                                        class="pl-2 fa-solid fa-arrow-right"></i></span>
+                            </a>
+                        </h5>
+
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row mt-3">
+        <div class="row">
             <div class="col-lg-12">
-                <div class="card border-0 shadow-lg">
-                    <div class="card-body">
+                <div class="border-0 shadow-lg card">
+                    <div class="p-0 card-body">
                         <div class="row">
+                            <div class="px-0 col-lg-12">
 
-                            <div class="col-lg-12 px-0">
                                 <div class="table-responsive">
                                     <table class="table">
                                         <!-- Cart Header -->
-                                        <thead class="bg-light border-none">
+                                        <thead class="border-none bg-light">
                                             <tr>
-                                                <th style="width: 10%">Image</th>
-                                                <th style="width: 35%">Product Name</th>
-                                                <th style="width: 10%">Price</th>
-                                                <th style="width: 10%">Cart</th>
-                                                <th style="width: 13%">Remove</th>
+                                                <th>Image</th>
+                                                <th>Product Name</th>
+                                                <th>Price</th>
+                                                <th>Cart</th>
+                                                <th class="text-right">Remove</th>
                                             </tr>
+
                                         </thead>
                                         <!-- Cart Content -->
 
@@ -95,13 +113,15 @@
                                                         @if ($cartWishlist->price > 0)
                                                             <a type="submit" style="cursor:pointer"
                                                                 id="{{ $cartWishlist->id }}"
-                                                                onclick="addToCartCompare(this.id)" class=""> Add To Cart</a>
+                                                                class="text-white cart-button"
+                                                                onclick="addToCartCompare(this.id)" class=""> Add
+                                                                To Cart</a>
                                                         @endif
                                                     </td>
 
 
-                                                    <td class="">
-                                                        <a type="submit" style="cursor:pointer"
+                                                    <td class="text-right">
+                                                        <a type="submit" class="pr-3" style="cursor:pointer"
                                                             id="{{ $cartWishlist->rowId }}"
                                                             onclick="wishlistRemove(this.id)"><i
                                                                 class="fa-solid fa-trash text-danger"></i></a>
@@ -116,7 +136,6 @@
                                             @endforelse
 
                                         </tbody>
-
                                     </table>
                                 </div>
                             </div>

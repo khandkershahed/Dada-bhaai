@@ -111,7 +111,7 @@
                     @foreach ($users as $key => $user)
                         <tr>
 
-                            <td>{{ $key + 1 }}</td>
+                            <td class="ps-3">{{ $key + 1 }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->designation }}</td>

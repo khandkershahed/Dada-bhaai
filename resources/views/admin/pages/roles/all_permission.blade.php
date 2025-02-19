@@ -81,7 +81,7 @@
                     <!--begin::Table row-->
                     <tr class="text-start text-gray-400 fw-bolder fs-7 gs-0">
 
-                        <th>Sl No</th>
+                        <th class="ps-2">Sl No</th>
                         <th>Permission Name</th>
                         <th>Group Name</th>
                         <th>Action</th>
@@ -98,7 +98,7 @@
                     @foreach ($permissions as $key => $permission)
                         <tr>
 
-                            <td>{{ $key + 1 }}</td>
+                            <td class="ps-3">{{ $key + 1 }}</td>
                             <td>{{ $permission->name }}</td>
                             <td>{{ $permission->group_name }}</td>
                             <td>
@@ -286,8 +286,8 @@
                 "lengthMenu": "Show _MENU_",
             },
             "dom": "<'row'" +
-                "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
-                "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                "<'col-lg-6 col-12 -'l>" +
+                "<'col-lg-6 col-12'f>" +
                 ">" +
 
                 "<'table-responsive'tr>" +

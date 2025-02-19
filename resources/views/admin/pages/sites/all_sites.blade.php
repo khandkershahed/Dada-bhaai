@@ -68,7 +68,7 @@
                             @foreach ($sites as $key => $site)
                                 <tr>
 
-                                    <td>{{ $key + 1 }}</td>
+                                    <td class="ps-3">{{ $key + 1 }}</td>
                                     <td>
                                         <img src="{{ asset('upload/logo_white/' . $site->logo_white) }}"
                                             style="width: 40px;height:40px;" alt="">
@@ -215,8 +215,8 @@
                 "lengthMenu": "Show _MENU_",
             },
             "dom": "<'row'" +
-                "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
-                "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                "<'col-lg-6 col-12 -'l>" +
+                "<'col-lg-6 col-12'f>" +
                 ">" +
 
                 "<'table-responsive'tr>" +

@@ -33,18 +33,18 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="row">
-                        <div class="col-lg-12 col-md-6 order-1 order-lg-1">
+                        <div class="order-1 col-lg-12 col-md-6 order-lg-1">
                             <div class="pro-img">
                                 <div class="tab-content" id="myTabContent">
                                     @forelse ($multiImages as $key => $multiImage)
                                         <div class="tab-pane fade show {{ $key == 0 ? 'active' : '' }}"
                                             id="multiImg{{ $multiImage->id }}" role="tabpanel"
                                             aria-labelledby="home-tab5">
-                                            <img src="{{ asset($multiImage->multi_image) }}" class="img-fluid mb-2"
+                                            <img src="{{ asset($multiImage->multi_image) }}" class="mb-2 img-fluid"
                                                 alt="" style="width:100%; height: 100%;" />
                                         </div>
                                     @empty
-                                        <img src="{{ asset('upload/no_image.jpg') }}" class="img-fluid mb-2"
+                                        <img src="{{ asset('upload/no_image.jpg') }}" class="mb-2 img-fluid"
                                             alt="" style="width:100%; height: 400px;" />
                                     @endforelse
                                 </div>
@@ -56,12 +56,12 @@
                                                 aria-controls="home5" aria-selected="true">
                                                 <img src="{{ asset($multiImage->multi_image) }}" class="img-fluid"
                                                     alt=""
-                                                    style="width: 100px;height: 100px;margin-bottom: 10px;background-size: cover;object-fit: contain;" />
+                                                    style="width: 100px;height: 100px;background-size: cover;object-fit: contain;" />
                                             </a>
                                         </li>
                                     @empty
                                         <img src="{{ asset('upload/no_image.jpg') }}" class="img-fluid" alt=""
-                                            style="width: 75px;height: 75px; margin-bottom: 10px;" />
+                                            style="width: 75px;height: 75px; " />
                                     @endforelse
                                 </ul>
                             </div>
@@ -72,7 +72,7 @@
 
                     <div class="row gx-0">
 
-                        <div class="col-lg-7 col-md-12 order-3 order-lg-2">
+                        <div class="order-3 col-lg-7 col-md-12 order-lg-2">
                             <div class="pro-content">
                                 <span>{{ optional($product->brand)->brand_name }}</span>
 
@@ -82,8 +82,8 @@
 
                                 <div class="pro-code">
                                     <ul class="d-flex flex-column justify-content-between">
-                                        <li>SKU: <span class="mr-2 ml-1">{{ $product->sku_code }}</span>MF Code:
-                                            <span class="mr-2 ml-1">{{ $product->mf_code }}</span>
+                                        <li>SKU: <span class="ml-1 mr-2">{{ $product->sku_code }}</span>MF Code:
+                                            <span class="ml-1 mr-2">{{ $product->mf_code }}</span>
                                         </li>
 
                                     </ul>
@@ -97,7 +97,7 @@
                         {{-- ================================ --}}
 
                         @if ($product->price_status == 'price' && $product->price > 0)
-                            <div class="col-lg-5 col-md-6 order-2 order-lg-3">
+                            <div class="order-2 col-lg-5 col-md-6 order-lg-3">
 
                                 <div class="cart-wrapper">
                                     <div class="cart-title">
@@ -105,10 +105,10 @@
                                             Availability: <span class="text-danger"></span>
                                         </h6>
                                     </div>
-                                    <div class="price mt-15 mb-20 d-flex align-items-center">
+                                    <div class="mb-20 price mt-15 d-flex align-items-center">
                                         <div class="mr-3 w-50">
                                             @if ($product->price_status == 'rfq')
-                                                <h5 class="text-danger mb-0">
+                                                <h5 class="mb-0 text-danger">
                                                     <span id="productPrice"
                                                         style="color: #CD3301; font-weight: bold; margin-bottom: 0;">$
                                                         {{ $product->sas_price }}</span>
@@ -117,12 +117,12 @@
                                                 <p class="mb-0"><del>$ <span
                                                             id="originalPrice">{{ $product->price }}</span></del>
                                                 </p>
-                                                <h5 class="text-danger mb-0">
+                                                <h5 class="mb-0 text-danger">
                                                     <span id="productPrice"
                                                         style="color: #CD3301; font-weight: bold; margin-bottom: 0;">{{ $product->discount_price }}</span>
                                                 </h5>
                                             @elseif ($product->price_status == 'price')
-                                                <h5 class="text-danger mb-0">
+                                                <h5 class="mb-0 text-danger">
                                                     <span id="productPrice"
                                                         style="color: #CD3301; font-weight: bold; margin-bottom: 0;">
                                                         {{ $product->price }}</span>
@@ -132,13 +132,13 @@
                                         </div>
 
 
-                                        <div class="field mb-0 w-50 text-end">
+                                        <div class="mb-0 field w-50 text-end">
                                             <label class="mb-0">Quantity:</label>
                                             <div class="number d-flex align-items-center main_qty">
-                                                <p class="minus mb-0 px-2">-</p>
+                                                <p class="px-2 mb-0 minus">-</p>
                                                 <input type="text" class="mb-0 w-50 qty-input-product" name=""
                                                     value="1" min="1" autocomplete="off" id="dqty">
-                                                <p class="plus mb-0 px-2">+</p>
+                                                <p class="px-2 mb-0 plus">+</p>
                                             </div>
                                         </div>
 
@@ -155,9 +155,9 @@
                                         <input type="hidden" name="parent_id" id="oneproduct_id"
                                             value="{{ $product->id }}">
 
-                                        <a onclick="buyToCartOne()" class="cart-button w-100">Add Cart</a>
+                                        <a onclick="buyToCartOne()" class="cart-button w-100 add-to-card-btns">Add Cart</a>
 
-                                        {{-- <a class="cart-button w-100 ml-3 mt-0">Buy</a> --}}
+                                        {{-- <a class="mt-0 ml-3 cart-button w-100">Buy</a> --}}
 
                                     </div>
 
@@ -169,7 +169,7 @@
                                         |
                                         <a style="cursor: pointer;" type="submit"
                                             data-product_id="{{ $product->id }}"
-                                            class="ml-2  f-700 grenadier-color add_to_compare">Compare</a>
+                                            class="ml-2 f-700 grenadier-color add_to_compare">Compare</a>
                                     </div>
 
                                 </div>
@@ -179,10 +179,10 @@
 
                     </div>
 
-                    <div class="row mb-3">
+                    <div class="mb-3 row">
                         <div class="row align-items-center">
                             <div class="col-xl-12 col-sm-12">
-                                <div class="product-section2 mt-40">
+                                <div class="mt-40 product-section2">
                                     <h6 class="product--section__title2 pb-30" id="releted-tab" data-toggle="tab"
                                         href="#releted" role="tab" aria-controls="releted" aria-selected="true">
                                         <span>Releted </span> Accessories Of This Product
@@ -190,45 +190,44 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 px-0">
+                        <div class="px-0 col-lg-12">
                             <div class="releted_accessories">
-
                                 @forelse ($relativeChild as $childproduct)
                                     @if (!empty($childproduct->product_image))
-                                        <div class="card border-0 shadow-sm releted-accessories-items mx-2">
-                                            <div class="card-header p-0 border-0 bg-white">
+                                        <div class="mx-2 border-0 shadow-none card releted-accessories-items">
+                                            <div class="p-0 bg-white border-0 card-header">
                                                 <img src="{{ asset($childproduct->product_image) }}"
                                                     class="img-fluid accesories-img"
                                                     style="width: 100%; height: 140px;" alt="" />
                                             </div>
-                                            <div class="card-body p-0">
+                                            <div class="p-0 card-body">
                                                 <div class="container">
-                                                    <div class="row align-items-center p-1"
+                                                    <div class="p-1 row align-items-center"
                                                         style="background-color: #eee">
-                                                        <div class="col-lg-6 px-2">
+                                                        <div class="p-2 col-lg-6">
                                                             <small id="drpname"
                                                                 class="text-black">{{ substr($childproduct->product_name, 0, 9) }}</small>
                                                         </div>
-                                                        <div class="col-lg-6 px-3">
+                                                        <div class="p-2 col-lg-6">
                                                             <div class="text-right">
                                                                 @if ($childproduct->price_status == 'rfq')
-                                                                    <small class="grenadier-color mb-0 fw-bold">$
+                                                                    <small class="mb-0 grenadier-color fw-bold">$
                                                                         {{ $childproduct->sas_price }}</small>
                                                                 @elseif ($childproduct->price_status == 'offer_price')
                                                                     <del>$ {{ $childproduct->price }}</del>
-                                                                    <small class="grenadier-color mb-0 fw-bold">$
+                                                                    <small class="mb-0 grenadier-color fw-bold">$
                                                                         {{ $childproduct->discount_price }}</small>
                                                                 @elseif ($childproduct->price_status == 'price')
-                                                                    <small class="grenadier-color mb-0 fw-bold">$
+                                                                    <small class="mb-0 grenadier-color fw-bold">$
                                                                         {{ $childproduct->price }}</small>
                                                                 @endif
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-lg-12 px-2"
+                                                        <div class="px-2 col-lg-12"
                                                             style="border-top: 1px solid white;padding-top: 5px;">
                                                             <div
-                                                                class="d-flex justify-content-between align-items-center">
+                                                                class="pt-2 d-flex justify-content-between align-items-center">
                                                                 <div>
                                                                     <small>
                                                                         <a style="cursor: pointer"
@@ -236,9 +235,9 @@
                                                                             data-product_name="{{ $childproduct->product_name }}"
                                                                             data-product_price="{{ $childproduct->price }}"
                                                                             class="add_to_cart_btn_product_single_add rounded-0">
-                                                                            <span class="badge p-2 text-white"
+                                                                            <span class="p-2 text-white badge rounded-0"
                                                                                 style="background-color: #cd3301;">
-                                                                                <i class="fa-solid fa-plus"></i> Add
+                                                                                <i class="fa-solid fa-plus"></i> Add Cart
                                                                             </span>
                                                                         </a>
                                                                     </small>
@@ -247,28 +246,28 @@
                                                                 <!-- Quantity Box -->
                                                                 <div class="number d-flex align-items-center">
                                                                     <button type="button"
-                                                                        style="cursor: pointer;height: 20px;"
-                                                                        class="buttons-countAccesories decrease-btn border-0 bg-white">-</button>
+                                                                        style="cursor: pointer;height: 24px;"
+                                                                        class="bg-white border-0 buttons-countAccesories decrease-btn">-</button>
 
                                                                     <input type="text"
-                                                                        class="mb-0 text-center border-0 bg-white qty-input"
+                                                                        class="mb-0 text-center bg-white border-0 qty-input releted-qty-input"
                                                                         name="qty" value="1" min="1"
                                                                         style="width: 40px" />
 
                                                                     <button type="button"
-                                                                        class="buttons-countAccesories increase-btn border-0 bg-white"
-                                                                        style="cursor: pointer;height: 20px;">+</button>
+                                                                        class="bg-white border-0 buttons-countAccesories increase-btn"
+                                                                        style="cursor: pointer;height: 24px;">+</button>
                                                                 </div>
 
                                                             </div>
-                                                            <div>
+                                                            <div class="py-3 text-center">
                                                                 <a href="">
-                                                                    <small
-                                                                        style="border-bottom: 1px solid #eee;">Compare</small>
+                                                                    <small style="color: #ed2129;">Compare</small>
                                                                 </a>
+                                                                <a href="javascript:void(0)">|</a>
                                                                 <a href="">
                                                                     <small
-                                                                        style="border-bottom: 1px solid #eee;">Wishlist</small>
+                                                                        style="color: #ed2129;">Wishlist</small>
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -317,7 +316,7 @@
                                 <div class="desc-content mt-60">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="single-content mb-40">
+                                            <div class="mb-40 single-content">
                                                 <p>{!! $product->overview !!}</p>
                                             </div>
                                         </div>
@@ -406,18 +405,18 @@
                                                 href="{{ url('product' . '/' . $relative_product->id . '/' . $relative_product->product_slug) }}">{{ substr($relative_product->product_name, 0, 25) }}</a>
                                         </h3>
                                     </div>
-                                    <div class="price font-weight-bold pr-2">
+                                    <div class="pr-2 price font-weight-bold">
                                         @if ($relative_product->price_status == 'rfq')
-                                            <h6 class="grenadier-color mb-0 font-weight-bold">
+                                            <h6 class="mb-0 grenadier-color font-weight-bold">
                                                 $ {{ $relative_product->sas_price }}
                                             </h6>
                                         @elseif ($relative_product->price_status == 'offer_price')
                                             <del>$ {{ $relative_product->price }}</del>
-                                            <h6 class="grenadier-color mb-0 font-weight-bold">$
+                                            <h6 class="mb-0 grenadier-color font-weight-bold">$
                                                 {{ $relative_product->discount_price }}
                                             </h6>
                                         @elseif ($relative_product->price_status == 'price')
-                                            <h6 class="grenadier-color mb-0 font-weight-bold">
+                                            <h6 class="mb-0 grenadier-color font-weight-bold">
                                                 $ {{ $relative_product->price }}
                                             </h6>
                                         @endif

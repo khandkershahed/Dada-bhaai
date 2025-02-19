@@ -67,7 +67,7 @@
                             @foreach ($terms as $key => $term)
                                 <tr>
 
-                                    <td>{{ $key + 1 }}</td>
+                                    <td class="ps-3">{{ $key + 1 }}</td>
 
                                     <td>{{ $term->name }}</td>
                                     <td>{{ $term->version }}</td>
@@ -219,8 +219,8 @@
                 "lengthMenu": "Show _MENU_",
             },
             "dom": "<'row'" +
-                "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
-                "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                "<'col-lg-6 col-12 -'l>" +
+                "<'col-lg-6 col-12'f>" +
                 ">" +
 
                 "<'table-responsive'tr>" +

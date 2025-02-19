@@ -61,7 +61,7 @@
 
                 <thead>
                     <tr>
-                        <th>Sl No</th>
+                        <th class="ps-2">Sl No</th>
                         <th>Image</th>
                         <th>Banner Name</th>
                         <th>Status</th>
@@ -72,7 +72,7 @@
                 <tbody>
                     @foreach ($banners as $key => $banner)
                         <tr>
-                            <td>{{ $key + 1 }}</td>
+                            <td class="ps-3">{{ $key + 1 }}</td>
                             <td>
                                 <img src="{{ asset($banner->banner_image) }}" style="width: 50px;height:30px;"
                                     alt="">
@@ -281,8 +281,8 @@
                 "lengthMenu": "Show _MENU_",
             },
             "dom": "<'row'" +
-                "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
-                "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                "<'col-lg-6 col-12 -'l>" +
+                "<'col-lg-6 col-12'f>" +
                 ">" +
 
                 "<'table-responsive'tr>" +

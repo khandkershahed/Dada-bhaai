@@ -89,7 +89,7 @@
                             @foreach ($roles as $key => $role)
                                 <tr>
 
-                                    <td>{{ $key + 1 }}</td>
+                                    <td class="ps-3">{{ $key + 1 }}</td>
                                     <td>{{ $role->name }}</td>
 
                                     <td>

@@ -10,6 +10,7 @@
     <meta charset="utf-8" />
     <meta name="description" content="{{ optional($site)->site_slogan }} " />
     <meta name="keywords" content="Admin, bootstrap, boo" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="{{ optional($site)->site_name }}" />
@@ -50,7 +51,7 @@
     <div class="d-flex flex-column flex-root">
 
         <!--begin::Page-->
-        <div class="page d-flex flex-row flex-column-fluid">
+        <div class="flex-row page d-flex flex-column-fluid">
 
             <!--begin::Aside-->
             @include('admin.partials.sidebar')

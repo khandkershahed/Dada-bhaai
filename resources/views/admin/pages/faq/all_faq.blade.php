@@ -74,7 +74,7 @@
                                     <td><input type="checkbox" name="ids" class="checkbox_ids" id=""
                                             value="{{ $faq->id }}"></td>
 
-                                    <td>{{ $key + 1 }}</td>
+                                    <td class="ps-3">{{ $key + 1 }}</td>
 
                                     <td>{{ $faq->category }}</td>
                                     <td>{{ $faq->question }}</td>
@@ -355,8 +355,8 @@
                 "lengthMenu": "Show _MENU_",
             },
             "dom": "<'row'" +
-                "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
-                "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                "<'col-lg-6 col-12 -'l>" +
+                "<'col-lg-6 col-12'f>" +
                 ">" +
 
                 "<'table-responsive'tr>" +

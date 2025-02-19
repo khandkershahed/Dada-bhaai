@@ -60,7 +60,7 @@
                     <table id="kt_datatable_example_5" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Sl No</th>
+                                <th class="ps-2">Sl No</th>
                                 <th>Color Name</th>
                                 <th>Color Code</th>
                                 <th>Action</th>
@@ -70,7 +70,7 @@
                             @foreach ($colors as $key => $color)
                                 <tr>
 
-                                    <td>{{ $key + 1 }}</td>
+                                    <td class="ps-3">{{ $key + 1 }}</td>
                                     <td>{{ $color->color_name }}</td>
                                     <td>{{ $color->color_code }}</td>
                                     <td>
@@ -247,8 +247,8 @@
                 "lengthMenu": "Show _MENU_",
             },
             "dom": "<'row'" +
-                "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
-                "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                "<'col-lg-6 col-12 -'l>" +
+                "<'col-lg-6 col-12'f>" +
                 ">" +
 
                 "<'table-responsive'tr>" +

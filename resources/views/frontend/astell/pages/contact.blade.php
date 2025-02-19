@@ -43,7 +43,7 @@
                     </div>
                     <div class="mb-2 col-lg-4">
                         <div class="p-2 bg-white d-flex align-items-center justify-content-center">
-                            <div style="width: 35%">
+                            <div style="width: 35%" class="contact-mobile-icons">
                                 <img style="width: 62px;"
                                     src="{{ asset('img/contact-phone.png') }}"
                                     alt="i_contact3.png">

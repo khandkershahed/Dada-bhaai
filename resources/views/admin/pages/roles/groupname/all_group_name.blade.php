@@ -88,7 +88,7 @@
                             @foreach ($groups as $key => $group)
                                 <tr>
 
-                                    <td>{{ $key + 1 }}</td>
+                                    <td class="ps-3">{{ $key + 1 }}</td>
                                     <td>{{ $group->group_name }}</td>
 
                                     <td>

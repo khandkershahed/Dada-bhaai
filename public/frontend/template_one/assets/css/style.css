@@ -589,7 +589,7 @@ label {
 }
 
 .releted-accessories-items {
-    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1); */
     border: 1px solid #eee !important;
 }
 
@@ -600,12 +600,31 @@ label {
 
 .number input {
     text-align: center;
-    margin: 0 5px;
+    margin: 0;
     font-size: 12px;
-    height: 40px;
+    height: 38px;
     border-radius: 0px;
+    border: 1px solid #eee;
 }
-
+.add-to-card-btns {
+    margin-top: 10px;
+    background-color: transparent !important;
+    border: 1px solid #ed2129 !important;
+    color: #ed2129 !important;
+}
+.releted-qty-input {
+    margin: 0;
+    font-size: 12px;
+    height: 24px !important;
+    border-radius: 0px;
+    border: 1px solid #ed2129 !important;
+    background: #eee !important;
+}
+.add-to-card-btns:hover {
+    background-color: #ed2129 !important;
+    border: 1px solid #ed2129 !important;
+    color: #fff !important;
+}
 .buttons-count {
     width: 25px;
     height: 25px;
@@ -1595,6 +1614,10 @@ ul.sub__menu.sub__dept--menu li:hover ul.sub__menu.level2 {
 }
 
 @media screen and (max-width: 768px) {
+    .wishlist-box {
+        padding-bottom: 40px;
+        padding-top: 40px;
+    }
     .hero__bg {
         background-size: contain !important;
         background-repeat: no-repeat;
@@ -4885,10 +4908,10 @@ html .ui-button.ui-state-disabled:active {
         object-fit: contain;
         width: 100%;
     }
-    .view-cart-page{
+    .view-cart-page {
         padding-bottom: 30px;
     }
-    .product-grid{
+    .product-grid {
         margin-right: 0 !important;
     }
 }
