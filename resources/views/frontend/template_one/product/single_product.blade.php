@@ -96,7 +96,7 @@
 
                         {{-- ================================ --}}
 
-                        @if ($product->price_status == 'price' && $product->price > 0)
+                        @if ($product->price_status == 'price' || $product->price > 0 || $product->sas_price > 0 || $product->discount_price > 0)
                             <div class="col-lg-5 col-md-6 order-2 order-lg-3">
 
                                 <div class="cart-wrapper">
@@ -131,7 +131,6 @@
 
                                         </div>
 
-
                                         <div class="field mb-0 w-50 text-end">
                                             <label class="mb-0">Quantity:</label>
                                             <div class="number d-flex align-items-center main_qty">
@@ -141,7 +140,6 @@
                                                 <p class="plus mb-0 px-2">+</p>
                                             </div>
                                         </div>
-
 
                                     </div>
 
@@ -209,6 +207,7 @@
                                                             <small id="drpname"
                                                                 class="text-black">{{ substr($childproduct->product_name, 0, 9) }}</small>
                                                         </div>
+
                                                         <div class="col-lg-6 px-3">
                                                             <div class="text-right">
                                                                 @if ($childproduct->price_status == 'rfq')
@@ -235,7 +234,8 @@
                                                                             data-product_id="{{ $childproduct->id }}"
                                                                             data-product_name="{{ $childproduct->product_name }}"
                                                                             data-product_price="{{ $childproduct->price }}"
-                                                                            class="add_to_cart_btn_product_single_add rounded-0">
+                                                                            class="add_to_cart_btn_product_single_add add_to_cart_btn_product rounded-0">
+
                                                                             <span class="badge p-2 text-white"
                                                                                 style="background-color: #cd3301;">
                                                                                 <i class="fa-solid fa-plus"></i> Add
@@ -261,16 +261,25 @@
                                                                 </div>
 
                                                             </div>
+
                                                             <div>
-                                                                <a href="">
+
+                                                                <a type="submit" style="cursor:pointer;"
+                                                                    class="add_to_compare text-dark"
+                                                                    data-product_id="{{ $product->id }}">
                                                                     <small
                                                                         style="border-bottom: 1px solid #eee;">Compare</small>
                                                                 </a>
-                                                                <a href="">
+
+                                                                <a class="add_to_wishlist text-dark"
+                                                                    style="cursor: pointer;"
+                                                                    data-product_id="{{ $product->id }}">
                                                                     <small
                                                                         style="border-bottom: 1px solid #eee;">Wishlist</small>
                                                                 </a>
+
                                                             </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
