@@ -555,9 +555,10 @@
         {{-- Row Area End Start  --}}
 
         {{-- Row Area Five Start  --}}
-
-        @if (!empty($sproducts->row_five_image))
-            <section class="detail-group17 scrollAni n19 view">
+        @if (!empty($sproducts->row_five_image && $sproducts->row_five_background_image))
+            <section class="detail-group17 scrollAni n19 view" style="
+            background-image: url('{{ asset('storage/single_product/' . $sproducts->row_five_background_image) }}');
+          ">
                 <div class="bg"
                     style="
                 background-image: url('{{ asset('storage/single_product/' . $sproducts->row_five_image) }}');
