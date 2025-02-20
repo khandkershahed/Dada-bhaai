@@ -36,7 +36,7 @@ class TemplateOneCartController extends Controller
 
         if ($cartItem->isNotEmpty()) {
 
-            return response()->json(['error' => 'This Product Has Already Added']);
+            return response()->json(['warning' => 'This Product Has Already Added']);
         }
 
         Cart::add([
@@ -66,7 +66,7 @@ class TemplateOneCartController extends Controller
 
         if ($cartItem->isNotEmpty()) {
 
-            return response()->json(['error' => 'This Product Has Already Added']);
+            return response()->json(['warning' => 'This Product Has Already Added']);
         }
 
         if ($product->price_status == 'rfq') {
@@ -131,7 +131,7 @@ class TemplateOneCartController extends Controller
 
         if ($cartItem->isNotEmpty()) {
 
-            return response()->json(['error' => 'This Product Has Already Added']);
+            return response()->json(['warning' => 'This Product Has Already Added']);
         }
 
         if ($product->price_status == 'rfq') {
@@ -196,7 +196,7 @@ class TemplateOneCartController extends Controller
 
         if ($cartItem->isNotEmpty()) {
 
-            return response()->json(['error' => 'This Product Has Already Added']);
+            return response()->json(['warning' => 'This Product Has Already Added']);
         }
 
         if ($product->price_status == 'rfq') {
@@ -263,7 +263,7 @@ class TemplateOneCartController extends Controller
 
         if ($cartItem->isNotEmpty()) {
 
-            return response()->json(['error' => 'This Product Has Already Added']);
+            return response()->json(['warning' => 'This Product Has Already Added']);
         }
 
         Cart::add([
@@ -298,7 +298,7 @@ class TemplateOneCartController extends Controller
 
         if ($cartItem->isNotEmpty()) {
 
-            return response()->json(['error' => 'This Product Has Already Added']);
+            return response()->json(['warning' => 'This Product Has Already Added']);
         }
 
         if ($product->price_status == 'rfq') {
@@ -374,7 +374,7 @@ class TemplateOneCartController extends Controller
 
         if ($cartItem->isNotEmpty()) {
 
-            return response()->json(['error' => 'This Product Has Already Added']);
+            return response()->json(['warning' => 'This Product Has Already Added']);
         }
 
         if ($product->price_status == 'rfq') {
@@ -448,7 +448,7 @@ class TemplateOneCartController extends Controller
 
         if ($cartItem->isNotEmpty()) {
 
-            return response()->json(['error' => 'This Product Has Already Added']);
+            return response()->json(['warning' => 'This Product Has Already Added']);
         }
 
         if ($product->price_status == 'rfq') {
@@ -628,13 +628,13 @@ class TemplateOneCartController extends Controller
                 return view('frontend.template_one.cart.checkout', compact('carts', 'cartQty', 'cartTotal'));
             } else {
 
-                toastr()->error('At least add to Cart One Product');
+                toastr()->warning('At least add to Cart One Product');
 
                 return redirect()->to('/');
             }
         } else {
 
-            toastr()->error('You Need to Login First');
+            toastr()->warning('You Need to Login First');
 
             return redirect()->route('template.one.login');
         }
@@ -744,10 +744,10 @@ class TemplateOneCartController extends Controller
                 ]);
                 return response()->json(['success' => 'Successfully Added On Your Wishlist']);
             } else {
-                return response()->json(['error' => 'This Product Has Already on Your Wishlist']);
+                return response()->json(['warning' => 'This Product Has Already on Your Wishlist']);
             }
         } else {
-            return response()->json(['error' => 'At First Login Your Account']);
+            return response()->json(['warning' => 'At First Login Your Account']);
         }
     }
 
@@ -803,7 +803,7 @@ class TemplateOneCartController extends Controller
 
         if ($cartItem->isNotEmpty()) {
 
-            return response()->json(['error' => 'This Product Has Already Added']);
+            return response()->json(['warning' => 'This Product Has Already Added']);
         }
 
         if ($product->price_status == 'rfq') {
