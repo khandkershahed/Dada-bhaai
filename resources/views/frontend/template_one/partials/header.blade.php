@@ -838,7 +838,8 @@
                 </li>
             </ul>
             <div class="d-flex align-items-center justify-content-between mobile-search">
-                <div>
+
+                {{-- <div>
                     <form class="ml-auto mr-3 searchbox" action="{{ route('product.search') }}" method="POST">
                         @csrf
                         <input type="search" placeholder="Search......" name="search" class="searchbox-input"
@@ -846,8 +847,9 @@
                         <button class="searchbox-submit" value="GO"><i class="icofont-search-2"></i></button>
                         <span class="searchbox-icon"><i class="icofont-search-2"></i></span>
                     </form>
-                </div>
-                <ul class="list-inline">
+                </div> --}}
+
+                {{-- <ul class="list-inline">
                     <li>
                         <div class="dropdown">
                             @if (Auth::user())
@@ -945,13 +947,13 @@
                                 <div class="pb-2 row">
                                     <div class="col-lg-12">
 
-                                        {{-- Cart Items --}}
+
 
                                         <div id="miniCart">
 
                                         </div>
 
-                                        {{-- Cart Items --}}
+
 
                                     </div>
                                 </div>
@@ -985,7 +987,8 @@
                         </div>
                     </li>
 
-                </ul>
+                </ul> --}}
+
             </div>
 
         </div>
