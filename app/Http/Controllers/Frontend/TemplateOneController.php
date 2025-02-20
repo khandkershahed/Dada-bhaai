@@ -14,6 +14,7 @@ use App\Models\Admin\Terms;
 use App\Models\Brand;
 use App\Models\Sites;
 use App\Models\Subscribe;
+use App\Models\SubscribeDadabhai;
 use App\Models\User;
 use App\Models\User\Order;
 use App\Models\User\OrderItem;
@@ -936,7 +937,7 @@ class TemplateOneController extends Controller
     public function submit(Request $request)
     {
 
-        Subscribe::create([
+        SubscribeDadabhai::create([
             'email' => $request->email,
         ]);
 
