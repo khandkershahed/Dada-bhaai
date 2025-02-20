@@ -715,6 +715,7 @@
 
                 $('span[id="cartSubTotal"]').text(response.cartTotal);
                 $('#cartQty').text(response.cartQty);
+                $('#cartQtyMobile').text(response.cartQtyMobile);
 
                 var miniCart = "";
 
@@ -1271,6 +1272,7 @@
 
                 $('span[id="cartSubTotal"]').text(response.cartTotal);
                 $('#cartQty').text(response.cartQty);
+                $('#cartQtyMobile').text(response.cartQtyMobile);
 
                 var miniCartRelated = "";
                 var serialNumber = 1;

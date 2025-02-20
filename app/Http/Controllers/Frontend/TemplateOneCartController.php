@@ -508,11 +508,13 @@ class TemplateOneCartController extends Controller
 
         $carts = Cart::content();
         $cartQty = Cart::count();
+        $cartQtyMobile = Cart::count();
         $cartTotal = Cart::total();
 
         return response()->json(array(
             'carts' => $carts,
             'cartQty' => $cartQty,
+            'cartQtyMobile' => $cartQtyMobile,
             'cartTotal' => $cartTotal,
 
         ));
@@ -524,11 +526,13 @@ class TemplateOneCartController extends Controller
 
         $carts = Cart::content();
         $cartQty = Cart::count();
+        $cartQtyMobile = Cart::count();
         $cartTotal = Cart::total();
 
         return response()->json(array(
             'carts' => $carts,
             'cartQty' => $cartQty,
+            'cartQtyMobile' => $cartQtyMobile,
             'cartTotal' => $cartTotal,
 
         ));
@@ -578,11 +582,13 @@ class TemplateOneCartController extends Controller
 
         $carts = Cart::content();
         $cartQty = Cart::count();
+        $cartQtyMobile = Cart::count();
         $cartTotal = Cart::total();
 
         return response()->json(array(
             'carts' => $carts,
             'cartQty' => $cartQty,
+            'cartQtyMobile' => $cartQtyMobile,
             'cartTotal' => $cartTotal,
 
         ));

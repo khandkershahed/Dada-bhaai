@@ -14,12 +14,12 @@
         }
 
         .searchbox-input {
-        top: 5px;
-        right: -24px;
-        border: 0;
-        outline: 0;
-        width: 320px;
-    }
+            top: 5px;
+            right: -24px;
+            border: 0;
+            outline: 0;
+            width: 320px;
+        }
 
         .searchbox-icon,
         .searchbox-submit {
@@ -576,7 +576,7 @@
                             aria-expanded="false" style="font-size: 20px;">
 
                             <i class="fa-solid fa-cart-plus userLogin wishlist">
-                                <span class="cart__count-amount" id="cartQty">0</span>
+                                <span class="cart__count-amount" id="cartQtyMobile">0</span>
                             </i>
 
                         </a>
