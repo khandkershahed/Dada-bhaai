@@ -362,7 +362,7 @@
 
                 {{-- Home Page Section --}}
                 <div data-kt-menu-trigger="click"
-                    class="menu-item menu-accordion {{ Request::routeIs('all.home', 'all.single.page', 'all.contact', 'all.about', 'all.faqs', 'all.term') ? 'here show' : '' }}">
+                    class="menu-item menu-accordion {{ Request::routeIs('all.home', 'all.single.page','all.subscribe', 'all.contact', 'all.about', 'all.faqs', 'all.term') ? 'here show' : '' }}">
 
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -474,6 +474,19 @@
                                 </a>
                             </div>
                         @endif
+
+                        {{-- Subscribe  --}}
+                        {{-- @if (Auth::guard('admin')->user()->can('term.menu')) --}}
+                            <div class="menu-item">
+                                <a class="menu-link {{ Request::routeIs('all.subscribe') ? 'active' : '' }}"
+                                    href="{{ route('all.subscribe') }}">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Subscribe</span>
+                                </a>
+                            </div>
+                        {{-- @endif --}}
 
                     </div>
                 </div>
