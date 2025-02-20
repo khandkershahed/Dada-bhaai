@@ -256,3 +256,7 @@ Route::controller(TemplateTwoController::class)->group(function () {
     // Route for showing search results (GET request)
     Route::post('/product-store-cart-product', 'AddToCartProductHomeAstell');
 });
+
+
+Route::post('/submit-email', [TemplateOneController::class, 'submit'])->name('submit.email');
+

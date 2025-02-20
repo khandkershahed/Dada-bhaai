@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\SinglePageController;
 use App\Http\Controllers\Admin\SiteController;
 use App\Http\Controllers\Admin\SmtpController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Admin\SubscribeController;
 use App\Http\Controllers\Admin\TemplateController;
 use App\Http\Controllers\Admin\TermController;
 use App\Http\Controllers\Backend\BannerController;
@@ -187,6 +188,12 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
         Route::get('/coupon-active/{id}', 'ActiveCoupon')->name('coupon.active');
     });
 
+    //Subscribe
+    Route::controller(SubscribeController::class)->prefix('subscribe')->group(function () {
+        Route::get('/all', 'AllSubscribe')->name('all.subscribe');
+        Route::get('/delete/{id}', 'DeleteSubscribe')->name('delete.subscribe');
+    });
+
     //Employee Dept Section
     Route::controller(EmployeeController::class)->prefix('employee')->group(function () {
 
@@ -230,7 +237,7 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
         // Route::post('/update', 'UpdateContact')->name('update.contact');
         Route::get('/delete/{id}', 'DeleteContact')->name('delete.contact');
     });
-    
+
     //Offer Category Section
     Route::controller(OfferCategoryController::class)->prefix('offer')->group(function () {
 

@@ -13,6 +13,7 @@ use App\Models\Admin\Product;
 use App\Models\Admin\Terms;
 use App\Models\Brand;
 use App\Models\Sites;
+use App\Models\Subscribe;
 use App\Models\User;
 use App\Models\User\Order;
 use App\Models\User\OrderItem;
@@ -930,5 +931,16 @@ class TemplateOneController extends Controller
         return back()->withErrors([
             'email' => 'These credentials do not match our records.',
         ]);
+    }
+
+    public function submit(Request $request)
+    {
+
+        Subscribe::create([
+            'email' => $request->email,
+        ]);
+
+        // You can also return a response or redirect
+        return back()->with('success', 'Email successfully submitted!');
     }
 }
