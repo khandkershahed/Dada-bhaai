@@ -142,6 +142,7 @@
                                         </div>
                                     </div>
 
+
                                 </div>
 
                                 <div class="mb-4">
@@ -161,7 +162,8 @@
 
                                     </div>
                                 @else
-                                    <a href="{{ route('template_one.contact') }}" class="cart-button w-100 add-to-card-btns">Contact Us</a>
+                                    <a href="{{ route('template_one.contact') }}"
+                                        class="cart-button w-100 add-to-card-btns">Contact Us</a>
                                 @endif
 
 
