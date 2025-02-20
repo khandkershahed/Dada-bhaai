@@ -25,7 +25,7 @@
                 <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
 
                     <!--begin::Item-->
-                    <li class="breadcrumb-item text-muted">Pending Order<span
+                    <li class="breadcrumb-item text-muted">All Order<span
                             class="ms-2 badge bg-danger">{{ count($orders) }}</span></li>
                     <!--end::Item-->
 
@@ -37,7 +37,7 @@
             <div class="d-flex align-items-center gap-2 gap-lg-3">
 
                 @if (Auth::guard('admin')->user()->can('all.pending'))
-                    <a href="{{ route('admin.all.order') }}" class="btn btn-light-danger btn-sm">Pending</a>
+                    <a href="{{ route('admin.all.order') }}" class="btn btn-light-danger btn-sm">All Order</a>
                 @endif
 
                 @if (Auth::guard('admin')->user()->can('all.processing'))
@@ -107,7 +107,7 @@
                                     <td scope="row" class="text-center">{{ $key + 1 }}</td>
                                     <td>{{ $order->invoice_number }}</td>
                                     <td>{{ $order->order_number }}</td>
-                                    <td>Tk {{ $order->total_amount }}</td>
+                                    <td>$ {{ $order->total_amount }}</td>
                                     <td>{{ $order->order_date }}</td>
                                     <td>{{ $order->payment_method }}</td>
 

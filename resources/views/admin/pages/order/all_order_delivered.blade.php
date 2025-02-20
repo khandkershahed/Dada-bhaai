@@ -35,7 +35,7 @@
             <div class="d-flex align-items-center gap-2 gap-lg-3">
 
                 @if (Auth::guard('admin')->user()->can('all.pending'))
-                    <a href="{{ route('admin.all.order') }}" class="btn btn-light-danger btn-sm">Pending</a>
+                    <a href="{{ route('admin.all.order') }}" class="btn btn-light-danger btn-sm">All Order</a>
                 @endif
 
                 @if (Auth::guard('admin')->user()->can('all.processing'))
