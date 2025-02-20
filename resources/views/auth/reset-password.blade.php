@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2 col-sm-12">
-                <div class="banner-text text-center pt-90 pb-90">
+                <div class="text-center banner-text pt-90 pb-90">
                     <h2 class="f-800 cod__black-color">Reset Password</h2>
 
                     <nav aria-label="breadcrumb">
@@ -26,17 +26,17 @@
 <!-- page banner area end -->
 
 <!-- reg area start -->
-<section class="reg-area pt-60">
+<section class="reg-area pt-60 pb-60">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 text-center">
+            <div class="text-center col-sm-12">
                 <div class="reg-wrapper">
                     <ul class="nav" id="myTab" role="tablist">
-                        {{-- <li class="nav-item mr-40">
+                        {{-- <li class="mr-40 nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
                                     aria-controls="home" aria-selected="true">Sign In</a>
                             </li> --}}
-                        <li class="nav-item ml-40">
+                        <li class="ml-40 nav-item">
                             <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
                                 aria-controls="profile" aria-selected="false">Reset Password</a>
                         </li>
@@ -118,14 +118,14 @@
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
+            <x-text-input id="email" class="block w-full mt-1" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+            <x-text-input id="password" class="block w-full mt-1" type="password" name="password" required autocomplete="new-password" />
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
@@ -133,7 +133,7 @@
         <div class="mt-4">
             <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
+            <x-text-input id="password_confirmation" class="block w-full mt-1"
                                 type="password"
                                 name="password_confirmation" required autocomplete="new-password" />
 

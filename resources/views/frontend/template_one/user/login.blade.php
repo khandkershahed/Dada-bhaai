@@ -70,7 +70,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2 col-sm-12">
-                <div class="banner-text text-center pt-90 pb-90">
+                <div class="text-center banner-text pt-90 pb-90">
                     <h2 class="f-800 cod__black-color">Sign Up</h2>
 
                     <nav aria-label="breadcrumb">
@@ -87,18 +87,18 @@
 <!-- page banner area end -->
 
 <!-- reg area start -->
-<section class="reg-area pt-60">
+<section class="reg-area pt-60 pb-60">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 text-center">
+            <div class="text-center col-sm-12">
                 <div class="reg-wrapper">
                     <ul class="nav" id="myTab" role="tablist">
 
-                        <li class="nav-item mr-40">
+                        <li class="mr-40 nav-item">
                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
                                 aria-controls="home" aria-selected="true">Sign In</a>
                         </li>
-                        <li class="nav-item ml-40">
+                        <li class="ml-40 nav-item">
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
                                 aria-controls="profile" aria-selected="false">Registration</a>
                         </li>
@@ -144,7 +144,7 @@
                                     </div>
                                     <a href="{{ route('password.request') }}" class="lost-pass">Forgot Password?</a>
                                 </div>
-                                <button type="submit" class="w-100 mt-4">Sign In</button>
+                                <button type="submit" class="mt-4 w-100">Sign In</button>
                             </form>
 
                         </div>
@@ -218,7 +218,7 @@
                                 <div class="col-lg-12">
                                     <div class="form-group form-check">
                                         <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-                                        <label class="form-check-label pt-0" for="exampleCheck1">I agree on DadaBhaai
+                                        <label class="pt-0 form-check-label" for="exampleCheck1">I agree on DadaBhaai
                                             Term & Condition.</label>
                                     </div>
                                 </div>

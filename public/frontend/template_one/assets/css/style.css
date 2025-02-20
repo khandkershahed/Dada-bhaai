@@ -4915,3 +4915,34 @@ html .ui-button.ui-state-disabled:active {
         margin-right: 0 !important;
     }
 }
+
+/* Large screens (desktops and beyond) */
+@media only screen and (min-width: 1600px) {
+    .single__hero {
+        height: 720px;
+    }
+}
+
+/* Laptops & smaller desktops (1024px to 1599px) */
+@media only screen and (min-width: 1024px) and (max-width: 1599px) {
+    .single__hero {
+        height: 490px;
+    }
+}
+
+/* Tablets (600px to 1023px) */
+@media only screen and (min-width: 600px) and (max-width: 1023px) {
+    .single__hero {
+        height: 400px;
+    }
+}
+
+/* Mobile devices (below 600px) */
+@media only screen and (max-width: 600px) {
+    .single__hero {
+        height: 160px;
+        width: 100%;
+    }
+}
+
+
