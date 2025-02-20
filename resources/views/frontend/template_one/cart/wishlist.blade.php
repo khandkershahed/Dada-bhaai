@@ -84,7 +84,7 @@
                                                 <th>Image</th>
                                                 <th>Product Name</th>
                                                 <th>Price</th>
-                                                <th>Cart</th>
+                                                <th class="text-center">Cart</th>
                                                 <th class="text-right">Remove</th>
                                             </tr>
 
@@ -109,11 +109,11 @@
                                                         {{-- Tk ${value.price} --}} <p>$ {{ $cartWishlist->price }}</p>
                                                     </td>
 
-                                                    <td class="">
+                                                    <td class="border-0 d-flex justify-content-center">
                                                         @if ($cartWishlist->price > 0)
                                                             <a type="submit" style="cursor:pointer"
                                                                 id="{{ $cartWishlist->id }}"
-                                                                class="text-white cart-button"
+                                                                class="text-white cart-button w-50 "
                                                                 onclick="addToCartCompare(this.id)" class=""> Add
                                                                 To Cart</a>
                                                         @endif

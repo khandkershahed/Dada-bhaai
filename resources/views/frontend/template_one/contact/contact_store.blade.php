@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2 col-sm-12">
-                <div class="banner-text text-center mt-5 pb-90">
+                <div class="mt-5 text-center banner-text pb-90">
                     <h2 class="f-800 cod__black-color">Contact Us</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
@@ -25,12 +25,12 @@
 </section>
 <!-- page banner area end -->
 <!-- contact area start -->
-<section class="contact-area">
+<section class="contact-area pb-60">
     <div class="container">
         <div class="row">
             <div class="col-xl-7 col-lg-7">
                 <div class="">
-                    <h4 class="title mb-3">Send A Message</h4>
+                    <h4 class="mb-3 title">Get In Touch!</h4>
                     <form action="{{ route('template_one.contact.store') }}" method="POST">
                         @csrf
                         @if (session('status'))
@@ -44,7 +44,7 @@
                             </div>
                         @endif
                         <div class="row">
-                            <div class="col-6 mb-4">
+                            <div class="mb-4 col-6">
                                 <input type="text" name="name"
                                     class="form-control form-control-sm contact-form @error('name') is-invalid @enderror"
                                     placeholder="Enter Name">
@@ -52,7 +52,7 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="col-6 mb-4">
+                            <div class="mb-4 col-6">
                                 <input type="email" name="email"
                                     class="form-control form-control-sm contact-form @error('email') is-invalid @enderror"
                                     placeholder="Email Address">
@@ -60,7 +60,7 @@
                                     <div class="text-danger" style="padding-top: -10px;">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="col-12 mb-4">
+                            <div class="mb-4 col-12">
                                 <input type="text" name="subject"
                                     class="form-control form-control-sm contact-form @error('subject') is-invalid @enderror"
                                     placeholder="Name Of Subject">
@@ -69,7 +69,7 @@
                                     <div class="text-danger" style="padding-top: -10px;">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="col-12 mb-4">
+                            <div class="mb-4 col-12">
                                 <textarea name="message" class="form-control form-control-sm contact-form @error('message') is-invalid @enderror"
                                     placeholder="Desciption" cols="3" rows="3"></textarea>
                                 @error('message')
@@ -77,7 +77,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <button type="submit" class="cart-button px-3">Submit</button>
+                        <button type="submit" class="px-3 cart-button">Submit</button>
                     </form>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                 <div class="contact-text">
                     <div class="single-text mb-30">
                         <i class="icofont-telephone"></i>
-                        
+
                         <h5>Contact customer service</h5>
 
                         <p>Need assistance? Our customer service team is here to help you. For any support, you can contact us at for prompt assistance.</p>

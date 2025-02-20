@@ -1,15 +1,4 @@
-<style>
-    .single__hero {
-        height: 720px;
-    }
 
-    @media only screen and (max-width: 600px) {
-        .single__hero {
-            height: 160px;
-            width: 100%;
-        }
-    }
-</style>
 @php
     $heros = App\Models\Banner::where('status', '1')->orderBy('id', 'ASC')->get();
 @endphp

@@ -5859,7 +5859,7 @@ main .video-js {
         height: 40px;
         padding: 0;
         overflow: auto;
-        z-index: 9999;
+        z-index: 99;
     }
 
     .sub .lnb .swiper-slide {
@@ -11610,7 +11610,7 @@ main .video-js {
 }
 
 .detail-group1 {
-    padding: 140px 0 10px;
+    padding: 140px 0 140px;
 }
 
 .detail-group1 h3 {
@@ -11633,6 +11633,7 @@ main .video-js {
 .detail-group1 .gallery {
     position: relative;
     margin-top: 50px;
+    display: none;
 }
 
 .detail-group1 .gallery .img {
