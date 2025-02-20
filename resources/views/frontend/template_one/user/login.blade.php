@@ -66,7 +66,7 @@
     }
 </style>
 <!-- page banner area start -->
-<section class="page-banner-area" data-background="{{ asset('frontend/template_one/assets/img/bg/banner.jpg') }}">
+{{-- <section class="page-banner-area" data-background="{{ asset('frontend/template_one/assets/img/bg/banner.jpg') }}">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2 col-sm-12">
@@ -83,7 +83,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 <!-- page banner area end -->
 
 <!-- reg area start -->

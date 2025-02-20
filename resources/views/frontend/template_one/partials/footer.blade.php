@@ -33,8 +33,9 @@
         </div>
         <div class="contaner-fluid footer-bg">
             <div class="container">
-                <div class="pt-5 row gx-0">
-                    <div class="col-xl-4 col-lg-6 col-md-8 mb-30 order-md-3 order-lg-2">
+                <div class="pt-lg-5 pt-2 row gx-0">
+
+                    <div class="col-12 col-xl-4 col-lg-6 col-md-8 mb-30 order-md-3 order-lg-2">
                         <div>
                             <a class="logo__link" href="{{ route('index') }}"><img class="" width="250px"
                                     src="{{ asset('upload/logo_black/' . optional($site)->logo_black) }}" alt=""></a>
@@ -63,7 +64,8 @@
 
                         </div>
                     </div>
-                    <div class="col-xl-2 col-lg-6 col-md-8 mb-30 order-md-3 order-lg-2">
+
+                    <div class="col-12 col-xl-2 col-lg-6 col-md-8 mb-30 order-md-3 order-lg-2">
                         <div class="footer-widget">
                             <div class="footer-title">
                                 <h6 class="f-800">Inquery</h6>
@@ -72,7 +74,7 @@
                                 <ul>
                                     <li><a href="{{ route('template.one.about') }}">About Us</a></li>
                                     <li><a href="{{ route('template_one.contact') }}">Contact Us</a></li>
-                                    <li><a href="{{ route('template.one.term') }}">Terms</a></li>
+                                    <li><a href="{{ route('template.one.term') }}">Terms & Condition</a></li>
 
                                     @if (Auth::user())
                                         <li><a href="{{ route('template.one.dashboard') }}">DashBoard</a></li>
@@ -80,13 +82,12 @@
                                         <li><a href="{{ route('template.one.login') }}">Login</a></li>
                                     @endif
 
-
-
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-2 col-lg-6 col-md-8 mb-30 order-md-3 order-lg-2">
+
+                    <div class="col-12 col-xl-2 col-lg-6 col-md-8 mb-30 order-md-3 order-lg-2">
                         <div class="footer-widget">
                             <div class="footer-title">
                                 <h6 class="f-800">Social Platform</h6>
@@ -101,7 +102,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-6 col-md-8 mb-30 order-md-3 order-lg-2">
+
+                    <div class="col-12 col-xl-4 col-lg-6 col-md-8 mb-30 order-md-3 order-lg-2">
                         <div class="footer-widget">
                             <div class="footer-title">
                                 <h6 class="f-800">Join Us</h6>
@@ -120,10 +122,12 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
+
     <div class="pt-20 pb-20 footer-bottom gray-bg">
         <div class="container">
             <div class="row">
@@ -139,4 +143,5 @@
             </div>
         </div>
     </div>
+
 </footer>
