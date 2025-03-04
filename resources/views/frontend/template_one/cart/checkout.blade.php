@@ -58,7 +58,7 @@
                                 <div class="row">
                                     <div class="col-lg-8">
                                         {{-- Billing Info --}}
-                                        <div class="card border-0 shadow-none mb-5">
+                                        <div class="card border-0 shadow-none mb-3">
                                             <div class="card-header checkout-page-form" style="background: #dfdddd;">
                                                 <a class="card-title">Billing Info</a>
                                             </div>
@@ -68,20 +68,48 @@
                                                     <div class="bg-light p-3">
                                                         <div class="row">
                                                             <div class="form-group col-sm-4">
-                                                                <label for="user_id">User Name
+                                                                <label for="user_id">Billing Name
                                                                 </label>
                                                                 <input type="text" class="form-control"
                                                                     placeholder="Billing Name"
                                                                     value="{{ Auth::user()->name }}" name="billing_name" />
                                                             </div>
+
                                                             <div class="form-group col-sm-4">
-                                                                <label for="phone">Phone
-                                                                </label>
+                                                                <label for="phone">Phone <span
+                                                                        class="text-danger">*</span></label>
                                                                 <input type="text" class="form-control"
-                                                                    placeholder="Billing Phone"
-                                                                    value="{{ Auth::user()->phone }}"
-                                                                    name="billing_phone" />
+                                                                    placeholder="eg: 01728459652"
+                                                                    value="{{ Auth::user()->phone }}" name="billing_phone"
+                                                                    id="billing_phone" />
+                                                                <small id="phoneError" class="text-danger"
+                                                                    style="display:none;">Please enter a valid phone
+                                                                    number.</small>
                                                             </div>
+
+                                                            <script>
+                                                                // Get the phone input field and the error message element
+                                                                const phoneInput = document.getElementById('billing_phone');
+                                                                const phoneError = document.getElementById('phoneError');
+
+                                                                // Bangladesh phone number regex pattern (starts with 01 and followed by 9 digits)
+                                                                const phonePattern = /^01\d{9}$/;
+
+                                                                // Add event listener for input events
+                                                                phoneInput.addEventListener('input', function() {
+                                                                    const phoneValue = phoneInput.value;
+
+                                                                    // Test if the phone number matches the pattern
+                                                                    if (phonePattern.test(phoneValue)) {
+                                                                        phoneError.style.display = 'none'; // Hide error message
+                                                                        phoneInput.classList.remove('is-invalid'); // Optional: remove invalid class
+                                                                    } else {
+                                                                        phoneError.style.display = 'block'; // Show error message
+                                                                        phoneInput.classList.add('is-invalid'); // Optional: add invalid class
+                                                                    }
+                                                                });
+                                                            </script>
+
                                                             <div class="form-group col-sm-4">
                                                                 <label for="email">Email
                                                                 </label>
@@ -154,8 +182,10 @@
                                         </div>
                                         {{-- Billing Info --}}
 
+                                        <input type="checkbox" id="myCheckbox" name="terms"> Same As billing Address
+
                                         {{-- Shipping Info --}}
-                                        <div class="card border-0 shadow-none mb-0">
+                                        <div class="card border-0 shadow-none mb-0 mt-3">
                                             <div class="card-header checkout-page-form" style="background: #dfdddd;">
                                                 <a class="card-title">Shipping Info</a>
                                             </div>
@@ -239,10 +269,14 @@
                                                             <div class="col-12">
                                                                 <table>
                                                                     <tr style="background: #dfdddd; padding: 10px;">
-                                                                        <th class="py-3 pl-2 text-start" width="30%">Image</th>
-                                                                        <th class="py-3 text-start" width="45%">Name</th>
-                                                                        <th class="py-3 text-start" width="15$">Qty</th>
-                                                                        <th class="py-3 pr-2 text-start" width="10%">Price</th>
+                                                                        <th class="py-3 pl-2 text-start" width="30%">
+                                                                            Image</th>
+                                                                        <th class="py-3 text-start" width="45%">Name
+                                                                        </th>
+                                                                        <th class="py-3 text-start" width="15$">Qty
+                                                                        </th>
+                                                                        <th class="py-3 pr-2 text-start" width="10%">
+                                                                            Price</th>
                                                                     </tr>
                                                                     <tr style="border-bottom: 1px solid #dfdddd;">
                                                                         <td>
@@ -303,7 +337,7 @@
                                                                 <li class="payment_method_bacs">
                                                                     <div class="">
                                                                         <label class="radio-inline">
-                                                                            <input type="radio" value="cod"
+                                                                            <input type="radio" checked value="cod"
                                                                                 name="payment_method" />
                                                                             <span>Cash On Delivery</span>
                                                                         </label>
@@ -510,6 +544,41 @@
         });
     </script>
 
+<script>
+    document.getElementById('myCheckbox').addEventListener('change', function() {
+        const isChecked = this.checked;
+
+        if (isChecked) {
+            // Copy billing address to shipping address
+            document.querySelector('[name="shipping_name"]').value = document.querySelector(
+                '[name="billing_name"]').value;
+            document.querySelector('[name="shipping_phone"]').value = document.querySelector(
+                '[name="billing_phone"]').value;
+            document.querySelector('[name="shipping_city"]').value = document.querySelector(
+                '[name="billing_city"]').value;
+            document.querySelector('[name="shipping_state"]').value = document.querySelector(
+                '[name="billing_state"]').value;
+            document.querySelector('[name="shipping_postal_code"]').value = document.querySelector(
+                '[name="billing_postal_code"]').value;
+            document.querySelector('[name="shipping_country"]').value = document.querySelector(
+                '[name="billing_country"]').value;
+            document.querySelector('[name="shipping_address_line1"]').value = document.querySelector(
+                '[name="billing_address_line1"]').value;
+            document.querySelector('[name="shipping_address_line2"]').value = document.querySelector(
+                '[name="billing_address_line2"]').value;
+        } else {
+            // Clear shipping address fields if unchecked
+            document.querySelector('[name="shipping_name"]').value = '';
+            document.querySelector('[name="shipping_phone"]').value = '';
+            document.querySelector('[name="shipping_city"]').value = '';
+            document.querySelector('[name="shipping_state"]').value = '';
+            document.querySelector('[name="shipping_postal_code"]').value = '';
+            document.querySelector('[name="shipping_country"]').value = '';
+            document.querySelector('[name="shipping_address_line1"]').value = '';
+            document.querySelector('[name="shipping_address_line2"]').value = '';
+        }
+    });
+</script>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">

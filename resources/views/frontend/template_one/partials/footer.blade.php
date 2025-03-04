@@ -15,11 +15,13 @@
         .footer--area {
             text-align: center;
         }
-        .footer-newsletter{
+
+        .footer-newsletter {
             display: flex;
             justify-content: center;
         }
-        .footer-newsletter .input-group{
+
+        .footer-newsletter .input-group {
             width: 100% !important;
         }
     }
@@ -27,7 +29,8 @@
 <footer class="footer--area">
     <div class="footer--top pb-25">
         <div class="footer-topbar">
-            <p class="p-3 mb-0 text-center text-white">Discover a wide range of products at {{ optional($site)->site_name }}, your
+            <p class="p-3 mb-0 text-center text-white">Discover a wide range of products at
+                {{ optional($site)->site_name }}, your
                 one-stop
                 e-commerce destination. Enjoy seamless shopping, great deals, and excellent customer service.</p>
         </div>
@@ -38,21 +41,40 @@
                     <div class="col-12 col-xl-4 col-lg-6 col-md-8 mb-30 order-md-3 order-lg-2">
                         <div>
                             <a class="logo__link" href="{{ route('index') }}"><img class="" width="250px"
-                                    src="{{ asset('upload/logo_black/' . optional($site)->logo_black) }}" alt=""></a>
+                                    src="{{ asset('upload/logo_black/' . optional($site)->logo_black) }}"
+                                    alt=""></a>
                             <p class="pt-3">{{ optional($site)->site_slogan }}</p>
                             <p class="mb-0">Subscribe to get
                                 updates!
                             </p>
+
+                            @if (session('success'))
+                                <div class="text-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+
+                            @if ($errors->any())
+                                <div class="text-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
 
                             <div class="footer-newsletter">
 
                                 <form action="{{ route('submit.email') }}" method="POST">
                                     @csrf
                                     <div class="mb-3 input-group w-75">
-                                        <input type="text" class="form-control" name="email" placeholder="Enter Email Address" required>
+                                        <input type="text" class="form-control" name="email"
+                                            placeholder="Enter Email Address" required>
 
                                         <div class="input-group-append">
-                                            <button class="px-3 btn btn-outline-secondary" style="background: #ed2129;" type="submit" id="button-addon2">
+                                            <button class="px-3 btn btn-outline-secondary" style="background: #ed2129;"
+                                                type="submit" id="button-addon2">
                                                 <i class="fa-regular fa-paper-plane"></i>
                                             </button>
                                         </div>

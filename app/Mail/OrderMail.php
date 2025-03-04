@@ -32,8 +32,9 @@ class OrderMail extends Mailable
     public function build()
     {
         $order = $this->data;
+        $orderItems = $order['order_items'];
 
-        return $this->subject('DadaBhai Ecommerce')->view('mail.order_mail',compact('order'));
+        return $this->subject('DadaBhai Ecommerce')->view('mail.order_mail',compact('order','orderItems'));
 
     }
 }

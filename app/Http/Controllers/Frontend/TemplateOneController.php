@@ -13,7 +13,6 @@ use App\Models\Admin\Product;
 use App\Models\Admin\Terms;
 use App\Models\Brand;
 use App\Models\Sites;
-use App\Models\Subscribe;
 use App\Models\SubscribeDadabhai;
 use App\Models\User;
 use App\Models\User\Order;
@@ -934,14 +933,31 @@ class TemplateOneController extends Controller
         ]);
     }
 
+    // public function submit(Request $request)
+    // {
+
+    //     SubscribeDadabhai::create([
+    //         'email' => $request->email,
+    //     ]);
+
+    //     // You can also return a response or redirect
+    //     return back()->with('success', 'Email successfully submitted!');
+    // }
+
     public function submit(Request $request)
     {
+        // Validate the email to ensure it's unique
+        $validatedData = $request->validate([
+            'email' => 'required|email|unique:subscribe_dadabhais,email', // Adjust 'subscribe_dadabhai' to your table name
+        ]);
 
+        // Create a new record in the database
         SubscribeDadabhai::create([
             'email' => $request->email,
         ]);
 
-        // You can also return a response or redirect
+        // Return a response
         return back()->with('success', 'Email successfully submitted!');
     }
+
 }

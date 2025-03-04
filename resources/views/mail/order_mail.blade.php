@@ -167,7 +167,7 @@ Codepen: https://codepen.io/supah/
                                                             <tr>
                                                                 <td
                                                                     style="font-size: 12px; color: #5b5b5b; font-family: 'Open Sans', sans-serif; line-height: 18px; vertical-align: top; text-align: left;">
-                                                                    Hello, Philip Brooks.
+                                                                    Hello, {{ $order['billing_name'] }}
                                                                     <br> Thank you for shopping from our store and for
                                                                     your
                                                                     order.
@@ -202,7 +202,7 @@ Codepen: https://codepen.io/supah/
                                                                     style="font-size: 12px; color: #5b5b5b; font-family: 'Open Sans', sans-serif; line-height: 18px; vertical-align: top; text-align: right;">
                                                                     <small>ORDER</small>
                                                                     {{ $order['invoice_number'] }}<br />
-                                                                    <small>MARCH 4TH 2016</small>
+                                                                    <small>{{ $order['order_date'] }}</small>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -243,10 +243,7 @@ Codepen: https://codepen.io/supah/
                                                             width="52%" align="left">
                                                             Item
                                                         </th>
-                                                        <th style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 0 7px;"
-                                                            align="left">
-                                                            <small>SKU</small>
-                                                        </th>
+
                                                         <th style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 0 7px;"
                                                             align="center">
                                                             Quantity
@@ -263,40 +260,50 @@ Codepen: https://codepen.io/supah/
                                                     <tr>
                                                         <td height="10" colspan="4"></td>
                                                     </tr>
-                                                    <tr>
+
+                                                    {{-- ========================== --}}
+                                                    {{-- <tr>
+
                                                         <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #ff0000;  line-height: 18px;  vertical-align: top; padding:10px 0;"
                                                             class="article">
                                                             Beats Studio Over-Ear Headphones
                                                         </td>
-                                                        <td
-                                                            style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e;  line-height: 18px;  vertical-align: top; padding:10px 0;">
-                                                            <small>MH792AM/A</small>
-                                                        </td>
+
                                                         <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e;  line-height: 18px;  vertical-align: top; padding:10px 0;"
                                                             align="center">1</td>
+
                                                         <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33;  line-height: 18px;  vertical-align: top; padding:10px 0;"
                                                             align="right">$299.95</td>
                                                     </tr>
                                                     <tr>
                                                         <td height="1" colspan="4"
                                                             style="border-bottom:1px solid #e4e4e4"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #ff0000;  line-height: 18px;  vertical-align: top; padding:10px 0;"
-                                                            class="article">Beats RemoteTalk Cable</td>
-                                                        <td
-                                                            style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e;  line-height: 18px;  vertical-align: top; padding:10px 0;">
-                                                            <small>MHDV2G/A</small>
-                                                        </td>
-                                                        <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e;  line-height: 18px;  vertical-align: top; padding:10px 0;"
-                                                            align="center">1</td>
-                                                        <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33;  line-height: 18px;  vertical-align: top; padding:10px 0;"
-                                                            align="right">$29.95</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td height="1" colspan="4"
-                                                            style="border-bottom:1px solid #e4e4e4"></td>
-                                                    </tr>
+                                                    </tr> --}}
+
+                                                    @foreach ($orderItems as $item)
+                                                        <tr>
+                                                            <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #ff0000; line-height: 18px; vertical-align: top; padding:10px 0;"
+                                                                class="article">
+                                                                {{ $item->product->product_name }}
+                                                                <!-- Assuming product has a 'name' field -->
+                                                            </td>
+                                                            <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 18px; vertical-align: top; padding:10px 0;"
+                                                                align="center">
+                                                                {{ $item->qty }}
+                                                            </td>
+                                                            <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33; line-height: 18px; vertical-align: top; padding:10px 0;"
+                                                                align="right">
+                                                                ${{ $item->price }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td height="1" colspan="4"
+                                                                style="border-bottom:1px solid #e4e4e4"></td>
+                                                        </tr>
+                                                    @endforeach
+
+                                                    {{-- ========================== --}}
+
                                                 </tbody>
                                             </table>
                                         </td>
@@ -329,11 +336,11 @@ Codepen: https://codepen.io/supah/
                                                     <tr>
                                                         <td
                                                             style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; ">
-                                                            Subtotal
+                                                            Subtotal :
                                                         </td>
                                                         <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; white-space:nowrap;"
                                                             width="80">
-                                                            $329.90
+                                                            ${{ $order['total_amount'] }}
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -343,29 +350,20 @@ Codepen: https://codepen.io/supah/
                                                         </td>
                                                         <td
                                                             style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; ">
-                                                            $15.00
+                                                            0
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td
                                                             style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #000; line-height: 22px; vertical-align: top; text-align:right; ">
-                                                            <strong>Grand Total (Incl.Tax)</strong>
+                                                            <strong>Grand Total : </strong>
                                                         </td>
                                                         <td
                                                             style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #000; line-height: 22px; vertical-align: top; text-align:right; ">
-                                                            <strong>{{ $order['total_amount'] }}</strong>
+                                                            <strong>${{ $order['total_amount'] }}</strong>
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td
-                                                            style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #b0b0b0; line-height: 22px; vertical-align: top; text-align:right; ">
-                                                            <small>TAX</small>
-                                                        </td>
-                                                        <td
-                                                            style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #b0b0b0; line-height: 22px; vertical-align: top; text-align:right; ">
-                                                            <small>$72.40</small>
-                                                        </td>
-                                                    </tr>
+
                                                 </tbody>
                                             </table>
                                             <!-- /Table Total -->
@@ -444,13 +442,10 @@ Codepen: https://codepen.io/supah/
                                                                     <tr>
                                                                         <td
                                                                             style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top; ">
-                                                                            Credit Card<br> Credit Card Type: Visa<br>
-                                                                            Worldpay Transaction ID:
+                                                                            Transaction ID:
                                                                             <a href="#"
-                                                                                style="color: #ff0000; text-decoration:underline;">4185939336</a><br>
-                                                                            <a href="#" style="color:#b0b0b0;">
-                                                                                Right of Withdrawal
-                                                                            </a>
+                                                                                style="color: #ff0000; text-decoration:underline;">{{ $order['transaction_number'] }}</a><br>
+
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
