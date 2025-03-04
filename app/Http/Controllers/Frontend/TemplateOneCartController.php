@@ -693,24 +693,24 @@ class TemplateOneCartController extends Controller
         ]);
 
         //Send Mail
-        $invoice = Order::findOrFail($order_id);
-        $orderItems = OrderItem::where('order_id', $order_id)->get();  // Fetch order items for the specific order
+        // $invoice = Order::findOrFail($order_id);
+        // $orderItems = OrderItem::where('order_id', $order_id)->get();  // Fetch order items for the specific order
 
-        $data = [
+        // $data = [
 
-            'invoice_number' => $invoice->invoice_number,
-            'total_amount' => $invoice->total_amount,
-            'billing_name' => $invoice->billing_name,
+        //     'invoice_number' => $invoice->invoice_number,
+        //     'total_amount' => $invoice->total_amount,
+        //     'billing_name' => $invoice->billing_name,
 
-            'order_date' => $invoice->order_date,
-            'transaction_number' => $invoice->transaction_number,
+        //     'order_date' => $invoice->order_date,
+        //     'transaction_number' => $invoice->transaction_number,
 
-            'billing_email' => $invoice->billing_email,
-            'billing_phone' => $invoice->billing_phone,
-            'billing_address_line1' => $invoice->billing_address_line1,
-            'order_items' => $orderItems,  // Pass order items to the email
+        //     'billing_email' => $invoice->billing_email,
+        //     'billing_phone' => $invoice->billing_phone,
+        //     'billing_address_line1' => $invoice->billing_address_line1,
+        //     'order_items' => $orderItems,  // Pass order items to the email
 
-        ];
+        // ];
 
         // Mail::to($request->billing_email)->send(new OrderMail($data));
         //End Send Mail
