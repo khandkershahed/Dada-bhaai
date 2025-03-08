@@ -26,7 +26,10 @@ class AppServiceProvider extends ServiceProvider
         if (Schema::hasTable('sites')) {
             View::share('site', Sites::first());
         }
-        // Paginator::useBootstrap();
+
+        Paginator::useBootstrap();
+
+        Schema::defaultStringLength(191);
 
     }
 }

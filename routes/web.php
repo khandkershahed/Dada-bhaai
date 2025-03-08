@@ -22,16 +22,6 @@ Route::get('/', [IndexController::class, 'Index'])->name('index');
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    // //User Dashboard
-    // Route::get('/dashboard', [UserController::class, 'UserDashboard'])->name('dashboard');
-    // Route::post('/user/profile/update', [UserController::class, 'UserProfileUpdate'])->name('user.profile.update');
-
-    // //User Password
-    // Route::get('/user/password', [UserController::class, 'UserPassword'])->name('user.password');
-    // Route::post('/user/password/update', [UserController::class, 'UserPasswordPassword'])->name('user.password.update');
-
-    // //User Logout
-    // Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');
 
 });
 
@@ -84,6 +74,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::post('/add-to-wishlist/{product_id}', [TemplateOneCartController::class, 'AddToWishList']);
 
 Route::get('brand/related-product-search', [TemplateOneController::class, 'BrandRelatedProductSearch'])->name('brand.related.product.search');
+
 // Template One Controller
 Route::controller(TemplateOneController::class)->group(function () {
 
@@ -154,28 +145,7 @@ Route::controller(TemplateOneController::class)->group(function () {
 //Cart Controller
 Route::controller(CartController::class)->group(function () {
 
-    //Add To Cart
-    // Route::post('/dcart/data/store/{id}', 'AddToCartDetails');
-    // Route::get('/product/mini/cart', 'AddMiniCart');
-    // Route::get('/minicart/product/remove/{rowId}', 'RemoveMiniCart');
     Route::get('/product-cart', 'TotalCart')->name('product.cart');
-
-    // // My Cart
-    // Route::get('/get-cart-product', 'GetCartProduct');
-    // // Route::get('/get-cart-product1', 'GetCartProduct1');
-    // Route::get('/cart-remove/{rowId}', 'CartRemove');
-    // Route::get('/cart-decrement/{rowId}', 'CartDecrement');
-    // Route::get('/cart-increment/{rowId}', 'CartIncrement');
-    // //checkout
-    // Route::get('/checkout', 'CheckoutCreate')->name('checkout');
-    // Route::post('/checkout/store', 'CheckoutStore')->name('checkout.store');
-
-    // /////////////////////////////////////// Template One ////////////////////////
-
-    // //Add To Cart
-    // Route::post('/product/store/{id}', 'AddToCartOne');
-    // Route::get('/product/mini-cart', 'AddMiniCartTemplateOne');
-    // Route::get('/minicart/product/remove/{rowId}', 'RemoveMiniCartTemplateOne');
 
 });
 
