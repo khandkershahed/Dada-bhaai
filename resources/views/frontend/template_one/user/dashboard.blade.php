@@ -59,7 +59,7 @@
                                             </div>
                                         </div>
 
-                                        {{-- @php
+                                        @php
                                             $wishlists = App\Models\Admin\Wishlist::where(
                                                 'user_id',
                                                 Auth::user()->id,
@@ -72,11 +72,11 @@
                                                     <div class="text-center">
                                                         <h5 class="font-weight-bold">({{ count($wishlists) }})</h5>
                                                         <p class="grenadier-color"><a
-                                                                href="{{ route('wishlist') }}">Wishlist</a></p>
+                                                                href="{{ route('wishlist.product') }}">Wishlist</a></p>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div> --}}
+                                        </div>
 
                                         @php
                                             $orderss = App\Models\User\Order::where('user_id', Auth::user()->id)
