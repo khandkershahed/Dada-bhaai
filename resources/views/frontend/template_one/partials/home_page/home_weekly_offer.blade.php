@@ -9,7 +9,7 @@
         ->latest()
         ->get();
 
-    $noOfferImage = asset('upload/no-img.jpg'); // fallback image
+    $noOfferImage = asset('img/no-img.jpg'); // fallback image
 @endphp
 
 @if (count($offer_cats) > 0)

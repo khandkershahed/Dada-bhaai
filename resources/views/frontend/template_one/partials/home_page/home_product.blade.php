@@ -1,5 +1,5 @@
 @php
-    $noImage = asset('upload/no-image.png');
+    $noImage = asset('img/no-image.png');
 
     // Build tabs: first tab is "All Products", then categories with products
     $tabs = collect([['id' => 'all', 'name' => 'All Products']])

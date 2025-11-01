@@ -7,7 +7,7 @@
         ->latest()
         ->get();
 
-    $noImage = asset('upload/no-image.png'); // fallback image
+    $noImage = asset('img/no-image.png'); // fallback image
 @endphp
 
 @if ($products->count() > 0)

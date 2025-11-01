@@ -2,7 +2,7 @@
     use Illuminate\Support\Facades\File;
 
     $products = App\Models\Admin\Product::where('status', 1)->latest()->get();
-    $noCategoryImage = asset('upload/no-image.png'); // fallback image
+    $noCategoryImage = asset('img/no-image.png'); // fallback image
 @endphp
 
 <div class="top__featured--area pt-50 pb-50">
