@@ -9,7 +9,12 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
+
+    // ============================
+    // Relationships
+    // ============================
 
     public function category()
     {
@@ -31,8 +36,6 @@ class Product extends Model
         return $this->belongsTo(Color::class, 'color_id', 'id');
     }
 
-    
-
     public function brand()
     {
         return $this->belongsTo(Brand::class, 'brand_id', 'id');
@@ -43,5 +46,23 @@ class Product extends Model
         return $this->hasOne(ProductSinglePage::class);
     }
 
-    
+    // ============================
+    // Query Scopes
+    // ============================
+
+    /**
+     * Scope to fetch only active products
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
+
+    /**
+     * Scope to eager load the brand relationship
+     */
+    public function scopeWithBrand($query)
+    {
+        return $query->with('brand');
+    }
 }

@@ -2,48 +2,90 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\Admin\About;
-use App\Models\Admin\Category;
-use App\Models\Admin\Contact;
+use App\Models\User;
+use App\Models\Brand;
+use App\Models\Banner;
 use App\Models\Admin\Faq;
+use App\Models\Admin\About;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Models\Admin\Contact;
+use App\Models\Admin\Product;
+use App\Models\Admin\Category;
 use App\Models\Admin\HomePage;
 use App\Models\Admin\MultiImg;
-use App\Models\Admin\Product;
-use App\Models\Admin\ProductSinglePage;
 use App\Models\Admin\Template;
-use App\Models\Banner;
-use App\Models\Brand;
-use App\Models\User;
-use Gloudemans\Shoppingcart\Facades\Cart;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Cache;
+use App\Models\Admin\ProductSinglePage;
 use Laravel\Socialite\Facades\Socialite;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class IndexController extends Controller
 {
-    //Index
-    public function Index()
-    {
+    // Index
+public function Index()
+{
         $template = Template::latest('id')->where('status', '1')->first();
 
-        if ($template->name == 'template_one') {
+    if (!$template) {
+        abort(404, 'No active template found.');
+    }
 
-            return view('frontend.template_one.index_template_one');
-        } else if ($template->name == 'template_two') {
+    switch ($template->name) {
 
-            $homepage = HomePage::with(['featureProductOne', 'featureProductTwo', 'featureProductThree', 'featureProductFour'])->where('status', 'tamplate_two')->latest('id')->first();
+        case 'template_one':
+            // Categories with their active products (limit 5 per category)
+            $categories = Category::whereHas('products')
+                ->with(['products' => fn($q) => $q->where('status', 1)->latest()->limit(5)])
+                ->get();
+
+            // All active products
+   // Cache all active products for "All" tab
+            $allProducts = Cache::remember('all_products_home', 3600, function () {
+                return \App\Models\Admin\Product::active()->withBrand()->latest()->take(50)->get();
+            });
+             // Active brands with caching
+    $brands = Cache::remember('active_brands', 3600, function () {
+        return Brand::active()->latest()->take(20)->get(); // adjust take() as needed
+    });
+
+            return view('frontend.template_one.index_template_one', compact('categories', 'allProducts','brands'));
+
+        case 'template_two':
+            // Fetch homepage features for template_two
+            $homepage = HomePage::with([
+                'featureProductOne',
+                'featureProductTwo',
+                'featureProductThree',
+                'featureProductFour'
+            ])
+            ->where('status', 'template_two')
+            ->latest('id')
+            ->first();
 
             return view('frontend.astell.index_astell', compact('homepage'));
-        } else if ($template->name == 'template_three') {
-            $banners = Banner::where('status', '1')->orderBy('id', 'ASC')->latest()->get();
-            $categorys = Category::where('status', '1')->orderBy('category_name', 'ASC')->latest()->get();
 
-            return view('frontend.index', compact('banners', 'categorys'));
-        }
+        case 'template_three':
+            // Fetch banners and all categories for template_three
+            $banners = Banner::where('status', '1')
+                ->orderBy('id', 'ASC')
+                ->latest()
+                ->get();
+
+            $categories = Category::where('status', '1')
+                ->orderBy('category_name', 'ASC')
+                ->latest()
+                ->get();
+
+            return view('frontend.index', compact('banners', 'categories'));
+
+        default:
+            abort(404, 'Template not found.');
     }
+}
 
     //Template OneProduct
     public function TemplateOneProduct($id, $product_slug)

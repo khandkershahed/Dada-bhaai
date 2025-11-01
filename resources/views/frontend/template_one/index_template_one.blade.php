@@ -6,11 +6,13 @@
 <!-- Hero end -->
 
 <!-- Top Category Area  -->
-@include('frontend.template_one.partials.home_page.home_category')
+{{-- @include('frontend.template_one.partials.home_page.home_category') --}}
+@include('frontend.template_one.partials.home_page.home_category', ['categories' => $categories])
+
 <!-- Top Category Area end -->
 
 <!-- Discover All Product  -->
-@include('frontend.template_one.partials.home_page.home_product')
+@include('frontend.template_one.partials.home_page.home_product',['allProducts' => $allProducts])
 <!-- Discover All Product end -->
 
 <!-- Weekly Deals -->
@@ -35,8 +37,6 @@
 <!-- Latest Offer end -->
 
 <!-- Brand -->
-@include('frontend.template_one.partials.home_page.home_brand')
+@include('frontend.template_one.partials.home_page.home_brand', ['brands' => $brands])
 <!-- Brand End -->
-
-
 @endsection

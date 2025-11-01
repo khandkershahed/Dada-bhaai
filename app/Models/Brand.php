@@ -9,10 +9,24 @@ use Illuminate\Database\Eloquent\Model;
 class Brand extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
 
-    public function brandProducts()
+    /**
+     * Relationship: A brand has many products
+     */
+
+
+    public function products()
     {
-        $this->hasMany(Product::class);
+        return $this->hasMany(\App\Models\Admin\Product::class)->active();
+    }
+
+    /**
+     * Scope: Only active brands
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
     }
 }
